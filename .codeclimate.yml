@@ -5,6 +5,9 @@ engines:
     enabled: false
   eslint:
     enabled: true
+    checks:
+      comma-dangle:
+        enabled: false
   csslint:
     enabled: false
   duplication:

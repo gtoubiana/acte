@@ -8,6 +8,7 @@ MEMO:
   ☐ template pour la doc des utilitaires
   ☐ template pour la doc dans dist
   ☐ @npm Créer un script npm ou une tâche gulp pour les npm publish + commit + release (https://help.github.com/articles/creating-releases/) && (https://github.com/blog/1547-release-your-software) && https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
+  ☐ Revoir certains codestyle avec airbnb (private, constantes...)
 0-0-3+:
   ☐ @readme ajouter des readmes dans /src, /test, /gulp
   ☐ #53 Migrer de jsbeautifier à esformatter (compatible eslint & standard)
