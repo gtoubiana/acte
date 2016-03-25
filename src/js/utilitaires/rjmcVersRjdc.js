@@ -4,7 +4,7 @@
  * @author Gilles Toubiana
  * @since 0.0.1
  * @license MIT
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @param {Number} rjmc - le jour du mois républicain
  * @return {Number} Le jour de la décade républicaine
  * @example

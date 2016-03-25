@@ -166,7 +166,7 @@ en 1871
 
 **Type** : Constante  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Exemple** :  
@@ -214,7 +214,7 @@ en 1871
 
 **Type** : Constante  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Exemple** :  
@@ -230,7 +230,7 @@ républicain
 
 **Type** : Constante  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Exemple** :  
@@ -245,7 +245,7 @@ Expressions régulières pour convertir les mois gregoriens
 
 **Type** : Constante  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 <a name="REGEXP_REPUBLICAIN"></a>
@@ -255,7 +255,7 @@ Expressions régulières pour convertir les mois républicains
 
 **Type** : Constante  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 <a name="SIECLE_JULIEN"></a>

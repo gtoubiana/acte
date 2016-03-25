@@ -114,7 +114,7 @@ Pour convertir en nombre entier positif
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Le nombre entier positif  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
@@ -200,7 +200,7 @@ Pour créer un objet date grégorien valide
 **Type** : Fonction  
 **Résultat** : <code>Objet</code> - L'objet date valide  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
@@ -610,7 +610,7 @@ Pour remplacer en série avec un objet contenant des regex
 **Type** : Fonction  
 **Résultat** : <code>Chaîne</code> - Le texte modifié  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
@@ -680,7 +680,7 @@ Pour convertir le jour du mois républicain en décade
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - La décade républicaine  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
@@ -701,7 +701,7 @@ Pour convertir le jour du mois républicain en jour de la décade
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Le jour de la décade républicaine  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
@@ -743,7 +743,7 @@ Pour obtenir une saisie valide
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - La saisie valide  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
@@ -787,7 +787,7 @@ Pour convertir la saisie grégorienne ou julienne en Objet Jour
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - Les dates républicaines, grégoriennes et juliennes  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
@@ -809,7 +809,7 @@ Pour convertir la saisie républicaine en Objet Jour
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - Les dates républicaines, grégoriennes et juliennes  
 **Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  

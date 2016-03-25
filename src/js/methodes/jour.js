@@ -5,7 +5,7 @@
  * @chainable
  * @access public
  * @author Gilles Toubiana
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @param {String} saisie - Saisie d'une date grégorienne ou républicaine.
  * @param {Boolean} [limites=true] - Par défaut, les résultats sont limités
  * aux périodes d'utilisation des calendriers :<br>

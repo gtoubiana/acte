@@ -3,7 +3,7 @@
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Object}
  */
 var REGEXP_REPUBLICAIN = {

@@ -19,7 +19,7 @@ acte - Librairie Javascript pour manipuler des données généalogiques
 **Type** : Classe statique de <code>[acte](#acte)</code>  
 **Fonction chainable**  
 **Accès** : public  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Version** : 0.0.1  
 **Auteur** : Gilles Toubiana  

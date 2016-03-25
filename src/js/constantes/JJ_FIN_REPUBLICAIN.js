@@ -4,7 +4,7 @@
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Number}
  * @example
  * jjVersGregorien(2380686.5); // [1805, 12, 31]

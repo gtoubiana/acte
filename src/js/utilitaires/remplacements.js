@@ -4,7 +4,7 @@
  * @author Gilles Toubiana
  * @since 0.0.1
  * @license MIT
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @param {String} texte - Le texte à modifier
  * @param {Object} regex - Les expressions régulières de remplacements
  * @param {String} options - Les options des expressions régulières

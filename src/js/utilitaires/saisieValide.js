@@ -4,7 +4,7 @@
  * @author Gilles Toubiana
  * @since 0.0.1
  * @license MIT
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @param {String} saisie - La saisie d'une date
  * @param {Object} regexp - Un objet REGEXP_REPUBLICAIN ou REGEXP_GREGORIEN
  * pour convertir les mois

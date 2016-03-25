@@ -208,7 +208,7 @@
    * @access private
    * @author Gilles Toubiana
    * @since 0.0.1
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @constant {Number}
    * @example
    * jjVersGregorien(2404504.5); // [1871, 3, 18]
@@ -250,7 +250,7 @@
    * @access private
    * @author Gilles Toubiana
    * @since 0.0.1
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @constant {Number}
    * @example
    * jjVersGregorien(2404575.5); // [1871, 5, 28]
@@ -264,7 +264,7 @@
    * @access private
    * @author Gilles Toubiana
    * @since 0.0.1
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @constant {Number}
    * @example
    * jjVersGregorien(2380686.5); // [1805, 12, 31]
@@ -277,7 +277,7 @@
    * @access private
    * @author Gilles Toubiana
    * @since 0.0.1
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @constant {Object}
    */
   var REGEXP_GREGORIEN = {
@@ -305,7 +305,7 @@
    * @access private
    * @author Gilles Toubiana
    * @since 0.0.1
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @constant {Object}
    */
   var REGEXP_REPUBLICAIN = {
@@ -854,7 +854,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {Number} num - le nombre à convertir
    * @return {Number} Le nombre entier positif
    * @example
@@ -908,7 +908,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {Number} jour - le jour du mois gregorien en chiffres
    * @param {Number} mois - le mois gregorien en chiffres
    * @param {Number} an - l'année gregorienne en chiffres
@@ -991,7 +991,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {String} texte - Le texte à modifier
    * @param {Object} regex - Les expressions régulières de remplacements
    * @param {String} options - Les options des expressions régulières
@@ -1046,7 +1046,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {Number} rjmc - le jour du mois républicain
    * @return {Number} La décade républicaine
    * @example
@@ -1063,7 +1063,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {Number} rjmc - le jour du mois républicain
    * @return {Number} Le jour de la décade républicaine
    * @example
@@ -1116,7 +1116,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {String} saisie - La saisie d'une date
    * @param {Object} regexp - Un objet REGEXP_REPUBLICAIN ou REGEXP_GREGORIEN
    * pour convertir les mois
@@ -1158,7 +1158,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {String} saisie - Saisie d'une date
    * @param {Boolean} limites - Par défaut, les résultats sont limités
    * aux périodes d'utilisation des calendriers. Seule la valeur `false`
@@ -1222,7 +1222,7 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @license MIT
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {String} saisie - Saisie d'une date
    * @param {Boolean} limites - Par défaut, les résultats sont limités
    * aux périodes d'utilisation des calendriers. Seule la valeur `false`
@@ -1286,7 +1286,7 @@
    * @access public
    * @since 0.0.1
    * @author Gilles Toubiana
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @version 0.0.1
    * @license MIT
    * @param {String} [format='%d/%m/%Y'] - Le modèle de formatage
@@ -1308,7 +1308,7 @@
    * @chainable
    * @access public
    * @author Gilles Toubiana
-   * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
    * @param {String} saisie - Saisie d'une date grégorienne ou républicaine.
    * @param {Boolean} [limites=true] - Par défaut, les résultats sont limités
    * aux périodes d'utilisation des calendriers :<br>

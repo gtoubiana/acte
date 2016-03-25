@@ -4,7 +4,7 @@
  * @access public
  * @since 0.0.1
  * @author Gilles Toubiana
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @version 0.0.1
  * @license MIT
  * @param {String} [format='%d/%m/%Y'] - Le modèle de formatage

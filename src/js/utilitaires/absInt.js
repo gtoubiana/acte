@@ -4,7 +4,7 @@
  * @author Gilles Toubiana
  * @since 0.0.1
  * @license MIT
- * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+ * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @param {Number} num - le nombre à convertir
  * @return {Number} Le nombre entier positif
  * @example
