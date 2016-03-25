@@ -2,6 +2,7 @@ MEMO:
   ☐ @NEW_DOWN cmd-enter @NEW_UP cmd-shift-enter @DONE cmd-d @ARCHIVE cmd-shift-a
   ☐ @CANCEL ctrl-c @UPDATE ctrl-s @TITLE : @LABEL @ @ISSUE #
 0-0-2:
+  ✔ Création d'un nouveau projet ACTE @done(2016-03-25) @project(0-0-2)
   ☐ renommer le module acte plutot que acte.js => remettre à jour tous les liens + npm
   ☐ template pour la doc des constantes
   ☐ template pour la doc des utilitaires
