@@ -3,7 +3,13 @@ MEMO:
   ☐ @CANCEL ctrl-c @UPDATE ctrl-s @TITLE : @LABEL @ @ISSUE #
 0-0-2:
   ✔ Création d'un nouveau projet ACTE @done(2016-03-25) @project(0-0-2)
-  ☐ renommer le module acte plutot que acte.js => remettre à jour tous les liens + npm
+  ✔ renommer le module acte plutot que acte.js => remettre à jour tous les liens + npm @done(2016-03-25) @project(0-0-2)
+  ☐ npm publish https://docs.npmjs.com/getting-started/publishing-npm-packages
+  ✔ republier le npm 0.0.1 pour acte @done(2016-03-25) @project(0-0-2)
+  ✔ migrer les codes de bms.js (dans /src/archives) @done(2016-03-25) @project(0-0-2)
+  ☐ migrer les issues de bms.js (dans /src/archives)
+  ☐ migrer les issues de acte.js (dans /src/archives)
+  ☐ supprimer acte.js et bms.js
   ☐ template pour la doc des constantes
   ☐ template pour la doc des utilitaires
   ☐ template pour la doc dans dist
