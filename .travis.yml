@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "0.10"
+  - "0.12"
+  - "4"
+  - "5"
+branches:
+  only:
+    - gh-pages
+script: gulp
+notifications:
+  email:
+    recipients:
+      - gilles.toubiana@yahoo.fr
+    on_failure: always

@@ -1,0 +1,28 @@
+engines:
+  rubocop:
+    enabled: false
+  golint:
+    enabled: false
+  eslint:
+    enabled: true
+  csslint:
+    enabled: false
+  duplication:
+    enabled: false
+  fixme:
+    enabled: false
+ratings:
+  paths:
+  - "src/js/methodes/**.js"
+  - "src/js/constantes/**.js"
+  - "src/js/utilitaires/**.js"
+  - "test/**.js"
+  - "dist/acte.js"
+  - "gulpfile.js"
+  - "gulp/tasks/**.js"
+  - "gulp/config.js"
+exclude_paths:
+  - "src/css/**"
+  - "test/coverage/**"
+  - "test/jasmine/**"
+  - "test/tape/**"
