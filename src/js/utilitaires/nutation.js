@@ -43,14 +43,15 @@ var nutation = function nutation(jj) {
     ang = 0;
 
     for (j = 0; j < 5; j++) {
-      if (ARG_NUT_MULT[(i * 5) + j] !== 0) {
-        ang += ARG_NUT_MULT[(i * 5) + j] * ta[j];
+      if (argNutMult[(i * 5) + j] !== 0) {
+        ang += argNutMult[(i * 5) + j] * ta[j];
       }
     }
-    dp += (ARG_NUT_COEFF[(i * 4) + 0] +
-      ARG_NUT_COEFF[(i * 4) + 1] * to10) * Math.sin(ang);
-    de += (ARG_NUT_COEFF[(i * 4) + 2] +
-      ARG_NUT_COEFF[(i * 4) + 3] * to10) * Math.cos(ang);
+    dp += (argNutCoeff[(i * 4) + 0] +
+      argNutCoeff[(i * 4) + 1] * to10) * Math.sin(ang);
+    de += (argNutCoeff[(i * 4) + 2] +
+      argNutCoeff[(i * 4) + 3] * to10) * Math.cos(ang);
   }
+
   return [dp / (3600.0 * 10000.0), de / (3600.0 * 10000.0)];
 };

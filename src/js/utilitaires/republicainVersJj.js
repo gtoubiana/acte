@@ -14,13 +14,13 @@
  * republicainVersJj(12, 2, 2, 6); // 2379902.5
  */
 var republicainVersJj = function republicainVersJj(an, mois, decade, jour) {
-  var guess = JJ_DEBUT_REPUBLICAIN +
-    (ANNEE_TROPIQUE * ((an - 1) - 1));
+  var guess = jjDebutRepublicain + (anneeTropique * ((an - 1) - 1));
   var adr = [an - 1, 0];
 
   while (adr[0] < an) {
     adr = anRepublicain(guess);
-    guess = adr[1] + (ANNEE_TROPIQUE + 2);
+    guess = adr[1] + (anneeTropique + 2);
   }
+
   return adr[1] + (30 * (mois - 1)) + (10 * (decade - 1)) + (jour - 1);
 };

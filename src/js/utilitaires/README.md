@@ -751,12 +751,12 @@ Pour obtenir une saisie valide
 | Paramètres | Type | Description |
 | --- | --- | --- |
 | saisie | <code>Chaîne</code> | La saisie d'une date |
-| regexp | <code>Objet</code> | Un objet REGEXP_REPUBLICAIN ou REGEXP_GREGORIEN pour convertir les mois |
+| regexp | <code>Objet</code> | Un objet regexpRepublicain ou regexpGregorien pour convertir les mois |
 
 **Exemple** :  
 ```js
-saisieValide(saisie, REGEXP_REPUBLICAIN);
-saisieValide(saisie, REGEXP_GREGORIEN);
+saisieValide(saisie, regexpRepublicain);
+saisieValide(saisie, regexpGregorien);
 ```
 <a name="sinus"></a>
 

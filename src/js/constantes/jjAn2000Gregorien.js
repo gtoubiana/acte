@@ -8,4 +8,4 @@
  * @example
  * jjVersGregorien(2451545.0); // [2000, 1, 1]
  */
-var JJ_AN2000_GREGORIEN = 2451545.0;
+var jjAn2000Gregorien = 2451545.0;

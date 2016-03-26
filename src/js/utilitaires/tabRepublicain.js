@@ -14,33 +14,32 @@
  * tabRepublicain(saisie, this.limites);
  */
 var tabRepublicain = function tabRepublicain(saisie, limites) {
-  var tab = [];
-  var dateJulienne;
-  var dateGregorienne;
   // On remplace les chiffres romains en chiffres arabes
   var saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
     function romainNegatif(x, p1) {
       return (x.match(/-/)) ? ' -' + romainVersArabe(p1) : ' ' +
         romainVersArabe(p1);
     });
+  var tab = [];
+  var dateJulienne;
+  var dateGregorienne;
 
   // Uniformisation de la saisie
-  saisieRepublicain = saisieValide(saisieRepublicain, REGEXP_REPUBLICAIN);
+  saisieRepublicain = saisieValide(saisieRepublicain, regexpRepublicain);
 
   // Lorsque la date est valide [rjmc,rmc,rac]
   if (saisieRepublicain[2] && saisieRepublicain[0] < 30 &&
     absInt(saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
     absInt(saisieRepublicain[1]) !== 0) {
-    // On calcule le nombre de jours juliens
     tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),
       parseInt(saisieRepublicain[1], 10), rjmcVersRdc(saisieRepublicain[0]),
       rjmcVersRjdc(saisieRepublicain[0]));
 
-    // Si on est dans les limites ou en illimité
-    if (((tab[4] >= JJ_DEBUT_REPUBLICAIN) &&
-        (tab[4] <= JJ_FIN_REPUBLICAIN)) ||
-      ((tab[4] >= JJ_DEBUT_COMMUNE_DE_PARIS) &&
-        (tab[4] <= JJ_FIN_COMMUNE_DE_PARIS)) ||
+    // Si jj (tab[4]) est dans les limites ou en illimité
+    if (((tab[4] >= jjDebutRepublicain) &&
+        (tab[4] <= jjFinRepublicain)) ||
+      ((tab[4] >= jjDebutCommuneDeParis) &&
+        (tab[4] <= jjFinCommuneDeParis)) ||
       limites === false) {
       tab[9] = rjmcVersRjdc(saisieRepublicain[0]);
       tab[10] = rjmcVersRdc(saisieRepublicain[0]);
@@ -59,5 +58,6 @@ var tabRepublicain = function tabRepublicain(saisie, limites) {
       tab[8] = dateValide(tab[5], tab[6], tab[7]);
     }
   }
+
   return tab;
 };

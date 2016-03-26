@@ -11,10 +11,7 @@
  * jjVersJulien(2457346.5); // [2015,11,7]
  */
 var jjVersJulien = function jjVersJulien(jj) {
-  var tempJj = jj + 0.5;
-  var z = Math.floor(tempJj);
-  var a = z;
-  var b = a + 1524;
+  var b = Math.floor(jj + 0.5) + 1524;
   var c = Math.floor((b - 122.1) / 365.25);
   var d = Math.floor(365.25 * c);
   var e = Math.floor((b - d) / 30.6001);
@@ -25,5 +22,6 @@ var jjVersJulien = function jjVersJulien(jj) {
   if (an < 1) {
     an--;
   }
+
   return [an, mois, jour];
 };

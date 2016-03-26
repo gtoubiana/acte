@@ -27,10 +27,10 @@ var equinoxe = function equinoxe(an, item) {
   var Y;
 
   if (an < 1000) {
-    Jde0tab = JDE0TAB1000;
+    Jde0tab = jde0Tab1000;
     Y = an / 1000;
   } else {
-    Jde0tab = JDE0TAB2000;
+    Jde0tab = jde0Tab2000;
     Y = (an - 2000) / 1000;
   }
   Jde0 = Jde0tab[item][0] + (Jde0tab[item][1] * Y) +
@@ -42,10 +42,11 @@ var equinoxe = function equinoxe(an, item) {
   S = 0;
 
   for (i = j = 0; i < 24; i++) {
-    S += TERMES_PER_EQUINOXES[j] *
-      cosinus(TERMES_PER_EQUINOXES[j + 1] +
-        (TERMES_PER_EQUINOXES[j + 2] * T));
+    S += termesPerEquinoxes[j] *
+      cosinus(termesPerEquinoxes[j + 1] +
+        (termesPerEquinoxes[j + 2] * T));
     j += 3;
   }
+
   return Jde0 + ((S * 0.00001) / deltaL);
 };

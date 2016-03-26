@@ -21,7 +21,7 @@ var deltaT = function deltaT(an) {
   if ((an >= 1620) && (an <= 2012)) {
     i = Math.floor((an - 1620) / 2);
     f = ((an - 1620) / 2) - i;
-    dt = DELTA[i] + ((DELTA[i + 1] - DELTA[i]) * f);
+    dt = delta[i] + ((delta[i + 1] - delta[i]) * f);
   } else {
     t = (an - 2000) / 100;
     if (an < 948) {
@@ -33,5 +33,6 @@ var deltaT = function deltaT(an) {
       }
     }
   }
+
   return dt;
 };

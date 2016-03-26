@@ -13,13 +13,11 @@
  * anRepublicain(2379902.5); // [12, 2379857.5]
  */
 var anRepublicain = function anRepublicain(jj) {
+  var guess = jjVersGregorien(jj)[0] - 2;
+  var lasteq = equinoxeAParis(guess);
   var adr;
-  var guess;
-  var lasteq;
   var nexteq;
 
-  guess = jjVersGregorien(jj)[0] - 2;
-  lasteq = equinoxeAParis(guess);
   while (lasteq > jj) {
     guess--;
     lasteq = equinoxeAParis(guess);
@@ -31,7 +29,7 @@ var anRepublicain = function anRepublicain(jj) {
     guess++;
     nexteq = equinoxeAParis(guess);
   }
-  adr = Math.round((lasteq - JJ_DEBUT_REPUBLICAIN) /
-    ANNEE_TROPIQUE) + 1;
+  adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) + 1;
+
   return [adr, lasteq];
 };

@@ -14,7 +14,7 @@ var obliquiteEcliptique = function obliquiteEcliptique(jj) {
   var oTerms = [(-4680.93), (-1.55), 1999.25, (-51.38), (-249.67),
     (-39.05), 7.12, 27.87, 5.79, 2.45
   ];
-  var u = (jj - JJ_AN2000_GREGORIEN) / (SIECLE_JULIEN * 100);
+  var u = (jj - jjAn2000Gregorien) / (siecleJulien * 100);
   var v = u;
   var eps = 23 + (26 / 60.0) + (21.448 / 3600.0);
   var i;
@@ -25,5 +25,6 @@ var obliquiteEcliptique = function obliquiteEcliptique(jj) {
       v *= u;
     }
   }
+
   return eps;
 };

@@ -11,7 +11,7 @@
  * equationDuTemps(2457333.5); // 0.002839122270852552
  */
 var equationDuTemps = function equationDuTemps(jj) {
-  var tau = (jj - JJ_AN2000_GREGORIEN) / (SIECLE_JULIEN * 10);
+  var tau = (jj - jjAn2000Gregorien) / (siecleJulien * 10);
   var l0 = normaliserDegres(280.4664567 + (360007.6982779 * tau) +
     (0.03032028 * Math.pow(tau, 2)) + ((Math.pow(tau, 3)) / 49931) +
     (-((Math.pow(tau, 4)) / 15300)) + (-((Math.pow(tau, 5)) / 2000000))
@@ -22,5 +22,6 @@ var equationDuTemps = function equationDuTemps(jj) {
   var E = l0 + (-0.0057183) + (-alpha) + (deltaPsi * cosinus(epsilon));
 
   E -= 20.0 * (Math.floor(E / 20.0));
+
   return E / (24 * 60);
 };

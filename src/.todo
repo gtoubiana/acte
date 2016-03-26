@@ -8,8 +8,9 @@ MEMO:
   ✔ republier le npm 0.0.1 pour acte @done(2016-03-25) @project(0-0-2)
   ✔ migrer les codes de bms.js (dans /src/archives) @done(2016-03-25) @project(0-0-2)
   ☐ migrer les issues de bms.js (dans /src/archives)
-  ☐ migrer les issues de acte.js (dans /src/archives)
-  ☐ supprimer acte.js et bms.js
+  ✔ migrer les issues de acte.js (dans /src/archives) @done(2016-03-25) @project(0-0-2)
+  ☐ supprimer bms.js
+  ✔ supprimer acte.js @done(2016-03-25) @project(0-0-2)
   ☐ template pour la doc des constantes
   ☐ template pour la doc des utilitaires
   ☐ template pour la doc dans dist

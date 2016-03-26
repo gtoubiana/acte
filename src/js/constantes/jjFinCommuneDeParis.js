@@ -11,4 +11,4 @@
  * jjVersGregorien(2404575.5); // [1871, 5, 28]
  * jjVersRepublicain(2404575.5); // [79, 9, 1, 8]
  */
-var JJ_FIN_COMMUNE_DE_PARIS = 2404575.5;
+var jjFinCommuneDeParis = 2404575.5;

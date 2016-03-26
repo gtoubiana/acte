@@ -16,7 +16,7 @@
 var gregorienVersJj = function gregorienVersJj(an, mois, jour) {
   var anneeBissextile = gregorienBissextile(an) ? -1 : -2;
 
-  return (JJ_AN1_GREGORIEN - 1) + (365 * (an - 1)) +
+  return (jjAn1Gregorien - 1) + (365 * (an - 1)) +
     Math.floor((an - 1) / 4) + (-Math.floor((an - 1) / 100)) +
     Math.floor((an - 1) / 400) + Math.floor((((367 * mois) - 362) / 12) +
       ((mois <= 2) ? 0 : anneeBissextile) + jour);

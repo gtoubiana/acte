@@ -6,7 +6,7 @@
  * @see {@link http://fourmilab.ch/documents/calendar/|EquinoxpTerms}
  * @constant {Array}
  */
-var TERMES_PER_EQUINOXES = [
+var termesPerEquinoxes = [
   485, 324.96, 1934.136, 203, 337.23, 32964.467,
   199, 342.08, 20.186, 182, 27.85, 445267.112,
   156, 73.14, 45036.886, 136, 171.52, 22518.443,

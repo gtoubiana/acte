@@ -23,5 +23,6 @@ var remplacements = function remplacements(texte, regex, options) {
       tempTexte = tempTexte.replace(new RegExp(val, options), regex[val]);
     }
   }
+
   return tempTexte;
 };

@@ -6,7 +6,7 @@
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Object}
  */
-var REGEXP_GREGORIEN = {
+var regexpGregorien = {
   'jan(v)?(\\.)?(ier)?': '/1/',
   'f(é|e)v(r)?(\\.)?(ier)?': '/2/',
   'mar(s|\\.)?': '/3/',

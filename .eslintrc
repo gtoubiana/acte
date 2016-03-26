@@ -22,7 +22,8 @@
       "linebreak-style": [1, "unix"], // disallow mixed ‘LF’ and ‘CRLF’ as linebreaks
       "lines-around-comment": [1, { // enforce empty lines around comments - custom
         "beforeBlockComment": true,
-        "beforeLineComment": false
+        "beforeLineComment": true,
+        "allowBlockStart": true
       }],
       "max-len": [1, 80, 2, { // specify the maximum length of a line in your program
         "ignoreUrls": true,

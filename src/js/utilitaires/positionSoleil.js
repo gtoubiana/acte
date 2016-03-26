@@ -27,7 +27,7 @@
  * // -16.112230690435588]
  */
 var positionSoleil = function positionSoleil(jj) {
-  var T = (jj - JJ_AN2000_GREGORIEN) / SIECLE_JULIEN;
+  var T = (jj - jjAn2000Gregorien) / siecleJulien;
   var t2 = T * T;
   var l0 = normaliserDegres(280.46646 + (36000.76983 * T) +
     (0.0003032 * t2));

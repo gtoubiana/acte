@@ -11,6 +11,6 @@
  * rjmcVersRjdc(28); // 8
  */
 var rjmcVersRjdc = function rjmcVersRjdc(rjmc) {
-  return (Math.abs(parseInt(rjmc, 10) % 10) === 0) ? 10 : Math.abs(
-    parseInt(rjmc, 10) % 10);
+  return (Math.abs(parseInt(rjmc, 10) % 10) === 0) ? 10 : Math.abs(parseInt(
+    rjmc, 10) % 10);
 };

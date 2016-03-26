@@ -16,5 +16,6 @@ var dateValide = function dateValide(jour, mois, an) {
   var resultat = new Date(an, mois - 1, jour);
 
   resultat.setFullYear(an);
+
   return resultat;
 };

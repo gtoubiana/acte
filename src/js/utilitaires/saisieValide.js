@@ -6,12 +6,12 @@
  * @license MIT
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @param {String} saisie - La saisie d'une date
- * @param {Object} regexp - Un objet REGEXP_REPUBLICAIN ou REGEXP_GREGORIEN
+ * @param {Object} regexp - Un objet regexpRepublicain ou regexpGregorien
  * pour convertir les mois
  * @return {Array} La saisie valide
  * @example
- * saisieValide(saisie, REGEXP_REPUBLICAIN);
- * saisieValide(saisie, REGEXP_GREGORIEN);
+ * saisieValide(saisie, regexpRepublicain);
+ * saisieValide(saisie, regexpGregorien);
  */
 var saisieValide = function saisieValide(saisie, regexp) {
   var tempSaisie = saisie;
@@ -37,5 +37,6 @@ var saisieValide = function saisieValide(saisie, regexp) {
   if (tempSaisie[1] && !tempSaisie[2]) {
     tempSaisie = [1, tempSaisie[0], tempSaisie[1]];
   }
+
   return tempSaisie;
 };

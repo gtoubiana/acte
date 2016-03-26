@@ -23,6 +23,7 @@ var julienVersJj = function julienVersJj(an, mois, jour) {
     tempAn--;
     tempMois += 12;
   }
+
   return ((Math.floor((365.25 * (tempAn + 4716))) + Math.floor((30.6001 * (
     tempMois + 1))) + jour) - 1524.5);
 };

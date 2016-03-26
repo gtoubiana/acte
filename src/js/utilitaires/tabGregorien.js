@@ -14,11 +14,11 @@
  * tabGregorien(saisie, this.limites);
  */
 var tabGregorien = function tabGregorien(saisie, limites) {
+  // Uniformisation de la saisie
+  var saisieGregorien = saisieValide(saisie, regexpGregorien);
   var tab = [];
   var dateJulienne;
   var dateRepublicaine;
-  // Uniformisation de la saisie
-  var saisieGregorien = saisieValide(saisie, REGEXP_GREGORIEN);
 
   // Lorsque la date est valide [gjmc,gmc,gac]
   if (saisieGregorien[2] && saisieGregorien[0] < 32 &&
@@ -29,7 +29,7 @@ var tabGregorien = function tabGregorien(saisie, limites) {
       saisieGregorien[1]), absInt(saisieGregorien[0]));
 
     // Limitations gregorien/julien
-    if ((limites === true) && (tab[4] < JJ_DEBUT_GREGORIEN)) {
+    if ((limites === true) && (tab[4] < jjDebutGregorien)) {
       tab[5] = absInt(saisieGregorien[0]);
       tab[6] = absInt(saisieGregorien[1]);
       tab[7] = parseInt(saisieGregorien[2], 10);
@@ -47,10 +47,10 @@ var tabGregorien = function tabGregorien(saisie, limites) {
     }
 
     // Limitations republicain
-    if (((tab[4] >= JJ_DEBUT_REPUBLICAIN) &&
-        (tab[4] <= JJ_FIN_REPUBLICAIN)) ||
-      ((tab[4] >= JJ_DEBUT_COMMUNE_DE_PARIS) &&
-        (tab[4] <= JJ_FIN_COMMUNE_DE_PARIS)) ||
+    if (((tab[4] >= jjDebutRepublicain) &&
+        (tab[4] <= jjFinRepublicain)) ||
+      ((tab[4] >= jjDebutCommuneDeParis) &&
+        (tab[4] <= jjFinCommuneDeParis)) ||
       limites === false) {
       dateRepublicaine = jjVersRepublicain(tab[4]);
       tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
@@ -59,5 +59,6 @@ var tabGregorien = function tabGregorien(saisie, limites) {
       ]);
     }
   }
+
   return tab;
 };

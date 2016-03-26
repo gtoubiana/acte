@@ -6,7 +6,7 @@
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Object}
  */
-var REGEXP_REPUBLICAIN = {
+var regexpRepublicain = {
   'vend(é|e)miaire': '/1/',
   brumaire: '/2/',
   frimaire: '/3/',

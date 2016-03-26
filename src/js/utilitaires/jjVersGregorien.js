@@ -12,7 +12,7 @@
  */
 var jjVersGregorien = function jjVersGregorien(jj) {
   var wjd = Math.floor(jj - 0.5) + 0.5;
-  var depoch = wjd - JJ_AN1_GREGORIEN;
+  var depoch = wjd - jjAn1Gregorien;
   var quadricent = Math.floor(depoch / 146097);
   var dqc = reste(depoch, 146097);
   var cent = Math.floor(dqc / 36524);

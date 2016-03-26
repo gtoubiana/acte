@@ -22,5 +22,6 @@ var fractionEquinoxe = function fractionEquinoxe(an) {
   equJD = equJED - (deltaT(an) / (24 * 60 * 60));
   equAPP = equJD + equationDuTemps(equJED);
   dtParis = (2 + (20 / 60.0) + (15 / (60 * 60.0))) / 360;
+
   return equAPP + dtParis;
 };

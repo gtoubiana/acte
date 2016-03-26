@@ -11,7 +11,6 @@
  * arabeVersRomain(2012); // 'MMXII'
  */
 var arabeVersRomain = function arabeVersRomain(arabe) {
-  var i;
   var lookup = {
     M: 1000,
     CM: 900,
@@ -27,8 +26,9 @@ var arabeVersRomain = function arabeVersRomain(arabe) {
     IV: 4,
     I: 1
   };
-  var romain = '';
   var tempArabe = arabe;
+  var romain = '';
+  var i;
 
   for (i in lookup) {
     if (lookup.hasOwnProperty(i)) {
@@ -38,5 +38,6 @@ var arabeVersRomain = function arabeVersRomain(arabe) {
       }
     }
   }
+
   return romain;
 };

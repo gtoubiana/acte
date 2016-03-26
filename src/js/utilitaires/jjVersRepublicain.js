@@ -13,19 +13,14 @@
  */
 var jjVersRepublicain = function jjVersRepublicain(jj) {
   var tempJj = Math.floor(jj) + 0.5;
-  var adr;
-  var an;
-  var decade;
-  var equinox;
-  var jour;
-  var mois;
+  var adr = anRepublicain(tempJj);
+  var an = adr[0];
+  var equinox = adr[1];
+  var mois = Math.floor((tempJj - equinox) / 30) + 1;
+  var jour = (tempJj - equinox) % 30;
+  var decade = Math.floor(jour / 10) + 1;
 
-  adr = anRepublicain(tempJj);
-  an = adr[0];
-  equinox = adr[1];
-  mois = Math.floor((tempJj - equinox) / 30) + 1;
-  jour = (tempJj - equinox) % 30;
-  decade = Math.floor(jour / 10) + 1;
   jour = (jour % 10) + 1;
+
   return [an, mois, decade, jour];
 };

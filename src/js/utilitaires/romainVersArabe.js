@@ -31,5 +31,6 @@ var romainVersArabe = function romainVersArabe(romain) {
       arabe += lookup[tempRomain[i]];
     }
   }
+
   return arabe;
 };

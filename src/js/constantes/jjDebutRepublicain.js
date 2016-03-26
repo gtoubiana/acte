@@ -9,4 +9,4 @@
  * jjVersGregorien(2375839.5); // [1792, 9, 22]
  * jjVersRepublicain(2375839.5); // [1, 1, 1, 1]
  */
-var JJ_DEBUT_REPUBLICAIN = 2375839.5;
+var jjDebutRepublicain = 2375839.5;

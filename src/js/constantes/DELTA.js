@@ -10,7 +10,7 @@
  * {@link http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html|Expressions}
  * @constant {Array}
  */
-var DELTA = [
+var delta = [
   121, 112, 103, 95, 88,
   82, 77, 72, 68, 63,
   60, 56, 53, 51, 48,
