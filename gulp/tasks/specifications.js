@@ -4,8 +4,6 @@ var eslint = require('gulp-eslint');
 var gulp = require('gulp');
 var lazypipe = require('lazypipe');
 var sequence = require('gulp-sequence');
-var tapColorize = require('tap-colorize');
-var tape = require('gulp-tape');
 var wrap = require('gulp-wrap');
 
 // Lazypipes
@@ -15,10 +13,13 @@ var lazyLint = lazypipe()
   .pipe(eslint.failAfterError);
 
 gulp.task('specifications', sequence(
+
   // Générer des specs pour le navigateur
   'specifications.tests',
+
   // Copie des sources Jasmine
   'specifications.lib',
+
   // Générer des specs pour Node.js
   'specifications.node'
 ));
@@ -48,14 +49,4 @@ gulp.task('specifications.node', function () {
       '\')\n<%= contents %>\n'
     ))
     .pipe(gulp.dest(config.paths.jasmine));
-});
-
-// TASK Pour générer les Specs utilisés par TAPE dans node
-// https://ci.testling.com/
-gulp.task('specifications.tape', function () {
-  'use strict';
-  return gulp.src(config.paths.test + '/tape/acteSpec.js')
-    .pipe(tape({
-      reporter: tapColorize()
-    }));
 });

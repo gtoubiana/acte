@@ -16,16 +16,22 @@ var lazyPrettyLint = lazypipe()
   .pipe(lazyLint);
 
 gulp.task('validations', sequence(
+
   // Vérifier les dépendances dans le package.json
   'validation.dependances',
+
   // Valider les constantes
   'validation.constantes',
+
   // Valider les utilitaires
   'validation.utilitaires',
+
   // Valider le gulpfile et les gulptasks
   'validation.gulp',
+
   // Valider les methodes
   'validation.methodes',
+
   // Valider les specs pour les tests
   'validation.tests'
 ));

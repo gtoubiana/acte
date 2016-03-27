@@ -13,6 +13,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var wrap = require('gulp-wrap');
 var zip = require('gulp-zip');
+
 // Lazypipes
 var lazyJsdocFr = lazypipe()
   .pipe(rep, /## Constants/g, '## Constantes')
@@ -42,6 +43,7 @@ var lazyJsdocFr = lazypipe()
   .pipe(rep, ': global function', ': Fonction')
   .pipe(rep, ': static class of', ': Classe statique de')
   .pipe(rep, ': instance method of', ': Méthode d\'instance de');
+
   // .pipe(rep, ' ↩︎', '')
 
 // TEMPLATES Pour générer le jsdoc du module UMD
@@ -51,18 +53,25 @@ var currentYearDisplay = (currentYear === 2015) ? 2015 : '2015-' +
   currentYear;
 
 gulp.task('generations', sequence(
+
   // Générer le script acte
   'generation.script',
+
   // Générer le script minifié de acte
   'generation.script.min',
+
   // Générer la doc des constantes
   'generation.doc.constantes',
+
   // Générer la doc des utilitaires
   'generation.doc.utilitaires',
+
   // Générer la doc du script acte
   'generation.doc.dist',
+
   // Générer le fichier de licence
   'generation.licence',
+
   // Générer le zip de la release
   'generation.zip'
 ));
@@ -148,6 +157,6 @@ gulp.task('generation.licence', function () {
 gulp.task('generation.zip', function () {
   'use strict';
   return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
-    .pipe(zip('actejs-' + pkg.version + '-dist.zip'))
+    .pipe(zip('acte-dist.zip'))
     .pipe(gulp.dest(config.paths.dist));
 });

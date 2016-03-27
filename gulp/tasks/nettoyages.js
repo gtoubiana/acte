@@ -4,10 +4,13 @@ var gulp = require('gulp');
 var sequence = require('gulp-sequence');
 
 gulp.task('nettoyages', sequence(
+
   // supprimer les fichiers issus de la tache generations
   'nettoyage.generations',
+
   // supprimer les fichiers issus de la tache specifications
   'nettoyage.specifications',
+
   // supprimer les fichiers issus de la tache couvertures
   'nettoyage.couvertures'
 ));

@@ -24,8 +24,10 @@ var paths = {
 
 // Ordre des scripts pour générer acte.js
 var acteScripts = [
+
   // Constantes
   paths.constantes + '/*.js',
+
   // Utilitaires pré-requis
   paths.utilitaires + '/degresVersRadians.js',
   paths.utilitaires + '/normaliserDegres.js',
@@ -44,11 +46,14 @@ var acteScripts = [
   paths.utilitaires + '/gregorienBissextile.js',
   paths.utilitaires + '/gregorienVersJj.js',
   paths.utilitaires + '/jjVersGregorien.js',
+
   // Utilitaires restants
   paths.utilitaires + '/*.js',
+
   // Utilitaires exclus
   '!' + paths.utilitaires + '/arabeVersRomain.js',
   '!' + paths.utilitaires + '/julienVersJj.js',
+
   // Methodes
   paths.methodes + '/*.js'
 ];

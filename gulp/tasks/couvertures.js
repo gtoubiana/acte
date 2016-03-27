@@ -10,10 +10,12 @@ require('gulp-util');
 
 gulp.task('couvertures', function () {
   'use strict';
+
   // generation de la couverture
   return gulp.src([config.paths.dist + '/acte.js'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
+
     // https://nodejs.org/api/stream.html
     .on('finish', function () {
       // generation du rapport de couverture
@@ -21,6 +23,7 @@ gulp.task('couvertures', function () {
         .pipe(jasmineNode())
         .pipe(istanbul.writeReports({
           dir: config.paths.coverage,
+
           // 'reporters': ['lcov', 'json', 'text-summary', 'text'],
           reporters: ['lcov', 'json', 'text-summary']
         }))
