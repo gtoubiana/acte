@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var lazypipe = require('lazypipe');
 var sequence = require('gulp-sequence');
 var wrap = require('gulp-wrap');
+var Server = require('karma').Server;
 
 // Lazypipes
 var lazyLint = lazypipe()
@@ -21,7 +22,11 @@ gulp.task('specifications', sequence(
   'specifications.lib',
 
   // Générer des specs pour Node.js
-  'specifications.node'
+  'specifications.node',
+
+  // Tester les specs avec Karma
+  // dans Chrome, Firefox, Safari, PhantomJS, Opera
+  'specifications.karma'
 ));
 
 // TASK Pour générer les Specs utilisés par jasmine dans le browser
@@ -49,4 +54,12 @@ gulp.task('specifications.node', function () {
       '\')\n<%= contents %>\n'
     ))
     .pipe(gulp.dest(config.paths.jasmine));
+});
+
+// TASK Pour effectuer les tests avec Karma //
+gulp.task('specifications.karma', function (done) {
+  new Server({
+    configFile: __dirname + '/../../karma.conf.js',
+    singleRun: true
+  }, done).start();
 });

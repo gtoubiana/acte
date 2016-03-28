@@ -3,6 +3,13 @@ var sequence = require('gulp-sequence');
 
 require('eslint-config-airbnb');
 require('eslint-plugin-react');
+require('karma-chrome-launcher');
+require('karma-firefox-launcher');
+require('karma-jasmine');
+require('karma-opera-launcher');
+require('karma-phantomjs-launcher');
+require('karma-safari-launcher');
+require('karma-sauce-launcher');
 
 // Tâche par défaut
 gulp.task('default', sequence(
