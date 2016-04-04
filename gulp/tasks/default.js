@@ -22,8 +22,8 @@ gulp.task('default', sequence(
   'couvertures',
 
   // Certification eslint airbnb/legacy du fichier acte.js
-  'validations.script',
+  'validations.script'
 
   // SauceLabs tests
-  'specifications.karma'
+  // 'specifications.karma'
 ));

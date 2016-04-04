@@ -72,7 +72,6 @@
     "karma-jasmine": "^0.3.8",
     "karma-sauce-launcher": "^0.3.1",
     "lazypipe": "^1.0.1",
-    "lodash": "^4.7.0",
     "require-dir": "^0.3.0"
   }
 }
