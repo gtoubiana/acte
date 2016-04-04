@@ -164,16 +164,17 @@ module.exports = function karma(config) {
       startConnect: true,
       recordVideo: false,
       recordScreenshots: true,
-      captureHtml: true,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       build: process.env.TRAVIS_BUILD_NUMBER,
-      username: process.env.SAUCE_USERNAME,
-      accessKey: process.env.SAUCE_ACCESS_KEY,
-      connectOptions: {
-        port: 9876,
-        logfile: 'sauce_connect.log'
-      },
       public: 'public'
+
+      // captureHtml: true,
+      // tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      // username: process.env.SAUCE_USERNAME,
+      // accessKey: process.env.SAUCE_ACCESS_KEY,
+      // connectOptions: {
+      //   port: 9876,
+      //   logfile: 'sauce_connect.log'
+      // },
     },
     customLaunchers: customLaunchers,
     captureTimeout: 240000
