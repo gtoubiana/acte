@@ -157,7 +157,7 @@ module.exports = function karma(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous (Infinity, 1-10)
-    concurrency: Infinity,
+    concurrency: 1,
 
     // Launcher config : https://github.com/karma-runner/karma-sauce-launcher
     sauceLabs: {
@@ -168,9 +168,7 @@ module.exports = function karma(config) {
       recordVideo: false,
       recordScreenshots: true,
       build: process.env.TRAVIS_BUILD_NUMBER,
-      tunnelIdentifier: process.env.TRAVIS_BUILD_NUMBER,
-
-      // tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
       accessKey: process.env.SAUCE_ACCESS_KEY,
       public: 'public'

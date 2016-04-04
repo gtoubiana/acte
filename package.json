@@ -43,7 +43,7 @@
   "homepage": "https://github.com/gtoubiana/acte",
   "devDependencies": {
     "del": "^2.2.0",
-    "eslint": "^2.4.0",
+    "eslint": "^2.6.0",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-react": "^4.2.3",
     "gulp": "^3.9.1",
@@ -55,7 +55,7 @@
     "gulp-if": "^2.0.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-jasmine": "^2.3.0",
-    "gulp-jsbeautifier": "^2.0.2",
+    "gulp-jsbeautifier": "^2.0.3",
     "gulp-jsdoc-to-markdown": "^1.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
@@ -72,6 +72,7 @@
     "karma-jasmine": "^0.3.8",
     "karma-sauce-launcher": "^0.3.1",
     "lazypipe": "^1.0.1",
+    "lodash": "^4.7.0",
     "require-dir": "^0.3.0"
   }
 }
