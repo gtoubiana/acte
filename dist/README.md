@@ -1,3 +1,11 @@
+# Documentation de Acte
+
+## Installation :
+```
+$ npm install acte --save-dev
+```
+
+## API de référence :
 <a name="acte"></a>
 
 ## acte : <code>Objet</code>
@@ -35,3 +43,6 @@ Pour convertir une saisie en objet JavaScript
 | saisie | <code>Chaîne</code> |  | Saisie d'une date grégorienne ou républicaine. |
 | [limites] | <code>Booléen</code> | <code>true</code> | Par défaut, les résultats sont limités aux périodes d'utilisation des calendriers :<br> - une saisie de date grégorienne sera considérée comme julienne avant le 15/10/1582<br> - une saisie de date républicaine ne sera valide que du 22/9/1792 au 31/12/1805 (Période républicaine) et du 18/3/1871 au 28/5/1871 (Commune de Paris).<br> La valeur `false` permet de désactiver ces limitations. |
 
+* * *
+Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>
+Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/gh-pages/LICENSE), documentation sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).

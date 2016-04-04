@@ -1,5 +1,6 @@
 var concat = require('gulp-concat');
 var config = require('../config');
+var fs = require('fs');
 var gulp = require('gulp');
 var header = require('gulp-header');
 var jsdoc2md = require('gulp-jsdoc-to-markdown');
@@ -46,38 +47,29 @@ var lazyJsdocFr = lazypipe()
 
   // .pipe(rep, ' ↩︎', '')
 
-// TEMPLATES Pour générer le jsdoc du module UMD
-var currentDate = new Date();
-var currentYear = currentDate.getFullYear();
-var currentYearDisplay = (currentYear === 2015) ? 2015 : '2015-' +
-  currentYear;
-
 gulp.task('generations', sequence(
 
   // Générer le script acte
-  'generation.script',
+  'generations.script',
 
   // Générer le script minifié de acte
-  'generation.script.min',
+  'generations.script.min',
 
   // Générer la doc des constantes
-  'generation.doc.constantes',
+  'generations.doc.constantes',
 
   // Générer la doc des utilitaires
-  'generation.doc.utilitaires',
+  'generations.doc.utilitaires',
 
   // Générer la doc du script acte
-  'generation.doc.dist',
-
-  // Générer le fichier de licence
-  'generation.licence',
+  'generations.doc.dist',
 
   // Générer le zip de la release
-  'generation.zip'
+  'generations.zip'
 ));
 
 // TASK Pour générer le script ./dist/acte.js
-gulp.task('generation.script', function () {
+gulp.task('generations.script', function () {
   'use strict';
   return gulp.src(config.acteScripts, config.acteBase)
     .pipe(concat('acte.js'))
@@ -92,7 +84,7 @@ gulp.task('generation.script', function () {
 });
 
 // TASK Pour générer le script ./dist/acte.min.js
-gulp.task('generation.script.min', function () {
+gulp.task('generations.script.min', function () {
   'use strict';
   return gulp.src(config.paths.dist + '/acte.js')
     .pipe(sourcemaps.init())
@@ -111,50 +103,46 @@ gulp.task('generation.script.min', function () {
 });
 
 // TASK Pour générer une doc .md à partir du jsdoc
-gulp.task('generation.doc.dist', function () {
+gulp.task('generations.doc.dist', function () {
   'use strict';
   return gulp.src(config.paths.dist + '/acte.js')
     .pipe(rename('README.md'))
-    .pipe(jsdoc2md())
+    .pipe(jsdoc2md({ template: fs.readFileSync(config.paths.src +
+      '/tmpl/docDist.hbs', 'utf8') }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.dist));
 });
 
 // TASK Pour générer une doc .md à partir du jsdoc
-gulp.task('generation.doc.constantes', function () {
+gulp.task('generations.doc.constantes', function () {
   'use strict';
   return gulp.src(config.paths.constantes + '/*.js')
     .pipe(concat('README.md'))
     .pipe(jsdoc2md({
-      private: true
+      private: true,
+      template: fs.readFileSync(config.paths.src +
+        '/tmpl/docConstantes.hbs', 'utf8')
     }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.constantes));
 });
 
 // TASK Pour générer une doc .md à partir du jsdoc
-gulp.task('generation.doc.utilitaires', function () {
+gulp.task('generations.doc.utilitaires', function () {
   'use strict';
   return gulp.src(config.paths.utilitaires + '/*.js')
     .pipe(concat('README.md'))
     .pipe(jsdoc2md({
-      private: true
+      private: true,
+      template: fs.readFileSync(config.paths.src +
+        '/tmpl/docUtilitaires.hbs', 'utf8')
     }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.utilitaires));
 });
 
-// TASK Pour générer la licence
-gulp.task('generation.licence', function () {
-  'use strict';
-  return gulp.src(config.paths.src + '/tmpl/licence.txt')
-    .pipe(rename('LICENSE'))
-    .pipe(rep('{DATE_LICENCE}', currentYearDisplay))
-    .pipe(gulp.dest(config.paths.root));
-});
-
 // TASK Pour créer une archive.zip de la release
-gulp.task('generation.zip', function () {
+gulp.task('generations.zip', function () {
   'use strict';
   return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
     .pipe(zip('acte-dist.zip'))

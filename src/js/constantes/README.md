@@ -1,68 +1,26 @@
-## Constantes
+# Constantes privées utilisées dans Acte
 
-<dl>
-<dt><a href="#anneeTropique">anneeTropique</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours, sur Terre, pour que le Soleil retourne à la même
-position
-dans le cycle des saisons</p>
-</dd>
-<dt><a href="#argNutCoeff">argNutCoeff</a> : <code>Tableau</code> ℗</dt>
-<dd><p>Coefficient des sinus et cosinus de l&#39;argument pour la nutation</p>
-</dd>
-<dt><a href="#argNutMult">argNutMult</a> : <code>Tableau</code> ℗</dt>
-<dd><p>Termes périodiques pour la nutation en longitude et obliquité</p>
-</dd>
-<dt><a href="#delta">delta</a> : <code>Tableau</code> ℗</dt>
-<dd><p>Tableau des Delta T (différence entre Temps universel et temps terrestre)
-tous les 2 ans de 1620 à 2014</p>
-</dd>
-<dt><a href="#jde0Tab1000">jde0Tab1000</a> : <code>Tableau</code> ℗</dt>
-<dd><p>Jours juliens des équinoxes avant l&#39;an 1000</p>
-</dd>
-<dt><a href="#jde0Tab2000">jde0Tab2000</a> : <code>Tableau</code> ℗</dt>
-<dd><p>Jours juliens des équinoxes de l&#39;an 1000 à l&#39;an 2000</p>
-</dd>
-<dt><a href="#jjAn1Gregorien">jjAn1Gregorien</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours juliens correspondants à l&#39;an 1 gregorien</p>
-</dd>
-<dt><a href="#jjAn2000Gregorien">jjAn2000Gregorien</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours juliens correspondants à l&#39;an 2000 grégorien</p>
-</dd>
-<dt><a href="#jjDebutCommuneDeParis">jjDebutCommuneDeParis</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours juliens correspondants à l&#39;adoption du calendrier
-républicain dans le journal officiel lors de la Commune de Paris
-en 1871</p>
-</dd>
-<dt><a href="#jjDebutGregorien">jjDebutGregorien</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours juliens correspondants à l&#39;adoption du calendrier
-grégorien</p>
-</dd>
-<dt><a href="#jjDebutRepublicain">jjDebutRepublicain</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours juliens correspondants à l&#39;an 1 républicain</p>
-</dd>
-<dt><a href="#jjFinCommuneDeParis">jjFinCommuneDeParis</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours juliens correspondants à l&#39;abrogation du calendrier
-républicain dans le journal officiel lors de la Commune de Paris
-en 1871</p>
-</dd>
-<dt><a href="#jjFinRepublicain">jjFinRepublicain</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours juliens correspondants à l&#39;abrogation du calendrier
-républicain</p>
-</dd>
-<dt><a href="#regexpGregorien">regexpGregorien</a> : <code>Objet</code> ℗</dt>
-<dd><p>Expressions régulières pour convertir les mois gregoriens</p>
-</dd>
-<dt><a href="#regexpRepublicain">regexpRepublicain</a> : <code>Objet</code> ℗</dt>
-<dd><p>Expressions régulières pour convertir les mois républicains</p>
-</dd>
-<dt><a href="#siecleJulien">siecleJulien</a> : <code>Nombre</code> ℗</dt>
-<dd><p>Nombre de jours dans un siècle julien</p>
-</dd>
-<dt><a href="#termesPerEquinoxes">termesPerEquinoxes</a> : <code>Tableau</code> ℗</dt>
-<dd><p>Termes périodiques pour obtenir des temps réels</p>
-</dd>
-</dl>
+## Table des matières
 
+* [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
+* [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
+* [argNutMult](#argNutMult) : <code>Tableau</code> ℗
+* [delta](#delta) : <code>Tableau</code> ℗
+* [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
+* [jde0Tab2000](#jde0Tab2000) : <code>Tableau</code> ℗
+* [jjAn1Gregorien](#jjAn1Gregorien) : <code>Nombre</code> ℗
+* [jjAn2000Gregorien](#jjAn2000Gregorien) : <code>Nombre</code> ℗
+* [jjDebutCommuneDeParis](#jjDebutCommuneDeParis) : <code>Nombre</code> ℗
+* [jjDebutGregorien](#jjDebutGregorien) : <code>Nombre</code> ℗
+* [jjDebutRepublicain](#jjDebutRepublicain) : <code>Nombre</code> ℗
+* [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
+* [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
+* [regexpGregorien](#regexpGregorien) : <code>Objet</code> ℗
+* [regexpRepublicain](#regexpRepublicain) : <code>Objet</code> ℗
+* [siecleJulien](#siecleJulien) : <code>Nombre</code> ℗
+* [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
+
+* * *
 <a name="anneeTropique"></a>
 
 ## anneeTropique : <code>Nombre</code> ℗
@@ -278,3 +236,6 @@ Termes périodiques pour obtenir des temps réels
 **Voir** : [EquinoxpTerms](http://fourmilab.ch/documents/calendar/)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker  
+* * *
+Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>
+Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/gh-pages/LICENSE), documentation sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).

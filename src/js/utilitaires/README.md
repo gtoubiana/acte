@@ -1,111 +1,41 @@
-## Utilitaires
+# Fonctions privées utilisées dans Acte
 
-<dl>
-<dt><a href="#absInt">absInt(num)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour convertir en nombre entier positif</p>
-</dd>
-<dt><a href="#anRepublicain">anRepublicain(jj)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour calculer l&#39;année républicaine correspondant à un nombre de jours
-juliens</p>
-</dd>
-<dt><a href="#arabeVersRomain">arabeVersRomain(arabe)</a> ⇒ <code>Chaîne</code> ℗</dt>
-<dd><p>Pour convertir des chiffres arabes en chiffres romains</p>
-</dd>
-<dt><a href="#cosinus">cosinus(d)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer le cosinus d&#39;un angle en degrés</p>
-</dd>
-<dt><a href="#dateValide">dateValide(jour, mois, an)</a> ⇒ <code>Objet</code> ℗</dt>
-<dd><p>Pour créer un objet date grégorien valide</p>
-</dd>
-<dt><a href="#degresVersRadians">degresVersRadians(d)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour convertir des degrés en radians</p>
-</dd>
-<dt><a href="#deltaT">deltaT(an)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer la différence entre temps terrestre et temps universel,
-en secondes</p>
-</dd>
-<dt><a href="#equationDuTemps">equationDuTemps(jj)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer l&#39;équation du temps pour un moment précis</p>
-</dd>
-<dt><a href="#equinoxe">equinoxe(an, item)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer le nombre de jours juliens d&#39;une equinoxe ou d&#39;un solstice</p>
-</dd>
-<dt><a href="#equinoxeAParis">equinoxeAParis(an)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer le nombre de jours juliens correspondant à l&#39;équinoxe
-de septembre au méridien de Paris, pour une année grégorienne</p>
-</dd>
-<dt><a href="#fractionEquinoxe">fractionEquinoxe(an)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer le nombre de jours juliens et la fraction de l&#39;équinoxe
-de septembre au méridien de Paris pour une année grégorienne</p>
-</dd>
-<dt><a href="#gregorienBissextile">gregorienBissextile(an)</a> ⇒ <code>Booléen</code> ℗</dt>
-<dd><p>Pour déterminer si une année grégorienne est bissextile</p>
-</dd>
-<dt><a href="#gregorienVersJj">gregorienVersJj(an, mois, jour)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer le nombre de jours juliens (jj) à partir d&#39;une date
-grégorienne</p>
-</dd>
-<dt><a href="#jjVersGregorien">jjVersGregorien(jj)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour calculer une date grégorienne à partir du nombre de jours juliens</p>
-</dd>
-<dt><a href="#jjVersJulien">jjVersJulien(jj)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour calculer une date julienne à partir du nombre de jours juliens</p>
-</dd>
-<dt><a href="#jjVersRepublicain">jjVersRepublicain(jj)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour calculer la date républicaine à partir du nombre de jours juliens,
-les 4 ou 5 &#39;sansculottides&#39; sont considérés comme un 13e mois</p>
-</dd>
-<dt><a href="#julienVersJj">julienVersJj(an, mois, jour)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer un nombre de jours juliens à partir d&#39;une date julienne</p>
-</dd>
-<dt><a href="#normaliserDegres">normaliserDegres(a)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour normaliser un angle entre 0 et 360 degrés</p>
-</dd>
-<dt><a href="#nutation">nutation(jj)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour calculer la nutation en longitude (deltaPsi),
-et obliquité (deltaEpsilon) pour un nombre de jours juliens</p>
-</dd>
-<dt><a href="#obliquiteEcliptique">obliquiteEcliptique(jj)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer l&#39;obliquité de l&#39;écliptique pour un nombre de jours juliens</p>
-</dd>
-<dt><a href="#positionSoleil">positionSoleil(jj)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour calculer la position du soleil</p>
-</dd>
-<dt><a href="#radiansVersDegres">radiansVersDegres(r)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour convertir des radians en degrés</p>
-</dd>
-<dt><a href="#remplacements">remplacements(texte, regex, options)</a> ⇒ <code>Chaîne</code> ℗</dt>
-<dd><p>Pour remplacer en série avec un objet contenant des regex</p>
-</dd>
-<dt><a href="#republicainVersJj">republicainVersJj(an, mois, decade, jour)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer le nombre de jours juliens à partir d&#39;une date républicaine</p>
-</dd>
-<dt><a href="#reste">reste(a, b)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer les restes avec des nombres décimaux</p>
-</dd>
-<dt><a href="#rjmcVersRdc">rjmcVersRdc(rjmc)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour convertir le jour du mois républicain en décade</p>
-</dd>
-<dt><a href="#rjmcVersRjdc">rjmcVersRjdc(rjmc)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour convertir le jour du mois républicain en jour de la décade</p>
-</dd>
-<dt><a href="#romainVersArabe">romainVersArabe(romain)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour convertir des chiffres romains en chiffres arabes</p>
-</dd>
-<dt><a href="#saisieValide">saisieValide(saisie, regexp)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour obtenir une saisie valide</p>
-</dd>
-<dt><a href="#sinus">sinus(d)</a> ⇒ <code>Nombre</code> ℗</dt>
-<dd><p>Pour calculer le sinus d&#39;un angle en degrés</p>
-</dd>
-<dt><a href="#tabGregorien">tabGregorien(saisie, limites)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour convertir la saisie grégorienne ou julienne en Objet Jour</p>
-</dd>
-<dt><a href="#tabRepublicain">tabRepublicain(saisie, limites)</a> ⇒ <code>Tableau</code> ℗</dt>
-<dd><p>Pour convertir la saisie républicaine en Objet Jour</p>
-</dd>
-</dl>
+## Table des matières
 
+* [absInt(num)](#absInt) ⇒ <code>Nombre</code> ℗
+* [anRepublicain(jj)](#anRepublicain) ⇒ <code>Tableau</code> ℗
+* [arabeVersRomain(arabe)](#arabeVersRomain) ⇒ <code>Chaîne</code> ℗
+* [cosinus(d)](#cosinus) ⇒ <code>Nombre</code> ℗
+* [dateValide(jour, mois, an)](#dateValide) ⇒ <code>Objet</code> ℗
+* [degresVersRadians(d)](#degresVersRadians) ⇒ <code>Nombre</code> ℗
+* [deltaT(an)](#deltaT) ⇒ <code>Nombre</code> ℗
+* [equationDuTemps(jj)](#equationDuTemps) ⇒ <code>Nombre</code> ℗
+* [equinoxe(an, item)](#equinoxe) ⇒ <code>Nombre</code> ℗
+* [equinoxeAParis(an)](#equinoxeAParis) ⇒ <code>Nombre</code> ℗
+* [fractionEquinoxe(an)](#fractionEquinoxe) ⇒ <code>Nombre</code> ℗
+* [gregorienBissextile(an)](#gregorienBissextile) ⇒ <code>Booléen</code> ℗
+* [gregorienVersJj(an, mois, jour)](#gregorienVersJj) ⇒ <code>Nombre</code> ℗
+* [jjVersGregorien(jj)](#jjVersGregorien) ⇒ <code>Tableau</code> ℗
+* [jjVersJulien(jj)](#jjVersJulien) ⇒ <code>Tableau</code> ℗
+* [jjVersRepublicain(jj)](#jjVersRepublicain) ⇒ <code>Tableau</code> ℗
+* [julienVersJj(an, mois, jour)](#julienVersJj) ⇒ <code>Nombre</code> ℗
+* [normaliserDegres(a)](#normaliserDegres) ⇒ <code>Nombre</code> ℗
+* [nutation(jj)](#nutation) ⇒ <code>Tableau</code> ℗
+* [obliquiteEcliptique(jj)](#obliquiteEcliptique) ⇒ <code>Nombre</code> ℗
+* [positionSoleil(jj)](#positionSoleil) ⇒ <code>Tableau</code> ℗
+* [radiansVersDegres(r)](#radiansVersDegres) ⇒ <code>Nombre</code> ℗
+* [remplacements(texte, regex, options)](#remplacements) ⇒ <code>Chaîne</code> ℗
+* [republicainVersJj(an, mois, decade, jour)](#republicainVersJj) ⇒ <code>Nombre</code> ℗
+* [reste(a, b)](#reste) ⇒ <code>Nombre</code> ℗
+* [rjmcVersRdc(rjmc)](#rjmcVersRdc) ⇒ <code>Nombre</code> ℗
+* [rjmcVersRjdc(rjmc)](#rjmcVersRjdc) ⇒ <code>Nombre</code> ℗
+* [romainVersArabe(romain)](#romainVersArabe) ⇒ <code>Nombre</code> ℗
+* [saisieValide(saisie, regexp)](#saisieValide) ⇒ <code>Tableau</code> ℗
+* [sinus(d)](#sinus) ⇒ <code>Nombre</code> ℗
+* [tabGregorien(saisie, limites)](#tabGregorien) ⇒ <code>Tableau</code> ℗
+* [tabRepublicain(saisie, limites)](#tabRepublicain) ⇒ <code>Tableau</code> ℗
+
+* * *
 <a name="absInt"></a>
 
 ## absInt(num) ⇒ <code>Nombre</code> ℗
@@ -823,3 +753,6 @@ Pour convertir la saisie républicaine en Objet Jour
 ```js
 tabRepublicain(saisie, this.limites);
 ```
+* * *
+Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>
+Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/gh-pages/LICENSE), documentation sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).

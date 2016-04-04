@@ -18,32 +18,32 @@ var lazyPrettyLint = lazypipe()
 gulp.task('validations', sequence(
 
   // Vérifier les dépendances dans le package.json
-  'validation.dependances',
+  'validations.dependances',
 
   // Valider les constantes
-  'validation.constantes',
+  'validations.constantes',
 
   // Valider les utilitaires
-  'validation.utilitaires',
+  'validations.utilitaires',
 
   // Valider le gulpfile et les gulptasks
-  'validation.gulp',
+  'validations.gulp',
 
   // Valider les methodes
-  'validation.methodes',
+  'validations.methodes',
 
   // Valider les specs pour les tests
-  'validation.tests'
+  'validations.tests'
 ));
 
 // TASK Pour vérifier l'utilisation des dépendances
-gulp.task('validation.dependances', depcheck({
+gulp.task('validations.dependances', depcheck({
   ignoreDirs: ['docs', 'build'],
   ignoreMatches: ['glob']
 }));
 
 // TASK Pour valider les scripts ./
-gulp.task('validation.gulp', function () {
+gulp.task('validations.gulp', function () {
   'use strict';
   return gulp.src(['./gulpfile.js', config.paths.task + '/*.js'])
     .pipe(prettify({
@@ -54,7 +54,7 @@ gulp.task('validation.gulp', function () {
 });
 
 // TASK Pour valider les scripts ./src/js/
-gulp.task('validation.methodes', function () {
+gulp.task('validations.methodes', function () {
   'use strict';
   return gulp.src([config.paths.methodes + '/*.js'])
     .pipe(lazyPrettyLint())
@@ -62,7 +62,7 @@ gulp.task('validation.methodes', function () {
 });
 
 // TASK Pour valider les scripts ./src/js/constantes/
-gulp.task('validation.constantes', function () {
+gulp.task('validations.constantes', function () {
   'use strict';
   return gulp.src([config.paths.constantes + '/*.js'])
     .pipe(lazyPrettyLint())
@@ -70,7 +70,7 @@ gulp.task('validation.constantes', function () {
 });
 
 // TASK Pour valider les scripts ./src/js/utilitaires/
-gulp.task('validation.utilitaires', function () {
+gulp.task('validations.utilitaires', function () {
   'use strict';
   return gulp.src([config.paths.utilitaires + '/*.js'])
     .pipe(lazyPrettyLint())
@@ -78,7 +78,7 @@ gulp.task('validation.utilitaires', function () {
 });
 
 // TASK Pour valider les scripts ./dist/test
-gulp.task('validation.tests', function () {
+gulp.task('validations.tests', function () {
   'use strict';
   return gulp.src([config.paths.test + '/*.js'])
     .pipe(lazyPrettyLint())
@@ -86,7 +86,7 @@ gulp.task('validation.tests', function () {
 });
 
 // TASK Pour valider les scripts ./
-gulp.task('validation.script', function () {
+gulp.task('validations.script', function () {
   'use strict';
   return gulp.src([config.paths.dist + '/acte.js'])
     .pipe(prettify({

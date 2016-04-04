@@ -9,3 +9,7 @@
 
 
 Calculs généalogiques
+
+* * *
+Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).  
+Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/gh-pages/LICENSE), doc sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).

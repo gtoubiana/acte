@@ -14,8 +14,13 @@
  * tabGregorien(saisie, this.limites);
  */
 var tabGregorien = function tabGregorien(saisie, limites) {
+  // ie8 debug
+  var iesaisie = (saisie[0] === '/') ? '1' + saisie : saisie;
+
   // Uniformisation de la saisie
-  var saisieGregorien = saisieValide(saisie, regexpGregorien);
+  var saisieGregorien = saisieValide(iesaisie, regexpGregorien);
+
+  // var saisieGregorien = saisieValide(saisie, regexpGregorien);
   var tab = [];
   var dateJulienne;
   var dateRepublicaine;

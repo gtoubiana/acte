@@ -22,11 +22,10 @@ gulp.task('specifications', sequence(
   'specifications.lib',
 
   // Générer des specs pour Node.js
-  'specifications.node',
+  'specifications.node'
 
-  // Tester les specs avec Karma
-  // dans Chrome, Firefox, Safari, PhantomJS, Opera
-  'specifications.karma'
+  // Tester les specs avec Karma dans Sauce Labs
+  // 'specifications.karma'
 ));
 
 // TASK Pour générer les Specs utilisés par jasmine dans le browser
@@ -59,7 +58,7 @@ gulp.task('specifications.node', function () {
 // TASK Pour effectuer les tests avec Karma //
 gulp.task('specifications.karma', function (done) {
   new Server({
-    configFile: __dirname + '/../../karma.conf.js',
+    configFile: __dirname + '/../karma.conf-ci.js',
     singleRun: true
   }, done).start();
 });

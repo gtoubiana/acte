@@ -6,17 +6,17 @@ var sequence = require('gulp-sequence');
 gulp.task('nettoyages', sequence(
 
   // supprimer les fichiers issus de la tache generations
-  'nettoyage.generations',
+  'nettoyages.generations',
 
   // supprimer les fichiers issus de la tache specifications
-  'nettoyage.specifications',
+  'nettoyages.specifications',
 
   // supprimer les fichiers issus de la tache couvertures
-  'nettoyage.couvertures'
+  'nettoyages.couvertures'
 ));
 
 // TASK Pour nettoyer les fichiers issus de la tache generations
-gulp.task('nettoyage.generations', function () {
+gulp.task('nettoyages.generations', function () {
   'use strict';
   return del([
     config.paths.dist + '/*.{js,map,md,zip}',
@@ -27,7 +27,7 @@ gulp.task('nettoyage.generations', function () {
 });
 
 // TASK Pour nettoyer les fichiers issus de la tache specifications
-gulp.task('nettoyage.specifications', function () {
+gulp.task('nettoyages.specifications', function () {
   'use strict';
   return del([
     config.paths.jasmine + '/*.js',
@@ -36,7 +36,7 @@ gulp.task('nettoyage.specifications', function () {
 });
 
 // TASK Pour nettoyer les fichiers issus de la tache couvertures
-gulp.task('nettoyage.couvertures', function () {
+gulp.task('nettoyages.couvertures', function () {
   'use strict';
   return del([
     config.paths.coverage
