@@ -153,11 +153,11 @@ module.exports = function karma(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     // singleRun: true,
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous (Infinity, 1-10)
-    concurrency: 1,
+    concurrency: Infinity,
 
     // Launcher config : https://github.com/karma-runner/karma-sauce-launcher
     sauceLabs: {
@@ -168,6 +168,7 @@ module.exports = function karma(config) {
       recordVideo: false,
       recordScreenshots: true,
       build: process.env.TRAVIS_BUILD_NUMBER,
+      tunnelIdentifier: process.env.TRAVIS_BUILD_NUMBER,
 
       // tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
