@@ -138,7 +138,7 @@ module.exports = function karma(config) {
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR ||
     // config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever
     // any file changes
@@ -161,11 +161,15 @@ module.exports = function karma(config) {
     // Launcher config : https://github.com/karma-runner/karma-sauce-launcher
     sauceLabs: {
       testName: 'Acte Karma Tests',
-      startConnect: true,
+
+      // startConnect: true,
+      startConnect: false,
       recordVideo: false,
       recordScreenshots: true,
       build: process.env.TRAVIS_BUILD_NUMBER,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      username: process.env.SAUCE_USERNAME,
+      accessKey: process.env.SAUCE_ACCESS_KEY,
       public: 'public'
 
       // captureHtml: true,
