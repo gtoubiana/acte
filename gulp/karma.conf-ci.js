@@ -152,7 +152,8 @@ module.exports = function karma(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
+    // singleRun: true,
+    singleRun: false,
 
     // Concurrency level
     // how many browser should be started simultaneous (Infinity, 1-10)
@@ -167,7 +168,8 @@ module.exports = function karma(config) {
       recordVideo: false,
       recordScreenshots: true,
       build: process.env.TRAVIS_BUILD_NUMBER,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+
+      // tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
       accessKey: process.env.SAUCE_ACCESS_KEY,
       public: 'public'

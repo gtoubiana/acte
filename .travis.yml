@@ -8,7 +8,6 @@ branches:
   only:
   - gh-pages
 before_script:
-  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
   - npm install -g karma-cli
 script: gulp
 env:
