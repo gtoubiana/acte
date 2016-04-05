@@ -3,10 +3,11 @@ node_js:
 - '0.10'
 - '0.12'
 - '4'
+  env: COVERALLS=1
 matrix:
   include:
     - node_js: '5'
-      env: SAUCELABS='true'
+      env: SAUCELABS=1
       addons:
         sauce_connect: true
 branches:
