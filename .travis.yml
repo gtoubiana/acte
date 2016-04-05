@@ -3,10 +3,10 @@ node_js:
 - '0.10'
 - '0.12'
 - '4'
-- '5'
 matrix:
   include:
-    - node_js: "5.10"
+    - node_js: '5'
+      env: SAUCELABS='true'
       addons:
         sauce_connect: true
 branches:
@@ -18,10 +18,10 @@ before_script:
 script:
   - gulp
 after_script:
-  - 'if [ "${TRAVIS_NODE_VERSION}" = "5.10" ]; then gulp specifications.karma ; fi'
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "5" ]; then gulp specifications.karma ; fi'
 env:
   global:
-  - TRAVIS_SECURE_ENV_VARS="true"
+  - TRAVIS_SECURE_ENV_VARS='true'
   - secure: foS0Pkw3CQVRJJla5ImP2N8KdjpM18SR0/xMphX0pD0T9erhDRfAiwwHNDK5tsmvG0/mClwWSl0IMgxAAmBJFCBKwhYm85G0w86k7WVXSYDYb7cQKXCwGek7T5PExEgo+clvv7hZVItAyMJJ0J4KQ0L2HVMxHySwsqrOQd0mfW1G2XOFCKlA7raV03xarbQKxa/KEXO2lZ8Q+yOiG+SbzLCHUXgfysH6oTnzjJktHgUQcMoqSqXDKkfKCtfiNU/8a9ouvgEpKOGEdFG/q1Yg/I0FEm9Yucbfh2T4Gze8Rk0ypBMeZeKDc9LXoeIz5AZDhtNtBxQxs4AedPTe2FgCVLGcKbRCI56u8FtmJM5nJtTi+iNbXopwa45uQUXpGmRDZv9Fue+Gnlqua3RTA8Q0ZQOwlI0IDMcrETiOT9o4ZMiqyIKzHm51Q/p3dVYvB3edEhaz3gtIi8nI9ZJY1W/J9XvChdM7uH/ZonWP5iSQ6jzQX1feSigJR22Z2F1ROWeo2AGEOO4KQ3J/uglBt4ydJEcN5Gvk65IAyVGdxfmuL8mYcTYznxmMzFl7G1Cd5VvKwAeXk4OOj8sGfw+HcWieCEu6HJTbWpTPiJa6SaDiC150bBp4SFtxRx6OZo+qCK5EjIrlmB4orOjH9Xs9hytIWf4Ik+ioqo5jdyAXg44YLW4=
   - secure: GHxnUOuoa7yF7t0xFwo+lWKcu7wpfoV1XIbX4U0PeiR0m0/GlnFYAcy12KWYNF+no8MNdu0pcuQ49xwFHt5qYKZy51cn/ExC+zCVpoqRBo5mACRtl7QzPA6LqYZuzvMv6gsB0j4K3p5Vcnes9W3GIi7uc6pHxuaR7IozVbPFb6j+dhbtd2CBe25aSajcJ7ef/jeOSaJG+wtK3Xsb4eUpa2AveFvoq21C0r+oOaqdo2kfzQOhrnUlSJZJBuV35/KYVCCrsLj1QxZJd9QUO+swWxFY000/Aa2btSvuCla8jKXshl089CuWRVDCe3tHh8Im1zgfqZJRQSfhxtTQlcnKmnizfvFUH2XMPNZfdqZJ7I7br3Dmgu/COFwyMNGLxxY0eHJLl7rW6jI7e2VRMziXOGn5r7XF6hVFe/QCGLG/C9oKGgVqh65rgroBviwmdtlRQ1IlUAt51zMfdy/yLzT6LKHVBWCFt4cqefhZ0bGMVJQxZ2AEgqA3khVyUSGdJ6oZ/2d4BY/sVWJI0tdCMVRNzd7UGkH2Usdcm+1KBR3xA/TAtHG89DLDM2XmJ0TdpZGuvtB5DiNmqOceDWaBUr1+qeCtSR90Er/5tgPthjihFUGHnPB7UvA0Sk7casQTf7jza+zV38rt3SzqP8CYfUr71lwlDxzhHbMhOt+EaTJMCUk=
 notifications:
