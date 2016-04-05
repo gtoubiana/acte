@@ -33,16 +33,17 @@ gulp.task('validations', sequence(
   'validations.methodes',
 
   // Valider les specs pour les tests
-  'validations.tests'
+  'validations.specs'
+
 ));
 
-// TASK Pour vérifier l'utilisation des dépendances
+// Valider les dépendances
 gulp.task('validations.dependances', depcheck({
   ignoreDirs: ['docs', 'build'],
   ignoreMatches: ['glob']
 }));
 
-// TASK Pour valider les scripts ./
+// Valider les scripts Gulp
 gulp.task('validations.gulp', function () {
   'use strict';
   return gulp.src(['./gulpfile.js', config.paths.task + '/*.js'])
@@ -53,7 +54,7 @@ gulp.task('validations.gulp', function () {
     .pipe(gulp.dest(config.paths.root));
 });
 
-// TASK Pour valider les scripts ./src/js/
+// Valider les scripts ./src/js/methodes/
 gulp.task('validations.methodes', function () {
   'use strict';
   return gulp.src([config.paths.methodes + '/*.js'])
@@ -61,7 +62,7 @@ gulp.task('validations.methodes', function () {
     .pipe(gulp.dest(config.paths.methodes));
 });
 
-// TASK Pour valider les scripts ./src/js/constantes/
+// Valider les scripts ./src/js/constantes/
 gulp.task('validations.constantes', function () {
   'use strict';
   return gulp.src([config.paths.constantes + '/*.js'])
@@ -69,7 +70,7 @@ gulp.task('validations.constantes', function () {
     .pipe(gulp.dest(config.paths.constantes));
 });
 
-// TASK Pour valider les scripts ./src/js/utilitaires/
+// Valider les scripts ./src/js/utilitaires/
 gulp.task('validations.utilitaires', function () {
   'use strict';
   return gulp.src([config.paths.utilitaires + '/*.js'])
@@ -77,21 +78,10 @@ gulp.task('validations.utilitaires', function () {
     .pipe(gulp.dest(config.paths.utilitaires));
 });
 
-// TASK Pour valider les scripts ./dist/test
-gulp.task('validations.tests', function () {
+// Valider les scripts ./test
+gulp.task('validations.specs', function () {
   'use strict';
   return gulp.src([config.paths.test + '/*.js'])
     .pipe(lazyPrettyLint())
     .pipe(gulp.dest(config.paths.test));
-});
-
-// TASK Pour valider les scripts ./
-gulp.task('validations.script', function () {
-  'use strict';
-  return gulp.src([config.paths.dist + '/acte.js'])
-    .pipe(prettify({
-      config: config.paths.dist + '/.jsbeautifyrc'
-    }))
-    .pipe(lazyLint())
-    .pipe(gulp.dest(config.paths.dist));
 });

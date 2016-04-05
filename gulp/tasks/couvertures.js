@@ -4,11 +4,19 @@ var gulp = require('gulp');
 var gulpIf = require('gulp-if');
 var istanbul = require('gulp-istanbul');
 var jasmineNode = require('gulp-jasmine');
+var sequence = require('gulp-sequence');
 
 require('gulp-stats')(gulp);
 require('gulp-util');
 
-gulp.task('couvertures', function () {
+gulp.task('couvertures', sequence(
+
+    // Coverage des Tests avec Istanbul et Coveralls
+    'couvertures.coveralls'
+
+));
+
+gulp.task('couvertures.coveralls', function () {
   'use strict';
 
   // generation de la couverture

@@ -18,12 +18,10 @@ gulp.task('default', sequence(
   // Spécifications des tests
   'specifications',
 
-  // Couvertures des tests
+  // Couvertures des tests avec istanbul et COVERALLS
   'couvertures',
 
   // Certification eslint airbnb/legacy du fichier acte.js
-  'validations.script'
+  'certifications'
 
-  // SauceLabs tests
-  // 'specifications.karma'
 ));

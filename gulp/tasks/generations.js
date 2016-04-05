@@ -15,6 +15,7 @@ var uglify = require('gulp-uglify');
 var wrap = require('gulp-wrap');
 var zip = require('gulp-zip');
 
+
 // Lazypipes
 var lazyJsdocFr = lazypipe()
   .pipe(rep, /## Constants/g, '## Constantes')
@@ -66,6 +67,7 @@ gulp.task('generations', sequence(
 
   // Générer le zip de la release
   'generations.zip'
+
 ));
 
 // TASK Pour générer le script ./dist/acte.js

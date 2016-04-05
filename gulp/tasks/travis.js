@@ -1,13 +1,8 @@
 var gulp = require('gulp');
 var sequence = require('gulp-sequence');
 
-require('eslint-config-airbnb');
-require('eslint-plugin-react');
-require('karma-jasmine');
-require('karma-sauce-launcher');
-
-// Tâche CI par défaut
-gulp.task('ci', sequence(
+// Tâche Travis par défaut
+gulp.task('travis', sequence(
 
   // Validations de fichiers
   'validations',
@@ -22,13 +17,6 @@ gulp.task('ci', sequence(
   'couvertures',
 
   // Certification eslint airbnb/legacy du fichier acte.js
-  'validations.script'
+  'certifications'
 
-));
-
-// Tâche CI pour node 5
-gulp.task('services', sequence(
-
-  // Tests karma avec SAUCELABS
-  'specifications.karma'
 ));

@@ -13,6 +13,7 @@ gulp.task('nettoyages', sequence(
 
   // supprimer les fichiers issus de la tache couvertures
   'nettoyages.couvertures'
+
 ));
 
 // TASK Pour nettoyer les fichiers issus de la tache generations
