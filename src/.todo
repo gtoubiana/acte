@@ -2,15 +2,12 @@ MEMO:
   ☐ @NEW_DOWN cmd-enter @NEW_UP cmd-shift-enter @DONE cmd-d @ARCHIVE cmd-shift-a
   ☐ @CANCEL ctrl-c @UPDATE ctrl-s @TITLE : @LABEL @ @ISSUE #
 0-0-2:
-  ☐ #3 2 bugs avec IE8 sous Win7 (cf. portable + ietester. Préparer une page de tests)
-  ☐ #2 Configurer karma et openSauceLabs : Jasmine + Karma + openSauceLabs + Gulp + Travis => une version dev et une version Travis + badge
-  ☐ Debug Gulp openSauce (n'Exit pas proprement)
   ☐ Nettoyer les issues copiées de bms.js
-  ☐ commit + release + npm publish https://docs.npmjs.com/getting-started/publishing-npm-packages
+  ☐ Revoir les taches gulp en dev + ci + services
 0-0-3+:
   ☐ @readme ajouter des readmes dans /src, /test, /gulp
   ☐ @npm Créer un script npm ou une tâche gulp pour les npm publish + commit + release (https://help.github.com/articles/creating-releases/) && (https://github.com/blog/1547-release-your-software) && https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
-  ☐ utiliser babel et reprogrammer en es6 (cf. twbootstrap 4-dev)
+  ☐ utiliser babel et reprogrammer en es6 (cf. twbootstrap 4-dev) => gulp-babel pour concat src
   ☐ migrer de airbnb/legacy à airbnb/base en utilisant babel
   ☐ harmoniser opensaucelabs tests avec ceux de twbootstrap 4-dev
   ☐ Migrer de jsbeautifier à esformatter (compatible eslint & standard)
@@ -30,6 +27,10 @@ MEMO:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ #3 2 bugs avec IE8 sous Win7 (cf. portable + ietester. Préparer une page de tests) @done(2016-04-05) @project(0-0-2)
+  ✔ #2 Configurer karma et openSauceLabs : Jasmine + Karma + openSauceLabs + Gulp + Travis => une version dev et une version Travis + badge @done(2016-04-05) @project(0-0-2)
+  ✔ Debug Gulp openSauce (n'Exit pas proprement) @done(2016-04-05) @project(0-0-2)
+  ✘ commit + release + npm publish https://docs.npmjs.com/getting-started/publishing-npm-packages @cancelled(2016-04-05) @project(0-0-2)
   ✔ Réinjecter le sommaire dans le template doc constantes @done(2016-03-31) @project(0-0-2)
   ✔ Réinjecter le sommaire dans le template doc utilitaires @done(2016-03-31) @project(0-0-2)
   ✔ Base de template pour la doc des constantes @done(2016-03-31) @project(0-0-2)
