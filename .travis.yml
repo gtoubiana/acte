@@ -20,7 +20,7 @@ before_script:
 script:
   - gulp ci
 after_script:
-  - 'if [ "${TRAVIS_NODE_VERSION}" = "5" ]; then gulp ci.services ; fi'
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "5" ]; then gulp services ; fi'
 env:
   global:
   - TRAVIS_SECURE_ENV_VARS='true'
