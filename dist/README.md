@@ -1,8 +1,9 @@
 # Documentation de Acte
 
 ## Installation :
+
 ```
-$ npm install acte --save-dev
+$ npm install acte --save
 ```
 
 ## API de référence :

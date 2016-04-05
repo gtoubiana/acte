@@ -30,9 +30,7 @@ gulp.task('couvertures', function () {
         .on('finish', function () {
           // Envoi des données à Coveralls depuis Travis
           return gulp.src([config.paths.coverage + '/lcov.info'])
-
-            // .pipe(gulpIf(!!process.env.TRAVIS, coveralls()));
-            .pipe(gulpIf(!!process.env.COVERALLS, coveralls()));
+            .pipe(gulpIf(!!process.env.TRAVIS, coveralls()));
         });
     });
 });
