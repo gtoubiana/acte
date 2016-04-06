@@ -22,8 +22,7 @@ gulp.task('nettoyages.generations', function () {
   return del([
     config.paths.dist + '/*.{js,map,md,zip}',
     config.paths.constantes + '/*.md',
-    config.paths.utilitaires + '/*.md',
-    'LICENSE'
+    config.paths.utilitaires + '/*.md'
   ]);
 });
 
