@@ -147,6 +147,6 @@ gulp.task('generations.doc.utilitaires', function () {
 gulp.task('generations.zip', function () {
   'use strict';
   return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
-    .pipe(zip('acte-dist.zip'))
+    .pipe(zip('acte-' + pkg.version + '-dist.zip'))
     .pipe(gulp.dest(config.paths.dist));
 });

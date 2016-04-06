@@ -86,14 +86,9 @@ var umd = '(function universalModuleDefinition(root, factory) {\n' +
   '}));\n\n';
 
 // Template du jsdoc UMD
-var currentDate = new Date();
-var currentYear = currentDate.getFullYear();
-var currentYearDisplay = (currentYear === 2015) ? 2015 : '2015-' +
-  currentYear;
-
 var banner = '/**\n' +
   ' * <%= pkg.name %> - <%= pkg.description %>\n' +
-  ' * @copyright ' + currentYearDisplay + ', <%= pkg.author %>\n' +
+  ' * @copyright 2015-Present, <%= pkg.author %>\n' +
   ' * @namespace acte\n' +
   ' * @version <%= pkg.version %>\n' +
   ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +

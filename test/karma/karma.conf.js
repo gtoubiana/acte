@@ -1,8 +1,4 @@
-// Karma configuration
-// Generated on Mon Mar 28 2016 15:53:11 GMT+0200 (CEST)
-
 module.exports = function karma(config) {
-  // Set of browsers to run on Sauce Labs (from twbs)
   // Check out https://saucelabs.com/platforms
   var customLaunchers = {
     sl_safari_osx: {
@@ -92,11 +88,42 @@ module.exports = function karma(config) {
       deviceType: 'phone'
     }
   };
+  var sauceLabs;
+  var concurrency;
 
-  // Use ENV vars on Travis and sauce.json locally to get credentials
-  if (!process.env.SAUCE_USERNAME) {
-    process.env.SAUCE_USERNAME = require('./sauce').username;
-    process.env.SAUCE_ACCESS_KEY = require('./sauce').accessKey;
+  // Use ENV vars on Travis and sauce.json locally
+  if (process.env.TRAVIS) {
+    sauceLabs = {
+      testName: 'Travis Acte Karma Tests',
+      startConnect: false,
+      recordVideo: false,
+      recordScreenshots: false,
+      build: process.env.TRAVIS_BUILD_NUMBER,
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      username: process.env.SAUCE_USERNAME,
+      accessKey: process.env.SAUCE_ACCESS_KEY,
+      public: 'public'
+    };
+    concurrency = 'Infinity';
+  } else {
+    sauceLabs = {
+      testName: 'Local Acte Karma Tests',
+      startConnect: true,
+      recordVideo: false,
+      recordScreenshots: false,
+      public: 'public',
+
+      /* le fichier karma/sauce.json NE DOIT JAMAIS ÊTRE DIVULGUÉ !
+       * Il contient simplement :
+       * {
+       *   "username": "NOM_D'UTILISATEUR_SAUCELABS",
+       *   "accessKey": "CLEF_D'ACCESS_SAUCELABS"
+       * }
+      */
+      username: require('./sauce').username,
+      accessKey: require('./sauce').accessKey
+    };
+    concurrency = 1;
   }
 
   config.set({
@@ -110,8 +137,8 @@ module.exports = function karma(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../dist/acte.js',
-      '../test/jasmine/lib/acteSpec.js'
+      '../../dist/acte.js',
+      '../jasmine/lib/acteSpec.js'
     ],
 
     // list of files to exclude
@@ -152,29 +179,14 @@ module.exports = function karma(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    // singleRun: true,
     singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous (Infinity, 1-10)
-    concurrency: Infinity,
+    concurrency: concurrency,
 
     // Launcher config : https://github.com/karma-runner/karma-sauce-launcher
-    sauceLabs: {
-      testName: 'Acte Karma Tests',
-
-      // startConnect: true,
-      startConnect: false,
-      recordVideo: false,
-      recordScreenshots: true,
-      build: process.env.TRAVIS_BUILD_NUMBER,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
-      username: process.env.SAUCE_USERNAME,
-      accessKey: process.env.SAUCE_ACCESS_KEY,
-      public: 'public'
-
-      // captureHtml: true,
-    },
+    sauceLabs: sauceLabs,
     customLaunchers: customLaunchers,
     captureTimeout: 240000
   });

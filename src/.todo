@@ -2,12 +2,12 @@ MEMO:
   ☐ @NEW_DOWN cmd-enter @NEW_UP cmd-shift-enter @DONE cmd-d @ARCHIVE cmd-shift-a
   ☐ @CANCEL ctrl-c @UPDATE ctrl-s @TITLE : @LABEL @ @ISSUE #
 0-0-2:
-  ☐ Revoir les taches gulp en dev + ci + services
   ☐ Revoir gulp saucelabs en local et dans travis (séparer la liste des browsers...)
   ☐ npm publish + release 0.0.2
 0-0-3+:
   ☐ @readme ajouter des readmes dans /src, /test, /gulp
   ☐ @npm Créer un script npm ou une tâche gulp pour les npm publish + commit + release (https://help.github.com/articles/creating-releases/) && (https://github.com/blog/1547-release-your-software) && https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
+  ☐ Tester le workflow Gulp des release sur un répertoire git de test
   ☐ utiliser babel et reprogrammer en es6 (cf. twbootstrap 4-dev) => gulp-babel pour concat src
   ☐ migrer de airbnb/legacy à airbnb/base en utilisant babel
   ☐ Migrer de jsbeautifier à esformatter (compatible eslint & standard)
@@ -27,6 +27,7 @@ MEMO:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Revoir les taches gulp en dev + ci + services @done(2016-04-06) @project(0-0-2)
   ✘ Nettoyer toutes les issues @cancelled(2016-04-05) @project(0-0-2)
   ✔ harmoniser opensaucelabs tests avec ceux de twbootstrap 4-dev @done(2016-04-05) @project(0-0-3+)
   ✔ Nettoyer les issues copiées de bms.js @done(2016-04-05) @project(0-0-2)
