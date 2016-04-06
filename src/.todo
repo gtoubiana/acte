@@ -1,10 +1,8 @@
 MEMO:
   ☐ @NEW_DOWN cmd-enter @NEW_UP cmd-shift-enter @DONE cmd-d @ARCHIVE cmd-shift-a
   ☐ @CANCEL ctrl-c @UPDATE ctrl-s @TITLE : @LABEL @ @ISSUE #
-0-0-2:
-  ☐ Revoir gulp saucelabs en local et dans travis (séparer la liste des browsers...)
-  ☐ npm publish + release 0.0.2
-0-0-3+:
+0-0-5+:
+  ☐ Test npm version patch manuel ?
   ☐ @readme ajouter des readmes dans /src, /test, /gulp
   ☐ @npm Créer un script npm ou une tâche gulp pour les npm publish + commit + release (https://help.github.com/articles/creating-releases/) && (https://github.com/blog/1547-release-your-software) && https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
   ☐ Tester le workflow Gulp des release sur un répertoire git de test
@@ -27,6 +25,8 @@ MEMO:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Revoir gulp saucelabs en local et dans travis (séparer la liste des browsers...) @done(2016-04-06) @project(0-0-2)
+  ✔ npm publish + release 0.0.2 @done(2016-04-06) @project(0-0-2)
   ✔ Revoir les taches gulp en dev + ci + services @done(2016-04-06) @project(0-0-2)
   ✘ Nettoyer toutes les issues @cancelled(2016-04-05) @project(0-0-2)
   ✔ harmoniser opensaucelabs tests avec ceux de twbootstrap 4-dev @done(2016-04-05) @project(0-0-3+)
