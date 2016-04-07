@@ -8,12 +8,13 @@
     "src": "/src"
   },
   "scripts": {
-    "build": "npm install && gulp",
+    "build": "npm install && gulp nettoyages && gulp",
     "test": "gulp",
-    "prerelease": "gulp nettoyages && gulp version.prerelease && gulp",
+    "pre": "gulp nettoyages && gulp version.prerelease && gulp",
     "patch": "gulp nettoyages && gulp version.patch && gulp",
     "minor": "gulp nettoyages && gulp version.minor && gulp",
-    "major": "gulp nettoyages && gulp version.major && gulp"
+    "major": "gulp nettoyages && gulp version.major && gulp",
+    "tag": "git tag -a v$npm_package_version -m 'Tag la version $npm_package_version'"
   },
   "repository": {
     "type": "git",
