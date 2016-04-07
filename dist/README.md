@@ -14,11 +14,7 @@ acte - Librairie Javascript pour manipuler des données généalogiques
 
 **Type** : Espace de noms global  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Version** : function getPackageJsonVersion() {
-  // We parse the json file instead of using require because require caches
-  // multiple calls so the version number won&#x27;t be updated
-  return JSON.parse(fs.readFileSync(&#x27;./package.json&#x27;, &#x27;utf8&#x27;)).version;
-}  
+**Version** : 0.0.6-1  
 **Licence** : MIT  
 **Copyright** : 2015-Present, Gilles Toubiana  
 
