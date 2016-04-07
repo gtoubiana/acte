@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 /**
  * Fichier de configuration des tâches Gulp
  * - Chemins
@@ -85,12 +87,18 @@ var umd = '(function universalModuleDefinition(root, factory) {\n' +
   '  return acte;\n' +
   '}));\n\n';
 
+var version = function getPackageJsonVersion() {
+  // We parse the json file instead of using require because require caches
+  // multiple calls so the version number won't be updated
+  return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+};
+
 // Template du jsdoc UMD
 var banner = '/**\n' +
   ' * <%= pkg.name %> - <%= pkg.description %>\n' +
   ' * @copyright 2015-Present, <%= pkg.author %>\n' +
   ' * @namespace acte\n' +
-  ' * @version <%= pkg.version %>\n' +
+  ' * @version ' + version + '\n' +
   ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
   ' * @license <%= pkg.license %>\n' +
   ' */\n';

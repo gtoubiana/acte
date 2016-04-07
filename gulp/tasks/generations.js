@@ -15,7 +15,6 @@ var uglify = require('gulp-uglify');
 var wrap = require('gulp-wrap');
 var zip = require('gulp-zip');
 
-
 // Lazypipes
 var lazyJsdocFr = lazypipe()
   .pipe(rep, /## Constants/g, '## Constantes')
@@ -146,7 +145,13 @@ gulp.task('generations.doc.utilitaires', function () {
 // TASK Pour créer une archive.zip de la release
 gulp.task('generations.zip', function () {
   'use strict';
+  var version = function getPackageJsonVersion() {
+    // We parse the json file instead of using require because require caches
+    // multiple calls so the version number won't be updated
+    return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+  };
+
   return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
-    .pipe(zip('acte-' + pkg.version + '-dist.zip'))
+    .pipe(zip('acte-' + version + '-dist.zip'))
     .pipe(gulp.dest(config.paths.dist));
 });

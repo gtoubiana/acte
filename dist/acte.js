@@ -2,7 +2,11 @@
  * acte - Librairie Javascript pour manipuler des données généalogiques
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
- * @version 0.0.5
+ * @version function getPackageJsonVersion() {
+  // We parse the json file instead of using require because require caches
+  // multiple calls so the version number won't be updated
+  return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+}
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @license MIT
  */
