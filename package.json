@@ -14,7 +14,7 @@
     "patch": "gulp nettoyages && gulp version.patch && gulp",
     "minor": "gulp nettoyages && gulp version.minor && gulp",
     "major": "gulp nettoyages && gulp version.major && gulp",
-    "tag": "git tag -a v$npm_package_version -m 'Tag la version $npm_package_version'"
+    "tag": "git tag -a v$npm_package_version -m 'Version $npm_package_version'"
   },
   "repository": {
     "type": "git",
