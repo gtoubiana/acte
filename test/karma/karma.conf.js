@@ -94,7 +94,7 @@ module.exports = function karma(config) {
   // Use ENV vars on Travis and sauce.json locally
   if (process.env.TRAVIS) {
     sauceLabs = {
-      testName: 'Travis Acte Karma Tests',
+      testName: '[Travis] Karma Tests of Acte',
       startConnect: false,
       recordVideo: false,
       recordScreenshots: false,
@@ -107,21 +107,15 @@ module.exports = function karma(config) {
     concurrency = 'Infinity';
   } else {
     sauceLabs = {
-      testName: 'Local Acte Karma Tests',
+      testName: '[Local] Karma Tests of Acte',
       startConnect: true,
       recordVideo: false,
       recordScreenshots: false,
-      public: 'public',
 
-      /* le fichier karma/sauce.json NE DOIT JAMAIS ÊTRE DIVULGUÉ !
-       * Il contient simplement :
-       * {
-       *   "username": "NOM_D'UTILISATEUR_SAUCELABS",
-       *   "accessKey": "CLEF_D'ACCESS_SAUCELABS"
-       * }
-      */
-      username: require('./sauce').username,
-      accessKey: require('./sauce').accessKey
+      // Variables d'environnement obligatoires (#90)
+      username: process.env.SAUCE_USERNAME,
+      accessKey: process.env.SAUCE_ACCESS_KEY,
+      public: 'public'
     };
     concurrency = 1;
   }
