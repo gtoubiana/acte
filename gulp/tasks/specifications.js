@@ -1,3 +1,6 @@
+/** TACHES PRINCIPALES DU FICHIER :
+ * gulp specifications
+ */
 var concat = require('gulp-concat');
 var config = require('../config');
 var eslint = require('gulp-eslint');

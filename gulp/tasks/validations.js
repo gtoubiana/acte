@@ -1,3 +1,6 @@
+/** TACHES PRINCIPALES DU FICHIER :
+ * gulp validations
+ */
 var config = require('../config');
 var depcheck = require('gulp-depcheck');
 var eslint = require('gulp-eslint');

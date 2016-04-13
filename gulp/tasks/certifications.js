@@ -1,3 +1,6 @@
+/** TACHES PRINCIPALES DU FICHIER :
+ * gulp certifications
+ */
 var config = require('../config');
 var eslint = require('gulp-eslint');
 var gulp = require('gulp');

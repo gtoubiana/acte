@@ -1,3 +1,6 @@
+/** TACHES PRINCIPALES DU FICHIER :
+ * gulp generations
+ */
 var concat = require('gulp-concat');
 var config = require('../config');
 var fs = require('fs');

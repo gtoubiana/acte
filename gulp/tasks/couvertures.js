@@ -1,3 +1,6 @@
+/** TACHES PRINCIPALES DU FICHIER :
+ * gulp couvertures
+ */
 var config = require('../config');
 var coveralls = require('gulp-coveralls');
 var gulp = require('gulp');

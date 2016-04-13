@@ -1,3 +1,7 @@
+/** TACHES PRINCIPALES DU FICHIER :
+ * gulp saucelabs
+ */
+
 var gulp = require('gulp');
 var Server = require('karma').Server;
 

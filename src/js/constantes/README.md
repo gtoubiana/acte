@@ -2,12 +2,12 @@
 
 ## Table des matières
 
-* [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
-* [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
-* [argNutMult](#argNutMult) : <code>Tableau</code> ℗
 * [delta](#delta) : <code>Tableau</code> ℗
 * [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
 * [jde0Tab2000](#jde0Tab2000) : <code>Tableau</code> ℗
+* [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
+* [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
+* [argNutMult](#argNutMult) : <code>Tableau</code> ℗
 * [jjAn1Gregorien](#jjAn1Gregorien) : <code>Nombre</code> ℗
 * [jjAn2000Gregorien](#jjAn2000Gregorien) : <code>Nombre</code> ℗
 * [jjDebutCommuneDeParis](#jjDebutCommuneDeParis) : <code>Nombre</code> ℗
@@ -21,38 +21,6 @@
 * [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
 
 * * *
-<a name="anneeTropique"></a>
-
-## anneeTropique : <code>Nombre</code> ℗
-Nombre de jours, sur Terre, pour que le Soleil retourne à la même
-position
-dans le cycle des saisons
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [TropicalYear](http://fourmilab.ch/documents/calendar/)  
-**Depuis** : 0.0.1  
-**Auteur** : John Walker  
-<a name="argNutCoeff"></a>
-
-## argNutCoeff : <code>Tableau</code> ℗
-Coefficient des sinus et cosinus de l'argument pour la nutation
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [nutArgCoeff](http://fourmilab.ch/documents/calendar/)  
-**Depuis** : 0.0.1  
-**Auteur** : John Walker  
-<a name="argNutMult"></a>
-
-## argNutMult : <code>Tableau</code> ℗
-Termes périodiques pour la nutation en longitude et obliquité
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [nutArgMult](http://fourmilab.ch/documents/calendar/)  
-**Depuis** : 0.0.1  
-**Auteur** : John Walker  
 <a name="delta"></a>
 
 ## delta : <code>Tableau</code> ℗
@@ -85,6 +53,38 @@ Jours juliens des équinoxes de l'an 1000 à l'an 2000
 **Type** : Constante  
 **Accès** : privé  
 **Voir** : [JDE0tab2000](http://fourmilab.ch/documents/calendar/)  
+**Depuis** : 0.0.1  
+**Auteur** : John Walker  
+<a name="anneeTropique"></a>
+
+## anneeTropique : <code>Nombre</code> ℗
+Nombre de jours, sur Terre, pour que le Soleil retourne à la même
+position
+dans le cycle des saisons
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [TropicalYear](http://fourmilab.ch/documents/calendar/)  
+**Depuis** : 0.0.1  
+**Auteur** : John Walker  
+<a name="argNutCoeff"></a>
+
+## argNutCoeff : <code>Tableau</code> ℗
+Coefficient des sinus et cosinus de l'argument pour la nutation
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [nutArgCoeff](http://fourmilab.ch/documents/calendar/)  
+**Depuis** : 0.0.1  
+**Auteur** : John Walker  
+<a name="argNutMult"></a>
+
+## argNutMult : <code>Tableau</code> ℗
+Termes périodiques pour la nutation en longitude et obliquité
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [nutArgMult](http://fourmilab.ch/documents/calendar/)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker  
 <a name="jjAn1Gregorien"></a>
