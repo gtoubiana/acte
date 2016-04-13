@@ -1,6 +1,6 @@
 {
   "name": "acte",
-  "version": "0.0.6-0",
+  "version": "0.0.6-2",
   "description": "Librairie Javascript pour manipuler des données généalogiques",
   "main": "dist/acte.js",
   "directories": {
@@ -46,7 +46,8 @@
     "del": "^2.2.0",
     "eslint": "^2.6.0",
     "eslint-config-airbnb": "^7.0.0",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-react": "^4.3.0",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.1.0",
     "gulp-concat": "^2.6.0",
