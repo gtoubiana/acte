@@ -5,7 +5,6 @@
  * - Template du module UMD
  * - Template du jsdoc UMD
  */
-var fs = require('fs');
 
 // Chemins
 var paths = {
@@ -62,20 +61,6 @@ var acteBase = {
   base: 'src'
 };
 
-// Template du jsdoc UMD
-var getPackageJsonVersion = function getPackageJsonVersion() {
-  return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
-};
-var version = getPackageJsonVersion();
-var banner = '/**\n' +
-  ' * <%= pkg.name %> - <%= pkg.description %>\n' +
-  ' * @copyright 2015-Present, <%= pkg.author %>\n' +
-  ' * @namespace acte\n' +
-  ' * @version ' + version + '\n' +
-  ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
-  ' * @license <%= pkg.license %>\n' +
-  ' */\n';
-
 // Template du module UMD
 var umd = '(function universalModuleDefinition(root, factory) {\n' +
   '  \'use strict\';\n' +
@@ -105,6 +90,5 @@ module.exports = {
   paths: paths,
   acteScripts: acteScripts,
   acteBase: acteBase,
-  umd: umd,
-  banner: banner
+  umd: umd
 };

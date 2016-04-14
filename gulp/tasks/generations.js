@@ -55,6 +55,17 @@ var getPackageJsonVersion = function getPackageJsonVersion() {
   return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 };
 
+// Template du jsdoc UMD
+var version = getPackageJsonVersion();
+var banner = '/**\n' +
+  ' * <%= pkg.name %> - <%= pkg.description %>\n' +
+  ' * @copyright 2015-Present, <%= pkg.author %>\n' +
+  ' * @namespace acte\n' +
+  ' * @version ' + version + '\n' +
+  ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
+  ' * @license <%= pkg.license %>\n' +
+  ' */\n';
+
 gulp.task('generations', sequence(
 
   // Générer le script acte
@@ -83,7 +94,7 @@ gulp.task('generations.script', function () {
   return gulp.src(config.acteScripts, config.acteBase)
     .pipe(concat('acte.js'))
     .pipe(wrap(config.umd))
-    .pipe(header(config.banner, {
+    .pipe(header(banner, {
       pkg: pkg
     }))
     .pipe(size({
@@ -101,7 +112,7 @@ gulp.task('generations.script.min', function () {
       suffix: '.min'
     }))
     .pipe(uglify())
-    .pipe(header(config.banner, {
+    .pipe(header(banner, {
       pkg: pkg
     }))
     .pipe(size({
@@ -153,7 +164,6 @@ gulp.task('generations.doc.utilitaires', function () {
 // TASK Pour créer une archive.zip de la release
 gulp.task('generations.zip', function () {
   'use strict';
-  var version = getPackageJsonVersion();
 
   return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
     .pipe(zip('acte-' + version + '-dist.zip'))
