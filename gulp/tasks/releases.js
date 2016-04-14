@@ -1,8 +1,8 @@
 /** TACHES PRINCIPALES DU FICHIER :
- * gulp releases.pre
- * gulp releases.patch
- * gulp releases.minor
- * gulp releases.major
+ * gulp releases.pre => supprimer au profit de gulp pre
+ * gulp releases.patch => supprimer au profit de gulp patch
+ * gulp releases.minor => supprimer au profit de gulp minor
+ * gulp releases.major => supprimer au profit de gulp major
  * gulp pre
  */
 // https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
