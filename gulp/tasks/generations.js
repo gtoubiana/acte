@@ -50,6 +50,11 @@ var lazyJsdocFr = lazypipe()
 
   // .pipe(rep, ' ↩︎', '')
 
+// Récupère le numéro de version dans le package.json
+var getPackageJsonVersion = function getPackageJsonVersion() {
+  return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+};
+
 gulp.task('generations', sequence(
 
   // Générer le script acte
@@ -148,8 +153,9 @@ gulp.task('generations.doc.utilitaires', function () {
 // TASK Pour créer une archive.zip de la release
 gulp.task('generations.zip', function () {
   'use strict';
+  var version = getPackageJsonVersion();
 
   return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
-    .pipe(zip('acte-' + pkg.version + '-dist.zip'))
+    .pipe(zip('acte-' + version + '-dist.zip'))
     .pipe(gulp.dest(config.paths.dist));
 });
