@@ -1,5 +1,11 @@
+<a name="0.0.6-3"></a>
+## [0.0.6-3](https://github.com/gtoubiana/acte/compare/0.0.6-2...v0.0.6-3) (2016-04-14)
+
+
+
+
 <a name="0.0.6-2"></a>
-## [0.0.6-2](https://github.com/gtoubiana/acte/compare/0.0.6-0...v0.0.6-2) (2016-04-13)
+## [0.0.6-2](https://github.com/gtoubiana/acte/compare/0.0.6-0...0.0.6-2) (2016-04-13)
 
 
 
