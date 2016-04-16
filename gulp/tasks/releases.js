@@ -15,12 +15,7 @@ var bump = require('gulp-bump');
 var gutil = require('gulp-util');
 var git = require('gulp-git');
 var fs = require('fs');
-var config = require('../config');
-
-// Récupère le numéro de version dans le package.json
-var getPackageJsonVersion = function getPackageJsonVersion() {
-  return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
-};
+var version = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 
 gulp.task('releases.version.patch', function () {
   return gulp.src(['./package.json'])
@@ -43,12 +38,7 @@ gulp.task('releases.version.major', function () {
 gulp.task('releases.version.prerelease', function () {
   return gulp.src(['./package.json'])
     .pipe(bump({ type: 'prerelease' }).on('error', gutil.log))
-    .pipe(gulp.dest('./'))
-    .on('finish', function () {
-      return gulp.src([config.paths.tasks + '/generations.js'])
-        .pipe(bump({ type: 'prerelease' }).on('error', gutil.log))
-        .pipe(gulp.dest(config.paths.tasks + '/'));
-    });
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('releases.conventional.changelog', function () {
@@ -65,8 +55,6 @@ gulp.task('releases.conventional.changelog', function () {
 });
 
 gulp.task('releases.commit', function () {
-  var version = getPackageJsonVersion();
-
   return gulp.src('.')
     .pipe(git.add())
     .pipe(git.commit('chore: release v' + version));
@@ -77,8 +65,6 @@ gulp.task('releases.push', function (cb) {
 });
 
 gulp.task('releases.tag', function (cb) {
-  var version = getPackageJsonVersion();
-
   /* eslint-disable consistent-return */
   git.tag(version, 'chore: tag v' + version, function (error) {
     if (error) {
