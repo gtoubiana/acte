@@ -19,7 +19,7 @@ var wrap = require('gulp-wrap');
 var zip = require('gulp-zip');
 
 // Release version
-var release = { version: '0.0.6-11' };
+var release = { version: '0.0.6-12' };
 
 // Lazypipes
 var lazyJsdocFr = lazypipe()
