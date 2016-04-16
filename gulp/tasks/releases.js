@@ -64,9 +64,9 @@ gulp.task('releases.push', function (cb) {
 
 gulp.task('releases.tag', function (cb) {
   /* eslint-disable consistent-return */
-  git.tag(JSON.parse(fs.readFileSync('./package.json', 'utf8')).version,
-  'chore: tag v' + JSON.parse(fs.readFileSync('./package.json', 'utf8'))
-  .version, function (error) {
+  var version = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+
+  git.tag(version, 'chore: tag v' + version, function (error) {
     if (error) {
       return cb(error);
     }
