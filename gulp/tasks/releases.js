@@ -15,7 +15,6 @@ var bump = require('gulp-bump');
 var gutil = require('gulp-util');
 var git = require('gulp-git');
 var fs = require('fs');
-var version = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
 
 gulp.task('releases.version.patch', function () {
   return gulp.src(['./package.json'])
@@ -57,7 +56,8 @@ gulp.task('releases.conventional.changelog', function () {
 gulp.task('releases.commit', function () {
   return gulp.src('.')
     .pipe(git.add())
-    .pipe(git.commit('chore: release v' + version));
+    .pipe(git.commit('chore: release v' +
+      JSON.parse(fs.readFileSync('./package.json', 'utf8')).version));
 });
 
 gulp.task('releases.push', function (cb) {
@@ -66,7 +66,9 @@ gulp.task('releases.push', function (cb) {
 
 gulp.task('releases.tag', function (cb) {
   /* eslint-disable consistent-return */
-  git.tag(version, 'chore: tag v' + version, function (error) {
+  git.tag(JSON.parse(fs.readFileSync('./package.json', 'utf8')).version,
+  'chore: tag v' + JSON.parse(fs.readFileSync('./package.json', 'utf8'))
+  .version, function (error) {
     if (error) {
       return cb(error);
     }
