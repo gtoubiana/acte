@@ -78,15 +78,8 @@ gulp.task('generations.script', function () {
   return gulp.src(config.acteScripts, config.acteBase)
     .pipe(concat('acte.js'))
     .pipe(wrap(config.umd))
-    .pipe(header('/**\n' +
-      ' * <%= pkg.name %> - <%= pkg.description %>\n' +
-      ' * @copyright 2015-Present, <%= pkg.author %>\n' +
-      ' * @namespace acte\n' +
-      ' * @version ' + JSON.parse(fs.readFileSync('./package.json',
-      'utf8')).version + '\n' +
-      ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
-      ' * @license <%= pkg.license %>\n' +
-      ' */\n', {
+    .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync('./package.json',
+      'utf8')).version + config.bannerBottom, {
         pkg: pkg
       }))
     .pipe(size({
@@ -104,15 +97,8 @@ gulp.task('generations.script.min', function () {
       suffix: '.min'
     }))
     .pipe(uglify())
-    .pipe(header('/**\n' +
-      ' * <%= pkg.name %> - <%= pkg.description %>\n' +
-      ' * @copyright 2015-Present, <%= pkg.author %>\n' +
-      ' * @namespace acte\n' +
-      ' * @version ' + JSON.parse(fs.readFileSync('./package.json',
-      'utf8')).version + '\n' +
-      ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
-      ' * @license <%= pkg.license %>\n' +
-      ' */\n', {
+    .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync('./package.json',
+      'utf8')).version + config.bannerBottom, {
         pkg: pkg
       }))
     .pipe(size({

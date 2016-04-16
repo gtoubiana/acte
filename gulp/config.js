@@ -61,6 +61,16 @@ var acteBase = {
   base: 'src'
 };
 
+// Template Jsdoc du module UMD
+var bannerTop = '/**\n' +
+  ' * <%= pkg.name %> - <%= pkg.description %>\n' +
+  ' * @copyright 2015-Present, <%= pkg.author %>\n' +
+  ' * @namespace acte\n' +
+  ' * @version ';
+var bannerBottom = '\n' +
+' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
+' * @license <%= pkg.license %>\n' +
+' */\n';
 // Template du module UMD
 var umd = '(function universalModuleDefinition(root, factory) {\n' +
   '  \'use strict\';\n' +
@@ -90,5 +100,7 @@ module.exports = {
   paths: paths,
   acteScripts: acteScripts,
   acteBase: acteBase,
-  umd: umd
+  umd: umd,
+  bannerTop: bannerTop,
+  bannerBottom: bannerBottom
 };
