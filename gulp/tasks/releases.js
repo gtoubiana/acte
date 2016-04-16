@@ -1,10 +1,8 @@
 /** TACHES PRINCIPALES DU FICHIER :
- * gulp releases.pre => supprimer au profit de gulp pre
- * gulp releases.patch => supprimer au profit de gulp patch
- * gulp releases.minor => supprimer au profit de gulp minor
- * gulp releases.major => supprimer au profit de gulp major
  * gulp pre
- * gulp pre-test => debuggage numéro de version !
+ * gulp patch
+ * gulp minor
+ * gulp major
  */
 // https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
 var gulp = require('gulp');
@@ -136,9 +134,23 @@ gulp.task('pre', sequence(
     'releases.github.publish'
 ));
 
-gulp.task('pre-test', sequence(
+gulp.task('patch', sequence(
     'nettoyages',
-    'releases.version.prerelease',
-    'generations',
-    'releases.commit'
+    'releases.version.patch',
+    'default',
+    'releases.github.publish'
+));
+
+gulp.task('minor', sequence(
+    'nettoyages',
+    'releases.version.minor',
+    'default',
+    'releases.github.publish'
+));
+
+gulp.task('major', sequence(
+    'nettoyages',
+    'releases.version.major',
+    'default',
+    'releases.github.publish'
 ));
