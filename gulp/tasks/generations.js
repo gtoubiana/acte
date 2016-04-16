@@ -50,17 +50,6 @@ var lazyJsdocFr = lazypipe()
 
   // .pipe(rep, ' ↩︎', '')
 
-// Template du jsdoc UMD
-var banner = '/**\n' +
-  ' * <%= pkg.name %> - <%= pkg.description %>\n' +
-  ' * @copyright 2015-Present, <%= pkg.author %>\n' +
-  ' * @namespace acte\n' +
-  ' * @version ' + JSON.parse(fs.readFileSync('./package.json',
-  'utf8')).version + '\n' +
-  ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
-  ' * @license <%= pkg.license %>\n' +
-  ' */\n';
-
 gulp.task('generations', sequence(
 
   // Générer le script acte
@@ -89,9 +78,17 @@ gulp.task('generations.script', function () {
   return gulp.src(config.acteScripts, config.acteBase)
     .pipe(concat('acte.js'))
     .pipe(wrap(config.umd))
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
+    .pipe(header('/**\n' +
+      ' * <%= pkg.name %> - <%= pkg.description %>\n' +
+      ' * @copyright 2015-Present, <%= pkg.author %>\n' +
+      ' * @namespace acte\n' +
+      ' * @version ' + JSON.parse(fs.readFileSync('./package.json',
+      'utf8')).version + '\n' +
+      ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
+      ' * @license <%= pkg.license %>\n' +
+      ' */\n', {
+        pkg: pkg
+      }))
     .pipe(size({
       title: 'Original  acte.js Size ->'
     }))
@@ -107,9 +104,17 @@ gulp.task('generations.script.min', function () {
       suffix: '.min'
     }))
     .pipe(uglify())
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
+    .pipe(header('/**\n' +
+      ' * <%= pkg.name %> - <%= pkg.description %>\n' +
+      ' * @copyright 2015-Present, <%= pkg.author %>\n' +
+      ' * @namespace acte\n' +
+      ' * @version ' + JSON.parse(fs.readFileSync('./package.json',
+      'utf8')).version + '\n' +
+      ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
+      ' * @license <%= pkg.license %>\n' +
+      ' */\n', {
+        pkg: pkg
+      }))
     .pipe(size({
       title: 'Minified  acte.min.js Size ->'
     }))
