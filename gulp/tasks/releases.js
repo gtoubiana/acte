@@ -4,7 +4,6 @@
  * gulp minor
  * gulp major
  */
-// https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
 var gulp = require('gulp');
 var sequence = require('gulp-sequence');
 var conventionalChangelog = require('gulp-conventional-changelog');
