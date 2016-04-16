@@ -151,5 +151,6 @@ gulp.task('pre', sequence(
 gulp.task('pre-test', sequence(
     'nettoyages',
     'releases.version.prerelease',
+    'generations',
     'releases.commit'
 ));

@@ -19,7 +19,12 @@ var wrap = require('gulp-wrap');
 var zip = require('gulp-zip');
 
 // Release version
-var release = { version: '0.0.6-12' };
+// var release = { version: '0.0.6-11' };
+
+// Récupère le numéro de version dans le package.json
+var getPackageJsonVersion = function getPackageJsonVersion() {
+  return JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+};
 
 // Lazypipes
 var lazyJsdocFr = lazypipe()
@@ -54,11 +59,12 @@ var lazyJsdocFr = lazypipe()
   // .pipe(rep, ' ↩︎', '')
 
 // Template du jsdoc UMD
+var version = getPackageJsonVersion();
 var banner = '/**\n' +
   ' * <%= pkg.name %> - <%= pkg.description %>\n' +
   ' * @copyright 2015-Present, <%= pkg.author %>\n' +
   ' * @namespace acte\n' +
-  ' * @version ' + release.version + '\n' +
+  ' * @version ' + version + '\n' +
   ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
   ' * @license <%= pkg.license %>\n' +
   ' */\n';
@@ -163,6 +169,6 @@ gulp.task('generations.zip', function () {
   'use strict';
 
   return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
-    .pipe(zip('acte-' + release.version + '-dist.zip'))
+    .pipe(zip('acte-' + version + '-dist.zip'))
     .pipe(gulp.dest(config.paths.dist));
 });
