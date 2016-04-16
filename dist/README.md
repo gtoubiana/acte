@@ -14,7 +14,7 @@ acte - Librairie Javascript pour manipuler des données généalogiques
 
 **Type** : Espace de noms global  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Version** : 0.0.6-3  
+**Version** : 0.0.6-11  
 **Licence** : MIT  
 **Copyright** : 2015-Present, Gilles Toubiana  
 

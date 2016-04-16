@@ -4,6 +4,7 @@
  * gulp releases.minor => supprimer au profit de gulp minor
  * gulp releases.major => supprimer au profit de gulp major
  * gulp pre
+ * gulp pre-test => debuggage numéro de version !
  */
 // https://github.com/gulpjs/gulp/blob/master/docs/recipes/automate-release-workflow.md
 var gulp = require('gulp');
@@ -14,6 +15,7 @@ var bump = require('gulp-bump');
 var gutil = require('gulp-util');
 var git = require('gulp-git');
 var fs = require('fs');
+var config = require('../config');
 
 // Récupère le numéro de version dans le package.json
 var getPackageJsonVersion = function getPackageJsonVersion() {
@@ -41,7 +43,12 @@ gulp.task('releases.version.major', function () {
 gulp.task('releases.version.prerelease', function () {
   return gulp.src(['./package.json'])
     .pipe(bump({ type: 'prerelease' }).on('error', gutil.log))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./'))
+    .on('finish', function () {
+      return gulp.src([config.paths.tasks + '/generations.js'])
+        .pipe(bump({ type: 'prerelease' }).on('error', gutil.log))
+        .pipe(gulp.dest(config.paths.tasks + '/'));
+    });
 });
 
 gulp.task('releases.conventional.changelog', function () {
@@ -139,4 +146,14 @@ gulp.task('pre', sequence(
     'releases.version.prerelease',
     'default',
     'releases.github.publish'
+));
+
+gulp.task('pre-test', sequence(
+    'nettoyages',
+    'releases.version.prerelease',
+    'validations',
+    'generations',
+    'specifications',
+    'couvertures',
+    'certifications'
 ));
