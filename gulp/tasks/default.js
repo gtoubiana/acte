@@ -10,7 +10,6 @@ require('eslint-plugin-react');
 require('eslint-plugin-jsx-a11y');
 require('karma-jasmine');
 require('karma-sauce-launcher');
-require('conventional-changelog-custom');
 
 // Tâche par défaut
 gulp.task('default', sequence(

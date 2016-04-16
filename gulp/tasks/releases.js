@@ -42,9 +42,7 @@ gulp.task('releases.conventional.changelog', function () {
     buffer: false
   })
     .pipe(conventionalChangelog({
-
-      // Traduction du 'angular' preset (./.changelogrc)
-      preset: 'custom',
+      preset: 'angular',
       releaseCount: 0
     }))
     .pipe(gulp.dest('./'));
@@ -80,9 +78,7 @@ gulp.task('releases.github.releaser', function (done) {
     type: 'oauth',
     token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
   }, {
-
-    // Traduction du 'angular' preset (./.changelogrc)
-    preset: 'custom'
+    preset: 'angular'
   }, done);
 });
 
