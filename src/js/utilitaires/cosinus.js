@@ -10,6 +10,4 @@
  * @example
  * cosinus(0); // 1
  */
-var cosinus = function cosinus(d) {
-  return Math.cos(degresVersRadians(d));
-};
+const cosinus = d => Math.cos(degresVersRadians(d));

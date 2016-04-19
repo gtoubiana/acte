@@ -13,11 +13,10 @@
  * remplacements('Bonjour', {'jour': 'soir'}, 'gi');
  * // 'Bonsoir'
  */
-var remplacements = function remplacements(texte, regex, options) {
-  var tempTexte = texte;
-  var val;
+const remplacements = (texte, regex, options) => {
+  let tempTexte = texte;
 
-  for (val in regex) {
+  for (const val in regex) {
     // istanbul ignore else
     if (regex.hasOwnProperty(val)) {
       tempTexte = tempTexte.replace(new RegExp(val, options), regex[val]);

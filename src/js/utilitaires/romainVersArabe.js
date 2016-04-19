@@ -10,19 +10,19 @@
  * @example
  * romainVersArabe('MMXII'); // 2012
  */
-var romainVersArabe = function romainVersArabe(romain) {
-  var lookup = {
+const romainVersArabe = romain => {
+  const lookup = {
     I: 1,
     V: 5,
     X: 10,
     L: 50,
     C: 100,
     D: 500,
-    M: 1000
+    M: 1000,
   };
-  var arabe = 0;
-  var i = romain.length - 1;
-  var tempRomain = romain.toUpperCase();
+  let arabe = 0;
+  let i = romain.length - 1;
+  const tempRomain = romain.toUpperCase();
 
   for (i; i >= 0; i--) {
     if (lookup[tempRomain[i]] < lookup[tempRomain[i + 1]]) {

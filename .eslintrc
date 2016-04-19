@@ -10,6 +10,7 @@
 
     "globals": {
       "acte": true,
+      "Symbol": "true"
     },
 
     "rules": {
@@ -41,7 +42,6 @@
       "no-lonely-if": 1, // disallow if as the only statement in an else block
       "no-negated-condition": 1, // disallow negated conditions
       "no-undefined": 1, // disallow use of undefined variable
-      "no-underscore-dangle": 1, // disallow dangling underscores in identifiers
       "no-unmodified-loop-condition": 1, // disallow unmodified conditions of loops
       "no-useless-concat": 1, // disallow unnecessary concatenation of literals or template literals
       "operator-assignment": [1, "always"], // require assignment operator shorthand where possible or prohibit it entirely

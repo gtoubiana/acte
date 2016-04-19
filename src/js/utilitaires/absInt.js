@@ -10,6 +10,4 @@
  * @example
  * absInt(-23.45); // 23
  */
-var absInt = function absInt(num) {
-  return Math.abs(parseInt(num, 10));
-};
+const absInt = num => Math.abs(parseInt(num, 10));

@@ -13,9 +13,9 @@
  * @example
  * republicainVersJj(12, 2, 2, 6); // 2379902.5
  */
-var republicainVersJj = function republicainVersJj(an, mois, decade, jour) {
-  var guess = jjDebutRepublicain + (anneeTropique * ((an - 1) - 1));
-  var adr = [an - 1, 0];
+const republicainVersJj = (an, mois, decade, jour) => {
+  let guess = jjDebutRepublicain + (anneeTropique * ((an - 1) - 1));
+  let adr = [an - 1, 0];
 
   while (adr[0] < an) {
     adr = anRepublicain(guess);

@@ -12,9 +12,9 @@
  * @example
  * julienVersJj(2015,11,7); // 2457346.5
  */
-var julienVersJj = function julienVersJj(an, mois, jour) {
-  var tempAn = an;
-  var tempMois = mois;
+const julienVersJj = (an, mois, jour) => {
+  let tempAn = an;
+  let tempMois = mois;
 
   if (an < 1) {
     tempAn++;

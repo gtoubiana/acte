@@ -2,12 +2,12 @@
 
 ## Table des matières
 
-* [delta](#delta) : <code>Tableau</code> ℗
-* [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
 * [jde0Tab2000](#jde0Tab2000) : <code>Tableau</code> ℗
 * [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
 * [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
 * [argNutMult](#argNutMult) : <code>Tableau</code> ℗
+* [delta](#delta) : <code>Tableau</code> ℗
+* [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
 * [jjAn1Gregorien](#jjAn1Gregorien) : <code>Nombre</code> ℗
 * [jjAn2000Gregorien](#jjAn2000Gregorien) : <code>Nombre</code> ℗
 * [jjDebutCommuneDeParis](#jjDebutCommuneDeParis) : <code>Nombre</code> ℗
@@ -21,30 +21,6 @@
 * [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
 
 * * *
-<a name="delta"></a>
-
-## delta : <code>Tableau</code> ℗
-Tableau des Delta T (différence entre Temps universel et temps terrestre)
-tous les 2 ans de 1620 à 2014
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [deltaTtab](http://fourmilab.ch/documents/calendar/) |
-[Valeurs](http://maia.usno.navy.mil/ser7/deltat.data) |
-[Predictions](http://maia.usno.navy.mil/ser7/deltat.preds) |
-[Expressions](http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html)  
-**Depuis** : 0.0.1  
-**Auteur** : John Walker & Gilles Toubiana  
-<a name="jde0Tab1000"></a>
-
-## jde0Tab1000 : <code>Tableau</code> ℗
-Jours juliens des équinoxes avant l'an 1000
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [JDE0tab1000](http://fourmilab.ch/documents/calendar/)  
-**Depuis** : 0.0.1  
-**Auteur** : John Walker  
 <a name="jde0Tab2000"></a>
 
 ## jde0Tab2000 : <code>Tableau</code> ℗
@@ -85,6 +61,30 @@ Termes périodiques pour la nutation en longitude et obliquité
 **Type** : Constante  
 **Accès** : privé  
 **Voir** : [nutArgMult](http://fourmilab.ch/documents/calendar/)  
+**Depuis** : 0.0.1  
+**Auteur** : John Walker  
+<a name="delta"></a>
+
+## delta : <code>Tableau</code> ℗
+Tableau des Delta T (différence entre Temps universel et temps terrestre)
+tous les 2 ans de 1620 à 2014
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [deltaTtab](http://fourmilab.ch/documents/calendar/) |
+[Valeurs](http://maia.usno.navy.mil/ser7/deltat.data) |
+[Predictions](http://maia.usno.navy.mil/ser7/deltat.preds) |
+[Expressions](http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html)  
+**Depuis** : 0.0.1  
+**Auteur** : John Walker & Gilles Toubiana  
+<a name="jde0Tab1000"></a>
+
+## jde0Tab1000 : <code>Tableau</code> ℗
+Jours juliens des équinoxes avant l'an 1000
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [JDE0tab1000](http://fourmilab.ch/documents/calendar/)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker  
 <a name="jjAn1Gregorien"></a>

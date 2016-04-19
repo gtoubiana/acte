@@ -6,7 +6,7 @@
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Object}
  */
-var regexpRepublicain = {
+const regexpRepublicain = {
   'vend(é|e)miaire': '/1/',
   brumaire: '/2/',
   frimaire: '/3/',
@@ -22,5 +22,5 @@ var regexpRepublicain = {
   'san(s-)?culottide(s)?': '/13/',
   'jour(s)?\\scompl(é|e)mentaire(s)?': '/13/',
   'd(é|e)cade\\s(\\d){1,2}': '',
-  '[^-()\\d/*+.]': ''
+  '[^-()\\d/*+.]': '',
 };

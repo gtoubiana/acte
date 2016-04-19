@@ -10,7 +10,8 @@
  * @example
  * rjmcVersRdc(28); // 3
  */
-var rjmcVersRdc = function rjmcVersRdc(rjmc) {
-  return (Math.abs(parseInt(rjmc, 10) % 10) === 0) ? Math.abs(parseInt(rjmc /
-    10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
+const rjmcVersRdc = rjmc => {
+  const resultat = (Math.abs(parseInt(rjmc, 10) % 10) === 0) ? Math.abs(
+    parseInt(rjmc / 10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
+  return resultat;
 };

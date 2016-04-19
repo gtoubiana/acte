@@ -13,9 +13,9 @@
  * saisieValide(saisie, regexpRepublicain);
  * saisieValide(saisie, regexpGregorien);
  */
-var saisieValide = function saisieValide(saisie, regexp) {
-  var tempSaisie = saisie;
-  var u;
+const saisieValide = (saisie, regexp) => {
+  let tempSaisie = saisie;
+  let u;
 
   // On remplace le texte restant par des chiffres arabes
   tempSaisie = remplacements(tempSaisie, regexp, 'gi')

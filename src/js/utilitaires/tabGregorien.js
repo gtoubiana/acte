@@ -13,17 +13,11 @@
  * @example
  * tabGregorien(saisie, this.limites);
  */
-var tabGregorien = function tabGregorien(saisie, limites) {
-  // ie8 debug
-  var iesaisie = (saisie[0] === '/') ? '1' + saisie : saisie;
-
+const tabGregorien = (saisie, limites) => {
   // Uniformisation de la saisie
-  var saisieGregorien = saisieValide(iesaisie, regexpGregorien);
-
-  // var saisieGregorien = saisieValide(saisie, regexpGregorien);
-  var tab = [];
-  var dateJulienne;
-  var dateRepublicaine;
+  const iesaisie = (saisie[0] === '/') ? `1${saisie}` : saisie;
+  const saisieGregorien = saisieValide(iesaisie, regexpGregorien);
+  let tab = [];
 
   // Lorsque la date est valide [gjmc,gmc,gac]
   if (saisieGregorien[2] && saisieGregorien[0] < 32 &&
@@ -44,7 +38,7 @@ var tabGregorien = function tabGregorien(saisie, limites) {
       tab[1] = absInt(saisieGregorien[1]);
       tab[2] = parseInt(saisieGregorien[2], 10);
       tab[3] = dateValide(tab[0], tab[1], tab[2]);
-      dateJulienne = jjVersJulien(tab[4]);
+      const dateJulienne = jjVersJulien(tab[4]);
       tab[5] = dateJulienne[2];
       tab[6] = dateJulienne[1];
       tab[7] = dateJulienne[0];
@@ -57,10 +51,10 @@ var tabGregorien = function tabGregorien(saisie, limites) {
       ((tab[4] >= jjDebutCommuneDeParis) &&
         (tab[4] <= jjFinCommuneDeParis)) ||
       limites === false) {
-      dateRepublicaine = jjVersRepublicain(tab[4]);
+      const dateRepublicaine = jjVersRepublicain(tab[4]);
       tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
           dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
-        dateRepublicaine[1], dateRepublicaine[0]
+        dateRepublicaine[1], dateRepublicaine[0],
       ]);
     }
   }

@@ -10,6 +10,4 @@
  * @example
  * sinus(90); // 1
  */
-var sinus = function sinus(d) {
-  return Math.sin(degresVersRadians(d));
-};
+const sinus = d => Math.sin(degresVersRadians(d));

@@ -1,3 +1,9 @@
+'use strict';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * acte - Librairie Javascript pour manipuler des données généalogiques
  * @copyright 2015-Present, Gilles Toubiana
@@ -7,97 +13,24 @@
  * @license MIT
  */
 (function universalModuleDefinition(root, factory) {
-  'use strict';
   var tempRoot = root;
 
   /* istanbul ignore next */
-  if (typeof exports === 'object' && typeof module === 'object') {
+  if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && (typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object') {
     module.exports = factory();
   } else if (typeof define === 'function' && define.amd) {
     define([], factory);
-  } else if (typeof exports === 'object') {
+  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
     exports.acte = factory();
   } else {
     tempRoot.acte = factory();
   }
-}(this, function umdCallback() {
-  'use strict';
-
+})(undefined, function umdCallback() {
   /** @namespace */
   /* eslint-disable no-use-before-define */
   var acte = acte || {};
 
   /* eslint-enable no-use-before-define */
-  /**
-   * Tableau des Delta T (différence entre Temps universel et temps terrestre)
-   * tous les 2 ans de 1620 à 2014
-   * @access private
-   * @author John Walker & Gilles Toubiana
-   * @since 0.0.1
-   * @see {@link http://fourmilab.ch/documents/calendar/|deltaTtab} |
-   * {@link http://maia.usno.navy.mil/ser7/deltat.data|Valeurs} |
-   * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions} |
-   * {@link http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html|Expressions}
-   * @constant {Array}
-   */
-  var delta = [
-    121, 112, 103, 95, 88,
-    82, 77, 72, 68, 63,
-    60, 56, 53, 51, 48,
-    46, 44, 42, 40, 38,
-    35, 33, 31, 29, 26,
-    24, 22, 20, 18, 16,
-    14, 12, 11, 10, 9,
-    8, 7, 7, 7, 7,
-    7, 7, 8, 8, 9,
-    9, 9, 9, 9, 10,
-    10, 10, 10, 10, 10,
-    10, 10, 11, 11, 11,
-    11, 11, 12, 12, 12,
-    12, 13, 13, 13, 14,
-    14, 14, 14, 15, 15,
-    15, 15, 15, 16, 16,
-    16, 16, 16, 16, 16,
-    16, 15, 15, 14, 13,
-    13.1, 12.5, 12.2, 12, 12,
-    12, 12, 12, 12, 11.9,
-    11.6, 11, 10.2, 9.2, 8.2,
-    7.1, 6.2, 5.6, 5.4, 5.3,
-    5.4, 5.6, 5.9, 6.2, 6.5,
-    6.8, 7.1, 7.3, 7.5, 7.6,
-    7.7, 7.3, 6.2, 5.2, 2.7,
-    1.4, (-1.2), (-2.8), (-3.8), (-4.8),
-    (-5.5), (-5.3), (-5.6), (-5.7), (-5.9),
-    (-6), (-6.3), (-6.5), (-6.2), (-4.7),
-    (-2.8), (-0.1), 2.6, 5.3, 7.7,
-    10.4, 13.3, 16, 18.2, 20.2,
-    21.1, 22.4, 23.5, 23.8, 24.3,
-    24, 23.9, 23.9, 23.7, 24,
-    24.3, 25.3, 26.2, 27.3, 28.2,
-    29.1, 30, 30.7, 31.4, 32.2,
-    33.1, 34, 35, 36.5, 38.3,
-    40.2, 42.2, 44.9, 46.9, 49,
-    50.9, 52.5, 54, 55.1, 56.1,
-    57.2, 58.7, 60.4, 61.9, 63.2,
-    64, 64.4, 64.6, 65, 65.6,
-    66.2, 66.7, 67.5
-  ];
-
-  /**
-   * Jours juliens des équinoxes avant l'an 1000
-   * @access private
-   * @author John Walker
-   * @since 0.0.1
-   * @see {@link http://fourmilab.ch/documents/calendar/|JDE0tab1000}
-   * @constant {Array}
-   */
-  var jde0Tab1000 = [
-    [1721139.29189, 365242.13740, 0.06134, 0.00111, -0.00071],
-    [1721233.25401, 365241.72562, -0.05323, 0.00907, 0.00025],
-    [1721325.70455, 365242.49558, -0.11677, -0.00297, 0.00074],
-    [1721414.39987, 365242.88257, -0.00769, -0.00933, -0.00006]
-  ];
-
   /**
    * Jours juliens des équinoxes de l'an 1000 à l'an 2000
    * @access private
@@ -106,12 +39,7 @@
    * @see {@link http://fourmilab.ch/documents/calendar/|JDE0tab2000}
    * @constant {Array}
    */
-  var jde0Tab2000 = [
-    [2451623.80984, 365242.37404, 0.05169, -0.00411, -0.00057],
-    [2451716.56767, 365241.62603, 0.00325, 0.00888, -0.00030],
-    [2451810.21715, 365242.01767, -0.11575, 0.00337, 0.00078],
-    [2451900.05952, 365242.74049, -0.06223, -0.00823, 0.00032]
-  ];
+  var jde0Tab2000 = [[2451623.80984, 365242.37404, 0.05169, -0.00411, -0.00057], [2451716.56767, 365241.62603, 0.00325, 0.00888, -0.00030], [2451810.21715, 365242.01767, -0.11575, 0.00337, 0.00078], [2451900.05952, 365242.74049, -0.06223, -0.00823, 0.00032]];
 
   /**
    * Nombre de jours, sur Terre, pour que le Soleil retourne à la même
@@ -133,23 +61,7 @@
    * @see {@link http://fourmilab.ch/documents/calendar/|nutArgCoeff}
    * @constant {Array}
    */
-  var argNutCoeff = [(-171996), (-1742), 92095, 89, (-13187), (-16), 5736,
-    (-31), (-2274), (-2), 977, (-5), 2062, 2, (-895), 5, 1426, (-34), 54,
-    (-1), 712, 1, (-7), 0, (-517), 12, 224, (-6), (-386), (-4), 200, 0,
-    (-301), 0, 129, (-1), 217, (-5), (-95), 3, (-158), 0, 0, 0, 129, 1,
-    (-70), 0, 123, 0, (-53), 0, 63, 0, 0, 0, 63, 1, (-33), 0, (-59), 0,
-    26, 0, (-58), (-1), 32, 0, (-51), 0, 27, 0, 48, 0, 0, 0, 46, 0, (-24),
-    0, (-38), 0, 16, 0, (-31), 0, 13, 0, 29, 0, 0, 0, 29, 0, (-12), 0, 26,
-    0, 0, 0, (-22), 0, 0, 0, 21, 0, (-10), 0, 17, (-1), 0, 0, 16, 0, (-8),
-    0, (-16), 1, 7, 0, (-15), 0, 9, 0, (-13), 0, 7, 0, (-12), 0, 6, 0, 11,
-    0, 0, 0, (-10), 0, 5, 0, (-8), 0, 3, 0, 7, 0, (-3), 0, (-7), 0, 0, 0,
-    (-7), 0, 3, 0, (-7), 0, 3, 0, 6, 0, 0, 0, 6, 0, (-3), 0, 6, 0, (-3),
-    0, (-6), 0, 3, 0, (-6), 0, 3, 0, 5, 0, 0, 0, (-5), 0, 3, 0, (-5), 0,
-    3, 0, (-5), 0, 3, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, (-4), 0, 0,
-    0, (-4), 0, 0, 0, (-4), 0, 0, 0, 3, 0, 0, 0, (-3), 0, 0, 0, (-3), 0,
-    0, 0, (-3), 0, 0, 0, (-3), 0, 0, 0, (-3), 0, 0, 0, (-3), 0, 0, 0,
-    (-3), 0, 0, 0
-  ];
+  var argNutCoeff = [-171996, -1742, 92095, 89, -13187, -16, 5736, -31, -2274, -2, 977, -5, 2062, 2, -895, 5, 1426, -34, 54, -1, 712, 1, -7, 0, -517, 12, 224, -6, -386, -4, 200, 0, -301, 0, 129, -1, 217, -5, -95, 3, -158, 0, 0, 0, 129, 1, -70, 0, 123, 0, -53, 0, 63, 0, 0, 0, 63, 1, -33, 0, -59, 0, 26, 0, -58, -1, 32, 0, -51, 0, 27, 0, 48, 0, 0, 0, 46, 0, -24, 0, -38, 0, 16, 0, -31, 0, 13, 0, 29, 0, 0, 0, 29, 0, -12, 0, 26, 0, 0, 0, -22, 0, 0, 0, 21, 0, -10, 0, 17, -1, 0, 0, 16, 0, -8, 0, -16, 1, 7, 0, -15, 0, 9, 0, -13, 0, 7, 0, -12, 0, 6, 0, 11, 0, 0, 0, -10, 0, 5, 0, -8, 0, 3, 0, 7, 0, -3, 0, -7, 0, 0, 0, -7, 0, 3, 0, -7, 0, 3, 0, 6, 0, 0, 0, 6, 0, -3, 0, 6, 0, -3, 0, -6, 0, 3, 0, -6, 0, 3, 0, 5, 0, 0, 0, -5, 0, 3, 0, -5, 0, 3, 0, -5, 0, 3, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0, 3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0];
 
   /**
    * Termes périodiques pour la nutation en longitude et obliquité
@@ -159,23 +71,31 @@
    * @see {@link http://fourmilab.ch/documents/calendar/|nutArgMult}
    * @constant {Array}
    */
-  var argNutMult = [
-    0, 0, 0, 0, 1, (-2), 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 0, 1,
-    0, 0, 0, 0, 0, 1, 0, 0, (-2), 1, 0, 2, 2, 0, 0, 0, 2, 1, 0, 0, 1, 2,
-    2, (-2), (-1), 0, 2, 2, (-2), 0, 1, 0, 0, (-2), 0, 0, 2, 1, 0, 0, (-1),
-    2, 2, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, (-1), 2, 2, 0, 0, (-1), 0, 1,
-    0, 0, 1, 2, 1, (-2), 0, 2, 0, 0, 0, 0, (-2), 2, 1, 2, 0, 0, 2, 2, 0,
-    0, 2, 2, 2, 0, 0, 2, 0, 0, (-2), 0, 1, 2, 2, 0, 0, 0, 2, 0, (-2), 0,
-    0, 2, 0, 0, 0, (-1), 2, 1, 0, 2, 0, 0, 0, 2, 0, (-1), 0, 1, (-2), 2, 0,
-    2, 2, 0, 1, 0, 0, 1, (-2), 0, 1, 0, 1, 0, (-1), 0, 0, 1, 0, 0, 2, (-2),
-    0, 2, 0, (-1), 2, 1, 2, 0, 1, 2, 2, 0, 1, 0, 2, 2, (-2), 1, 1, 0, 0, 0,
-    (-1), 0, 2, 2, 2, 0, 0, 2, 1, 2, 0, 1, 0, 0, (-2), 0, 2, 2, 2, (-2), 0,
-    1, 2, 1, 2, 0, (-2), 0, 1, 2, 0, 0, 0, 1, 0, (-1), 1, 0, 0, (-2), (-1),
-    0, 2, 1, (-2), 0, 0, 0, 1, 0, 0, 2, 2, 1, (-2), 0, 2, 0, 1, (-2), 1, 0,
-    2, 1, 0, 0, 1, (-2), 0, (-1), 0, 1, 0, 0, (-2), 1, 0, 0, 0, 1, 0, 0, 0,
-    0, 0, 0, 1, 2, 0, (-1), (-1), 1, 0, 0, 0, 1, 1, 0, 0, 0, (-1), 1, 2, 2,
-    2, (-1), (-1), 2, 2, 0, 0, (-2), 2, 2, 0, 0, 3, 2, 2, 2, (-1), 0, 2, 2
-  ];
+  var argNutMult = [0, 0, 0, 0, 1, -2, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, -2, 1, 0, 2, 2, 0, 0, 0, 2, 1, 0, 0, 1, 2, 2, -2, -1, 0, 2, 2, -2, 0, 1, 0, 0, -2, 0, 0, 2, 1, 0, 0, -1, 2, 2, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, -1, 2, 2, 0, 0, -1, 0, 1, 0, 0, 1, 2, 1, -2, 0, 2, 0, 0, 0, 0, -2, 2, 1, 2, 0, 0, 2, 2, 0, 0, 2, 2, 2, 0, 0, 2, 0, 0, -2, 0, 1, 2, 2, 0, 0, 0, 2, 0, -2, 0, 0, 2, 0, 0, 0, -1, 2, 1, 0, 2, 0, 0, 0, 2, 0, -1, 0, 1, -2, 2, 0, 2, 2, 0, 1, 0, 0, 1, -2, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, 0, 2, -2, 0, 2, 0, -1, 2, 1, 2, 0, 1, 2, 2, 0, 1, 0, 2, 2, -2, 1, 1, 0, 0, 0, -1, 0, 2, 2, 2, 0, 0, 2, 1, 2, 0, 1, 0, 0, -2, 0, 2, 2, 2, -2, 0, 1, 2, 1, 2, 0, -2, 0, 1, 2, 0, 0, 0, 1, 0, -1, 1, 0, 0, -2, -1, 0, 2, 1, -2, 0, 0, 0, 1, 0, 0, 2, 2, 1, -2, 0, 2, 0, 1, -2, 1, 0, 2, 1, 0, 0, 1, -2, 0, -1, 0, 1, 0, 0, -2, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, -1, -1, 1, 0, 0, 0, 1, 1, 0, 0, 0, -1, 1, 2, 2, 2, -1, -1, 2, 2, 0, 0, -2, 2, 2, 0, 0, 3, 2, 2, 2, -1, 0, 2, 2];
+
+  /**
+   * Tableau des Delta T (différence entre Temps universel et temps terrestre)
+   * tous les 2 ans de 1620 à 2014
+   * @access private
+   * @author John Walker & Gilles Toubiana
+   * @since 0.0.1
+   * @see {@link http://fourmilab.ch/documents/calendar/|deltaTtab} |
+   * {@link http://maia.usno.navy.mil/ser7/deltat.data|Valeurs} |
+   * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions} |
+   * {@link http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html|Expressions}
+   * @constant {Array}
+   */
+  var delta = [121, 112, 103, 95, 88, 82, 77, 72, 68, 63, 60, 56, 53, 51, 48, 46, 44, 42, 40, 38, 35, 33, 31, 29, 26, 24, 22, 20, 18, 16, 14, 12, 11, 10, 9, 8, 7, 7, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 16, 16, 16, 15, 15, 14, 13, 13.1, 12.5, 12.2, 12, 12, 12, 12, 12, 12, 11.9, 11.6, 11, 10.2, 9.2, 8.2, 7.1, 6.2, 5.6, 5.4, 5.3, 5.4, 5.6, 5.9, 6.2, 6.5, 6.8, 7.1, 7.3, 7.5, 7.6, 7.7, 7.3, 6.2, 5.2, 2.7, 1.4, -1.2, -2.8, -3.8, -4.8, -5.5, -5.3, -5.6, -5.7, -5.9, -6, -6.3, -6.5, -6.2, -4.7, -2.8, -0.1, 2.6, 5.3, 7.7, 10.4, 13.3, 16, 18.2, 20.2, 21.1, 22.4, 23.5, 23.8, 24.3, 24, 23.9, 23.9, 23.7, 24, 24.3, 25.3, 26.2, 27.3, 28.2, 29.1, 30, 30.7, 31.4, 32.2, 33.1, 34, 35, 36.5, 38.3, 40.2, 42.2, 44.9, 46.9, 49, 50.9, 52.5, 54, 55.1, 56.1, 57.2, 58.7, 60.4, 61.9, 63.2, 64, 64.4, 64.6, 65, 65.6, 66.2, 66.7, 67.5];
+
+  /**
+   * Jours juliens des équinoxes avant l'an 1000
+   * @access private
+   * @author John Walker
+   * @since 0.0.1
+   * @see {@link http://fourmilab.ch/documents/calendar/|JDE0tab1000}
+   * @constant {Array}
+   */
+  var jde0Tab1000 = [[1721139.29189, 365242.13740, 0.06134, 0.00111, -0.00071], [1721233.25401, 365241.72562, -0.05323, 0.00907, 0.00025], [1721325.70455, 365242.49558, -0.11677, -0.00297, 0.00074], [1721414.39987, 365242.88257, -0.00769, -0.00933, -0.00006]];
 
   /**
    * Nombre de jours juliens correspondants à l'an 1 gregorien
@@ -345,20 +265,7 @@
    * @see {@link http://fourmilab.ch/documents/calendar/|EquinoxpTerms}
    * @constant {Array}
    */
-  var termesPerEquinoxes = [
-    485, 324.96, 1934.136, 203, 337.23, 32964.467,
-    199, 342.08, 20.186, 182, 27.85, 445267.112,
-    156, 73.14, 45036.886, 136, 171.52, 22518.443,
-    77, 222.54, 65928.934, 74, 296.72, 3034.906,
-    70, 243.58, 9037.513, 58, 119.81, 33718.147,
-    52, 297.17, 150.678, 50, 21.02, 2281.226,
-    45, 247.54, 29929.562, 44, 325.15, 31555.956,
-    29, 60.93, 4443.417, 18, 155.12, 67555.328,
-    17, 288.79, 4562.452, 16, 198.04, 62894.029,
-    14, 199.76, 31436.921, 12, 95.39, 14577.848,
-    12, 287.11, 31931.756, 12, 320.81, 34777.259,
-    9, 227.73, 1222.114, 8, 15.45, 16859.074
-  ];
+  var termesPerEquinoxes = [485, 324.96, 1934.136, 203, 337.23, 32964.467, 199, 342.08, 20.186, 182, 27.85, 445267.112, 156, 73.14, 45036.886, 136, 171.52, 22518.443, 77, 222.54, 65928.934, 74, 296.72, 3034.906, 70, 243.58, 9037.513, 58, 119.81, 33718.147, 52, 297.17, 150.678, 50, 21.02, 2281.226, 45, 247.54, 29929.562, 44, 325.15, 31555.956, 29, 60.93, 4443.417, 18, 155.12, 67555.328, 17, 288.79, 4562.452, 16, 198.04, 62894.029, 14, 199.76, 31436.921, 12, 95.39, 14577.848, 12, 287.11, 31931.756, 12, 320.81, 34777.259, 9, 227.73, 1222.114, 8, 15.45, 16859.074];
 
   /**
    * Pour convertir des degrés en radians
@@ -373,7 +280,7 @@
    * degresVersRadians(90); // 1.5707963267948966
    */
   var degresVersRadians = function degresVersRadians(d) {
-    return (d * Math.PI) / 180.0;
+    return d * Math.PI / 180.0;
   };
 
   /**
@@ -389,7 +296,7 @@
    * normaliserDegres(375); // 15
    */
   var normaliserDegres = function normaliserDegres(a) {
-    return a - 360.0 * (Math.floor(a / 360.0));
+    return a - 360.0 * Math.floor(a / 360.0);
   };
 
   /**
@@ -405,7 +312,7 @@
    * radiansVersDegres(1.5707963267948966); // 90
    */
   var radiansVersDegres = function radiansVersDegres(r) {
-    return (r * 180.0) / Math.PI;
+    return r * 180.0 / Math.PI;
   };
 
   /**
@@ -422,7 +329,7 @@
    * reste(3,2); // 1
    */
   var reste = function reste(a, b) {
-    return a - (b * Math.floor(a / b));
+    return a - b * Math.floor(a / b);
   };
 
   /**
@@ -475,15 +382,11 @@
    * equinoxe(2015,0); // 2457102.4488504543
    */
   var equinoxe = function equinoxe(an, item) {
-    var deltaL;
-    var i;
-    var j;
-    var Jde0;
-    var Jde0tab;
-    var S;
-    var T;
-    var W;
-    var Y;
+    var i = void 0;
+    var j = void 0;
+    var Jde0tab = void 0;
+    var S = void 0;
+    var Y = void 0;
 
     if (an < 1000) {
       Jde0tab = jde0Tab1000;
@@ -492,22 +395,18 @@
       Jde0tab = jde0Tab2000;
       Y = (an - 2000) / 1000;
     }
-    Jde0 = Jde0tab[item][0] + (Jde0tab[item][1] * Y) +
-      (Jde0tab[item][2] * Math.pow(Y, 2)) + (Jde0tab[item][3] *
-        Math.pow(Y, 3)) + (Jde0tab[item][4] * Math.pow(Y, 4));
-    T = (Jde0 - 2451545.0) / 36525;
-    W = (35999.373 * T) - 2.47;
-    deltaL = 1 + (0.0334 * cosinus(W)) + (0.0007 * cosinus(2 * W));
+    var Jde0 = Jde0tab[item][0] + Jde0tab[item][1] * Y + Jde0tab[item][2] * Math.pow(Y, 2) + Jde0tab[item][3] * Math.pow(Y, 3) + Jde0tab[item][4] * Math.pow(Y, 4);
+    var T = (Jde0 - 2451545.0) / 36525;
+    var W = 35999.373 * T - 2.47;
+    var deltaL = 1 + 0.0334 * cosinus(W) + 0.0007 * cosinus(2 * W);
     S = 0;
 
     for (i = j = 0; i < 24; i++) {
-      S += termesPerEquinoxes[j] *
-        cosinus(termesPerEquinoxes[j + 1] +
-          (termesPerEquinoxes[j + 2] * T));
+      S += termesPerEquinoxes[j] * cosinus(termesPerEquinoxes[j + 1] + termesPerEquinoxes[j + 2] * T);
       j += 3;
     }
 
-    return Jde0 + ((S * 0.00001) / deltaL);
+    return Jde0 + S * 0.00001 / deltaL;
   };
 
   /**
@@ -525,22 +424,19 @@
    * deltaT(2015); // 86.41924999999999
    */
   var deltaT = function deltaT(an) {
-    var dt;
-    var f;
-    var i;
-    var t;
+    var dt = void 0;
 
-    if ((an >= 1620) && (an <= 2012)) {
-      i = Math.floor((an - 1620) / 2);
-      f = ((an - 1620) / 2) - i;
-      dt = delta[i] + ((delta[i + 1] - delta[i]) * f);
+    if (an >= 1620 && an <= 2012) {
+      var i = Math.floor((an - 1620) / 2);
+      var f = (an - 1620) / 2 - i;
+      dt = delta[i] + (delta[i + 1] - delta[i]) * f;
     } else {
-      t = (an - 2000) / 100;
+      var t = (an - 2000) / 100;
       if (an < 948) {
-        dt = 2177 + (497 * t) + (44.1 * t * t);
+        dt = 2177 + 497 * t + 44.1 * t * t;
       } else {
-        dt = 102 + (102 * t) + (25.3 * t * t);
-        if ((an > 2000) && (an < 2100)) {
+        dt = 102 + 102 * t + 25.3 * t * t;
+        if (an > 2000 && an < 2100) {
           dt += 0.37 * (an - 2100);
         }
       }
@@ -562,17 +458,15 @@
    * obliquiteEcliptique(2457333.5); // 23.437230456425635
    */
   var obliquiteEcliptique = function obliquiteEcliptique(jj) {
-    var oTerms = [(-4680.93), (-1.55), 1999.25, (-51.38), (-249.67),
-      (-39.05), 7.12, 27.87, 5.79, 2.45
-    ];
+    var oTerms = [-4680.93, -1.55, 1999.25, -51.38, -249.67, -39.05, 7.12, 27.87, 5.79, 2.45];
     var u = (jj - jjAn2000Gregorien) / (siecleJulien * 100);
     var v = u;
-    var eps = 23 + (26 / 60.0) + (21.448 / 3600.0);
-    var i;
+    var eps = 23 + 26 / 60.0 + 21.448 / 3600.0;
+    var i = void 0;
 
     if (Math.abs(u) < 1.0) {
       for (i = 0; i < 10; i++) {
-        eps += (oTerms[i] / 3600.0) * v;
+        eps += oTerms[i] / 3600.0 * v;
         v *= u;
       }
     }
@@ -611,33 +505,23 @@
   var positionSoleil = function positionSoleil(jj) {
     var T = (jj - jjAn2000Gregorien) / siecleJulien;
     var t2 = T * T;
-    var l0 = normaliserDegres(280.46646 + (36000.76983 * T) +
-      (0.0003032 * t2));
-    var M = normaliserDegres(357.52911 + (35999.05029 * T) +
-      (-0.0001537 * t2));
-    var e = 0.016708634 + (-0.000042037 * T) + (-0.0000001267 * t2);
-    var C = ((1.914602 + (-0.004817 * T) + (-0.000014 * t2)) * sinus(M)) +
-      ((0.019993 - (0.000101 * T)) * sinus(2 * M)) +
-      (0.000289 * sinus(3 * M));
+    var l0 = normaliserDegres(280.46646 + 36000.76983 * T + 0.0003032 * t2);
+    var M = normaliserDegres(357.52911 + 35999.05029 * T + -0.0001537 * t2);
+    var e = 0.016708634 + -0.000042037 * T + -0.0000001267 * t2;
+    var C = (1.914602 + -0.004817 * T + -0.000014 * t2) * sinus(M) + (0.019993 - 0.000101 * T) * sinus(2 * M) + 0.000289 * sinus(3 * M);
     var sunLong = l0 + C;
     var sunAnomaly = M + C;
-    var sunR = (1.000001018 * (1 - (e * e))) / (1 + (e * cosinus(sunAnomaly)));
-    var Omega = 125.04 - (1934.136 * T);
-    var Lambda = sunLong + (-0.00569) + (-0.00478 * sinus(Omega));
+    var sunR = 1.000001018 * (1 - e * e) / (1 + e * cosinus(sunAnomaly));
+    var Omega = 125.04 - 1934.136 * T;
+    var Lambda = sunLong + -0.00569 + -0.00478 * sinus(Omega);
     var epsilon0 = obliquiteEcliptique(jj);
-    var epsilon = epsilon0 + (0.00256 * cosinus(Omega));
-    var Alpha = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
-      epsilon0) * sinus(sunLong), cosinus(sunLong))));
-    var Delta = radiansVersDegres(Math.asin(sinus(epsilon0) * sinus(
-      sunLong)));
-    var AlphaApp = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
-      epsilon) * sinus(Lambda), cosinus(Lambda))));
-    var DeltaApp = radiansVersDegres(Math.asin(sinus(epsilon) * sinus(
-      Lambda)));
+    var epsilon = epsilon0 + 0.00256 * cosinus(Omega);
+    var Alpha = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(epsilon0) * sinus(sunLong), cosinus(sunLong))));
+    var Delta = radiansVersDegres(Math.asin(sinus(epsilon0) * sinus(sunLong)));
+    var AlphaApp = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(epsilon) * sinus(Lambda), cosinus(Lambda))));
+    var DeltaApp = radiansVersDegres(Math.asin(sinus(epsilon) * sinus(Lambda)));
 
-    return [l0, M, e, C, sunLong, sunAnomaly, sunR, Lambda, Alpha, Delta,
-      AlphaApp, DeltaApp
-    ];
+    return [l0, M, e, C, sunLong, sunAnomaly, sunR, Lambda, Alpha, Delta, AlphaApp, DeltaApp];
   };
 
   /**
@@ -656,43 +540,32 @@
    */
   var nutation = function nutation(jj) {
     var ta = [];
-    var dp = 0;
-    var de = 0;
     var t = (jj - 2451545.0) / 36525.0;
     var t2 = t * t;
     var t3 = t * t2;
-    var i;
-    var j;
-    var to10;
-    var ang;
+    var dp = 0;
+    var de = 0;
 
-    ta[0] = degresVersRadians(297.850363 + 445267.11148 * t - 0.0019142 *
-      t2 + t3 / 189474.0);
-    ta[1] = degresVersRadians(357.52772 + 35999.05034 * t - 0.0001603 *
-      t2 - t3 / 300000.0);
-    ta[2] = degresVersRadians(134.96298 + 477198.867398 * t + 0.0086972 *
-      t2 + t3 / 56250.0);
-    ta[3] = degresVersRadians(93.27191 + 483202.017538 * t - 0.0036825 *
-      t2 + t3 / 327270);
-    ta[4] = degresVersRadians(125.04452 - 1934.136261 * t + 0.0020708 *
-      t2 + t3 / 450000.0);
-    for (i = 0; i < 5; i++) {
-      ta[i] -= (2 * Math.PI) * (Math.floor(ta[i] / (2 * Math.PI)));
+    ta[0] = degresVersRadians(297.850363 + 445267.11148 * t - 0.0019142 * t2 + t3 / 189474.0);
+    ta[1] = degresVersRadians(357.52772 + 35999.05034 * t - 0.0001603 * t2 - t3 / 300000.0);
+    ta[2] = degresVersRadians(134.96298 + 477198.867398 * t + 0.0086972 * t2 + t3 / 56250.0);
+    ta[3] = degresVersRadians(93.27191 + 483202.017538 * t - 0.0036825 * t2 + t3 / 327270);
+    ta[4] = degresVersRadians(125.04452 - 1934.136261 * t + 0.0020708 * t2 + t3 / 450000.0);
+    for (var i = 0; i < 5; i++) {
+      ta[i] -= 2 * Math.PI * Math.floor(ta[i] / (2 * Math.PI));
     }
-    to10 = t / 10.0;
+    var to10 = t / 10.0;
 
-    for (i = 0; i < 63; i++) {
-      ang = 0;
+    for (var _i = 0; _i < 63; _i++) {
+      var ang = 0;
 
-      for (j = 0; j < 5; j++) {
-        if (argNutMult[(i * 5) + j] !== 0) {
-          ang += argNutMult[(i * 5) + j] * ta[j];
+      for (var j = 0; j < 5; j++) {
+        if (argNutMult[_i * 5 + j] !== 0) {
+          ang += argNutMult[_i * 5 + j] * ta[j];
         }
       }
-      dp += (argNutCoeff[(i * 4) + 0] +
-        argNutCoeff[(i * 4) + 1] * to10) * Math.sin(ang);
-      de += (argNutCoeff[(i * 4) + 2] +
-        argNutCoeff[(i * 4) + 3] * to10) * Math.cos(ang);
+      dp += (argNutCoeff[_i * 4 + 0] + argNutCoeff[_i * 4 + 1] * to10) * Math.sin(ang);
+      de += (argNutCoeff[_i * 4 + 2] + argNutCoeff[_i * 4 + 3] * to10) * Math.cos(ang);
     }
 
     return [dp / (3600.0 * 10000.0), de / (3600.0 * 10000.0)];
@@ -712,16 +585,13 @@
    */
   var equationDuTemps = function equationDuTemps(jj) {
     var tau = (jj - jjAn2000Gregorien) / (siecleJulien * 10);
-    var l0 = normaliserDegres(280.4664567 + (360007.6982779 * tau) +
-      (0.03032028 * Math.pow(tau, 2)) + ((Math.pow(tau, 3)) / 49931) +
-      (-((Math.pow(tau, 4)) / 15300)) + (-((Math.pow(tau, 5)) / 2000000))
-    );
+    var l0 = normaliserDegres(280.4664567 + 360007.6982779 * tau + 0.03032028 * Math.pow(tau, 2) + Math.pow(tau, 3) / 49931 + -(Math.pow(tau, 4) / 15300) + -(Math.pow(tau, 5) / 2000000));
     var alpha = positionSoleil(jj)[10];
     var deltaPsi = nutation(jj)[0];
     var epsilon = obliquiteEcliptique(jj) + nutation(jj)[1];
-    var E = l0 + (-0.0057183) + (-alpha) + (deltaPsi * cosinus(epsilon));
+    var E = l0 + -0.0057183 + -alpha + deltaPsi * cosinus(epsilon);
 
-    E -= 20.0 * (Math.floor(E / 20.0));
+    E -= 20.0 * Math.floor(E / 20.0);
 
     return E / (24 * 60);
   };
@@ -741,15 +611,10 @@
    * fractionEquinoxe(2015); // 2457288.855100263
    */
   var fractionEquinoxe = function fractionEquinoxe(an) {
-    var dtParis;
-    var equAPP;
-    var equJD;
-    var equJED;
-
-    equJED = equinoxe(an, 2);
-    equJD = equJED - (deltaT(an) / (24 * 60 * 60));
-    equAPP = equJD + equationDuTemps(equJED);
-    dtParis = (2 + (20 / 60.0) + (15 / (60 * 60.0))) / 360;
+    var equJED = equinoxe(an, 2);
+    var equJD = equJED - deltaT(an) / (24 * 60 * 60);
+    var equAPP = equJD + equationDuTemps(equJED);
+    var dtParis = (2 + 20 / 60.0 + 15 / (60 * 60.0)) / 360;
 
     return equAPP + dtParis;
   };
@@ -786,32 +651,7 @@
    * gregorienBissextile(2012); // true
    */
   var gregorienBissextile = function gregorienBissextile(an) {
-    return ((an % 4) === 0) && (!(((an % 100) === 0) &&
-      ((an % 400) !== 0)));
-  };
-
-  /**
-   * Pour calculer le nombre de jours juliens (jj) à partir d'une date
-   * grégorienne
-   * @access private
-   * @author John Walker
-   * @since 0.0.1
-   * @license Domaine public
-   * @see {@link http://fourmilab.ch/documents/calendar/|gregorian_to_jd}
-   * @param {Number} an - Année grégorienne
-   * @param {Number} mois - Mois grégorien
-   * @param {Number} jour - Jour grégorien
-   * @return {Number} Nombre de jours juliens
-   * @example
-   * gregorienVersJj(2015,11,7); // 2457333.5
-   */
-  var gregorienVersJj = function gregorienVersJj(an, mois, jour) {
-    var anneeBissextile = gregorienBissextile(an) ? -1 : -2;
-
-    return (jjAn1Gregorien - 1) + (365 * (an - 1)) +
-      Math.floor((an - 1) / 4) + (-Math.floor((an - 1) / 100)) +
-      Math.floor((an - 1) / 400) + Math.floor((((367 * mois) - 362) / 12) +
-        ((mois <= 2) ? 0 : anneeBissextile) + jour);
+    return an % 4 === 0 && !(an % 100 === 0 && an % 400 !== 0);
   };
 
   /**
@@ -836,20 +676,13 @@
     var quad = Math.floor(dcent / 1461);
     var dquad = reste(dcent, 1461);
     var yindex = Math.floor(dquad / 365);
-    var an = (quadricent * 400) + (cent * 100) + (quad * 4) + yindex;
-    var anneeBissextile = (gregorienBissextile(an) ? 1 : 2);
-    var yearday;
-    var leapadj;
-    var mois;
-    var jour;
-
-    if (!((cent === 4) || (yindex === 4))) {
-      an++;
-    }
-    yearday = wjd - gregorienVersJj(an, 1, 1);
-    leapadj = ((wjd < gregorienVersJj(an, 3, 1)) ? 0 : anneeBissextile);
-    mois = Math.floor((((yearday + leapadj) * 12) + 373) / 367);
-    jour = (wjd - gregorienVersJj(an, mois, 1)) + 1;
+    var an = quadricent * 400 + cent * 100 + quad * 4 + yindex;
+    var anneeBissextile = gregorienBissextile(an) ? 1 : 2;
+    if (!(cent === 4 || yindex === 4)) an++;
+    var yearday = wjd - gregorienVersJj(an, 1, 1);
+    var leapadj = wjd < gregorienVersJj(an, 3, 1) ? 0 : anneeBissextile;
+    var mois = Math.floor(((yearday + leapadj) * 12 + 373) / 367);
+    var jour = wjd - gregorienVersJj(an, mois, 1) + 1;
 
     return [an, mois, jour];
   };
@@ -887,21 +720,19 @@
   var anRepublicain = function anRepublicain(jj) {
     var guess = jjVersGregorien(jj)[0] - 2;
     var lasteq = equinoxeAParis(guess);
-    var adr;
-    var nexteq;
 
     while (lasteq > jj) {
       guess--;
       lasteq = equinoxeAParis(guess);
     }
 
-    nexteq = lasteq - 1;
-    while (!((lasteq <= jj) && (jj < nexteq))) {
+    var nexteq = lasteq - 1;
+    while (!(lasteq <= jj && jj < nexteq)) {
       lasteq = nexteq;
       guess++;
       nexteq = equinoxeAParis(guess);
     }
-    adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) + 1;
+    var adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) + 1;
 
     return [adr, lasteq];
   };
@@ -945,9 +776,9 @@
     var c = Math.floor((b - 122.1) / 365.25);
     var d = Math.floor(365.25 * c);
     var e = Math.floor((b - d) / 30.6001);
-    var mois = Math.floor((e < 14) ? (e - 1) : (e - 13));
-    var an = Math.floor((mois > 2) ? (c - 4716) : (c - 4715));
+    var mois = Math.floor(e < 14 ? e - 1 : e - 13);
     var jour = b - d - Math.floor(30.6001 * e);
+    var an = Math.floor(mois > 2 ? c - 4716 : c - 4715);
 
     if (an < 1) {
       an--;
@@ -978,7 +809,7 @@
     var jour = (tempJj - equinox) % 30;
     var decade = Math.floor(jour / 10) + 1;
 
-    jour = (jour % 10) + 1;
+    jour = jour % 10 + 1;
 
     return [an, mois, decade, jour];
   };
@@ -1000,9 +831,8 @@
    */
   var remplacements = function remplacements(texte, regex, options) {
     var tempTexte = texte;
-    var val;
 
-    for (val in regex) {
+    for (var val in regex) {
       // istanbul ignore else
       if (regex.hasOwnProperty(val)) {
         tempTexte = tempTexte.replace(new RegExp(val, options), regex[val]);
@@ -1028,7 +858,7 @@
    * republicainVersJj(12, 2, 2, 6); // 2379902.5
    */
   var republicainVersJj = function republicainVersJj(an, mois, decade, jour) {
-    var guess = jjDebutRepublicain + (anneeTropique * ((an - 1) - 1));
+    var guess = jjDebutRepublicain + anneeTropique * (an - 1 - 1);
     var adr = [an - 1, 0];
 
     while (adr[0] < an) {
@@ -1036,7 +866,7 @@
       guess = adr[1] + (anneeTropique + 2);
     }
 
-    return adr[1] + (30 * (mois - 1)) + (10 * (decade - 1)) + (jour - 1);
+    return adr[1] + 30 * (mois - 1) + 10 * (decade - 1) + (jour - 1);
   };
 
   /**
@@ -1052,8 +882,8 @@
    * rjmcVersRdc(28); // 3
    */
   var rjmcVersRdc = function rjmcVersRdc(rjmc) {
-    return (Math.abs(parseInt(rjmc, 10) % 10) === 0) ? Math.abs(parseInt(rjmc /
-      10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
+    var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? Math.abs(parseInt(rjmc / 10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
+    return resultat;
   };
 
   /**
@@ -1069,8 +899,8 @@
    * rjmcVersRjdc(28); // 8
    */
   var rjmcVersRjdc = function rjmcVersRjdc(rjmc) {
-    return (Math.abs(parseInt(rjmc, 10) % 10) === 0) ? 10 : Math.abs(parseInt(
-      rjmc, 10) % 10);
+    var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? 10 : Math.abs(parseInt(rjmc, 10) % 10);
+    return resultat;
   };
 
   /**
@@ -1127,15 +957,14 @@
    */
   var saisieValide = function saisieValide(saisie, regexp) {
     var tempSaisie = saisie;
-    var u;
+    var u = void 0;
 
     // On remplace le texte restant par des chiffres arabes
-    tempSaisie = remplacements(tempSaisie, regexp, 'gi')
-      .split(/[\/\.]+/gi);
+    tempSaisie = remplacements(tempSaisie, regexp, 'gi').split(/[\/\.]+/gi);
 
     // Si il n'y a que l'année [1,1,ac]
     if (!tempSaisie[1] && !tempSaisie[2]) {
-      if ((tempSaisie[0].match(/\d-/gi)) || (tempSaisie[0] === '')) {
+      if (tempSaisie[0].match(/\d-/gi) || tempSaisie[0] === '') {
         tempSaisie[0] = u;
       } else {
         tempSaisie = [1, 1, tempSaisie[0]];
@@ -1169,27 +998,17 @@
    * tabGregorien(saisie, this.limites);
    */
   var tabGregorien = function tabGregorien(saisie, limites) {
-    // ie8 debug
-    var iesaisie = (saisie[0] === '/') ? '1' + saisie : saisie;
-
     // Uniformisation de la saisie
+    var iesaisie = saisie[0] === '/' ? '1' + saisie : saisie;
     var saisieGregorien = saisieValide(iesaisie, regexpGregorien);
-
-    // var saisieGregorien = saisieValide(saisie, regexpGregorien);
     var tab = [];
-    var dateJulienne;
-    var dateRepublicaine;
 
     // Lorsque la date est valide [gjmc,gmc,gac]
-    if (saisieGregorien[2] && saisieGregorien[0] < 32 &&
-      absInt(saisieGregorien[0]) !== 0 &&
-      saisieGregorien[1] < 13 && saisieGregorien[1] !== '' &&
-      absInt(saisieGregorien[1]) !== 0) {
-      tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
-        saisieGregorien[1]), absInt(saisieGregorien[0]));
+    if (saisieGregorien[2] && saisieGregorien[0] < 32 && absInt(saisieGregorien[0]) !== 0 && saisieGregorien[1] < 13 && saisieGregorien[1] !== '' && absInt(saisieGregorien[1]) !== 0) {
+      tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(saisieGregorien[1]), absInt(saisieGregorien[0]));
 
       // Limitations gregorien/julien
-      if ((limites === true) && (tab[4] < jjDebutGregorien)) {
+      if (limites === true && tab[4] < jjDebutGregorien) {
         tab[5] = absInt(saisieGregorien[0]);
         tab[6] = absInt(saisieGregorien[1]);
         tab[7] = parseInt(saisieGregorien[2], 10);
@@ -1199,7 +1018,7 @@
         tab[1] = absInt(saisieGregorien[1]);
         tab[2] = parseInt(saisieGregorien[2], 10);
         tab[3] = dateValide(tab[0], tab[1], tab[2]);
-        dateJulienne = jjVersJulien(tab[4]);
+        var dateJulienne = jjVersJulien(tab[4]);
         tab[5] = dateJulienne[2];
         tab[6] = dateJulienne[1];
         tab[7] = dateJulienne[0];
@@ -1207,16 +1026,9 @@
       }
 
       // Limitations republicain
-      if (((tab[4] >= jjDebutRepublicain) &&
-          (tab[4] <= jjFinRepublicain)) ||
-        ((tab[4] >= jjDebutCommuneDeParis) &&
-          (tab[4] <= jjFinCommuneDeParis)) ||
-        limites === false) {
-        dateRepublicaine = jjVersRepublicain(tab[4]);
-        tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
-            dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
-          dateRepublicaine[1], dateRepublicaine[0]
-        ]);
+      if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain || tab[4] >= jjDebutCommuneDeParis && tab[4] <= jjFinCommuneDeParis || limites === false) {
+        var dateRepublicaine = jjVersRepublicain(tab[4]);
+        tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3], dateRepublicaine[1], dateRepublicaine[0]]);
       }
     }
 
@@ -1240,47 +1052,36 @@
    */
   var tabRepublicain = function tabRepublicain(saisie, limites) {
     // On remplace les chiffres romains en chiffres arabes
-    var saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
-      function romainNegatif(x, p1) {
-        return (x.match(/-/)) ? ' -' + romainVersArabe(p1) : ' ' +
-          romainVersArabe(p1);
-      });
+    var saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi, function (x, p1) {
+      var rva = romainVersArabe(p1);
+      return x.match(/-/) ? ' -' + rva : ' ' + rva;
+    });
     var tab = [];
-    var dateJulienne;
-    var dateGregorienne;
 
     // Uniformisation de la saisie
     saisieRepublicain = saisieValide(saisieRepublicain, regexpRepublicain);
 
     // Lorsque la date est valide [rjmc,rmc,rac]
-    if (saisieRepublicain[2] && saisieRepublicain[0] < 30 &&
-      absInt(saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
-      absInt(saisieRepublicain[1]) !== 0) {
-      tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),
-        parseInt(saisieRepublicain[1], 10), rjmcVersRdc(saisieRepublicain[0]),
-        rjmcVersRjdc(saisieRepublicain[0]));
+    if (saisieRepublicain[2] && saisieRepublicain[0] < 30 && absInt(saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 && absInt(saisieRepublicain[1]) !== 0) {
+      tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10), parseInt(saisieRepublicain[1], 10), rjmcVersRdc(saisieRepublicain[0]), rjmcVersRjdc(saisieRepublicain[0]));
 
       // Si jj (tab[4]) est dans les limites ou en illimité
-      if (((tab[4] >= jjDebutRepublicain) &&
-          (tab[4] <= jjFinRepublicain)) ||
-        ((tab[4] >= jjDebutCommuneDeParis) &&
-          (tab[4] <= jjFinCommuneDeParis)) ||
-        limites === false) {
+      if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain || tab[4] >= jjDebutCommuneDeParis && tab[4] <= jjFinCommuneDeParis || limites === false) {
+        var dateGregorienne = jjVersGregorien(tab[4]);
+        var dateJulienne = jjVersJulien(tab[4]);
+        tab[0] = dateGregorienne[2];
+        tab[1] = dateGregorienne[1];
+        tab[2] = dateGregorienne[0];
+        tab[3] = dateValide(tab[0], tab[1], tab[2]);
+        tab[5] = dateJulienne[2];
+        tab[6] = dateJulienne[1];
+        tab[7] = dateJulienne[0];
+        tab[8] = dateValide(tab[5], tab[6], tab[7]);
         tab[9] = rjmcVersRjdc(saisieRepublicain[0]);
         tab[10] = rjmcVersRdc(saisieRepublicain[0]);
         tab[11] = absInt(saisieRepublicain[0]);
         tab[12] = parseInt(saisieRepublicain[1], 10);
         tab[13] = parseInt(saisieRepublicain[2], 10);
-        dateGregorienne = jjVersGregorien(tab[4]);
-        tab[2] = dateGregorienne[0];
-        tab[1] = dateGregorienne[1];
-        tab[0] = dateGregorienne[2];
-        tab[3] = dateValide(tab[0], tab[1], tab[2]);
-        dateJulienne = jjVersJulien(tab[4]);
-        tab[7] = dateJulienne[0];
-        tab[6] = dateJulienne[1];
-        tab[5] = dateJulienne[2];
-        tab[8] = dateValide(tab[5], tab[6], tab[7]);
       }
     }
 
@@ -1301,11 +1102,11 @@
    * @param {Function} [rappel] - Une fonction de rappel
    * @return {String} La date grégorienne formatée
    * @example
-   * acte.jour('8 mai 1972').gregorien(); // "8/5/1972"
-
-  acte.Jour.prototype.gregorien = function (format, erreur, rappel) {
+   * new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
+  acte.Jour.prototype.gregorien = function gregorien(format, erreur, rappel) {
+    rappel();
     return this.variables.gregorien.ac;
-  }
+  };
   */
 
   /**
@@ -1325,24 +1126,26 @@
    * 31/12/1805 (Période républicaine) et du 18/3/1871 au 28/5/1871
    * (Commune de Paris).<br>
    * La valeur `false` permet de désactiver ces limitations.
-   * @version 0.0.1
+   * @version 0.0.7
    * @since 0.0.1
    * @license MIT
    */
   acte.Jour = function Jour(saisie, limites) {
+    _classCallCheck(this, Jour);
+
     var tab = [];
 
     this.variables = this.variables || {};
     this.limites = limites !== false;
 
-    // On detecte si c'est une date républicaine
+    // On détecte si c'est une date républicaine
     if (saisie.match(/\W?an\s-?([-MDCLXVI]+|\d+)\W?/gi)) {
       tab = tabRepublicain(saisie, this.limites);
 
-      // Si ce n'est pas du républicain (donc gregorien ou julien)
+      // Si ce n'est pas du républicain (donc grégorien ou julien)
     } else {
-      tab = tabGregorien(saisie, this.limites);
-    }
+        tab = tabGregorien(saisie, this.limites);
+      }
 
     // Ecriture de toutes les valeurs
     this.variables = {
@@ -1371,4 +1174,4 @@
   };
 
   return acte;
-}));
+});

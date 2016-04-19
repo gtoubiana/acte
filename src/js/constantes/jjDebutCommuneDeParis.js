@@ -11,4 +11,4 @@
  * jjVersGregorien(2404504.5); // [1871, 3, 18]
  * jjVersRepublicain(2404504.5); // [79, 6, 3, 7]
  */
-var jjDebutCommuneDeParis = 2404504.5;
+const jjDebutCommuneDeParis = 2404504.5;

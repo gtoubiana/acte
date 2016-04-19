@@ -30,7 +30,7 @@ acte - Librairie Javascript pour manipuler des données généalogiques
 **Accès** : public  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
-**Version** : 0.0.1  
+**Version** : 0.0.7  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
 <a name="new_acte.Jour_new"></a>

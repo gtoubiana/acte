@@ -1,0 +1,17 @@
+{
+    "extends": "../.eslintrc",
+
+    "rules": {
+        "func-names": 0,
+        "quotes": 0,
+        "max-len": 0,
+        "no-undefined": 0,
+        "wrap-iife": 0,
+        "strict": [2, "safe"],
+        "eol-last": 0,
+        "no-invalid-this": 0,
+        "vars-on-top": 0,
+        "newline-after-var": 0,
+        "func-style": 0,
+    }
+}

@@ -6,4 +6,4 @@
  * @see {@link http://fourmilab.ch/documents/calendar/|JulianCentury}
  * @constant {Number}
  */
-var siecleJulien = 36525.0;
+const siecleJulien = 36525.0;

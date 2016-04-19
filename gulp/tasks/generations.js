@@ -1,6 +1,7 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp generations
  */
+var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var config = require('../config');
 var fs = require('fs');
@@ -84,6 +85,9 @@ gulp.task('generations.script', function () {
       }))
     .pipe(size({
       title: 'Original  acte.js Size ->'
+    }))
+    .pipe(babel({
+      presets: ['es2015']
     }))
     .pipe(gulp.dest(config.paths.dist));
 });

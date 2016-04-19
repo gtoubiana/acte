@@ -10,7 +10,5 @@
  * @example
  * gregorienBissextile(2012); // true
  */
-var gregorienBissextile = function gregorienBissextile(an) {
-  return ((an % 4) === 0) && (!(((an % 100) === 0) &&
-    ((an % 400) !== 0)));
-};
+const gregorienBissextile = an => ((an % 4) === 0) &&
+  (!(((an % 100) === 0) && ((an % 400) !== 0)));

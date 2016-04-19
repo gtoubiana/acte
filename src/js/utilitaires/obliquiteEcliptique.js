@@ -10,14 +10,14 @@
  * @example
  * obliquiteEcliptique(2457333.5); // 23.437230456425635
  */
-var obliquiteEcliptique = function obliquiteEcliptique(jj) {
-  var oTerms = [(-4680.93), (-1.55), 1999.25, (-51.38), (-249.67),
-    (-39.05), 7.12, 27.87, 5.79, 2.45
+const obliquiteEcliptique = jj => {
+  const oTerms = [(-4680.93), (-1.55), 1999.25, (-51.38), (-249.67),
+    (-39.05), 7.12, 27.87, 5.79, 2.45,
   ];
-  var u = (jj - jjAn2000Gregorien) / (siecleJulien * 100);
-  var v = u;
-  var eps = 23 + (26 / 60.0) + (21.448 / 3600.0);
-  var i;
+  const u = (jj - jjAn2000Gregorien) / (siecleJulien * 100);
+  let v = u;
+  let eps = 23 + (26 / 60.0) + (21.448 / 3600.0);
+  let i;
 
   if (Math.abs(u) < 1.0) {
     for (i = 0; i < 10; i++) {

@@ -10,6 +10,4 @@
  * @example
  * normaliserDegres(375); // 15
  */
-var normaliserDegres = function normaliserDegres(a) {
-  return a - 360.0 * (Math.floor(a / 360.0));
-};
+const normaliserDegres = a => a - 360.0 * (Math.floor(a / 360.0));

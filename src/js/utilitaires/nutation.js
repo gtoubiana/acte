@@ -12,17 +12,13 @@
  * nutation(2457333.5);
  * // [-0.000514859690208824, -0.0025586654864005456]
  */
-var nutation = function nutation(jj) {
-  var ta = [];
-  var dp = 0;
-  var de = 0;
-  var t = (jj - 2451545.0) / 36525.0;
-  var t2 = t * t;
-  var t3 = t * t2;
-  var i;
-  var j;
-  var to10;
-  var ang;
+const nutation = jj => {
+  const ta = [];
+  const t = (jj - 2451545.0) / 36525.0;
+  const t2 = t * t;
+  const t3 = t * t2;
+  let dp = 0;
+  let de = 0;
 
   ta[0] = degresVersRadians(297.850363 + 445267.11148 * t - 0.0019142 *
     t2 + t3 / 189474.0);
@@ -34,15 +30,15 @@ var nutation = function nutation(jj) {
     t2 + t3 / 327270);
   ta[4] = degresVersRadians(125.04452 - 1934.136261 * t + 0.0020708 *
     t2 + t3 / 450000.0);
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     ta[i] -= (2 * Math.PI) * (Math.floor(ta[i] / (2 * Math.PI)));
   }
-  to10 = t / 10.0;
+  const to10 = t / 10.0;
 
-  for (i = 0; i < 63; i++) {
-    ang = 0;
+  for (let i = 0; i < 63; i++) {
+    let ang = 0;
 
-    for (j = 0; j < 5; j++) {
+    for (let j = 0; j < 5; j++) {
       if (argNutMult[(i * 5) + j] !== 0) {
         ang += argNutMult[(i * 5) + j] * ta[j];
       }

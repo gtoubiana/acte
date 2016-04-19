@@ -12,24 +12,22 @@
  * @example
  * anRepublicain(2379902.5); // [12, 2379857.5]
  */
-var anRepublicain = function anRepublicain(jj) {
-  var guess = jjVersGregorien(jj)[0] - 2;
-  var lasteq = equinoxeAParis(guess);
-  var adr;
-  var nexteq;
+const anRepublicain = jj => {
+  let guess = jjVersGregorien(jj)[0] - 2;
+  let lasteq = equinoxeAParis(guess);
 
   while (lasteq > jj) {
     guess--;
     lasteq = equinoxeAParis(guess);
   }
 
-  nexteq = lasteq - 1;
+  let nexteq = lasteq - 1;
   while (!((lasteq <= jj) && (jj < nexteq))) {
     lasteq = nexteq;
     guess++;
     nexteq = equinoxeAParis(guess);
   }
-  adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) + 1;
+  const adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) + 1;
 
   return [adr, lasteq];
 };

@@ -12,9 +12,9 @@
  * @param {Function} [rappel] - Une fonction de rappel
  * @return {String} La date grégorienne formatée
  * @example
- * acte.jour('8 mai 1972').gregorien(); // "8/5/1972"
-
-acte.Jour.prototype.gregorien = function (format, erreur, rappel) {
+ * new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
+acte.Jour.prototype.gregorien = function gregorien(format, erreur, rappel) {
+  rappel();
   return this.variables.gregorien.ac;
-}
+};
 */

@@ -12,18 +12,15 @@
  * @example
  * deltaT(2015); // 86.41924999999999
  */
-var deltaT = function deltaT(an) {
-  var dt;
-  var f;
-  var i;
-  var t;
+const deltaT = an => {
+  let dt;
 
   if ((an >= 1620) && (an <= 2012)) {
-    i = Math.floor((an - 1620) / 2);
-    f = ((an - 1620) / 2) - i;
+    const i = Math.floor((an - 1620) / 2);
+    const f = ((an - 1620) / 2) - i;
     dt = delta[i] + ((delta[i + 1] - delta[i]) * f);
   } else {
-    t = (an - 2000) / 100;
+    const t = (an - 2000) / 100;
     if (an < 948) {
       dt = 2177 + (497 * t) + (44.1 * t * t);
     } else {

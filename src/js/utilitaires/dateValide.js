@@ -12,8 +12,8 @@
  * @example
  * dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
  */
-var dateValide = function dateValide(jour, mois, an) {
-  var resultat = new Date(an, mois - 1, jour);
+const dateValide = (jour, mois, an) => {
+  const resultat = new Date(an, mois - 1, jour);
 
   resultat.setFullYear(an);
 

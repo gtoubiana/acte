@@ -10,6 +10,4 @@
  * @example
  * degresVersRadians(90); // 1.5707963267948966
  */
-var degresVersRadians = function degresVersRadians(d) {
-  return (d * Math.PI) / 180.0;
-};
+const degresVersRadians = d => (d * Math.PI) / 180.0;

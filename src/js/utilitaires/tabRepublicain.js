@@ -13,16 +13,14 @@
  * @example
  * tabRepublicain(saisie, this.limites);
  */
-var tabRepublicain = function tabRepublicain(saisie, limites) {
+const tabRepublicain = (saisie, limites) => {
   // On remplace les chiffres romains en chiffres arabes
-  var saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
-    function romainNegatif(x, p1) {
-      return (x.match(/-/)) ? ' -' + romainVersArabe(p1) : ' ' +
-        romainVersArabe(p1);
+  let saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
+    (x, p1) => {
+      const rva = romainVersArabe(p1);
+      return (x.match(/-/)) ? ` -${rva}` : ` ${rva}`;
     });
-  var tab = [];
-  var dateJulienne;
-  var dateGregorienne;
+  const tab = [];
 
   // Uniformisation de la saisie
   saisieRepublicain = saisieValide(saisieRepublicain, regexpRepublicain);
@@ -41,21 +39,21 @@ var tabRepublicain = function tabRepublicain(saisie, limites) {
       ((tab[4] >= jjDebutCommuneDeParis) &&
         (tab[4] <= jjFinCommuneDeParis)) ||
       limites === false) {
+      const dateGregorienne = jjVersGregorien(tab[4]);
+      const dateJulienne = jjVersJulien(tab[4]);
+      tab[0] = dateGregorienne[2];
+      tab[1] = dateGregorienne[1];
+      tab[2] = dateGregorienne[0];
+      tab[3] = dateValide(tab[0], tab[1], tab[2]);
+      tab[5] = dateJulienne[2];
+      tab[6] = dateJulienne[1];
+      tab[7] = dateJulienne[0];
+      tab[8] = dateValide(tab[5], tab[6], tab[7]);
       tab[9] = rjmcVersRjdc(saisieRepublicain[0]);
       tab[10] = rjmcVersRdc(saisieRepublicain[0]);
       tab[11] = absInt(saisieRepublicain[0]);
       tab[12] = parseInt(saisieRepublicain[1], 10);
       tab[13] = parseInt(saisieRepublicain[2], 10);
-      dateGregorienne = jjVersGregorien(tab[4]);
-      tab[2] = dateGregorienne[0];
-      tab[1] = dateGregorienne[1];
-      tab[0] = dateGregorienne[2];
-      tab[3] = dateValide(tab[0], tab[1], tab[2]);
-      dateJulienne = jjVersJulien(tab[4]);
-      tab[7] = dateJulienne[0];
-      tab[6] = dateJulienne[1];
-      tab[5] = dateJulienne[2];
-      tab[8] = dateValide(tab[5], tab[6], tab[7]);
     }
   }
 

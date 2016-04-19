@@ -10,14 +10,14 @@
  * @example
  * jjVersJulien(2457346.5); // [2015,11,7]
  */
-var jjVersJulien = function jjVersJulien(jj) {
-  var b = Math.floor(jj + 0.5) + 1524;
-  var c = Math.floor((b - 122.1) / 365.25);
-  var d = Math.floor(365.25 * c);
-  var e = Math.floor((b - d) / 30.6001);
-  var mois = Math.floor((e < 14) ? (e - 1) : (e - 13));
-  var an = Math.floor((mois > 2) ? (c - 4716) : (c - 4715));
-  var jour = b - d - Math.floor(30.6001 * e);
+const jjVersJulien = jj => {
+  const b = Math.floor(jj + 0.5) + 1524;
+  const c = Math.floor((b - 122.1) / 365.25);
+  const d = Math.floor(365.25 * c);
+  const e = Math.floor((b - d) / 30.6001);
+  const mois = Math.floor((e < 14) ? (e - 1) : (e - 13));
+  const jour = b - d - Math.floor(30.6001 * e);
+  let an = Math.floor((mois > 2) ? (c - 4716) : (c - 4715));
 
   if (an < 1) {
     an--;

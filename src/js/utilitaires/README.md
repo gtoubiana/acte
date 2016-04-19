@@ -14,7 +14,6 @@
 * [equinoxeAParis(an)](#equinoxeAParis) ⇒ <code>Nombre</code> ℗
 * [fractionEquinoxe(an)](#fractionEquinoxe) ⇒ <code>Nombre</code> ℗
 * [gregorienBissextile(an)](#gregorienBissextile) ⇒ <code>Booléen</code> ℗
-* [gregorienVersJj(an, mois, jour)](#gregorienVersJj) ⇒ <code>Nombre</code> ℗
 * [jjVersGregorien(jj)](#jjVersGregorien) ⇒ <code>Tableau</code> ℗
 * [jjVersJulien(jj)](#jjVersJulien) ⇒ <code>Tableau</code> ℗
 * [jjVersRepublicain(jj)](#jjVersRepublicain) ⇒ <code>Tableau</code> ℗
@@ -297,30 +296,6 @@ Pour déterminer si une année grégorienne est bissextile
 **Exemple** :  
 ```js
 gregorienBissextile(2012); // true
-```
-<a name="gregorienVersJj"></a>
-
-## gregorienVersJj(an, mois, jour) ⇒ <code>Nombre</code> ℗
-Pour calculer le nombre de jours juliens (jj) à partir d'une date
-grégorienne
-
-**Type** : Fonction  
-**Résultat** : <code>Nombre</code> - Nombre de jours juliens  
-**Accès** : privé  
-**Voir** : [gregorian_to_jd](http://fourmilab.ch/documents/calendar/)  
-**Depuis** : 0.0.1  
-**Auteur** : John Walker  
-**Licence** : Domaine public  
-
-| Paramètres | Type | Description |
-| --- | --- | --- |
-| an | <code>Nombre</code> | Année grégorienne |
-| mois | <code>Nombre</code> | Mois grégorien |
-| jour | <code>Nombre</code> | Jour grégorien |
-
-**Exemple** :  
-```js
-gregorienVersJj(2015,11,7); // 2457333.5
 ```
 <a name="jjVersGregorien"></a>
 

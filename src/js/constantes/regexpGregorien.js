@@ -6,7 +6,7 @@
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Object}
  */
-var regexpGregorien = {
+const regexpGregorien = {
   'jan(v)?(\\.)?(ier)?': '/1/',
   'f(é|e)v(r)?(\\.)?(ier)?': '/2/',
   'mar(s|\\.)?': '/3/',
@@ -23,5 +23,5 @@ var regexpGregorien = {
   '9bre': '/11/',
   'd(é|e)c(embre|\\.)?': '/12/',
   Xbre: '/12/',
-  '[^-()\\d/*+.]': ''
+  '[^-()\\d/*+.]': '',
 };

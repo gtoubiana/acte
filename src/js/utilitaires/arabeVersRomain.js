@@ -10,8 +10,8 @@
  * @example
  * arabeVersRomain(2012); // 'MMXII'
  */
-var arabeVersRomain = function arabeVersRomain(arabe) {
-  var lookup = {
+const arabeVersRomain = (arabe) => {
+  const lookup = {
     M: 1000,
     CM: 900,
     D: 500,
@@ -24,11 +24,11 @@ var arabeVersRomain = function arabeVersRomain(arabe) {
     IX: 9,
     V: 5,
     IV: 4,
-    I: 1
+    I: 1,
   };
-  var tempArabe = arabe;
-  var romain = '';
-  var i;
+  let tempArabe = arabe;
+  let romain = '';
+  let i;
 
   for (i in lookup) {
     if (lookup.hasOwnProperty(i)) {

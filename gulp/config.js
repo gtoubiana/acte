@@ -71,9 +71,9 @@ var bannerBottom = '\n' +
 ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
 ' * @license <%= pkg.license %>\n' +
 ' */\n';
+
 // Template du module UMD
 var umd = '(function universalModuleDefinition(root, factory) {\n' +
-  '  \'use strict\';\n' +
   '  var tempRoot = root;\n\n' +
   '  /* istanbul ignore next */\n' +
   '  if (typeof exports === \'object\' && typeof module === \'object\') {\n' +
@@ -86,7 +86,6 @@ var umd = '(function universalModuleDefinition(root, factory) {\n' +
   '    tempRoot.acte = factory();\n' +
   '  }\n' +
   '}(this, function umdCallback() {\n' +
-  '  \'use strict\';\n\n' +
   '  /** @namespace */\n' +
   '  /* eslint-disable no-use-before-define */\n' +
   '  var acte = acte || {};\n\n' +

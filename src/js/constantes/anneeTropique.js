@@ -8,4 +8,4 @@
  * @see {@link http://fourmilab.ch/documents/calendar/|TropicalYear}
  * @constant {Number}
  */
-var anneeTropique = 365.24219878;
+const anneeTropique = 365.24219878;

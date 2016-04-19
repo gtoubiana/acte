@@ -26,34 +26,35 @@
  * // 221.79690960202632, -16.115660127694625, 221.79168151491098,
  * // -16.112230690435588]
  */
-var positionSoleil = function positionSoleil(jj) {
-  var T = (jj - jjAn2000Gregorien) / siecleJulien;
-  var t2 = T * T;
-  var l0 = normaliserDegres(280.46646 + (36000.76983 * T) +
+const positionSoleil = jj => {
+  const T = (jj - jjAn2000Gregorien) / siecleJulien;
+  const t2 = T * T;
+  const l0 = normaliserDegres(280.46646 + (36000.76983 * T) +
     (0.0003032 * t2));
-  var M = normaliserDegres(357.52911 + (35999.05029 * T) +
+  const M = normaliserDegres(357.52911 + (35999.05029 * T) +
     (-0.0001537 * t2));
-  var e = 0.016708634 + (-0.000042037 * T) + (-0.0000001267 * t2);
-  var C = ((1.914602 + (-0.004817 * T) + (-0.000014 * t2)) * sinus(M)) +
+  const e = 0.016708634 + (-0.000042037 * T) + (-0.0000001267 * t2);
+  const C = ((1.914602 + (-0.004817 * T) + (-0.000014 * t2)) * sinus(M)) +
     ((0.019993 - (0.000101 * T)) * sinus(2 * M)) +
     (0.000289 * sinus(3 * M));
-  var sunLong = l0 + C;
-  var sunAnomaly = M + C;
-  var sunR = (1.000001018 * (1 - (e * e))) / (1 + (e * cosinus(sunAnomaly)));
-  var Omega = 125.04 - (1934.136 * T);
-  var Lambda = sunLong + (-0.00569) + (-0.00478 * sinus(Omega));
-  var epsilon0 = obliquiteEcliptique(jj);
-  var epsilon = epsilon0 + (0.00256 * cosinus(Omega));
-  var Alpha = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
+  const sunLong = l0 + C;
+  const sunAnomaly = M + C;
+  const sunR = (1.000001018 * (1 - (e * e))) /
+    (1 + (e * cosinus(sunAnomaly)));
+  const Omega = 125.04 - (1934.136 * T);
+  const Lambda = sunLong + (-0.00569) + (-0.00478 * sinus(Omega));
+  const epsilon0 = obliquiteEcliptique(jj);
+  const epsilon = epsilon0 + (0.00256 * cosinus(Omega));
+  const Alpha = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
     epsilon0) * sinus(sunLong), cosinus(sunLong))));
-  var Delta = radiansVersDegres(Math.asin(sinus(epsilon0) * sinus(
+  const Delta = radiansVersDegres(Math.asin(sinus(epsilon0) * sinus(
     sunLong)));
-  var AlphaApp = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
+  const AlphaApp = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
     epsilon) * sinus(Lambda), cosinus(Lambda))));
-  var DeltaApp = radiansVersDegres(Math.asin(sinus(epsilon) * sinus(
+  const DeltaApp = radiansVersDegres(Math.asin(sinus(epsilon) * sinus(
     Lambda)));
 
   return [l0, M, e, C, sunLong, sunAnomaly, sunR, Lambda, Alpha, Delta,
-    AlphaApp, DeltaApp
+    AlphaApp, DeltaApp,
   ];
 };

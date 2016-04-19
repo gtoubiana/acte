@@ -12,16 +12,11 @@
  * @example
  * fractionEquinoxe(2015); // 2457288.855100263
  */
-var fractionEquinoxe = function fractionEquinoxe(an) {
-  var dtParis;
-  var equAPP;
-  var equJD;
-  var equJED;
-
-  equJED = equinoxe(an, 2);
-  equJD = equJED - (deltaT(an) / (24 * 60 * 60));
-  equAPP = equJD + equationDuTemps(equJED);
-  dtParis = (2 + (20 / 60.0) + (15 / (60 * 60.0))) / 360;
+const fractionEquinoxe = an => {
+  const equJED = equinoxe(an, 2);
+  const equJD = equJED - (deltaT(an) / (24 * 60 * 60));
+  const equAPP = equJD + equationDuTemps(equJED);
+  const dtParis = (2 + (20 / 60.0) + (15 / (60 * 60.0))) / 360;
 
   return equAPP + dtParis;
 };

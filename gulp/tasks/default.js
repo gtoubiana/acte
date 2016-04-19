@@ -10,6 +10,7 @@ require('eslint-plugin-react');
 require('eslint-plugin-jsx-a11y');
 require('karma-jasmine');
 require('karma-sauce-launcher');
+require('babel-preset-es2015');
 
 // Tâche par défaut
 gulp.task('default', sequence(

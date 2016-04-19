@@ -11,6 +11,4 @@
  * @example
  * reste(3,2); // 1
  */
-var reste = function reste(a, b) {
-  return a - (b * Math.floor(a / b));
-};
+const reste = (a, b) => a - (b * Math.floor(a / b));

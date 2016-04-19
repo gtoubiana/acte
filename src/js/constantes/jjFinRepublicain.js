@@ -10,4 +10,4 @@
  * jjVersGregorien(2380686.5); // [1805, 12, 31]
  * jjVersRepublicain(2380686.5); // [14, 4, 1, 10]
  */
-var jjFinRepublicain = 2380686.5;
+const jjFinRepublicain = 2380686.5;

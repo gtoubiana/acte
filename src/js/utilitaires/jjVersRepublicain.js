@@ -11,14 +11,14 @@
  * @example
  * jjVersRepublicain(2379902.5); // [12, 2, 2, 6]
  */
-var jjVersRepublicain = function jjVersRepublicain(jj) {
-  var tempJj = Math.floor(jj) + 0.5;
-  var adr = anRepublicain(tempJj);
-  var an = adr[0];
-  var equinox = adr[1];
-  var mois = Math.floor((tempJj - equinox) / 30) + 1;
-  var jour = (tempJj - equinox) % 30;
-  var decade = Math.floor(jour / 10) + 1;
+const jjVersRepublicain = jj => {
+  const tempJj = Math.floor(jj) + 0.5;
+  const adr = anRepublicain(tempJj);
+  const an = adr[0];
+  const equinox = adr[1];
+  const mois = Math.floor((tempJj - equinox) / 30) + 1;
+  let jour = (tempJj - equinox) % 30;
+  const decade = Math.floor(jour / 10) + 1;
 
   jour = (jour % 10) + 1;
 
