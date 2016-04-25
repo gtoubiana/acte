@@ -10,13 +10,14 @@ var header = require('gulp-header');
 var pkg = require('../../package.json');
 var prettify = require('gulp-jsbeautifier');
 var rename = require('gulp-rename');
-var rep = require('gulp-replace');
 var sequence = require('gulp-sequence');
 var size = require('gulp-size');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var wrap = require('gulp-wrap');
 var zip = require('gulp-zip');
+
+// var rep = require('gulp-replace');
 
 gulp.task('dist', sequence(
 
@@ -44,16 +45,16 @@ gulp.task('dist.acte', function () {
 
     .pipe(wrap(config.umd))
 
-    .pipe(rep(/function _classCallCheck/g,
-      '/* istanbul ignore next */\n$&'))
-    .pipe(rep(/_didIteratorError = true;/g,
-      '/* istanbul ignore next */\n$&'))
-    .pipe(rep(/_iteratorError = err;/g,
-      '\n/* istanbul ignore next */\n$&'))
-    .pipe(rep(/if \(!_iteratorNormalCompletion/g,
-      '/* istanbul ignore next */\n$&'))
-    .pipe(rep(/if \(_didIteratorError\) {/g,
-      '/* istanbul ignore if */\n$&'))
+    // .pipe(rep(/function _classCallCheck/g,
+    //   '/* istanbul ignore next */\n$&'))
+    // .pipe(rep(/_didIteratorError = true;/g,
+    //   '/* istanbul ignore next */\n$&'))
+    // .pipe(rep(/_iteratorError = err;/g,
+    //   '\n/* istanbul ignore next */\n$&'))
+    // .pipe(rep(/if \(!_iteratorNormalCompletion/g,
+    //   '/* istanbul ignore next */\n$&'))
+    // .pipe(rep(/if \(_didIteratorError\) {/g,
+    //   '/* istanbul ignore if */\n$&'))
 
     .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync('./package.json',
       'utf8')).version + config.bannerBottom, {

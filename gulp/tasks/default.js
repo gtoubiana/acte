@@ -16,6 +16,8 @@ require('karma-opera-launcher');
 require('karma-safari-launcher');
 require('karma-sauce-launcher');
 require('babel-preset-es2015-without-strict');
+require('gulp-stats')(gulp);
+require('gulp-util');
 
 // Tâche par défaut
 gulp.task('default', sequence(

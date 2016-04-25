@@ -16,9 +16,6 @@ var concat = require('gulp-concat');
 var eslint = require('gulp-eslint');
 var wrap = require('gulp-wrap');
 
-require('gulp-stats')(gulp);
-require('gulp-util');
-
 // Générer les Specs utilisés par jasmine dans le browser
 gulp.task('tests.specs', function () {
   'use strict';
@@ -90,7 +87,7 @@ gulp.task('tests.coverage', function () {
         .on('finish', function () {
           // Envoi des données à Coveralls depuis Travis
           return gulp.src([config.paths.coverage + '/lcov.info'])
-            .pipe(gulpIf(!!process.env.TRAVIS, coveralls()));
+            .pipe(gulpIf(process.env.COVERALLS, coveralls()));
         });
     });
 });
