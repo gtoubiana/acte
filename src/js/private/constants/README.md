@@ -15,8 +15,8 @@
 * [jjDebutRepublicain](#jjDebutRepublicain) : <code>Nombre</code> ℗
 * [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
-* [regexpGregorien](#regexpGregorien) : <code>Map</code> ℗
-* [regexpRepublicain](#regexpRepublicain) : <code>Map</code> ℗
+* [regexpGregorien](#regexpGregorien) : <code>Tableau</code> ℗
+* [regexpRepublicain](#regexpRepublicain) : <code>Tableau</code> ℗
 * [siecleJulien](#siecleJulien) : <code>Nombre</code> ℗
 * [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
 
@@ -210,7 +210,7 @@ jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
 ```
 <a name="regexpGregorien"></a>
 
-## regexpGregorien : <code>Map</code> ℗
+## regexpGregorien : <code>Tableau</code> ℗
 Expressions régulières pour convertir les mois gregoriens
 
 **Type** : Constante  
@@ -220,7 +220,7 @@ Expressions régulières pour convertir les mois gregoriens
 **Auteur** : Gilles Toubiana  
 <a name="regexpRepublicain"></a>
 
-## regexpRepublicain : <code>Map</code> ℗
+## regexpRepublicain : <code>Tableau</code> ℗
 Expressions régulières pour convertir les mois républicains
 
 **Type** : Constante  

@@ -27,42 +27,6 @@
 
   /* eslint-enable no-use-before-define */
   /* istanbul ignore next */
-  var _slicedToArray = function () {
-    function sliceIterator(arr, i) {
-      var _arr = [];
-      var _n = true;
-      var _d = false;
-      var _e = undefined;
-      try {
-        for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next())
-            .done); _n = true) {
-          _arr.push(_s.value);
-          if (i && _arr.length === i) break;
-        }
-      } catch (err) {
-        _d = true;
-        _e = err;
-      } finally {
-        try {
-          if (!_n && _i["return"]) _i["return"]();
-        } finally {
-          if (_d) throw _e;
-        }
-      }
-      return _arr;
-    }
-    return function (arr, i) {
-      if (Array.isArray(arr)) {
-        return arr;
-      } else if (Symbol.iterator in Object(arr)) {
-        return sliceIterator(arr, i);
-      } else {
-        throw new TypeError(
-          "Invalid attempt to destructure non-iterable instance");
-      }
-    };
-  }();
-
   /* istanbul ignore next */
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -302,27 +266,60 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-   * @constant {Map}
+   * @constant {Array}
    */
-  var regexpGregorien = new Map([
-    ['jan(v)?(\\.)?(ier)?', '/1/'],
-    ['f(é|e)v(r)?(\\.)?(ier)?', '/2/'],
-    ['mar(s|\\.)?', '/3/'],
-    ['avr(il|\\.)?', '/4/'],
-    ['mai', '/5/'],
-    ['ju(i)?n', '/6/'],
-    ['ju(i)?l(\\.|l)?(\\.)?(et)?', '/7/'],
-    ['ao(u|û)(t|\\.)?', '/8/'],
-    ['sep(t)?(\\.)?(embre)?', '/9/'],
-    ['7bre', '/9/'],
-    ['oct(obre|\\.)?', '/10/'],
-    ['8bre', '/10/'],
-    ['nov(embre|\\.)?', '/11/'],
-    ['9bre', '/11/'],
-    ['d(é|e)c(embre|\\.)?', '/12/'],
-    ['Xbre', '/12/'],
-    ['[^-()\\d/*+.]', '']
-  ]);
+  var regexpGregorien = [{
+    regexp: 'jan(v)?(\\.)?(ier)?',
+    replace: '/1/'
+  }, {
+    regexp: 'f(é|e)v(r)?(\\.)?(ier)?',
+    replace: '/2/'
+  }, {
+    regexp: 'mar(s|\\.)?',
+    replace: '/3/'
+  }, {
+    regexp: 'avr(il|\\.)?',
+    replace: '/4/'
+  }, {
+    regexp: 'mai',
+    replace: '/5/'
+  }, {
+    regexp: 'ju(i)?n',
+    replace: '/6/'
+  }, {
+    regexp: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
+    replace: '/7/'
+  }, {
+    regexp: 'ao(u|û)(t|\\.)?',
+    replace: '/8/'
+  }, {
+    regexp: 'sep(t)?(\\.)?(embre)?',
+    replace: '/9/'
+  }, {
+    regexp: '7bre',
+    replace: '/9/'
+  }, {
+    regexp: 'oct(obre|\\.)?',
+    replace: '/10/'
+  }, {
+    regexp: '8bre',
+    replace: '/10/'
+  }, {
+    regexp: 'nov(embre|\\.)?',
+    replace: '/11/'
+  }, {
+    regexp: '9bre',
+    replace: '/11/'
+  }, {
+    regexp: 'd(é|e)c(embre|\\.)?',
+    replace: '/12/'
+  }, {
+    regexp: 'Xbre',
+    replace: '/12/'
+  }, {
+    regexp: '[^-()\\d/*+.]',
+    replace: ''
+  }];
 
   /**
    * Expressions régulières pour convertir les mois républicains
@@ -330,26 +327,57 @@
    * @author Gilles Toubiana
    * @since 0.0.1
    * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-   * @constant {Map}
+   * @constant {Array}
    */
-  var regexpRepublicain = new Map([
-    ['vend(é|e)miaire', '/1/'],
-    ['brumaire', '/2/'],
-    ['frimaire', '/3/'],
-    ['niv(ô|o)se', '/4/'],
-    ['pluvi(ô|o)se', '/5/'],
-    ['vent(ô|o)se', '/6/'],
-    ['germinal', '/7/'],
-    ['flor(é|e)al', '/8/'],
-    ['prairial', '/9/'],
-    ['messidor', '/10/'],
-    ['thermidor', '/11/'],
-    ['fructidor', '/12/'],
-    ['san(s-)?culottide(s)?', '/13/'],
-    ['jour(s)?\\scompl(é|e)mentaire(s)?', '/13/'],
-    ['d(é|e)cade\\s(\\d){1,2}', ''],
-    ['[^-()\\d/*+.]', '']
-  ]);
+  var regexpRepublicain = [{
+    regexp: 'vend(é|e)miaire',
+    replace: '/1/'
+  }, {
+    regexp: 'brumaire',
+    replace: '/2/'
+  }, {
+    regexp: 'frimaire',
+    replace: '/3/'
+  }, {
+    regexp: 'niv(ô|o)se',
+    replace: '/4/'
+  }, {
+    regexp: 'pluvi(ô|o)se',
+    replace: '/5/'
+  }, {
+    regexp: 'vent(ô|o)se',
+    replace: '/6/'
+  }, {
+    regexp: 'germinal',
+    replace: '/7/'
+  }, {
+    regexp: 'flor(é|e)al',
+    replace: '/8/'
+  }, {
+    regexp: 'prairial',
+    replace: '/9/'
+  }, {
+    regexp: 'messidor',
+    replace: '/10/'
+  }, {
+    regexp: 'thermidor',
+    replace: '/11/'
+  }, {
+    regexp: 'fructidor',
+    replace: '/12/'
+  }, {
+    regexp: 'san(s-)?culottide(s)?',
+    replace: '/13/'
+  }, {
+    regexp: 'jour(s)?\\scompl(é|e)mentaire(s)?',
+    replace: '/13/'
+  }, {
+    regexp: 'd(é|e)cade\\s(\\d){1,2}',
+    replace: ''
+  }, {
+    regexp: '[^-()\\d/*+.]',
+    replace: ''
+  }];
 
   /**
    * Nombre de jours dans un siècle julien
@@ -992,44 +1020,12 @@
    * // 'Bonsoir'
    */
   var remplacements = function remplacements(texte, regex, options) {
-    var tempTexte = texte;
-
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
-
-    try {
-      for (var _iterator = regex[Symbol.iterator](), _step; !(
-          _iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion =
-        true) {
-        var _step$value = _slicedToArray(_step.value, 2);
-
-        var key = _step$value[0];
-        var value = _step$value[1];
-
-        tempTexte = tempTexte.replace(new RegExp(key, options), value);
-      }
-    } catch (err) {
-      /* istanbul ignore next */
-      _didIteratorError = true;
-
-      /* istanbul ignore next */
-      _iteratorError = err;
-    } finally {
-      try {
-        /* istanbul ignore next */
-        if (!_iteratorNormalCompletion && _iterator.return) {
-          _iterator.return();
-        }
-      } finally {
-        /* istanbul ignore if */
-        if (_didIteratorError) {
-          throw _iteratorError;
-        }
-      }
-    }
-
-    return tempTexte;
+    var resultat = regex.reduce(function (data, item) {
+      var result = data.replace(new RegExp(item.regexp, options),
+        item.replace);
+      return result;
+    }, texte);
+    return resultat;
   };
 
   /**

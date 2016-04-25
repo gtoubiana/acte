@@ -14,11 +14,11 @@
  * // 'Bonsoir'
  */
 const remplacements = (texte, regex, options) => {
-  let tempTexte = texte;
-
-  for (const [key, value] of regex) {
-    tempTexte = tempTexte.replace(new RegExp(key, options), value);
-  }
-
-  return tempTexte;
+  const resultat = regex.reduce(
+    (data, item) => {
+      const result = data.replace(new RegExp(item.regexp, options),
+        item.replace);
+      return result;
+    }, texte);
+  return resultat;
 };

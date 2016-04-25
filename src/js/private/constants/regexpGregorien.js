@@ -4,24 +4,57 @@
  * @author Gilles Toubiana
  * @since 0.0.1
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
- * @constant {Map}
+ * @constant {Array}
  */
-const regexpGregorien = new Map([
-  ['jan(v)?(\\.)?(ier)?', '/1/'],
-  ['f(é|e)v(r)?(\\.)?(ier)?', '/2/'],
-  ['mar(s|\\.)?', '/3/'],
-  ['avr(il|\\.)?', '/4/'],
-  ['mai', '/5/'],
-  ['ju(i)?n', '/6/'],
-  ['ju(i)?l(\\.|l)?(\\.)?(et)?', '/7/'],
-  ['ao(u|û)(t|\\.)?', '/8/'],
-  ['sep(t)?(\\.)?(embre)?', '/9/'],
-  ['7bre', '/9/'],
-  ['oct(obre|\\.)?', '/10/'],
-  ['8bre', '/10/'],
-  ['nov(embre|\\.)?', '/11/'],
-  ['9bre', '/11/'],
-  ['d(é|e)c(embre|\\.)?', '/12/'],
-  ['Xbre', '/12/'],
-  ['[^-()\\d/*+.]', ''],
-]);
+const regexpGregorien = [{
+  regexp: 'jan(v)?(\\.)?(ier)?',
+  replace: '/1/',
+}, {
+  regexp: 'f(é|e)v(r)?(\\.)?(ier)?',
+  replace: '/2/',
+}, {
+  regexp: 'mar(s|\\.)?',
+  replace: '/3/',
+}, {
+  regexp: 'avr(il|\\.)?',
+  replace: '/4/',
+}, {
+  regexp: 'mai',
+  replace: '/5/',
+}, {
+  regexp: 'ju(i)?n',
+  replace: '/6/',
+}, {
+  regexp: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
+  replace: '/7/',
+}, {
+  regexp: 'ao(u|û)(t|\\.)?',
+  replace: '/8/',
+}, {
+  regexp: 'sep(t)?(\\.)?(embre)?',
+  replace: '/9/',
+}, {
+  regexp: '7bre',
+  replace: '/9/',
+}, {
+  regexp: 'oct(obre|\\.)?',
+  replace: '/10/',
+}, {
+  regexp: '8bre',
+  replace: '/10/',
+}, {
+  regexp: 'nov(embre|\\.)?',
+  replace: '/11/',
+}, {
+  regexp: '9bre',
+  replace: '/11/',
+}, {
+  regexp: 'd(é|e)c(embre|\\.)?',
+  replace: '/12/',
+}, {
+  regexp: 'Xbre',
+  replace: '/12/',
+}, {
+  regexp: '[^-()\\d/*+.]',
+  replace: '',
+}];
