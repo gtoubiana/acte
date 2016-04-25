@@ -89,7 +89,7 @@ gulp.task('tests.coverage', function () {
           return gulp.src([config.paths.coverage + '/lcov.info'])
 
             // .pipe(gulpIf(!!process.env.TRAVIS, coveralls()));
-            .pipe(gulpIf(!!process.env.TRAVIS_BUILD_NUMBER, coveralls()));
+            .pipe(gulpIf(process.env.TRAVIS_JOB_NUMBER, coveralls()));
         });
     });
 });
