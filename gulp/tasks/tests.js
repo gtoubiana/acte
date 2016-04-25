@@ -65,8 +65,9 @@ gulp.task('tests.saucelabs', function (done) {
   }, done).start();
 });
 
-gulp.task('tests.coverage', function () {
+gulp.task('tests.coverage', function (done) {
   'use strict';
+  var isTravis = process.env.TRAVIS !== void 0;
 
   // generation de la couverture
   return gulp.src([config.paths.dist + '/acte.js'])
@@ -89,7 +90,8 @@ gulp.task('tests.coverage', function () {
           return gulp.src([config.paths.coverage + '/lcov.info'])
 
             // .pipe(gulpIf(!!process.env.TRAVIS, coveralls()));
-            .pipe(gulpIf(process.env.TRAVIS_JOB_NUMBER, coveralls()));
+            .pipe(gulpIf(isTravis, coveralls()))
+            .on('end', done);
         });
     });
 });
