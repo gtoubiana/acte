@@ -17,9 +17,10 @@ before_script:
   - npm install -g gulp
   - npm install -g karma-cli
 script:
-  - gulp
+  - gulp travis
 after_script:
-  - 'if [ "${TRAVIS_NODE_VERSION}" = "5" ]; then gulp saucelabs ; fi'
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "5" ]; then gulp tests.saucelabs ; fi'
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "4" ]; then gulp tests.coverage ; fi'
 env:
   global:
   - TRAVIS_SECURE_ENV_VARS='true'

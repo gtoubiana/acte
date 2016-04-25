@@ -7,5 +7,6 @@
  * @constant {Number}
  * @example
  * jjVersGregorien(2451545.0); // [2000, 1, 1]
+ * jjVersGregorien(jjAn2000Gregorien); // [2000, 1, 1]
  */
 const jjAn2000Gregorien = 2451545.0;

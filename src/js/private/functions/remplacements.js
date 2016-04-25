@@ -16,11 +16,8 @@
 const remplacements = (texte, regex, options) => {
   let tempTexte = texte;
 
-  for (const val in regex) {
-    // istanbul ignore else
-    if (regex.hasOwnProperty(val)) {
-      tempTexte = tempTexte.replace(new RegExp(val, options), regex[val]);
-    }
+  for (const [key, value] of regex) {
+    tempTexte = tempTexte.replace(new RegExp(key, options), value);
   }
 
   return tempTexte;

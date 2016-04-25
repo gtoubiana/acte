@@ -2,12 +2,12 @@
 
 ## Table des matières
 
-* [jde0Tab2000](#jde0Tab2000) : <code>Tableau</code> ℗
 * [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
 * [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
 * [argNutMult](#argNutMult) : <code>Tableau</code> ℗
 * [delta](#delta) : <code>Tableau</code> ℗
 * [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
+* [jde0Tab2000](#jde0Tab2000) : <code>Tableau</code> ℗
 * [jjAn1Gregorien](#jjAn1Gregorien) : <code>Nombre</code> ℗
 * [jjAn2000Gregorien](#jjAn2000Gregorien) : <code>Nombre</code> ℗
 * [jjDebutCommuneDeParis](#jjDebutCommuneDeParis) : <code>Nombre</code> ℗
@@ -15,22 +15,12 @@
 * [jjDebutRepublicain](#jjDebutRepublicain) : <code>Nombre</code> ℗
 * [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
-* [regexpGregorien](#regexpGregorien) : <code>Objet</code> ℗
-* [regexpRepublicain](#regexpRepublicain) : <code>Objet</code> ℗
+* [regexpGregorien](#regexpGregorien) : <code>Map</code> ℗
+* [regexpRepublicain](#regexpRepublicain) : <code>Map</code> ℗
 * [siecleJulien](#siecleJulien) : <code>Nombre</code> ℗
 * [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
 
 * * *
-<a name="jde0Tab2000"></a>
-
-## jde0Tab2000 : <code>Tableau</code> ℗
-Jours juliens des équinoxes de l'an 1000 à l'an 2000
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [JDE0tab2000](http://fourmilab.ch/documents/calendar/)  
-**Depuis** : 0.0.1  
-**Auteur** : John Walker  
 <a name="anneeTropique"></a>
 
 ## anneeTropique : <code>Nombre</code> ℗
@@ -87,6 +77,16 @@ Jours juliens des équinoxes avant l'an 1000
 **Voir** : [JDE0tab1000](http://fourmilab.ch/documents/calendar/)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker  
+<a name="jde0Tab2000"></a>
+
+## jde0Tab2000 : <code>Tableau</code> ℗
+Jours juliens des équinoxes de l'an 1000 à l'an 2000
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [JDE0tab2000](http://fourmilab.ch/documents/calendar/)  
+**Depuis** : 0.0.1  
+**Auteur** : John Walker  
 <a name="jjAn1Gregorien"></a>
 
 ## jjAn1Gregorien : <code>Nombre</code> ℗
@@ -100,6 +100,7 @@ Nombre de jours juliens correspondants à l'an 1 gregorien
 **Exemple** :  
 ```js
 jjVersGregorien(1721425.5); // [1, 1, 1]
+jjVersGregorien(jjAn1Gregorien); // [1, 1, 1]
 ```
 <a name="jjAn2000Gregorien"></a>
 
@@ -114,6 +115,7 @@ Nombre de jours juliens correspondants à l'an 2000 grégorien
 **Exemple** :  
 ```js
 jjVersGregorien(2451545.0); // [2000, 1, 1]
+jjVersGregorien(jjAn2000Gregorien); // [2000, 1, 1]
 ```
 <a name="jjDebutCommuneDeParis"></a>
 
@@ -130,7 +132,9 @@ en 1871
 **Exemple** :  
 ```js
 jjVersGregorien(2404504.5); // [1871, 3, 18]
+jjVersGregorien(jjDebutCommuneDeParis); // [1871, 3, 18]
 jjVersRepublicain(2404504.5); // [79, 6, 3, 7]
+jjVersRepublicain(jjDebutCommuneDeParis); // [79, 6, 3, 7]
 ```
 <a name="jjDebutGregorien"></a>
 
@@ -146,7 +150,9 @@ grégorien
 **Exemple** :  
 ```js
 jjVersGregorien(2299160.5); // [1582, 10, 15]
+jjVersGregorien(jjDebutGregorien); // [1582, 10, 15]
 jjVersJulien(2299160.5); // [1582, 10, 5]
+jjVersJulien(jjDebutGregorien); // [1582, 10, 5]
 ```
 <a name="jjDebutRepublicain"></a>
 
@@ -161,7 +167,9 @@ Nombre de jours juliens correspondants à l'an 1 républicain
 **Exemple** :  
 ```js
 jjVersGregorien(2375839.5); // [1792, 9, 22]
+jjVersGregorien(jjDebutRepublicain); // [1792, 9, 22]
 jjVersRepublicain(2375839.5); // [1, 1, 1, 1]
+jjVersRepublicain(jjDebutRepublicain); // [1, 1, 1, 1]
 ```
 <a name="jjFinCommuneDeParis"></a>
 
@@ -178,7 +186,9 @@ en 1871
 **Exemple** :  
 ```js
 jjVersGregorien(2404575.5); // [1871, 5, 28]
+jjVersGregorien(jjFinCommuneDeParis); // [1871, 5, 28]
 jjVersRepublicain(2404575.5); // [79, 9, 1, 8]
+jjVersRepublicain(jjFinCommuneDeParis); // [79, 9, 1, 8]
 ```
 <a name="jjFinRepublicain"></a>
 
@@ -194,11 +204,13 @@ républicain
 **Exemple** :  
 ```js
 jjVersGregorien(2380686.5); // [1805, 12, 31]
+jjVersGregorien(jjFinRepublicain); // [1805, 12, 31]
 jjVersRepublicain(2380686.5); // [14, 4, 1, 10]
+jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
 ```
 <a name="regexpGregorien"></a>
 
-## regexpGregorien : <code>Objet</code> ℗
+## regexpGregorien : <code>Map</code> ℗
 Expressions régulières pour convertir les mois gregoriens
 
 **Type** : Constante  
@@ -208,7 +220,7 @@ Expressions régulières pour convertir les mois gregoriens
 **Auteur** : Gilles Toubiana  
 <a name="regexpRepublicain"></a>
 
-## regexpRepublicain : <code>Objet</code> ℗
+## regexpRepublicain : <code>Map</code> ℗
 Expressions régulières pour convertir les mois républicains
 
 **Type** : Constante  

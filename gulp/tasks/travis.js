@@ -1,6 +1,6 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp
- * gulp default
+ * gulp travis
  */
 var gulp = require('gulp');
 var sequence = require('gulp-sequence');
@@ -17,8 +17,8 @@ require('karma-safari-launcher');
 require('karma-sauce-launcher');
 require('babel-preset-es2015-without-strict');
 
-// Tâche par défaut
-gulp.task('default', sequence(
+// Tâche travis ci
+gulp.task('travis', sequence(
 
   // Nettoyages
   'clean.dist',
@@ -51,8 +51,5 @@ gulp.task('default', sequence(
 
   // Validation airbnb es5 [dist.acte]
   'lint.dist'
-
-  // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
-  // 'tests.coverage'
 
 ));

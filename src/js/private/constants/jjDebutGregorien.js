@@ -8,6 +8,8 @@
  * @constant {Number}
  * @example
  * jjVersGregorien(2299160.5); // [1582, 10, 15]
+ * jjVersGregorien(jjDebutGregorien); // [1582, 10, 15]
  * jjVersJulien(2299160.5); // [1582, 10, 5]
+ * jjVersJulien(jjDebutGregorien); // [1582, 10, 5]
  */
 const jjDebutGregorien = 2299160.5;

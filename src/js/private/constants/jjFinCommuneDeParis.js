@@ -9,6 +9,8 @@
  * @constant {Number}
  * @example
  * jjVersGregorien(2404575.5); // [1871, 5, 28]
+ * jjVersGregorien(jjFinCommuneDeParis); // [1871, 5, 28]
  * jjVersRepublicain(2404575.5); // [79, 9, 1, 8]
+ * jjVersRepublicain(jjFinCommuneDeParis); // [79, 9, 1, 8]
  */
 const jjFinCommuneDeParis = 2404575.5;

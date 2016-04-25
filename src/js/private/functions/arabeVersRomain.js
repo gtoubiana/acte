@@ -11,31 +11,28 @@
  * arabeVersRomain(2012); // 'MMXII'
  */
 const arabeVersRomain = (arabe) => {
-  const lookup = {
-    M: 1000,
-    CM: 900,
-    D: 500,
-    CD: 400,
-    C: 100,
-    XC: 90,
-    L: 50,
-    XL: 40,
-    X: 10,
-    IX: 9,
-    V: 5,
-    IV: 4,
-    I: 1,
-  };
+  const lookup = new Map([
+    ['M', 1000],
+    ['CM', 900],
+    ['D', 500],
+    ['CD', 400],
+    ['C', 100],
+    ['XC', 90],
+    ['L', 50],
+    ['XL', 40],
+    ['X', 10],
+    ['IX', 9],
+    ['V', 5],
+    ['IV', 4],
+    ['I', 1],
+  ]);
   let tempArabe = arabe;
   let romain = '';
-  let i;
 
-  for (i in lookup) {
-    if (lookup.hasOwnProperty(i)) {
-      while (tempArabe >= lookup[i]) {
-        romain += i;
-        tempArabe -= lookup[i];
-      }
+  for (const [key, value] of lookup) {
+    while (tempArabe >= value) {
+      romain += key;
+      tempArabe -= value;
     }
   }
 

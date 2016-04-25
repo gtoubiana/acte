@@ -1,9 +1,0 @@
-{
-    "extends": "../../.eslintrc",
-
-    "rules": {
-        "no-unused-vars": 0, // /constantes/* sont utilisées dans /utilitaires/* et /methodes/*
-        "no-undef": 0, // /methodes/* et /utilitaires/* utilisent /utilitaires/* et /constantes/*
-        "max-len": [2, 78, 2], // 80 - 2 = indentation du module UMD
-    }
-}

@@ -1,9 +1,3 @@
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 /**
  * acte - Librairie Javascript pour manipuler des données généalogiques
  * @copyright 2015-Present, Gilles Toubiana
@@ -12,25 +6,70 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @license MIT
  */
+'use strict';
 (function universalModuleDefinition(root, factory) {
   var tempRoot = root;
 
   /* istanbul ignore next */
-  if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && (typeof module === 'undefined' ? 'undefined' : _typeof(module)) === 'object') {
+  if (typeof exports === 'object' && typeof module === 'object') {
     module.exports = factory();
   } else if (typeof define === 'function' && define.amd) {
     define([], factory);
-  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+  } else if (typeof exports === 'object') {
     exports.acte = factory();
   } else {
     tempRoot.acte = factory();
   }
-})(undefined, function umdCallback() {
+}(this, function umdCallback() {
   /** @namespace */
   /* eslint-disable no-use-before-define */
   var acte = acte || {};
 
   /* eslint-enable no-use-before-define */
+  /* istanbul ignore next */
+  var _slicedToArray = function () {
+    function sliceIterator(arr, i) {
+      var _arr = [];
+      var _n = true;
+      var _d = false;
+      var _e = undefined;
+      try {
+        for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next())
+            .done); _n = true) {
+          _arr.push(_s.value);
+          if (i && _arr.length === i) break;
+        }
+      } catch (err) {
+        _d = true;
+        _e = err;
+      } finally {
+        try {
+          if (!_n && _i["return"]) _i["return"]();
+        } finally {
+          if (_d) throw _e;
+        }
+      }
+      return _arr;
+    }
+    return function (arr, i) {
+      if (Array.isArray(arr)) {
+        return arr;
+      } else if (Symbol.iterator in Object(arr)) {
+        return sliceIterator(arr, i);
+      } else {
+        throw new TypeError(
+          "Invalid attempt to destructure non-iterable instance");
+      }
+    };
+  }();
+
+  /* istanbul ignore next */
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
   /**
    * Jours juliens des équinoxes de l'an 1000 à l'an 2000
    * @access private
@@ -39,7 +78,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @see {@link http://fourmilab.ch/documents/calendar/|JDE0tab2000}
    * @constant {Array}
    */
-  var jde0Tab2000 = [[2451623.80984, 365242.37404, 0.05169, -0.00411, -0.00057], [2451716.56767, 365241.62603, 0.00325, 0.00888, -0.00030], [2451810.21715, 365242.01767, -0.11575, 0.00337, 0.00078], [2451900.05952, 365242.74049, -0.06223, -0.00823, 0.00032]];
+  var jde0Tab2000 = [
+    [2451623.80984, 365242.37404, 0.05169, -0.00411, -0.00057],
+    [2451716.56767, 365241.62603, 0.00325, 0.00888, -0.00030],
+    [2451810.21715, 365242.01767, -0.11575, 0.00337, 0.00078],
+    [2451900.05952, 365242.74049, -0.06223, -0.00823, 0.00032]
+  ];
 
   /**
    * Nombre de jours, sur Terre, pour que le Soleil retourne à la même
@@ -61,7 +105,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @see {@link http://fourmilab.ch/documents/calendar/|nutArgCoeff}
    * @constant {Array}
    */
-  var argNutCoeff = [-171996, -1742, 92095, 89, -13187, -16, 5736, -31, -2274, -2, 977, -5, 2062, 2, -895, 5, 1426, -34, 54, -1, 712, 1, -7, 0, -517, 12, 224, -6, -386, -4, 200, 0, -301, 0, 129, -1, 217, -5, -95, 3, -158, 0, 0, 0, 129, 1, -70, 0, 123, 0, -53, 0, 63, 0, 0, 0, 63, 1, -33, 0, -59, 0, 26, 0, -58, -1, 32, 0, -51, 0, 27, 0, 48, 0, 0, 0, 46, 0, -24, 0, -38, 0, 16, 0, -31, 0, 13, 0, 29, 0, 0, 0, 29, 0, -12, 0, 26, 0, 0, 0, -22, 0, 0, 0, 21, 0, -10, 0, 17, -1, 0, 0, 16, 0, -8, 0, -16, 1, 7, 0, -15, 0, 9, 0, -13, 0, 7, 0, -12, 0, 6, 0, 11, 0, 0, 0, -10, 0, 5, 0, -8, 0, 3, 0, 7, 0, -3, 0, -7, 0, 0, 0, -7, 0, 3, 0, -7, 0, 3, 0, 6, 0, 0, 0, 6, 0, -3, 0, 6, 0, -3, 0, -6, 0, 3, 0, -6, 0, 3, 0, 5, 0, 0, 0, -5, 0, 3, 0, -5, 0, 3, 0, -5, 0, 3, 0, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0, 3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0];
+  var argNutCoeff = [-171996, -1742, 92095, 89, -13187, -16, 5736, -31, -
+    2274, -2, 977, -5, 2062, 2, -895, 5, 1426, -34, 54, -1, 712, 1, -7, 0, -
+    517, 12, 224, -6, -386, -4, 200, 0, -301, 0, 129, -1, 217, -5, -95, 3, -
+    158, 0, 0, 0, 129, 1, -70, 0, 123, 0, -53, 0, 63, 0, 0, 0, 63, 1, -33,
+    0, -59, 0, 26, 0, -58, -1, 32, 0, -51, 0, 27, 0, 48, 0, 0, 0, 46, 0, -
+    24, 0, -38, 0, 16, 0, -31, 0, 13, 0, 29, 0, 0, 0, 29, 0, -12, 0, 26,
+    0, 0, 0, -22, 0, 0, 0, 21, 0, -10, 0, 17, -1, 0, 0, 16, 0, -8, 0, -16,
+    1, 7, 0, -15, 0, 9, 0, -13, 0, 7, 0, -12, 0, 6, 0, 11, 0, 0, 0, -10,
+    0, 5, 0, -8, 0, 3, 0, 7, 0, -3, 0, -7, 0, 0, 0, -7, 0, 3, 0, -7, 0, 3,
+    0, 6, 0, 0, 0, 6, 0, -3, 0, 6, 0, -3, 0, -6, 0, 3, 0, -6, 0, 3, 0, 5,
+    0, 0, 0, -5, 0, 3, 0, -5, 0, 3, 0, -5, 0, 3, 0, 4, 0, 0, 0, 4, 0, 0,
+    0, 4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0, 3, 0, 0, 0, -3,
+    0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0, 0, -3, 0, 0,
+    0, -3, 0, 0, 0
+  ];
 
   /**
    * Termes périodiques pour la nutation en longitude et obliquité
@@ -71,7 +129,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @see {@link http://fourmilab.ch/documents/calendar/|nutArgMult}
    * @constant {Array}
    */
-  var argNutMult = [0, 0, 0, 0, 1, -2, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, -2, 1, 0, 2, 2, 0, 0, 0, 2, 1, 0, 0, 1, 2, 2, -2, -1, 0, 2, 2, -2, 0, 1, 0, 0, -2, 0, 0, 2, 1, 0, 0, -1, 2, 2, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, -1, 2, 2, 0, 0, -1, 0, 1, 0, 0, 1, 2, 1, -2, 0, 2, 0, 0, 0, 0, -2, 2, 1, 2, 0, 0, 2, 2, 0, 0, 2, 2, 2, 0, 0, 2, 0, 0, -2, 0, 1, 2, 2, 0, 0, 0, 2, 0, -2, 0, 0, 2, 0, 0, 0, -1, 2, 1, 0, 2, 0, 0, 0, 2, 0, -1, 0, 1, -2, 2, 0, 2, 2, 0, 1, 0, 0, 1, -2, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, 0, 2, -2, 0, 2, 0, -1, 2, 1, 2, 0, 1, 2, 2, 0, 1, 0, 2, 2, -2, 1, 1, 0, 0, 0, -1, 0, 2, 2, 2, 0, 0, 2, 1, 2, 0, 1, 0, 0, -2, 0, 2, 2, 2, -2, 0, 1, 2, 1, 2, 0, -2, 0, 1, 2, 0, 0, 0, 1, 0, -1, 1, 0, 0, -2, -1, 0, 2, 1, -2, 0, 0, 0, 1, 0, 0, 2, 2, 1, -2, 0, 2, 0, 1, -2, 1, 0, 2, 1, 0, 0, 1, -2, 0, -1, 0, 1, 0, 0, -2, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, -1, -1, 1, 0, 0, 0, 1, 1, 0, 0, 0, -1, 1, 2, 2, 2, -1, -1, 2, 2, 0, 0, -2, 2, 2, 0, 0, 3, 2, 2, 2, -1, 0, 2, 2];
+  var argNutMult = [0, 0, 0, 0, 1, -2, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0, 0,
+    0, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, -2, 1, 0, 2, 2, 0, 0, 0, 2, 1, 0,
+    0, 1, 2, 2, -2, -1, 0, 2, 2, -2, 0, 1, 0, 0, -2, 0, 0, 2, 1, 0, 0, -1,
+    2, 2, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, -1, 2, 2, 0, 0, -1, 0, 1, 0,
+    0, 1, 2, 1, -2, 0, 2, 0, 0, 0, 0, -2, 2, 1, 2, 0, 0, 2, 2, 0, 0, 2, 2,
+    2, 0, 0, 2, 0, 0, -2, 0, 1, 2, 2, 0, 0, 0, 2, 0, -2, 0, 0, 2, 0, 0, 0, -
+    1, 2, 1, 0, 2, 0, 0, 0, 2, 0, -1, 0, 1, -2, 2, 0, 2, 2, 0, 1, 0, 0, 1, -
+    2, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, 0, 2, -2, 0, 2, 0, -1, 2, 1, 2, 0,
+    1, 2, 2, 0, 1, 0, 2, 2, -2, 1, 1, 0, 0, 0, -1, 0, 2, 2, 2, 0, 0, 2, 1,
+    2, 0, 1, 0, 0, -2, 0, 2, 2, 2, -2, 0, 1, 2, 1, 2, 0, -2, 0, 1, 2, 0,
+    0, 0, 1, 0, -1, 1, 0, 0, -2, -1, 0, 2, 1, -2, 0, 0, 0, 1, 0, 0, 2, 2,
+    1, -2, 0, 2, 0, 1, -2, 1, 0, 2, 1, 0, 0, 1, -2, 0, -1, 0, 1, 0, 0, -2,
+    1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, -1, -1, 1, 0, 0, 0, 1, 1, 0,
+    0, 0, -1, 1, 2, 2, 2, -1, -1, 2, 2, 0, 0, -2, 2, 2, 0, 0, 3, 2, 2, 2, -
+    1, 0, 2, 2
+  ];
 
   /**
    * Tableau des Delta T (différence entre Temps universel et temps terrestre)
@@ -85,7 +158,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * {@link http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html|Expressions}
    * @constant {Array}
    */
-  var delta = [121, 112, 103, 95, 88, 82, 77, 72, 68, 63, 60, 56, 53, 51, 48, 46, 44, 42, 40, 38, 35, 33, 31, 29, 26, 24, 22, 20, 18, 16, 14, 12, 11, 10, 9, 8, 7, 7, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 16, 16, 16, 15, 15, 14, 13, 13.1, 12.5, 12.2, 12, 12, 12, 12, 12, 12, 11.9, 11.6, 11, 10.2, 9.2, 8.2, 7.1, 6.2, 5.6, 5.4, 5.3, 5.4, 5.6, 5.9, 6.2, 6.5, 6.8, 7.1, 7.3, 7.5, 7.6, 7.7, 7.3, 6.2, 5.2, 2.7, 1.4, -1.2, -2.8, -3.8, -4.8, -5.5, -5.3, -5.6, -5.7, -5.9, -6, -6.3, -6.5, -6.2, -4.7, -2.8, -0.1, 2.6, 5.3, 7.7, 10.4, 13.3, 16, 18.2, 20.2, 21.1, 22.4, 23.5, 23.8, 24.3, 24, 23.9, 23.9, 23.7, 24, 24.3, 25.3, 26.2, 27.3, 28.2, 29.1, 30, 30.7, 31.4, 32.2, 33.1, 34, 35, 36.5, 38.3, 40.2, 42.2, 44.9, 46.9, 49, 50.9, 52.5, 54, 55.1, 56.1, 57.2, 58.7, 60.4, 61.9, 63.2, 64, 64.4, 64.6, 65, 65.6, 66.2, 66.7, 67.5];
+  var delta = [121, 112, 103, 95, 88, 82, 77, 72, 68, 63, 60, 56, 53, 51,
+    48, 46, 44, 42, 40, 38, 35, 33, 31, 29, 26, 24, 22, 20, 18, 16, 14,
+    12, 11, 10, 9, 8, 7, 7, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10,
+    10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13,
+    14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 16, 16, 16,
+    15, 15, 14, 13, 13.1, 12.5, 12.2, 12, 12, 12, 12, 12, 12, 11.9, 11.6,
+    11, 10.2, 9.2, 8.2, 7.1, 6.2, 5.6, 5.4, 5.3, 5.4, 5.6, 5.9, 6.2, 6.5,
+    6.8, 7.1, 7.3, 7.5, 7.6, 7.7, 7.3, 6.2, 5.2, 2.7, 1.4, -1.2, -2.8, -
+    3.8, -4.8, -5.5, -5.3, -5.6, -5.7, -5.9, -6, -6.3, -6.5, -6.2, -4.7, -
+    2.8, -0.1, 2.6, 5.3, 7.7, 10.4, 13.3, 16, 18.2, 20.2, 21.1, 22.4,
+    23.5, 23.8, 24.3, 24, 23.9, 23.9, 23.7, 24, 24.3, 25.3, 26.2, 27.3,
+    28.2, 29.1, 30, 30.7, 31.4, 32.2, 33.1, 34, 35, 36.5, 38.3, 40.2,
+    42.2, 44.9, 46.9, 49, 50.9, 52.5, 54, 55.1, 56.1, 57.2, 58.7, 60.4,
+    61.9, 63.2, 64, 64.4, 64.6, 65, 65.6, 66.2, 66.7, 67.5
+  ];
 
   /**
    * Jours juliens des équinoxes avant l'an 1000
@@ -95,7 +182,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @see {@link http://fourmilab.ch/documents/calendar/|JDE0tab1000}
    * @constant {Array}
    */
-  var jde0Tab1000 = [[1721139.29189, 365242.13740, 0.06134, 0.00111, -0.00071], [1721233.25401, 365241.72562, -0.05323, 0.00907, 0.00025], [1721325.70455, 365242.49558, -0.11677, -0.00297, 0.00074], [1721414.39987, 365242.88257, -0.00769, -0.00933, -0.00006]];
+  var jde0Tab1000 = [
+    [1721139.29189, 365242.13740, 0.06134, 0.00111, -0.00071],
+    [1721233.25401, 365241.72562, -0.05323, 0.00907, 0.00025],
+    [1721325.70455, 365242.49558, -0.11677, -0.00297, 0.00074],
+    [1721414.39987, 365242.88257, -0.00769, -0.00933, -0.00006]
+  ];
 
   /**
    * Nombre de jours juliens correspondants à l'an 1 gregorien
@@ -106,6 +198,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @constant {Number}
    * @example
    * jjVersGregorien(1721425.5); // [1, 1, 1]
+   * jjVersGregorien(jjAn1Gregorien); // [1, 1, 1]
    */
   var jjAn1Gregorien = 1721425.5;
 
@@ -118,6 +211,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @constant {Number}
    * @example
    * jjVersGregorien(2451545.0); // [2000, 1, 1]
+   * jjVersGregorien(jjAn2000Gregorien); // [2000, 1, 1]
    */
   var jjAn2000Gregorien = 2451545.0;
 
@@ -132,7 +226,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @constant {Number}
    * @example
    * jjVersGregorien(2404504.5); // [1871, 3, 18]
+   * jjVersGregorien(jjDebutCommuneDeParis); // [1871, 3, 18]
    * jjVersRepublicain(2404504.5); // [79, 6, 3, 7]
+   * jjVersRepublicain(jjDebutCommuneDeParis); // [79, 6, 3, 7]
    */
   var jjDebutCommuneDeParis = 2404504.5;
 
@@ -146,7 +242,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @constant {Number}
    * @example
    * jjVersGregorien(2299160.5); // [1582, 10, 15]
+   * jjVersGregorien(jjDebutGregorien); // [1582, 10, 15]
    * jjVersJulien(2299160.5); // [1582, 10, 5]
+   * jjVersJulien(jjDebutGregorien); // [1582, 10, 5]
    */
   var jjDebutGregorien = 2299160.5;
 
@@ -159,7 +257,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @constant {Number}
    * @example
    * jjVersGregorien(2375839.5); // [1792, 9, 22]
+   * jjVersGregorien(jjDebutRepublicain); // [1792, 9, 22]
    * jjVersRepublicain(2375839.5); // [1, 1, 1, 1]
+   * jjVersRepublicain(jjDebutRepublicain); // [1, 1, 1, 1]
    */
   var jjDebutRepublicain = 2375839.5;
 
@@ -174,7 +274,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @constant {Number}
    * @example
    * jjVersGregorien(2404575.5); // [1871, 5, 28]
+   * jjVersGregorien(jjFinCommuneDeParis); // [1871, 5, 28]
    * jjVersRepublicain(2404575.5); // [79, 9, 1, 8]
+   * jjVersRepublicain(jjFinCommuneDeParis); // [79, 9, 1, 8]
    */
   var jjFinCommuneDeParis = 2404575.5;
 
@@ -188,7 +290,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @constant {Number}
    * @example
    * jjVersGregorien(2380686.5); // [1805, 12, 31]
+   * jjVersGregorien(jjFinRepublicain); // [1805, 12, 31]
    * jjVersRepublicain(2380686.5); // [14, 4, 1, 10]
+   * jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
    */
   var jjFinRepublicain = 2380686.5;
 
@@ -198,27 +302,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @author Gilles Toubiana
    * @since 0.0.1
    * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-   * @constant {Object}
+   * @constant {Map}
    */
-  var regexpGregorien = {
-    'jan(v)?(\\.)?(ier)?': '/1/',
-    'f(é|e)v(r)?(\\.)?(ier)?': '/2/',
-    'mar(s|\\.)?': '/3/',
-    'avr(il|\\.)?': '/4/',
-    mai: '/5/',
-    'ju(i)?n': '/6/',
-    'ju(i)?l(\\.|l)?(\\.)?(et)?': '/7/',
-    'ao(u|û)(t|\\.)?': '/8/',
-    'sep(t)?(\\.)?(embre)?': '/9/',
-    '7bre': '/9/',
-    'oct(obre|\\.)?': '/10/',
-    '8bre': '/10/',
-    'nov(embre|\\.)?': '/11/',
-    '9bre': '/11/',
-    'd(é|e)c(embre|\\.)?': '/12/',
-    Xbre: '/12/',
-    '[^-()\\d/*+.]': ''
-  };
+  var regexpGregorien = new Map([
+    ['jan(v)?(\\.)?(ier)?', '/1/'],
+    ['f(é|e)v(r)?(\\.)?(ier)?', '/2/'],
+    ['mar(s|\\.)?', '/3/'],
+    ['avr(il|\\.)?', '/4/'],
+    ['mai', '/5/'],
+    ['ju(i)?n', '/6/'],
+    ['ju(i)?l(\\.|l)?(\\.)?(et)?', '/7/'],
+    ['ao(u|û)(t|\\.)?', '/8/'],
+    ['sep(t)?(\\.)?(embre)?', '/9/'],
+    ['7bre', '/9/'],
+    ['oct(obre|\\.)?', '/10/'],
+    ['8bre', '/10/'],
+    ['nov(embre|\\.)?', '/11/'],
+    ['9bre', '/11/'],
+    ['d(é|e)c(embre|\\.)?', '/12/'],
+    ['Xbre', '/12/'],
+    ['[^-()\\d/*+.]', '']
+  ]);
 
   /**
    * Expressions régulières pour convertir les mois républicains
@@ -226,26 +330,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @author Gilles Toubiana
    * @since 0.0.1
    * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-   * @constant {Object}
+   * @constant {Map}
    */
-  var regexpRepublicain = {
-    'vend(é|e)miaire': '/1/',
-    brumaire: '/2/',
-    frimaire: '/3/',
-    'niv(ô|o)se': '/4/',
-    'pluvi(ô|o)se': '/5/',
-    'vent(ô|o)se': '/6/',
-    germinal: '/7/',
-    'flor(é|e)al': '/8/',
-    prairial: '/9/',
-    messidor: '/10/',
-    thermidor: '/11/',
-    fructidor: '/12/',
-    'san(s-)?culottide(s)?': '/13/',
-    'jour(s)?\\scompl(é|e)mentaire(s)?': '/13/',
-    'd(é|e)cade\\s(\\d){1,2}': '',
-    '[^-()\\d/*+.]': ''
-  };
+  var regexpRepublicain = new Map([
+    ['vend(é|e)miaire', '/1/'],
+    ['brumaire', '/2/'],
+    ['frimaire', '/3/'],
+    ['niv(ô|o)se', '/4/'],
+    ['pluvi(ô|o)se', '/5/'],
+    ['vent(ô|o)se', '/6/'],
+    ['germinal', '/7/'],
+    ['flor(é|e)al', '/8/'],
+    ['prairial', '/9/'],
+    ['messidor', '/10/'],
+    ['thermidor', '/11/'],
+    ['fructidor', '/12/'],
+    ['san(s-)?culottide(s)?', '/13/'],
+    ['jour(s)?\\scompl(é|e)mentaire(s)?', '/13/'],
+    ['d(é|e)cade\\s(\\d){1,2}', ''],
+    ['[^-()\\d/*+.]', '']
+  ]);
 
   /**
    * Nombre de jours dans un siècle julien
@@ -265,7 +369,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @see {@link http://fourmilab.ch/documents/calendar/|EquinoxpTerms}
    * @constant {Array}
    */
-  var termesPerEquinoxes = [485, 324.96, 1934.136, 203, 337.23, 32964.467, 199, 342.08, 20.186, 182, 27.85, 445267.112, 156, 73.14, 45036.886, 136, 171.52, 22518.443, 77, 222.54, 65928.934, 74, 296.72, 3034.906, 70, 243.58, 9037.513, 58, 119.81, 33718.147, 52, 297.17, 150.678, 50, 21.02, 2281.226, 45, 247.54, 29929.562, 44, 325.15, 31555.956, 29, 60.93, 4443.417, 18, 155.12, 67555.328, 17, 288.79, 4562.452, 16, 198.04, 62894.029, 14, 199.76, 31436.921, 12, 95.39, 14577.848, 12, 287.11, 31931.756, 12, 320.81, 34777.259, 9, 227.73, 1222.114, 8, 15.45, 16859.074];
+  var termesPerEquinoxes = [485, 324.96, 1934.136, 203, 337.23, 32964.467,
+    199, 342.08, 20.186, 182, 27.85, 445267.112, 156, 73.14, 45036.886,
+    136, 171.52, 22518.443, 77, 222.54, 65928.934, 74, 296.72, 3034.906,
+    70, 243.58, 9037.513, 58, 119.81, 33718.147, 52, 297.17, 150.678, 50,
+    21.02, 2281.226, 45, 247.54, 29929.562, 44, 325.15, 31555.956, 29,
+    60.93, 4443.417, 18, 155.12, 67555.328, 17, 288.79, 4562.452, 16,
+    198.04, 62894.029, 14, 199.76, 31436.921, 12, 95.39, 14577.848, 12,
+    287.11, 31931.756, 12, 320.81, 34777.259, 9, 227.73, 1222.114, 8,
+    15.45, 16859.074
+  ];
 
   /**
    * Pour convertir des degrés en radians
@@ -395,14 +508,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       Jde0tab = jde0Tab2000;
       Y = (an - 2000) / 1000;
     }
-    var Jde0 = Jde0tab[item][0] + Jde0tab[item][1] * Y + Jde0tab[item][2] * Math.pow(Y, 2) + Jde0tab[item][3] * Math.pow(Y, 3) + Jde0tab[item][4] * Math.pow(Y, 4);
+    var Jde0 = Jde0tab[item][0] + Jde0tab[item][1] * Y + Jde0tab[item][2] *
+      Math.pow(Y, 2) + Jde0tab[item][3] * Math.pow(Y, 3) + Jde0tab[item][
+        4
+      ] * Math.pow(Y, 4);
     var T = (Jde0 - 2451545.0) / 36525;
     var W = 35999.373 * T - 2.47;
     var deltaL = 1 + 0.0334 * cosinus(W) + 0.0007 * cosinus(2 * W);
     S = 0;
 
     for (i = j = 0; i < 24; i++) {
-      S += termesPerEquinoxes[j] * cosinus(termesPerEquinoxes[j + 1] + termesPerEquinoxes[j + 2] * T);
+      S += termesPerEquinoxes[j] * cosinus(termesPerEquinoxes[j + 1] +
+        termesPerEquinoxes[j + 2] * T);
       j += 3;
     }
 
@@ -458,7 +575,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * obliquiteEcliptique(2457333.5); // 23.437230456425635
    */
   var obliquiteEcliptique = function obliquiteEcliptique(jj) {
-    var oTerms = [-4680.93, -1.55, 1999.25, -51.38, -249.67, -39.05, 7.12, 27.87, 5.79, 2.45];
+    var oTerms = [-4680.93, -1.55, 1999.25, -51.38, -249.67, -39.05, 7.12,
+      27.87, 5.79, 2.45
+    ];
     var u = (jj - jjAn2000Gregorien) / (siecleJulien * 100);
     var v = u;
     var eps = 23 + 26 / 60.0 + 21.448 / 3600.0;
@@ -505,10 +624,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   var positionSoleil = function positionSoleil(jj) {
     var T = (jj - jjAn2000Gregorien) / siecleJulien;
     var t2 = T * T;
-    var l0 = normaliserDegres(280.46646 + 36000.76983 * T + 0.0003032 * t2);
-    var M = normaliserDegres(357.52911 + 35999.05029 * T + -0.0001537 * t2);
+    var l0 = normaliserDegres(280.46646 + 36000.76983 * T + 0.0003032 *
+      t2);
+    var M = normaliserDegres(357.52911 + 35999.05029 * T + -0.0001537 *
+      t2);
     var e = 0.016708634 + -0.000042037 * T + -0.0000001267 * t2;
-    var C = (1.914602 + -0.004817 * T + -0.000014 * t2) * sinus(M) + (0.019993 - 0.000101 * T) * sinus(2 * M) + 0.000289 * sinus(3 * M);
+    var C = (1.914602 + -0.004817 * T + -0.000014 * t2) * sinus(M) + (
+      0.019993 - 0.000101 * T) * sinus(2 * M) + 0.000289 * sinus(3 * M);
     var sunLong = l0 + C;
     var sunAnomaly = M + C;
     var sunR = 1.000001018 * (1 - e * e) / (1 + e * cosinus(sunAnomaly));
@@ -516,12 +638,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var Lambda = sunLong + -0.00569 + -0.00478 * sinus(Omega);
     var epsilon0 = obliquiteEcliptique(jj);
     var epsilon = epsilon0 + 0.00256 * cosinus(Omega);
-    var Alpha = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(epsilon0) * sinus(sunLong), cosinus(sunLong))));
-    var Delta = radiansVersDegres(Math.asin(sinus(epsilon0) * sinus(sunLong)));
-    var AlphaApp = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(epsilon) * sinus(Lambda), cosinus(Lambda))));
-    var DeltaApp = radiansVersDegres(Math.asin(sinus(epsilon) * sinus(Lambda)));
+    var Alpha = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
+      epsilon0) * sinus(sunLong), cosinus(sunLong))));
+    var Delta = radiansVersDegres(Math.asin(sinus(epsilon0) * sinus(
+      sunLong)));
+    var AlphaApp = normaliserDegres(radiansVersDegres(Math.atan2(cosinus(
+      epsilon) * sinus(Lambda), cosinus(Lambda))));
+    var DeltaApp = radiansVersDegres(Math.asin(sinus(epsilon) * sinus(
+      Lambda)));
 
-    return [l0, M, e, C, sunLong, sunAnomaly, sunR, Lambda, Alpha, Delta, AlphaApp, DeltaApp];
+    return [l0, M, e, C, sunLong, sunAnomaly, sunR, Lambda, Alpha, Delta,
+      AlphaApp, DeltaApp
+    ];
   };
 
   /**
@@ -546,11 +674,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var dp = 0;
     var de = 0;
 
-    ta[0] = degresVersRadians(297.850363 + 445267.11148 * t - 0.0019142 * t2 + t3 / 189474.0);
-    ta[1] = degresVersRadians(357.52772 + 35999.05034 * t - 0.0001603 * t2 - t3 / 300000.0);
-    ta[2] = degresVersRadians(134.96298 + 477198.867398 * t + 0.0086972 * t2 + t3 / 56250.0);
-    ta[3] = degresVersRadians(93.27191 + 483202.017538 * t - 0.0036825 * t2 + t3 / 327270);
-    ta[4] = degresVersRadians(125.04452 - 1934.136261 * t + 0.0020708 * t2 + t3 / 450000.0);
+    ta[0] = degresVersRadians(297.850363 + 445267.11148 * t - 0.0019142 *
+      t2 + t3 / 189474.0);
+    ta[1] = degresVersRadians(357.52772 + 35999.05034 * t - 0.0001603 *
+      t2 - t3 / 300000.0);
+    ta[2] = degresVersRadians(134.96298 + 477198.867398 * t + 0.0086972 *
+      t2 + t3 / 56250.0);
+    ta[3] = degresVersRadians(93.27191 + 483202.017538 * t - 0.0036825 *
+      t2 + t3 / 327270);
+    ta[4] = degresVersRadians(125.04452 - 1934.136261 * t + 0.0020708 *
+      t2 + t3 / 450000.0);
     for (var i = 0; i < 5; i++) {
       ta[i] -= 2 * Math.PI * Math.floor(ta[i] / (2 * Math.PI));
     }
@@ -564,8 +697,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           ang += argNutMult[_i * 5 + j] * ta[j];
         }
       }
-      dp += (argNutCoeff[_i * 4 + 0] + argNutCoeff[_i * 4 + 1] * to10) * Math.sin(ang);
-      de += (argNutCoeff[_i * 4 + 2] + argNutCoeff[_i * 4 + 3] * to10) * Math.cos(ang);
+      dp += (argNutCoeff[_i * 4 + 0] + argNutCoeff[_i * 4 + 1] * to10) *
+        Math.sin(ang);
+      de += (argNutCoeff[_i * 4 + 2] + argNutCoeff[_i * 4 + 3] * to10) *
+        Math.cos(ang);
     }
 
     return [dp / (3600.0 * 10000.0), de / (3600.0 * 10000.0)];
@@ -585,7 +720,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    */
   var equationDuTemps = function equationDuTemps(jj) {
     var tau = (jj - jjAn2000Gregorien) / (siecleJulien * 10);
-    var l0 = normaliserDegres(280.4664567 + 360007.6982779 * tau + 0.03032028 * Math.pow(tau, 2) + Math.pow(tau, 3) / 49931 + -(Math.pow(tau, 4) / 15300) + -(Math.pow(tau, 5) / 2000000));
+    var l0 = normaliserDegres(280.4664567 + 360007.6982779 * tau +
+      0.03032028 * Math.pow(tau, 2) + Math.pow(tau, 3) / 49931 + -(Math
+        .pow(tau, 4) / 15300) + -(Math.pow(tau, 5) / 2000000));
     var alpha = positionSoleil(jj)[10];
     var deltaPsi = nutation(jj)[0];
     var epsilon = obliquiteEcliptique(jj) + nutation(jj)[1];
@@ -652,6 +789,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    */
   var gregorienBissextile = function gregorienBissextile(an) {
     return an % 4 === 0 && !(an % 100 === 0 && an % 400 !== 0);
+  };
+
+  /**
+   * Pour calculer le nombre de jours juliens (jj) à partir d'une date
+   * grégorienne
+   * @access private
+   * @author John Walker
+   * @since 0.0.1
+   * @license Domaine public
+   * @see {@link http://fourmilab.ch/documents/calendar/|gregorian_to_jd}
+   * @param {Number} an - Année grégorienne
+   * @param {Number} mois - Mois grégorien
+   * @param {Number} jour - Jour grégorien
+   * @return {Number} Nombre de jours juliens
+   * @example
+   * gregorienVersJj(2015,11,7); // 2457333.5
+   */
+  var gregorienVersJj = function gregorienVersJj(an, mois, jour) {
+    var anneeBissextile = gregorienBissextile(an) ? -1 : -2;
+
+    return jjAn1Gregorien - 1 + 365 * (an - 1) + Math.floor((an - 1) / 4) +
+      -Math.floor((an - 1) / 100) + Math.floor((an - 1) / 400) + Math.floor(
+        (367 * mois - 362) / 12 + (mois <= 2 ? 0 : anneeBissextile) +
+        jour);
   };
 
   /**
@@ -732,7 +893,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       guess++;
       nexteq = equinoxeAParis(guess);
     }
-    var adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) + 1;
+    var adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) +
+      1;
 
     return [adr, lasteq];
   };
@@ -832,10 +994,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   var remplacements = function remplacements(texte, regex, options) {
     var tempTexte = texte;
 
-    for (var val in regex) {
-      // istanbul ignore else
-      if (regex.hasOwnProperty(val)) {
-        tempTexte = tempTexte.replace(new RegExp(val, options), regex[val]);
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = regex[Symbol.iterator](), _step; !(
+          _iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion =
+        true) {
+        var _step$value = _slicedToArray(_step.value, 2);
+
+        var key = _step$value[0];
+        var value = _step$value[1];
+
+        tempTexte = tempTexte.replace(new RegExp(key, options), value);
+      }
+    } catch (err) {
+      /* istanbul ignore next */
+      _didIteratorError = true;
+
+      /* istanbul ignore next */
+      _iteratorError = err;
+    } finally {
+      try {
+        /* istanbul ignore next */
+        if (!_iteratorNormalCompletion && _iterator.return) {
+          _iterator.return();
+        }
+      } finally {
+        /* istanbul ignore if */
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
       }
     }
 
@@ -882,7 +1072,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * rjmcVersRdc(28); // 3
    */
   var rjmcVersRdc = function rjmcVersRdc(rjmc) {
-    var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? Math.abs(parseInt(rjmc / 10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
+    var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? Math.abs(
+      parseInt(rjmc / 10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
     return resultat;
   };
 
@@ -899,7 +1090,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * rjmcVersRjdc(28); // 8
    */
   var rjmcVersRjdc = function rjmcVersRjdc(rjmc) {
-    var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? 10 : Math.abs(parseInt(rjmc, 10) % 10);
+    var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? 10 : Math.abs(
+      parseInt(rjmc, 10) % 10);
     return resultat;
   };
 
@@ -960,7 +1152,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var u = void 0;
 
     // On remplace le texte restant par des chiffres arabes
-    tempSaisie = remplacements(tempSaisie, regexp, 'gi').split(/[\/\.]+/gi);
+    tempSaisie = remplacements(tempSaisie, regexp, 'gi').split(
+      /[\/\.]+/gi);
 
     // Si il n'y a que l'année [1,1,ac]
     if (!tempSaisie[1] && !tempSaisie[2]) {
@@ -1004,8 +1197,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var tab = [];
 
     // Lorsque la date est valide [gjmc,gmc,gac]
-    if (saisieGregorien[2] && saisieGregorien[0] < 32 && absInt(saisieGregorien[0]) !== 0 && saisieGregorien[1] < 13 && saisieGregorien[1] !== '' && absInt(saisieGregorien[1]) !== 0) {
-      tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(saisieGregorien[1]), absInt(saisieGregorien[0]));
+    if (saisieGregorien[2] && saisieGregorien[0] < 32 && absInt(
+        saisieGregorien[0]) !== 0 && saisieGregorien[1] < 13 &&
+      saisieGregorien[1] !== '' && absInt(saisieGregorien[1]) !== 0) {
+      tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
+        saisieGregorien[1]), absInt(saisieGregorien[0]));
 
       // Limitations gregorien/julien
       if (limites === true && tab[4] < jjDebutGregorien) {
@@ -1026,9 +1222,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       // Limitations republicain
-      if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain || tab[4] >= jjDebutCommuneDeParis && tab[4] <= jjFinCommuneDeParis || limites === false) {
+      if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain ||
+        tab[4] >= jjDebutCommuneDeParis && tab[4] <= jjFinCommuneDeParis ||
+        limites === false) {
         var dateRepublicaine = jjVersRepublicain(tab[4]);
-        tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3], dateRepublicaine[1], dateRepublicaine[0]]);
+        tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
+            dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
+          dateRepublicaine[1], dateRepublicaine[0]
+        ]);
       }
     }
 
@@ -1052,21 +1253,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    */
   var tabRepublicain = function tabRepublicain(saisie, limites) {
     // On remplace les chiffres romains en chiffres arabes
-    var saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi, function (x, p1) {
-      var rva = romainVersArabe(p1);
-      return x.match(/-/) ? ' -' + rva : ' ' + rva;
-    });
+    var saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
+      function (x, p1) {
+        var rva = romainVersArabe(p1);
+        return x.match(/-/) ? ' -' + rva : ' ' + rva;
+      });
     var tab = [];
 
     // Uniformisation de la saisie
     saisieRepublicain = saisieValide(saisieRepublicain, regexpRepublicain);
 
     // Lorsque la date est valide [rjmc,rmc,rac]
-    if (saisieRepublicain[2] && saisieRepublicain[0] < 30 && absInt(saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 && absInt(saisieRepublicain[1]) !== 0) {
-      tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10), parseInt(saisieRepublicain[1], 10), rjmcVersRdc(saisieRepublicain[0]), rjmcVersRjdc(saisieRepublicain[0]));
+    if (saisieRepublicain[2] && saisieRepublicain[0] < 30 && absInt(
+        saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
+      absInt(saisieRepublicain[1]) !== 0) {
+      tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),
+        parseInt(saisieRepublicain[1], 10), rjmcVersRdc(
+          saisieRepublicain[0]), rjmcVersRjdc(saisieRepublicain[0]));
 
       // Si jj (tab[4]) est dans les limites ou en illimité
-      if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain || tab[4] >= jjDebutCommuneDeParis && tab[4] <= jjFinCommuneDeParis || limites === false) {
+      if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain ||
+        tab[4] >= jjDebutCommuneDeParis && tab[4] <= jjFinCommuneDeParis ||
+        limites === false) {
         var dateGregorienne = jjVersGregorien(tab[4]);
         var dateJulienne = jjVersJulien(tab[4]);
         tab[0] = dateGregorienne[2];
@@ -1087,27 +1295,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     return tab;
   };
-
-  /**
-   * Pour formater une date grégorienne
-   * @memberof acte
-   * @access public
-   * @since 0.0.1
-   * @author Gilles Toubiana
-   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-   * @version 0.0.1
-   * @license MIT
-   * @param {String} [format='%d/%m/%Y'] - Le modèle de formatage
-   * @param {String} [erreur='Pas de correspondances'] - Le message d'erreur
-   * @param {Function} [rappel] - Une fonction de rappel
-   * @return {String} La date grégorienne formatée
-   * @example
-   * new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
-  acte.Jour.prototype.gregorien = function gregorien(format, erreur, rappel) {
-    rappel();
-    return this.variables.gregorien.ac;
-  };
-  */
 
   /**
    * Pour convertir une saisie en objet JavaScript
@@ -1144,8 +1331,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       // Si ce n'est pas du républicain (donc grégorien ou julien)
     } else {
-        tab = tabGregorien(saisie, this.limites);
-      }
+      tab = tabGregorien(saisie, this.limites);
+    }
 
     // Ecriture de toutes les valeurs
     this.variables = {
@@ -1172,6 +1359,5 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       limites: this.limites
     };
   };
-
   return acte;
-});
+}));

@@ -16,7 +16,8 @@
       "no-unused-vars": 0, // /constantes/* sont utilisées dans /utilitaires/* et /methodes/*
       "no-undef": 0, // /methodes/* et /utilitaires/* utilisent /utilitaires/* et /constantes/*
       "max-len": [2, 78, 2], // 80 - 2 = indentation du module UMD
-
+      "no-restricted-syntax": 0,
+      
       "consistent-this": [1, "that"], // enforce consistent naming when capturing the current execution context
       "func-style": [1, "expression"], // enforce use of function declarations or expressions
       "id-length": [1, { // this option enforces minimum and maximum identifier lengths (variable names, property names etc.) - custom
