@@ -16,16 +16,12 @@ engines:
     enabled: false
 ratings:
   paths:
-  - "src/js/methodes/**.js"
-  - "src/js/constantes/**.js"
-  - "src/js/utilitaires/**.js"
+  - "src/js/**.js"
   - "test/**.js"
   - "dist/acte.js"
   - "gulpfile.js"
-  - "gulp/tasks/**.js"
-  - "gulp/config.js"
+  - "gulp/**.js"
 exclude_paths:
   - "src/css/**"
   - "test/coverage/**"
-  - "test/jasmine/**"
-  - "test/tape/**"
+  - "test/jasmine/lib/**"
