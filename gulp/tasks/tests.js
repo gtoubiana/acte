@@ -21,11 +21,6 @@ var wrap = require('gulp-wrap');
 // Générer les Specs utilisés par jasmine dans le browser
 gulp.task('tests.specs', function () {
   'use strict';
-  if (process.env.SAUCELABS) {
-    gutil.log('SAUCELABS env');
-  } else {
-    gutil.log('NO SAUCELABS env');
-  }
   return gulp.src([config.paths.test + '/*.js'])
     .pipe(concat('acteSpec.js'))
     .pipe(eslint())
@@ -66,10 +61,16 @@ gulp.task('tests.karma', function (done) {
 
 // Effectuer les tests dans SauceLabs avec Karma
 gulp.task('tests.saucelabs', function (done) {
-  new Server({
-    configFile: __dirname + '/../../test/karma/karma.conf-ci.js',
-    singleRun: true
-  }, done).start();
+  if (process.env.SAUCELABS) {
+    new Server({
+      configFile: __dirname + '/../../test/karma/karma.conf-ci.js',
+      singleRun: true
+    }, done).start();
+  } else {
+    // https://github.com/gtoubiana/acte/issues/90
+    gutil.log(gutil.colors
+      .red('Impossible de tester sans process.env.SAUCELABS !'));
+  }
 });
 
 gulp.task('tests.coverage', function () {
@@ -90,20 +91,22 @@ gulp.task('tests.coverage', function () {
 
           // 'reporters': ['lcov', 'json', 'text-summary', 'text'],
           reporters: ['lcov', 'json', 'text-summary']
-        }))
-        .on('finish', function () {
-          // Envoi des données à Coveralls depuis Travis
-          if (process.env.TRAVIS) {
-            gulp.src([config.paths.coverage + '/lcov.info'])
-              .pipe(coveralls());
-            gutil.log('lcov sent to Coveralls...');
-          } else {
-            gutil.log('lcov not sent to Coveralls...');
-          }
+        }));
 
-          // return gulp.src([config.paths.coverage + '/lcov.info'])
-          //   .pipe(gulpIf(!!process.env.TRAVIS, coveralls()))
-          //   .on('end', done);
-        });
+        // .on('finish', function () {
+        //   // Envoi des données à Coveralls depuis Travis
+        //   if (process.env.TRAVIS) {
+        //     gulp.src([config.paths.coverage + '/lcov.info'])
+        //       .pipe(coveralls());
+        //     gutil.log('lcov sent to Coveralls...');
+        //   } else {
+        //     gutil.log('lcov not sent to Coveralls...');
+        //   }
+        // });
     });
+});
+
+gulp.task('coveralls', function () {
+  if (!process.env.TRAVIS) return;
+  gulp.src(config.paths.coverage + '/lcov.info').pipe(coveralls());
 });
