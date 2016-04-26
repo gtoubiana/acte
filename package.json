@@ -42,6 +42,8 @@
   },
   "homepage": "https://github.com/gtoubiana/acte",
   "devDependencies": {
+    "babel-plugin-transform-es5-property-mutators": "^6.6.5",
+    "babel-plugin-transform-jscript": "^6.5.0",
     "babel-preset-es2015-without-strict": "0.0.2",
     "conventional-github-releaser": "^1.1.2",
     "del": "^2.2.0",

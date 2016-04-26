@@ -43,13 +43,6 @@ module.exports = function karma(config) {
       version: '9',
       platform: 'Windows 7'
     },
-
-    // sl_ie8_win: {
-    //   base: 'SauceLabs',
-    //   browserName: 'internet explorer',
-    //   version: '8',
-    //   platform: 'Windows 7'
-    // },
     sl_chrome_win: {
       base: 'SauceLabs',
       browserName: 'chrome',
@@ -88,6 +81,13 @@ module.exports = function karma(config) {
       version: 'latest',
       deviceType: 'phone'
     }
+
+    // sl_ie8_win: {
+    //   base: 'SauceLabs',
+    //   browserName: 'internet explorer',
+    //   version: '8',
+    //   platform: 'Windows 7'
+    // }
   };
   var sauceLabs;
   var concurrency;

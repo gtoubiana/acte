@@ -41,6 +41,8 @@ gulp.task('dist.acte', function () {
 
     .pipe(babel({
       presets: ['es2015-without-strict']
+
+      // plugins: ['transform-es5-property-mutators', 'transform-jscript']
     }))
 
     .pipe(wrap(config.umd))

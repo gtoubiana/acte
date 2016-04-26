@@ -68,7 +68,7 @@ gulp.task('tests.saucelabs', function (done) {
     }, done).start();
   } else {
     gutil.log(gutil.colors
-      .red('Impossible de tester sans process.env.SAUCELABS !'));
+      .red('process.env.SAUCELABS is not set'));
   }
 });
 
@@ -95,10 +95,10 @@ gulp.task('tests.coverage', function () {
 });
 
 gulp.task('tests.coveralls', function () {
-  if (process.env.TRAVIS) {
+  if (process.env.COVERALLS) {
     gulp.src(config.paths.coverage + '/lcov.info').pipe(coveralls());
   } else {
     gutil.log(gutil.colors
-      .red('Impossible d\'envoyer à Coveralls en local !'));
+      .red('process.env.COVERALLS is not set'));
   }
 });

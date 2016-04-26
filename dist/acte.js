@@ -1312,47 +1312,51 @@
    * @since 0.0.1
    * @license MIT
    */
-  acte.Jour = function Jour(saisie, limites) {
-    _classCallCheck(this, Jour);
+  acte.Jour = function () {
+    function Jour(saisie, limites) {
+      _classCallCheck(this, Jour);
 
-    var tab = [];
+      var tab = [];
 
-    this.variables = this.variables || {};
-    this.limites = limites !== false;
+      this.variables = this.variables || {};
+      this.limites = limites !== false;
 
-    // On détecte si c'est une date républicaine
-    if (saisie.match(/\W?an\s-?([-MDCLXVI]+|\d+)\W?/gi)) {
-      tab = tabRepublicain(saisie, this.limites);
+      // On détecte si c'est une date républicaine
+      if (saisie.match(/\W?an\s-?([-MDCLXVI]+|\d+)\W?/gi)) {
+        tab = tabRepublicain(saisie, this.limites);
 
-      // Si ce n'est pas du républicain (donc grégorien ou julien)
-    } else {
-      tab = tabGregorien(saisie, this.limites);
+        // Si ce n'est pas du républicain (donc grégorien ou julien)
+      } else {
+        tab = tabGregorien(saisie, this.limites);
+      }
+
+      // Ecriture de toutes les valeurs
+      this.variables = {
+        gregorien: {
+          jmc: tab[0],
+          mc: tab[1],
+          ac: tab[2],
+          od: tab[3]
+        },
+        julien: {
+          jj: tab[4],
+          jmc: tab[5],
+          mc: tab[6],
+          ac: tab[7],
+          od: tab[8]
+        },
+        republicain: {
+          jdc: tab[9],
+          dc: tab[10],
+          jmc: tab[11],
+          mc: tab[12],
+          ac: tab[13]
+        },
+        limites: this.limites
+      };
     }
 
-    // Ecriture de toutes les valeurs
-    this.variables = {
-      gregorien: {
-        jmc: tab[0],
-        mc: tab[1],
-        ac: tab[2],
-        od: tab[3]
-      },
-      julien: {
-        jj: tab[4],
-        jmc: tab[5],
-        mc: tab[6],
-        ac: tab[7],
-        od: tab[8]
-      },
-      republicain: {
-        jdc: tab[9],
-        dc: tab[10],
-        jmc: tab[11],
-        mc: tab[12],
-        ac: tab[13]
-      },
-      limites: this.limites
-    };
-  };
+    return Jour;
+  }();
   return acte;
 }));

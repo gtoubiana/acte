@@ -6,6 +6,7 @@ matrix:
     - node_js: '4'
       env:
         - SAUCELABS='1'
+        - COVERALLS='1'
       addons:
         sauce_connect: true
 branches:
@@ -15,8 +16,10 @@ before_script:
   - npm install -g gulp
   - npm install -g karma-cli
 script:
-  - npm run ci
+  - gulp travis
 after_script:
+  - ./node_modules/.bin/gulp tests.coverage
+  - ./node_modules/.bin/gulp tests.saucelabs
   - ./node_modules/.bin/gulp tests.coveralls
 env:
   global:
