@@ -10,7 +10,7 @@
   "scripts": {
     "build": "npm install && gulp travis && gulp tests.coverage",
     "test": "gulp travis && gulp tests.jasmine",
-    "ci": "gulp travis && gulp tests.coverage && tests.saucelabs"
+    "ci": "gulp travis && gulp tests.coverage && gulp tests.saucelabs"
   },
   "repository": {
     "type": "git",
