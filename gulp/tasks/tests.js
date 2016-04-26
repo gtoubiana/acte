@@ -21,6 +21,11 @@ var wrap = require('gulp-wrap');
 // Générer les Specs utilisés par jasmine dans le browser
 gulp.task('tests.specs', function () {
   'use strict';
+  if (process.env.SAUCELABS) {
+    gutil.log('SAUCELABS env');
+  } else {
+    gutil.log('NO SAUCELABS env');
+  }
   return gulp.src([config.paths.test + '/*.js'])
     .pipe(concat('acteSpec.js'))
     .pipe(eslint())
@@ -89,9 +94,9 @@ gulp.task('tests.coverage', function () {
         .on('finish', function () {
           // Envoi des données à Coveralls depuis Travis
           if (process.env.TRAVIS) {
-            gutil.log('lcov sent to Coveralls...');
             gulp.src([config.paths.coverage + '/lcov.info'])
               .pipe(coveralls());
+            gutil.log('lcov sent to Coveralls...');
           } else {
             gutil.log('lcov not sent to Coveralls...');
           }
