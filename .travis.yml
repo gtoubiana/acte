@@ -18,6 +18,7 @@ script:
   - npm run ci
 after_script:
   - ./node_modules/.bin/gulp tests.coveralls
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "4" ]; then ./node_modules/.bin/gulp tests.saucelabs ; fi'
 env:
   global:
   - TRAVIS_SECURE_ENV_VARS='true'

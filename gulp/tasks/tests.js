@@ -61,16 +61,16 @@ gulp.task('tests.karma', function (done) {
 
 // Effectuer les tests dans SauceLabs avec Karma
 gulp.task('tests.saucelabs', function (done) {
-  if (process.env.SAUCELABS) {
-    new Server({
-      configFile: __dirname + '/../../test/karma/karma.conf-ci.js',
-      singleRun: true
-    }, done).start();
-  } else {
-    // https://github.com/gtoubiana/acte/issues/90
-    gutil.log(gutil.colors
-      .red('Impossible de tester sans process.env.SAUCELABS !'));
-  }
+  // if (process.env.SAUCELABS) {
+  new Server({
+    configFile: __dirname + '/../../test/karma/karma.conf-ci.js',
+    singleRun: true
+  }, done).start();
+
+  // } else {
+  //   gutil.log(gutil.colors
+  //     .red('Impossible de tester sans process.env.SAUCELABS !'));
+  // }
 });
 
 gulp.task('tests.coverage', function () {
