@@ -92,21 +92,14 @@ gulp.task('tests.coverage', function () {
           // 'reporters': ['lcov', 'json', 'text-summary', 'text'],
           reporters: ['lcov', 'json', 'text-summary']
         }));
-
-      // .on('finish', function () {
-        //   // Envoi des données à Coveralls depuis Travis
-        //   if (process.env.TRAVIS) {
-        //     gulp.src([config.paths.coverage + '/lcov.info'])
-        //       .pipe(coveralls());
-        //     gutil.log('lcov sent to Coveralls...');
-        //   } else {
-        //     gutil.log('lcov not sent to Coveralls...');
-        //   }
-        // });
     });
 });
 
-gulp.task('coveralls', function () {
-  if (!process.env.TRAVIS) return;
-  gulp.src(config.paths.coverage + '/lcov.info').pipe(coveralls());
+gulp.task('tests.coveralls', function () {
+  if (process.env.TRAVIS) {
+    gulp.src(config.paths.coverage + '/lcov.info').pipe(coveralls());
+  } else {
+    gutil.log(gutil.colors
+      .red('Impossible d\'envoyer à Coveralls en local !'));
+  }
 });

@@ -17,7 +17,7 @@ before_script:
 script:
   - npm run ci
 after_script:
-  - ./node_modules/.bin/gulp coveralls
+  - ./node_modules/.bin/gulp tests.coveralls
 env:
   global:
   - TRAVIS_SECURE_ENV_VARS='true'
