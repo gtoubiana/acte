@@ -8,7 +8,9 @@
 var config = require('../config');
 var coveralls = require('gulp-coveralls');
 var gulp = require('gulp');
-var gulpIf = require('gulp-if');
+
+// var gulpIf = require('gulp-if');
+var gutil = require('gulp-util');
 var istanbul = require('gulp-istanbul');
 var jasmineNode = require('gulp-jasmine');
 var Server = require('karma').Server;
@@ -65,9 +67,8 @@ gulp.task('tests.saucelabs', function (done) {
   }, done).start();
 });
 
-gulp.task('tests.coverage', function (done) {
+gulp.task('tests.coverage', function () {
   'use strict';
-  var isTravis = process.env.TRAVIS !== void 0;
 
   // generation de la couverture
   return gulp.src([config.paths.dist + '/acte.js'])
@@ -87,11 +88,17 @@ gulp.task('tests.coverage', function (done) {
         }))
         .on('finish', function () {
           // Envoi des données à Coveralls depuis Travis
-          return gulp.src([config.paths.coverage + '/lcov.info'])
+          if (process.env.TRAVIS) {
+            gutil.log('lcov sent to Coveralls...');
+            gulp.src([config.paths.coverage + '/lcov.info'])
+              .pipe(coveralls());
+          } else {
+            gutil.log('lcov not sent to Coveralls...');
+          }
 
-            // .pipe(gulpIf(!!process.env.TRAVIS, coveralls()));
-            .pipe(gulpIf(isTravis, coveralls()))
-            .on('end', done);
+          // return gulp.src([config.paths.coverage + '/lcov.info'])
+          //   .pipe(gulpIf(!!process.env.TRAVIS, coveralls()))
+          //   .on('end', done);
         });
     });
 });

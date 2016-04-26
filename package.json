@@ -8,8 +8,9 @@
     "src": "/src"
   },
   "scripts": {
-    "build": "npm install && gulp nettoyages && gulp",
-    "test": "gulp"
+    "build": "npm install && gulp travis && gulp tests.coverage",
+    "test": "gulp travis && gulp tests.jasmine",
+    "ci": "gulp travis && gulp tests.coverage"
   },
   "repository": {
     "type": "git",
@@ -59,7 +60,6 @@
     "gulp-eslint": "^2.0.0",
     "gulp-git": "^1.7.1",
     "gulp-header": "^1.7.1",
-    "gulp-if": "^2.0.0",
     "gulp-istanbul": "^0.10.3",
     "gulp-jasmine": "^2.3.0",
     "gulp-jsbeautifier": "^2.0.3",

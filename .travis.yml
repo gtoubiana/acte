@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-- '4'
+- 'stable'
 matrix:
   include:
-    - node_js: '5'
+    - node_js: '4'
       env:
         - SAUCELABS
       addons:
@@ -15,9 +15,9 @@ before_script:
   - npm install -g gulp
   - npm install -g karma-cli
 script:
-  - gulp travis && gulp tests.coverage
+  - npm run ci
 after_script:
-  - 'if [ "${TRAVIS_NODE_VERSION}" = "5" ]; then gulp tests.saucelabs ; fi'
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "4" ]; then gulp tests.saucelabs ; fi'
 env:
   global:
   - TRAVIS_SECURE_ENV_VARS='true'
