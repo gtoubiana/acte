@@ -93,7 +93,7 @@ gulp.task('tests.coverage', function () {
           reporters: ['lcov', 'json', 'text-summary']
         }));
 
-        // .on('finish', function () {
+      // .on('finish', function () {
         //   // Envoi des données à Coveralls depuis Travis
         //   if (process.env.TRAVIS) {
         //     gulp.src([config.paths.coverage + '/lcov.info'])
