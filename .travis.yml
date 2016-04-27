@@ -1,6 +1,7 @@
 language: node_js
 node_js:
 - '4'
+- '5'
 matrix:
   include:
     - node_js: 'stable'
@@ -12,11 +13,6 @@ matrix:
 branches:
   only:
   - gh-pages
-before_install:
-  - export SL=$(echo ${TRAVIS_COMMIT_MSG} | grep '\[saucelabs\]' -c)
-  - echo "SL = "${SL}
-  - if [ ${SL} = "1" ]; then unset SAUCELABS; fi
-  - echo "SAUCELABS = "${SAUCELABS}
 before_script:
   - npm install -g gulp
   - npm install -g karma-cli
