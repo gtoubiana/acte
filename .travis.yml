@@ -14,7 +14,9 @@ branches:
   - gh-pages
 before_install:
   - export SL=$(echo $TRAVIS_COMMIT_MSG | grep '\[saucelabs\]' -c)
-  - if [ ${SL} = "1" ]; then export SAUCELABS="0"; fi
+  - echo "SL = "${SL}
+  - if [ ${SL} = "1" ]; then unset SAUCELABS; fi
+  - echo "SAUCELABS = "${SAUCELABS}
 before_script:
   - npm install -g gulp
   - npm install -g karma-cli
