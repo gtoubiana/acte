@@ -95,7 +95,8 @@ module.exports = function karma(config) {
   // Use ENV vars on Travis and sauce.json locally
   if (process.env.TRAVIS) {
     sauceLabs = {
-      testName: '[Travis] Karma Tests of Acte',
+      testName: '[Travis ' + process.env.TRAVIS_BUILD_NUMBER +
+        '] Karma Tests of Acte',
       startConnect: false,
       recordVideo: false,
       recordScreenshots: false,
