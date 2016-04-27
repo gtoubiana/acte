@@ -6,15 +6,15 @@ matrix:
   include:
     - node_js: 'stable'
       env:
-        - SAUCELABS=1
-        - COVERALLS=1
+        - SAUCELABS='1'
+        - COVERALLS='1'
       addons:
         sauce_connect: true
 branches:
   only:
   - gh-pages
 before_install:
- - 'if [ "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]' ]; then export SAUCELABS=0; fi'
+ - 'if [ "${TRAVIS_COMMIT_MSG}" | grep '\[-saucelabs\]' ]; then export SAUCELABS=0 ; fi'
 before_script:
   - npm install -g gulp
   - npm install -g karma-cli
