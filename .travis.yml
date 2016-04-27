@@ -12,6 +12,8 @@ matrix:
 branches:
   only:
   - gh-pages
+before_install:
+ - echo "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]'; export SAUCELABS=$?; true
 before_script:
   - npm install -g gulp
   - npm install -g karma-cli
