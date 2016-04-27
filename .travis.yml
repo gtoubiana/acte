@@ -13,7 +13,7 @@ branches:
   only:
   - gh-pages
 before_install:
-  - export SL=$(echo $TRAVIS_COMMIT_MSG | grep '\[saucelabs\]' -c)
+  - export SL=$(echo ${TRAVIS_COMMIT_MSG} | grep '\[saucelabs\]' -c)
   - echo "SL = "${SL}
   - if [ ${SL} = "1" ]; then unset SAUCELABS; fi
   - echo "SAUCELABS = "${SAUCELABS}
