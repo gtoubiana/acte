@@ -80,14 +80,13 @@ module.exports = function karma(config) {
       deviceName: 'Android Emulator',
       version: 'latest',
       deviceType: 'phone'
+    },
+    sl_ie8_win: {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '8',
+      platform: 'Windows 7'
     }
-
-    // sl_ie8_win: {
-    //   base: 'SauceLabs',
-    //   browserName: 'internet explorer',
-    //   version: '8',
-    //   platform: 'Windows 7'
-    // }
   };
   var sauceLabs;
   var concurrency;
