@@ -61,7 +61,7 @@ gulp.task('tests.karma', function (done) {
 
 // Effectuer les tests dans SauceLabs avec Karma
 gulp.task('tests.saucelabs', function (done) {
-  if (process.env.SAUCELABS === 1) {
+  if (process.env.SAUCELABS === '1') {
     new Server({
       configFile: __dirname + '/../../test/karma/karma.conf-ci.js',
       singleRun: true
@@ -95,7 +95,7 @@ gulp.task('tests.coverage', function () {
 });
 
 gulp.task('tests.coveralls', function () {
-  if (process.env.COVERALLS === 1) {
+  if (process.env.COVERALLS === '1') {
     gulp.src(config.paths.coverage + '/lcov.info').pipe(coveralls());
   } else {
     gutil.log(gutil.colors
