@@ -81,6 +81,8 @@ module.exports = function karma(config) {
       version: 'latest',
       deviceType: 'phone'
     },
+
+    // Debugger les classes ES2015 sous ie8
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
