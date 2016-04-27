@@ -12,6 +12,8 @@ matrix:
 branches:
   only:
   - gh-pages
+before_install:
+ - echo '$TRAVIS_COMMIT_MSG' | grep '\[-saucelabs\]' && export SAUCELABS='0' || echo 'SAUCELABS is enabled!'
 before_script:
   - npm install -g gulp
   - npm install -g karma-cli
@@ -19,8 +21,8 @@ script:
   - gulp travis
 after_script:
   - ./node_modules/.bin/gulp tests.coverage
-  - ./node_modules/.bin/gulp tests.saucelabs
   - ./node_modules/.bin/gulp tests.coveralls
+  - ./node_modules/.bin/gulp tests.saucelabs
 env:
   global:
   - TRAVIS_SECURE_ENV_VARS='true'
