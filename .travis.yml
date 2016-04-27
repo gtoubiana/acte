@@ -14,13 +14,9 @@ branches:
   only:
   - gh-pages
 before_install:
- - echo "SAUCELABS = "${SAUCELABS}
  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
- - echo "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]'; export SAUCELABS=$?; true
- - echo "TRAVIS_COMMIT_MSG = "${TRAVIS_COMMIT_MSG}
+ - echo "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]'; unset SAUCELABS; true
  - echo "SAUCELABS = "${SAUCELABS}
- - unset SAUCELABS
- - echo "unset SAUCELABS = "${SAUCELABS}
 before_script:
   - npm install -g gulp
   - npm install -g karma-cli
