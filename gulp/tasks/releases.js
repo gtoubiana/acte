@@ -4,14 +4,14 @@
  * gulp minor
  * gulp major
  */
-var gulp = require('gulp');
-var sequence = require('gulp-sequence');
+var bump = require('gulp-bump');
 var conventionalChangelog = require('gulp-conventional-changelog');
 var conventionalGHReleaser = require('conventional-github-releaser');
-var bump = require('gulp-bump');
-var gutil = require('gulp-util');
+var fs = require('graceful-fs');
 var git = require('gulp-git');
-var fs = require('fs');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var sequence = require('gulp-sequence');
 
 gulp.task('releases.version.patch', function () {
   return gulp.src(['./package.json'])

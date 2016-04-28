@@ -5,7 +5,7 @@
  */
 var concat = require('gulp-concat');
 var config = require('../config');
-var fs = require('fs');
+var fs = require('graceful-fs');
 var gulp = require('gulp');
 var jsdoc2md = require('gulp-jsdoc-to-markdown');
 var lazypipe = require('lazypipe');

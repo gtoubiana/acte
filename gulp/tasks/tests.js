@@ -1,6 +1,5 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp tests
- * gulp tests.travis
  * gulp tests.specs
  * gulp tests.jasmine
  * gulp tests.karma
@@ -110,19 +109,5 @@ gulp.task('tests', sequence(
 
   // Couvertures des tests avec istanbul [tests.specs, dist.acte]
   'tests.coverage'
-
-));
-
-// Tâche des tests ci sur travis
-gulp.task('tests.travis', sequence(
-
-  // Couvertures des tests avec istanbul [tests.specs, dist.acte]
-  'tests.coverage',
-
-  // Envoi du coverage à Coveralls
-  'tests.coveralls',
-
-  // Effectuer les tests dans SauceLabs avec Karma
-  'tests.saucelabs'
 
 ));

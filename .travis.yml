@@ -23,7 +23,9 @@ before_script:
 script:
   - gulp travis
 after_script:
-  - ./node_modules/.bin/gulp tests.travis
+  - ./node_modules/.bin/gulp tests.coverage
+  - ./node_modules/.bin/gulp tests.coveralls
+  - ./node_modules/.bin/gulp tests.saucelabs
 env:
   global:
   - TRAVIS_SECURE_ENV_VARS='true'
