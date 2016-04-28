@@ -15,7 +15,6 @@
  * 31/12/1805 (Période républicaine) et du 18/3/1871 au 28/5/1871
  * (Commune de Paris).<br>
  * La valeur `false` permet de désactiver ces limitations.
- * @version 0.0.7
  * @since 0.0.1
  * @license MIT
  */
