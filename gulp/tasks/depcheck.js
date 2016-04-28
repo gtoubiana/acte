@@ -25,6 +25,7 @@ require('babel-plugin-transform-es2015-typeof-symbol');
 require('babel-plugin-transform-es2015-unicode-regex');
 require('babel-plugin-transform-regenerator');
 require('eslint-config-airbnb');
+require('eslint-config-airbnb-base');
 require('eslint-plugin-import');
 require('eslint-plugin-jsx-a11y');
 require('eslint-plugin-react');
