@@ -1,6 +1,7 @@
 module.exports = function karma(config) {
   // Check out https://saucelabs.com/platforms
   var customLaunchers = {
+
     sl_safari_osx: {
       base: 'SauceLabs',
       browserName: 'safari',

@@ -36,41 +36,52 @@ gulp.task('dist', sequence(
 gulp.task('dist.acte', function () {
   'use strict';
   return gulp.src(config.acteScripts)
-
     .pipe(concat('acte.js'))
 
+    // .pipe(babel({
+    //   presets: ['es2015'],
+    // }))
+
     .pipe(babel({
-      presets: ['es2015-without-strict']
+      plugins: [
 
-      // plugins: ['transform-es5-property-mutators', 'transform-jscript']
+        // es2015 preset
+        'transform-es2015-template-literals',
+        'transform-es2015-literals',
+        'transform-es2015-function-name',
+        'transform-es2015-arrow-functions',
+        'transform-es2015-block-scoped-functions',
+        'transform-es2015-classes',
+        'transform-es2015-object-super',
+        'transform-es2015-shorthand-properties',
+        'transform-es2015-duplicate-keys',
+        'transform-es2015-computed-properties',
+        'transform-es2015-for-of',
+        'transform-es2015-sticky-regex',
+        'transform-es2015-unicode-regex',
+        'check-es2015-constants',
+        'transform-es2015-spread',
+        'transform-es2015-parameters',
+        'transform-es2015-destructuring',
+        'transform-es2015-block-scoping',
+        'transform-es2015-typeof-symbol',
+        ['transform-regenerator', { async: false, asyncGenerators: false }],
+
+        // no strict
+        ['transform-es2015-modules-commonjs', { strict: false }]
+      ]
     }))
-
     .pipe(wrap(config.umd))
-
-    // .pipe(rep(/function _classCallCheck/g,
-    //   '/* istanbul ignore next */\n$&'))
-    // .pipe(rep(/_didIteratorError = true;/g,
-    //   '/* istanbul ignore next */\n$&'))
-    // .pipe(rep(/_iteratorError = err;/g,
-    //   '\n/* istanbul ignore next */\n$&'))
-    // .pipe(rep(/if \(!_iteratorNormalCompletion/g,
-    //   '/* istanbul ignore next */\n$&'))
-    // .pipe(rep(/if \(_didIteratorError\) {/g,
-    //   '/* istanbul ignore if */\n$&'))
-
     .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync('./package.json',
       'utf8')).version + config.bannerBottom, {
         pkg: pkg
       }))
-
     .pipe(prettify({
       config: config.paths.dist + '/.jsbeautifyrc'
     }))
-
     .pipe(size({
       title: 'Original  acte.js Size ->'
     }))
-
     .pipe(gulp.dest(config.paths.dist));
 });
 

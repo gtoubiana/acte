@@ -1,4 +1,6 @@
 /** TACHES PRINCIPALES DU FICHIER :
+ * gulp tests
+ * gulp tests.travis
  * gulp tests.specs
  * gulp tests.jasmine
  * gulp tests.karma
@@ -8,8 +10,7 @@
 var config = require('../config');
 var coveralls = require('gulp-coveralls');
 var gulp = require('gulp');
-
-// var gulpIf = require('gulp-if');
+var sequence = require('gulp-sequence');
 var gutil = require('gulp-util');
 var istanbul = require('gulp-istanbul');
 var jasmineNode = require('gulp-jasmine');
@@ -94,6 +95,7 @@ gulp.task('tests.coverage', function () {
     });
 });
 
+// Envoi du coverage à Coveralls
 gulp.task('tests.coveralls', function () {
   if (process.env.COVERALLS) {
     gulp.src(config.paths.coverage + '/lcov.info').pipe(coveralls());
@@ -102,3 +104,25 @@ gulp.task('tests.coveralls', function () {
       .red('process.env.COVERALLS is not set'));
   }
 });
+
+// Tâche des tests locaux
+gulp.task('tests', sequence(
+
+  // Couvertures des tests avec istanbul [tests.specs, dist.acte]
+  'tests.coverage'
+
+));
+
+// Tâche des tests ci sur travis
+gulp.task('tests.travis', sequence(
+
+  // Couvertures des tests avec istanbul [tests.specs, dist.acte]
+  'tests.coverage',
+
+  // Envoi du coverage à Coveralls
+  'tests.coveralls',
+
+  // Effectuer les tests dans SauceLabs avec Karma
+  'tests.saucelabs'
+
+));
