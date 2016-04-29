@@ -17,6 +17,8 @@ before_install:
  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
  - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]'; then unset SAUCELABS; fi
  - echo "SAUCELABS = "${SAUCELABS}
+ - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-coveralls\]'; then unset COVERALLS; fi
+ - echo "COVERALLS = "${COVERALLS}
 before_script:
   - npm install -g gulp
   - npm install -g karma-cli

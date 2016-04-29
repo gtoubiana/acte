@@ -22,6 +22,5 @@ ratings:
   - "gulpfile.js"
   - "gulp/**.js"
 exclude_paths:
-  - "src/css/**"
   - "test/coverage/**"
   - "test/jasmine/lib/**"
