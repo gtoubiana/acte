@@ -56,8 +56,7 @@ var acteScripts = [
   '!' + paths.func + '/julienVersJj.js',
 
   // Classes
-  // paths.class + '/*.js',
-  paths.class + '/jour-ie8.js',
+  paths.class + '/*.js',
 
   // Prototypes
   '!' + paths.proto + '/gregorien.js'

@@ -27,6 +27,12 @@
 
   /* eslint-enable no-use-before-define */
   /* istanbul ignore next */
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
   /**
    * Jours juliens des équinoxes de l'an 1000 à l'an 2000
    * @access private
@@ -1302,20 +1308,22 @@
    * 31/12/1805 (Période républicaine) et du 18/3/1871 au 28/5/1871
    * (Commune de Paris).<br>
    * La valeur `false` permet de désactiver ces limitations.
-   * @since 0.0.7
+   * @since 0.0.1
    * @license MIT
    */
   acte.Jour = function Jour(saisie, limites) {
+    _classCallCheck(this, Jour);
+
     var tab = [];
 
     this.variables = this.variables || {};
     this.limites = limites !== false;
 
-    // On detecte si c'est une date républicaine
+    // On détecte si c'est une date républicaine
     if (saisie.match(/\W?an\s-?([-MDCLXVI]+|\d+)\W?/gi)) {
       tab = tabRepublicain(saisie, this.limites);
 
-      // Si ce n'est pas du républicain (donc gregorien ou julien)
+      // Si ce n'est pas du républicain (donc grégorien ou julien)
     } else {
       tab = tabGregorien(saisie, this.limites);
     }
