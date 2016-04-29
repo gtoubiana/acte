@@ -56,7 +56,7 @@ gulp.task('releases.commit', function () {
 });
 
 gulp.task('releases.push', function (cb) {
-  git.push('origin', 'gh-pages', cb);
+  git.push('origin', 'master', cb);
 });
 
 gulp.task('releases.tag', function (cb) {
@@ -67,7 +67,7 @@ gulp.task('releases.tag', function (cb) {
     if (error) {
       return cb(error);
     }
-    git.push('origin', 'gh-pages', { args: '--tags && npm publish' }, cb);
+    git.push('origin', 'master', { args: '--tags && npm publish' }, cb);
   });
 
   /* eslint-enable consistent-return */
