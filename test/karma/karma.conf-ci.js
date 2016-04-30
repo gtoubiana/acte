@@ -81,23 +81,22 @@ module.exports = function karma(config) {
       deviceName: 'Android Emulator',
       version: 'latest',
       deviceType: 'phone'
-    },
-
-    // Debugger les classes ES2015 sous ie8
-    sl_ie8_win: {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '8',
-      platform: 'Windows 7'
     }
+
+    // sl_ie8_win: {
+    //   base: 'SauceLabs',
+    //   browserName: 'internet explorer',
+    //   version: '8',
+    //   platform: 'Windows 7'
+    // }
   };
   var sauceLabs;
   var concurrency;
 
-  // Use ENV vars on Travis and sauce.json locally
+  // Use ENV vars on Travis & locally
   if (process.env.TRAVIS) {
     sauceLabs = {
-      testName: '[Travis ' + process.env.TRAVIS_BUILD_NUMBER +
+      testName: '[Travis-' + process.env.TRAVIS_BUILD_NUMBER +
         '] Karma Tests of Acte',
       startConnect: false,
       recordVideo: false,
