@@ -21,8 +21,11 @@ var zip = require('gulp-zip');
 
 gulp.task('dist', sequence(
 
-  // Générer le script acte
-  'dist.acte',
+  // Générer le script acte avec babel
+  'dist.acte.es5',
+
+  // compatibilité ie8
+  'dist.acte.es3',
 
   // Générer le script minifié de acte
   'dist.min',
@@ -33,7 +36,7 @@ gulp.task('dist', sequence(
 ));
 
 // TASK Pour générer le script ./dist/acte.js
-gulp.task('dist.acte', function () {
+gulp.task('dist.acte.es5', function () {
   'use strict';
   return gulp.src(config.acteScripts)
     .pipe(concat('acte.js'))
@@ -72,15 +75,52 @@ gulp.task('dist.acte', function () {
       ]
     }))
     .pipe(wrap(config.umd))
-    .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync('./package.json',
-      'utf8')).version + config.bannerBottom, {
+
+    .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync(
+      './package.json', 'utf8')).version + config.bannerBottom, {
         pkg: pkg
       }))
     .pipe(prettify({
       config: config.paths.dist + '/.jsbeautifyrc'
     }))
     .pipe(size({
-      title: 'Original  acte.js Size ->'
+      title: 'ES5 acte.js Size ->'
+    }))
+    .pipe(gulp.dest(config.paths.dist));
+});
+
+gulp.task('dist.acte.es3', function () {
+  'use strict';
+  return gulp.src([
+
+    // POLYFILLS
+    config.paths.poly + '/Array.prototype.reduce.js',
+
+    // SCRIPT ES5
+    config.paths.dist + '/acte.js'
+  ])
+    .pipe(concat('acte.js'))
+    .pipe(babel({
+      plugins: [
+
+        // ES3 compatibility preset
+        'transform-object-assign',
+        'transform-es3-member-expression-literals',
+        'transform-es3-property-literals',
+        'transform-jscript',
+        'transform-undefined-to-void'
+      ]
+    }))
+
+    // .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync(
+    //   './package.json', 'utf8')).version + config.bannerBottom, {
+    //     pkg: pkg
+    //   }))
+    .pipe(prettify({
+      config: config.paths.dist + '/.jsbeautifyrc'
+    }))
+    .pipe(size({
+      title: 'ES3 acte.js Size ->'
     }))
     .pipe(gulp.dest(config.paths.dist));
 });
@@ -99,7 +139,7 @@ gulp.task('dist.min', function () {
         pkg: pkg
       }))
     .pipe(size({
-      title: 'Minified  acte.min.js Size ->'
+      title: 'MIN acte.min.js Size ->'
     }))
     .pipe(sourcemaps.write(config.paths.root))
     .pipe(gulp.dest(config.paths.dist));

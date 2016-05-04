@@ -14,10 +14,11 @@ var paths = {
   dist: './dist',
   src: './src',
   tasks: './gulp/tasks',
-  class: './src/js/public/classes/constructors',
+  class: './src/js/public/constructors',
   const: './src/js/private/constants',
   func: './src/js/private/functions',
-  proto: './src/js/public/classes/prototypes',
+  proto: './src/js/public/prototypes',
+  poly: './src/js/polyfills',
   jasmine: './test/jasmine',
   jasmineCore: './node_modules/jasmine-core/lib/jasmine-core',
   coverage: './test/coverage'
@@ -55,11 +56,11 @@ var acteScripts = [
   '!' + paths.func + '/arabeVersRomain.js',
   '!' + paths.func + '/julienVersJj.js',
 
-  // Classes
+  // Constructeurs
   paths.class + '/*.js',
 
   // Prototypes
-  '!' + paths.proto + '/gregorien.js'
+  '!' + paths.proto + '/Jour.prototype.gregorien.js'
 ];
 
 // Template Jsdoc du module UMD
@@ -74,8 +75,7 @@ var bannerBottom = '\n' +
   ' */\n';
 
   // Template du module UMD
-var umd = '\'use strict\';\n' +
-    '(function universalModuleDefinition(root, factory) {\n' +
+var umd = '(function universalModuleDefinition(root, factory) {\n' +
     '  var tempRoot = root;\n\n' +
     '  /* istanbul ignore next */\n' +
     '  if (typeof exports === \'object\' && typeof module === \'object\') {\n' +
@@ -89,7 +89,7 @@ var umd = '\'use strict\';\n' +
     '  }\n' +
     '}(this, function umdCallback() {\n' +
 
-    // '  \'use strict\';\n\n' +
+    '  \'use strict\';\n\n' +
     '  /** @namespace */\n' +
     '  /* eslint-disable no-use-before-define */\n' +
     '  var acte = acte || {};\n\n' +

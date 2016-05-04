@@ -26,18 +26,19 @@ gulp.task('default', sequence(
   // Spécifications des tests [lint.specs]
   'tests.specs',
 
+  // Générations des fichiers [lint.src]
+  'dist.acte.es5',
+  'dist.acte.es3',
+  'dist.min',
+  'dist.zip',
+
   // Générations des documentations
-  // [lint.constants, lint.functions, lint.constructors, lint.prototypes]
+  // [lint.src, dist.acte.es3]
   'docs.dist',
   'docs.constants',
   'docs.functions',
 
-  // Générations des fichiers [docs.dist]
-  'dist.acte',
-  'dist.min',
-  'dist.zip',
-
-  // Validation airbnb es5 [dist.acte]
+  // Validation airbnb-base/legacy [dist.acte.es3]
   'lint.dist'
 
   // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]

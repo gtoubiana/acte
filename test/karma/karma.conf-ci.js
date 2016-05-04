@@ -82,7 +82,6 @@ module.exports = function karma(config) {
       version: 'latest',
       deviceType: 'phone'
     },
-
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
