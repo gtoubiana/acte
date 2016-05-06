@@ -1,22 +1,20 @@
-var dateValide = function dateValide(jour, mois, an) {
-  'use strict';
-  var resultat = new Date(an, mois - 1, jour);
+const dateValide = (jour, mois, an) => {
+  const resultat = new Date(an, mois - 1, jour);
 
   resultat.setFullYear(an);
   return resultat;
 };
 
 // http://jasmine.github.io/edge/introduction.html
-describe('Constructeur acte.Jour()', function () {
-  'use strict';
-  it('retourne this : un objet', function () {
+describe('Constructeur acte.Jour()', () => {
+  it('retourne this : un objet', () => {
     expect(new acte.Jour('6 octobre 1793'))
       .toEqual(jasmine.any(Object));
   });
   it(
     'retourne this.variables.gregorien.od : ' +
     'un objet Date grégorienne (ou Undefined)',
-    function () {
+    () => {
       // gregorien
       expect(new acte.Jour('1793').variables.gregorien.od)
         .toEqual(dateValide(1, 1, 1793));
@@ -144,26 +142,26 @@ describe('Constructeur acte.Jour()', function () {
     });
   it(
     'retourne this.variables.gregorien.ac : l\'année grégorienne en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('1 octobre 1793').variables.gregorien.ac)
         .toEqual(1793);
     });
   it(
     'retourne this.variables.gregorien.mc : le mois grégorien en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('2 octobre 1793').variables.gregorien.mc)
         .toEqual(10);
     });
   it(
     'retourne this.variables.gregorien.jmc : le jour du mois grégorien ' +
     'en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('3 octobre 1793').variables.gregorien.jmc)
         .toEqual(3);
     });
   it(
     'retourne this.variables.julien.od : un objet Date julienne (ou Undefined)',
-    function () {
+    () => {
       // Debut gregorien
       expect(new acte.Jour('15 octobre 1582').variables.julien.od)
         .toEqual(dateValide(5, 10, 1582));
@@ -178,30 +176,30 @@ describe('Constructeur acte.Jour()', function () {
     });
   it(
     'retourne this.variables.julien.ac : l\'année julienne en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('4 octobre 1793').variables.julien.ac)
         .toEqual(1793);
     });
   it('retourne this.variables.julien.mc : le mois julien en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('5 octobre 1793').variables.julien.mc)
         .toEqual(9);
     });
   it(
     'retourne this.variables.julien.jmc : le jour du mois julien en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('6 octobre 1793').variables.julien.jmc)
         .toEqual(25);
     });
   it('retourne this.variables.julien.jj : le nombre de jours juliens',
-    function () {
+    () => {
       expect(new acte.Jour('6 octobre 1793').variables.julien.jj)
         .toEqual(2376218.5);
     });
   it(
     'retourne this.variables.republicain.ac : l\'année républicaine ' +
     'en chiffres (ou Undefined)',
-    function () {
+    () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.ac)
         .toEqual(2);
 
@@ -281,28 +279,28 @@ describe('Constructeur acte.Jour()', function () {
     });
   it(
     'retourne this.variables.republicain.mc : le mois républicain en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.mc)
         .toEqual(1);
     });
   it(
     'retourne this.variables.republicain.jmc : le jour du mois républicain ' +
     'en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.jmc)
         .toEqual(15);
     });
   it(
     'retourne this.variables.republicain.dc : la décade républicaine ' +
     'en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.dc)
         .toEqual(2);
     });
   it(
     'retourne this.variables.republicain.jdc : le jour de la décade ' +
     'républicaine en chiffres',
-    function () {
+    () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.jdc)
         .toEqual(5);
     });

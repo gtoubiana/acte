@@ -3,18 +3,18 @@
  * gulp docs.constants
  * gulp docs.functions
  */
-var concat = require('gulp-concat');
-var config = require('../config');
-var fs = require('graceful-fs');
-var gulp = require('gulp');
-var jsdoc2md = require('gulp-jsdoc-to-markdown');
-var lazypipe = require('lazypipe');
-var rename = require('gulp-rename');
-var rep = require('gulp-replace');
-var sequence = require('gulp-sequence');
+const concat = require('gulp-concat');
+const config = require('../config');
+const gfs = require('graceful-fs');
+const gulp = require('gulp');
+const jsdoc2md = require('gulp-jsdoc-to-markdown');
+const lazypipe = require('lazypipe');
+const rename = require('gulp-rename');
+const rep = require('gulp-replace');
+const sequence = require('gulp-sequence');
 
 // Lazypipes
-var lazyJsdocFr = lazypipe()
+const lazyJsdocFr = lazypipe()
   .pipe(rep, /## Constants/g, '## Constantes')
   .pipe(rep, /## Functions/g, '## Utilitaires')
   .pipe(rep, /\*\*Kind\*\*:/g, '**Type** :')
@@ -52,42 +52,45 @@ gulp.task('docs', sequence(
 ));
 
 // TASK Pour générer une doc .md à partir du jsdoc
-gulp.task('docs.dist', function () {
-  'use strict';
-  return gulp.src(config.paths.dist + '/acte.js')
+gulp.task('docs.dist', () => {
+  const stream = gulp.src(`${config.paths.dist}/acte.js`)
     .pipe(rename('README.md'))
-    .pipe(jsdoc2md({ template: fs.readFileSync(config.paths.src +
-      '/tmpl/docDist.hbs', 'utf8') }))
+    .pipe(jsdoc2md({ template: gfs.readFileSync(
+      `${config.paths.src}/tmpl/docDist.hbs`, 'utf8') }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.dist));
+
+  return stream;
 });
 
 // TASK Pour générer une doc .md à partir du jsdoc
-gulp.task('docs.constants', function () {
-  'use strict';
-  return gulp.src(config.paths.const + '/*.js')
+gulp.task('docs.constants', () => {
+  const stream = gulp.src(`${config.paths.const}/*.js`)
     .pipe(concat('README.md'))
     .pipe(jsdoc2md({
       private: true,
       'sort-by': 'name',
-      template: fs.readFileSync(config.paths.src +
-        '/tmpl/docConstants.hbs', 'utf8')
+      template: gfs.readFileSync(`${config.paths.src}/tmpl/docConstants.hbs`,
+        'utf8'),
     }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.const));
+
+  return stream;
 });
 
 // TASK Pour générer une doc .md à partir du jsdoc
-gulp.task('docs.functions', function () {
-  'use strict';
-  return gulp.src(config.paths.func + '/*.js')
+gulp.task('docs.functions', () => {
+  const stream = gulp.src(`${config.paths.func}/*.js`)
     .pipe(concat('README.md'))
     .pipe(jsdoc2md({
       private: true,
       'sort-by': 'name',
-      template: fs.readFileSync(config.paths.src +
-        '/tmpl/docFunctions.hbs', 'utf8')
+      template: gfs.readFileSync(`${config.paths.src}/tmpl/docFunctions.hbs`,
+        'utf8'),
     }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.func));
+
+  return stream;
 });

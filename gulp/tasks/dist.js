@@ -1,21 +1,21 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp generations
  */
-var babel = require('gulp-babel');
-var concat = require('gulp-concat');
-var config = require('../config');
-var fs = require('graceful-fs');
-var gulp = require('gulp');
-var header = require('gulp-header');
-var pkg = require('../../package.json');
-var prettify = require('gulp-jsbeautifier');
-var rename = require('gulp-rename');
-var sequence = require('gulp-sequence');
-var size = require('gulp-size');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var wrap = require('gulp-wrap');
-var zip = require('gulp-zip');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+const config = require('../config');
+const gfs = require('graceful-fs');
+const gulp = require('gulp');
+const header = require('gulp-header');
+const pkg = require('../../package.json');
+const prettify = require('gulp-jsbeautifier');
+const rename = require('gulp-rename');
+const sequence = require('gulp-sequence');
+const size = require('gulp-size');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const wrap = require('gulp-wrap');
+const zip = require('gulp-zip');
 
 // var rep = require('gulp-replace');
 
@@ -36,9 +36,8 @@ gulp.task('dist', sequence(
 ));
 
 // TASK Pour générer le script ./dist/acte.js
-gulp.task('dist.acte.es5', function () {
-  'use strict';
-  return gulp.src(config.acteScripts)
+gulp.task('dist.acte.es5', () => {
+  const stream = gulp.src(config.acteScripts)
     .pipe(concat('acte.js'))
 
     // .pipe(babel({
@@ -71,33 +70,34 @@ gulp.task('dist.acte.es5', function () {
         ['transform-regenerator', { async: false, asyncGenerators: false }],
 
         // no strict
-        ['transform-es2015-modules-commonjs', { strict: false }]
-      ]
+        ['transform-es2015-modules-commonjs', { strict: false }],
+      ],
     }))
     .pipe(wrap(config.umd))
 
-    .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync(
+    .pipe(header(config.bannerTop + JSON.parse(gfs.readFileSync(
       './package.json', 'utf8')).version + config.bannerBottom, {
-        pkg: pkg
+        pkg,
       }))
     .pipe(prettify({
-      config: config.paths.dist + '/.jsbeautifyrc'
+      config: `${config.paths.dist}/.jsbeautifyrc`,
     }))
     .pipe(size({
-      title: 'ES5 acte.js Size ->'
+      title: 'ES5 acte.js Size ->',
     }))
     .pipe(gulp.dest(config.paths.dist));
+
+  return stream;
 });
 
-gulp.task('dist.acte.es3', function () {
-  'use strict';
-  return gulp.src([
+gulp.task('dist.acte.es3', () => {
+  const stream = gulp.src([
 
     // POLYFILLS
-    config.paths.poly + '/Array.prototype.reduce.js',
+    `${config.paths.poly}/Array.prototype.reduce.js`,
 
     // SCRIPT ES5
-    config.paths.dist + '/acte.js'
+    `${config.paths.dist}/acte.js`,
   ])
     .pipe(concat('acte.js'))
     .pipe(babel({
@@ -108,48 +108,53 @@ gulp.task('dist.acte.es3', function () {
         'transform-es3-member-expression-literals',
         'transform-es3-property-literals',
         'transform-jscript',
-        'transform-undefined-to-void'
-      ]
+        'transform-undefined-to-void',
+      ],
     }))
 
-    // .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync(
+    // .pipe(header(config.bannerTop + JSON.parse(gfs.readFileSync(
     //   './package.json', 'utf8')).version + config.bannerBottom, {
     //     pkg: pkg
     //   }))
     .pipe(prettify({
-      config: config.paths.dist + '/.jsbeautifyrc'
+      config: `${config.paths.dist}/.jsbeautifyrc`,
     }))
     .pipe(size({
-      title: 'ES3 acte.js Size ->'
+      title: 'ES3 acte.js Size ->',
     }))
     .pipe(gulp.dest(config.paths.dist));
+
+  return stream;
 });
 
 // TASK Pour générer le script ./dist/acte.min.js
-gulp.task('dist.min', function () {
-  'use strict';
-  return gulp.src(config.paths.dist + '/acte.js')
+gulp.task('dist.min', () => {
+  const stream = gulp.src(`${config.paths.dist}/acte.js`)
     .pipe(sourcemaps.init())
     .pipe(rename({
-      suffix: '.min'
+      suffix: '.min',
     }))
     .pipe(uglify())
-    .pipe(header(config.bannerTop + JSON.parse(fs.readFileSync('./package.json',
-      'utf8')).version + config.bannerBottom, {
-        pkg: pkg
+    .pipe(header(config.bannerTop + JSON.parse(gfs.readFileSync(
+      './package.json', 'utf8')).version + config.bannerBottom, {
+        pkg,
       }))
     .pipe(size({
-      title: 'MIN acte.min.js Size ->'
+      title: 'MIN acte.min.js Size ->',
     }))
     .pipe(sourcemaps.write(config.paths.root))
     .pipe(gulp.dest(config.paths.dist));
+
+  return stream;
 });
 
 // TASK Pour créer une archive.zip de la release
-gulp.task('dist.zip', function () {
-  'use strict';
-  return gulp.src([config.paths.dist + '/*.{min.js,map,md}'])
-    .pipe(zip('acte-' + JSON.parse(fs.readFileSync('./package.json',
-      'utf8')).version + '-dist.zip'))
+gulp.task('dist.zip', () => {
+  const version = JSON.parse(gfs.readFileSync('./package.json',
+    'utf8')).version;
+  const stream = gulp.src([`${config.paths.dist}/*.{min.js,map,md}`])
+    .pipe(zip(`acte-${version}-dist.zip`))
     .pipe(gulp.dest(config.paths.dist));
+
+  return stream;
 });

@@ -1,5 +1,5 @@
-var depcheck = require('gulp-depcheck');
-var gulp = require('gulp');
+const depcheck = require('gulp-depcheck');
+const gulp = require('gulp');
 
 // dépendances
 require('babel-helper-transform-fixture-test-runner');
@@ -46,5 +46,5 @@ require('karma-sauce-launcher');
 // Vérifier les dépendances
 gulp.task('depcheck', depcheck({
   ignoreDirs: ['docs', 'build'],
-  ignoreMatches: ['glob']
+  ignoreMatches: ['glob'],
 }));

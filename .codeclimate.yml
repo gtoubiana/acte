@@ -16,11 +16,13 @@ engines:
     enabled: false
 ratings:
   paths:
+  - "gulp/**.js"
+  - "gulpfile.js"
   - "src/js/**.js"
   - "test/**.js"
-  - "dist/acte.js"
-  - "gulpfile.js"
-  - "gulp/**.js"
 exclude_paths:
+  - "dist/**"
+  - "src/js/polyfills/**"
   - "test/coverage/**"
-  - "test/jasmine/lib/**"
+  - "test/jasmine/**"
+  - "test/karma/**"

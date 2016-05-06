@@ -1,1 +1,9 @@
+# /node_modules and /bower_components ignored by default
+
+# Ignore minified javascript files
 **/*{.,-}min.js
+
+# Ignore folders
+dist/
+src/js/polyfills/
+test/jasmine/

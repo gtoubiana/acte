@@ -4,66 +4,80 @@
  * gulp minor
  * gulp major
  */
-var bump = require('gulp-bump');
-var conventionalChangelog = require('gulp-conventional-changelog');
-var conventionalGHReleaser = require('conventional-github-releaser');
-var fs = require('graceful-fs');
-var git = require('gulp-git');
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var sequence = require('gulp-sequence');
+const bump = require('gulp-bump');
+const conventionalChangelog = require('gulp-conventional-changelog');
+const conventionalGHReleaser = require('conventional-github-releaser');
+const gfs = require('graceful-fs');
+const git = require('gulp-git');
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const sequence = require('gulp-sequence');
 
-gulp.task('releases.version.patch', function () {
-  return gulp.src(['./package.json'])
+gulp.task('releases.version.patch', () => {
+  const stream = gulp.src(['./package.json'])
     .pipe(bump({ type: 'patch' }).on('error', gutil.log))
     .pipe(gulp.dest('./'));
+
+  return stream;
 });
 
-gulp.task('releases.version.minor', function () {
-  return gulp.src(['./package.json'])
+gulp.task('releases.version.minor', () => {
+  const stream = gulp.src(['./package.json'])
     .pipe(bump({ type: 'minor' }).on('error', gutil.log))
     .pipe(gulp.dest('./'));
+
+  return stream;
 });
 
-gulp.task('releases.version.major', function () {
-  return gulp.src(['./package.json'])
+gulp.task('releases.version.major', () => {
+  const stream = gulp.src(['./package.json'])
     .pipe(bump({ type: 'major' }).on('error', gutil.log))
     .pipe(gulp.dest('./'));
+
+  return stream;
 });
 
-gulp.task('releases.version.prerelease', function () {
-  return gulp.src(['./package.json'])
+gulp.task('releases.version.prerelease', () => {
+  const stream = gulp.src(['./package.json'])
     .pipe(bump({ type: 'prerelease' }).on('error', gutil.log))
     .pipe(gulp.dest('./'));
+
+  return stream;
 });
 
-gulp.task('releases.conventional.changelog', function () {
-  return gulp.src('CHANGELOG.md', {
-    buffer: false
+gulp.task('releases.conventional.changelog', () => {
+  const stream = gulp.src('CHANGELOG.md', {
+    buffer: false,
   })
     .pipe(conventionalChangelog({
       preset: 'angular',
-      releaseCount: 0
+      releaseCount: 0,
     }))
     .pipe(gulp.dest('./'));
+
+  return stream;
 });
 
-gulp.task('releases.commit', function () {
-  return gulp.src('.')
+gulp.task('releases.commit', () => {
+  const version = JSON.parse(
+    gfs.readFileSync('./package.json', 'utf8')).version;
+  const stream = gulp.src('.')
     .pipe(git.add())
-    .pipe(git.commit('chore: release v' +
-      JSON.parse(fs.readFileSync('./package.json', 'utf8')).version));
+    .pipe(git.commit(`chore: release v${version}`));
+
+  return stream;
 });
 
-gulp.task('releases.push', function (cb) {
+gulp.task('releases.push', (cb) => {
   git.push('origin', 'master', cb);
 });
 
-gulp.task('releases.tag', function (cb) {
+gulp.task('releases.tag', (cb) => {
   /* eslint-disable consistent-return */
-  var version = JSON.parse(fs.readFileSync('./package.json', 'utf8')).version;
+  const version = JSON.parse(
+    gfs.readFileSync('./package.json', 'utf8')).version;
 
-  git.tag(version, 'chore: tag v' + version, function (error) {
+  git.tag(version, `chore: tag v${version}`, (error) => {
     if (error) {
       return cb(error);
     }
@@ -73,12 +87,12 @@ gulp.task('releases.tag', function (cb) {
   /* eslint-enable consistent-return */
 });
 
-gulp.task('releases.github.releaser', function (done) {
+gulp.task('releases.github.releaser', (done) => {
   conventionalGHReleaser({
     type: 'oauth',
-    token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN
+    token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
   }, {
-    preset: 'angular'
+    preset: 'angular',
   }, done);
 });
 

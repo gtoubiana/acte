@@ -1,8 +1,8 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp travis
  */
-var gulp = require('gulp');
-var sequence = require('gulp-sequence');
+const gulp = require('gulp');
+const sequence = require('gulp-sequence');
 
 // Tâche build par défaut
 gulp.task('travis', sequence(

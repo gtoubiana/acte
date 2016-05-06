@@ -1,19 +1,19 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp lint
  */
-var config = require('../config');
-var eslint = require('gulp-eslint');
-var gulp = require('gulp');
-var lazypipe = require('lazypipe');
-var prettify = require('gulp-jsbeautifier');
-var sequence = require('gulp-sequence');
-var lazyLint = lazypipe()
+const config = require('../config');
+const eslint = require('gulp-eslint');
+const gulp = require('gulp');
+const lazypipe = require('lazypipe');
+const prettify = require('gulp-jsbeautifier');
+const sequence = require('gulp-sequence');
+const lazyLint = lazypipe()
   .pipe(eslint)
   .pipe(eslint.format)
   .pipe(eslint.failAfterError);
-var lazyPrettyLint = lazypipe()
+const lazyPrettyLint = lazypipe()
   .pipe(prettify, {
-    config: config.paths.src + '/.jsbeautifyrc'
+    config: `${config.paths.src}/.jsbeautifyrc`,
   })
   .pipe(lazyLint);
 
@@ -37,61 +37,70 @@ gulp.task('lint', sequence(
 
 ));
 
+gulp.task('lint.src', sequence(
+  'lint.constants',
+  'lint.functions',
+  'lint.constructors',
+  'lint.prototypes'
+));
+
+gulp.task('lint.test', sequence(
+  'lint.specs'
+));
+
 // Valider les scripts Gulp
-gulp.task('lint.gulp', function () {
-  'use strict';
-  return gulp.src(['./gulpfile.js', config.paths.task + '/*.js'])
+gulp.task('lint.gulp', () => {
+  const stream = gulp.src(['./gulpfile.js', `${config.paths.task}/*.js`])
     .pipe(prettify({
-      config: './.jsbeautifyrc'
+      config: './.jsbeautifyrc',
     }))
     .pipe(lazyLint())
     .pipe(gulp.dest(config.paths.root));
+
+  return stream;
 });
 
 // Valider les scripts ./test
-gulp.task('lint.specs', function () {
-  'use strict';
-  return gulp.src([config.paths.test + '/*.js'])
+gulp.task('lint.specs', () => {
+  const stream = gulp.src([`${config.paths.test}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(gulp.dest(config.paths.test));
+
+  return stream;
 });
 
 // Valider les scripts ./src/js/constants/
-gulp.task('lint.constants', function () {
-  'use strict';
-  return gulp.src([config.paths.const + '/*.js'])
+gulp.task('lint.constants', () => {
+  const stream = gulp.src([`${config.paths.const}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(gulp.dest(config.paths.const));
+
+  return stream;
 });
 
 // Valider les scripts ./src/js/functions/
-gulp.task('lint.functions', function () {
-  'use strict';
-  return gulp.src([config.paths.func + '/*.js'])
+gulp.task('lint.functions', () => {
+  const stream = gulp.src([`${config.paths.func}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(gulp.dest(config.paths.func));
+
+  return stream;
 });
 
 // Valider les scripts ./src/js/classes/
-gulp.task('lint.constructors', function () {
-  'use strict';
-  return gulp.src([config.paths.class + '/*.js'])
+gulp.task('lint.constructors', () => {
+  const stream = gulp.src([`${config.paths.class}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(gulp.dest(config.paths.class));
+
+  return stream;
 });
 
 // Valider les scripts ./src/js/prototypes/
-gulp.task('lint.prototypes', function () {
-  'use strict';
-  return gulp.src([config.paths.proto + '/*.js'])
+gulp.task('lint.prototypes', () => {
+  const stream = gulp.src([`${config.paths.proto}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(gulp.dest(config.paths.proto));
-});
 
-// TASK Pour valider dist/acte
-gulp.task('lint.dist', function () {
-  'use strict';
-  return gulp.src([config.paths.dist + '/acte.js'])
-    .pipe(lazyLint())
-    .pipe(gulp.dest(config.paths.dist));
+  return stream;
 });

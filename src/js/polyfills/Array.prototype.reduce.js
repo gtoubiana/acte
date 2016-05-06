@@ -1,5 +1,4 @@
 /* POLYFILL: ES8 Array.prototype.reduce */
-/* eslint-disable */
 /* istanbul ignore if  */
 if (!Array.prototype.reduce) {
   Array.prototype.reduce = function(callback /*, initialValue*/) {
@@ -30,4 +29,3 @@ if (!Array.prototype.reduce) {
     return value;
   };
 }
-/* eslint-enable */

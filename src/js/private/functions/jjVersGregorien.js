@@ -22,6 +22,7 @@ const jjVersGregorien = jj => {
   const yindex = Math.floor(dquad / 365);
   let an = (quadricent * 400) + (cent * 100) + (quad * 4) + yindex;
   const anneeBissextile = (gregorienBissextile(an) ? 1 : 2);
+
   if (!((cent === 4) || (yindex === 4))) an++;
   const yearday = wjd - gregorienVersJj(an, 1, 1);
   const leapadj = ((wjd < gregorienVersJj(an, 3, 1)) ? 0 : anneeBissextile);

@@ -2,8 +2,8 @@
  * gulp
  * gulp default
  */
-var gulp = require('gulp');
-var sequence = require('gulp-sequence');
+const gulp = require('gulp');
+const sequence = require('gulp-sequence');
 
 // Tâche par défaut
 gulp.task('default', sequence(
@@ -36,10 +36,7 @@ gulp.task('default', sequence(
   // [lint.src, dist.acte.es3]
   'docs.dist',
   'docs.constants',
-  'docs.functions',
-
-  // Validation airbnb-base/legacy [dist.acte.es3]
-  'lint.dist'
+  'docs.functions'
 
   // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
   // 'tests.coverage'

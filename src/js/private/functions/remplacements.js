@@ -18,7 +18,9 @@ const remplacements = (texte, regex, options) => {
     (data, item) => {
       const result = data.replace(new RegExp(item.regexp, options),
         item.replace);
+
       return result;
     }, texte);
+
   return resultat;
 };

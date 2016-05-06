@@ -22,6 +22,7 @@ const anRepublicain = jj => {
   }
 
   let nexteq = lasteq - 1;
+
   while (!((lasteq <= jj) && (jj < nexteq))) {
     lasteq = nexteq;
     guess++;

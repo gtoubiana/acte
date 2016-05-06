@@ -1,5 +1,4 @@
 /* POLYFILL: ES8 Array.prototype.reduce */
-/* eslint-disable */
 /* istanbul ignore if  */
 if (!Array.prototype.reduce) {
   Array.prototype.reduce = function (callback /*, initialValue*/ ) {
@@ -35,7 +34,6 @@ if (!Array.prototype.reduce) {
     return value;
   };
 }
-/* eslint-enable */
 
 /**
  * acte - Librairie Javascript pour manipuler des données généalogiques
@@ -613,8 +611,8 @@ if (!Array.prototype.reduce) {
         var T = (Jde0 - 2451545.0) / 36525;
         var W = 35999.373 * T - 2.47;
         var deltaL = 1 + 0.0334 * cosinus(W) + 0.0007 * cosinus(2 * W);
-        S = 0;
 
+        S = 0;
         for (i = j = 0; i < 24; i++) {
           S += termesPerEquinoxes[j] * cosinus(termesPerEquinoxes[j + 1] +
             termesPerEquinoxes[j + 2] * T);
@@ -648,9 +646,11 @@ if (!Array.prototype.reduce) {
         if (an >= 1620 && an <= 2012) {
           var i = Math.floor((an - 1620) / 2);
           var f = (an - 1620) / 2 - i;
+
           dt = delta[i] + (delta[i + 1] - delta[i]) * f;
         } else {
           var t = (an - 2000) / 100;
+
           if (an < 948) {
             dt = 2177 + 497 * t + 44.1 * t * t;
           } else {
@@ -978,6 +978,7 @@ if (!Array.prototype.reduce) {
         var yindex = Math.floor(dquad / 365);
         var an = quadricent * 400 + cent * 100 + quad * 4 + yindex;
         var anneeBissextile = gregorienBissextile(an) ? 1 : 2;
+
         if (!(cent === 4 || yindex === 4)) an++;
         var yearday = wjd - gregorienVersJj(an, 1, 1);
         var leapadj = wjd < gregorienVersJj(an, 3, 1) ? 0 : anneeBissextile;
@@ -1035,6 +1036,7 @@ if (!Array.prototype.reduce) {
         }
 
         var nexteq = lasteq - 1;
+
         while (!(lasteq <= jj && jj < nexteq)) {
           lasteq = nexteq;
           guess++;
@@ -1158,8 +1160,10 @@ if (!Array.prototype.reduce) {
         var resultat = regex.reduce(function (data, item) {
           var result = data.replace(new RegExp(item.regexp, options),
             item.replace);
+
           return result;
         }, texte);
+
         return resultat;
       }
 
@@ -1213,6 +1217,7 @@ if (!Array.prototype.reduce) {
       function rjmcVersRdc(rjmc) {
         var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? Math.abs(
           parseInt(rjmc / 10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
+
         return resultat;
       }
 
@@ -1235,6 +1240,7 @@ if (!Array.prototype.reduce) {
       function rjmcVersRjdc(rjmc) {
         var resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? 10 : Math.abs(
           parseInt(rjmc, 10) % 10);
+
         return resultat;
       }
 
@@ -1370,6 +1376,7 @@ if (!Array.prototype.reduce) {
             tab[2] = parseInt(saisieGregorien[2], 10);
             tab[3] = dateValide(tab[0], tab[1], tab[2]);
             var dateJulienne = jjVersJulien(tab[4]);
+
             tab[5] = dateJulienne[2];
             tab[6] = dateJulienne[1];
             tab[7] = dateJulienne[0];
@@ -1381,6 +1388,7 @@ if (!Array.prototype.reduce) {
             tab[4] >= jjDebutCommuneDeParis && tab[4] <=
             jjFinCommuneDeParis || limites === false) {
             var dateRepublicaine = jjVersRepublicain(tab[4]);
+
             tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
                 dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
               dateRepublicaine[1], dateRepublicaine[0]
@@ -1416,6 +1424,7 @@ if (!Array.prototype.reduce) {
           /\W?an\s-?([-MDCLXVI]+)\W?/gi,
           function (x, p1) {
             var rva = romainVersArabe(p1);
+
             return x.match(/-/) ? ' -' + rva : ' ' + rva;
           });
         var tab = [];
@@ -1438,6 +1447,7 @@ if (!Array.prototype.reduce) {
             jjFinCommuneDeParis || limites === false) {
             var dateGregorienne = jjVersGregorien(tab[4]);
             var dateJulienne = jjVersJulien(tab[4]);
+
             tab[0] = dateGregorienne[2];
             tab[1] = dateGregorienne[1];
             tab[2] = dateGregorienne[0];

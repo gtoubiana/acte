@@ -2,7 +2,9 @@
     "extends": "../.eslintrc",
 
     "rules": {
-        "func-names": 0,
-        "no-undef": 0
-    }
+      "no-unused-vars": 0, // constants sont utilisées dans functions et classes
+      "no-undef": 0, // classes et functions utilisent functions et constants
+      "no-restricted-syntax": 0,
+    },
+
 }

@@ -35,8 +35,8 @@ const equinoxe = (an, item) => {
   const T = (Jde0 - 2451545.0) / 36525;
   const W = (35999.373 * T) - 2.47;
   const deltaL = 1 + (0.0334 * cosinus(W)) + (0.0007 * cosinus(2 * W));
-  S = 0;
 
+  S = 0;
   for (i = j = 0; i < 24; i++) {
     S += termesPerEquinoxes[j] *
       cosinus(termesPerEquinoxes[j + 1] +

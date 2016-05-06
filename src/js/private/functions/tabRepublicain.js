@@ -18,6 +18,7 @@ const tabRepublicain = (saisie, limites) => {
   let saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
     (x, p1) => {
       const rva = romainVersArabe(p1);
+
       return (x.match(/-/)) ? ` -${rva}` : ` ${rva}`;
     });
   const tab = [];
@@ -41,6 +42,7 @@ const tabRepublicain = (saisie, limites) => {
       limites === false) {
       const dateGregorienne = jjVersGregorien(tab[4]);
       const dateJulienne = jjVersJulien(tab[4]);
+
       tab[0] = dateGregorienne[2];
       tab[1] = dateGregorienne[1];
       tab[2] = dateGregorienne[0];

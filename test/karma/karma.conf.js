@@ -11,7 +11,7 @@ module.exports = function karma(config) {
     // list of files / patterns to load in the browser
     files: [
       '../../dist/acte.js',
-      '../jasmine/lib/acteSpec.js'
+      '../jasmine/lib/acteSpec.js',
     ],
 
     // list of files to exclude
@@ -56,6 +56,6 @@ module.exports = function karma(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous (Infinity, 1-10)
-    concurrency: Infinity
+    concurrency: Infinity,
   });
 };

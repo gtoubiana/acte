@@ -1,78 +1,78 @@
 module.exports = function karma(config) {
   // Check out https://saucelabs.com/platforms
-  var customLaunchers = {
+  const customLaunchers = {
 
     sl_safari_osx: {
       base: 'SauceLabs',
       browserName: 'safari',
       platform: 'OS X 10.11',
-      version: 'latest'
+      version: 'latest',
     },
     sl_chrome_osx: {
       base: 'SauceLabs',
       browserName: 'chrome',
       platform: 'OS X 10.11',
-      version: 'latest'
+      version: 'latest',
     },
     sl_firefox_osx: {
       base: 'SauceLabs',
       browserName: 'firefox',
       platform: 'OS X 10.11',
-      version: 'latest'
+      version: 'latest',
     },
     sl_edge_win: {
       base: 'SauceLabs',
       browserName: 'MicrosoftEdge',
       platform: 'Windows 10',
-      version: 'latest'
+      version: 'latest',
     },
     sl_ie11_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '11',
-      platform: 'Windows 8.1'
+      platform: 'Windows 8.1',
     },
     sl_ie10_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '10',
-      platform: 'Windows 8'
+      platform: 'Windows 8',
     },
     sl_ie9_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '9',
-      platform: 'Windows 7'
+      platform: 'Windows 7',
     },
     sl_chrome_win: {
       base: 'SauceLabs',
       browserName: 'chrome',
       platform: 'Windows 10',
-      version: 'latest'
+      version: 'latest',
     },
     sl_firefox_win: {
       base: 'SauceLabs',
       browserName: 'firefox',
       platform: 'Windows 10',
-      version: 'latest'
+      version: 'latest',
     },
     sl_iphone_osx: {
       base: 'SauceLabs',
       browserName: 'iphone',
       platform: 'OS X 10.10',
-      version: 'latest'
+      version: 'latest',
     },
     sl_chrome_linux: {
       base: 'SauceLabs',
       browserName: 'chrome',
       platform: 'Linux',
-      version: 'latest'
+      version: 'latest',
     },
     sl_firefox_linux: {
       base: 'SauceLabs',
       browserName: 'firefox',
       platform: 'Linux',
-      version: 'latest'
+      version: 'latest',
     },
     sl_android_linux: {
       base: 'SauceLabs',
@@ -80,23 +80,23 @@ module.exports = function karma(config) {
       platform: 'Linux',
       deviceName: 'Android Emulator',
       version: 'latest',
-      deviceType: 'phone'
+      deviceType: 'phone',
     },
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '8',
-      platform: 'Windows 7'
-    }
+      platform: 'Windows 7',
+    },
   };
-  var sauceLabs;
-  var concurrency;
+  let sauceLabs;
+  let concurrency;
 
   // Use ENV vars on Travis & locally
   if (process.env.TRAVIS) {
     sauceLabs = {
-      testName: '[Travis-' + process.env.TRAVIS_BUILD_NUMBER +
-        '] Karma Tests of Acte',
+      testName:
+        `[Travis-${process.env.TRAVIS_BUILD_NUMBER}] Karma Tests of Acte`,
       startConnect: false,
       recordVideo: false,
       recordScreenshots: false,
@@ -104,7 +104,7 @@ module.exports = function karma(config) {
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
       accessKey: process.env.SAUCE_ACCESS_KEY,
-      public: 'public'
+      public: 'public',
     };
     concurrency = 'Infinity';
   } else {
@@ -117,7 +117,7 @@ module.exports = function karma(config) {
       // Variables d'environnement obligatoires (#90)
       username: process.env.SAUCE_USERNAME,
       accessKey: process.env.SAUCE_ACCESS_KEY,
-      public: 'public'
+      public: 'public',
     };
     concurrency = 1;
   }
@@ -134,7 +134,7 @@ module.exports = function karma(config) {
     // list of files / patterns to load in the browser
     files: [
       '../../dist/acte.js',
-      '../jasmine/lib/acteSpec.js'
+      '../jasmine/lib/acteSpec.js',
     ],
 
     // list of files to exclude
@@ -179,11 +179,11 @@ module.exports = function karma(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous (Infinity, 1-10)
-    concurrency: concurrency,
+    concurrency,
 
     // Launcher config : https://github.com/karma-runner/karma-sauce-launcher
-    sauceLabs: sauceLabs,
-    customLaunchers: customLaunchers,
-    captureTimeout: 240000
+    sauceLabs,
+    customLaunchers,
+    captureTimeout: 240000,
   });
 };
