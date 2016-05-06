@@ -1,7 +1,7 @@
 const depcheck = require('gulp-depcheck');
 const gulp = require('gulp');
 
-// dépendances
+// Dépendances BABEL
 require('babel-helper-transform-fixture-test-runner');
 require('babel-plugin-check-es2015-constants');
 require('babel-plugin-transform-es2015-arrow-functions');
@@ -29,13 +29,18 @@ require('babel-plugin-transform-jscript');
 require('babel-plugin-transform-object-assign');
 require('babel-plugin-transform-regenerator');
 require('babel-plugin-transform-undefined-to-void');
-require('eslint-config-airbnb-base');
+
+// Dépendances ESLINT
 require('eslint-config-airbnb');
 require('eslint-plugin-import');
 require('eslint-plugin-jsx-a11y');
 require('eslint-plugin-react');
+
+// Dépendances GULP
 require('gulp-stats')(gulp);
 require('gulp-util');
+
+// Dépendances KARMA
 require('karma-chrome-launcher');
 require('karma-firefox-launcher');
 require('karma-jasmine');
