@@ -2,14 +2,14 @@
   "name": "acte",
   "version": "0.0.7-0",
   "description": "Librairie Javascript pour manipuler des données généalogiques",
-  "main": "dist/acte.js",
+  "main": "dist/acte.min.js",
   "directories": {
     "test": "/test",
     "src": "/src"
   },
   "scripts": {
-    "build": "npm install && gulp travis && gulp tests.travis",
-    "test": "gulp build && gulp tests"
+    "build": "npm install && gulp && gulp tests.coverage",
+    "test": "gulp && gulp tests.coverage && gulp tests.karma"
   },
   "repository": {
     "type": "git",
