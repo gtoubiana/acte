@@ -137,28 +137,28 @@ gulp.task('releases.major', sequence(
 ));
 
 gulp.task('pre', sequence(
-    'nettoyages',
+    'clean',
     'releases.version.prerelease',
     'default',
     'releases.github.publish'
 ));
 
 gulp.task('patch', sequence(
-    'nettoyages',
+    'clean',
     'releases.version.patch',
     'default',
     'releases.github.publish'
 ));
 
 gulp.task('minor', sequence(
-    'nettoyages',
+    'clean',
     'releases.version.minor',
     'default',
     'releases.github.publish'
 ));
 
 gulp.task('major', sequence(
-    'nettoyages',
+    'clean',
     'releases.version.major',
     'default',
     'releases.github.publish'
