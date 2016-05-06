@@ -30,13 +30,15 @@ gulp.task('default', sequence(
   'dist.acte.es5',
   'dist.acte.es3',
   'dist.min',
-  'dist.zip',
 
   // Générations des documentations
   // [lint.src, dist.acte.es3]
   'docs.dist',
   'docs.constants',
-  'docs.functions'
+  'docs.functions',
+
+  // Génération du zip
+  'dist.zip'
 
   // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
   // 'tests.coverage'

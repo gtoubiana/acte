@@ -10,7 +10,7 @@ module.exports = function karma(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../../dist/acte.js',
+      '../jasmine/lib/acte.js',
       '../jasmine/lib/acteSpec.js',
     ],
 

@@ -10,7 +10,7 @@
 const paths = {
   root: './',
   test: './test',
-  scriptRequire: '../../dist/acte.js',
+  scriptRequire: './lib/acte.js',
   dist: './dist',
   src: './src',
   tasks: './gulp/tasks',

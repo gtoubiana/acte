@@ -80,12 +80,12 @@ gulp.task('dist.acte.es5', () => {
         pkg,
       }))
     .pipe(prettify({
-      config: `${config.paths.dist}/.jsbeautifyrc`,
+      config: `${config.paths.jasmine}/.jsbeautifyrc`,
     }))
     .pipe(size({
       title: 'ES5 acte.js Size ->',
     }))
-    .pipe(gulp.dest(config.paths.dist));
+    .pipe(gulp.dest(`${config.paths.jasmine}/lib`));
 
   return stream;
 });
@@ -97,7 +97,7 @@ gulp.task('dist.acte.es3', () => {
     `${config.paths.poly}/Array.prototype.reduce.js`,
 
     // SCRIPT ES5
-    `${config.paths.dist}/acte.js`,
+    `${config.paths.jasmine}/lib/acte.js`,
   ])
     .pipe(concat('acte.js'))
     .pipe(babel({
@@ -117,19 +117,19 @@ gulp.task('dist.acte.es3', () => {
     //     pkg: pkg
     //   }))
     .pipe(prettify({
-      config: `${config.paths.dist}/.jsbeautifyrc`,
+      config: `${config.paths.jasmine}/.jsbeautifyrc`,
     }))
     .pipe(size({
       title: 'ES3 acte.js Size ->',
     }))
-    .pipe(gulp.dest(config.paths.dist));
+    .pipe(gulp.dest(`${config.paths.jasmine}/lib`));
 
   return stream;
 });
 
 // TASK Pour générer le script ./dist/acte.min.js
 gulp.task('dist.min', () => {
-  const stream = gulp.src(`${config.paths.dist}/acte.js`)
+  const stream = gulp.src(`${config.paths.jasmine}/lib/acte.js`)
     .pipe(sourcemaps.init())
     .pipe(rename({
       suffix: '.min',

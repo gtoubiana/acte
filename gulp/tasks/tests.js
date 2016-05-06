@@ -112,7 +112,7 @@ gulp.task('tests.saucelabs', (done) => {
 
 gulp.task('tests.coverage', () => {
   // generation de la couverture
-  const stream = gulp.src([`${config.paths.dist}/acte.js`])
+  const stream = gulp.src([`${config.paths.jasmine}/lib/acte.js`])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
 

@@ -53,7 +53,7 @@ gulp.task('docs', sequence(
 
 // TASK Pour générer une doc .md à partir du jsdoc
 gulp.task('docs.dist', () => {
-  const stream = gulp.src(`${config.paths.dist}/acte.js`)
+  const stream = gulp.src(`${config.paths.jasmine}/lib/acte.js`)
     .pipe(rename('README.md'))
     .pipe(jsdoc2md({ template: gfs.readFileSync(
       `${config.paths.src}/tmpl/docDist.hbs`, 'utf8') }))

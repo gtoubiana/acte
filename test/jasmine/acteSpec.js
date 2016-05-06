@@ -1,4 +1,4 @@
-var acte = require('../../dist/acte.js');
+var acte = require('./lib/acte.js');
 'use strict';
 
 var dateValide = function dateValide(jour, mois, an) {
