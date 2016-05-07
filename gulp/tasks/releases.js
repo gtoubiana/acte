@@ -50,7 +50,7 @@ gulp.task('releases.conventional.changelog', () => {
     buffer: false,
   })
     .pipe(conventionalChangelog({
-      preset: 'angular',
+      preset: 'acte',
       releaseCount: 0,
     }))
     .pipe(gulp.dest('./'));
@@ -92,7 +92,7 @@ gulp.task('releases.github.releaser', (done) => {
     type: 'oauth',
     token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
   }, {
-    preset: 'angular',
+    preset: 'acte',
   }, done);
 });
 

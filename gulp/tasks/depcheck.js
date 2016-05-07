@@ -30,6 +30,9 @@ require('babel-plugin-transform-object-assign');
 require('babel-plugin-transform-regenerator');
 require('babel-plugin-transform-undefined-to-void');
 
+// Dépendances CONVENTIONAL-CHANGELOG
+require('conventional-changelog-acte');
+
 // Dépendances ESLINT
 require('eslint-config-airbnb');
 require('eslint-plugin-import');
