@@ -1,6 +1,14 @@
-<a name="0.0.7-2"></a>
-## [0.0.7-2](https://github.com/gtoubiana/acte/compare/0.0.7-0...v0.0.7-2) (2016-05-07)
+<a name="0.0.7-3"></a>
+## [0.0.7-3](https://github.com/gtoubiana/acte/compare/0.0.7-2...v0.0.7-3) (2016-05-07)
 
+
+<a name="0.0.7-2"></a>
+## [0.0.7-2](https://github.com/gtoubiana/acte/compare/0.0.7-0...0.0.7-2) (2016-05-07)
+
+
+### Administration
+
+* release v0.0.7-2 ([8184e3b](https://github.com/gtoubiana/acte/commit/8184e3b))
 
 <a name="0.0.7-0"></a>
 ## [0.0.7-0](https://github.com/gtoubiana/acte/compare/0.0.6...0.0.7-0) (2016-05-06)
@@ -12,22 +20,22 @@
 
 ### Correctifs
 
-* **src :** utilise un polyfill pour ie8 ([070483d](https://github.com/gtoubiana/acte/commit/070483d)), closes [#91](https://github.com/gtoubiana/acte/issues/91) [#101](https://github.com/gtoubiana/acte/issues/101) [#116](https://github.com/gtoubiana/acte/issues/116)
-* **travis :** conventional-changelog-angular ([2f22ef7](https://github.com/gtoubiana/acte/commit/2f22ef7)), closes [#93](https://github.com/gtoubiana/acte/issues/93)
+* **src :** utilise un polyfill pour ie8 ([070483d](https://github.com/gtoubiana/acte/commit/070483d)), ferme [#91](https://github.com/gtoubiana/acte/issues/91) [#101](https://github.com/gtoubiana/acte/issues/101) [#116](https://github.com/gtoubiana/acte/issues/116)
+* **travis :** conventional-changelog-angular ([2f22ef7](https://github.com/gtoubiana/acte/commit/2f22ef7)), ferme [#93](https://github.com/gtoubiana/acte/issues/93)
 * **travis :** corrige la config eslit-airbnb ([de3e67c](https://github.com/gtoubiana/acte/commit/de3e67c))
 * **travis :** retire toute référence à eslint-airbnb-base ([4262872](https://github.com/gtoubiana/acte/commit/4262872))
 
 ### Réécriture du code
 
-* **gulp :** utilise babel ([90250ff](https://github.com/gtoubiana/acte/commit/90250ff)), closes [#103](https://github.com/gtoubiana/acte/issues/103) [#102](https://github.com/gtoubiana/acte/issues/102) [#100](https://github.com/gtoubiana/acte/issues/100) [#98](https://github.com/gtoubiana/acte/issues/98) [#97](https://github.com/gtoubiana/acte/issues/97) [#71](https://github.com/gtoubiana/acte/issues/71) [#66](https://github.com/gtoubiana/acte/issues/66)
+* **gulp :** utilise babel ([90250ff](https://github.com/gtoubiana/acte/commit/90250ff)), ferme [#103](https://github.com/gtoubiana/acte/issues/103) [#102](https://github.com/gtoubiana/acte/issues/102) [#100](https://github.com/gtoubiana/acte/issues/100) [#98](https://github.com/gtoubiana/acte/issues/98) [#97](https://github.com/gtoubiana/acte/issues/97) [#71](https://github.com/gtoubiana/acte/issues/71) [#66](https://github.com/gtoubiana/acte/issues/66)
 * **jour :** supprime les classes ([24eaf81](https://github.com/gtoubiana/acte/commit/24eaf81))
-* **remplacements :** utilise Array.reduce plutôt que Map ([95b13ce](https://github.com/gtoubiana/acte/commit/95b13ce)), closes [#107](https://github.com/gtoubiana/acte/issues/107)
+* **remplacements :** utilise Array.reduce plutôt que Map ([95b13ce](https://github.com/gtoubiana/acte/commit/95b13ce)), ferme [#107](https://github.com/gtoubiana/acte/issues/107)
 * **src/js :** réécriture en ES2015 ([493ddbb](https://github.com/gtoubiana/acte/commit/493ddbb))
 * converti le code en es6 ([8d4fd44](https://github.com/gtoubiana/acte/commit/8d4fd44))
 
 ### Styles
 
-* **constants :** corrige un nom de fichier ([321edfd](https://github.com/gtoubiana/acte/commit/321edfd)), closes [#111](https://github.com/gtoubiana/acte/issues/111)
+* **constants :** corrige un nom de fichier ([321edfd](https://github.com/gtoubiana/acte/commit/321edfd)), ferme [#111](https://github.com/gtoubiana/acte/issues/111)
 
 <a name="0.0.6"></a>
 ## [0.0.6](https://github.com/gtoubiana/acte/compare/0.0.6-12...0.0.6) (2016-04-16)
@@ -35,7 +43,7 @@
 
 ### Administration
 
-* **gulp :** tâche des releases ([ec8e36e](https://github.com/gtoubiana/acte/commit/ec8e36e)), closes [#83](https://github.com/gtoubiana/acte/issues/83) [#94](https://github.com/gtoubiana/acte/issues/94)
+* **gulp :** tâche des releases ([ec8e36e](https://github.com/gtoubiana/acte/commit/ec8e36e)), ferme [#83](https://github.com/gtoubiana/acte/issues/83) [#94](https://github.com/gtoubiana/acte/issues/94)
 * release v0.0.6 ([5585503](https://github.com/gtoubiana/acte/commit/5585503))
 
 <a name="0.0.6-12"></a>
