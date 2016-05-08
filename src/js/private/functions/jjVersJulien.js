@@ -15,9 +15,9 @@ const jjVersJulien = jj => {
   const c = Math.floor((b - 122.1) / 365.25);
   const d = Math.floor(365.25 * c);
   const e = Math.floor((b - d) / 30.6001);
-  const mois = Math.floor((e < 14) ? (e - 1) : (e - 13));
+  const mois = Math.floor(e < 14 ? e - 1 : e - 13);
   const jour = b - d - Math.floor(30.6001 * e);
-  let an = Math.floor((mois > 2) ? (c - 4716) : (c - 4715));
+  let an = Math.floor(mois > 2 ? c - 4716 : c - 4715);
 
   if (an < 1) {
     an--;

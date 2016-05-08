@@ -21,11 +21,11 @@ const jjVersGregorien = jj => {
   const dquad = reste(dcent, 1461);
   const yindex = Math.floor(dquad / 365);
   let an = (quadricent * 400) + (cent * 100) + (quad * 4) + yindex;
-  const anneeBissextile = (gregorienBissextile(an) ? 1 : 2);
+  const anneeBissextile = gregorienBissextile(an) ? 1 : 2;
 
   if (!((cent === 4) || (yindex === 4))) an++;
   const yearday = wjd - gregorienVersJj(an, 1, 1);
-  const leapadj = ((wjd < gregorienVersJj(an, 3, 1)) ? 0 : anneeBissextile);
+  const leapadj = wjd < gregorienVersJj(an, 3, 1) ? 0 : anneeBissextile;
   const mois = Math.floor((((yearday + leapadj) * 12) + 373) / 367);
   const jour = (wjd - gregorienVersJj(an, mois, 1)) + 1;
 

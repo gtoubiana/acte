@@ -24,6 +24,6 @@ const julienVersJj = (an, mois, jour) => {
     tempMois += 12;
   }
 
-  return ((Math.floor((365.25 * (tempAn + 4716))) + Math.floor((30.6001 * (
-    tempMois + 1))) + jour) - 1524.5);
+  return Math.floor(365.25 * (tempAn + 4716)) + Math.floor(30.6001 * (
+    tempMois + 1)) + jour - 1524.5;
 };

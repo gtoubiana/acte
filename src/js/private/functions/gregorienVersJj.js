@@ -19,5 +19,5 @@ const gregorienVersJj = (an, mois, jour) => {
   return (jjAn1Gregorien - 1) + (365 * (an - 1)) +
     Math.floor((an - 1) / 4) + (-Math.floor((an - 1) / 100)) +
     Math.floor((an - 1) / 400) + Math.floor((((367 * mois) - 362) / 12) +
-      ((mois <= 2) ? 0 : anneeBissextile) + jour);
+      (mois <= 2 ? 0 : anneeBissextile) + jour);
 };

@@ -15,7 +15,7 @@
  */
 const tabGregorien = (saisie, limites) => {
   // Uniformisation de la saisie
-  const iesaisie = (saisie[0] === '/') ? `1${saisie}` : saisie;
+  const iesaisie = saisie[0] === '/' ? `1${saisie}` : saisie;
   const saisieGregorien = saisieValide(iesaisie, regexpGregorien);
   let tab = [];
 

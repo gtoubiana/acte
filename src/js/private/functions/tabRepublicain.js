@@ -19,7 +19,7 @@ const tabRepublicain = (saisie, limites) => {
     (x, p1) => {
       const rva = romainVersArabe(p1);
 
-      return (x.match(/-/)) ? ` -${rva}` : ` ${rva}`;
+      return x.match(/-/) ? ` -${rva}` : ` ${rva}`;
     });
   const tab = [];
 

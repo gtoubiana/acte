@@ -11,7 +11,7 @@
  * rjmcVersRdc(28); // 3
  */
 const rjmcVersRdc = rjmc => {
-  const resultat = (Math.abs(parseInt(rjmc, 10) % 10) === 0) ? Math.abs(
+  const resultat = Math.abs(parseInt(rjmc, 10) % 10) === 0 ? Math.abs(
     parseInt(rjmc / 10, 10)) : Math.abs(parseInt(rjmc / 10, 10) + 1);
 
   return resultat;
