@@ -1,5 +1,5 @@
 /**
- * Tableau des Delta T (différence entre Temps universel et temps terrestre)
+ * Tableau des Delta T différence entre Temps universel et temps terrestre
  * tous les 2 ans de 1620 à 2014
  * @access private
  * @author John Walker & Gilles Toubiana
@@ -36,10 +36,8 @@ const delta = [
   5.4, 5.6, 5.9, 6.2, 6.5,
   6.8, 7.1, 7.3, 7.5, 7.6,
   7.7, 7.3, 6.2, 5.2, 2.7,
-  1.4, (-1.2), (-2.8), (-3.8), (-4.8),
-  (-5.5), (-5.3), (-5.6), (-5.7), (-5.9),
-  (-6), (-6.3), (-6.5), (-6.2), (-4.7),
-  (-2.8), (-0.1), 2.6, 5.3, 7.7,
+  1.4, -1.2, -2.8, -3.8, -4.8, -5.5, -5.3, -5.6, -5.7, -5.9, -6, -6.3, -6.5, -
+  6.2, -4.7, -2.8, -0.1, 2.6, 5.3, 7.7,
   10.4, 13.3, 16, 18.2, 20.2,
   21.1, 22.4, 23.5, 23.8, 24.3,
   24, 23.9, 23.9, 23.7, 24,
