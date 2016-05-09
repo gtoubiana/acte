@@ -1,6 +1,20 @@
-<a name="0.0.7-3"></a>
-## [0.0.7-3](https://github.com/gtoubiana/acte/compare/0.0.7-2...v0.0.7-3) (2016-05-07)
+<a name="0.0.7"></a>
+## [0.0.7](https://github.com/gtoubiana/acte/compare/0.0.7-3...v0.0.7) (2016-05-09)
 
+
+### Correctifs
+
+* **constants :** retrait des parenthèses dans les tableaux ([fb66b8e](https://github.com/gtoubiana/acte/commit/fb66b8e))
+* **functions :** retrait des parenthèses inutiles ([dcd6ced](https://github.com/gtoubiana/acte/commit/dcd6ced))
+* **travis :** mise à jour de eslint en 2.9.0 ([c9c6ce4](https://github.com/gtoubiana/acte/commit/c9c6ce4))
+
+<a name="0.0.7-3"></a>
+## [0.0.7-3](https://github.com/gtoubiana/acte/compare/0.0.7-2...0.0.7-3) (2016-05-07)
+
+
+### Administration
+
+* release v0.0.7-3 ([a244a68](https://github.com/gtoubiana/acte/commit/a244a68))
 
 <a name="0.0.7-2"></a>
 ## [0.0.7-2](https://github.com/gtoubiana/acte/compare/0.0.7-0...0.0.7-2) (2016-05-07)
