@@ -1,4 +1,4 @@
-# acte
+# acte v0.0.7
 [![NPM version](https://img.shields.io/npm/v/acte.svg)](https://www.npmjs.com/package/acte)
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)
 [![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg)](https://david-dm.org/gtoubiana/acte#info=devDependencies)
@@ -9,8 +9,22 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)
 
 
-Calculs généalogiques
+## Description
+Librairie Javascript pour manipuler des données généalogiques
+
+## Installation
+
+### Pour Node.js :
+```
+$ npm install acte --save
+```
+
+### Pour le navigateur :
+Téléchargez et décompressez la dernière archive zip ([acte-0.0.7-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.7-dist.zip?raw=true)), puis appelez le script `acte.min.js` au début ou à la fin de votre page html.
+```html
+<script type="text/javascript" src="acte.min.js"></script>
+```
 
 * * *
-Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).  
+Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/).
 Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE), documentation sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).
