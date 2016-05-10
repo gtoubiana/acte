@@ -1,6 +1,14 @@
-<a name="0.0.7"></a>
-## [0.0.7](https://github.com/gtoubiana/acte/compare/0.0.7-3...v0.0.7) (2016-05-09)
+<a name="0.0.8"></a>
+## [0.0.8](https://github.com/gtoubiana/acte/compare/0.0.7...v0.0.8) (2016-05-10)
 
+
+<a name="0.0.7"></a>
+## [0.0.7](https://github.com/gtoubiana/acte/compare/0.0.7-3...0.0.7) (2016-05-09)
+
+
+### Administration
+
+* release v0.0.7 ([24a0fca](https://github.com/gtoubiana/acte/commit/24a0fca))
 
 ### Correctifs
 
