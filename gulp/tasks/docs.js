@@ -7,6 +7,7 @@ const concat = require('gulp-concat');
 const config = require('../config');
 const gfs = require('graceful-fs');
 const gulp = require('gulp');
+const hb = require('gulp-hb');
 const jsdoc2md = require('gulp-jsdoc-to-markdown');
 const lazypipe = require('lazypipe');
 const rename = require('gulp-rename');
@@ -91,6 +92,25 @@ gulp.task('docs.functions', () => {
     }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.func));
+
+  return stream;
+});
+
+gulp.task('docs.readme', () => {
+  const packageInfos = JSON.parse(gfs.readFileSync('./package.json',
+    'utf8'));
+  const stream = gulp.src(`${config.paths.src}/tmpl/README.hbs`)
+    .pipe(rename('README.md'))
+    .pipe(hb())
+    .data({
+      name: packageInfos.name,
+      version: packageInfos.version,
+      description: packageInfos.description,
+      author: packageInfos.author,
+      license: packageInfos.license,
+      homepage: packageInfos.homepage,
+    })
+    .pipe(gulp.dest(config.paths.root));
 
   return stream;
 });
