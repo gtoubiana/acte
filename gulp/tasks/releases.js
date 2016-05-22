@@ -12,6 +12,7 @@ const git = require('gulp-git');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const sequence = require('gulp-sequence');
+const github = require('github');
 
 gulp.task('releases.version.patch', () => {
   const stream = gulp.src(['./package.json'])
@@ -88,29 +89,31 @@ gulp.task('releases.tag', (cb) => {
 });
 
 gulp.task('releases.github.releaser', (done) => {
-  const AUTH = {
+  const auth = {
     type: 'oauth',
     token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
   };
+  const version = JSON.parse(
+    gfs.readFileSync('./package.json', 'utf8')).version;
 
-  conventionalGHReleaser(AUTH, {
+  conventionalGHReleaser(auth, {
     preset: 'acte',
   }, (error, response) => {
     /* eslint-disable no-console */
     console.log(error, response);
 
-    // github.releases.uploadAsset({
-    //   owner: 'gtoubiana',
-    //   repo: 'releaser',
-    //   id: response[0].value.id,
-    //   name: `archive-${version}.zip`,
-    //   filePath: './archive.zip',
-    // }, (error, data) => {
-    //   console.log(error, data);
-    //   done();
-    // });
+    github.releases.uploadAsset({
+      owner: 'gtoubiana',
+      repo: 'acte',
+      id: response[0].value.id,
+      name: `acte-${version}-dist.zip`,
+      filePath: `./dist/acte-${version}-dist.zip`,
+    }, (err, data) => {
+      console.log(err, data);
+      done();
+    });
+
     /* eslint-enable no-console */
-    done();
   });
 });
 
