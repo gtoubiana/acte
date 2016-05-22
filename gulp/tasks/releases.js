@@ -12,7 +12,7 @@ const git = require('gulp-git');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const sequence = require('gulp-sequence');
-const github = require('github');
+const Github = require('github');
 
 gulp.task('releases.version.patch', () => {
   const stream = gulp.src(['./package.json'])
@@ -93,6 +93,9 @@ gulp.task('releases.github.releaser', (done) => {
     type: 'oauth',
     token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
   };
+  const github = new Github({
+    version: '3.0.0',
+  });
   const version = JSON.parse(
     gfs.readFileSync('./package.json', 'utf8')).version;
 
@@ -101,7 +104,7 @@ gulp.task('releases.github.releaser', (done) => {
   }, (error, response) => {
     /* eslint-disable no-console */
     console.log(error, response);
-
+    github.authenticate(auth);
     github.releases.uploadAsset({
       owner: 'gtoubiana',
       repo: 'acte',
