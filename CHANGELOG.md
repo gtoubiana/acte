@@ -1,6 +1,14 @@
-<a name="0.0.9-1"></a>
-## [0.0.9-1](https://github.com/gtoubiana/acte/compare/0.0.9-0...v0.0.9-1) (2016-05-22)
+<a name="0.0.9-2"></a>
+## [0.0.9-2](https://github.com/gtoubiana/acte/compare/0.0.9-1...v0.0.9-2) (2016-05-22)
 
+
+<a name="0.0.9-1"></a>
+## [0.0.9-1](https://github.com/gtoubiana/acte/compare/0.0.9-0...0.0.9-1) (2016-05-22)
+
+
+### Administration
+
+* release v0.0.9-1 ([941a288](https://github.com/gtoubiana/acte/commit/941a288))
 
 <a name="0.0.9-0"></a>
 ## [0.0.9-0](https://github.com/gtoubiana/acte/compare/0.0.8...0.0.9-0) (2016-05-22)
