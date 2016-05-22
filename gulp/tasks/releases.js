@@ -7,7 +7,7 @@
 const bump = require('gulp-bump');
 const conventionalChangelog = require('gulp-conventional-changelog');
 const conventionalGHReleaser = require('conventional-github-releaser');
-const gfs = require('graceful-fs');
+const fse = require('fs-extra');
 const git = require('gulp-git');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
@@ -61,7 +61,7 @@ gulp.task('releases.conventional.changelog', () => {
 
 gulp.task('releases.commit', () => {
   const version = JSON.parse(
-    gfs.readFileSync('./package.json', 'utf8')).version;
+    fse.readFileSync('./package.json', 'utf8')).version;
   const stream = gulp.src('.')
     .pipe(git.add())
     .pipe(git.commit(`chore: release v${version}`));
@@ -76,7 +76,7 @@ gulp.task('releases.push', (cb) => {
 gulp.task('releases.tag', (cb) => {
   /* eslint-disable consistent-return */
   const version = JSON.parse(
-    gfs.readFileSync('./package.json', 'utf8')).version;
+    fse.readFileSync('./package.json', 'utf8')).version;
 
   git.tag(version, `chore: tag v${version}`, (error) => {
     if (error) {
@@ -97,7 +97,7 @@ gulp.task('releases.github.releaser', (done) => {
     version: '3.0.0',
   });
   const version = JSON.parse(
-    gfs.readFileSync('./package.json', 'utf8')).version;
+    fse.readFileSync('./package.json', 'utf8')).version;
 
   conventionalGHReleaser(auth, {
     preset: 'acte',

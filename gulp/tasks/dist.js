@@ -4,7 +4,7 @@
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const config = require('../config');
-const gfs = require('graceful-fs');
+const fse = require('fs-extra');
 const gulp = require('gulp');
 const header = require('gulp-header');
 const pkg = require('../../package.json');
@@ -75,7 +75,7 @@ gulp.task('dist.acte.es5', () => {
     }))
     .pipe(wrap(config.umd))
 
-    .pipe(header(config.bannerTop + JSON.parse(gfs.readFileSync(
+    .pipe(header(config.bannerTop + JSON.parse(fse.readFileSync(
       './package.json', 'utf8')).version + config.bannerBottom, {
         pkg,
       }))
@@ -135,7 +135,7 @@ gulp.task('dist.min', () => {
       suffix: '.min',
     }))
     .pipe(uglify())
-    .pipe(header(config.bannerTop + JSON.parse(gfs.readFileSync(
+    .pipe(header(config.bannerTop + JSON.parse(fse.readFileSync(
       './package.json', 'utf8')).version + config.bannerBottom, {
         pkg,
       }))
@@ -150,7 +150,7 @@ gulp.task('dist.min', () => {
 
 // TASK Pour créer une archive.zip de la release
 gulp.task('dist.zip', () => {
-  const version = JSON.parse(gfs.readFileSync('./package.json',
+  const version = JSON.parse(fse.readFileSync('./package.json',
     'utf8')).version;
   const stream = gulp.src([`${config.paths.dist}/*.{min.js,map,md}`])
     .pipe(zip(`acte-${version}-dist.zip`))
