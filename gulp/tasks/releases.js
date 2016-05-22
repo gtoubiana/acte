@@ -88,15 +88,27 @@ gulp.task('releases.tag', (cb) => {
 });
 
 gulp.task('releases.github.releaser', (done) => {
-  conventionalGHReleaser({
+  const AUTH = {
     type: 'oauth',
     token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
-  }, {
+  };
+
+  conventionalGHReleaser(AUTH, {
     preset: 'acte',
   }, (error, response) => {
     /* eslint-disable no-console */
     console.log(error, response);
 
+    // github.releases.uploadAsset({
+    //   owner: 'gtoubiana',
+    //   repo: 'releaser',
+    //   id: response[0].value.id,
+    //   name: `archive-${version}.zip`,
+    //   filePath: './archive.zip',
+    // }, (error, data) => {
+    //   console.log(error, data);
+    //   done();
+    // });
     /* eslint-enable no-console */
     done();
   });
