@@ -76,6 +76,7 @@
     "eslint-plugin-import": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.0.1",
+    "github": "^0.2.4",
     "graceful-fs": "^4.1.4",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
