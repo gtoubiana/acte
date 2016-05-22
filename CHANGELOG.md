@@ -1,6 +1,18 @@
-<a name="0.0.9-7"></a>
-## [0.0.9-7](https://github.com/gtoubiana/acte/compare/0.0.9-6...v0.0.9-7) (2016-05-22)
+<a name="0.0.9-8"></a>
+## [0.0.9-8](https://github.com/gtoubiana/acte/compare/0.0.9-7...v0.0.9-8) (2016-05-22)
 
+
+### Administration
+
+* **gulp :** test des assets de releases ([59b80a8](https://github.com/gtoubiana/acte/commit/59b80a8))
+
+<a name="0.0.9-7"></a>
+## [0.0.9-7](https://github.com/gtoubiana/acte/compare/0.0.9-6...0.0.9-7) (2016-05-22)
+
+
+### Administration
+
+* release v0.0.9-7 ([7f0bb43](https://github.com/gtoubiana/acte/commit/7f0bb43))
 
 <a name="0.0.9-6"></a>
 ## [0.0.9-6](https://github.com/gtoubiana/acte/compare/0.0.9-5...0.0.9-6) (2016-05-22)
