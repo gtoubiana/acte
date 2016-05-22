@@ -64,39 +64,45 @@ const acteScripts = [
 ];
 
 // Template Jsdoc du module UMD
-const bannerTop = '/**\n' +
-  ' * <%= pkg.name %> - <%= pkg.description %>\n' +
-  ' * @copyright 2015-Present, <%= pkg.author %>\n' +
-  ' * @namespace acte\n' +
-  ' * @version ';
-const bannerBottom = '\n' +
-  ' * @see {@link <%= pkg.homepage %>|Projet sur GitHub}\n' +
-  ' * @license <%= pkg.license %>\n' +
-  ' */\n';
+const bannerTop = `/**
+ * <%= pkg.name %> - <%= pkg.description %>
+ * @copyright 2015-Present, <%= pkg.author %>
+ * @namespace acte
+ * @version `;
+const bannerBottom = `
+ * @see {@link <%= pkg.homepage %>|Projet sur GitHub}
+ * @license <%= pkg.license %>
+ */
+`;
 
   // Template du module UMD
-const umd = '(function universalModuleDefinition(root, factory) {\n' +
-  '  var tempRoot = root;\n\n' +
-  '  /* istanbul ignore next */\n' +
-  '  if (typeof exports === \'object\' && typeof module === \'object\') {\n' +
-  '    module.exports = factory();\n' +
-  '  } else if (typeof define === \'function\' && define.amd) {\n' +
-  '    define([], factory);\n' +
-  '  } else if (typeof exports === \'object\') {\n' +
-  '    exports.acte = factory();\n' +
-  '  } else {\n' +
-  '    tempRoot.acte = factory();\n' +
-  '  }\n' +
-  '}(this, function umdCallback() {\n' +
-  '  \'use strict\';\n\n' +
-  '  /** @namespace */\n' +
-  '  /* eslint-disable no-use-before-define */\n' +
-  '  var acte = acte || {};\n\n' +
-  '  /* eslint-enable no-use-before-define */\n' +
-  '  /* istanbul ignore next */\n' +
-  '<%= contents %>\n' +
-  '  return acte;\n' +
-  '}));\n\n';
+const umd = `(function universalModuleDefinition(root, factory) {
+  var tempRoot = root;
+
+  /* istanbul ignore next */
+  if (typeof exports === 'object' && typeof module === 'object') {
+    module.exports = factory();
+  } else if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    exports.acte = factory();
+  } else {
+    tempRoot.acte = factory();
+  }
+}(this, function umdCallback() {
+  'use strict';
+
+  /** @namespace */
+  /* eslint-disable no-use-before-define */
+  var acte = acte || {};
+
+  /* eslint-enable no-use-before-define */
+  /* istanbul ignore next */
+<%= contents %>
+  return acte;
+}));
+
+`;
 
 
 // Export de la configuration
