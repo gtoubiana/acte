@@ -1,6 +1,18 @@
-<a name="0.0.9"></a>
-## [0.0.9](https://github.com/gtoubiana/acte/compare/0.0.9-8...v0.0.9) (2016-05-22)
+<a name="0.0.10-0"></a>
+## [0.0.10-0](https://github.com/gtoubiana/acte/compare/0.0.9...v0.0.10-0) (2016-05-22)
 
+
+### Administration
+
+* **travis :** corrige travis ([0dbdba9](https://github.com/gtoubiana/acte/commit/0dbdba9))
+
+<a name="0.0.9"></a>
+## [0.0.9](https://github.com/gtoubiana/acte/compare/0.0.9-8...0.0.9) (2016-05-22)
+
+
+### Administration
+
+* release v0.0.9 ([401969e](https://github.com/gtoubiana/acte/commit/401969e))
 
 <a name="0.0.9-8"></a>
 ## [0.0.9-8](https://github.com/gtoubiana/acte/compare/0.0.9-7...0.0.9-8) (2016-05-22)
