@@ -93,7 +93,13 @@ gulp.task('releases.github.releaser', (done) => {
     token: process.env.CONVENTIONAL_GITHUB_RELEASER_TOKEN,
   }, {
     preset: 'acte',
-  }, done);
+  }, (error, response) => {
+    /* eslint-disable no-console */
+    console.log(error, response);
+
+    /* eslint-enable no-console */
+    done();
+  });
 });
 
 gulp.task('releases.github.publish', sequence(

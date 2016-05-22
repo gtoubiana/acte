@@ -1,6 +1,22 @@
-<a name="0.0.8"></a>
-## [0.0.8](https://github.com/gtoubiana/acte/compare/0.0.7...v0.0.8) (2016-05-10)
+<a name="0.0.9-0"></a>
+## [0.0.9-0](https://github.com/gtoubiana/acte/compare/0.0.8...v0.0.9-0) (2016-05-22)
 
+
+### Documentation
+
+* **README :** Génére le README de master ([844e28f](https://github.com/gtoubiana/acte/commit/844e28f)), ferme [#120](https://github.com/gtoubiana/acte/issues/120)
+
+### Réécriture du code
+
+* **gulp :** réécriture des templates de config ([059a533](https://github.com/gtoubiana/acte/commit/059a533))
+
+<a name="0.0.8"></a>
+## [0.0.8](https://github.com/gtoubiana/acte/compare/0.0.7...0.0.8) (2016-05-10)
+
+
+### Administration
+
+* release v0.0.8 ([6131464](https://github.com/gtoubiana/acte/commit/6131464))
 
 <a name="0.0.7"></a>
 ## [0.0.7](https://github.com/gtoubiana/acte/compare/0.0.7-3...0.0.7) (2016-05-09)
