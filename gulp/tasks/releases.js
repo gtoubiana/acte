@@ -104,6 +104,7 @@ gulp.task('releases.github.releaser', (done) => {
   }, (error, response) => {
     /* eslint-disable no-console */
     // console.log(error, response);
+    /* eslint-enable no-console */
     github.authenticate(auth);
     github.releases.uploadAsset({
       owner: 'gtoubiana',
@@ -111,15 +112,7 @@ gulp.task('releases.github.releaser', (done) => {
       id: response[0].value.id,
       name: `acte-${version}-dist.zip`,
       filePath: `./dist/acte-${version}-dist.zip`,
-    }, done
-
-    // }, (err, data) => {
-    //   console.log(err, data);
-    //   done();
-    // }
-  );
-
-    /* eslint-enable no-console */
+    }, done);
   });
 });
 
