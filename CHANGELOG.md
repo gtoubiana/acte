@@ -1,10 +1,19 @@
+<a name="0.0.9-5"></a>
+## [0.0.9-5](https://github.com/gtoubiana/acte/compare/0.0.9-4...v0.0.9-5) (2016-05-22)
+
+
+### Administration
+
+* **gulp :** ajoute un asset aux releases ([405c5f7](https://github.com/gtoubiana/acte/commit/405c5f7))
+
 <a name="0.0.9-4"></a>
-## [0.0.9-4](https://github.com/gtoubiana/acte/compare/0.0.9-3...v0.0.9-4) (2016-05-22)
+## [0.0.9-4](https://github.com/gtoubiana/acte/compare/0.0.9-3...0.0.9-4) (2016-05-22)
 
 
 ### Administration
 
 * **gulp :** new release ([54b1aa9](https://github.com/gtoubiana/acte/commit/54b1aa9))
+* release v0.0.9-4 ([e81a40e](https://github.com/gtoubiana/acte/commit/e81a40e))
 
 <a name="0.0.9-3"></a>
 ## [0.0.9-3](https://github.com/gtoubiana/acte/compare/0.0.9-2...0.0.9-3) (2016-05-22)
