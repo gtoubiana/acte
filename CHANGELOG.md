@@ -1,3 +1,11 @@
+<a name="0.0.11"></a>
+## Version [0.0.11](https://github.com/gtoubiana/acte/compare/0.0.10...v0.0.11) (2016-05-24)
+
+
+### <span><span><span>Nouveautés</span></span></span>
+
+* nouveau releaser ([0f408e9](https://github.com/gtoubiana/acte/commit/0f408e9))
+
 <a name="0.0.10"></a>
 ## Version [0.0.10](https://github.com/gtoubiana/acte/compare/0.0.9...0.0.10) (2016-05-22)
 
