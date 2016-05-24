@@ -2,6 +2,7 @@
  * gulp docs.dist
  * gulp docs.constants
  * gulp docs.functions
+ * gulp docs.readme
  */
 const concat = require('gulp-concat');
 const config = require('../config');
