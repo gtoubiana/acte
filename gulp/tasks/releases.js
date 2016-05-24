@@ -7,7 +7,6 @@
 const bump = require('gulp-bump');
 const compareFunc = require('compare-func');
 const config = require('../config');
-const conventionalChangelog = require('gulp-conventional-changelog');
 const conventionalGHReleaser = require('conventional-github-releaser');
 const fse = require('fs-extra');
 const git = require('gulp-git');
@@ -70,98 +69,6 @@ const issueUrl = () => {
   return newUrl;
 };
 
-/* eslint-enable no-bitwise, strict */
-
-gulp.task('releases.conventional.changelog', () => {
-  const stream = gulp.src('CHANGELOG.md', {
-    buffer: false,
-  })
-    .pipe(conventionalChangelog({
-      preset: 'angular',
-      releaseCount: 0,
-    }, {
-      commit: 'commit',
-    }, {}, {}, {
-      mainTemplate: fse.readFileSync(
-        `${config.paths.src}/tmpl/changelogMain.hbs`, 'utf8'),
-      headerPartial: fse.readFileSync(
-        `${config.paths.src}/tmpl/changelogHeader.hbs`, 'utf8'),
-      commitPartial: fse.readFileSync(
-        `${config.paths.src}/tmpl/changelogCommit.hbs`, 'utf8'),
-      footerPartial: fse.readFileSync(
-        `${config.paths.src}/tmpl/changelogFooter.hbs`, 'utf8'),
-      transform: function transform(commit) {
-        /* eslint-disable no-param-reassign,strict */
-        'use strict';
-        let discard = true;
-
-        commit.notes.forEach(note => {
-          note.title = 'RÉTROCOMPATIBILITÉ';
-          discard = false;
-        });
-
-        if (commit.type === 'feat') {
-          commit.type = '<span><span><span>Nouveautés</span></span></span>';
-        } else if (commit.type === 'fix' || commit.type === 'debug') {
-          commit.type = '<span><span>Correctifs</span></span>';
-        } else if (commit.type === 'perf' || commit.type === 'perfs') {
-          commit.type = '<span>Performances</span>';
-        } else if (discard) {
-          return false;
-        } else if (commit.type === 'revert') {
-          commit.type = 'Annulations';
-        } else if (commit.type === 'doc' || commit.type === 'docs') {
-          commit.type = 'Documentation';
-        } else if (commit.type === 'style' || commit.type === 'styles') {
-          commit.type = 'Mise en forme';
-        } else if (commit.type === 'refactor' || commit.type === 'revision' ||
-          commit.type === 'revisions') {
-          commit.type = 'Réécriture du code';
-        } else if (commit.type === 'test' || commit.type === 'tests') {
-          commit.type = 'Ajout de tests unitaires';
-        } else if (commit.type === 'chore' || commit.type === 'chores' ||
-          commit.type === 'admin') {
-          commit.type = 'Administration du projet';
-        }
-
-        if (commit.scope === '*') {
-          commit.scope = '';
-        }
-
-        if (typeof commit.hash === 'string') {
-          commit.hash = commit.hash.substring(0, 7);
-        }
-
-        if (typeof commit.subject === 'string') {
-          const url = issueUrl();
-
-          if (url) {
-            // GitHub issue URLs.
-            commit.subject = commit.subject.replace(/( ?)#([0-9]+)(\b|^)/g,
-            `$1[#$2](${url}$2)$3`);
-          }
-
-          // GitHub user URLs.
-          commit.subject = commit.subject.replace(
-           /( ?)@([a-zA-Z0-9_]+)(\b|^)/g,
-           '$1[@$2](https://github.com/$2)$3');
-          commit.subject = commit.subject;
-        }
-
-        /* eslint-enable no-param-reassign,strict */
-        return commit;
-      },
-      groupBy: 'type',
-      commitGroupsSort: 'title',
-      commitsSort: ['scope', 'subject'],
-      noteGroupsSort: 'subject',
-      notesSort: compareFunc,
-    }))
-    .pipe(gulp.dest('./'));
-
-  return stream;
-});
-
 gulp.task('releases.commit', () => {
   const version = JSON.parse(
     fse.readFileSync('./package.json', 'utf8')).version;
@@ -209,9 +116,6 @@ gulp.task('releases.github.releaser', (done) => {
   }, {}, {}, {
     mainTemplate: fse.readFileSync(
       `${config.paths.src}/tmpl/changelogMain.hbs`, 'utf8'),
-
-    // headerPartial: fse.readFileSync(
-    //   `${config.paths.src}/tmpl/changelogHeader.hbs`, 'utf8'),
     commitPartial: fse.readFileSync(
       `${config.paths.src}/tmpl/changelogCommit.hbs`, 'utf8'),
     footerPartial: fse.readFileSync(
@@ -298,7 +202,6 @@ gulp.task('releases.github.releaser', (done) => {
 });
 
 gulp.task('releases.github.publish', sequence(
-    'releases.conventional.changelog',
     'releases.commit',
     'releases.push',
     'releases.tag',
