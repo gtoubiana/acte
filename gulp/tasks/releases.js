@@ -209,8 +209,9 @@ gulp.task('releases.github.releaser', (done) => {
   }, {}, {}, {
     mainTemplate: fse.readFileSync(
       `${config.paths.src}/tmpl/changelogMain.hbs`, 'utf8'),
-    headerPartial: fse.readFileSync(
-      `${config.paths.src}/tmpl/changelogHeader.hbs`, 'utf8'),
+
+    // headerPartial: fse.readFileSync(
+    //   `${config.paths.src}/tmpl/changelogHeader.hbs`, 'utf8'),
     commitPartial: fse.readFileSync(
       `${config.paths.src}/tmpl/changelogCommit.hbs`, 'utf8'),
     footerPartial: fse.readFileSync(
