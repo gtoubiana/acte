@@ -151,7 +151,7 @@ gulp.task('releases.github.releaser', (done) => {
       } else if (commit.type === 'test' || commit.type === 'tests') {
         commit.type = 'Ajout de tests unitaires';
       } else if (commit.type === 'chore' || commit.type === 'chores' ||
-        commit.type === 'admin') {
+        commit.type === 'admin' || commit.type === 'shore') {
         commit.type = 'Administration du projet';
       }
 
