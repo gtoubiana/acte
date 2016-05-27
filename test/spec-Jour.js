@@ -6,13 +6,13 @@ const dateValide = (jour, mois, an) => {
 };
 
 // http://jasmine.github.io/edge/introduction.html
-describe('Constructeur acte.Jour()', () => {
-  it('retourne this : un objet', () => {
+describe('new acte.Jour()', () => {
+  it('new acte.Jour() = un objet', () => {
     expect(new acte.Jour('6 octobre 1793'))
       .toEqual(jasmine.any(Object));
   });
   it(
-    'retourne this.variables.gregorien.od : ' +
+    'new acte.Jour().variables.gregorien.od = ' +
     'un objet Date grégorienne (ou Undefined)',
     () => {
       // gregorien
@@ -141,26 +141,27 @@ describe('Constructeur acte.Jour()', () => {
         .not.toBeDefined();
     });
   it(
-    'retourne this.variables.gregorien.ac : l\'année grégorienne en chiffres',
+    'new acte.Jour().variables.gregorien.ac = l\'année grégorienne en chiffres',
     () => {
       expect(new acte.Jour('1 octobre 1793').variables.gregorien.ac)
         .toEqual(1793);
     });
   it(
-    'retourne this.variables.gregorien.mc : le mois grégorien en chiffres',
+    'new acte.Jour().variables.gregorien.mc = le mois grégorien en chiffres',
     () => {
       expect(new acte.Jour('2 octobre 1793').variables.gregorien.mc)
         .toEqual(10);
     });
   it(
-    'retourne this.variables.gregorien.jmc : le jour du mois grégorien ' +
+    'new acte.Jour().variables.gregorien.jmc = le jour du mois grégorien ' +
     'en chiffres',
     () => {
       expect(new acte.Jour('3 octobre 1793').variables.gregorien.jmc)
         .toEqual(3);
     });
   it(
-    'retourne this.variables.julien.od : un objet Date julienne (ou Undefined)',
+    'new acte.Jour().variables.julien.od = un objet Date julienne ' +
+    '(ou Undefined)',
     () => {
       // Debut gregorien
       expect(new acte.Jour('15 octobre 1582').variables.julien.od)
@@ -175,29 +176,29 @@ describe('Constructeur acte.Jour()', () => {
         .od).toEqual(dateValide(4, 10, 1582));
     });
   it(
-    'retourne this.variables.julien.ac : l\'année julienne en chiffres',
+    'new acte.Jour().variables.julien.ac = l\'année julienne en chiffres',
     () => {
       expect(new acte.Jour('4 octobre 1793').variables.julien.ac)
         .toEqual(1793);
     });
-  it('retourne this.variables.julien.mc : le mois julien en chiffres',
+  it('new acte.Jour().variables.julien.mc = le mois julien en chiffres',
     () => {
       expect(new acte.Jour('5 octobre 1793').variables.julien.mc)
         .toEqual(9);
     });
   it(
-    'retourne this.variables.julien.jmc : le jour du mois julien en chiffres',
+    'new acte.Jour().variables.julien.jmc = le jour du mois julien en chiffres',
     () => {
       expect(new acte.Jour('6 octobre 1793').variables.julien.jmc)
         .toEqual(25);
     });
-  it('retourne this.variables.julien.jj : le nombre de jours juliens',
+  it('new acte.Jour().variables.julien.jj = le nombre de jours juliens',
     () => {
       expect(new acte.Jour('6 octobre 1793').variables.julien.jj)
         .toEqual(2376218.5);
     });
   it(
-    'retourne this.variables.republicain.ac : l\'année républicaine ' +
+    'new acte.Jour().variables.republicain.ac = l\'année républicaine ' +
     'en chiffres (ou Undefined)',
     () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.ac)
@@ -278,27 +279,28 @@ describe('Constructeur acte.Jour()', () => {
         .republicain.ac).not.toBeDefined();
     });
   it(
-    'retourne this.variables.republicain.mc : le mois républicain en chiffres',
+    'new acte.Jour().variables.republicain.mc = ' +
+    'le mois républicain en chiffres',
     () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.mc)
         .toEqual(1);
     });
   it(
-    'retourne this.variables.republicain.jmc : le jour du mois républicain ' +
+    'new acte.Jour().variables.republicain.jmc = le jour du mois républicain ' +
     'en chiffres',
     () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.jmc)
         .toEqual(15);
     });
   it(
-    'retourne this.variables.republicain.dc : la décade républicaine ' +
+    'new acte.Jour().variables.republicain.dc = la décade républicaine ' +
     'en chiffres',
     () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.dc)
         .toEqual(2);
     });
   it(
-    'retourne this.variables.republicain.jdc : le jour de la décade ' +
+    'new acte.Jour().variables.republicain.jdc = le jour de la décade ' +
     'républicaine en chiffres',
     () => {
       expect(new acte.Jour('6 octobre 1793').variables.republicain.jdc)

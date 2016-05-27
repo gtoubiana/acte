@@ -1,4 +1,4 @@
-/* POLYFILL: ES8 Array.prototype.reduce */
+/* POLYFILL: Internet Explorer 8 => Array.prototype.reduce */
 /* istanbul ignore if  */
 if (!Array.prototype.reduce) {
   Array.prototype.reduce = function(callback /*, initialValue*/) {
