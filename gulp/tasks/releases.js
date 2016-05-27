@@ -16,6 +16,27 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const pkg = require('../../package.json');
 const sequence = require('gulp-sequence');
+const issueUrl = () => {
+  /* eslint-disable strict */
+  'use strict';
+  const url = null;
+  let gitUrl;
+  let newUrl;
+
+  if (pkg.repository && pkg.repository.url &&
+   -(parseInt(pkg.repository.url.indexOf('github.com'), 10) + 1)) {
+    gitUrl = gufg(pkg.repository.url);
+
+    if (gitUrl) {
+      newUrl = `${gitUrl}/issues/`;
+    } else {
+      newUrl = url;
+    }
+  }
+
+  /* eslint-enable strict */
+  return newUrl;
+};
 
 gulp.task('releases.version.patch', () => {
   const stream = gulp.src(['./package.json'])
@@ -48,26 +69,6 @@ gulp.task('releases.version.prerelease', () => {
 
   return stream;
 });
-
-/* eslint-disable no-bitwise, strict */
-const issueUrl = () => {
-  'use strict';
-  const url = null;
-  let gitUrl;
-  let newUrl;
-
-  if (pkg.repository && pkg.repository.url &&
-   ~pkg.repository.url.indexOf('github.com')) {
-    gitUrl = gufg(pkg.repository.url);
-
-    if (gitUrl) {
-      newUrl = `${gitUrl}/issues/`;
-    } else {
-      newUrl = url;
-    }
-  }
-  return newUrl;
-};
 
 gulp.task('releases.commit', () => {
   const version = JSON.parse(
@@ -166,12 +167,12 @@ gulp.task('releases.github.releaser', (done) => {
         const url = issueUrl();
 
         if (url) {
-          // GitHub issue URLs.
+          // GitHub issue URLs
           commit.subject = commit.subject.replace(/( ?)#([0-9]+)(\b|^)/g,
           `$1[#$2](${url}$2)$3`);
         }
 
-        // GitHub user URLs.
+        // GitHub user URLs
         commit.subject = commit.subject.replace(
          /( ?)@([a-zA-Z0-9_]+)(\b|^)/g,
          '$1[@$2](https://github.com/$2)$3');
@@ -211,7 +212,7 @@ gulp.task('releases.github.publish', sequence(
 gulp.task('releases.pre', sequence(
 
     // Augmente le numéro de version en prerelease
-    // exemple : 1.2.3 => 1.2.4-0 ou 1.2.4-0 => 1.2.4-1
+    // exemple : 1.2.3 => 1.2.4-0 et 1.2.4-0 => 1.2.4-1
     'releases.version.prerelease',
     'releases.github.publish'
 ));
@@ -219,7 +220,7 @@ gulp.task('releases.pre', sequence(
 gulp.task('releases.patch', sequence(
 
     // Augmente le numéro de version en patch
-    // exemple : 1.2.3 => 1.2.4 ou 1.2.4-1 => 1.2.4
+    // exemple : 1.2.3 => 1.2.4 et 1.2.4-1 => 1.2.4
     'releases.version.patch',
     'releases.github.publish'
 ));

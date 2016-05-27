@@ -31,7 +31,6 @@
       }],
       "max-nested-callbacks": [1, 3], // specify the maximum depth callbacks can be nested
       "newline-after-var": [1, "always"], // require or disallow an empty newline after variable declarations
-      "no-bitwise": 1, // disallow use of bitwise operators
       "no-continue": 1, // disallow use of the continue statement
       "no-div-regex": 1, // disallow division operators explicitly at beginning of regular expression
       "no-empty-function": 1, // disallow use of empty functions
