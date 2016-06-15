@@ -37,24 +37,24 @@ acte.Jour = class Jour {
     // Ecriture de toutes les valeurs
     this.variables = {
       gregorien: {
-        jmc: tab[0],
-        mc: tab[1],
-        ac: tab[2],
+        jm: tab[0],
+        m: tab[1],
+        a: tab[2],
         od: tab[3],
       },
       julien: {
         jj: tab[4],
-        jmc: tab[5],
-        mc: tab[6],
-        ac: tab[7],
+        jm: tab[5],
+        m: tab[6],
+        a: tab[7],
         od: tab[8],
       },
       republicain: {
-        jdc: tab[9],
-        dc: tab[10],
-        jmc: tab[11],
-        mc: tab[12],
-        ac: tab[13],
+        jd: tab[9],
+        d: tab[10],
+        jm: tab[11],
+        m: tab[12],
+        a: tab[13],
       },
       limites: this.limites,
     };

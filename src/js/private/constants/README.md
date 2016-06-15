@@ -6,6 +6,7 @@
 * [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
 * [argNutMult](#argNutMult) : <code>Tableau</code> ℗
 * [delta](#delta) : <code>Tableau</code> ℗
+* [dixainesEnLettres](#dixainesEnLettres) : <code>Tableau</code> ℗
 * [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
 * [jde0Tab2000](#jde0Tab2000) : <code>Tableau</code> ℗
 * [jjAn1Gregorien](#jjAn1Gregorien) : <code>Nombre</code> ℗
@@ -15,10 +16,13 @@
 * [jjDebutRepublicain](#jjDebutRepublicain) : <code>Nombre</code> ℗
 * [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
+* [jourGregorien](#jourGregorien) : <code>Tableau</code> ℗
+* [moisGregorien](#moisGregorien) : <code>Tableau</code> ℗
 * [regexpGregorien](#regexpGregorien) : <code>Tableau</code> ℗
 * [regexpRepublicain](#regexpRepublicain) : <code>Tableau</code> ℗
 * [siecleJulien](#siecleJulien) : <code>Nombre</code> ℗
 * [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
+* [unitesEnLettres](#unitesEnLettres) : <code>Tableau</code> ℗
 
 * * *
 <a name="anneeTropique"></a>
@@ -67,6 +71,16 @@ tous les 2 ans de 1620 à 2014
 [Expressions](http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker & Gilles Toubiana  
+<a name="dixainesEnLettres"></a>
+
+## dixainesEnLettres : <code>Tableau</code> ℗
+Dixaines en toutes lettres
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
 <a name="jde0Tab1000"></a>
 
 ## jde0Tab1000 : <code>Tableau</code> ℗
@@ -208,6 +222,28 @@ jjVersGregorien(jjFinRepublicain); // [1805, 12, 31]
 jjVersRepublicain(2380686.5); // [14, 4, 1, 10]
 jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
 ```
+<a name="jourGregorien"></a>
+
+## jourGregorien : <code>Tableau</code> ℗
+Nom des Jours Grégoriens et abbréviations courantes,
+sur 1, 2 et 3 caractères
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+<a name="moisGregorien"></a>
+
+## moisGregorien : <code>Tableau</code> ℗
+Nom des Mois Grégoriens et abbréviations courantes,
+sur 1, 2 et 3 caractères
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
 <a name="regexpGregorien"></a>
 
 ## regexpGregorien : <code>Tableau</code> ℗
@@ -248,6 +284,16 @@ Termes périodiques pour obtenir des temps réels
 **Voir** : [EquinoxpTerms](http://fourmilab.ch/documents/calendar/)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker  
+<a name="unitesEnLettres"></a>
+
+## unitesEnLettres : <code>Tableau</code> ℗
+Unités en toutes lettres
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
 * * *
 Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>
 Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE), documentation sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).

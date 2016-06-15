@@ -182,6 +182,18 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
+     * Dixaines en toutes lettres
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var dixainesEnLettres = ['', 'dix', 'vingt', 'trente', 'quarante',
+      'cinquante', 'soixante', 'soixante', 'quatre-vingt', 'quatre-vingt'
+    ];
+
+    /**
      * Jours juliens des équinoxes avant l'an 1000
      * @access private
      * @author John Walker
@@ -302,6 +314,49 @@ if (!Array.prototype.reduce) {
      * jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
      */
     var jjFinRepublicain = 2380686.5;
+
+    /**
+     * Nom des Jours Grégoriens et abbréviations courantes,
+     * sur 1, 2 et 3 caractères
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var jourGregorien = [
+      ['Dimanche', 'Dim', 'Dim', 'Di', 'D'],
+      ['Lundi', 'Lundi', 'Lun', 'Lu', 'L'],
+      ['Mardi', 'Mardi', 'Mar', 'Ma', 'M'],
+      ['Mercredi', 'Mercr', 'Mer', 'Me', 'M'],
+      ['Jeudi', 'Jeudi', 'Jeu', 'Je', 'J'],
+      ['Vendredi', 'Vendr', 'Ven', 'Ve', 'V'],
+      ['Samedi', 'Sam', 'Sam', 'Sa', 'S']
+    ];
+
+    /**
+     * Nom des Mois Grégoriens et abbréviations courantes,
+     * sur 1, 2 et 3 caractères
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var moisGregorien = [
+      ['Janvier', 'Janv', 'Jan', 'Jr', 'J'],
+      ['Février', 'Févr', 'Fév', 'Fr', 'F'],
+      ['Mars', 'Mars', 'Mar', 'Ms', 'M'],
+      ['Avril', 'Avr', 'Avr', 'Al', 'A'],
+      ['Mai', 'Mai', 'Mai', 'Mi', 'M'],
+      ['Juin', 'Juin', 'Jun', 'Jn', 'J'],
+      ['Juillet', 'Juill', 'Jul', 'Jt', 'J'],
+      ['Août', 'Août', 'Aoû', 'At', 'A'],
+      ['Septembre', 'Sept', 'Sep', 'Se', 'S'],
+      ['Octobre', 'Oct', 'Oct', 'Oe', 'O'],
+      ['Novembre', 'Nov', 'Nov', 'Ne', 'N'],
+      ['Décembre', 'Déc', 'Déc', 'De', 'D']
+    ];
 
     /**
      * Expressions régulières pour convertir les mois gregoriens
@@ -449,6 +504,19 @@ if (!Array.prototype.reduce) {
       198.04, 62894.029, 14, 199.76, 31436.921, 12, 95.39, 14577.848, 12,
       287.11, 31931.756, 12, 320.81, 34777.259, 9, 227.73, 1222.114, 8,
       15.45, 16859.074
+    ];
+
+    /**
+     * Unités en toutes lettres
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var unitesEnLettres = ['', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six',
+      'sept', 'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze',
+      'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf'
     ];
 
     /**
@@ -1511,24 +1579,24 @@ if (!Array.prototype.reduce) {
         // Ecriture de toutes les valeurs
         this.variables = {
           gregorien: {
-            jmc: tab[0],
-            mc: tab[1],
-            ac: tab[2],
+            jm: tab[0],
+            m: tab[1],
+            a: tab[2],
             od: tab[3]
           },
           julien: {
             jj: tab[4],
-            jmc: tab[5],
-            mc: tab[6],
-            ac: tab[7],
+            jm: tab[5],
+            m: tab[6],
+            a: tab[7],
             od: tab[8]
           },
           republicain: {
-            jdc: tab[9],
-            dc: tab[10],
-            jmc: tab[11],
-            mc: tab[12],
-            ac: tab[13]
+            jd: tab[9],
+            d: tab[10],
+            jm: tab[11],
+            m: tab[12],
+            a: tab[13]
           },
           limites: this.limites
         };
