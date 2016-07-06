@@ -1244,6 +1244,9 @@ if (!Array.prototype.reduce) {
       return jjVersRepublicain;
     }();
 
+    /**
+     * HERE GOES THE JSDOC COMMENTS
+     */
     var periodeEnJours = function () {
       function periodeEnJours(_ref, _ref2) {
         var _ref4 = _slicedToArray(_ref, 3);

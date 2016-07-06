@@ -22,6 +22,7 @@
 * [normaliserDegres(a)](#normaliserDegres) ⇒ <code>Nombre</code> ℗
 * [nutation(jj)](#nutation) ⇒ <code>Tableau</code> ℗
 * [obliquiteEcliptique(jj)](#obliquiteEcliptique) ⇒ <code>Nombre</code> ℗
+* [periodeEnJours()](#periodeEnJours)
 * [positionSoleil(jj)](#positionSoleil) ⇒ <code>Tableau</code> ℗
 * [radiansVersDegres(r)](#radiansVersDegres) ⇒ <code>Nombre</code> ℗
 * [remplacements(texte, regex, options)](#remplacements) ⇒ <code>Chaîne</code> ℗
@@ -474,6 +475,12 @@ Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens
 ```js
 obliquiteEcliptique(2457333.5); // 23.437230456425635
 ```
+<a name="periodeEnJours"></a>
+
+## periodeEnJours()
+HERE GOES THE JSDOC COMMENTS
+
+**Type** : Fonction  
 <a name="positionSoleil"></a>
 
 ## positionSoleil(jj) ⇒ <code>Tableau</code> ℗
