@@ -1,5 +1,6 @@
 {
     "extends": "airbnb",
+    #"root": true,
 
     "env": {
       "browser": true,
@@ -13,38 +14,46 @@
     },
 
     "rules": {
-      "consistent-this": [1, "that"], // enforce consistent naming when capturing the current execution context
-      "func-style": [1, "expression"], // enforce use of function declarations or expressions
-      "id-length": [1, { // this option enforces minimum and maximum identifier lengths (variable names, property names etc.) - custom
+      "consistent-this": [1, "that"], # enforce consistent naming when capturing the current execution context
+      "func-style": [1, "expression"], # enforce use of function declarations or expressions
+      "id-length": [1, { # this option enforces minimum and maximum identifier lengths (variable names, property names etc.) - custom
         "min": 1,
         "max": 25
         }],
-      "linebreak-style": [1, "unix"], // disallow mixed ‘LF’ and ‘CRLF’ as linebreaks
-      "lines-around-comment": [1, { // enforce empty lines around comments - custom
+      "linebreak-style": [1, "unix"], # disallow mixed ‘LF’ and ‘CRLF’ as linebreaks
+      "lines-around-comment": [1, { # enforce empty lines around comments - custom
         "beforeBlockComment": true,
         "beforeLineComment": true,
         "allowBlockStart": true
       }],
-      "max-len": [1, 80, 2, { // specify the maximum length of a line in your program
+      "max-len": [1, 80, 2, { # specify the maximum length of a line in your program
         "ignoreUrls": true,
         "ignoreComments": false
       }],
-      "max-nested-callbacks": [1, 3], // specify the maximum depth callbacks can be nested
-      "newline-after-var": [1, "always"], // require or disallow an empty newline after variable declarations
-      "no-continue": 1, // disallow use of the continue statement
-      "no-div-regex": 1, // disallow division operators explicitly at beginning of regular expression
-      "no-empty-function": 1, // disallow use of empty functions
-      "no-eq-null": 1, // disallow comparisons to null without a type-checking operator
-      "no-inline-comments": 1, // disallow comments inline after code
-      "no-invalid-this": 1, // disallow this keywords outside of classes or class-like objects
-      "no-lonely-if": 1, // disallow if as the only statement in an else block
-      "no-negated-condition": 1, // disallow negated conditions
-      "no-undefined": 1, // disallow use of undefined variable
-      "no-underscore-dangle": 1, // disallow dangling underscores in identifiers
-      "no-unmodified-loop-condition": 1, // disallow unmodified conditions of loops
-      "no-useless-concat": 1, // disallow unnecessary concatenation of literals or template literals
-      "operator-assignment": [1, "always"], // require assignment operator shorthand where possible or prohibit it entirely
-      "valid-jsdoc": 1, // Ensure JSDoc comments are valid
-      "wrap-regex": 1, // require regex literals to be wrapped in parentheses
+      "max-nested-callbacks": [1, 3], # specify the maximum depth callbacks can be nested
+      "newline-after-var": [1, "always"], # require or disallow an empty newline after variable declarations
+      "no-continue": 1, # disallow use of the continue statement
+      "no-div-regex": 1, # disallow division operators explicitly at beginning of regular expression
+      "no-empty-function": 1, # disallow use of empty functions
+      "no-eq-null": 1, # disallow comparisons to null without a type-checking operator
+      "no-inline-comments": 1, # disallow comments inline after code
+      "no-invalid-this": 1, # disallow this keywords outside of classes or class-like objects
+      "no-lonely-if": 1, # disallow if as the only statement in an else block
+      "no-negated-condition": 1, # disallow negated conditions
+      "no-undefined": 1, # disallow use of undefined variable
+      "no-underscore-dangle": 1, # disallow dangling underscores in identifiers
+      "no-unmodified-loop-condition": 1, # disallow unmodified conditions of loops
+      "no-useless-concat": 1, # disallow unnecessary concatenation of literals or template literals
+      "operator-assignment": [1, "always"], # require assignment operator shorthand where possible or prohibit it entirely
+      "require-jsdoc": [1, { # Ensure JSDoc comments are present
+        "require": {
+            "FunctionDeclaration": true,
+            # No Function Expression available now (https://github.com/eslint/eslint/issues/5867)
+            #"MethodDefinition": true,
+            "ClassDeclaration": true,
+        }
+      }],
+      "valid-jsdoc": 1, # Ensure JSDoc comments are valid
+      "wrap-regex": 1, # require regex literals to be wrapped in parentheses
    },
 }

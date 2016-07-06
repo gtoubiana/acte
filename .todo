@@ -1,0 +1,102 @@
+BUGS à corriger :
+- gulp-header dans gulp/dist
+- extend dans src/.eslint
+- fast-eslint ou linter dans atom
+- eslint jsdoc ?
+- update npm
+- eslint 3 ?
+- npm global ???
+- atom plugs install ??? linter + linter-eslint : https://atom.io/packages/linter-plus-eslint
+- codeclimate : https://docs.codeclimate.com/docs/eslint
+
+------------------
+
+ESLINT RULES
+---
+
+- ACTE v 0.0.15:
+	- eslint 2.10.2
+- ACTE DEV + BUGS:
+	- 2.13.1
+
+- ESLINT:
+	- http://eslint.org/blog/
+	- ESLint v3.0.0 released 1 July 2016 931 words
+	- ESLint's New Rule Format 1 July 2016 785 words
+	- ESLint v2.13.1 released 20 June 2016 93 words
+	- ESLint v2.13.0 released 17 June 2016 467 words
+	- ESLint v2.12.0 released 10 June 2016 1011 words
+	- ESLint v2.11.1 released 30 May 2016 115 words
+	- ESLint v2.11.0 released 27 May 2016 471 words
+	- ESLint v2.10.2 released 16 May 2016 86 words
+
+- CODECLIMATE:
+	- https://docs.codeclimate.com/docs/eslint
+		- eslint-2: ESLint v2.10.2
+
+- AIRBNB:
+	- eslint-config-airbnb		^9.0.1
+		- https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
+		- https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb/package.json
+
+"devDependencies": {
+    "babel-tape-runner": "^1.3.1",
+    "eslint": "^2.10.2",
+    "eslint-find-rules": "^1.9.2",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
+    "react": ">= 0.13.0",
+    "tape": "^4.5.1",
+    "in-publish": "^2.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^2.10.2",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-react": "^5.1.1"
+  }
+
+- ATOM:
+	- fast-eslint ? "eslint": "~2.13.0"
+	- linter
+		- linter-eslint : https://atom.io/packages/linter-eslint
+
+$ apm install linter && apm install linter-eslint
+
+installed packages:
+README.md		highlight-selected	symbols-tree-view
+chmod			open-in-browser		tasks
+docblockr		open-terminal-here
+highlight-line		sort-lines
+
+---
+1. reinstalled npm i --save-dev eslint@2.10.2:
+$ npm i --save-dev eslint@2.10.2
+
+2. reinstalled atom linter & linter-eslint:
+$ apm install linter && apm install linter-eslint
+http://www.codeblocq.com/2016/03/Setup-ESLint-in-Atom/
+
+3. codeclimate config:
+	channel: "eslint-2"
+https://docs.codeclimate.com/docs/eslint
+
+4. jsdoc ???
+http://eslint.org/docs/rules/valid-jsdoc
+http://eslint.org/docs/rules/require-jsdoc
+
+"require-jsdoc": [1, { # Ensure JSDoc comments are present
+	"require": {
+			"FunctionDeclaration": true,
+			"MethodDefinition": true,
+			"ClassDeclaration": true,
+	}
+}],
+"valid-jsdoc": 1, # Ensure JSDoc comments are valid
+---
+BUGS avec JSDOC comments et ESLINT ???
+	- impossible de vérifier des function expressions...
+---
+$ npm i --save-dev gulp-header@1.8.2
+---

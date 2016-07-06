@@ -4,7 +4,7 @@ if (!Array.prototype.reduce) {
   Array.prototype.reduce = function (callback /*, initialValue*/ ) {
     'use strict';
 
-    if (this == null) {
+    if (this === null) {
       throw new TypeError(
         'Array.prototype.reduce called on null or undefined');
     }
@@ -71,42 +71,6 @@ if (!Array.prototype.reduce) {
 
     /* eslint-enable no-use-before-define */
     /* istanbul ignore next */
-    var _slicedToArray = function () {
-      function sliceIterator(arr, i) {
-        var _arr = [];
-        var _n = true;
-        var _d = false;
-        var _e = void 0;
-        try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next())
-              .done); _n = true) {
-            _arr.push(_s.value);
-            if (i && _arr.length === i) break;
-          }
-        } catch (err) {
-          _d = true;
-          _e = err;
-        } finally {
-          try {
-            if (!_n && _i["return"]) _i["return"]();
-          } finally {
-            if (_d) throw _e;
-          }
-        }
-        return _arr;
-      }
-      return function (arr, i) {
-        if (Array.isArray(arr)) {
-          return arr;
-        } else if (Symbol.iterator in Object(arr)) {
-          return sliceIterator(arr, i);
-        } else {
-          throw new TypeError(
-            "Invalid attempt to destructure non-iterable instance");
-        }
-      };
-    }();
-
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -215,18 +179,6 @@ if (!Array.prototype.reduce) {
       28.2, 29.1, 30, 30.7, 31.4, 32.2, 33.1, 34, 35, 36.5, 38.3, 40.2,
       42.2, 44.9, 46.9, 49, 50.9, 52.5, 54, 55.1, 56.1, 57.2, 58.7, 60.4,
       61.9, 63.2, 64, 64.4, 64.6, 65, 65.6, 66.2, 66.7, 67.5
-    ];
-
-    /**
-     * Dixaines en toutes lettres
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @constant {Array}
-     */
-    var dixainesEnLettres = ['', 'dix', 'vingt', 'trente', 'quarante',
-      'cinquante', 'soixante', 'soixante', 'quatre-vingt', 'quatre-vingt'
     ];
 
     /**
@@ -350,49 +302,6 @@ if (!Array.prototype.reduce) {
      * jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
      */
     var jjFinRepublicain = 2380686.5;
-
-    /**
-     * Nom des Jours Grégoriens et abbréviations courantes,
-     * sur 1, 2 et 3 caractères
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @constant {Array}
-     */
-    var jourGregorien = [
-      ['Dimanche', 'Dim', 'Dim', 'Di', 'D'],
-      ['Lundi', 'Lundi', 'Lun', 'Lu', 'L'],
-      ['Mardi', 'Mardi', 'Mar', 'Ma', 'M'],
-      ['Mercredi', 'Mercr', 'Mer', 'Me', 'M'],
-      ['Jeudi', 'Jeudi', 'Jeu', 'Je', 'J'],
-      ['Vendredi', 'Vendr', 'Ven', 'Ve', 'V'],
-      ['Samedi', 'Sam', 'Sam', 'Sa', 'S']
-    ];
-
-    /**
-     * Nom des Mois Grégoriens et abbréviations courantes,
-     * sur 1, 2 et 3 caractères
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @constant {Array}
-     */
-    var moisGregorien = [
-      ['Janvier', 'Janv', 'Jan', 'Jr', 'J'],
-      ['Février', 'Févr', 'Fév', 'Fr', 'F'],
-      ['Mars', 'Mars', 'Mar', 'Ms', 'M'],
-      ['Avril', 'Avr', 'Avr', 'Al', 'A'],
-      ['Mai', 'Mai', 'Mai', 'Mi', 'M'],
-      ['Juin', 'Juin', 'Jun', 'Jn', 'J'],
-      ['Juillet', 'Juill', 'Jul', 'Jt', 'J'],
-      ['Août', 'Août', 'Aoû', 'At', 'A'],
-      ['Septembre', 'Sept', 'Sep', 'Se', 'S'],
-      ['Octobre', 'Oct', 'Oct', 'Oe', 'O'],
-      ['Novembre', 'Nov', 'Nov', 'Ne', 'N'],
-      ['Décembre', 'Déc', 'Déc', 'De', 'D']
-    ];
 
     /**
      * Expressions régulières pour convertir les mois gregoriens
@@ -540,19 +449,6 @@ if (!Array.prototype.reduce) {
       198.04, 62894.029, 14, 199.76, 31436.921, 12, 95.39, 14577.848, 12,
       287.11, 31931.756, 12, 320.81, 34777.259, 9, 227.73, 1222.114, 8,
       15.45, 16859.074
-    ];
-
-    /**
-     * Unités en toutes lettres
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @constant {Array}
-     */
-    var unitesEnLettres = ['', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six',
-      'sept', 'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze',
-      'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf'
     ];
 
     /**
@@ -1244,31 +1140,6 @@ if (!Array.prototype.reduce) {
       return jjVersRepublicain;
     }();
 
-    var periodeEnJours = function () {
-      function periodeEnJours(_ref, _ref2) {
-        var _ref4 = _slicedToArray(_ref, 3);
-
-        var j1 = _ref4[0];
-        var m1 = _ref4[1];
-        var a1 = _ref4[2];
-
-        var _ref3 = _slicedToArray(_ref2, 3);
-
-        var j2 = _ref3[0];
-        var m2 = _ref3[1];
-        var a2 = _ref3[2];
-
-        var date1 = dateValide(j1, m1, a1);
-        var date2 = dateValide(j2, m2, a2);
-        var debut = date2 > date1 ? date1 : date2;
-        var fin = date2 > date1 ? date2 : date1;
-
-        return Math.ceil((fin - debut) / (1000 * 60 * 60 * 24)) + 1;
-      }
-
-      return periodeEnJours;
-    }();
-
     /**
      * Pour remplacer en série avec un objet contenant des regex
      * @access private
@@ -1640,24 +1511,24 @@ if (!Array.prototype.reduce) {
         // Ecriture de toutes les valeurs
         this.variables = {
           gregorien: {
-            jm: tab[0],
-            m: tab[1],
-            a: tab[2],
+            jmc: tab[0],
+            mc: tab[1],
+            ac: tab[2],
             od: tab[3]
           },
           julien: {
             jj: tab[4],
-            jm: tab[5],
-            m: tab[6],
-            a: tab[7],
+            jmc: tab[5],
+            mc: tab[6],
+            ac: tab[7],
             od: tab[8]
           },
           republicain: {
-            jd: tab[9],
-            d: tab[10],
-            jm: tab[11],
-            m: tab[12],
-            a: tab[13]
+            jdc: tab[9],
+            dc: tab[10],
+            jmc: tab[11],
+            mc: tab[12],
+            ac: tab[13]
           },
           limites: this.limites
         };
@@ -1682,15 +1553,411 @@ if (!Array.prototype.reduce) {
      * new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
      */
     acte.Jour.prototype.gregorien = function () {
-      function gregorien(format, erreur, rappel) {
-        rappel();
-        return this.variables.gregorien.ac;
+      function Gregorien(format, erreur, rappel) {
+        erreur = erreur || "Pas de correspondances.";
+        var output;
+        var frmt = format;
+        var obj = this.variables.gregorien;
+
+        // Nom des Mois Grégoriens et abbréviations
+        var moisGregorien = [
+  ["Janvier", "Janv", "Jan", "Jr", "J"],
+  ["Février", "Févr", "Fév", "Fr", "F"],
+  ["Mars", "Mars", "Mar", "Ms", "M"],
+  ["Avril", "Avr", "Avr", "Al", "A"],
+  ["Mai", "Mai", "Mai", "Mi", "M"],
+  ["Juin", "Juin", "Jun", "Jn", "J"],
+  ["Juillet", "Juill", "Jul", "Jt", "J"],
+  ["Août", "Août", "Aoû", "At", "A"],
+  ["Septembre", "Sept", "Sep", "Se", "S"],
+  ["Octobre", "Oct", "Oct", "Oe", "O"],
+  ["Novembre", "Nov", "Nov", "Ne", "N"],
+  ["Décembre", "Déc", "Déc", "De", "D"]
+];
+
+        // Nom des Jours Grégoriens et abbréviations
+var jourGregorien = [
+  ["Dimanche", "Dim", "Dim", "Di", "D"],
+  ["Lundi", "Lundi", "Lun", "Lu", "L"],
+  ["Mardi", "Mardi", "Mar", "Ma", "M"],
+  ["Mercredi", "Mercr", "Mer", "Me", "M"],
+  ["Jeudi", "Jeudi", "Jeu", "Je", "J"],
+  ["Vendredi", "Vendr", "Ven", "Ve", "V"],
+  ["Samedi", "Sam", "Sam", "Sa", "S"]
+];
+
+// Nombre de jours complets entre 2 dates
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var periodeEnJours = function ([j1,m1,a1], [j2, m2, a2]) {
+  var date1 = dateValide(j1,m1,a1);
+  var date2 = dateValide(j2,m2,a2);
+  var debut = (date2 > date1) ? date1 : date2;
+  var fin = (date2 > date1) ? date2 : date1;
+  return Math.ceil((fin - debut) / (1000 * 60 * 60 * 24)) +1;
+};
+
+// Calcul du nombre de semaines
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var semaineComplete = function (j,m,a,mois) {
+  // si l'argument mois existe, calcule depuis le début du mois.
+  // sinon depuis le début de l'année
+  var x = (mois) ? m : 1;
+	var jourSemaine = dateValide(1,x,a).getDay();
+  jourSemaine = (jourSemaine === 0) ? 7 : jourSemaine;
+  // si le premier jour < jeudi (4), ajouter une semaine
+	var n = (jourSemaine <= 4) ? 1 : 0;
+
+	var nombreSemaines = (periodeEnJours([1,x,a], [j,m,a]) - (8-jourSemaine)) / 7;
+	var semainesValides = (nombreSemaines > parseInt(nombreSemaines)) ? parseInt(nombreSemaines) + n + 1 : parseInt(nombreSemaines) + n;
+	return semainesValides;
+};
+
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var prefixeZero = function(n) {
+  return n < 10 ? "0" + n : n;
+};
+
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var nombreOrdinal = function(n, prem, exp) {
+    return n === 1 || n === "1er" || n === "1re" ? "1" + prem : n + exp;
+};
+
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var initialeEnCapitale = function (str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var nombreEnLettres = function(n,r) {
+  if (typeof n === 'number' && n > -10000 && n < 10000) {
+      var mill, sepcen, centl, sepdix, dixl, sepunit, unitl, dizunit, res;
+      // unitesEnLettres
+      var u = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", 'dix', 'onze', 'douze', 'treize', 'quatorze', 'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf'];
+      // dixainesEnLettres
+      var v = ["", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante", "quatre-vingt", "quatre-vingt"];
+      var abs = Math.abs(n); // saisie en valeur absolue
+      var splus = (r) ? " " : "-";
+      var smoins = (r) ? "-" : " ";
+      var mil = parseInt(abs/1000); // milliers
+      var cent = parseInt(abs%1000/100); // centaines
+      var dix = parseInt(abs%100/10); // dixaines
+      var unit = parseInt(abs%10); // unités
+
+      // Milliers
+      if (mil == 1) {
+        mill = "mille"; // un seul millier
+      } else if (mil > 1) {
+        mill = u[mil]+splus+"mille"; // plusieurs milliers
+      } else {
+        mill = ""; // pas de milliers
       }
 
-      return gregorien;
+      // Centaines
+      sepcen = (mil > 0) ? splus : "";
+      if (cent == 1) {
+        centl = sepcen+"cent"; // une seule centaine
+      } else if (cent > 1 && dix === 0 && unit === 0) {
+        centl = sepcen+u[cent]+splus+"cents"; // plusieurs centaines
+      } else if (cent > 1) {
+        centl = sepcen+u[cent]+splus+"cent"; // plusieurs centaines suivies de dizaines
+      } else {
+        centl = ""; // pas de centaines
+      }
+
+      // Dizaines et unités
+      sepdix = (mil+cent > 0) && (dix+unit > 0)? splus : "";
+      if (dix > 0) {
+        dixl = v[dix];
+        sepunit="-"; //splus
+      } else {
+        dixl = "";
+        sepunit="";
+      }
+      unitl = (abs > 0) ? sepunit+u[unit]: "zéro"; // unités
+      if ((dix*10+unit)%10 === 0) {unitl = "";} // multiples de 10
+
+      // dix, soixante-dix, quatre-vingt-dix
+      if ((dix == 1 || dix == 7 || dix == 9) && unit === 0) {
+        dixl = (dix == 1) ? "dix" : v[dix]+"-dix";
+        unitl = (dix == 1) ? "" : u[unit];
+      }
+      // onze+
+      // soixante-et-onze+, quatre-vingt-onze+
+      if ((dix == 1 || dix == 7 || dix == 9) && unit >= 1) {
+        dixl = (dix == 1) ? "" : v[dix];
+        if (dix == 1) {sepunit = "";}
+        unitl = (dix == 7 && unit == 1) ? splus+"et"+splus+u[10 + unit] : sepunit+u[10 + unit];
+      }
+      // vingt-et-un, trente-et-un, quarante-et-un,
+      // cinquante-et-un, soixante-et-un
+      if (dix >= 2 && dix <= 6 && unit === 1) {
+        unitl = splus+"et"+splus+u[unit];
+      }
+      if (dix === 8 && unit === 0) { // pluriel sur 80
+        dixl = v[dix]+"s";
+        unitl = "";
+      }
+
+    dizunit = sepdix+dixl+unitl;
+
+      // si nombre négatif
+      var avjc = (n < 0) ? " av. J.-C.": "";
+      res = (abs > 0) ? initialeEnCapitale(mill+centl+dizunit+avjc): "Zéro";
+    return res;
+  } else {
+    return "";
+  }
+};
+
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var ordinauxEnLettres = function(saisie, genre) {
+  var str = saisie.toString();
+  var result;
+  var prem = (genre) ? "première" : "premier"; // genre
+
+  switch (str.slice(-1)) { // dernier caractère
+    case "o":
+    case "t":
+    case "x":
+      result = str + "ième";
+      break;
+    case "q":
+      result = str + "uième";
+      break;
+    case "f":
+      result = str.slice(0, str.length - 1) + "vième";
+      break;
+    case "e":
+      result = str.slice(0, str.length - 1) + "ième";
+      break;
+    case "s":
+      result = (str.slice(-2) == "ts") ? str.slice(0, str.length - 1) + "ième" : str + "ième";
+      break;
+    case "n":
+      result = (str.slice(-5) == "et-un" || str.slice(-5) == "et un") ? str + "ième" : (str == "Un") ? initialeEnCapitale(prem) : prem;
+      break;
+    default:
+      result = str;
+  }
+  return result;
+};
+
+/**
+ * HERE GOES THE JSDOC COMMENTS
+ */
+var arabeVersRomain = function arabeVersRomain(arabe) {
+  var lookup = {
+    M: 1000,
+    CM: 900,
+    D: 500,
+    CD: 400,
+    C: 100,
+    XC: 90,
+    L: 50,
+    XL: 40,
+    X: 10,
+    IX: 9,
+    V: 5,
+    IV: 4,
+    I: 1
+  };
+  var tempArabe = arabe;
+  var romain = '';
+  var i = void 0;
+  if (typeof arabe === 'number') {
+  for (i in lookup) {
+    if (lookup.hasOwnProperty(i)) {
+      while (tempArabe >= lookup[i]) {
+        romain += i;
+        tempArabe -= lookup[i];
+      }
+    }
+  }
+  } else {
+    romain = arabe;
+  }
+
+  return romain;
+};
+
+
+
+        if (obj.od) {
+          // -> output n'est plus nécessaire.
+          // => placer le .replace dans cette boucle IF !!!
+          output = {
+          Ml: moisGregorien[obj.mc-1],
+          JSl: jourGregorien[obj.od.getDay()]
+        };
+        } else {
+          return erreur;
+        }
+        frmt = frmt || "%Jz/%Mz/%A";
+        var str = frmt.replace(/%[ADJMNSabceflmprvz123]+/g, function(x) {
+ var resultat = x;
+    if (x.match(/A/)) {
+      if (x.match(/AN/)) { resultat = obj.ac; }
+      else if (x.match(/DA/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 0); }
+      else if (x.match(/JA/)) { resultat = periodeEnJours([1, 1, obj.ac], [obj.jmc, obj.mc, obj.ac]); }
+      else if (x.match(/MA/)) { resultat = obj.mc;
+         if (x.match(/l/)) { resultat = moisGregorien[obj.mc-1][0];}
+         else if (x.match(/a/)) { resultat = moisGregorien[obj.mc-1][1];}
+         else if (x.match(/3/)) { resultat = moisGregorien[obj.mc-1][2];}
+         else if (x.match(/2/)) { resultat = moisGregorien[obj.mc-1][3];}
+         else if (x.match(/1/)) { resultat = moisGregorien[obj.mc-1][4];}
+      }
+      else if (x.match(/SA/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 0); }
+      else resultat = obj.ac;
+    }
+    if (x.match(/J/)) {
+      if (x.match(/JA/)) { resultat = periodeEnJours([1, 1, obj.ac], [obj.jmc, obj.mc, obj.ac]); }
+      else if (x.match(/JS/)) { resultat = obj.od.getDay();
+        if (x.match(/l/)) { resultat = jourGregorien[obj.od.getDay()][0];}
+        else if (x.match(/a/)) { resultat = jourGregorien[obj.od.getDay()][1];}
+         else if (x.match(/3/)) { resultat = jourGregorien[obj.od.getDay()][2];}
+         else if (x.match(/2/)) { resultat = jourGregorien[obj.od.getDay()][3];}
+         else if (x.match(/1/)) { resultat = jourGregorien[obj.od.getDay()][4];}
+                              }
+      else if (x.match(/JM/)) { resultat = obj.jmc; }
+      else if (x.match(/JD/)) { resultat = obj.od.getDay();
+        if (x.match(/l/)) { resultat = jourGregorien[obj.od.getDay()][0];} }
+        else if (x.match(/a/)) { resultat = jourGregorien[obj.od.getDay()][1];}
+         else if (x.match(/3/)) { resultat = jourGregorien[obj.od.getDay()][2];}
+         else if (x.match(/2/)) { resultat = jourGregorien[obj.od.getDay()][3];}
+         else if (x.match(/1/)) { resultat = jourGregorien[obj.od.getDay()][4];}
+      else resultat = obj.jmc; }
+    if (x.match(/M/)) {
+      if (x.match(/MA/)) { resultat = obj.mc;
+         if (x.match(/l/)) { resultat = moisGregorien[obj.mc-1][0];}
+         else if (x.match(/a/)) { resultat = moisGregorien[obj.mc-1][1];}
+         else if (x.match(/3/)) { resultat = moisGregorien[obj.mc-1][2];}
+         else if (x.match(/2/)) { resultat = moisGregorien[obj.mc-1][3];}
+         else if (x.match(/1/)) { resultat = moisGregorien[obj.mc-1][4];}
+      }
+      else if (x.match(/DM/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 1); }
+      else if (x.match(/JM/)) { resultat = obj.jmc; }
+      else if (x.match(/SM/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 1); }
+      else if (x.match(/l/)) { resultat = moisGregorien[obj.mc-1][0];}
+         else if (x.match(/a/)) { resultat = moisGregorien[obj.mc-1][1];}
+         else if (x.match(/3/)) { resultat = moisGregorien[obj.mc-1][2];}
+         else if (x.match(/2/)) { resultat = moisGregorien[obj.mc-1][3];}
+         else if (x.match(/1/)) { resultat = moisGregorien[obj.mc-1][4];}
+      else resultat = obj.mc; }
+    if (x.match(/D/)) {
+      if (x.match(/DA/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 0); }
+      else if (x.match(/DM/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 1); }
+      else if (x.match(/JD/)) { resultat = obj.od.getDay();
+        if (x.match(/l/)) { resultat = jourGregorien[obj.od.getDay()][0];}
+         else if (x.match(/a/)) { resultat = jourGregorien[obj.od.getDay()][1];}
+         else if (x.match(/3/)) { resultat = jourGregorien[obj.od.getDay()][2];}
+         else if (x.match(/2/)) { resultat = jourGregorien[obj.od.getDay()][3];}
+         else if (x.match(/1/)) { resultat = jourGregorien[obj.od.getDay()][4];}
+        }
+      else resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 1); }
+    if (x.match(/S/)) {
+      if (x.match(/JS/)) { resultat = obj.od.getDay();
+        if (x.match(/l/)) { resultat = jourGregorien[obj.od.getDay()][0];}
+         else if (x.match(/a/)) { resultat = jourGregorien[obj.od.getDay()][1];}
+         else if (x.match(/3/)) { resultat = jourGregorien[obj.od.getDay()][2];}
+         else if (x.match(/2/)) { resultat = jourGregorien[obj.od.getDay()][3];}
+         else if (x.match(/1/)) { resultat = jourGregorien[obj.od.getDay()][4];}
+      }
+      else if (x.match(/SA/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 0); }
+      else if (x.match(/SM/)) { resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 1); }
+      else resultat = semaineComplete(obj.jmc, obj.mc, obj.ac, 0); }
+    if (x.match(/l|v/) && typeof resultat=="number") {
+      if (x.match(/v/) && typeof resultat=="number") {
+        resultat = nombreEnLettres(resultat,1);
+      } else {
+        resultat = nombreEnLettres(resultat);
+      }
+    }
+    if (x.match(/e/) && !isNaN(resultat)) { resultat = nombreOrdinal(resultat,"er","e"); }
+    else if (x.match(/e/) && typeof resultat=="string") { resultat = ordinauxEnLettres(resultat); }
+    if (x.match(/p/) && !isNaN(resultat)) { resultat = nombreOrdinal(resultat,"er",""); }
+    else if (x.match(/p/) && isNaN(resultat)) { resultat = ordinauxEnLettres(resultat); }
+    if (x.match(/f/) && !isNaN(resultat)) { resultat = nombreOrdinal(resultat,"re",""); }
+    else if (x.match(/f/) && isNaN(resultat)) { resultat = ordinauxEnLettres(resultat,1); }
+    if (x.match(/r/)) { resultat = arabeVersRomain(resultat); }
+    if (x.match(/b/)) { resultat = resultat.toLowerCase(); }
+    if (x.match(/c|m/)) { resultat = resultat.toUpperCase(); }
+    if (x.match(/z/)) { resultat = prefixeZero(resultat); }
+
+    return resultat;
+});
+
+        if(rappel) {rappel();}
+        return str;
+
+      }
+
+      return Gregorien;
     }();
+
     return acte;
   }
 
   return umdCallback;
 }());
+
+
+console.log("JOUR = 8 Mai 1972");
+var birth = new acte.Jour("8 Mai 1972");
+console.log("DEFAUT = "+birth.gregorien());
+console.log("ERROR = "+new acte.Jour("").gregorien("%JM-%M-%A","Message d'erreur"));
+console.log("*********************************************");
+console.log("%A, %ANr (année) = "+birth.gregorien("%A, %ANr"));
+console.log("%J, %JM (jour du mois) = "+birth.gregorien("%J, %JM"));
+console.log("%JA (jour de l'année) = "+birth.gregorien("%JA"));
+console.log("%JS, %JD (jour de la semaine) = "+birth.gregorien("%JS, %JD"));
+console.log("%JSl, %JDlr (jour de la semaine en lettres) = "+birth.gregorien("%JSl, %JDlr"));
+console.log("%JSlm, %JDcl (jour de la semaine en lettres MAJ) = "+birth.gregorien("%JSlm, %JDcl"));
+console.log("%JSlb, %JDbl (jour de la semaine en lettres MIN) = "+birth.gregorien("%JSlb, %JDbl"));
+console.log("%JSa, %JDa (jour de la semaine en abbrégé) = "+birth.gregorien("%JSa, %JDa"));
+console.log("%JS3, %JD3 (jour de la semaine sur 3 caractères) = "+birth.gregorien("%JS3, %JD3"));
+console.log("%JS2, %JD2 (jour de la semaine sur 2 caractères) = "+birth.gregorien("%JS2, %JD2"));
+console.log("%JS1, %JD1 (jour de la semaine sur 1 caractère) = "+birth.gregorien("%JS1, %JD1"));
+console.log("%M, MA (mois de l'année) = "+birth.gregorien("%M, %MA"));
+console.log("%Ml, %MAlz (mois de l'année en lettres) = "+birth.gregorien("%Ml, %MAlz"));
+console.log("%Ma, %MAa (mois de l'année en abbrégé) = "+birth.gregorien("%Ma, %MAa"));
+console.log("%M3, %MA3 (mois de l'année sur 3 caractères) = "+birth.gregorien("%M3, %MA3"));
+console.log("%M2, %MA2 (mois de l'année sur 2 caractères) = "+birth.gregorien("%M2, %MA2"));
+console.log("%M1, %MA1 (mois de l'année sur 1 caractère) = "+birth.gregorien("%M1, %MA1"));
+console.log("%SA, %DA, %Sr (semaine de l'année) = "+birth.gregorien("%SA, %DA, %Sr"));
+console.log("%SM, %DM, %Dz (semaine du mois) = "+birth.gregorien("%SM, %DM, %Dz"));
+console.log("%JSl %JM %Ml %A = "+birth.gregorien("%JSl %JM %Ml %A"));
+console.log("%JMz/%Mz/%A = "+birth.gregorien("%JMz/%Mz/%A"));
+console.log("%JS2m%JMz%M2m%A = "+birth.gregorien("%JS2m%JMz%M2m%A"));
+console.log("%A-W%Sz-%Jz = "+birth.gregorien("%A-W%Sz-%Jz"));
+console.log("30 Déc 2007 = %A-W%Sz-%JSz = ISO2007-W52-7 => "+new acte.Jour("30 Déc 2007").gregorien("%A-W%Sz-%JSz"));
+console.log("31 Déc 2007 = %A-W%Sz-%JSz = ISO2008-W01-1 => "+new acte.Jour("31 Déc 2007").gregorien("%A-W%Sz-%JSz"));
+console.log(new acte.Jour("1/12/2016").gregorien("%JSl %Jp %Ml %A"));
+console.log(new acte.Jour("2/12/2016").gregorien("%JSl %Jp %Ml %A"));
+console.log(new acte.Jour("7/1/2016").gregorien("%SAef semaine"));
+console.log(new acte.Jour("14/1/2016").gregorien("%SAe semaine"));
+console.log(new acte.Jour("1/1/2016").gregorien("%JAe jour"));
+console.log(new acte.Jour("3/1/2016").gregorien("%JAe jour"));
+console.log("--------------------------------------------------");
+console.log("%JAl, %JAle, %JAel, %JAlp, %JAlf, %JAe, %JAf, %JAp (jour de l'année) = "+birth.gregorien("%JAl, %JAle, %JAel, %JAlp, %JAlf, %JAe, %JAf, %JAp"));
+console.log("%JAl, %JAle, %JAel, %JAlp, %JAlf, %JAe, %JAf, %JAp (jour de l'année) = "+new acte.Jour("1/1/2016").gregorien("%JAl, %JAle, %JAel, %JAlp, %JAlf, %JAe, %JAf, %JAp"));
+console.log("--------------------------------------------------");
+console.log("--------------------------------------------------");
+console.log(new acte.Jour("3/1/2016").gregorien("%A"));
+console.log(new acte.Jour("3/1/2016").gregorien("%Al"));
+console.log(new acte.Jour("3/1/2016").gregorien("%Alv"));
+console.log(new acte.Jour("3/1/2016").gregorien("%Av"));
+console.log(new acte.Jour("3/1/2016").gregorien("%Avl"));

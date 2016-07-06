@@ -1,4 +1,5 @@
 {
+    #"extends": "../.eslintrc",
     "extends": "../../.eslintrc",
 
     "rules": {
@@ -9,6 +10,5 @@
         "ignoreUrls": true,
         "ignoreComments": false
       }],
-      
     },
 }
