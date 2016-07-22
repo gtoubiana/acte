@@ -1,5 +1,5 @@
 /**
- * Pour créer un objet date grégorien valide
+ * Pour créer un objet date grégorien valide.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1

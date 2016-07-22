@@ -1,6 +1,6 @@
 /**
  * Nom des Jours Grégoriens et abbréviations courantes,
- * sur 1, 2 et 3 caractères
+ * sur 1, 2 et 3 caractères.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.15

@@ -1,5 +1,5 @@
 /**
- * Pour calculer le sinus d'un angle en degrés
+ * Pour calculer le sinus d'un angle en degrés.
  * @access private
  * @author John Walker
  * @since 0.0.1
@@ -10,4 +10,8 @@
  * @example
  * sinus(90); // 1
  */
-const sinus = d => Math.sin(degresVersRadians(d));
+const sinus = d => {
+  const result = Math.sin(degresVersRadians(d));
+
+  return result;
+};

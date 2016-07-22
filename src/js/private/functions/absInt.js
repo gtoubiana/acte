@@ -1,5 +1,5 @@
 /**
- * Pour convertir en nombre entier positif
+ * Pour convertir en nombre entier positif.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1
@@ -10,4 +10,8 @@
  * @example
  * absInt(-23.45); // 23
  */
-const absInt = num => Math.abs(parseInt(num, 10));
+const absInt = num => {
+  const result = Math.abs(parseInt(num, 10));
+
+  return result;
+};

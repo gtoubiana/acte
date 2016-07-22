@@ -1,5 +1,5 @@
 /**
- * Pour convertir une saisie en objet JavaScript
+ * Pour convertir une saisie en objet JavaScript.
  * @memberof acte
  * @class
  * @chainable

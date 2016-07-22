@@ -1,5 +1,5 @@
 /**
- * Pour convertir le jour du mois républicain en jour de la décade
+ * Pour convertir le jour du mois républicain en jour de la décade.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1

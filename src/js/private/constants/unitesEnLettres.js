@@ -1,5 +1,5 @@
 /**
- * Unités en toutes lettres
+ * Unités en toutes lettres.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.15

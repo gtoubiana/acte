@@ -1,5 +1,5 @@
 /**
- * Nombre de jours juliens correspondants à l'an 1 républicain
+ * Nombre de jours juliens correspondants à l'an 1 républicain.
  * @access private
  * @author John Walker
  * @since 0.0.1

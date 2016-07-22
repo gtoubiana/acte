@@ -10,7 +10,7 @@ $ npm install acte --save
 <a name="acte"></a>
 
 ## acte : <code>Objet</code>
-acte - Librairie Javascript pour manipuler des données généalogiques
+acte - Librairie Javascript pour manipuler des données généalogiques.
 
 **Type** : Espace de noms global  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
@@ -41,7 +41,7 @@ acte - Librairie Javascript pour manipuler des données généalogiques
 <a name="new_acte.Jour_new"></a>
 
 #### new acte.Jour(saisie, [limites])
-Pour convertir une saisie en objet JavaScript
+Pour convertir une saisie en objet JavaScript.
 
 
 | Paramètres | Type | Par défaut | Description |
@@ -52,7 +52,7 @@ Pour convertir une saisie en objet JavaScript
 <a name="acte.Jour+gregorien"></a>
 
 #### jour.gregorien ⇒ <code>Chaîne</code>
-Pour formater une date grégorienne
+Pour formater une date grégorienne.
 
 **Type** : instance property of <code>[Jour](#acte.Jour)</code>  
 **Résultat** : <code>Chaîne</code> - La date grégorienne formatée  

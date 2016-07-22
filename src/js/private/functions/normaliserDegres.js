@@ -1,5 +1,5 @@
 /**
- * Pour normaliser un angle entre 0 et 360 degrés
+ * Pour normaliser un angle entre 0 et 360 degrés.
  * @access private
  * @author John Walker
  * @since 0.0.1
@@ -10,4 +10,8 @@
  * @example
  * normaliserDegres(375); // 15
  */
-const normaliserDegres = a => a - 360.0 * (Math.floor(a / 360.0));
+const normaliserDegres = a => {
+  const result = a - 360.0 * (Math.floor(a / 360.0));
+
+  return result;
+};

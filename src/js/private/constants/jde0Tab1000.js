@@ -1,5 +1,5 @@
 /**
- * Jours juliens des équinoxes avant l'an 1000
+ * Jours juliens des équinoxes avant l'an 1000.
  * @access private
  * @author John Walker
  * @since 0.0.1

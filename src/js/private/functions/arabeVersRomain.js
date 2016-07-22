@@ -1,5 +1,5 @@
 /**
- * Pour convertir des chiffres arabes en chiffres romains
+ * Pour convertir des chiffres arabes en chiffres romains.
  * @access private
  * @author Iván Montes
  * @since 0.0.1

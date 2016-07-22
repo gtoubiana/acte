@@ -1,5 +1,5 @@
 /**
- * Pour convertir la saisie républicaine en Objet Jour
+ * Pour convertir la saisie républicaine en Objet Jour.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1
@@ -16,11 +16,15 @@
 const tabRepublicain = (saisie, limites) => {
   // On remplace les chiffres romains en chiffres arabes
   let saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
+
+    // jscs:disable
     (x, p1) => {
       const rva = romainVersArabe(p1);
 
       return x.match(/-/) ? ` -${rva}` : ` ${rva}`;
     });
+
+  // jscs:enable
   const tab = [];
 
   // Uniformisation de la saisie

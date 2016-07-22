@@ -1,6 +1,6 @@
 /**
  * Pour calculer le nombre de jours juliens et la fraction de l'équinoxe
- * de septembre au méridien de Paris pour une année grégorienne
+ * de septembre au méridien de Paris pour une année grégorienne.
  * @access private
  * @author John Walker
  * @since 0.0.1

@@ -1,5 +1,5 @@
 /**
- * Pour calculer le nombre de jours juliens à partir d'une date républicaine
+ * Pour calculer le nombre de jours juliens à partir d'une date républicaine.
  * @access private
  * @author John Walker
  * @since 0.0.1

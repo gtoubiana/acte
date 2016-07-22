@@ -1,6 +1,6 @@
 /**
  * Pour calculer la date républicaine à partir du nombre de jours juliens,
- * les 4 ou 5 'sansculottides' sont considérés comme un 13e mois
+ * les 4 ou 5 'sansculottides' sont considérés comme un 13e mois.
  * @access private
  * @author John Walker
  * @since 0.0.1

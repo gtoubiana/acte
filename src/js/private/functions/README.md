@@ -15,15 +15,20 @@
 * [fractionEquinoxe(an)](#fractionEquinoxe) ⇒ <code>Nombre</code> ℗
 * [gregorienBissextile(an)](#gregorienBissextile) ⇒ <code>Booléen</code> ℗
 * [gregorienVersJj(an, mois, jour)](#gregorienVersJj) ⇒ <code>Nombre</code> ℗
+* [initialeEnCapitale(str)](#initialeEnCapitale) ⇒ <code>Chaîne</code> ℗
 * [jjVersGregorien(jj)](#jjVersGregorien) ⇒ <code>Tableau</code> ℗
 * [jjVersJulien(jj)](#jjVersJulien) ⇒ <code>Tableau</code> ℗
 * [jjVersRepublicain(jj)](#jjVersRepublicain) ⇒ <code>Tableau</code> ℗
 * [julienVersJj(an, mois, jour)](#julienVersJj) ⇒ <code>Nombre</code> ℗
+* [nombreEnLettres(n, [r])](#nombreEnLettres) ⇒ <code>Chaîne</code> ℗
+* [nombreOrdinal(n, prem, exp)](#nombreOrdinal) ⇒ <code>Chaîne</code> ℗
 * [normaliserDegres(a)](#normaliserDegres) ⇒ <code>Nombre</code> ℗
 * [nutation(jj)](#nutation) ⇒ <code>Tableau</code> ℗
 * [obliquiteEcliptique(jj)](#obliquiteEcliptique) ⇒ <code>Nombre</code> ℗
-* [periodeEnJours()](#periodeEnJours)
+* [ordinauxEnLettres(saisie, [genre])](#ordinauxEnLettres) ⇒ <code>Chaîne</code> ℗
+* [periodeEnJours(j1, m1, a1, j2, m2, a2)](#periodeEnJours) ⇒ <code>Nombre</code> ℗
 * [positionSoleil(jj)](#positionSoleil) ⇒ <code>Tableau</code> ℗
+* [prefixeZero(n)](#prefixeZero) ⇒ <code>Chaîne</code> ℗
 * [radiansVersDegres(r)](#radiansVersDegres) ⇒ <code>Nombre</code> ℗
 * [remplacements(texte, regex, options)](#remplacements) ⇒ <code>Chaîne</code> ℗
 * [republicainVersJj(an, mois, decade, jour)](#republicainVersJj) ⇒ <code>Nombre</code> ℗
@@ -32,6 +37,7 @@
 * [rjmcVersRjdc(rjmc)](#rjmcVersRjdc) ⇒ <code>Nombre</code> ℗
 * [romainVersArabe(romain)](#romainVersArabe) ⇒ <code>Nombre</code> ℗
 * [saisieValide(saisie, regexp)](#saisieValide) ⇒ <code>Tableau</code> ℗
+* [semaineComplete(j, m, a, [mois])](#semaineComplete) ⇒ <code>Nombre</code> ℗
 * [sinus(d)](#sinus) ⇒ <code>Nombre</code> ℗
 * [tabGregorien(saisie, limites)](#tabGregorien) ⇒ <code>Tableau</code> ℗
 * [tabRepublicain(saisie, limites)](#tabRepublicain) ⇒ <code>Tableau</code> ℗
@@ -40,7 +46,7 @@
 <a name="absInt"></a>
 
 ## absInt(num) ⇒ <code>Nombre</code> ℗
-Pour convertir en nombre entier positif
+Pour convertir en nombre entier positif.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Le nombre entier positif  
@@ -62,7 +68,7 @@ absInt(-23.45); // 23
 
 ## anRepublicain(jj) ⇒ <code>Tableau</code> ℗
 Pour calculer l'année républicaine correspondant à un nombre de jours
-juliens
+juliens.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - [0] An républicain,
@@ -84,7 +90,7 @@ anRepublicain(2379902.5); // [12, 2379857.5]
 <a name="arabeVersRomain"></a>
 
 ## arabeVersRomain(arabe) ⇒ <code>Chaîne</code> ℗
-Pour convertir des chiffres arabes en chiffres romains
+Pour convertir des chiffres arabes en chiffres romains.
 
 **Type** : Fonction  
 **Résultat** : <code>Chaîne</code> - Chiffre romain  
@@ -105,7 +111,7 @@ arabeVersRomain(2012); // 'MMXII'
 <a name="cosinus"></a>
 
 ## cosinus(d) ⇒ <code>Nombre</code> ℗
-Pour calculer le cosinus d'un angle en degrés
+Pour calculer le cosinus d'un angle en degrés.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Cosinus de l'angle en degrés  
@@ -126,7 +132,7 @@ cosinus(0); // 1
 <a name="dateValide"></a>
 
 ## dateValide(jour, mois, an) ⇒ <code>Objet</code> ℗
-Pour créer un objet date grégorien valide
+Pour créer un objet date grégorien valide.
 
 **Type** : Fonction  
 **Résultat** : <code>Objet</code> - L'objet date valide  
@@ -149,7 +155,7 @@ dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
 <a name="degresVersRadians"></a>
 
 ## degresVersRadians(d) ⇒ <code>Nombre</code> ℗
-Pour convertir des degrés en radians
+Pour convertir des degrés en radians.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Angle en radians  
@@ -171,15 +177,17 @@ degresVersRadians(90); // 1.5707963267948966
 
 ## deltaT(an) ⇒ <code>Nombre</code> ℗
 Pour calculer la différence entre temps terrestre et temps universel,
-en secondes
+en secondes.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Différence entre temps terrestre et temps universel,
 en secondes  
 **Accès** : privé  
-**Voir** : [deltat](http://fourmilab.ch/documents/calendar/)  
+**Voir** : [deltat](http://fourmilab.ch/documents/calendar/) |
+[Expressions](http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html) |
+[Formules](http://www.projectpluto.com/dt.htm)  
 **Depuis** : 0.0.1  
-**Auteur** : John Walker  
+**Auteur** : John Walker & Gilles Toubiana  
 **Licence** : Domaine public  
 
 | Paramètres | Type | Description |
@@ -188,12 +196,12 @@ en secondes
 
 **Exemple** :  
 ```js
-deltaT(2015); // 86.41924999999999
+deltaT(2015); // 67.855
 ```
 <a name="equationDuTemps"></a>
 
 ## equationDuTemps(jj) ⇒ <code>Nombre</code> ℗
-Pour calculer l'équation du temps pour un moment précis
+Pour calculer l'équation du temps pour un moment précis.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Équation du temps pour une fraction de jour  
@@ -214,7 +222,7 @@ equationDuTemps(2457333.5); // 0.002839122270852552
 <a name="equinoxe"></a>
 
 ## equinoxe(an, item) ⇒ <code>Nombre</code> ℗
-Pour calculer le nombre de jours juliens d'une equinoxe ou d'un solstice
+Pour calculer le nombre de jours juliens d'une equinoxe ou d'un solstice.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Le nombre de jours juliens pour l'equinoxe ou solstice  
@@ -237,7 +245,7 @@ equinoxe(2015,0); // 2457102.4488504543
 
 ## equinoxeAParis(an) ⇒ <code>Nombre</code> ℗
 Pour calculer le nombre de jours juliens correspondant à l'équinoxe
-de septembre au méridien de Paris, pour une année grégorienne
+de septembre au méridien de Paris, pour une année grégorienne.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Nombre de jours juliens pour l'équinoxe de septembre  
@@ -259,7 +267,7 @@ equinoxeAParis(2015); // 2457288.5
 
 ## fractionEquinoxe(an) ⇒ <code>Nombre</code> ℗
 Pour calculer le nombre de jours juliens et la fraction de l'équinoxe
-de septembre au méridien de Paris pour une année grégorienne
+de septembre au méridien de Paris pour une année grégorienne.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Nombre de jours juliens et fraction de l'équinoxe
@@ -281,7 +289,7 @@ fractionEquinoxe(2015); // 2457288.855100263
 <a name="gregorienBissextile"></a>
 
 ## gregorienBissextile(an) ⇒ <code>Booléen</code> ℗
-Pour déterminer si une année grégorienne est bissextile
+Pour déterminer si une année grégorienne est bissextile.
 
 **Type** : Fonction  
 **Résultat** : <code>Booléen</code> - Est-ce une année bissextile ?  
@@ -303,7 +311,7 @@ gregorienBissextile(2012); // true
 
 ## gregorienVersJj(an, mois, jour) ⇒ <code>Nombre</code> ℗
 Pour calculer le nombre de jours juliens (jj) à partir d'une date
-grégorienne
+grégorienne.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Nombre de jours juliens  
@@ -323,10 +331,31 @@ grégorienne
 ```js
 gregorienVersJj(2015,11,7); // 2457333.5
 ```
+<a name="initialeEnCapitale"></a>
+
+## initialeEnCapitale(str) ⇒ <code>Chaîne</code> ℗
+Pour mettre en capitale le premier caractère d'une chaîne.
+
+**Type** : Fonction  
+**Résultat** : <code>Chaîne</code> - la chaîne avec le premier caractère en capitale  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| str | <code>Chaîne</code> | la chaîne à modifier |
+
+**Exemple** :  
+```js
+initialeEnCapitale("vingt"); // "Vingt"
+```
 <a name="jjVersGregorien"></a>
 
 ## jjVersGregorien(jj) ⇒ <code>Tableau</code> ℗
-Pour calculer une date grégorienne à partir du nombre de jours juliens
+Pour calculer une date grégorienne à partir du nombre de jours juliens.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - [0] Année, [1] Mois et [2] Jour grégorien  
@@ -347,7 +376,7 @@ jjVersGregorien(2457333.5); // [2015, 11, 7]
 <a name="jjVersJulien"></a>
 
 ## jjVersJulien(jj) ⇒ <code>Tableau</code> ℗
-Pour calculer une date julienne à partir du nombre de jours juliens
+Pour calculer une date julienne à partir du nombre de jours juliens.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - [0] An, [1] Mois et [2] Jour julien  
@@ -369,7 +398,7 @@ jjVersJulien(2457346.5); // [2015,11,7]
 
 ## jjVersRepublicain(jj) ⇒ <code>Tableau</code> ℗
 Pour calculer la date républicaine à partir du nombre de jours juliens,
-les 4 ou 5 'sansculottides' sont considérés comme un 13e mois
+les 4 ou 5 'sansculottides' sont considérés comme un 13e mois.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - [0] An, [1] Mois, [2] Décade et [3] Jour républicain  
@@ -390,7 +419,7 @@ jjVersRepublicain(2379902.5); // [12, 2, 2, 6]
 <a name="julienVersJj"></a>
 
 ## julienVersJj(an, mois, jour) ⇒ <code>Nombre</code> ℗
-Pour calculer un nombre de jours juliens à partir d'une date julienne
+Pour calculer un nombre de jours juliens à partir d'une date julienne.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Nombre de jours juliens  
@@ -410,10 +439,58 @@ Pour calculer un nombre de jours juliens à partir d'une date julienne
 ```js
 julienVersJj(2015,11,7); // 2457346.5
 ```
+<a name="nombreEnLettres"></a>
+
+## nombreEnLettres(n, [r]) ⇒ <code>Chaîne</code> ℗
+Pour convertir les nombres en toutes lettres.
+
+**Type** : Fonction  
+**Résultat** : <code>Chaîne</code> - le nombre en toutes lettres  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| n | <code>Nombre</code> | le nombre en chiffres |
+| [r] | <code>Chaîne</code> | par défaut, la réforme de 1990 est appliquée. Pour utiliser l'ancienne notation, il suffit d'ajouter un argument. |
+
+**Exemple** :  
+```js
+nombreEnLettres(2371); // "Deux-mille-trois-cent-soixante-et-onze"
+nombreEnLettres(1799,1); // "Mille sept cent quatre-vingt-dix-neuf"
+```
+<a name="nombreOrdinal"></a>
+
+## nombreOrdinal(n, prem, exp) ⇒ <code>Chaîne</code> ℗
+Pour convertir les nombres en nombres ordinaux.
+
+**Type** : Fonction  
+**Résultat** : <code>Chaîne</code> - le nombre ordinal  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| n | <code>Nombre</code> | le nombre en chiffres |
+| prem | <code>Chaîne</code> | le suffixe pour le chiffre 1 |
+| exp | <code>Chaîne</code> | le suffixe pour les chiffres différents de 1 |
+
+**Exemple** :  
+```js
+nombreOrdinal(1,"er","e"); // "1er"
+nombreOrdinal(1,"re","e"); // "1re"
+nombreOrdinal(2,"er","e"); // "2e"
+```
 <a name="normaliserDegres"></a>
 
 ## normaliserDegres(a) ⇒ <code>Nombre</code> ℗
-Pour normaliser un angle entre 0 et 360 degrés
+Pour normaliser un angle entre 0 et 360 degrés.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Angle entre 0 et 360 degrés  
@@ -435,7 +512,7 @@ normaliserDegres(375); // 15
 
 ## nutation(jj) ⇒ <code>Tableau</code> ℗
 Pour calculer la nutation en longitude (deltaPsi),
-et obliquité (deltaEpsilon) pour un nombre de jours juliens
+et obliquité (deltaEpsilon) pour un nombre de jours juliens.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - Nutation en [0] longitude et [1] obliquité en degrés  
@@ -457,7 +534,7 @@ nutation(2457333.5);
 <a name="obliquiteEcliptique"></a>
 
 ## obliquiteEcliptique(jj) ⇒ <code>Nombre</code> ℗
-Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens
+Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Obliquité de l'écliptique  
@@ -475,16 +552,63 @@ Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens
 ```js
 obliquiteEcliptique(2457333.5); // 23.437230456425635
 ```
-<a name="periodeEnJours"></a>
+<a name="ordinauxEnLettres"></a>
 
-## periodeEnJours()
-HERE GOES THE JSDOC COMMENTS
+## ordinauxEnLettres(saisie, [genre]) ⇒ <code>Chaîne</code> ℗
+Pour convertir les nombres en toutes lettres en nombres ordinaux.
 
 **Type** : Fonction  
+**Résultat** : <code>Chaîne</code> - le nombre ordinal en lettres  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| saisie | <code>Nombre</code> | le nombre en lettres |
+| [genre] | <code>Chaîne</code> | par défaut, le genre masculin est appliqué. Pour utiliser le genre féminin, il suffit d'ajouter un argument. |
+
+**Exemple** :  
+```js
+ordinauxEnLettres("Un"); // "Premier"
+ordinauxEnLettres("Un", 1); // "Première"
+ordinauxEnLettres("Deux"); // "Deuxième"
+ordinauxEnLettres("Vingt-trois"); // "Vingt-troisième"
+```
+<a name="periodeEnJours"></a>
+
+## periodeEnJours(j1, m1, a1, j2, m2, a2) ⇒ <code>Nombre</code> ℗
+Pour calculer le nombre de jours entre deux dates.
+
+**Type** : Fonction  
+**Résultat** : <code>Nombre</code> - le nombre de jours entre les deux dates  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| j1 | <code>Nombre</code> | le jour du mois de la première date en chiffres |
+| m1 | <code>Nombre</code> | le mois de la date de la première date en chiffres |
+| a1 | <code>Nombre</code> | l'année de la date de la première date en chiffres |
+| j2 | <code>Nombre</code> | le jour du mois de la deuxième date en chiffres |
+| m2 | <code>Nombre</code> | le mois de la date de la deuxième date en chiffres |
+| a2 | <code>Nombre</code> | l'année de la date de la deuxième date en chiffres |
+
+**Exemple** :  
+```js
+periodeEnJours(1, 1, 2016, 15, 1, 2016]); // 15
+periodeEnJours(15, 1, 2016, 1, 1, 2016]); // 15
+periodeEnJours(1, 1, 2016, 1, 1, 2016]); // 1
+```
 <a name="positionSoleil"></a>
 
 ## positionSoleil(jj) ⇒ <code>Tableau</code> ℗
-Pour calculer la position du soleil
+Pour calculer la position du soleil.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - Position du soleil : Angles en degrés.
@@ -518,10 +642,34 @@ positionSoleil(2457333.5); //[225.88621192607388, 302.6763369039327,
 // 221.79690960202632, -16.115660127694625, 221.79168151491098,
 // -16.112230690435588]
 ```
+<a name="prefixeZero"></a>
+
+## prefixeZero(n) ⇒ <code>Chaîne</code> ℗
+Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
+
+**Type** : Fonction  
+**Résultat** : <code>Chaîne</code> - le nombre avec préfixe zéro  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| n | <code>Nombre</code> | le nombre à préfixer |
+
+**Exemple** :  
+```js
+prefixeZero(20); // 20
+prefixeZero(9); // "09"
+prefixeZero(0); // 0
+prefixeZero(-4); // -4
+```
 <a name="radiansVersDegres"></a>
 
 ## radiansVersDegres(r) ⇒ <code>Nombre</code> ℗
-Pour convertir des radians en degrés
+Pour convertir des radians en degrés.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Angle en degrés  
@@ -542,7 +690,7 @@ radiansVersDegres(1.5707963267948966); // 90
 <a name="remplacements"></a>
 
 ## remplacements(texte, regex, options) ⇒ <code>Chaîne</code> ℗
-Pour remplacer en série avec un objet contenant des regex
+Pour remplacer en série avec un objet contenant des regex.
 
 **Type** : Fonction  
 **Résultat** : <code>Chaîne</code> - Le texte modifié  
@@ -566,7 +714,7 @@ remplacements('Bonjour', {'jour': 'soir'}, 'gi');
 <a name="republicainVersJj"></a>
 
 ## republicainVersJj(an, mois, decade, jour) ⇒ <code>Nombre</code> ℗
-Pour calculer le nombre de jours juliens à partir d'une date républicaine
+Pour calculer le nombre de jours juliens à partir d'une date républicaine.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Nombre de jours juliens  
@@ -590,7 +738,7 @@ republicainVersJj(12, 2, 2, 6); // 2379902.5
 <a name="reste"></a>
 
 ## reste(a, b) ⇒ <code>Nombre</code> ℗
-Pour calculer les restes avec des nombres décimaux
+Pour calculer les restes avec des nombres décimaux.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Reste de a par b  
@@ -612,7 +760,7 @@ reste(3,2); // 1
 <a name="rjmcVersRdc"></a>
 
 ## rjmcVersRdc(rjmc) ⇒ <code>Nombre</code> ℗
-Pour convertir le jour du mois républicain en décade
+Pour convertir le jour du mois républicain en décade.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - La décade républicaine  
@@ -633,7 +781,7 @@ rjmcVersRdc(28); // 3
 <a name="rjmcVersRjdc"></a>
 
 ## rjmcVersRjdc(rjmc) ⇒ <code>Nombre</code> ℗
-Pour convertir le jour du mois républicain en jour de la décade
+Pour convertir le jour du mois républicain en jour de la décade.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Le jour de la décade républicaine  
@@ -654,7 +802,7 @@ rjmcVersRjdc(28); // 8
 <a name="romainVersArabe"></a>
 
 ## romainVersArabe(romain) ⇒ <code>Nombre</code> ℗
-Pour convertir des chiffres romains en chiffres arabes
+Pour convertir des chiffres romains en chiffres arabes.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Chiffre arabe  
@@ -675,7 +823,7 @@ romainVersArabe('MMXII'); // 2012
 <a name="saisieValide"></a>
 
 ## saisieValide(saisie, regexp) ⇒ <code>Tableau</code> ℗
-Pour obtenir une saisie valide
+Pour obtenir une saisie valide.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - La saisie valide  
@@ -695,10 +843,35 @@ Pour obtenir une saisie valide
 saisieValide(saisie, regexpRepublicain);
 saisieValide(saisie, regexpGregorien);
 ```
+<a name="semaineComplete"></a>
+
+## semaineComplete(j, m, a, [mois]) ⇒ <code>Nombre</code> ℗
+Pour calculer le nombre de semaines depuis le début de l'année ou du mois.
+
+**Type** : Fonction  
+**Résultat** : <code>Nombre</code> - le nombre de semaines  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| j | <code>Nombre</code> | le jour du mois grégorien |
+| m | <code>Nombre</code> | le mois grégorien |
+| a | <code>Nombre</code> | l'année grégorienne |
+| [mois] | <code>Nombre</code> | par défaut, le calcul correspond à l'année. Pour calculer sur le mois en cours, il suffit d'ajouter un argument. |
+
+**Exemple** :  
+```js
+semaineComplete(14, 7, 2016); // 28
+semaineComplete(14, 7, 2016, 1); // 2
+```
 <a name="sinus"></a>
 
 ## sinus(d) ⇒ <code>Nombre</code> ℗
-Pour calculer le sinus d'un angle en degrés
+Pour calculer le sinus d'un angle en degrés.
 
 **Type** : Fonction  
 **Résultat** : <code>Nombre</code> - Sinus de l'angle en degrés  
@@ -719,7 +892,7 @@ sinus(90); // 1
 <a name="tabGregorien"></a>
 
 ## tabGregorien(saisie, limites) ⇒ <code>Tableau</code> ℗
-Pour convertir la saisie grégorienne ou julienne en Objet Jour
+Pour convertir la saisie grégorienne ou julienne en Objet Jour.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - Les dates républicaines, grégoriennes et juliennes  
@@ -741,7 +914,7 @@ tabGregorien(saisie, this.limites);
 <a name="tabRepublicain"></a>
 
 ## tabRepublicain(saisie, limites) ⇒ <code>Tableau</code> ℗
-Pour convertir la saisie républicaine en Objet Jour
+Pour convertir la saisie républicaine en Objet Jour.
 
 **Type** : Fonction  
 **Résultat** : <code>Tableau</code> - Les dates républicaines, grégoriennes et juliennes  

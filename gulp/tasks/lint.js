@@ -1,12 +1,15 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp lint
  */
+const concat = require('gulp-concat');
 const config = require('../config');
 const eslint = require('gulp-eslint');
 const gulp = require('gulp');
+const jscs = require('gulp-jscs');
 const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
 const sequence = require('gulp-sequence');
+const stylish = require('gulp-jscs-stylish');
 const lazyLint = lazypipe()
   .pipe(eslint)
   .pipe(eslint.format)
@@ -50,12 +53,9 @@ gulp.task('lint.test', sequence(
 
 // Valider les scripts Gulp
 gulp.task('lint.gulp', () => {
-  const stream = gulp.src(['./gulpfile.js', `${config.paths.task}/*.js`])
-    .pipe(prettify({
-      config: './.jsbeautifyrc',
-    }))
+  const stream = gulp.src([`${config.paths.tasks}/*.js`])
     .pipe(lazyLint())
-    .pipe(gulp.dest(config.paths.root));
+    .pipe(gulp.dest(config.paths.tasks));
 
   return stream;
 });
@@ -73,6 +73,8 @@ gulp.task('lint.specs', () => {
 gulp.task('lint.constants', () => {
   const stream = gulp.src([`${config.paths.const}/*.js`])
     .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
     .pipe(gulp.dest(config.paths.const));
 
   return stream;
@@ -82,6 +84,8 @@ gulp.task('lint.constants', () => {
 gulp.task('lint.functions', () => {
   const stream = gulp.src([`${config.paths.func}/*.js`])
     .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
     .pipe(gulp.dest(config.paths.func));
 
   return stream;
@@ -91,6 +95,8 @@ gulp.task('lint.functions', () => {
 gulp.task('lint.constructors', () => {
   const stream = gulp.src([`${config.paths.class}/*.js`])
     .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
     .pipe(gulp.dest(config.paths.class));
 
   return stream;
@@ -100,7 +106,30 @@ gulp.task('lint.constructors', () => {
 gulp.task('lint.prototypes', () => {
   const stream = gulp.src([`${config.paths.proto}/*.js`])
     .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
     .pipe(gulp.dest(config.paths.proto));
+
+  return stream;
+});
+
+gulp.task('lint.dist', () => {
+  const stream = gulp.src(config.acteScripts)
+    .pipe(concat('acte.TEMP.ES2015.js'))
+    .pipe(prettify({
+      config: `${config.paths.src}/.jsbeautifyrc`,
+    }))
+    .pipe(eslint({
+      rules: {
+        'no-unused-vars': 1,
+        'no-use-before-define': 1,
+        'no-shadow': 1,
+      },
+    }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish());
 
   return stream;
 });

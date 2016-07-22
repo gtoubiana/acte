@@ -1,5 +1,5 @@
 /**
- * Jours juliens des équinoxes de l'an 1000 à l'an 2000
+ * Jours juliens des équinoxes de l'an 1000 à l'an 2000.
  * @access private
  * @author John Walker
  * @since 0.0.1

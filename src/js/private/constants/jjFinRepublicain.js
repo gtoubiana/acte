@@ -1,6 +1,6 @@
 /**
  * Nombre de jours juliens correspondants à l'abrogation du calendrier
- * républicain
+ * républicain.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1

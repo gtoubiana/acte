@@ -1,5 +1,5 @@
 /**
- * Expressions régulières pour convertir les mois gregoriens
+ * Expressions régulières pour convertir les mois gregoriens.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1
@@ -10,7 +10,13 @@ const regexpGregorien = [{
   regexp: 'jan(v)?(\\.)?(ier)?',
   replace: '/1/',
 }, {
+  regexp: 'Jer',
+  replace: '/1/',
+}, {
   regexp: 'f(é|e)v(r)?(\\.)?(ier)?',
+  replace: '/2/',
+}, {
+  regexp: 'Fer',
   replace: '/2/',
 }, {
   regexp: 'mar(s|\\.)?',
@@ -26,6 +32,9 @@ const regexpGregorien = [{
   replace: '/6/',
 }, {
   regexp: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
+  replace: '/7/',
+}, {
+  regexp: 'Jet',
   replace: '/7/',
 }, {
   regexp: 'ao(u|û)(t|\\.)?',
@@ -53,6 +62,9 @@ const regexpGregorien = [{
   replace: '/12/',
 }, {
   regexp: 'Xbre',
+  replace: '/12/',
+}, {
+  regexp: '10bre',
   replace: '/12/',
 }, {
   regexp: '[^-()\\d/*+.]',

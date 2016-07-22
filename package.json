@@ -10,7 +10,9 @@
   "scripts": {
     "build": "npm install && gulp && gulp tests.coverage",
     "test": "gulp && gulp tests.coverage && gulp tests.karma",
-    "atom": "cd ~/.atom/packages && ls > ~/Github/acte/.atom.pkg"
+    "atom.list": "apm list --installed --bare > ~/Github/acte/.atom.pkg",
+    "atom.install": "apm install --packages-file ~/Github/acte/.atom.pkg",
+    "delta": "gulp delta.scrap && gulp delta.csv && gulp delta.json && gulp delta.js && gulp delta.clean"
   },
   "repository": {
     "type": "git",
@@ -56,7 +58,7 @@
     "babel-plugin-transform-es2015-literals": "^6.5.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.10.3",
     "babel-plugin-transform-es2015-object-super": "^6.6.5",
-    "babel-plugin-transform-es2015-parameters": "^6.9.0",
+    "babel-plugin-transform-es2015-parameters": "^6.11.3",
     "babel-plugin-transform-es2015-shorthand-properties": "^6.5.0",
     "babel-plugin-transform-es2015-spread": "^6.6.5",
     "babel-plugin-transform-es2015-sticky-regex": "^6.5.0",
@@ -75,7 +77,7 @@
     "del": "^2.2.1",
     "eslint": "^2.10.2",
     "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-import": "^1.10.3",
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "eslint-plugin-react": "^5.2.2",
     "fs-extra": "^0.30.0",
@@ -86,6 +88,7 @@
     "gulp-bump": "^2.2.0",
     "gulp-concat": "^2.6.0",
     "gulp-coveralls": "^0.1.4",
+    "gulp-csv2json": "^0.2.5",
     "gulp-depcheck": "^1.1.0",
     "gulp-eslint": "^3.0.1",
     "gulp-git": "^1.8.0",
@@ -94,6 +97,8 @@
     "gulp-istanbul": "^1.0.0",
     "gulp-jasmine": "^2.4.0",
     "gulp-jsbeautifier": "^2.0.3",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jscs-stylish": "^1.4.0",
     "gulp-jsdoc-to-markdown": "^1.2.2",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
@@ -106,7 +111,7 @@
     "gulp-wrap": "^0.13.0",
     "gulp-zip": "^3.0.2",
     "jasmine": "^2.3.2",
-    "karma": "^1.1.0",
+    "karma": "^1.1.1",
     "karma-chrome-launcher": "^1.0.1",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.0.2",
@@ -114,6 +119,7 @@
     "karma-safari-launcher": "^1.0.0",
     "karma-sauce-launcher": "^1.0.0",
     "lazypipe": "^1.0.1",
-    "require-dir": "^0.3.0"
+    "require-dir": "^0.3.0",
+    "website-scraper": "^1.1.1"
   }
 }

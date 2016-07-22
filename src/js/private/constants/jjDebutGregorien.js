@@ -1,6 +1,6 @@
 /**
  * Nombre de jours juliens correspondants à l'adoption du calendrier
- * grégorien
+ * grégorien.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1

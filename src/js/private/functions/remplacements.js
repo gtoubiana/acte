@@ -1,5 +1,5 @@
 /**
- * Pour remplacer en série avec un objet contenant des regex
+ * Pour remplacer en série avec un objet contenant des regex.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1
@@ -15,6 +15,8 @@
  */
 const remplacements = (texte, regex, options) => {
   const resultat = regex.reduce(
+
+    // jscs:disable
     (data, item) => {
       const result = data.replace(new RegExp(item.regexp, options),
         item.replace);
@@ -22,5 +24,6 @@ const remplacements = (texte, regex, options) => {
       return result;
     }, texte);
 
+  // jscs:enable
   return resultat;
 };

@@ -22,6 +22,7 @@ gulp.task('default', sequence(
   'lint.functions',
   'lint.constructors',
   'lint.prototypes',
+  'lint.dist',
 
   // Spécifications des tests [lint.specs]
   'tests.specs',

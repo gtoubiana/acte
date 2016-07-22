@@ -65,7 +65,7 @@ const acteScripts = [
 
 // Template Jsdoc du module UMD
 const bannerTop = `/**
- * <%= pkg.name %> - <%= pkg.description %>
+ * <%= pkg.name %> - <%= pkg.description %>.
  * @copyright 2015-Present, <%= pkg.author %>
  * @namespace acte
  * @version `;
@@ -73,9 +73,10 @@ const bannerBottom = `
  * @see {@link <%= pkg.homepage %>|Projet sur GitHub}
  * @license <%= pkg.license %>
  */
+
 `;
 
-  // Template du module UMD
+// Template du module UMD
 const umd = `(function universalModuleDefinition(root, factory) {
   var tempRoot = root;
 
@@ -95,7 +96,6 @@ const umd = `(function universalModuleDefinition(root, factory) {
   /** @namespace */
   /* eslint-disable no-use-before-define */
   var acte = acte || {};
-
   /* eslint-enable no-use-before-define */
   /* istanbul ignore next */
 <%= contents %>
@@ -103,7 +103,6 @@ const umd = `(function universalModuleDefinition(root, factory) {
 }));
 
 `;
-
 
 // Export de la configuration
 module.exports = {

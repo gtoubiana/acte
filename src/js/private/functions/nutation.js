@@ -1,6 +1,6 @@
 /**
  * Pour calculer la nutation en longitude (deltaPsi),
- * et obliquité (deltaEpsilon) pour un nombre de jours juliens
+ * et obliquité (deltaEpsilon) pour un nombre de jours juliens.
  * @access private
  * @author John Walker
  * @since 0.0.1

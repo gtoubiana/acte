@@ -1,5 +1,5 @@
 /**
- * Pour formater une date grégorienne
+ * Pour formater une date grégorienne.
  * @memberof acte
  * @access public
  * @since 0.0.7

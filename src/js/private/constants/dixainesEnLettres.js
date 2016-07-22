@@ -1,5 +1,5 @@
 /**
- * Dixaines en toutes lettres
+ * Dixaines en toutes lettres.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.15

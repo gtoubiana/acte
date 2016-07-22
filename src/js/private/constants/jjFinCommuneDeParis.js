@@ -1,7 +1,7 @@
 /**
  * Nombre de jours juliens correspondants à l'abrogation du calendrier
  * républicain dans le journal officiel lors de la Commune de Paris
- * en 1871
+ * en 1871.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1

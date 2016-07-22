@@ -1,6 +1,6 @@
 /**
  * Pour calculer le nombre de jours juliens (jj) à partir d'une date
- * grégorienne
+ * grégorienne.
  * @access private
  * @author John Walker
  * @since 0.0.1

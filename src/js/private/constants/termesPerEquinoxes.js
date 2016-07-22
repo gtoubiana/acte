@@ -1,5 +1,5 @@
 /**
- * Termes périodiques pour obtenir des temps réels
+ * Termes périodiques pour obtenir des temps réels.
  * @access private
  * @author John Walker
  * @since 0.0.1

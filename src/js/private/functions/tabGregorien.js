@@ -1,5 +1,5 @@
 /**
- * Pour convertir la saisie grégorienne ou julienne en Objet Jour
+ * Pour convertir la saisie grégorienne ou julienne en Objet Jour.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1
