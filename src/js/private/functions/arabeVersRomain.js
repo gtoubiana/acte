@@ -26,7 +26,8 @@ const arabeVersRomain = (arabe) => {
     IV: 4,
     I: 1,
   };
-  let tempArabe = arabe;
+  let tempArabe = Math.abs(arabe);
+  const sign = arabe < 0 ? '-' : '';
   let romain = '';
   let i;
 
@@ -39,5 +40,5 @@ const arabeVersRomain = (arabe) => {
     }
   }
 
-  return romain;
+  return sign + romain;
 };

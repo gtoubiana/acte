@@ -127,9 +127,9 @@ const nombreEnLettres = (n, r) => {
     dizunit = sepdix + dixl + unitl;
 
     // Si nombre négatif
-    const avjc = (n < 0) ? ' av. J.-C.' : '';
+    const avjc = (n < 0) ? 'Moins ' : '';
 
-    res = (abs > 0) ? initialeEnCapitale(mill + centl + dizunit + avjc) :
+    res = (abs > 0) ? initialeEnCapitale(avjc + mill + centl + dizunit) :
       'Zéro';
   } else {
     res = '';

@@ -52,9 +52,8 @@ const acteScripts = [
   // Fonctions restantes
   `${paths.func}/*.js`,
 
-  // Fonctions exclues
-  `!${paths.func}/arabeVersRomain.js`,
-  `!${paths.func}/julienVersJj.js`,
+  // Fonctions exclues (!)
+  // ex: `!${paths.func}/julienVersJj.js`,
 
   // Constructeurs
   `${paths.class}/Jour.js`,

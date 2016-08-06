@@ -1186,7 +1186,7 @@ if (!Array.prototype.reduce) {
           I: 1
         };
         var tempArabe = Math.abs(arabe);
-        var sign = arabe < 0 ? '-' : '';
+        var sign = arabe<0 ? "-": "";
         var romain = '';
         var i = void 0;
 
@@ -1199,7 +1199,7 @@ if (!Array.prototype.reduce) {
           }
         }
 
-        return sign + romain;
+        return sign+romain;
       }
 
       return arabeVersRomain;
@@ -1229,28 +1229,6 @@ if (!Array.prototype.reduce) {
       }
 
       return dateValide;
-    }();
-
-    /**
-     * Pour mettre en capitale le premier caractère d'une chaîne.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {String} str - la chaîne à modifier
-     * @return {String} la chaîne avec le premier caractère en capitale
-     * @example
-     * initialeEnCapitale("vingt"); // "Vingt"
-     */
-    var initialeEnCapitale = function () {
-      function initialeEnCapitale(str) {
-        var result = str.charAt(0).toUpperCase() + str.slice(1);
-
-        return result;
-      }
-
-      return initialeEnCapitale;
     }();
 
     /**
@@ -1314,40 +1292,6 @@ if (!Array.prototype.reduce) {
       }
 
       return jjVersRepublicain;
-    }();
-
-    /**
-     * Pour calculer un nombre de jours juliens à partir d'une date julienne.
-     * @access private
-     * @author John Walker
-     * @since 0.0.1
-     * @license Domaine public
-     * @see {@link http://fourmilab.ch/documents/calendar/|julian_to_jd}
-     * @param {Number} an - Année julienne
-     * @param {Number} mois - Mois julien
-     * @param {Number} jour - Jour julien
-     * @return {Number} Nombre de jours juliens
-     * @example
-     * julienVersJj(2015,11,7); // 2457346.5
-     */
-    var julienVersJj = function () {
-      function julienVersJj(an, mois, jour) {
-        var tempAn = an;
-        var tempMois = mois;
-
-        if (an < 1) {
-          tempAn++;
-        }
-        if (mois <= 2) {
-          tempAn--;
-          tempMois += 12;
-        }
-
-        return Math.floor(365.25 * (tempAn + 4716)) + Math.floor(30.6001 *
-          (tempMois + 1)) + jour - 1524.5;
-      }
-
-      return julienVersJj;
     }();
 
     /**
@@ -1480,9 +1424,9 @@ if (!Array.prototype.reduce) {
           dizunit = sepdix + dixl + unitl;
 
           // Si nombre négatif
-          var avjc = n < 0 ? 'Moins ' : '';
+          var avjc = n < 0 ? ' av. J.-C.' : '';
 
-          res = abs > 0 ? initialeEnCapitale(avjc + mill + centl + dizunit) :
+          res = abs > 0 ? initialeEnCapitale(mill + centl + dizunit + avjc) :
             'Zéro';
         } else {
           res = '';
@@ -1518,70 +1462,6 @@ if (!Array.prototype.reduce) {
       }
 
       return nombreOrdinal;
-    }();
-
-    /**
-     * Pour convertir les nombres en toutes lettres en nombres ordinaux.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} saisie - le nombre en lettres
-     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
-     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
-     * @return {String} le nombre ordinal en lettres
-     * @example
-     * ordinauxEnLettres("Un"); // "Premier"
-     * ordinauxEnLettres("Un", 1); // "Première"
-     * ordinauxEnLettres("Deux"); // "Deuxième"
-     * ordinauxEnLettres("Vingt-trois"); // "Vingt-troisième"
-     */
-    var ordinauxEnLettres = function () {
-      function ordinauxEnLettres(saisie, genre) {
-        var str = saisie.toString();
-        var result = void 0;
-
-        // Genre
-        var prem = genre ? 'première' : 'premier';
-
-        // Dernier caractère
-        /* eslint-disable indent */
-        switch (str.slice(-1)) {
-        case 'o':
-        case 't':
-        case 'x':
-          result = str + 'ième';
-          break;
-        case 'q':
-          result = str + 'uième';
-          break;
-        case 'f':
-          result = str.slice(0, str.length - 1) + 'vième';
-          break;
-        case 'e':
-          result = str.slice(0, str.length - 1) + 'ième';
-          break;
-        case 's':
-          result = str.slice(-2) === 'ts' ? str.slice(0, str.length - 1) +
-            'ième' : str + 'ième';
-          break;
-        case 'n':
-          if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
-            result = str + 'ième';
-          } else {
-            result = str === 'Un' ? initialeEnCapitale(prem) : prem;
-          }
-          break;
-        default:
-          result = str;
-        }
-
-        /* eslint-enable indent */
-        return result;
-      }
-
-      return ordinauxEnLettres;
     }();
 
     /**
@@ -2019,6 +1899,88 @@ if (!Array.prototype.reduce) {
       return tabRepublicain;
     }();
 
+
+
+    var ordinauxEnLettres = function () {
+      function ordinauxEnLettres(saisie, genre) {
+        var str = saisie.toString();
+        var result = void 0;
+
+        // Genre
+        var prem = genre ? 'première' : 'premier';
+
+        // Dernier caractère
+        /* eslint-disable indent */
+        switch (str.slice(-1)) {
+        case 'o':
+        case 't':
+        case 'x':
+          result = str + 'ième';
+          break;
+        case 'q':
+          result = str + 'uième';
+          break;
+        case 'f':
+          result = str.slice(0, str.length - 1) + 'vième';
+          break;
+        case 'e':
+          result = str.slice(0, str.length - 1) + 'ième';
+          break;
+        case 's':
+          result = str.slice(-2) === 'ts' ? str.slice(0, str.length - 1) +
+            'ième' : str + 'ième';
+          break;
+        case 'n':
+          if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
+            result = str + 'ième';
+          } else {
+            result = str === 'Un' ? initialeEnCapitale(prem) : prem;
+          }
+          break;
+        default:
+          result = str;
+        }
+
+        /* eslint-enable indent */
+        return result;
+      }
+
+      return ordinauxEnLettres;
+    }();
+
+    var premierOrdinalEnLettres = function () {
+      function premierOrdinalEnLettres(saisie, genre) {
+        var str = saisie.toString();
+        var result = void 0;
+
+        // Genre
+        var prem = genre ? 'première' : 'premier';
+        if (str === 'Un') {
+          result = initialeEnCapitale(prem);
+        } else if (str === 'un') {
+          result = prem;
+        } else {
+          result = str;
+        }
+
+        /* eslint-enable indent */
+        return result;
+      }
+
+      return premierOrdinalEnLettres;
+    }();
+
+    var initialeEnCapitale = function () {
+      function initialeEnCapitale(str) {
+        var result = str.charAt(0).toUpperCase() + str.slice(1);
+
+        return result;
+      }
+
+      return initialeEnCapitale;
+    }();
+
+
     /**
      * Pour convertir une saisie en objet JavaScript.
      * @memberof acte
@@ -2109,26 +2071,198 @@ if (!Array.prototype.reduce) {
         var resultat = void 0;
 
         if (tvg.od) {
-          var obj = {
+          /* sortir cette partie ? */
+          const obj = {
             A: tvg.a,
-            AN: tvg.a,
-            J: tvg.jm,
-            JM: tvg.jm,
-            JD: tvg.od.getDay(),
-            JS: tvg.od.getDay(),
-            M: tvg.m,
-            MA: tvg.m,
             D: semaineComplete(tvg.jm, tvg.m, tvg.a, 1),
-            DA: semaineComplete(tvg.jm, tvg.m, tvg.a, 0),
-            DM: semaineComplete(tvg.jm, tvg.m, tvg.a, 1),
             JA: periodeEnJours(1, 1, tvg.a, tvg.jm, tvg.m, tvg.a),
+            J: tvg.jm,
+            JS: tvg.od.getDay(),
+            JSl: jourGregorien[tvg.od.getDay()],
+            M: tvg.m,
+            Ml: moisGregorien[tvg.m-1],
             S: semaineComplete(tvg.jm, tvg.m, tvg.a, 0),
-            SA: semaineComplete(tvg.jm, tvg.m, tvg.a, 0),
-            SM: semaineComplete(tvg.jm, tvg.m, tvg.a, 1)
           };
 
-          resultat = tvg.jm + '/' + tvg.m + '/' + tvg.a;
-          if (typeof rappel === 'function') {
+        resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
+          /* sortir cette partie ? */
+          function(x) {
+            var lettres;
+            var ordinaux;
+            var res = x;
+            var chiffres = true;
+
+            // BALISES
+            if (x.match(/A/)) {
+                if (x.match(/AN/)) {
+                    // AN = Année
+                    res = obj.A;
+                } else {
+                  // A = Année
+                  res = obj.A;
+                }
+            }
+            if (x.match(/J/)) {
+                if (x.match(/JA/)) {
+                    // JA = Jour dans l'Année
+                    res = obj.JA;
+                } else {
+                  // J = Jour dans le mois
+                  res = obj.J;
+                }
+            }
+            if (x.match(/M/)) {
+               if (x.match(/MA/)) {
+                    // MA = Mois dans l'Année
+                    res = obj.M;
+                } else if (x.match(/JM/)) {
+                  // JM = Jour dans le Mois
+                  res = obj.J;
+                } else {
+                  // M = Mois dans l'année
+                  res = obj.M;
+                }
+            }
+            if (x.match(/D/)) {
+               if (x.match(/DA/)) {
+                    // DA = Décade/Semaine dans l'Année
+                    res = obj.S;
+                } else if (x.match(/DM/)) {
+                    // DM = Décade/Semaine dans le Mois
+                    res = obj.D;
+                } else if (x.match(/JD/)) {
+                    // JD = Jour de la Décade/Semaine
+                    res = obj.JS;
+                } else {
+                  // D = Décade/Semaine dans le mois
+                  res = obj.D;
+                }
+            }
+            if (x.match(/S/)) {
+               if (x.match(/SA/)) {
+                    // SA = Décade/Semaine dans l'année
+                    res = obj.S;
+                } else if (x.match(/SM/)) {
+                    // Décade/Semaine dans le mois
+                    res = obj.D;
+                } else if (x.match(/JS/)) {
+                    // Jour de la décade/semaine
+                    res = obj.JS;
+                } else {
+                  // S = Décade/Semaine dans l'année
+                  res = obj.S;
+                }
+            }
+            // FILTRES
+            if (x.match(/r/)) {
+                // r = chiffres en Romains
+                res = arabeVersRomain(res);
+            }
+            if (x.match(/z/)) {
+                // z = Zéro devant le chiffre
+                res = prefixeZero(res);
+            }
+            if (x.match(/l|v/)) {
+              if (x.match(/[^JDS](MA|M)/)) {
+                // MAl | Ml = Mois en Lettres
+                res = obj.Ml[0];
+                chiffres = false;
+              } else if (x.match(/(JS|JD)/)) {
+                // JSl | JDl = Jour de la Décade/Semaine en Lettres
+                res = obj.JSl[0];
+                chiffres = false;
+              } else {
+                if (x.match(/v/)) {
+                    // v = chiffres en lettres (Vieille notation)
+                    res = nombreEnLettres(res, 1);
+                } else {
+                    // l = chiffres en Lettres
+                    res = nombreEnLettres(res);
+                }
+                ordinaux = true;
+              }
+            }
+            if (x.match(/a/)) {
+              if (x.match(/[^JDS](MA|M)/)) {
+                // MAa | Ma = Mois en Abrégé
+                res = obj.Ml[1];
+              } else if (x.match(/(JS|JD)/)) {
+                // JSa | JDa = Jour de la Décade/Semaine en Abrégé
+                res = obj.JSl[1];
+              }
+            }
+            if (x.match(/3/)) {
+              if (x.match(/[^JDS](MA|M)/)) {
+                // MA3 | M3 = Mois en Abrégé sur 3 caractères
+                res = obj.Ml[2];
+              } else if (x.match(/(JS|JD)/)) {
+                // JS3 | JD3 = Jour de la Décade/Semaine en Abrégé
+                // sur 3 caractères
+                res = obj.JSl[2];
+              }
+            }
+            if (x.match(/2/)) {
+              if (x.match(/[^JDS](MA|M)/)) {
+                // MA2 | M2 = Mois en Abrégé sur 2 caractères
+                res = obj.Ml[3];
+              } else if (x.match(/(JS|JD)/)) {
+                // JS2 | JD2 = Jour de la Décade/Semaine en Abrégé
+                // sur 2 caractères
+                res = obj.JSl[3];
+              }
+            }
+            if (x.match(/1/)) {
+              if (x.match(/[^JDS](MA|M)/)) {
+                // MA1 | M1 = Mois en Abrégé sur 1 caractère
+                res = obj.Ml[4];
+              } else if (x.match(/(JS|JD)/)) {
+                // JS1 | JD1 = Jour de la Décade/Semaine en Abrégé
+                // sur 1 caractère
+                res = obj.JSl[4];
+              }
+            }
+
+            // ENCOURS bugs globaux avec chiffres et lettres
+            // cf %Jrzl
+            // attention aux interactions entre les 3 !!!
+            lettres = res;
+            if (x.match(/o/)) {
+              if (ordinaux && x.match(/f/)) {
+                res = ordinauxEnLettres(lettres, 1);
+              } else if (ordinaux){
+                res = ordinauxEnLettres(lettres);
+              } else if (x.match(/f/) && chiffres) {
+                res = nombreOrdinal(lettres, "re", "e");
+              } else if (chiffres) {
+                res = nombreOrdinal(lettres, "er", "e");
+              }
+            }
+            if (x.match(/p/)) {
+              if (ordinaux) {
+                res = premierOrdinalEnLettres(lettres);
+              } else {
+                res = nombreOrdinal(lettres, "er", "");
+              }
+            }
+            if (x.match(/[^o]f/)) {
+              if (ordinaux) {
+                res = premierOrdinalEnLettres(lettres, 1);
+              } else {
+                res = nombreOrdinal(lettres, "re", "");
+              }
+            }
+            if (x.match(/b/)) {
+                // b = en Bas de casse (minuscules)
+                res = res.toString().toLowerCase();
+            }
+            if (x.match(/c|m/)) {
+                // c | m = en Capitales (Majuscules)
+                res = res.toString().toUpperCase();
+            }
+            return res;
+        });
+
+          if (typeof rappel === "function") {
             resultat = rappel(resultat, obj);
           }
         } else {
@@ -2136,6 +2270,7 @@ if (!Array.prototype.reduce) {
         }
 
         return resultat;
+
       }
 
       return gregorien;
@@ -2145,3 +2280,30 @@ if (!Array.prototype.reduce) {
 
   return umdCallback;
 }());
+
+console.log(new acte.Jour('8 mai 1972').gregorien()); //an
+console.log(new acte.Jour('').gregorien('','erreur')); //erreur
+console.log(new acte.Jour('8 mai 1972').gregorien('','erreur', (function (res, obj) { return "A: " + obj.A + "\nJ: " + obj.J+ "\nJS: " + obj.JS+ "\nM: " + obj.M+ "\nD: " + obj.D + "\nS: " + obj.S+ "\nJA: " + obj.JA; })));
+console.log("-- 8 mai 1972 --\n"+new acte.Jour('8 mai -1972',false).gregorien('A:%A - Année\nAN:%AN - Année\nJ:%J - Jour du mois\nJM:%JM - Jour du mois\nJD:%JD - Jour de la décade/semaine\nJS:%JS - Jour de la décade/semaine\nM:%M - Mois de l\'année\nMA:%MA - Mois de l\'année\nJA:%JA - Jour de l\'année\nD:%D - Décade/Semaine du mois\nDA:%DA - Décade/Semaine de l\'année\nDM:%DM - Décade/Semaine du mois\nS:%S - Décade/Semaine de l\'année\nSA:%SA - Décade/Semaine de l\'année\nSM:%SM - Décade/Semaine du mois','erreur'));
+console.log("-- 8 mai -1972 --\n"+new acte.Jour('8 mai -1972',false).gregorien('Jz:%Jz - Jour avec préfixe Zéro\nJr:%Jr - Jour en romain\nJrz et Jzr:%Jrz et %Jzr\nJb:%Jb - Jour en minuscules\nJm:%Jm - Jour en majuscules\nJc:%Jc - Jour en majuscules\nAr:%Ar - Année en romain\nArb:%Arb - Année en romain minuscules\n','erreur'));
+
+
+console.log(new acte.Jour('8 mai 1972')
+  .gregorien('%Ml, %MAl, %JSl, %JDl, %Al'));
+console.log(new acte.Jour('12 juillet 1972')
+  .gregorien('%Ml, %M2, %MA1, %JS3b, %JDac., %A3'));
+console.log(new acte.Jour('12 juillet 1972')
+  .gregorien('%Al, %Av, %Alv, %Avlb, %Avlbo, %Aro, %Jrzl'));
+console.log('-------------------------');
+console.log(new acte.Jour('1 juillet 1972')
+  .gregorien('%Jo, %Jp, %Jf, %Jof, %Jop, %Jpf, %Jopf'));
+console.log(new acte.Jour('17 juillet 1972')
+  .gregorien('%Jo, %Jp, %Jf, %Jof, %Jop, %Jpf, %Jopf'));
+console.log(new acte.Jour('1 juillet 1972')
+  .gregorien('%Jlo, %Jlp, %Jlf, %Jlof, %Jlop, %Jlpf, %Jlopf'));
+console.log(new acte.Jour('17 juillet 1972')
+  .gregorien('%Jlo, %Jlp, %Jlf, %Jlof, %Jlop, %Jlpf, %Jlopf'));
+console.log(new acte.Jour('1 janvier 1972')
+  .gregorien('%Mo, %Mp, %Mf, %Mof, %Mop, %Mpf, %Mopf'));
+console.log(new acte.Jour('1 janvier 1972')
+  .gregorien('%Mlo, %Mlof'));
