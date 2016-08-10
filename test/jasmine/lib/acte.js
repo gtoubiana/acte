@@ -2104,18 +2104,17 @@ if (!Array.prototype.reduce) {
      * @param {Function} [rappel] - Une fonction de rappel
      * @return {String} La date grégorienne formatée
      * @example
-     * new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
+     * new acte.Jour('1/1/1600').gregorien(); // "1/1/1600"
      */
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
-        var frmt = format || '%J/%M/%A';
+        var frmt = format || '%J %Mlb %A';
         var err = erreur || 'Pas de correspondances.';
         var tvg = this.variables.gregorien;
         var resultat = void 0;
 
         if (tvg.od) {
           (function () {
-            /* Sortir cette partie ? */
             var obj = {
               A: tvg.a,
               D: semaineComplete(tvg.jm, tvg.m, tvg.a, 1),

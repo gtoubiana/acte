@@ -70,7 +70,7 @@ Pour formater une date grégorienne.
 
 **Exemple** :  
 ```js
-new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
+new acte.Jour('1/1/1600').gregorien(); // "1/1/1600"
 ```
 * * *
 Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>

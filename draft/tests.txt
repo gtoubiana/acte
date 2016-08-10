@@ -1,0 +1,78 @@
+console.log(new acte.Jour('8 mai 1972').gregorien()); //an
+console.log(new acte.Jour('').gregorien('')); //pas de corr.
+console.log(new acte.Jour('').gregorien('','erreur')); //erreur
+console.log(new acte.Jour('8 mai 1972').gregorien('','erreur', (function (res, obj) { return "A: " + obj.A + "\nJ: " + obj.J+ "\nJS: " + obj.JS+ "\nM: " + obj.M+ "\nD: " + obj.D + "\nS: " + obj.S+ "\nJA: " + obj.JA; })));
+console.log("-- 8 mai 1972 --\n"+new acte.Jour('8 mai -1972',false).gregorien('A:%A - Année\nAN:%AN - Année\nJ:%J - Jour du mois\nJM:%JM - Jour du mois\nJD:%JD - Jour de la décade/semaine\nJS:%JS - Jour de la décade/semaine\nM:%M - Mois de l\'année\nMA:%MA - Mois de l\'année\nJA:%JA - Jour de l\'année\nD:%D - Décade/Semaine du mois\nDA:%DA - Décade/Semaine de l\'année\nDM:%DM - Décade/Semaine du mois\nS:%S - Décade/Semaine de l\'année\nSA:%SA - Décade/Semaine de l\'année\nSM:%SM - Décade/Semaine du mois','erreur'));
+console.log("-- 8 mai -1972 --\n"+new acte.Jour('8 mai -1972',false).gregorien('Jz:%Jz - Jour avec préfixe Zéro\nJr:%Jr - Jour en romain\nJrz et Jzr:%Jrz et %Jzr\nJb:%Jb - Jour en minuscules\nJm:%Jm - Jour en majuscules\nJc:%Jc - Jour en majuscules\nAr:%Ar - Année en romain\nArb:%Arb - Année en romain minuscules\n','erreur'));
+
+
+console.log(new acte.Jour('8 mai 1972')
+  .gregorien('%Ml, %MAl, %JSl, %JDl, %Al'));
+console.log(new acte.Jour('12 juillet 1972')
+  .gregorien('%Ml, %M2, %MA1, %JS3b, %JDac., %A3'));
+console.log(new acte.Jour('12 juillet 1972')
+  .gregorien('%Al, %Av, %Alv, %Avlb, %Avlbo, %Aro, %Jrzl'));
+console.log('-------------------------');
+console.log(new acte.Jour('1 juillet 1972')
+  .gregorien('%Jo, %Jp, %Jf, %Jof, %Jop, %Jpf, %Jopf'));
+console.log(new acte.Jour('17 juillet 1972')
+  .gregorien('%Jo, %Jp, %Jf, %Jof, %Jop, %Jpf, %Jopf'));
+console.log(new acte.Jour('1 juillet 1972')
+  .gregorien('%Jlo, %Jlp, %Jlf, %Jlof, %Jlop, %Jlpf, %Jlopf'));
+console.log(new acte.Jour('17 juillet 1972')
+  .gregorien('%Jlo, %Jlp, %Jlf, %Jlof, %Jlop, %Jlpf, %Jlopf'));
+console.log(new acte.Jour('1 janvier 1972')
+  .gregorien('%Mo, %Mp, %Mf, %Mof, %Mop, %Mpf, %Mopf'));
+console.log(new acte.Jour('1 janvier 1972')
+  .gregorien('%Mlo, %Mlof'));
+
+/* ///////////////////////////// */
+
+"8/5/1972"
+"Pas de correspondances."
+"erreur"
+"A: 1972
+J: 8
+JS: 1
+M: 5
+D: 2
+S: 19
+JA: 129"
+"-- 8 mai 1972 --
+A:-1972 - Année
+AN:-1972 - Année
+J:8 - Jour du mois
+JM:8 - Jour du mois
+JD:1 - Jour de la décade/semaine
+JS:1 - Jour de la décade/semaine
+M:5 - Mois de l'année
+MA:5 - Mois de l'année
+JA:129 - Jour de l'année
+D:2 - Décade/Semaine du mois
+DA:19 - Décade/Semaine de l'année
+DM:2 - Décade/Semaine du mois
+S:19 - Décade/Semaine de l'année
+SA:19 - Décade/Semaine de l'année
+SM:2 - Décade/Semaine du mois"
+"-- 8 mai -1972 --
+Jz:08 - Jour avec préfixe Zéro
+Jr:VIII - Jour en romain
+Jrz et Jzr:VIII et VIII
+Jb:8 - Jour en minuscules
+Jm:8 - Jour en majuscules
+Jc:8 - Jour en majuscules
+Ar:-MCMLXXII - Année en romain
+Arb:-mcmlxxii - Année en romain minuscules
+"
+"Mai, Mai, Lundi, Lundi, Mille-neuf-cent-soixante-douze"
+"Juillet, Jt, J, mer, MERCR., 1972"
+"Mille-neuf-cent-soixante-douze, Mille neuf cent soixante-douze, Mille neuf cent soixante-douze, mille neuf cent soixante-douze, mille neuf cent soixante-douzième, MCMLXXIIe, "
+"-------------------------"
+"1er, 1er, 1re, 1re, 1er, 1re, 1re"
+"17e, 17, 17, 17e, 17, 17, 17"
+"Premier, Premier, Première, Première, Premier, Première, Première"
+"Dix-septième, Dix-sept, Dix-sept, Dix-septième, Dix-sept, Dix-sept, Dix-sept"
+"1er, 1er, 1re, 1re, 1er, 1re, 1re"
+"Janvier, Janvier"
+
+/* ///////////////////////////// */

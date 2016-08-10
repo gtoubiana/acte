@@ -11,16 +11,15 @@
  * @param {Function} [rappel] - Une fonction de rappel
  * @return {String} La date grégorienne formatée
  * @example
- * new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
+ * new acte.Jour('1/1/1600').gregorien(); // "1/1/1600"
  */
 acte.Jour.prototype.gregorien = function gregorien(format, erreur, rappel) {
-  const frmt = format || '%J/%M/%A';
+  const frmt = format || '%J %Mlb %A';
   const err = erreur || 'Pas de correspondances.';
   const tvg = this.variables.gregorien;
   let resultat;
 
   if (tvg.od) {
-    /* Sortir cette partie ? */
     const obj = {
       A: tvg.a,
       D: semaineComplete(tvg.jm, tvg.m, tvg.a, 1),
