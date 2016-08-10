@@ -2099,12 +2099,34 @@ if (!Array.prototype.reduce) {
      * @author Gilles Toubiana
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @license MIT
-     * @param {String} [format='%J/%M/%A'] - Le modèle de formatage
+     * @param {String} [format='%J %Mlb %A'] - Le modèle de formatage<br>
+     * <strong>BALISES :</strong><br>
+     * - %A ou %AN = Année<br>
+     * - %D, %DM ou %SM = Décade/Semaine dans le mois<br>
+     * - %J ou %JM = Jour dans le mois<br>
+     * - %JA = Jour dans l'année<br>
+     * - %JS ou %JD = Jour de la Décade/Semaine<br>
+     * - %M ou %MA = Mois dans l'année<br>
+     * - %S, %SA ou DA = Semaine/Décade dans l'année<br>
+     * <strong>FILTRES :</strong><br>
+     * - 1 = mois ou jour sur 1 caractère<br>
+     * - 2 = mois ou jour sur 2 caractères<br>
+     * - 3 = mois ou jour sur 3 caractères<br>
+     * - a = mois ou jour en Abrégé<br>
+     * - b = en Bas de casse (minuscules)<br>
+     * - c ou m = en Capitales (Majuscules)<br>
+     * - f = Féminin de p (première ou 1re)<br>
+     * - l = chiffres en Lettres<br>
+     * - o = lettres ou chiffres en Ordinaux<br>
+     * - p = Premier ou 1er<br>
+     * - r = chiffres en Romains<br>
+     * - v = chiffres en lettres (Vieille notation)<br>
+     * - z = Zéro devant le chiffre<br>
      * @param {String} [erreur='Pas de correspondances.'] - Le message d'erreur
      * @param {Function} [rappel] - Une fonction de rappel
      * @return {String} La date grégorienne formatée
      * @example
-     * new acte.Jour('1/1/1600').gregorien(); // "1/1/1600"
+     * new acte.Jour('1/1/1600').gregorien('%J %Mlb %A'); // "1 janvier 1600"
      */
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
@@ -2188,10 +2210,10 @@ if (!Array.prototype.reduce) {
                     // SA = Décade/Semaine dans l'année
                     res = obj.S;
                   } else if (x.match(/SM/)) {
-                    // Décade/Semaine dans le mois
+                    // SM = Décade/Semaine dans le mois
                     res = obj.D;
                   } else if (x.match(/JS/)) {
-                    // Jour de la décade/semaine
+                    // JS = Jour de la décade/semaine
                     res = obj.JS;
                   } else {
                     // S = Décade/Semaine dans l'année
@@ -2270,9 +2292,9 @@ if (!Array.prototype.reduce) {
 
                 // ENCOURS bugs globaux avec chiffres et lettres
                 // cf %Jrzl
-                // attention aux interactions entre les 3 !!!
                 var lettres = res;
 
+                // - o = lettres ou chiffres en Ordinaux
                 if (x.match(/o/)) {
                   if (ordinaux && x.match(/f/)) {
                     res = ordinauxEnLettres(lettres, 1);
@@ -2284,6 +2306,8 @@ if (!Array.prototype.reduce) {
                     res = nombreOrdinal(lettres, 'er', 'e');
                   }
                 }
+
+                // - p = Premier ou 1er
                 if (x.match(/p/)) {
                   if (ordinaux) {
                     res = premierOrdinalEnLettres(lettres);
@@ -2291,6 +2315,8 @@ if (!Array.prototype.reduce) {
                     res = nombreOrdinal(lettres, 'er', '');
                   }
                 }
+
+                // - f = Féminin de p (première ou 1re)
                 if (x.match(/[^o]f/)) {
                   if (ordinaux) {
                     res = premierOrdinalEnLettres(lettres, 1);
