@@ -58,14 +58,14 @@ Pour formater une date grégorienne.
 **Résultat** : <code>Chaîne</code> - La date grégorienne formatée  
 **Accès** : public  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Depuis** : 0.0.7  
+**Depuis** : 0.0.15  
 **Auteur** : Gilles Toubiana  
 **Licence** : MIT  
 
 | Paramètres | Type | Par défaut | Description |
 | --- | --- | --- | --- |
-| [format] | <code>Chaîne</code> | <code>&#x27;%d/%m/%Y&#x27;</code> | Le modèle de formatage |
-| [erreur] | <code>Chaîne</code> | <code>&#x27;Pas de correspondances&#x27;</code> | Le message d'erreur |
+| [format] | <code>Chaîne</code> | <code>&#x27;%J/%M/%A&#x27;</code> | Le modèle de formatage |
+| [erreur] | <code>Chaîne</code> | <code>&#x27;Pas de correspondances.&#x27;</code> | Le message d'erreur |
 | [rappel] | <code>Fonction</code> |  | Une fonction de rappel |
 
 **Exemple** :  

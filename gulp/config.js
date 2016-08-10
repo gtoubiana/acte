@@ -53,7 +53,7 @@ const acteScripts = [
   `${paths.func}/*.js`,
 
   // Fonctions exclues (!)
-  // ex: `!${paths.func}/julienVersJj.js`,
+  `!${paths.func}/julienVersJj.js`,
 
   // Constructeurs
   `${paths.class}/Jour.js`,
