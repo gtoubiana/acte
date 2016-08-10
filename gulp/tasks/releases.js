@@ -93,6 +93,7 @@ gulp.task('releases.tag', (cb) => {
     if (error) {
       return cb(error);
     }
+
     git.push('origin', 'master', { args: '--tags && npm publish' }, cb);
   });
 

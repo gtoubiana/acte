@@ -2281,6 +2281,8 @@ if (!Array.prototype.reduce) {
   return umdCallback;
 }());
 
+/* TESTS */
+
 console.log(new acte.Jour('8 mai 1972').gregorien()); //an
 console.log(new acte.Jour('').gregorien('','erreur')); //erreur
 console.log(new acte.Jour('8 mai 1972').gregorien('','erreur', (function (res, obj) { return "A: " + obj.A + "\nJ: " + obj.J+ "\nJS: " + obj.JS+ "\nM: " + obj.M+ "\nD: " + obj.D + "\nS: " + obj.S+ "\nJA: " + obj.JA; })));
@@ -2307,3 +2309,5 @@ console.log(new acte.Jour('1 janvier 1972')
   .gregorien('%Mo, %Mp, %Mf, %Mof, %Mop, %Mpf, %Mopf'));
 console.log(new acte.Jour('1 janvier 1972')
   .gregorien('%Mlo, %Mlof'));
+
+/* END */

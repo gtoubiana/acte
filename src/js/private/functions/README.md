@@ -29,6 +29,7 @@
 * [periodeEnJours(j1, m1, a1, j2, m2, a2)](#periodeEnJours) ⇒ <code>Nombre</code> ℗
 * [positionSoleil(jj)](#positionSoleil) ⇒ <code>Tableau</code> ℗
 * [prefixeZero(n)](#prefixeZero) ⇒ <code>Chaîne</code> ℗
+* [premierOrdinalEnLettres(saisie, [genre])](#premierOrdinalEnLettres) ⇒ <code>Chaîne</code> ℗
 * [radiansVersDegres(r)](#radiansVersDegres) ⇒ <code>Nombre</code> ℗
 * [remplacements(texte, regex, options)](#remplacements) ⇒ <code>Chaîne</code> ℗
 * [republicainVersJj(an, mois, decade, jour)](#republicainVersJj) ⇒ <code>Nombre</code> ℗
@@ -665,6 +666,31 @@ prefixeZero(20); // 20
 prefixeZero(9); // "09"
 prefixeZero(0); // 0
 prefixeZero(-4); // -4
+```
+<a name="premierOrdinalEnLettres"></a>
+
+## premierOrdinalEnLettres(saisie, [genre]) ⇒ <code>Chaîne</code> ℗
+Pour convertir uniquement 'un' en nombre ordinal.
+
+**Type** : Fonction  
+**Résultat** : <code>Chaîne</code> - le nombre - ordinal ou non - en lettres  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| saisie | <code>Nombre</code> | le nombre en lettres |
+| [genre] | <code>Chaîne</code> | par défaut, le genre masculin est appliqué. Pour utiliser le genre féminin, il suffit d'ajouter un argument. |
+
+**Exemple** :  
+```js
+premierOrdinalEnLettres("Un"); // "Premier"
+premierOrdinalEnLettres("Un", 1); // "Première"
+premierOrdinalEnLettres("Deux"); // "Deux"
+premierOrdinalEnLettres("Vingt-trois"); // "Vingt-trois"
 ```
 <a name="radiansVersDegres"></a>
 
