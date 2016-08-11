@@ -5,6 +5,8 @@ const dateValide = (jour, mois, an) => {
   return resultat;
 };
 
+const anActuel = new Date();
+
 // http://jasmine.github.io/edge/introduction.html
 describe('new acte.Jour()', () => {
   it('new acte.Jour() = un objet', () => {
@@ -101,6 +103,9 @@ describe('new acte.Jour()', () => {
       // Coverage deltaT()
       expect(new acte.Jour('8 septembre 2099', false).variables.gregorien
         .od).toEqual(dateValide(8, 9, 2099));
+      expect(new acte.Jour(`8 septembre ${anActuel.getFullYear()}`,
+        false).variables.gregorien.od).toEqual(dateValide(8, 9,
+        anActuel.getFullYear()));
 
       // Undefined
       expect(new acte.Jour('6 octobre').variables.gregorien.od)
