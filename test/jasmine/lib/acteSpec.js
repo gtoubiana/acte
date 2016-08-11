@@ -196,7 +196,7 @@ describe('new acte.Jour()', function () {
 describe('new acte.Jour().gregorien()', function () {
   // Valeurs par défaut
   it('new acte.Jour().gregorien() = la date grégorienne ' + 'formatée par défaut.', function () {
-    expect(new acte.Jour('1/1/1600').gregorien()).toEqual('1 janvier 1600');
+    expect(new acte.Jour('1/1/1600').gregorien()).toEqual('1er janvier 1600');
   });
 
   // Balises

@@ -6,7 +6,7 @@ describe('new acte.Jour().gregorien()', () => {
     'formatée par défaut.',
     () => {
       expect(new acte.Jour('1/1/1600').gregorien())
-        .toEqual('1 janvier 1600');
+        .toEqual('1er janvier 1600');
     });
 
   // Balises

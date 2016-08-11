@@ -2099,7 +2099,7 @@ if (!Array.prototype.reduce) {
      * @author Gilles Toubiana
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @license MIT
-     * @param {String} [format='%J %Mlb %A'] - Le modèle de formatage :<br><br>
+     * @param {String} [format='%Jp %Mlb %A'] - Le modèle de formatage :<br><br>
      * <strong>BALISES</strong><br>
      * `%A` ou `%AN` - Année<br>
      * `%D`, `%DM` ou `%SM` - Décade/Semaine dans le mois<br>
@@ -2126,11 +2126,11 @@ if (!Array.prototype.reduce) {
      * @param {Function} [rappel] - Une fonction de rappel
      * @return {String} La date grégorienne formatée
      * @example
-     * new acte.Jour('1/1/1600').gregorien('%J %Mlb %A'); // '1 janvier 1600'
+     * new acte.Jour('1/1/1600').gregorien('%Jp %Mlb %A'); // '1er janvier 1600'
      */
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
-        var frmt = format || '%J %Mlb %A';
+        var frmt = format || '%Jp %Mlb %A';
         var err = erreur || 'Pas de correspondances.';
         var tvg = this.variables.gregorien;
         var resultat = void 0;
