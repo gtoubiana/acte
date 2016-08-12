@@ -1,15 +1,20 @@
 Todo:
-  ☐ coverage du dossier src avec istanbul ?
+  ☐ coverage des fonctions
     ✔ deltaT @done(2016-08-11)
-  ☐ réécrire les fonctions utilisées par gregorien()
+    ✔ prefixeZero @done(2016-08-12)
+    ✔ premierOrdinalEnLettres @done(2016-08-12)
+    ☐ ordinauxEnLettres
     ☐ nombreEnLettres
+    ☐ acte.Jour.prototype.gregorien
+  ☐ réécrire les fonctions
+    ☐ nombreEnLettres
+    ✔ premierOrdinalEnLettres @done(2016-08-12)
     ☐ nombreOrdinal
     ☐ ordinauxEnLettres
     ☐ periodeEnJours
     ☐ prefixeZero
     ☐ semaineComplete
-  ☐ réécrire gregorien()
-  ☐ rédiger les tests de grégorien()
+    ☐ acte.Jour.prototype.gregorien
   ☐ écrire julien()
   ☐ rédiger les tests de julien()
   ☐ écrire républicain()

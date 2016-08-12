@@ -274,6 +274,7 @@ describe('new acte.Jour().gregorien()', function () {
   });
   it('new acte.Jour().gregorien(\'%Mz\') = Mois sur 2 chiffres.', function () {
     expect(new acte.Jour('1/9/1600').gregorien('%Mz')).toEqual('09');
+    expect(new acte.Jour('1/10/1600').gregorien('%Mz')).toEqual('10');
   });
   it('new acte.Jour().gregorien(\'%Mo\') = Mois en nombres ordinaux.', function () {
     expect(new acte.Jour('1/10/1628').gregorien('%Mo')).toEqual('10e');
@@ -289,6 +290,7 @@ describe('new acte.Jour().gregorien()', function () {
   });
   it('new acte.Jour().gregorien(\'%Ar\') = Année en chiffres romains.', function () {
     expect(new acte.Jour('1/9/1628').gregorien('%Ar')).toEqual('MDCXXVIII');
+    expect(new acte.Jour('1/9/-1628', false).gregorien('%Ar')).toEqual('-MDCXXVIII');
   });
   it('new acte.Jour().gregorien(\'%JAp\') = Jour de l\'année en nombre ordinal', function () {
     expect(new acte.Jour('1/1/1604').gregorien('%JAp')).toEqual('1er');
@@ -298,8 +300,37 @@ describe('new acte.Jour().gregorien()', function () {
   });
   it('new acte.Jour().gregorien(\'%JAlp\') = Jour de l\'année en nombre' + ' ordinal en lettres.', function () {
     expect(new acte.Jour('1/1/1604').gregorien('%JAlp')).toEqual('Premier');
+    expect(new acte.Jour('2/1/1604').gregorien('%JAlp')).toEqual('Deux');
   });
   it('new acte.Jour().gregorien(\'%SAlf\') = Semaine de l\'année en nombre' + ' ordinal en lettres.', function () {
     expect(new acte.Jour('6/1/1605').gregorien('%SAlf')).toEqual('Première');
+  });
+  it('BUGS A CORRIGER = %Jrzl', function () {
+    expect(new acte.Jour('6/1/1605').gregorien('%J')).toEqual('6');
+    expect(new acte.Jour('6/1/1605').gregorien('%Jz')).toEqual('06');
+    expect(new acte.Jour('6/1/1605').gregorien('%Jr')).toEqual('VI');
+    expect(new acte.Jour('6/1/1605').gregorien('%Jl')).toEqual('Six');
+    expect(new acte.Jour('6/1/1605').gregorien('%Jrz')).toEqual('VI');
+
+    // l ou r
+    expect(new acte.Jour('6/1/1605').gregorien('%Jrl')).toEqual('');
+
+    // l
+    expect(new acte.Jour('6/1/1605').gregorien('%Jzl')).toEqual('');
+
+    // l ou r
+    expect(new acte.Jour('6/1/1605').gregorien('%Jrzl')).toEqual('');
+
+    // '' ou '%z'
+    expect(new acte.Jour('6/1/1605').gregorien('%z')).toEqual('%z');
+
+    // '' ou '%r'
+    expect(new acte.Jour('6/1/1605').gregorien('%r')).toEqual('');
+
+    // '' ou '%l'
+    expect(new acte.Jour('6/1/1605').gregorien('%l')).toEqual('');
+
+    // '' ou '%rzl'
+    expect(new acte.Jour('6/1/1605').gregorien('%rzl')).toEqual('');
   });
 });

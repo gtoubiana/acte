@@ -55,7 +55,7 @@ Pour convertir une saisie en objet JavaScript.
 Pour formater une date grégorienne.
 
 **Type** : instance property of <code>[Jour](#acte.Jour)</code>  
-**Résultat** : <code>Chaîne</code> - La date grégorienne formatée  
+**Résultat** : <code>Chaîne</code> - - La date grégorienne formatée  
 **Accès** : public  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.15  

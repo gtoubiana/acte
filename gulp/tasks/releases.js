@@ -183,15 +183,18 @@ gulp.task('releases.github.releaser', (done) => {
       /* eslint-enable no-param-reassign,strict */
       return commit;
     },
+
     groupBy: 'type',
     commitGroupsSort: 'title',
     commitsSort: ['scope', 'subject'],
     noteGroupsSort: 'subject',
     notesSort: compareFunc,
   }, (error, response) => {
+    // jscs:disable
     /* eslint-disable no-console */
     // console.log(error, response);
     /* eslint-enable no-console */
+    // jscs:enable
     github.authenticate(auth);
     github.releases.uploadAsset({
       owner: 'gtoubiana',

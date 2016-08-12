@@ -1191,6 +1191,7 @@ if (!Array.prototype.reduce) {
         var i = void 0;
 
         for (i in lookup) {
+          /* istanbul ignore else  */
           if (lookup.hasOwnProperty(i)) {
             while (tempArabe >= lookup[i]) {
               romain += i;
@@ -1627,18 +1628,8 @@ if (!Array.prototype.reduce) {
     var premierOrdinalEnLettres = function () {
       function premierOrdinalEnLettres(saisie, genre) {
         var str = saisie.toString();
-        var result = void 0;
-
-        // Genre
-        var prem = genre ? 'première' : 'premier';
-
-        if (str === 'Un') {
-          result = initialeEnCapitale(prem);
-        } else if (str === 'un') {
-          result = prem;
-        } else {
-          result = str;
-        }
+        var prem = genre ? 'ère' : 'er';
+        var result = str === 'Un' ? 'Premi' + prem : str;
 
         return result;
       }
@@ -2124,7 +2115,7 @@ if (!Array.prototype.reduce) {
      * `z` - Zéro devant le chiffre<br>
      * @param {String} [erreur='Pas de correspondances.'] - Le message d'erreur
      * @param {Function} [rappel] - Une fonction de rappel
-     * @return {String} La date grégorienne formatée
+     * @return {String} - La date grégorienne formatée
      * @example
      * new acte.Jour('1/1/1600').gregorien('%Jp %Mlb %A'); // '1er janvier 1600'
      */

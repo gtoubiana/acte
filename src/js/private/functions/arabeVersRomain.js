@@ -32,6 +32,7 @@ const arabeVersRomain = (arabe) => {
   let i;
 
   for (i in lookup) {
+    /* istanbul ignore else  */
     if (lookup.hasOwnProperty(i)) {
       while (tempArabe >= lookup[i]) {
         romain += i;

@@ -17,18 +17,8 @@
  */
 const premierOrdinalEnLettres = (saisie, genre) => {
   const str = saisie.toString();
-  let result;
-
-  // Genre
-  const prem = (genre) ? 'première' : 'premier';
-
-  if (str === 'Un') {
-    result = initialeEnCapitale(prem);
-  } else if (str === 'un') {
-    result = prem;
-  } else {
-    result = str;
-  }
+  const prem = genre ? 'ère' : 'er';
+  const result = str === 'Un' ? `Premi${prem}` : str;
 
   return result;
 };
