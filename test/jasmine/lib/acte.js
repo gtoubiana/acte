@@ -2146,6 +2146,7 @@ if (!Array.prototype.reduce) {
               // jscs:disable
               function (x) {
                 // jscs:enable
+                var arabe = void 0;
                 var ordinaux = void 0;
                 var res = x;
                 var chiffres = true;
@@ -2215,10 +2216,14 @@ if (!Array.prototype.reduce) {
                 /* FILTRES */
                 if (x.match(/r/)) {
                   // - r = chiffres en Romains
+                  arabe = res;
                   res = arabeVersRomain(res);
                 }
                 if (x.match(/z/)) {
                   // - z = Zéro devant le chiffre
+                  if (!arabe) {
+                    arabe = res;
+                  }
                   res = prefixeZero(res);
                 }
                 if (x.match(/l|v/)) {
@@ -2233,10 +2238,12 @@ if (!Array.prototype.reduce) {
                   } else {
                     if (x.match(/v/)) {
                       // - v = chiffres en lettres (Vieille notation)
-                      res = nombreEnLettres(res, 1);
+                      res = arabe ? nombreEnLettres(arabe, 1) :
+                        nombreEnLettres(res, 1);
                     } else {
                       // - l = chiffres en Lettres
-                      res = nombreEnLettres(res);
+                      res = arabe ? nombreEnLettres(arabe) :
+                        nombreEnLettres(res);
                     }
                     ordinaux = true;
                   }

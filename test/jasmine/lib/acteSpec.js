@@ -304,32 +304,4 @@ describe('new acte.Jour().gregorien()', function () {
   it('new acte.Jour().gregorien(\'%SAlf\') = Semaine de l\'année en nombre' + ' ordinal en lettres.', function () {
     expect(new acte.Jour('6/1/1605').gregorien('%SAlf')).toEqual('Première');
   });
-  it('BUGS A CORRIGER = %Jrzl', function () {
-    expect(new acte.Jour('6/1/1605').gregorien('%J')).toEqual('6');
-    expect(new acte.Jour('6/1/1605').gregorien('%Jz')).toEqual('06');
-    expect(new acte.Jour('6/1/1605').gregorien('%Jr')).toEqual('VI');
-    expect(new acte.Jour('6/1/1605').gregorien('%Jl')).toEqual('Six');
-    expect(new acte.Jour('6/1/1605').gregorien('%Jrz')).toEqual('VI');
-
-    // l ou r
-    expect(new acte.Jour('6/1/1605').gregorien('%Jrl')).toEqual('');
-
-    // l
-    expect(new acte.Jour('6/1/1605').gregorien('%Jzl')).toEqual('');
-
-    // l ou r
-    expect(new acte.Jour('6/1/1605').gregorien('%Jrzl')).toEqual('');
-
-    // '' ou '%z'
-    expect(new acte.Jour('6/1/1605').gregorien('%z')).toEqual('%z');
-
-    // '' ou '%r'
-    expect(new acte.Jour('6/1/1605').gregorien('%r')).toEqual('');
-
-    // '' ou '%l'
-    expect(new acte.Jour('6/1/1605').gregorien('%l')).toEqual('');
-
-    // '' ou '%rzl'
-    expect(new acte.Jour('6/1/1605').gregorien('%rzl')).toEqual('');
-  });
 });

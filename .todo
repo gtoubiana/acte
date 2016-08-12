@@ -1,14 +1,10 @@
 Todo:
   ☐ coverage des fonctions
-    ✔ deltaT @done(2016-08-11)
-    ✔ prefixeZero @done(2016-08-12)
-    ✔ premierOrdinalEnLettres @done(2016-08-12)
     ☐ ordinauxEnLettres
     ☐ nombreEnLettres
     ☐ acte.Jour.prototype.gregorien
   ☐ réécrire les fonctions
     ☐ nombreEnLettres
-    ✔ premierOrdinalEnLettres @done(2016-08-12)
     ☐ nombreOrdinal
     ☐ ordinauxEnLettres
     ☐ periodeEnJours
@@ -22,6 +18,10 @@ Todo:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ deltaT @done(2016-08-11)
+  ✔ prefixeZero @done(2016-08-12)
+  ✔ premierOrdinalEnLettres @done(2016-08-12)
+  ✔ premierOrdinalEnLettres @done(2016-08-12)
   ✔ deltaT (voir dossier drafts) @done(2016-08-11)
   ✔ BUG AVEC gulp delta.scrap, revoir le format de base dans le readme !!! @done(2016-08-11)
   ✔ récupérer les données moyennes sur 2 ans depuis IERS (2 decimales) => moyenne 2 ans ou valeur années paires ? @done(2016-08-11)
