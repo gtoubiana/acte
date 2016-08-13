@@ -168,8 +168,32 @@ describe('new acte.Jour().gregorien()', () => {
     'new acte.Jour().gregorien(\'%Jlo\') = Jour en nombres ordinaux' +
     ' en lettres.',
     () => {
-      expect(new acte.Jour('18/11/1628').gregorien('%Jlo'))
-        .toEqual('Dix-huitième');
+      expect(new acte.Jour('1/11/1628').gregorien('%Jlo'))
+        .toEqual('Premier');
+      expect(new acte.Jour('1/11/1628').gregorien('%Jlof'))
+        .toEqual('Première');
+      expect(new acte.Jour('2/11/1628').gregorien('%Jlo'))
+        .toEqual('Deuxième');
+      expect(new acte.Jour('3/11/1628').gregorien('%Jlo'))
+        .toEqual('Troisième');
+      expect(new acte.Jour('4/11/1628').gregorien('%Jlo'))
+        .toEqual('Quatrième');
+      expect(new acte.Jour('5/11/1628').gregorien('%Jlo'))
+        .toEqual('Cinquième');
+      expect(new acte.Jour('7/11/1628').gregorien('%Jlo'))
+        .toEqual('Septième');
+      expect(new acte.Jour('9/11/1628').gregorien('%Jlo'))
+        .toEqual('Neuvième');
+      expect(new acte.Jour('21/11/1628').gregorien('%Jlo'))
+        .toEqual('Vingt-et-unième');
+      expect(new acte.Jour('21/11/1628').gregorien('%Jvo'))
+        .toEqual('Vingt et unième');
+      expect(new acte.Jour('22/11/1300', false).gregorien('%Alo'))
+        .toEqual('Mille-trois-centième');
+      expect(new acte.Jour('23/11/1680').gregorien('%Alo'))
+        .toEqual('Mille-six-cent-quatre-vingtième');
+      expect(new acte.Jour('24/11/0', false).gregorien('%Alo'))
+        .toEqual('Zéroième');
     });
   it(
     'new acte.Jour().gregorien(\'%Al\') = Année en lettres (réforme de 1990).',

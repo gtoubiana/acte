@@ -48,6 +48,7 @@ const acteScripts = [
   `${paths.func}/gregorienBissextile.js`,
   `${paths.func}/gregorienVersJj.js`,
   `${paths.func}/jjVersGregorien.js`,
+  `${paths.func}/premierOrdinalEnLettres.js`,
 
   // Fonctions restantes
   `${paths.func}/*.js`,

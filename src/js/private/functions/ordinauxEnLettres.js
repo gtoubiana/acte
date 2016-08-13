@@ -19,13 +19,9 @@
    const str = saisie.toString();
    let result;
 
-   // Genre
-   const prem = (genre) ? 'première' : 'premier';
-
    // Dernier caractère
    /* eslint-disable indent */
    switch (str.slice(-1)) {
-   case 'o':
    case 't':
    case 'x':
      result = `${str}ième`;
@@ -47,11 +43,11 @@
      if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
        result = `${str}ième`;
      } else {
-       result = (str === 'Un') ? initialeEnCapitale(prem) : prem;
+       result = premierOrdinalEnLettres(str, genre);
      }
      break;
    default:
-     result = str;
+     result = `${str}ième`;
    }
 
    /* eslint-enable indent */

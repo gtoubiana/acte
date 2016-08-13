@@ -1095,6 +1095,35 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
+     * Pour convertir uniquement 'un' en nombre ordinal.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} saisie - le nombre en lettres
+     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
+     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
+     * @return {String} le nombre - ordinal ou non - en lettres
+     * @example
+     * premierOrdinalEnLettres("Un"); // "Premier"
+     * premierOrdinalEnLettres("Un", 1); // "Première"
+     * premierOrdinalEnLettres("Deux"); // "Deux"
+     * premierOrdinalEnLettres("Vingt-trois"); // "Vingt-trois"
+     */
+    var premierOrdinalEnLettres = function () {
+      function premierOrdinalEnLettres(saisie, genre) {
+        var str = saisie.toString();
+        var prem = genre ? 'ère' : 'er';
+        var result = str === 'Un' ? 'Premi' + prem : str;
+
+        return result;
+      }
+
+      return premierOrdinalEnLettres;
+    }();
+
+    /**
      * Pour convertir en nombre entier positif.
      * @access private
      * @author Gilles Toubiana
@@ -1509,13 +1538,9 @@ if (!Array.prototype.reduce) {
         var str = saisie.toString();
         var result = void 0;
 
-        // Genre
-        var prem = genre ? 'première' : 'premier';
-
         // Dernier caractère
         /* eslint-disable indent */
         switch (str.slice(-1)) {
-        case 'o':
         case 't':
         case 'x':
           result = str + 'ième';
@@ -1537,11 +1562,11 @@ if (!Array.prototype.reduce) {
           if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
             result = str + 'ième';
           } else {
-            result = str === 'Un' ? initialeEnCapitale(prem) : prem;
+            result = premierOrdinalEnLettres(str, genre);
           }
           break;
         default:
-          result = str;
+          result = str + 'ième';
         }
 
         /* eslint-enable indent */
@@ -1606,35 +1631,6 @@ if (!Array.prototype.reduce) {
       }
 
       return prefixeZero;
-    }();
-
-    /**
-     * Pour convertir uniquement 'un' en nombre ordinal.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} saisie - le nombre en lettres
-     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
-     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
-     * @return {String} le nombre - ordinal ou non - en lettres
-     * @example
-     * premierOrdinalEnLettres("Un"); // "Premier"
-     * premierOrdinalEnLettres("Un", 1); // "Première"
-     * premierOrdinalEnLettres("Deux"); // "Deux"
-     * premierOrdinalEnLettres("Vingt-trois"); // "Vingt-trois"
-     */
-    var premierOrdinalEnLettres = function () {
-      function premierOrdinalEnLettres(saisie, genre) {
-        var str = saisie.toString();
-        var prem = genre ? 'ère' : 'er';
-        var result = str === 'Un' ? 'Premi' + prem : str;
-
-        return result;
-      }
-
-      return premierOrdinalEnLettres;
     }();
 
     /**
