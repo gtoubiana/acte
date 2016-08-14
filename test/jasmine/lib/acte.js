@@ -2248,7 +2248,8 @@ if (!Array.prototype.reduce) {
                   if (x.match(/[^JDS](MA|M)/)) {
                     // MAa | Ma = Mois en Abrégé
                     res = obj.Ml[1];
-                  } else if (x.match(/(JS|JD)/)) {
+                  }
+                  if (x.match(/(JS|JD)/)) {
                     // JSa | JDa = Jour de la Décade/Semaine en Abrégé
                     res = obj.JSl[1];
                   }
@@ -2257,7 +2258,8 @@ if (!Array.prototype.reduce) {
                   if (x.match(/[^JDS](MA|M)/)) {
                     // MA3 | M3 = Mois en Abrégé sur 3 caractères
                     res = obj.Ml[2];
-                  } else if (x.match(/(JS|JD)/)) {
+                  }
+                  if (x.match(/(JS|JD)/)) {
                     // JS3 | JD3 = Jour de la Décade/Semaine en Abrégé
                     // sur 3 caractères
                     res = obj.JSl[2];
@@ -2267,7 +2269,8 @@ if (!Array.prototype.reduce) {
                   if (x.match(/[^JDS](MA|M)/)) {
                     // MA2 | M2 = Mois en Abrégé sur 2 caractères
                     res = obj.Ml[3];
-                  } else if (x.match(/(JS|JD)/)) {
+                  }
+                  if (x.match(/(JS|JD)/)) {
                     // JS2 | JD2 = Jour de la Décade/Semaine en Abrégé
                     // sur 2 caractères
                     res = obj.JSl[3];
@@ -2277,7 +2280,8 @@ if (!Array.prototype.reduce) {
                   if (x.match(/[^JDS](MA|M)/)) {
                     // MA1 | M1 = Mois en Abrégé sur 1 caractère
                     res = obj.Ml[4];
-                  } else if (x.match(/(JS|JD)/)) {
+                  }
+                  if (x.match(/(JS|JD)/)) {
                     // JS1 | JD1 = Jour de la Décade/Semaine en Abrégé
                     // sur 1 caractère
                     res = obj.JSl[4];
@@ -2290,6 +2294,7 @@ if (!Array.prototype.reduce) {
 
                 // - o = lettres ou chiffres en Ordinaux
                 if (x.match(/o/)) {
+                  /* istanbul ignore else  */
                   if (ordinaux && x.match(/f/)) {
                     res = ordinauxEnLettres(lettres, 1);
                   } else if (ordinaux) {

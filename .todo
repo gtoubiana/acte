@@ -1,15 +1,10 @@
 Todo:
-  ☐ coverage des fonctions
-    ☐ ordinauxEnLettres
-    ☐ nombreEnLettres
-    ☐ acte.Jour.prototype.gregorien
-  ☐ réécrire les fonctions
-    ☐ nombreEnLettres
+  ☐ réécrire (optimiser, simplifier) les fonctions ? sortir des sections partagées...
     ☐ nombreOrdinal
-    ☐ ordinauxEnLettres
     ☐ periodeEnJours
     ☐ prefixeZero
     ☐ semaineComplete
+    ☐ nombreEnLettres
     ☐ acte.Jour.prototype.gregorien
   ☐ écrire julien()
   ☐ rédiger les tests de julien()
@@ -18,6 +13,11 @@ Todo:
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ coverage des fonctions @done(2016-08-14) @project(Todo)
+  ✔ nombreEnLettres @done(2016-08-14) @project(Todo)
+  ✔ acte.Jour.prototype.gregorien @done(2016-08-14) @project(Todo)
+  ✔ ordinauxEnLettres @done(2016-08-13) @project(Todo)
+  ✔ ordinauxEnLettres @done(2016-08-13) @project(Todo)
   ✔ deltaT @done(2016-08-11)
   ✔ prefixeZero @done(2016-08-12)
   ✔ premierOrdinalEnLettres @done(2016-08-12)

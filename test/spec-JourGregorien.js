@@ -127,6 +127,33 @@ describe('new acte.Jour().gregorien()', () => {
         .toEqual('Avr');
     });
   it(
+    'new acte.Jour().gregorien(\'%JS1\') = Jour de la Semaine en lettres ' +
+    'sur 1 caractère.',
+    () => {
+      expect(new acte.Jour('10/1/1600').gregorien('%JS1'))
+        .toEqual('L');
+    });
+  it(
+    'new acte.Jour().gregorien(\'%JS2\') = Jour de la Semaine en lettres ' +
+    'sur 2 caractère.',
+    () => {
+      expect(new acte.Jour('11/1/1600').gregorien('%JS2'))
+        .toEqual('Ma');
+    });
+  it(
+    'new acte.Jour().gregorien(\'%JS3\') = Jour de la Semaine en lettres ' +
+    'sur 3 caractère.',
+    () => {
+      expect(new acte.Jour('12/1/1600').gregorien('%JS3'))
+        .toEqual('Mer');
+    });
+  it(
+    'new acte.Jour().gregorien(\'%JSa\') = Jour de la Semaine en abrégé.',
+    () => {
+      expect(new acte.Jour('13/1/1600').gregorien('%JSa'))
+        .toEqual('Jeudi');
+    });
+  it(
     'new acte.Jour().gregorien(\'%Ml\') = Mois en lettres.',
     () => {
       expect(new acte.Jour('1/5/1600').gregorien('%Ml'))
@@ -188,6 +215,11 @@ describe('new acte.Jour().gregorien()', () => {
         .toEqual('Vingt-et-unième');
       expect(new acte.Jour('21/11/1628').gregorien('%Jvo'))
         .toEqual('Vingt et unième');
+    });
+  it(
+    'new acte.Jour().gregorien(\'%Alo\') = Année en nombres ordinaux' +
+    ' en lettres.',
+    () => {
       expect(new acte.Jour('22/11/1300', false).gregorien('%Alo'))
         .toEqual('Mille-trois-centième');
       expect(new acte.Jour('23/11/1680').gregorien('%Alo'))
@@ -200,11 +232,47 @@ describe('new acte.Jour().gregorien()', () => {
     () => {
       expect(new acte.Jour('1/9/1629').gregorien('%Al'))
         .toEqual('Mille-six-cent-vingt-neuf');
+      expect(new acte.Jour('1/9/-1629', false).gregorien('%Al'))
+        .toEqual('Moins mille-six-cent-vingt-neuf');
+      expect(new acte.Jour('1/9/16290').gregorien('%Al'))
+        .toEqual('');
+      expect(new acte.Jour('1/9/-16290', false).gregorien('%Al'))
+        .toEqual('');
+      expect(new acte.Jour('1/9/5100').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent');
+      expect(new acte.Jour('1/9/5110').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-dix');
+      expect(new acte.Jour('1/9/5111').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-onze');
+      expect(new acte.Jour('1/9/5112').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-douze');
+      expect(new acte.Jour('1/9/5170').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-soixante-dix');
+      expect(new acte.Jour('1/9/5171').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-soixante-et-onze');
+      expect(new acte.Jour('1/9/5172').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-soixante-douze');
+      expect(new acte.Jour('1/9/5190').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-quatre-vingt-dix');
+      expect(new acte.Jour('1/9/5191').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-quatre-vingt-onze');
+      expect(new acte.Jour('1/9/5192').gregorien('%Al'))
+        .toEqual('Cinq-mille-cent-quatre-vingt-douze');
+      expect(new acte.Jour('1/9/5192').gregorien('%Arl'))
+        .toEqual('Cinq-mille-cent-quatre-vingt-douze');
+    });
+  it(
+    'new acte.Jour().gregorien(\'%JSl\') = Jour de la semaine en lettres.',
+    () => {
+      expect(new acte.Jour('1/9/5192').gregorien('%JSl'))
+        .toEqual('Mardi');
     });
   it(
     'new acte.Jour().gregorien(\'%Av\') = Année en lettres (vieille notation).',
     () => {
       expect(new acte.Jour('1/9/1631').gregorien('%Av'))
+        .toEqual('Mille six cent trente et un');
+      expect(new acte.Jour('1/9/1631').gregorien('%Arv'))
         .toEqual('Mille six cent trente et un');
     });
   it(
@@ -214,6 +282,8 @@ describe('new acte.Jour().gregorien()', () => {
         .toEqual('MDCXXVIII');
       expect(new acte.Jour('1/9/-1628', false).gregorien('%Ar'))
         .toEqual('-MDCXXVIII');
+      expect(new acte.Jour('1/9/1629').gregorien('%Arz'))
+        .toEqual('MDCXXIX');
     });
   it(
     'new acte.Jour().gregorien(\'%JAp\') = Jour de l\'année en nombre ordinal',
@@ -226,6 +296,8 @@ describe('new acte.Jour().gregorien()', () => {
     ' ordinal.',
     () => {
       expect(new acte.Jour('6/1/1605').gregorien('%SAf'))
+        .toEqual('1re');
+      expect(new acte.Jour('6/1/1605').gregorien('%SAof'))
         .toEqual('1re');
     });
   it(
@@ -243,5 +315,47 @@ describe('new acte.Jour().gregorien()', () => {
     () => {
       expect(new acte.Jour('6/1/1605').gregorien('%SAlf'))
         .toEqual('Première');
+    });
+  it(
+    'new acte.Jour().gregorien() = Pas de correspondances.',
+    () => {
+      expect(new acte.Jour('').gregorien())
+        .toEqual('Pas de correspondances.');
+    });
+  it(
+    'new acte.Jour().gregorien(0, \'erreur\') = Message d\'erreur.',
+    () => {
+      expect(new acte.Jour('').gregorien(0, 'Message d\'erreur 1.'))
+        .toEqual('Message d\'erreur 1.');
+      expect(new acte.Jour('').gregorien('', 'Message d\'erreur 2.'))
+        .toEqual('Message d\'erreur 2.');
+      expect(new acte.Jour('').gregorien(false, 'Message d\'erreur 3.'))
+        .toEqual('Message d\'erreur 3.');
+    });
+  it(
+    'new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' +
+    '= Fonction de retour.',
+    () => {
+      expect(new acte.Jour('8 juin 1602')
+          .gregorien(0, 0, ((res, obj) => {
+            const jour = obj.J < 10 ? `0${obj.J}` : obj.J;
+            const mois = obj.M < 10 ? `0${obj.M}` : obj.M;
+            const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj
+              .A % 100;
+
+            return `${jour}/${mois}/${an}`;
+          })))
+        .toEqual('08/06/02');
+      expect(new acte.Jour('9 juillet 1603')
+          .gregorien(0, 0, ((res, obj) => {
+            const zero = (x) => {
+              const resultat = x < 10 ? `0${x}` : x;
+
+              return resultat;
+            };
+
+            return `${zero(obj.J)}/${zero(obj.M)}/${zero(obj.A % 100)}`;
+          })))
+        .toEqual('09/07/03');
     });
 });
