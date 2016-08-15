@@ -33,7 +33,12 @@
  * @param {Function} [rappel] - Une fonction de rappel
  * @return {String} La date grégorienne formatée
  * @example
- * new acte.Jour('1/1/1600').gregorien('%Jp %Mlb %A'); // '1er janvier 1600'
+ * new acte.Jour('1/1/1600').gregorien() // '1er janvier 1600'
+ * new acte.Jour('').gregorien(0, 'Erreur.') // 'Erreur.'
+ * new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, ((res, obj) => {
+ *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+ *   return `${res}/${an}`;
+ * }))) // '03/04/05'
  */
 acte.Jour.prototype.gregorien = function gregorien(format, erreur, rappel) {
   const resultat = formatageDeJour(format, erreur, rappel,

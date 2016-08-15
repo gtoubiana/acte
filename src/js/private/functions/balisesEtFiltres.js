@@ -10,7 +10,7 @@
  * @param {Object} obj - Objet content les dates
  * @return {String} Saisie filtrée
  * @example
- * balisesEtFiltres('%A'); // '2016'
+ * balisesEtFiltres(x, dobj(tvg));
  */
 const balisesEtFiltres = (x, obj) => {
   let arabe;

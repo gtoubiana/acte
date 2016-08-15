@@ -133,7 +133,7 @@ julien() et republicain().
 
 **Exemple** :  
 ```js
-balisesEtFiltres('%A'); // '2016'
+balisesEtFiltres(x, dobj(tvg));
 ```
 <a name="cosinus"></a>
 
