@@ -48,7 +48,15 @@ const acteScripts = [
   `${paths.func}/gregorienBissextile.js`,
   `${paths.func}/gregorienVersJj.js`,
   `${paths.func}/jjVersGregorien.js`,
+  `${paths.func}/initialeEnCapitale.js`,
   `${paths.func}/premierOrdinalEnLettres.js`,
+  `${paths.func}/prefixeZero.js`,
+  `${paths.func}/nombreEnLettres.js`,
+  `${paths.func}/ordinauxEnLettres.js`,
+  `${paths.func}/nombreOrdinal.js`,
+  `${paths.func}/dateValide.js`,
+  `${paths.func}/periodeEnJours.js`,
+  `${paths.func}/semaineComplete.js`,
 
   // Fonctions restantes
   `${paths.func}/*.js`,

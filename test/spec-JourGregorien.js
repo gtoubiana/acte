@@ -334,9 +334,9 @@ describe('new acte.Jour().gregorien()', () => {
     });
   it(
     'new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' +
-    '= Fonction de retour.',
+    '= Fonction de rappel.',
     () => {
-      expect(new acte.Jour('8 juin 1602')
+      expect(new acte.Jour('1 février 1603')
           .gregorien(0, 0, ((res, obj) => {
             const jour = obj.J < 10 ? `0${obj.J}` : obj.J;
             const mois = obj.M < 10 ? `0${obj.M}` : obj.M;
@@ -345,8 +345,8 @@ describe('new acte.Jour().gregorien()', () => {
 
             return `${jour}/${mois}/${an}`;
           })))
-        .toEqual('08/06/02');
-      expect(new acte.Jour('9 juillet 1603')
+        .toEqual('01/02/03');
+      expect(new acte.Jour('2 mars 1604')
           .gregorien(0, 0, ((res, obj) => {
             const zero = (x) => {
               const resultat = x < 10 ? `0${x}` : x;
@@ -356,6 +356,14 @@ describe('new acte.Jour().gregorien()', () => {
 
             return `${zero(obj.J)}/${zero(obj.M)}/${zero(obj.A % 100)}`;
           })))
-        .toEqual('09/07/03');
+        .toEqual('02/03/04');
+      expect(new acte.Jour('3 avril 1605')
+          .gregorien('%Jz/%Mz', 0, ((res, obj) => {
+            const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj
+              .A % 100;
+
+            return `${res}/${an}`;
+          })))
+        .toEqual('03/04/05');
     });
 });

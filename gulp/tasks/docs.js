@@ -43,7 +43,8 @@ const lazyJsdocFr = lazypipe()
   .pipe(rep, ': global constant', ': Constante')
   .pipe(rep, ': global function', ': Fonction')
   .pipe(rep, ': static class of', ': Classe statique de')
-  .pipe(rep, ': instance method of', ': Méthode d\'instance de');
+  .pipe(rep, ': instance method of', ': Méthode d\'instance de')
+  .pipe(rep, ': instance property of', ': Propriété d\'instance de');
 
 // .pipe(rep, ' ↩︎', '')
 

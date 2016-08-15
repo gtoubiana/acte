@@ -358,15 +358,15 @@ describe('new acte.Jour().gregorien()', function () {
     expect(new acte.Jour('').gregorien('', 'Message d\'erreur 2.')).toEqual('Message d\'erreur 2.');
     expect(new acte.Jour('').gregorien(false, 'Message d\'erreur 3.')).toEqual('Message d\'erreur 3.');
   });
-  it('new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' + '= Fonction de retour.', function () {
-    expect(new acte.Jour('8 juin 1602').gregorien(0, 0, function (res, obj) {
+  it('new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
+    expect(new acte.Jour('1 février 1603').gregorien(0, 0, function (res, obj) {
       var jour = obj.J < 10 ? '0' + obj.J : obj.J;
       var mois = obj.M < 10 ? '0' + obj.M : obj.M;
       var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
 
       return jour + '/' + mois + '/' + an;
-    })).toEqual('08/06/02');
-    expect(new acte.Jour('9 juillet 1603').gregorien(0, 0, function (res, obj) {
+    })).toEqual('01/02/03');
+    expect(new acte.Jour('2 mars 1604').gregorien(0, 0, function (res, obj) {
       var zero = function zero(x) {
         var resultat = x < 10 ? '0' + x : x;
 
@@ -374,6 +374,11 @@ describe('new acte.Jour().gregorien()', function () {
       };
 
       return zero(obj.J) + '/' + zero(obj.M) + '/' + zero(obj.A % 100);
-    })).toEqual('09/07/03');
+    })).toEqual('02/03/04');
+    expect(new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, function (res, obj) {
+      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+
+      return res + '/' + an;
+    })).toEqual('03/04/05');
   });
 });

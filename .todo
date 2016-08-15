@@ -6,6 +6,9 @@ Todo:
     ☐ semaineComplete
     ☐ nombreEnLettres
     ☐ acte.Jour.prototype.gregorien
+    ☐ balisesEtFiltres
+    ☐ objGregorien
+    ☐ formatageDeJour
   ☐ écrire julien()
   ☐ rédiger les tests de julien()
   ☐ écrire républicain()

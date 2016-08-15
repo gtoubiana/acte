@@ -1095,6 +1095,28 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
+     * Pour mettre en capitale le premier caractère d'une chaîne.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {String} str - la chaîne à modifier
+     * @return {String} la chaîne avec le premier caractère en capitale
+     * @example
+     * initialeEnCapitale("vingt"); // "Vingt"
+     */
+    var initialeEnCapitale = function () {
+      function initialeEnCapitale(str) {
+        var result = str.charAt(0).toUpperCase() + str.slice(1);
+
+        return result;
+      }
+
+      return initialeEnCapitale;
+    }();
+
+    /**
      * Pour convertir uniquement 'un' en nombre ordinal.
      * @access private
      * @author Gilles Toubiana
@@ -1124,226 +1146,28 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir en nombre entier positif.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.1
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} num - le nombre à convertir
-     * @return {Number} Le nombre entier positif
-     * @example
-     * absInt(-23.45); // 23
-     */
-    var absInt = function () {
-      function absInt(num) {
-        var result = Math.abs(parseInt(num, 10));
-
-        return result;
-      }
-
-      return absInt;
-    }();
-
-    /**
-     * Pour calculer l'année républicaine correspondant à un nombre de jours
-     * juliens.
-     * @access private
-     * @author John Walker
-     * @since 0.0.1
-     * @license Domaine public
-     * @see {@link fourmilab.ch/documents/calendar/|annee_da_la_revolution}
-     * @param {Number} jj - Nombre de jours juliens
-     * @return {Array} [0] An républicain,
-     * [1] Nombre de jours juliens pour l'équinoxe de l'année républicaine
-     * @example
-     * anRepublicain(2379902.5); // [12, 2379857.5]
-     */
-    var anRepublicain = function () {
-      function anRepublicain(jj) {
-        var guess = jjVersGregorien(jj)[0] - 2;
-        var lasteq = equinoxeAParis(guess);
-
-        while (lasteq > jj) {
-          guess--;
-          lasteq = equinoxeAParis(guess);
-        }
-
-        var nexteq = lasteq - 1;
-
-        while (!(lasteq <= jj && jj < nexteq)) {
-          lasteq = nexteq;
-          guess++;
-          nexteq = equinoxeAParis(guess);
-        }
-        var adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) +
-          1;
-
-        return [adr, lasteq];
-      }
-
-      return anRepublicain;
-    }();
-
-    /**
-     * Pour convertir des chiffres arabes en chiffres romains.
-     * @access private
-     * @author Iván Montes
-     * @since 0.0.1
-     * @license unknown
-     * @see {@link http://blog.stevenlevithan.com/?p=65#comment-16107|Blog}
-     * @param {Number} arabe - Chiffre arabe
-     * @return {String} Chiffre romain
-     * @example
-     * arabeVersRomain(2012); // 'MMXII'
-     */
-    var arabeVersRomain = function () {
-      function arabeVersRomain(arabe) {
-        var lookup = {
-          M: 1000,
-          CM: 900,
-          D: 500,
-          CD: 400,
-          C: 100,
-          XC: 90,
-          L: 50,
-          XL: 40,
-          X: 10,
-          IX: 9,
-          V: 5,
-          IV: 4,
-          I: 1
-        };
-        var tempArabe = Math.abs(arabe);
-        var sign = arabe < 0 ? '-' : '';
-        var romain = '';
-        var i = void 0;
-
-        for (i in lookup) {
-          /* istanbul ignore else  */
-          if (lookup.hasOwnProperty(i)) {
-            while (tempArabe >= lookup[i]) {
-              romain += i;
-              tempArabe -= lookup[i];
-            }
-          }
-        }
-
-        return sign + romain;
-      }
-
-      return arabeVersRomain;
-    }();
-
-    /**
-     * Pour créer un objet date grégorien valide.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.1
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} jour - le jour du mois gregorien en chiffres
-     * @param {Number} mois - le mois gregorien en chiffres
-     * @param {Number} an - l'année gregorienne en chiffres
-     * @return {Object} L'objet date valide
-     * @example
-     * dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
-     */
-    var dateValide = function () {
-      function dateValide(jour, mois, an) {
-        var resultat = new Date(an, mois - 1, jour);
-
-        resultat.setFullYear(an);
-
-        return resultat;
-      }
-
-      return dateValide;
-    }();
-
-    /**
-     * Pour mettre en capitale le premier caractère d'une chaîne.
+     * Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.15
      * @license MIT
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {String} str - la chaîne à modifier
-     * @return {String} la chaîne avec le premier caractère en capitale
+     * @param {Number} n - le nombre à préfixer
+     * @return {String} le nombre avec préfixe zéro
      * @example
-     * initialeEnCapitale("vingt"); // "Vingt"
+     * prefixeZero(20); // 20
+     * prefixeZero(9); // "09"
+     * prefixeZero(0); // 0
+     * prefixeZero(-4); // -4
      */
-    var initialeEnCapitale = function () {
-      function initialeEnCapitale(str) {
-        var result = str.charAt(0).toUpperCase() + str.slice(1);
+    var prefixeZero = function () {
+      function prefixeZero(n) {
+        var result = n < 10 && n > 0 ? '0' + n : n;
 
         return result;
       }
 
-      return initialeEnCapitale;
-    }();
-
-    /**
-     * Pour calculer une date julienne à partir du nombre de jours juliens.
-     * @access private
-     * @author John Walker
-     * @since 0.0.1
-     * @license Domaine public
-     * @see {@link http://fourmilab.ch/documents/calendar/|jd_to_julian}
-     * @param {Number} jj - Nombre de jours juliens
-     * @return {Array} [0] An, [1] Mois et [2] Jour julien
-     * @example
-     * jjVersJulien(2457346.5); // [2015,11,7]
-     */
-    var jjVersJulien = function () {
-      function jjVersJulien(jj) {
-        var b = Math.floor(jj + 0.5) + 1524;
-        var c = Math.floor((b - 122.1) / 365.25);
-        var d = Math.floor(365.25 * c);
-        var e = Math.floor((b - d) / 30.6001);
-        var mois = Math.floor(e < 14 ? e - 1 : e - 13);
-        var jour = b - d - Math.floor(30.6001 * e);
-        var an = Math.floor(mois > 2 ? c - 4716 : c - 4715);
-
-        if (an < 1) {
-          an--;
-        }
-
-        return [an, mois, jour];
-      }
-
-      return jjVersJulien;
-    }();
-
-    /**
-     * Pour calculer la date républicaine à partir du nombre de jours juliens,
-     * les 4 ou 5 'sansculottides' sont considérés comme un 13e mois.
-     * @access private
-     * @author John Walker
-     * @since 0.0.1
-     * @license Domaine public
-     * @see {@link fourmilab.ch/documents/calendar/|jd_to_french_revolutionary}
-     * @param {Number} jj - Nombre de jours juliens
-     * @return {Array} [0] An, [1] Mois, [2] Décade et [3] Jour républicain
-     * @example
-     * jjVersRepublicain(2379902.5); // [12, 2, 2, 6]
-     */
-    var jjVersRepublicain = function () {
-      function jjVersRepublicain(jj) {
-        var tempJj = Math.floor(jj) + 0.5;
-        var adr = anRepublicain(tempJj);
-        var an = adr[0];
-        var equinox = adr[1];
-        var mois = Math.floor((tempJj - equinox) / 30) + 1;
-        var jour = (tempJj - equinox) % 30;
-        var decade = Math.floor(jour / 10) + 1;
-
-        jour = jour % 10 + 1;
-
-        return [an, mois, decade, jour];
-      }
-
-      return jjVersRepublicain;
+      return prefixeZero;
     }();
 
     /**
@@ -1490,33 +1314,6 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir les nombres en nombres ordinaux.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} n - le nombre en chiffres
-     * @param {String} prem - le suffixe pour le chiffre 1
-     * @param {String} exp - le suffixe pour les chiffres différents de 1
-     * @return {String} le nombre ordinal
-     * @example
-     * nombreOrdinal(1,"er","e"); // "1er"
-     * nombreOrdinal(1,"re","e"); // "1re"
-     * nombreOrdinal(2,"er","e"); // "2e"
-     */
-    var nombreOrdinal = function () {
-      function nombreOrdinal(n, prem, exp) {
-        var result = n === 1 || n === '1er' || n === '1re' ? '1' + prem : n +
-          exp;
-
-        return result;
-      }
-
-      return nombreOrdinal;
-    }();
-
-    /**
      * Pour convertir les nombres en toutes lettres en nombres ordinaux.
      * @access private
      * @author Gilles Toubiana
@@ -1577,6 +1374,59 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
+     * Pour convertir les nombres en nombres ordinaux.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} n - le nombre en chiffres
+     * @param {String} prem - le suffixe pour le chiffre 1
+     * @param {String} exp - le suffixe pour les chiffres différents de 1
+     * @return {String} le nombre ordinal
+     * @example
+     * nombreOrdinal(1,"er","e"); // "1er"
+     * nombreOrdinal(1,"re","e"); // "1re"
+     * nombreOrdinal(2,"er","e"); // "2e"
+     */
+    var nombreOrdinal = function () {
+      function nombreOrdinal(n, prem, exp) {
+        var result = n === 1 || n === '1er' || n === '1re' ? '1' + prem : n +
+          exp;
+
+        return result;
+      }
+
+      return nombreOrdinal;
+    }();
+
+    /**
+     * Pour créer un objet date grégorien valide.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.1
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} jour - le jour du mois gregorien en chiffres
+     * @param {Number} mois - le mois gregorien en chiffres
+     * @param {Number} an - l'année gregorienne en chiffres
+     * @return {Object} L'objet date valide
+     * @example
+     * dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
+     */
+    var dateValide = function () {
+      function dateValide(jour, mois, an) {
+        var resultat = new Date(an, mois - 1, jour);
+
+        resultat.setFullYear(an);
+
+        return resultat;
+      }
+
+      return dateValide;
+    }();
+
+    /**
      * Pour calculer le nombre de jours entre deux dates.
      * @access private
      * @author Gilles Toubiana
@@ -1609,28 +1459,508 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
+     * Pour calculer le nombre de semaines depuis le début de l'année ou du mois.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.15
      * @license MIT
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} n - le nombre à préfixer
-     * @return {String} le nombre avec préfixe zéro
+     * @param {Number} j - le jour du mois grégorien
+     * @param {Number} m - le mois grégorien
+     * @param {Number} a - l'année grégorienne
+     * @param {Number} [mois] - par défaut, le calcul correspond à l'année.
+     * Pour calculer sur le mois en cours, il suffit d'ajouter un argument.
+     * @return {Number} le nombre de semaines
      * @example
-     * prefixeZero(20); // 20
-     * prefixeZero(9); // "09"
-     * prefixeZero(0); // 0
-     * prefixeZero(-4); // -4
+     * semaineComplete(14, 7, 2016); // 28
+     * semaineComplete(14, 7, 2016, 1); // 2
      */
-    var prefixeZero = function () {
-      function prefixeZero(n) {
-        var result = n < 10 && n > 0 ? '0' + n : n;
+    var semaineComplete = function () {
+      function semaineComplete(j, m, a, mois) {
+        // Si l'argument mois existe, calcule depuis le début du mois.
+        // sinon depuis le début de l'année
+        var x = mois ? m : 1;
+        var jourSemaine = dateValide(1, x, a).getDay();
+
+        jourSemaine = jourSemaine === 0 ? 7 : jourSemaine;
+
+        // Si le premier jour < jeudi (4), ajouter une semaine
+        var n = jourSemaine <= 4 ? 1 : 0;
+        var nombreSemaines = (periodeEnJours(1, x, a, j, m, a) - (8 -
+          jourSemaine)) / 7;
+        var semainesValides = nombreSemaines > parseInt(nombreSemaines, 10) ?
+          parseInt(nombreSemaines, 10) + n + 1 : parseInt(nombreSemaines,
+            10) + n;
+
+        return semainesValides;
+      }
+
+      return semaineComplete;
+    }();
+
+    /**
+     * Pour convertir en nombre entier positif.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.1
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} num - le nombre à convertir
+     * @return {Number} Le nombre entier positif
+     * @example
+     * absInt(-23.45); // 23
+     */
+    var absInt = function () {
+      function absInt(num) {
+        var result = Math.abs(parseInt(num, 10));
 
         return result;
       }
 
-      return prefixeZero;
+      return absInt;
+    }();
+
+    /**
+     * Pour calculer l'année républicaine correspondant à un nombre de jours
+     * juliens.
+     * @access private
+     * @author John Walker
+     * @since 0.0.1
+     * @license Domaine public
+     * @see {@link fourmilab.ch/documents/calendar/|annee_da_la_revolution}
+     * @param {Number} jj - Nombre de jours juliens
+     * @return {Array} [0] An républicain,
+     * [1] Nombre de jours juliens pour l'équinoxe de l'année républicaine
+     * @example
+     * anRepublicain(2379902.5); // [12, 2379857.5]
+     */
+    var anRepublicain = function () {
+      function anRepublicain(jj) {
+        var guess = jjVersGregorien(jj)[0] - 2;
+        var lasteq = equinoxeAParis(guess);
+
+        while (lasteq > jj) {
+          guess--;
+          lasteq = equinoxeAParis(guess);
+        }
+
+        var nexteq = lasteq - 1;
+
+        while (!(lasteq <= jj && jj < nexteq)) {
+          lasteq = nexteq;
+          guess++;
+          nexteq = equinoxeAParis(guess);
+        }
+        var adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) +
+          1;
+
+        return [adr, lasteq];
+      }
+
+      return anRepublicain;
+    }();
+
+    /**
+     * Pour convertir des chiffres arabes en chiffres romains.
+     * @access private
+     * @author Iván Montes
+     * @since 0.0.1
+     * @license unknown
+     * @see {@link http://blog.stevenlevithan.com/?p=65#comment-16107|Blog}
+     * @param {Number} arabe - Chiffre arabe
+     * @return {String} Chiffre romain
+     * @example
+     * arabeVersRomain(2012); // 'MMXII'
+     */
+    var arabeVersRomain = function () {
+      function arabeVersRomain(arabe) {
+        var lookup = {
+          M: 1000,
+          CM: 900,
+          D: 500,
+          CD: 400,
+          C: 100,
+          XC: 90,
+          L: 50,
+          XL: 40,
+          X: 10,
+          IX: 9,
+          V: 5,
+          IV: 4,
+          I: 1
+        };
+        var tempArabe = Math.abs(arabe);
+        var sign = arabe < 0 ? '-' : '';
+        var romain = '';
+        var i = void 0;
+
+        for (i in lookup) {
+          /* istanbul ignore else  */
+          if (lookup.hasOwnProperty(i)) {
+            while (tempArabe >= lookup[i]) {
+              romain += i;
+              tempArabe -= lookup[i];
+            }
+          }
+        }
+
+        return sign + romain;
+      }
+
+      return arabeVersRomain;
+    }();
+
+    /**
+     * Pour appliquer les balises et filtres aux prototypes gregorien(),
+     * julien() et republicain().
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} x - Saisie
+     * @param {Object} obj - Objet content les dates
+     * @return {String} Saisie filtrée
+     * @example
+     * balisesEtFiltres('%A'); // '2016'
+     */
+    var balisesEtFiltres = function () {
+      function balisesEtFiltres(x, obj) {
+        var arabe = void 0;
+        var ordinaux = void 0;
+        var res = x;
+        var chiffres = true;
+
+        // BALISES
+        if (x.match(/A/)) {
+          if (x.match(/AN/)) {
+            // AN = Année
+            res = obj.A;
+          } else {
+            // A = Année
+            res = obj.A;
+          }
+        }
+        if (x.match(/J/)) {
+          if (x.match(/JA/)) {
+            // JA = Jour dans l'Année
+            res = obj.JA;
+          } else {
+            // J = Jour dans le mois
+            res = obj.J;
+          }
+        }
+        if (x.match(/M/)) {
+          if (x.match(/MA/)) {
+            // MA = Mois dans l'Année
+            res = obj.M;
+          } else if (x.match(/JM/)) {
+            // JM = Jour dans le Mois
+            res = obj.J;
+          } else {
+            // M = Mois dans l'année
+            res = obj.M;
+          }
+        }
+        if (x.match(/D/)) {
+          if (x.match(/DA/)) {
+            // DA = Décade/Semaine dans l'Année
+            res = obj.S;
+          } else if (x.match(/DM/)) {
+            // DM = Décade/Semaine dans le Mois
+            res = obj.D;
+          } else if (x.match(/JD/)) {
+            // JD = Jour de la Décade/Semaine
+            res = obj.JS;
+          } else {
+            // D = Décade/Semaine dans le mois
+            res = obj.D;
+          }
+        }
+        if (x.match(/S/)) {
+          if (x.match(/SA/)) {
+            // SA = Décade/Semaine dans l'année
+            res = obj.S;
+          } else if (x.match(/SM/)) {
+            // SM = Décade/Semaine dans le mois
+            res = obj.D;
+          } else if (x.match(/JS/)) {
+            // JS = Jour de la décade/semaine
+            res = obj.JS;
+          } else {
+            // S = Décade/Semaine dans l'année
+            res = obj.S;
+          }
+        }
+
+        /* FILTRES */
+        if (x.match(/r/)) {
+          // - r = chiffres en Romains
+          arabe = res;
+          res = arabeVersRomain(res);
+        }
+        if (x.match(/z/)) {
+          // - z = Zéro devant le chiffre
+          if (!arabe) {
+            arabe = res;
+          }
+          res = prefixeZero(res);
+        }
+        if (x.match(/l|v/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MAl | Ml = Mois en Lettres
+            res = obj.Ml[0];
+            chiffres = false;
+          } else if (x.match(/(JS|JD)/)) {
+            // JSl | JDl = Jour de la Décade/Semaine en Lettres
+            res = obj.JSl[0];
+            chiffres = false;
+          } else {
+            if (x.match(/v/)) {
+              // - v = chiffres en lettres (Vieille notation)
+              res = arabe ? nombreEnLettres(arabe, 1) : nombreEnLettres(res,
+                1);
+            } else {
+              // - l = chiffres en Lettres
+              res = arabe ? nombreEnLettres(arabe) : nombreEnLettres(res);
+            }
+            ordinaux = true;
+          }
+        }
+        if (x.match(/a/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MAa | Ma = Mois en Abrégé
+            res = obj.Ml[1];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JSa | JDa = Jour de la Décade/Semaine en Abrégé
+            res = obj.JSl[1];
+          }
+        }
+        if (x.match(/3/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MA3 | M3 = Mois en Abrégé sur 3 caractères
+            res = obj.Ml[2];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JS3 | JD3 = Jour de la Décade/Semaine en Abrégé
+            // sur 3 caractères
+            res = obj.JSl[2];
+          }
+        }
+        if (x.match(/2/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MA2 | M2 = Mois en Abrégé sur 2 caractères
+            res = obj.Ml[3];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JS2 | JD2 = Jour de la Décade/Semaine en Abrégé
+            // sur 2 caractères
+            res = obj.JSl[3];
+          }
+        }
+        if (x.match(/1/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MA1 | M1 = Mois en Abrégé sur 1 caractère
+            res = obj.Ml[4];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JS1 | JD1 = Jour de la Décade/Semaine en Abrégé
+            // sur 1 caractère
+            res = obj.JSl[4];
+          }
+        }
+
+        // ENCOURS bugs globaux avec chiffres et lettres
+        // cf %Jrzl
+        var lettres = res;
+
+        // - o = lettres ou chiffres en Ordinaux
+        if (x.match(/o/)) {
+          /* istanbul ignore else  */
+          if (ordinaux && x.match(/f/)) {
+            res = ordinauxEnLettres(lettres, 1);
+          } else if (ordinaux) {
+            res = ordinauxEnLettres(lettres);
+          } else if (x.match(/f/) && chiffres) {
+            res = nombreOrdinal(lettres, 're', 'e');
+          } else if (chiffres) {
+            res = nombreOrdinal(lettres, 'er', 'e');
+          }
+        }
+
+        // - p = Premier ou 1er
+        if (x.match(/p/)) {
+          if (ordinaux) {
+            res = premierOrdinalEnLettres(lettres);
+          } else {
+            res = nombreOrdinal(lettres, 'er', '');
+          }
+        }
+
+        // - f = Féminin de p (première ou 1re)
+        if (x.match(/[^o]f/)) {
+          if (ordinaux) {
+            res = premierOrdinalEnLettres(lettres, 1);
+          } else {
+            res = nombreOrdinal(lettres, 're', '');
+          }
+        }
+        if (x.match(/b/)) {
+          // - b = en Bas de casse (minuscules)
+          res = res.toString().toLowerCase();
+        }
+        if (x.match(/c|m/)) {
+          // - c | m = en Capitales (Majuscules)
+          res = res.toString().toUpperCase();
+        }
+        return res;
+      }
+
+      return balisesEtFiltres;
+    }();
+
+    /**
+     * Pour générer les prototypes de formatage de Jour.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {String} format - Un format personnalisé
+     * @param {String} erreur - Un message d'erreur personnalisé
+     * @param {Function} rappel - Une fonction de rappel
+     * @param {String} df - Le format par défaut
+     * @param {String} de - Le message d'erreur par défaut
+     * @param {Object} dt - La référence aux variables dans Jour
+     * @param {Object} dobj - Une fonction ou un objet utilisable
+     * @return {String} La date formatée
+     * @example
+     * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
+     * 'Pas de correspondances.', this.variables.gregorien, objGregorien);
+     */
+    var formatageDeJour = function () {
+      function formatageDeJour(format, erreur, rappel, df, de, dt, dobj) {
+        var frmt = format || df;
+        var err = erreur || de;
+        var tvg = dt;
+        var resultat = void 0;
+
+        if (tvg.od) {
+          resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
+
+            // jscs:disable
+            function (x) {
+              // jscs:enable
+              var res = balisesEtFiltres(x, dobj(tvg));
+
+              return res;
+            });
+          if (typeof rappel === 'function') {
+            resultat = rappel(resultat, dobj(tvg));
+          }
+        } else {
+          resultat = err;
+        }
+        return resultat;
+      }
+
+      return formatageDeJour;
+    }();
+
+    /**
+     * Pour calculer une date julienne à partir du nombre de jours juliens.
+     * @access private
+     * @author John Walker
+     * @since 0.0.1
+     * @license Domaine public
+     * @see {@link http://fourmilab.ch/documents/calendar/|jd_to_julian}
+     * @param {Number} jj - Nombre de jours juliens
+     * @return {Array} [0] An, [1] Mois et [2] Jour julien
+     * @example
+     * jjVersJulien(2457346.5); // [2015,11,7]
+     */
+    var jjVersJulien = function () {
+      function jjVersJulien(jj) {
+        var b = Math.floor(jj + 0.5) + 1524;
+        var c = Math.floor((b - 122.1) / 365.25);
+        var d = Math.floor(365.25 * c);
+        var e = Math.floor((b - d) / 30.6001);
+        var mois = Math.floor(e < 14 ? e - 1 : e - 13);
+        var jour = b - d - Math.floor(30.6001 * e);
+        var an = Math.floor(mois > 2 ? c - 4716 : c - 4715);
+
+        if (an < 1) {
+          an--;
+        }
+
+        return [an, mois, jour];
+      }
+
+      return jjVersJulien;
+    }();
+
+    /**
+     * Pour calculer la date républicaine à partir du nombre de jours juliens,
+     * les 4 ou 5 'sansculottides' sont considérés comme un 13e mois.
+     * @access private
+     * @author John Walker
+     * @since 0.0.1
+     * @license Domaine public
+     * @see {@link fourmilab.ch/documents/calendar/|jd_to_french_revolutionary}
+     * @param {Number} jj - Nombre de jours juliens
+     * @return {Array} [0] An, [1] Mois, [2] Décade et [3] Jour républicain
+     * @example
+     * jjVersRepublicain(2379902.5); // [12, 2, 2, 6]
+     */
+    var jjVersRepublicain = function () {
+      function jjVersRepublicain(jj) {
+        var tempJj = Math.floor(jj) + 0.5;
+        var adr = anRepublicain(tempJj);
+        var an = adr[0];
+        var equinox = adr[1];
+        var mois = Math.floor((tempJj - equinox) / 30) + 1;
+        var jour = (tempJj - equinox) % 30;
+        var decade = Math.floor(jour / 10) + 1;
+
+        jour = jour % 10 + 1;
+
+        return [an, mois, decade, jour];
+      }
+
+      return jjVersRepublicain;
+    }();
+
+    /**
+     * Pour retourner un objet gregorien utilisable par le prototype gregorien().
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Object} d - un objet de Jour.variables
+     * @return {Object} result - un nouvel objet contenat toutes les valeurs
+     * @example
+     * objGregorien(tvg);
+     */
+    var objGregorien = function () {
+      function objGregorien(d) {
+        var result = {
+          A: d.a,
+          D: semaineComplete(d.jm, d.m, d.a, 1),
+          JA: periodeEnJours(1, 1, d.a, d.jm, d.m, d.a),
+          J: d.jm,
+          JS: d.od.getDay(),
+          JSl: jourGregorien[d.od.getDay()],
+          M: d.m,
+          Ml: moisGregorien[d.m - 1],
+          S: semaineComplete(d.jm, d.m, d.a, 0)
+        };
+
+        return result;
+      }
+
+      return objGregorien;
     }();
 
     /**
@@ -1830,46 +2160,6 @@ if (!Array.prototype.reduce) {
       }
 
       return saisieValide;
-    }();
-
-    /**
-     * Pour calculer le nombre de semaines depuis le début de l'année ou du mois.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} j - le jour du mois grégorien
-     * @param {Number} m - le mois grégorien
-     * @param {Number} a - l'année grégorienne
-     * @param {Number} [mois] - par défaut, le calcul correspond à l'année.
-     * Pour calculer sur le mois en cours, il suffit d'ajouter un argument.
-     * @return {Number} le nombre de semaines
-     * @example
-     * semaineComplete(14, 7, 2016); // 28
-     * semaineComplete(14, 7, 2016, 1); // 2
-     */
-    var semaineComplete = function () {
-      function semaineComplete(j, m, a, mois) {
-        // Si l'argument mois existe, calcule depuis le début du mois.
-        // sinon depuis le début de l'année
-        var x = mois ? m : 1;
-        var jourSemaine = dateValide(1, x, a).getDay();
-
-        jourSemaine = jourSemaine === 0 ? 7 : jourSemaine;
-
-        // Si le premier jour < jeudi (4), ajouter une semaine
-        var n = jourSemaine <= 4 ? 1 : 0;
-        var nombreSemaines = (periodeEnJours(1, x, a, j, m, a) - (8 -
-          jourSemaine)) / 7;
-        var semainesValides = nombreSemaines > parseInt(nombreSemaines, 10) ?
-          parseInt(nombreSemaines, 10) + n + 1 : parseInt(nombreSemaines,
-            10) + n;
-
-        return semainesValides;
-      }
-
-      return semaineComplete;
     }();
 
     /**
@@ -2111,236 +2401,15 @@ if (!Array.prototype.reduce) {
      * `z` - Zéro devant le chiffre<br>
      * @param {String} [erreur='Pas de correspondances.'] - Le message d'erreur
      * @param {Function} [rappel] - Une fonction de rappel
-     * @return {String} - La date grégorienne formatée
+     * @return {String} La date grégorienne formatée
      * @example
      * new acte.Jour('1/1/1600').gregorien('%Jp %Mlb %A'); // '1er janvier 1600'
      */
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
-        var frmt = format || '%Jp %Mlb %A';
-        var err = erreur || 'Pas de correspondances.';
-        var tvg = this.variables.gregorien;
-        var resultat = void 0;
-
-        if (tvg.od) {
-          (function () {
-            var obj = {
-              A: tvg.a,
-              D: semaineComplete(tvg.jm, tvg.m, tvg.a, 1),
-              JA: periodeEnJours(1, 1, tvg.a, tvg.jm, tvg.m, tvg.a),
-              J: tvg.jm,
-              JS: tvg.od.getDay(),
-              JSl: jourGregorien[tvg.od.getDay()],
-              M: tvg.m,
-              Ml: moisGregorien[tvg.m - 1],
-              S: semaineComplete(tvg.jm, tvg.m, tvg.a, 0)
-            };
-
-            resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
-
-              /* Sortir cette partie ? */
-              // jscs:disable
-              function (x) {
-                // jscs:enable
-                var arabe = void 0;
-                var ordinaux = void 0;
-                var res = x;
-                var chiffres = true;
-
-                // BALISES
-                if (x.match(/A/)) {
-                  if (x.match(/AN/)) {
-                    // AN = Année
-                    res = obj.A;
-                  } else {
-                    // A = Année
-                    res = obj.A;
-                  }
-                }
-                if (x.match(/J/)) {
-                  if (x.match(/JA/)) {
-                    // JA = Jour dans l'Année
-                    res = obj.JA;
-                  } else {
-                    // J = Jour dans le mois
-                    res = obj.J;
-                  }
-                }
-                if (x.match(/M/)) {
-                  if (x.match(/MA/)) {
-                    // MA = Mois dans l'Année
-                    res = obj.M;
-                  } else if (x.match(/JM/)) {
-                    // JM = Jour dans le Mois
-                    res = obj.J;
-                  } else {
-                    // M = Mois dans l'année
-                    res = obj.M;
-                  }
-                }
-                if (x.match(/D/)) {
-                  if (x.match(/DA/)) {
-                    // DA = Décade/Semaine dans l'Année
-                    res = obj.S;
-                  } else if (x.match(/DM/)) {
-                    // DM = Décade/Semaine dans le Mois
-                    res = obj.D;
-                  } else if (x.match(/JD/)) {
-                    // JD = Jour de la Décade/Semaine
-                    res = obj.JS;
-                  } else {
-                    // D = Décade/Semaine dans le mois
-                    res = obj.D;
-                  }
-                }
-                if (x.match(/S/)) {
-                  if (x.match(/SA/)) {
-                    // SA = Décade/Semaine dans l'année
-                    res = obj.S;
-                  } else if (x.match(/SM/)) {
-                    // SM = Décade/Semaine dans le mois
-                    res = obj.D;
-                  } else if (x.match(/JS/)) {
-                    // JS = Jour de la décade/semaine
-                    res = obj.JS;
-                  } else {
-                    // S = Décade/Semaine dans l'année
-                    res = obj.S;
-                  }
-                }
-
-                /* FILTRES */
-                if (x.match(/r/)) {
-                  // - r = chiffres en Romains
-                  arabe = res;
-                  res = arabeVersRomain(res);
-                }
-                if (x.match(/z/)) {
-                  // - z = Zéro devant le chiffre
-                  if (!arabe) {
-                    arabe = res;
-                  }
-                  res = prefixeZero(res);
-                }
-                if (x.match(/l|v/)) {
-                  if (x.match(/[^JDS](MA|M)/)) {
-                    // MAl | Ml = Mois en Lettres
-                    res = obj.Ml[0];
-                    chiffres = false;
-                  } else if (x.match(/(JS|JD)/)) {
-                    // JSl | JDl = Jour de la Décade/Semaine en Lettres
-                    res = obj.JSl[0];
-                    chiffres = false;
-                  } else {
-                    if (x.match(/v/)) {
-                      // - v = chiffres en lettres (Vieille notation)
-                      res = arabe ? nombreEnLettres(arabe, 1) :
-                        nombreEnLettres(res, 1);
-                    } else {
-                      // - l = chiffres en Lettres
-                      res = arabe ? nombreEnLettres(arabe) :
-                        nombreEnLettres(res);
-                    }
-                    ordinaux = true;
-                  }
-                }
-                if (x.match(/a/)) {
-                  if (x.match(/[^JDS](MA|M)/)) {
-                    // MAa | Ma = Mois en Abrégé
-                    res = obj.Ml[1];
-                  }
-                  if (x.match(/(JS|JD)/)) {
-                    // JSa | JDa = Jour de la Décade/Semaine en Abrégé
-                    res = obj.JSl[1];
-                  }
-                }
-                if (x.match(/3/)) {
-                  if (x.match(/[^JDS](MA|M)/)) {
-                    // MA3 | M3 = Mois en Abrégé sur 3 caractères
-                    res = obj.Ml[2];
-                  }
-                  if (x.match(/(JS|JD)/)) {
-                    // JS3 | JD3 = Jour de la Décade/Semaine en Abrégé
-                    // sur 3 caractères
-                    res = obj.JSl[2];
-                  }
-                }
-                if (x.match(/2/)) {
-                  if (x.match(/[^JDS](MA|M)/)) {
-                    // MA2 | M2 = Mois en Abrégé sur 2 caractères
-                    res = obj.Ml[3];
-                  }
-                  if (x.match(/(JS|JD)/)) {
-                    // JS2 | JD2 = Jour de la Décade/Semaine en Abrégé
-                    // sur 2 caractères
-                    res = obj.JSl[3];
-                  }
-                }
-                if (x.match(/1/)) {
-                  if (x.match(/[^JDS](MA|M)/)) {
-                    // MA1 | M1 = Mois en Abrégé sur 1 caractère
-                    res = obj.Ml[4];
-                  }
-                  if (x.match(/(JS|JD)/)) {
-                    // JS1 | JD1 = Jour de la Décade/Semaine en Abrégé
-                    // sur 1 caractère
-                    res = obj.JSl[4];
-                  }
-                }
-
-                // ENCOURS bugs globaux avec chiffres et lettres
-                // cf %Jrzl
-                var lettres = res;
-
-                // - o = lettres ou chiffres en Ordinaux
-                if (x.match(/o/)) {
-                  /* istanbul ignore else  */
-                  if (ordinaux && x.match(/f/)) {
-                    res = ordinauxEnLettres(lettres, 1);
-                  } else if (ordinaux) {
-                    res = ordinauxEnLettres(lettres);
-                  } else if (x.match(/f/) && chiffres) {
-                    res = nombreOrdinal(lettres, 're', 'e');
-                  } else if (chiffres) {
-                    res = nombreOrdinal(lettres, 'er', 'e');
-                  }
-                }
-
-                // - p = Premier ou 1er
-                if (x.match(/p/)) {
-                  if (ordinaux) {
-                    res = premierOrdinalEnLettres(lettres);
-                  } else {
-                    res = nombreOrdinal(lettres, 'er', '');
-                  }
-                }
-
-                // - f = Féminin de p (première ou 1re)
-                if (x.match(/[^o]f/)) {
-                  if (ordinaux) {
-                    res = premierOrdinalEnLettres(lettres, 1);
-                  } else {
-                    res = nombreOrdinal(lettres, 're', '');
-                  }
-                }
-                if (x.match(/b/)) {
-                  // - b = en Bas de casse (minuscules)
-                  res = res.toString().toLowerCase();
-                }
-                if (x.match(/c|m/)) {
-                  // - c | m = en Capitales (Majuscules)
-                  res = res.toString().toUpperCase();
-                }
-                return res;
-              });
-
-            if (typeof rappel === 'function') {
-              resultat = rappel(resultat, obj);
-            }
-          })();
-        } else {
-          resultat = err;
-        }
+        var resultat = formatageDeJour(format, erreur, rappel,
+          '%Jp %Mlb %A', 'Pas de correspondances.', this.variables.gregorien,
+          objGregorien);
 
         return resultat;
       }
