@@ -15,6 +15,15 @@
  * 31/12/1805 (Période républicaine) et du 18/3/1871 au 28/5/1871
  * (Commune de Paris).<br>
  * La valeur `false` permet de désactiver ces limitations.
+ * @example
+ * new acte.Jour('15/10/1582').gregorien() // 15 octobre 1582
+ * new acte.Jour('5 Xbre 1793').gregorien() // 5 décembre 1793
+ * new acte.Jour('5 Jet 1793').gregorien() // 5 juillet 1793
+ * new acte.Jour('10 nivôse an XIV').gregorien() // 31 décembre 1805
+ * new acte.Jour('8 frimaire an XVIII').gregorien() // Pas de correspondances.
+ * new acte.Jour('8 frimaire an XVIII', false).gregorien() // 29 novembre 1809
+ * new acte.Jour('14/10/1582').gregorien() // Pas de correspondances.
+ * new acte.Jour('14/10/1582', false).gregorien() // 14 octobre 1582
  * @since 0.0.1
  * @license MIT
  */
