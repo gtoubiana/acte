@@ -45,6 +45,7 @@ acte.Jour.prototype.gregorien = function gregorien(format, erreur, rappel) {
     '%Jp %Mlb %A',
     'Pas de correspondances.',
     this.variables.gregorien,
+    'od',
     objGregorien);
 
   return resultat;

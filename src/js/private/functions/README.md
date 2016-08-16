@@ -13,7 +13,7 @@
 * [equationDuTemps(jj)](#equationDuTemps) ⇒ <code>Nombre</code> ℗
 * [equinoxe(an, item)](#equinoxe) ⇒ <code>Nombre</code> ℗
 * [equinoxeAParis(an)](#equinoxeAParis) ⇒ <code>Nombre</code> ℗
-* [formatageDeJour(format, erreur, rappel, df, de, dt, dobj)](#formatageDeJour) ⇒ <code>Chaîne</code> ℗
+* [formatageDeJour(format, erreur, rappel, df, de, dt, dd, dobj)](#formatageDeJour) ⇒ <code>Chaîne</code> ℗
 * [fractionEquinoxe(an)](#fractionEquinoxe) ⇒ <code>Nombre</code> ℗
 * [gregorienBissextile(an)](#gregorienBissextile) ⇒ <code>Booléen</code> ℗
 * [gregorienVersJj(an, mois, jour)](#gregorienVersJj) ⇒ <code>Nombre</code> ℗
@@ -292,7 +292,7 @@ equinoxeAParis(2015); // 2457288.5
 ```
 <a name="formatageDeJour"></a>
 
-## formatageDeJour(format, erreur, rappel, df, de, dt, dobj) ⇒ <code>Chaîne</code> ℗
+## formatageDeJour(format, erreur, rappel, df, de, dt, dd, dobj) ⇒ <code>Chaîne</code> ℗
 Pour générer les prototypes de formatage de Jour.
 
 **Type** : Fonction  
@@ -311,6 +311,7 @@ Pour générer les prototypes de formatage de Jour.
 | df | <code>Chaîne</code> | Le format par défaut |
 | de | <code>Chaîne</code> | Le message d'erreur par défaut |
 | dt | <code>Objet</code> | La référence aux variables dans Jour |
+| dd | <code>Objet</code> | La référence exlicite à une variable dans dt |
 | dobj | <code>Objet</code> | Une fonction ou un objet utilisable |
 
 **Exemple** :  

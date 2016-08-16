@@ -1833,6 +1833,7 @@ if (!Array.prototype.reduce) {
      * @param {String} df - Le format par défaut
      * @param {String} de - Le message d'erreur par défaut
      * @param {Object} dt - La référence aux variables dans Jour
+     * @param {Object} dd - La référence exlicite à une variable dans dt
      * @param {Object} dobj - Une fonction ou un objet utilisable
      * @return {String} La date formatée
      * @example
@@ -1840,13 +1841,13 @@ if (!Array.prototype.reduce) {
      * 'Pas de correspondances.', this.variables.gregorien, objGregorien);
      */
     var formatageDeJour = function () {
-      function formatageDeJour(format, erreur, rappel, df, de, dt, dobj) {
+      function formatageDeJour(format, erreur, rappel, df, de, dt, dd, dobj) {
         var frmt = format || df;
         var err = erreur || de;
         var tvg = dt;
         var resultat = void 0;
 
-        if (tvg.od) {
+        if (tvg[dd]) {
           resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
             // jscs:disable
@@ -2423,7 +2424,7 @@ if (!Array.prototype.reduce) {
       function gregorien(format, erreur, rappel) {
         var resultat = formatageDeJour(format, erreur, rappel,
           '%Jp %Mlb %A', 'Pas de correspondances.', this.variables.gregorien,
-          objGregorien);
+          'od', objGregorien);
 
         return resultat;
       }

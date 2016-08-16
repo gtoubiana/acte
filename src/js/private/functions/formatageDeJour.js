@@ -11,19 +11,20 @@
  * @param {String} df - Le format par défaut
  * @param {String} de - Le message d'erreur par défaut
  * @param {Object} dt - La référence aux variables dans Jour
+ * @param {Object} dd - La référence exlicite à une variable dans dt
  * @param {Object} dobj - Une fonction ou un objet utilisable
  * @return {String} La date formatée
  * @example
  * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
  * 'Pas de correspondances.', this.variables.gregorien, objGregorien);
  */
-const formatageDeJour = (format, erreur, rappel, df, de, dt, dobj) => {
+const formatageDeJour = (format, erreur, rappel, df, de, dt, dd, dobj) => {
   const frmt = format || df;
   const err = erreur || de;
   const tvg = dt;
   let resultat;
 
-  if (tvg.od) {
+  if (tvg[dd]) {
     resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
       // jscs:disable
