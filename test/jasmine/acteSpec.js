@@ -383,3 +383,11 @@ describe('new acte.Jour().gregorien()', function () {
     })).toEqual('03/04/05');
   });
 });
+
+// http://jasmine.github.io/edge/introduction.html
+describe('new acte.Jour().julien()', function () {
+  // Valeurs par défaut
+  it('new acte.Jour().julien() = la date julienne ' + 'formatée par défaut.', function () {
+    expect(new acte.Jour('1/1/1630').julien()).toEqual('22 décembre 1629');
+  });
+});
