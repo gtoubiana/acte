@@ -13,7 +13,7 @@
 * [equationDuTemps(jj)](#equationDuTemps) ⇒ <code>Nombre</code> ℗
 * [equinoxe(an, item)](#equinoxe) ⇒ <code>Nombre</code> ℗
 * [equinoxeAParis(an)](#equinoxeAParis) ⇒ <code>Nombre</code> ℗
-* [formatageDeJour(format, erreur, rappel, df, de, dt, dd, dobj)](#formatageDeJour) ⇒ <code>Chaîne</code> ℗
+* [formatageDeJour(format, erreur, rappel, df, dt, dd, dobj)](#formatageDeJour) ⇒ <code>Chaîne</code> ℗
 * [fractionEquinoxe(an)](#fractionEquinoxe) ⇒ <code>Nombre</code> ℗
 * [gregorienBissextile(an)](#gregorienBissextile) ⇒ <code>Booléen</code> ℗
 * [gregorienVersJj(an, mois, jour)](#gregorienVersJj) ⇒ <code>Nombre</code> ℗
@@ -27,6 +27,7 @@
 * [normaliserDegres(a)](#normaliserDegres) ⇒ <code>Nombre</code> ℗
 * [nutation(jj)](#nutation) ⇒ <code>Tableau</code> ℗
 * [objGregorien(d)](#objGregorien) ⇒ <code>Objet</code> ℗
+* [objRepublicain(d)](#objRepublicain) ⇒ <code>Objet</code> ℗
 * [obliquiteEcliptique(jj)](#obliquiteEcliptique) ⇒ <code>Nombre</code> ℗
 * [ordinauxEnLettres(saisie, [genre])](#ordinauxEnLettres) ⇒ <code>Chaîne</code> ℗
 * [periodeEnJours(j1, m1, a1, j2, m2, a2)](#periodeEnJours) ⇒ <code>Nombre</code> ℗
@@ -292,7 +293,7 @@ equinoxeAParis(2015); // 2457288.5
 ```
 <a name="formatageDeJour"></a>
 
-## formatageDeJour(format, erreur, rappel, df, de, dt, dd, dobj) ⇒ <code>Chaîne</code> ℗
+## formatageDeJour(format, erreur, rappel, df, dt, dd, dobj) ⇒ <code>Chaîne</code> ℗
 Pour générer les prototypes de formatage de Jour.
 
 **Type** : Fonction  
@@ -309,7 +310,6 @@ Pour générer les prototypes de formatage de Jour.
 | erreur | <code>Chaîne</code> | Un message d'erreur personnalisé |
 | rappel | <code>Fonction</code> | Une fonction de rappel |
 | df | <code>Chaîne</code> | Le format par défaut |
-| de | <code>Chaîne</code> | Le message d'erreur par défaut |
 | dt | <code>Objet</code> | La référence aux variables dans Jour |
 | dd | <code>Objet</code> | La référence exlicite à une variable dans dt |
 | dobj | <code>Objet</code> | Une fonction ou un objet utilisable |
@@ -590,10 +590,32 @@ nutation(2457333.5);
 <a name="objGregorien"></a>
 
 ## objGregorien(d) ⇒ <code>Objet</code> ℗
-Pour retourner un objet gregorien utilisable par le prototype gregorien().
+Pour retourner un objet utilisable par les prototypes .gregorien()
+et .julien().
 
 **Type** : Fonction  
-**Résultat** : <code>Objet</code> - result - un nouvel objet contenat toutes les valeurs  
+**Résultat** : <code>Objet</code> - result - un nouvel objet contenant toutes les valeurs  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| d | <code>Objet</code> | un objet de Jour.variables |
+
+**Exemple** :  
+```js
+objGregorien(tvg);
+```
+<a name="objRepublicain"></a>
+
+## objRepublicain(d) ⇒ <code>Objet</code> ℗
+Pour retourner un objet utilisable par le prototype .republicain().
+
+**Type** : Fonction  
+**Résultat** : <code>Objet</code> - result - un nouvel objet contenant toutes les valeurs  
 **Accès** : privé  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.15  

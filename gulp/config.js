@@ -70,6 +70,7 @@ const acteScripts = [
   // Prototypes
   `${paths.proto}/Jour.prototype.gregorien.js`,
   `${paths.proto}/Jour.prototype.julien.js`,
+  `${paths.proto}/Jour.prototype.republicain.js`,
 ];
 
 // Template Jsdoc du module UMD

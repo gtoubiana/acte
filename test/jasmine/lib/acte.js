@@ -338,6 +338,28 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
+     * Nom des Jours Republicains et abbréviations courantes,
+     * sur 1, 2 et 3 caractères.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var jourRepublicain = [
+      ['Primidi', 'Prim', 'Pri', 'Pi', 'P'],
+      ['Duodi', 'Duo', 'Duo', 'Du', 'D'],
+      ['Tridi', 'Tri', 'Tri', 'Ti', 'T'],
+      ['Quartidi', 'Quart', 'Qua', 'Qa', 'Q'],
+      ['Quintidi', 'Quint', 'Qui', 'Qi', 'Q'],
+      ['Sextidi', 'Sext', 'Sex', 'Sx', 'S'],
+      ['Septidi', 'Sept', 'Sep', 'Sp', 'S'],
+      ['Octidi', 'Oct', 'Oct', 'Oc', 'O'],
+      ['Nonidi', 'Non', 'Non', 'No', 'N'],
+      ['Décadi', 'Déc', 'Déc', 'Dé', 'D']
+    ];
+
+    /**
      * Nom des Mois Grégoriens et abbréviations courantes,
      * sur 1, 2 et 3 caractères.
      * @access private
@@ -359,6 +381,31 @@ if (!Array.prototype.reduce) {
       ['Octobre', 'Oct', 'Oct', 'Oe', 'O'],
       ['Novembre', 'Nov', 'Nov', 'Ne', 'N'],
       ['Décembre', 'Déc', 'Déc', 'De', 'D']
+    ];
+
+    /**
+     * Nom des Mois Republicains et abbréviations courantes,
+     * sur 1, 2 et 3 caractères.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var moisRepublicain = [
+      ['Vendémiaire', 'Vend', 'Vnd', 'Vd', 'V'],
+      ['Brumaire', 'Brum', 'Bru', 'Br', 'B'],
+      ['Frimaire', 'Frim', 'Fri', 'Fr', 'F'],
+      ['Nivôse', 'Nivô', 'Niv', 'Ni', 'N'],
+      ['Pluviôse', 'Pluv', 'Plu', 'Pl', 'P'],
+      ['Ventôse', 'Vent', 'Vnt', 'Vt', 'V'],
+      ['Germinal', 'Germ', 'Ger', 'Gr', 'G'],
+      ['Floréal', 'Flor', 'Flo', 'Fl', 'F'],
+      ['Prairial', 'Prai', 'Pra', 'Pr', 'P'],
+      ['Messidor', 'Mess', 'Mes', 'Ms', 'M'],
+      ['Thermidor', 'Ther', 'The', 'Tr', 'T'],
+      ['Fructidor', 'Fruc', 'Fru', 'Ft', 'F'],
+      ['Jour complémentaire', 'Comp', 'Cmp', 'Cp', 'C']
     ];
 
     /**
@@ -1831,7 +1878,6 @@ if (!Array.prototype.reduce) {
      * @param {String} erreur - Un message d'erreur personnalisé
      * @param {Function} rappel - Une fonction de rappel
      * @param {String} df - Le format par défaut
-     * @param {String} de - Le message d'erreur par défaut
      * @param {Object} dt - La référence aux variables dans Jour
      * @param {Object} dd - La référence exlicite à une variable dans dt
      * @param {Object} dobj - Une fonction ou un objet utilisable
@@ -1841,9 +1887,9 @@ if (!Array.prototype.reduce) {
      * 'Pas de correspondances.', this.variables.gregorien, objGregorien);
      */
     var formatageDeJour = function () {
-      function formatageDeJour(format, erreur, rappel, df, de, dt, dd, dobj) {
+      function formatageDeJour(format, erreur, rappel, df, dt, dd, dobj) {
         var frmt = format || df;
-        var err = erreur || de;
+        var err = erreur || 'Pas de correspondances.';
         var tvg = dt;
         var resultat = void 0;
 
@@ -1933,14 +1979,15 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour retourner un objet gregorien utilisable par le prototype gregorien().
+     * Pour retourner un objet utilisable par les prototypes .gregorien()
+     * et .julien().
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.15
      * @license MIT
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @param {Object} d - un objet de Jour.variables
-     * @return {Object} result - un nouvel objet contenat toutes les valeurs
+     * @return {Object} result - un nouvel objet contenant toutes les valeurs
      * @example
      * objGregorien(tvg);
      */
@@ -1962,6 +2009,56 @@ if (!Array.prototype.reduce) {
       }
 
       return objGregorien;
+    }();
+
+    /**
+     * Pour retourner un objet utilisable par le prototype .republicain().
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Object} d - un objet de Jour.variables
+     * @return {Object} result - un nouvel objet contenant toutes les valeurs
+     * @example
+     * objGregorien(tvg);
+     */
+    var objRepublicain = function () {
+      function objRepublicain(d) {
+        var result = {
+
+          // A = Année
+          A: d.a,
+
+          // D = Décade/Semaine dans le mois
+          D: d.d,
+
+          // JA = Jour dans l'Année
+          JA: (d.m - 1) * 30 + d.jm,
+
+          // J = Jour dans le mois
+          J: d.jm,
+
+          // JS = Jour de la décade/semaine
+          JS: d.jd,
+
+          // JSl = Jour de la décade/semaine en lettres #
+          JSl: jourRepublicain[d.jm - 1],
+
+          // M = Mois dans l'année
+          M: d.m,
+
+          // Ml = Mois dans l'année en lettres #
+          Ml: moisRepublicain[d.m - 1],
+
+          // S = Décade/Semaine dans l'année
+          S: (d.m - 1) * 3 + d.d
+        };
+
+        return result;
+      }
+
+      return objRepublicain;
     }();
 
     /**
@@ -2423,8 +2520,7 @@ if (!Array.prototype.reduce) {
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
         var resultat = formatageDeJour(format, erreur, rappel,
-          '%Jp %Mlb %A', 'Pas de correspondances.', this.variables.gregorien,
-          'od', objGregorien);
+          '%Jp %Mlb %A', this.variables.gregorien, 'od', objGregorien);
 
         return resultat;
       }
@@ -2456,13 +2552,45 @@ if (!Array.prototype.reduce) {
     acte.Jour.prototype.julien = function () {
       function julien(format, erreur, rappel) {
         var resultat = formatageDeJour(format, erreur, rappel,
-          '%Jp %Mlb %A', 'Pas de correspondances.', this.variables.julien,
-          'od', objGregorien);
+          '%Jp %Mlb %A', this.variables.julien, 'od', objGregorien);
 
         return resultat;
       }
 
       return julien;
+    }();
+
+    /**
+     * Pour formater une date républicaine.
+     * @memberof acte
+     * @access public
+     * @since 0.0.15
+     * @author Gilles Toubiana
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @license MIT
+     * @param {String} [format='%Jp %Mlb %A'] - Le modèle de formatage.<br>
+     * Voir [.gregorien](#acte.Jour+gregorien) pour la syntaxe.
+     * @param {String} [erreur='Pas de correspondances.'] - Le message d'erreur
+     * @param {Function} [rappel] - Une fonction de rappel
+     * @return {String} La date républicaine formatée
+     * @example
+     * new acte.Jour('1/1/1600').républicain() // '?/?/?'
+     * new acte.Jour('').républicain(0, 'Erreur.') // 'Erreur.'
+     * new acte.Jour('3 avril 1605').républicain('%Jz/%Mz', 0, ((res, obj) => {
+     *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+     *   return `${res}/${an}`;
+     * }))) // '?/?/?'
+     */
+    acte.Jour.prototype.republicain = function () {
+      function republicain(format, erreur, rappel) {
+        var resultat = formatageDeJour(format, erreur, rappel,
+          '%Jp %Mlb an %Ar', this.variables.republicain, 'a',
+          objRepublicain);
+
+        return resultat;
+      }
+
+      return republicain;
     }();
     return acte;
   }

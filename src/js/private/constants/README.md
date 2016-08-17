@@ -17,7 +17,9 @@
 * [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
 * [jourGregorien](#jourGregorien) : <code>Tableau</code> ℗
+* [jourRepublicain](#jourRepublicain) : <code>Tableau</code> ℗
 * [moisGregorien](#moisGregorien) : <code>Tableau</code> ℗
+* [moisRepublicain](#moisRepublicain) : <code>Tableau</code> ℗
 * [regexpGregorien](#regexpGregorien) : <code>Tableau</code> ℗
 * [regexpRepublicain](#regexpRepublicain) : <code>Tableau</code> ℗
 * [siecleJulien](#siecleJulien) : <code>Nombre</code> ℗
@@ -232,10 +234,32 @@ sur 1, 2 et 3 caractères.
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.15  
 **Auteur** : Gilles Toubiana  
+<a name="jourRepublicain"></a>
+
+## jourRepublicain : <code>Tableau</code> ℗
+Nom des Jours Republicains et abbréviations courantes,
+sur 1, 2 et 3 caractères.
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
 <a name="moisGregorien"></a>
 
 ## moisGregorien : <code>Tableau</code> ℗
 Nom des Mois Grégoriens et abbréviations courantes,
+sur 1, 2 et 3 caractères.
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+<a name="moisRepublicain"></a>
+
+## moisRepublicain : <code>Tableau</code> ℗
+Nom des Mois Republicains et abbréviations courantes,
 sur 1, 2 et 3 caractères.
 
 **Type** : Constante  

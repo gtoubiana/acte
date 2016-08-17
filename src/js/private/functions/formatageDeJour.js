@@ -9,7 +9,6 @@
  * @param {String} erreur - Un message d'erreur personnalisé
  * @param {Function} rappel - Une fonction de rappel
  * @param {String} df - Le format par défaut
- * @param {String} de - Le message d'erreur par défaut
  * @param {Object} dt - La référence aux variables dans Jour
  * @param {Object} dd - La référence exlicite à une variable dans dt
  * @param {Object} dobj - Une fonction ou un objet utilisable
@@ -18,9 +17,9 @@
  * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
  * 'Pas de correspondances.', this.variables.gregorien, objGregorien);
  */
-const formatageDeJour = (format, erreur, rappel, df, de, dt, dd, dobj) => {
+const formatageDeJour = (format, erreur, rappel, df, dt, dd, dobj) => {
   const frmt = format || df;
-  const err = erreur || de;
+  const err = erreur || 'Pas de correspondances.';
   const tvg = dt;
   let resultat;
 

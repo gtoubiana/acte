@@ -23,6 +23,7 @@ acte - Librairie Javascript pour manipuler des données généalogiques.
         * [new acte.Jour(saisie, [limites])](#new_acte.Jour_new)
         * [.gregorien](#acte.Jour+gregorien) ⇒ <code>Chaîne</code>
         * [.julien](#acte.Jour+julien) ⇒ <code>Chaîne</code>
+        * [.republicain](#acte.Jour+republicain) ⇒ <code>Chaîne</code>
 
 <a name="acte.Jour"></a>
 
@@ -39,6 +40,7 @@ acte - Librairie Javascript pour manipuler des données généalogiques.
     * [new acte.Jour(saisie, [limites])](#new_acte.Jour_new)
     * [.gregorien](#acte.Jour+gregorien) ⇒ <code>Chaîne</code>
     * [.julien](#acte.Jour+julien) ⇒ <code>Chaîne</code>
+    * [.republicain](#acte.Jour+republicain) ⇒ <code>Chaîne</code>
 
 <a name="new_acte.Jour_new"></a>
 
@@ -117,6 +119,34 @@ new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, ((res, obj) => {
   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
   return `${res}/${an}`;
 }))) // '24/03/05'
+```
+<a name="acte.Jour+republicain"></a>
+
+#### jour.republicain ⇒ <code>Chaîne</code>
+Pour formater une date républicaine.
+
+**Type** : Propriété d'instance de <code>[Jour](#acte.Jour)</code>  
+**Résultat** : <code>Chaîne</code> - La date républicaine formatée  
+**Accès** : public  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Par défaut | Description |
+| --- | --- | --- | --- |
+| [format] | <code>Chaîne</code> | <code>&#x27;%Jp %Mlb %A&#x27;</code> | Le modèle de formatage.<br> Voir [.gregorien](#acte.Jour+gregorien) pour la syntaxe. |
+| [erreur] | <code>Chaîne</code> | <code>&#x27;Pas de correspondances.&#x27;</code> | Le message d'erreur |
+| [rappel] | <code>Fonction</code> |  | Une fonction de rappel |
+
+**Exemple** :  
+```js
+new acte.Jour('1/1/1600').républicain() // '?/?/?'
+new acte.Jour('').républicain(0, 'Erreur.') // 'Erreur.'
+new acte.Jour('3 avril 1605').républicain('%Jz/%Mz', 0, ((res, obj) => {
+  const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+  return `${res}/${an}`;
+}))) // '?/?/?'
 ```
 * * *
 Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>

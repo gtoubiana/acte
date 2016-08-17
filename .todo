@@ -9,9 +9,10 @@ Todo:
     ☐ balisesEtFiltres
     ☐ objGregorien
     ☐ formatageDeJour
-  ☐ écrire julien()
-  ☐ rédiger les tests de julien()
+  ✔ écrire julien() @done(2016-08-17) @project(Todo)
+  ✔ rédiger les tests de julien() @done(2016-08-17) @project(Todo)
   ☐ écrire républicain()
+    ☐ bug avec 30 fructidor et obj.jm (devrait être 30 => undefined)
   ☐ rédiger les tests de républicain()
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿

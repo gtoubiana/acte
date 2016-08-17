@@ -1,12 +1,13 @@
  /**
-  * Pour retourner un objet gregorien utilisable par le prototype gregorien().
+  * Pour retourner un objet utilisable par les prototypes .gregorien()
+  * et .julien().
   * @access private
   * @author Gilles Toubiana
   * @since 0.0.15
   * @license MIT
   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
   * @param {Object} d - un objet de Jour.variables
-  * @return {Object} result - un nouvel objet contenat toutes les valeurs
+  * @return {Object} result - un nouvel objet contenant toutes les valeurs
   * @example
   * objGregorien(tvg);
   */
