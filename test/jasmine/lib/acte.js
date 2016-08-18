@@ -2043,7 +2043,7 @@ if (!Array.prototype.reduce) {
           JS: d.jd,
 
           // JSl = Jour de la décade/semaine en lettres #
-          JSl: jourRepublicain[d.jm - 1],
+          JSl: jourRepublicain[d.jd - 1],
 
           // M = Mois dans l'année
           M: d.m,
