@@ -28,13 +28,9 @@
      J: d.jm,
 
      // JS = Jour de la décade/semaine
-     // JS: d.od.getDay(),
-     // JS: jourSemaineJulien(d.jj),
      JS: js,
 
      // JSl = Jour de la décade/semaine en lettres
-     // JSl: jourGregorien[d.od.getDay()],
-     // JSl: jourGregorien[jourSemaineJulien(d.jj)],
      JSl: jourGregorien[js],
 
      // M = Mois dans l'année

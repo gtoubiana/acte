@@ -10,7 +10,7 @@
 
 
 ## Description
-Librairie Javascript pour manipuler des données généalogiques
+Librairie Javascript pour manipuler des données généalogiques.
 
 ## Installation
 
@@ -24,6 +24,9 @@ Téléchargez et décompressez la dernière archive zip ([acte-0.0.15-dist.zip](
 ```html
 <script type="text/javascript" src="acte.min.js"></script>
 ```
+
+## Documentation
+Consultez l'[API](https://github.com/gtoubiana/acte/blob/master/dist/README.md) et les [tests](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js).
 
 * * *
 Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/).
