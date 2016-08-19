@@ -1881,13 +1881,15 @@ if (!Array.prototype.reduce) {
      * @param {Object} dt - La référence aux variables dans Jour
      * @param {Object} dd - La référence exlicite à une variable dans dt
      * @param {Object} dobj - Une fonction ou un objet utilisable
+     * @param {Object} [pro] - La référence du prototype si nécessaire
      * @return {String} La date formatée
      * @example
      * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
      * 'Pas de correspondances.', this.variables.gregorien, objGregorien);
      */
     var formatageDeJour = function () {
-      function formatageDeJour(format, erreur, rappel, df, dt, dd, dobj) {
+      function formatageDeJour(format, erreur, rappel, df, dt, dd, dobj,
+        pro) {
         var frmt = format || df;
         var err = erreur || 'Pas de correspondances.';
         var tvg = dt;
@@ -1899,12 +1901,12 @@ if (!Array.prototype.reduce) {
             // jscs:disable
             function (x) {
               // jscs:enable
-              var res = balisesEtFiltres(x, dobj(tvg));
+              var res = balisesEtFiltres(x, dobj(tvg, pro));
 
               return res;
             });
           if (typeof rappel === 'function') {
-            resultat = rappel(resultat, dobj(tvg));
+            resultat = rappel(resultat, dobj(tvg, pro));
           }
         } else {
           resultat = err;
@@ -1979,29 +1981,74 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour retourner un objet utilisable par les prototypes .gregorien()
-     * et .julien().
+     * Pour calculer le jour de la semaine à partir du nombre de jours juliens.
+     * @access private
+     * @author John Walker
+     * @since 0.0.15
+     * @license Domaine public
+     * @see {@link http://fourmilab.ch/documents/calendar/|jwday}
+     * @param  {Number} jj - Nombre de jours juliens
+     * @return {Number} Le jour de la semaine (0-6)
+     * @example
+     * jourSemaineJulien(2378625.5); // 6
+     */
+    var jourSemaineJulien = function () {
+      function jourSemaineJulien(jj) {
+        var result = reste(Math.floor(jj + 1.5), 7);
+
+        return result;
+      }
+
+      return jourSemaineJulien;
+    }();
+
+    /**
+     * Pour retourner un objet utilisable par le prototype .gregorien().
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.15
      * @license MIT
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @param {Object} d - un objet de Jour.variables
+     * @param {Object} [pro] - La référence du prototype si nécessaire
      * @return {Object} result - un nouvel objet contenant toutes les valeurs
      * @example
      * objGregorien(tvg);
      */
     var objGregorien = function () {
-      function objGregorien(d) {
+      function objGregorien(d, pro) {
+        var js = pro === 'julien' ? jourSemaineJulien(d.jj) : d.od.getDay();
         var result = {
+
+          // A = Année
           A: d.a,
+
+          // D = Décade/Semaine dans le mois
           D: semaineComplete(d.jm, d.m, d.a, 1),
+
+          // JA = Jour dans l'Année
           JA: periodeEnJours(1, 1, d.a, d.jm, d.m, d.a),
+
+          // J = Jour dans le mois
           J: d.jm,
-          JS: d.od.getDay(),
-          JSl: jourGregorien[d.od.getDay()],
+
+          // JS = Jour de la décade/semaine
+          // JS: d.od.getDay(),
+          // JS: jourSemaineJulien(d.jj),
+          JS: js,
+
+          // JSl = Jour de la décade/semaine en lettres
+          // JSl: jourGregorien[d.od.getDay()],
+          // JSl: jourGregorien[jourSemaineJulien(d.jj)],
+          JSl: jourGregorien[js],
+
+          // M = Mois dans l'année
           M: d.m,
+
+          // Ml = Mois dans l'année en lettres
           Ml: moisGregorien[d.m - 1],
+
+          // S = Décade/Semaine dans l'année
           S: semaineComplete(d.jm, d.m, d.a, 0)
         };
 
@@ -2042,13 +2089,13 @@ if (!Array.prototype.reduce) {
           // JS = Jour de la décade/semaine
           JS: d.jd,
 
-          // JSl = Jour de la décade/semaine en lettres #
+          // JSl = Jour de la décade/semaine en lettres
           JSl: jourRepublicain[d.jd - 1],
 
           // M = Mois dans l'année
           M: d.m,
 
-          // Ml = Mois dans l'année en lettres #
+          // Ml = Mois dans l'année en lettres
           Ml: moisRepublicain[d.m - 1],
 
           // S = Décade/Semaine dans l'année
@@ -2363,7 +2410,7 @@ if (!Array.prototype.reduce) {
           regexpRepublicain);
 
         // Lorsque la date est valide [rjmc,rmc,rac]
-        if (saisieRepublicain[2] && saisieRepublicain[0] < 30 && absInt(
+        if (saisieRepublicain[2] && saisieRepublicain[0] < 31 && absInt(
             saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
           absInt(saisieRepublicain[1]) !== 0) {
           tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),
@@ -2552,7 +2599,8 @@ if (!Array.prototype.reduce) {
     acte.Jour.prototype.julien = function () {
       function julien(format, erreur, rappel) {
         var resultat = formatageDeJour(format, erreur, rappel,
-          '%Jp %Mlb %A', this.variables.julien, 'od', objGregorien);
+          '%Jp %Mlb %A', this.variables.julien, 'od', objGregorien,
+          'julien');
 
         return resultat;
       }

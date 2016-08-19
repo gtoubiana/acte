@@ -13,7 +13,7 @@
 * [equationDuTemps(jj)](#equationDuTemps) ⇒ <code>Nombre</code> ℗
 * [equinoxe(an, item)](#equinoxe) ⇒ <code>Nombre</code> ℗
 * [equinoxeAParis(an)](#equinoxeAParis) ⇒ <code>Nombre</code> ℗
-* [formatageDeJour(format, erreur, rappel, df, dt, dd, dobj)](#formatageDeJour) ⇒ <code>Chaîne</code> ℗
+* [formatageDeJour(format, erreur, rappel, df, dt, dd, dobj, [pro])](#formatageDeJour) ⇒ <code>Chaîne</code> ℗
 * [fractionEquinoxe(an)](#fractionEquinoxe) ⇒ <code>Nombre</code> ℗
 * [gregorienBissextile(an)](#gregorienBissextile) ⇒ <code>Booléen</code> ℗
 * [gregorienVersJj(an, mois, jour)](#gregorienVersJj) ⇒ <code>Nombre</code> ℗
@@ -21,12 +21,13 @@
 * [jjVersGregorien(jj)](#jjVersGregorien) ⇒ <code>Tableau</code> ℗
 * [jjVersJulien(jj)](#jjVersJulien) ⇒ <code>Tableau</code> ℗
 * [jjVersRepublicain(jj)](#jjVersRepublicain) ⇒ <code>Tableau</code> ℗
+* [jourSemaineJulien(jj)](#jourSemaineJulien) ⇒ <code>Nombre</code> ℗
 * [julienVersJj(an, mois, jour)](#julienVersJj) ⇒ <code>Nombre</code> ℗
 * [nombreEnLettres(n, [r])](#nombreEnLettres) ⇒ <code>Chaîne</code> ℗
 * [nombreOrdinal(n, prem, exp)](#nombreOrdinal) ⇒ <code>Chaîne</code> ℗
 * [normaliserDegres(a)](#normaliserDegres) ⇒ <code>Nombre</code> ℗
 * [nutation(jj)](#nutation) ⇒ <code>Tableau</code> ℗
-* [objGregorien(d)](#objGregorien) ⇒ <code>Objet</code> ℗
+* [objGregorien(d, [pro])](#objGregorien) ⇒ <code>Objet</code> ℗
 * [objRepublicain(d)](#objRepublicain) ⇒ <code>Objet</code> ℗
 * [obliquiteEcliptique(jj)](#obliquiteEcliptique) ⇒ <code>Nombre</code> ℗
 * [ordinauxEnLettres(saisie, [genre])](#ordinauxEnLettres) ⇒ <code>Chaîne</code> ℗
@@ -293,7 +294,7 @@ equinoxeAParis(2015); // 2457288.5
 ```
 <a name="formatageDeJour"></a>
 
-## formatageDeJour(format, erreur, rappel, df, dt, dd, dobj) ⇒ <code>Chaîne</code> ℗
+## formatageDeJour(format, erreur, rappel, df, dt, dd, dobj, [pro]) ⇒ <code>Chaîne</code> ℗
 Pour générer les prototypes de formatage de Jour.
 
 **Type** : Fonction  
@@ -313,6 +314,7 @@ Pour générer les prototypes de formatage de Jour.
 | dt | <code>Objet</code> | La référence aux variables dans Jour |
 | dd | <code>Objet</code> | La référence exlicite à une variable dans dt |
 | dobj | <code>Objet</code> | Une fonction ou un objet utilisable |
+| [pro] | <code>Objet</code> | La référence du prototype si nécessaire |
 
 **Exemple** :  
 ```js
@@ -472,6 +474,27 @@ les 4 ou 5 'sansculottides' sont considérés comme un 13e mois.
 ```js
 jjVersRepublicain(2379902.5); // [12, 2, 2, 6]
 ```
+<a name="jourSemaineJulien"></a>
+
+## jourSemaineJulien(jj) ⇒ <code>Nombre</code> ℗
+Pour calculer le jour de la semaine à partir du nombre de jours juliens.
+
+**Type** : Fonction  
+**Résultat** : <code>Nombre</code> - Le jour de la semaine (0-6)  
+**Accès** : privé  
+**Voir** : [jwday](http://fourmilab.ch/documents/calendar/)  
+**Depuis** : 0.0.15  
+**Auteur** : John Walker  
+**Licence** : Domaine public  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| jj | <code>Nombre</code> | Nombre de jours juliens |
+
+**Exemple** :  
+```js
+jourSemaineJulien(2378625.5); // 6
+```
 <a name="julienVersJj"></a>
 
 ## julienVersJj(an, mois, jour) ⇒ <code>Nombre</code> ℗
@@ -589,9 +612,8 @@ nutation(2457333.5);
 ```
 <a name="objGregorien"></a>
 
-## objGregorien(d) ⇒ <code>Objet</code> ℗
-Pour retourner un objet utilisable par les prototypes .gregorien()
-et .julien().
+## objGregorien(d, [pro]) ⇒ <code>Objet</code> ℗
+Pour retourner un objet utilisable par le prototype .gregorien().
 
 **Type** : Fonction  
 **Résultat** : <code>Objet</code> - result - un nouvel objet contenant toutes les valeurs  
@@ -604,6 +626,7 @@ et .julien().
 | Paramètres | Type | Description |
 | --- | --- | --- |
 | d | <code>Objet</code> | un objet de Jour.variables |
+| [pro] | <code>Objet</code> | La référence du prototype si nécessaire |
 
 **Exemple** :  
 ```js

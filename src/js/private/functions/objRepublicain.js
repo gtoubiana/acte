@@ -28,13 +28,13 @@
      // JS = Jour de la décade/semaine
      JS: d.jd,
 
-     // JSl = Jour de la décade/semaine en lettres #
+     // JSl = Jour de la décade/semaine en lettres
      JSl: jourRepublicain[d.jd - 1],
 
      // M = Mois dans l'année
      M: d.m,
 
-     // Ml = Mois dans l'année en lettres #
+     // Ml = Mois dans l'année en lettres
      Ml: moisRepublicain[d.m - 1],
 
      // S = Décade/Semaine dans l'année

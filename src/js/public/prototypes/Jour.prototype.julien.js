@@ -24,7 +24,8 @@ acte.Jour.prototype.julien = function julien(format, erreur, rappel) {
     '%Jp %Mlb %A',
     this.variables.julien,
     'od',
-    objGregorien);
+    objGregorien,
+    'julien');
 
   return resultat;
 };

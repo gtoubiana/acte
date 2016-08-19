@@ -5,7 +5,7 @@ highlight-selected@0.11.2
 linter@1.11.16
 linter-eslint@7.2.4
 linter-jscs@4.0.5
-local-history@3.4.0
+local-history@3.4.1
 open-in-browser@0.4.7
 open-terminal-here@2.1.4
 sort-lines@0.14.0

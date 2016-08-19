@@ -192,7 +192,6 @@ describe('new acte.Jour()', function () {
   });
 });
 
-// http://jasmine.github.io/edge/introduction.html
 describe('new acte.Jour().gregorien()', function () {
   // Valeurs par défaut
   it('new acte.Jour().gregorien() = la date grégorienne ' + 'formatée par défaut.', function () {
@@ -383,19 +382,202 @@ describe('new acte.Jour().gregorien()', function () {
   });
 });
 
-// http://jasmine.github.io/edge/introduction.html
 describe('new acte.Jour().julien()', function () {
   // Valeurs par défaut
   it('new acte.Jour().julien() = la date julienne ' + 'formatée par défaut.', function () {
     expect(new acte.Jour('1/1/1630').julien()).toEqual('22 décembre 1629');
   });
+
+  // Balises
+  it('new acte.Jour().julien(\'%A\') = l\'Année julienne.', function () {
+    expect(new acte.Jour('1/1/1601').julien('%A')).toEqual('1600');
+  });
+  it('new acte.Jour().julien(\'%AN\') = l\'Année julienne.', function () {
+    expect(new acte.Jour('1/1/1602').julien('%AN')).toEqual('1601');
+  });
+  it('new acte.Jour().julien(\'%D\') = la Semaine/Décade dans le mois.', function () {
+    expect(new acte.Jour('14/1/1600').julien('%D')).toEqual('1');
+  });
+  it('new acte.Jour().julien(\'%DM\') = la Semaine/Décade dans le mois.', function () {
+    expect(new acte.Jour('21/1/1600').julien('%DM')).toEqual('2');
+  });
+  it('new acte.Jour().julien(\'%SM\') = la Semaine/Décade dans le mois.', function () {
+    expect(new acte.Jour('28/1/1600').julien('%SM')).toEqual('3');
+  });
+  it('new acte.Jour().julien(\'%J\') = le Jour dans le mois.', function () {
+    expect(new acte.Jour('26/1/1600').julien('%J')).toEqual('16');
+  });
+  it('new acte.Jour().julien(\'%JM\') = le Jour dans le mois.', function () {
+    expect(new acte.Jour('27/1/1600').julien('%JM')).toEqual('17');
+  });
+  it('new acte.Jour().julien(\'%JA\') = le Jour dans l\'année.', function () {
+    expect(new acte.Jour('23/8/1600').julien('%JA')).toEqual('226');
+  });
+  it('new acte.Jour().julien(\'%JS\') = le Jour de la décade/Semaine.', function () {
+    expect(new acte.Jour('7/1/1600').julien('%JS')).toEqual('5');
+  });
+  it('new acte.Jour().julien(\'%JD\') = le Jour de la décade/Semaine.', function () {
+    expect(new acte.Jour('8/1/1600').julien('%JD')).toEqual('6');
+  });
+  it('new acte.Jour().julien(\'%M\') = le Mois dans l\'année.', function () {
+    expect(new acte.Jour('1/9/1600').julien('%M')).toEqual('8');
+  });
+  it('new acte.Jour().julien(\'%MA\') = le Mois dans l\'année.', function () {
+    expect(new acte.Jour('1/10/1600').julien('%MA')).toEqual('9');
+  });
+  it('new acte.Jour().julien(\'%S\') = la Semaine/Décade dans l\'année.', function () {
+    expect(new acte.Jour('1/4/1600').julien('%S')).toEqual('12');
+  });
+  it('new acte.Jour().julien(\'%SA\') = la Semaine/Décade dans l\'année.', function () {
+    expect(new acte.Jour('1/5/1600').julien('%SA')).toEqual('16');
+  });
+  it('new acte.Jour().julien(\'%DA\') = la Semaine/Décade dans l\'année.', function () {
+    expect(new acte.Jour('1/6/1600').julien('%DA')).toEqual('21');
+  });
+
+  // Filtres
+  it('new acte.Jour().julien(\'%M1\') = Mois en lettres sur 1 caractère.', function () {
+    expect(new acte.Jour('1/1/1600').julien('%M1')).toEqual('D');
+  });
+  it('new acte.Jour().julien(\'%M2\') = Mois en lettres sur 2 caractère.', function () {
+    expect(new acte.Jour('1/2/1600').julien('%M2')).toEqual('Jr');
+  });
+  it('new acte.Jour().julien(\'%M3\') = Mois en lettres sur 3 caractère.', function () {
+    expect(new acte.Jour('1/3/1600').julien('%M3')).toEqual('Fév');
+  });
+  it('new acte.Jour().julien(\'%Ma\') = Mois en abrégé.', function () {
+    expect(new acte.Jour('1/4/1600').julien('%Ma')).toEqual('Mars');
+  });
+  it('new acte.Jour().julien(\'%Ml\') = Mois en lettres.', function () {
+    expect(new acte.Jour('1/5/1600').julien('%Ml')).toEqual('Avril');
+  });
+  it('new acte.Jour().julien(\'%JS1\') = Jour de la Semaine en lettres ' + 'sur 1 caractère.', function () {
+    expect(new acte.Jour('10/1/1600').julien('%JS1')).toEqual('L');
+  });
+  it('new acte.Jour().julien(\'%JS2\') = Jour de la Semaine en lettres ' + 'sur 2 caractère.', function () {
+    expect(new acte.Jour('11/1/1600').julien('%JS2')).toEqual('Ma');
+  });
+  it('new acte.Jour().julien(\'%JS3\') = Jour de la Semaine en lettres ' + 'sur 3 caractère.', function () {
+    expect(new acte.Jour('12/1/1600').julien('%JS3')).toEqual('Mer');
+  });
+  it('new acte.Jour().julien(\'%JSa\') = Jour de la Semaine en abrégé.', function () {
+    expect(new acte.Jour('13/1/1600').julien('%JSa')).toEqual('Jeudi');
+  });
+  it('new acte.Jour().julien(\'%JSl\') = Jour de la semaine en lettres.', function () {
+    expect(new acte.Jour('1/9/5192').julien('%JSl')).toEqual('Mardi');
+  });
+  it('new acte.Jour().julien() = Pas de correspondances.', function () {
+    expect(new acte.Jour('').julien()).toEqual('Pas de correspondances.');
+  });
+  it('new acte.Jour().julien(0, \'erreur\') = Message d\'erreur.', function () {
+    expect(new acte.Jour('').julien('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');
+  });
+  it('new acte.Jour().julien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
+    expect(new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, function (res, obj) {
+      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+
+      return res + '/' + an;
+    })).toEqual('24/03/05');
+  });
 });
 
-// http://jasmine.github.io/edge/introduction.html
 describe('new acte.Jour().republicain()', function () {
   // Valeurs par défaut
   it('new acte.Jour().republicain() = la date republicaine ' + 'formatée par défaut.', function () {
     expect(new acte.Jour('1/1/1800').republicain()).toEqual('11 nivôse an VIII');
     expect(new acte.Jour('12 nivôse an VIII').republicain()).toEqual('12 nivôse an VIII');
+    expect(new acte.Jour('30 fructidor an V').republicain()).toEqual('30 fructidor an V');
+  });
+
+  // Balises
+  it('new acte.Jour().republicain(\'%A\') = l\'Année republicaine.', function () {
+    expect(new acte.Jour('1/1/1800').republicain('%A')).toEqual('8');
+  });
+  it('new acte.Jour().republicain(\'%AN\') = l\'Année republicaine.', function () {
+    expect(new acte.Jour('1/1/1801').republicain('%AN')).toEqual('9');
+  });
+  it('new acte.Jour().republicain(\'%D\') = la Semaine/Décade dans le mois.', function () {
+    expect(new acte.Jour('14/1/1800').republicain('%D')).toEqual('3');
+  });
+  it('new acte.Jour().republicain(\'%DM\') = la Semaine/Décade dans le mois.', function () {
+    expect(new acte.Jour('21/1/1800').republicain('%DM')).toEqual('1');
+  });
+  it('new acte.Jour().republicain(\'%SM\') = la Semaine/Décade dans le mois.', function () {
+    expect(new acte.Jour('12/2/1800').republicain('%SM')).toEqual('3');
+  });
+  it('new acte.Jour().republicain(\'%J\') = le Jour dans le mois.', function () {
+    expect(new acte.Jour('26/1/1800').republicain('%J')).toEqual('6');
+  });
+  it('new acte.Jour().republicain(\'%JM\') = le Jour dans le mois.', function () {
+    expect(new acte.Jour('27/1/1800').republicain('%JM')).toEqual('7');
+  });
+  it('new acte.Jour().republicain(\'%JA\') = le Jour dans l\'année.', function () {
+    expect(new acte.Jour('23/8/1800').republicain('%JA')).toEqual('335');
+  });
+  it('new acte.Jour().republicain(\'%JS\') = le Jour de la décade/Semaine.', function () {
+    expect(new acte.Jour('7/1/1800').republicain('%JS')).toEqual('7');
+  });
+  it('new acte.Jour().republicain(\'%JD\') = le Jour de la décade/Semaine.', function () {
+    expect(new acte.Jour('8/1/1800').republicain('%JD')).toEqual('8');
+  });
+  it('new acte.Jour().republicain(\'%M\') = le Mois dans l\'année.', function () {
+    expect(new acte.Jour('1/9/1800').republicain('%M')).toEqual('12');
+  });
+  it('new acte.Jour().republicain(\'%MA\') = le Mois dans l\'année.', function () {
+    expect(new acte.Jour('1/10/1800').republicain('%MA')).toEqual('1');
+  });
+  it('new acte.Jour().republicain(\'%S\') = la Semaine/Décade dans l\'année.', function () {
+    expect(new acte.Jour('1/4/1800').republicain('%S')).toEqual('20');
+  });
+  it('new acte.Jour().republicain(\'%SA\') = la Semaine/Décade dans l\'année.', function () {
+    expect(new acte.Jour('1/5/1800').republicain('%SA')).toEqual('23');
+  });
+  it('new acte.Jour().republicain(\'%DA\') = la Semaine/Décade dans l\'année.', function () {
+    expect(new acte.Jour('1/6/1800').republicain('%DA')).toEqual('26');
+  });
+
+  // Filtres
+  it('new acte.Jour().republicain(\'%M1\') = Mois en lettres sur 1 caractère.', function () {
+    expect(new acte.Jour('1/1/1800').republicain('%M1')).toEqual('N');
+  });
+  it('new acte.Jour().republicain(\'%M2\') = Mois en lettres sur 2 caractère.', function () {
+    expect(new acte.Jour('1/2/1800').republicain('%M2')).toEqual('Pl');
+  });
+  it('new acte.Jour().republicain(\'%M3\') = Mois en lettres sur 3 caractère.', function () {
+    expect(new acte.Jour('1/3/1800').republicain('%M3')).toEqual('Vnt');
+  });
+  it('new acte.Jour().republicain(\'%Ma\') = Mois en abrégé.', function () {
+    expect(new acte.Jour('1/4/1800').republicain('%Ma')).toEqual('Germ');
+  });
+  it('new acte.Jour().republicain(\'%Ml\') = Mois en lettres.', function () {
+    expect(new acte.Jour('1/5/1800').republicain('%Ml')).toEqual('Floréal');
+  });
+  it('new acte.Jour().republicain(\'%JS1\') = Jour de la Semaine en lettres ' + 'sur 1 caractère.', function () {
+    expect(new acte.Jour('10/1/1800').republicain('%JS1')).toEqual('D');
+  });
+  it('new acte.Jour().republicain(\'%JS2\') = Jour de la Semaine en lettres ' + 'sur 2 caractère.', function () {
+    expect(new acte.Jour('11/1/1800').republicain('%JS2')).toEqual('Pi');
+  });
+  it('new acte.Jour().republicain(\'%JS3\') = Jour de la Semaine en lettres ' + 'sur 3 caractère.', function () {
+    expect(new acte.Jour('12/1/1800').republicain('%JS3')).toEqual('Duo');
+  });
+  it('new acte.Jour().republicain(\'%JSa\') = Jour de la Semaine en abrégé.', function () {
+    expect(new acte.Jour('13/1/1800').republicain('%JSa')).toEqual('Tri');
+  });
+  it('new acte.Jour().republicain(\'%JSl\') = Jour de la semaine en lettres.', function () {
+    expect(new acte.Jour('1/9/1800').republicain('%JSl')).toEqual('Quartidi');
+  });
+  it('new acte.Jour().republicain() = Pas de correspondances.', function () {
+    expect(new acte.Jour('').republicain()).toEqual('Pas de correspondances.');
+  });
+  it('new acte.Jour().republicain(0, \'erreur\') = Message d\'erreur.', function () {
+    expect(new acte.Jour('').republicain('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');
+  });
+  it('new acte.Jour().republicain(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
+    expect(new acte.Jour('3 avril 1805').republicain('%Jz/%Mz', 0, function (res, obj) {
+      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+
+      return res + '/' + an;
+    })).toEqual('13/07/13');
   });
 });
