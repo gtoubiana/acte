@@ -1,5 +1,5 @@
 /** TACHES PRINCIPALES DU FICHIER :
- * gulp generations
+ * gulp dist
  */
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
