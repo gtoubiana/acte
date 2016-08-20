@@ -9,8 +9,15 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)
 
 
+## Sommaire
+ - [Description](#description)
+ - [Installation](#installation)
+ - [Documentation](#documentation)
+<a name="description"></a>
+
 ## Description
 Librairie Javascript pour manipuler des données généalogiques.
+<a name="installation"></a>
 
 ## Installation
 
@@ -24,6 +31,7 @@ Téléchargez et décompressez la dernière archive zip ([acte-0.0.15-dist.zip](
 ```html
 <script type="text/javascript" src="acte.min.js"></script>
 ```
+<a name="documentation"></a>
 
 ## Documentation
 Consultez l'[API](https://github.com/gtoubiana/acte/blob/master/dist/README.md) et les [tests](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js).
