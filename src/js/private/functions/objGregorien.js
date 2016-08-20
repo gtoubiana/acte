@@ -18,29 +18,29 @@
      // A = Année
      A: d.a,
 
-     // D = Décade/Semaine dans le mois
-     D: semaineComplete(d.jm, d.m, d.a, 1),
-
-     // JA = Jour dans l'Année
-     JA: periodeEnJours(1, 1, d.a, d.jm, d.m, d.a),
+     // M = Mois dans l'année
+     M: d.m,
 
      // J = Jour dans le mois
      J: d.jm,
 
+     // D = Décade/Semaine dans le mois
+     D: semaineComplete(d.jm, d.m, d.a, 1),
+
+     // S = Décade/Semaine dans l'année
+     S: semaineComplete(d.jm, d.m, d.a, 0),
+
+     // JA = Jour dans l'Année
+     JA: periodeEnJours(1, 1, d.a, d.jm, d.m, d.a),
+
      // JS = Jour de la décade/semaine
      JS: js,
-
-     // JSl = Jour de la décade/semaine en lettres
-     JSl: jourGregorien[js],
-
-     // M = Mois dans l'année
-     M: d.m,
 
      // Ml = Mois dans l'année en lettres
      Ml: moisGregorien[d.m - 1],
 
-     // S = Décade/Semaine dans l'année
-     S: semaineComplete(d.jm, d.m, d.a, 0),
+     // JSl = Jour de la décade/semaine en lettres
+     JSl: jourGregorien[js],
    };
 
    return result;

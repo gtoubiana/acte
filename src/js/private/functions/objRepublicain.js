@@ -16,29 +16,29 @@
      // A = Année
      A: d.a,
 
-     // D = Décade/Semaine dans le mois
-     D: d.d,
-
-     // JA = Jour dans l'Année
-     JA: (d.m - 1) * 30 + d.jm,
+     // M = Mois dans l'année
+     M: d.m,
 
      // J = Jour dans le mois
      J: d.jm,
 
+     // D = Décade/Semaine dans le mois
+     D: d.d,
+
+     // S = Décade/Semaine dans l'année
+     S: (d.m - 1) * 3 + d.d,
+
+     // JA = Jour dans l'Année
+     JA: (d.m - 1) * 30 + d.jm,
+
      // JS = Jour de la décade/semaine
      JS: d.jd,
-
-     // JSl = Jour de la décade/semaine en lettres
-     JSl: jourRepublicain[d.jd - 1],
-
-     // M = Mois dans l'année
-     M: d.m,
 
      // Ml = Mois dans l'année en lettres
      Ml: moisRepublicain[d.m - 1],
 
-     // S = Décade/Semaine dans l'année
-     S: (d.m - 1) * 3 + d.d,
+     // JSl = Jour de la décade/semaine en lettres
+     JSl: jourRepublicain[d.jd - 1],
    };
 
    return result;
