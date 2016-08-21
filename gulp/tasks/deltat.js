@@ -95,6 +95,10 @@ gulp.task('delta.js', () => {
     'utf8'));
 
   const deltatAverageForOneYears = (current) => {
+    /* eslint-disable strict */
+    'use strict';
+
+    /* eslint-enable strict */
     const currentYear = parseInt(current, 10);
     const test = deltat.filter((item) => {
       const result = parseInt(item.an, 10) === currentYear;
