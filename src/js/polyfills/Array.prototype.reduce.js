@@ -1,7 +1,8 @@
 /* POLYFILL: Internet Explorer 8 => Array.prototype.reduce */
 /* istanbul ignore if  */
 if (!Array.prototype.reduce) {
-  Array.prototype.reduce = function(callback /*, initialValue*/) {
+  // jscs:disable
+  Array.prototype.reduce = function(callback/*, initialValue*/) {
     'use strict';
     if (this == null) {
       throw new TypeError('Array.prototype.reduce called on null or undefined');
@@ -28,4 +29,5 @@ if (!Array.prototype.reduce) {
     }
     return value;
   };
+  // jscs:enable
 }

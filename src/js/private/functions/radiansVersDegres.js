@@ -1,5 +1,5 @@
 /**
- * Pour convertir des radians en degrés
+ * Pour convertir des radians en degrés.
  * @access private
  * @author John Walker
  * @since 0.0.1
@@ -10,4 +10,8 @@
  * @example
  * radiansVersDegres(1.5707963267948966); // 90
  */
-const radiansVersDegres = r => (r * 180.0) / Math.PI;
+const radiansVersDegres = r => {
+  const result = (r * 180.0) / Math.PI;
+
+  return result;
+};

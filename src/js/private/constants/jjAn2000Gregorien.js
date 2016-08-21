@@ -1,5 +1,5 @@
 /**
- * Nombre de jours juliens correspondants à l'an 2000 grégorien
+ * Nombre de jours juliens correspondants à l'an 2000 grégorien.
  * @access private
  * @author John Walker
  * @since 0.0.1

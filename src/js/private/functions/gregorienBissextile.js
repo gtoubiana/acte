@@ -1,5 +1,5 @@
 /**
- * Pour déterminer si une année grégorienne est bissextile
+ * Pour déterminer si une année grégorienne est bissextile.
  * @access private
  * @author John Walker
  * @since 0.0.1
@@ -10,5 +10,9 @@
  * @example
  * gregorienBissextile(2012); // true
  */
-const gregorienBissextile = an => ((an % 4) === 0) &&
-  (!(((an % 100) === 0) && ((an % 400) !== 0)));
+const gregorienBissextile = an => {
+  const result = ((an % 4) === 0) &&
+    (!(((an % 100) === 0) && ((an % 400) !== 0)));
+
+  return result;
+};

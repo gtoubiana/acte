@@ -1,5 +1,5 @@
 /**
- * Pour calculer l'équation du temps pour un moment précis
+ * Pour calculer l'équation du temps pour un moment précis.
  * @access private
  * @author John Walker
  * @since 0.0.1

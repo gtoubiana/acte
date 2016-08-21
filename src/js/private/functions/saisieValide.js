@@ -1,5 +1,5 @@
 /**
- * Pour obtenir une saisie valide
+ * Pour obtenir une saisie valide.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1

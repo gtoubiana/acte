@@ -1,6 +1,6 @@
 /**
  * Pour calculer l'année républicaine correspondant à un nombre de jours
- * juliens
+ * juliens.
  * @access private
  * @author John Walker
  * @since 0.0.1

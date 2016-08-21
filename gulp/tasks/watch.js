@@ -2,7 +2,16 @@ const gulp = require('gulp');
 const config = require('../config');
 const browserSync = require('browser-sync').create();
 const concat = require('gulp-concat');
+const sequence = require('gulp-sequence');
 const wrap = require('gulp-wrap');
+
+// Tâche de pré-watch
+gulp.task('prewatch', sequence(
+
+  'default',
+  'tests.coverage'
+
+));
 
 // TASK Pour générer le script pour le watch
 gulp.task('watch.js', () => {
@@ -15,7 +24,7 @@ gulp.task('watch.js', () => {
 });
 
 // TASK de watch pour SpecRunner.html
-gulp.task('watch', ['default'], () => {
+gulp.task('watch', ['prewatch'], () => {
   browserSync.init({
     server: {
       baseDir: './test/jasmine/',

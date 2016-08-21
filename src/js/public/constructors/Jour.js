@@ -1,5 +1,5 @@
 /**
- * Pour convertir une saisie en objet JavaScript
+ * Pour convertir une saisie en objet JavaScript.
  * @memberof acte
  * @class
  * @chainable
@@ -15,6 +15,15 @@
  * 31/12/1805 (Période républicaine) et du 18/3/1871 au 28/5/1871
  * (Commune de Paris).<br>
  * La valeur `false` permet de désactiver ces limitations.
+ * @example
+ * new acte.Jour('15/10/1582').gregorien() // 15 octobre 1582
+ * new acte.Jour('5 Xbre 1793').gregorien() // 5 décembre 1793
+ * new acte.Jour('5 Jet 1793').gregorien() // 5 juillet 1793
+ * new acte.Jour('10 nivôse an XIV').gregorien() // 31 décembre 1805
+ * new acte.Jour('8 frimaire an XVIII').gregorien() // Pas de correspondances.
+ * new acte.Jour('8 frimaire an XVIII', false).gregorien() // 29 novembre 1809
+ * new acte.Jour('14/10/1582').gregorien() // Pas de correspondances.
+ * new acte.Jour('14/10/1582', false).gregorien() // 14 octobre 1582
  * @since 0.0.1
  * @license MIT
  */
@@ -37,24 +46,24 @@ acte.Jour = class Jour {
     // Ecriture de toutes les valeurs
     this.variables = {
       gregorien: {
-        jmc: tab[0],
-        mc: tab[1],
-        ac: tab[2],
+        jm: tab[0],
+        m: tab[1],
+        a: tab[2],
         od: tab[3],
       },
       julien: {
         jj: tab[4],
-        jmc: tab[5],
-        mc: tab[6],
-        ac: tab[7],
+        jm: tab[5],
+        m: tab[6],
+        a: tab[7],
         od: tab[8],
       },
       republicain: {
-        jdc: tab[9],
-        dc: tab[10],
-        jmc: tab[11],
-        mc: tab[12],
-        ac: tab[13],
+        jd: tab[9],
+        d: tab[10],
+        jm: tab[11],
+        m: tab[12],
+        a: tab[13],
       },
       limites: this.limites,
     };

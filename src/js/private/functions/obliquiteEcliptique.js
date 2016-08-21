@@ -1,5 +1,5 @@
 /**
- * Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens
+ * Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens.
  * @access private
  * @author John Walker
  * @since 0.0.1

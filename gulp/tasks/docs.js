@@ -43,9 +43,10 @@ const lazyJsdocFr = lazypipe()
   .pipe(rep, ': global constant', ': Constante')
   .pipe(rep, ': global function', ': Fonction')
   .pipe(rep, ': static class of', ': Classe statique de')
-  .pipe(rep, ': instance method of', ': Méthode d\'instance de');
+  .pipe(rep, ': instance method of', ': Méthode d\'instance de')
+  .pipe(rep, ': instance property of', ': Propriété d\'instance de');
 
-  // .pipe(rep, ' ↩︎', '')
+// .pipe(rep, ' ↩︎', '')
 
 gulp.task('docs', sequence(
   'docs.dist',
@@ -57,8 +58,10 @@ gulp.task('docs', sequence(
 gulp.task('docs.dist', () => {
   const stream = gulp.src(`${config.paths.jasmine}/lib/acte.js`)
     .pipe(rename('README.md'))
-    .pipe(jsdoc2md({ template: fse.readFileSync(
-      `${config.paths.src}/tmpl/docDist.hbs`, 'utf8') }))
+    .pipe(jsdoc2md({
+      template: fse.readFileSync(
+        `${config.paths.src}/tmpl/docDist.hbs`, 'utf8'),
+    }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.dist));
 
@@ -72,7 +75,8 @@ gulp.task('docs.constants', () => {
     .pipe(jsdoc2md({
       private: true,
       'sort-by': 'name',
-      template: fse.readFileSync(`${config.paths.src}/tmpl/docConstants.hbs`,
+      template: fse.readFileSync(
+        `${config.paths.src}/tmpl/docConstants.hbs`,
         'utf8'),
     }))
     .pipe(lazyJsdocFr())
@@ -88,7 +92,8 @@ gulp.task('docs.functions', () => {
     .pipe(jsdoc2md({
       private: true,
       'sort-by': 'name',
-      template: fse.readFileSync(`${config.paths.src}/tmpl/docFunctions.hbs`,
+      template: fse.readFileSync(
+        `${config.paths.src}/tmpl/docFunctions.hbs`,
         'utf8'),
     }))
     .pipe(lazyJsdocFr())

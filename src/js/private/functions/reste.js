@@ -1,5 +1,5 @@
 /**
- * Pour calculer les restes avec des nombres décimaux
+ * Pour calculer les restes avec des nombres décimaux.
  * @access private
  * @author John Walker
  * @since 0.0.1
@@ -11,4 +11,8 @@
  * @example
  * reste(3,2); // 1
  */
-const reste = (a, b) => a - (b * Math.floor(a / b));
+const reste = (a, b) => {
+  const result = a - (b * Math.floor(a / b));
+
+  return result;
+};

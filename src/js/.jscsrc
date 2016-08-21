@@ -1,0 +1,26 @@
+{
+    "jsDoc": {
+        "checkAnnotations": {
+          "preset": "jsdoc3",
+          "extra": {
+            "chainable": false
+          }
+        },
+        "checkParamExistence": true,
+        "checkParamNames": true,
+        "checkRedundantParams": true,
+        "checkRedundantReturns": true,
+        "checkReturnTypes": true,
+        "checkTypes": "capitalizedNativeCase",
+        "disallowNewlineAfterDescription": true,
+        "enforceExistence": true,
+        "leadingUnderscoreAccess": "private",
+        "requireDescriptionCompleteSentence": true,
+        "requireHyphenBeforeDescription": true,
+        "requireParamDescription": true,
+        "requireParamTypes": true,
+        "requireReturnDescription": true,
+        "requireReturnTypes": true,
+    },
+    "requireCapitalizedComments": true,
+}

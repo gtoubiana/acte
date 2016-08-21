@@ -1,5 +1,5 @@
 /**
- * Pour calculer le cosinus d'un angle en degrés
+ * Pour calculer le cosinus d'un angle en degrés.
  * @access private
  * @author John Walker
  * @since 0.0.1
@@ -10,4 +10,8 @@
  * @example
  * cosinus(0); // 1
  */
-const cosinus = d => Math.cos(degresVersRadians(d));
+const cosinus = d => {
+  const result = Math.cos(degresVersRadians(d));
+
+  return result;
+};

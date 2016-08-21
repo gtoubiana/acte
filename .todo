@@ -1,0 +1,47 @@
+Todo:
+  ☐ variable pour utiliser uniquement jourGregorien sans jourJulien
+  ☐ Exemples/démos de callbacks pour gregorien/julien/republicain
+  ☐ réécrire (optimiser, simplifier) les fonctions ? sortir des sections partagées...
+    ☐ nombreOrdinal
+    ☐ periodeEnJours
+    ☐ prefixeZero
+    ☐ semaineComplete
+    ☐ nombreEnLettres
+    ☐ acte.Jour.prototype.gregorien
+    ☐ balisesEtFiltres
+    ☐ objGregorien
+    ☐ formatageDeJour
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+  ✔ BUGS @done(2016-08-19) @project(Todo)
+  ✔ républicain(): bugs avec jour de la semaine ? @done(2016-08-19) @project(Todo)
+  ✔ républicain(): bug avec 30 fructidor et obj.jm (devrait être 30 => undefined) @done(2016-08-18) @project(Todo)
+  ✔ gregorien(): bugs avec jour de la semaine ? @done(2016-08-19) @project(Todo)
+  ✔ écrire julien() @done(2016-08-17) @project(Todo)
+  ✔ rédiger les tests de julien() @done(2016-08-17) @project(Todo)
+  ✔ écrire républicain() @done(2016-08-18) @project(Todo)
+  ✔ rédiger les tests de républicain() @done(2016-08-18) @project(Todo)
+  ✔ coverage des fonctions @done(2016-08-14) @project(Todo)
+  ✔ nombreEnLettres @done(2016-08-14) @project(Todo)
+  ✔ acte.Jour.prototype.gregorien @done(2016-08-14) @project(Todo)
+  ✔ ordinauxEnLettres @done(2016-08-13) @project(Todo)
+  ✔ ordinauxEnLettres @done(2016-08-13) @project(Todo)
+  ✔ deltaT @done(2016-08-11)
+  ✔ prefixeZero @done(2016-08-12)
+  ✔ premierOrdinalEnLettres @done(2016-08-12)
+  ✔ premierOrdinalEnLettres @done(2016-08-12)
+  ✔ deltaT (voir dossier drafts) @done(2016-08-11)
+  ✔ BUG AVEC gulp delta.scrap, revoir le format de base dans le readme !!! @done(2016-08-11)
+  ✔ récupérer les données moyennes sur 2 ans depuis IERS (2 decimales) => moyenne 2 ans ou valeur années paires ? @done(2016-08-11)
+  ✔ formater les données moyennes sur 2 ans (2 decimales) à partir de https://www.staff.science.uu.nl/~gent0113/deltat/deltat_modern.htm @done(2016-08-11)
+  ✔ fusionner les données dans une seule constante delta de 1620 à 2016 @done(2016-08-11)
+  ✔ modifier la fonction deltaT.js pour prendre en compte l'année courante => 1620 + (delta.length * 2) (-2?) @done(2016-08-11)
+  ✔ calcul avant 1620 => formule ? @done(2016-08-11)
+  ✔ calcul après 2016-2100 => formule ? @done(2016-08-11)
+  ✔ améliorer fonctions avec coverage et tests ? @done(2016-08-11)
+  ✔ revoir le tout en une seule tache gulp (promises) et pas un npm run @done(2016-08-11)
+  ✔ deltaT() est utilisé seulement dans jjVersRepublicain() et son inverse @done(2016-08-11)
+  ✔ verifier eslint unused vars pour les fonctions et constantes inutilisées  @done(2016-07-17) @project(Todo)
+  ✔ correction d'un bug sur lint.gulp @done(2016-07-19) @project(Todo)

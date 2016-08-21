@@ -48,12 +48,20 @@ const acteScripts = [
   `${paths.func}/gregorienBissextile.js`,
   `${paths.func}/gregorienVersJj.js`,
   `${paths.func}/jjVersGregorien.js`,
+  `${paths.func}/initialeEnCapitale.js`,
+  `${paths.func}/premierOrdinalEnLettres.js`,
+  `${paths.func}/prefixeZero.js`,
+  `${paths.func}/nombreEnLettres.js`,
+  `${paths.func}/ordinauxEnLettres.js`,
+  `${paths.func}/nombreOrdinal.js`,
+  `${paths.func}/dateValide.js`,
+  `${paths.func}/periodeEnJours.js`,
+  `${paths.func}/semaineComplete.js`,
 
   // Fonctions restantes
   `${paths.func}/*.js`,
 
-  // Fonctions exclues
-  `!${paths.func}/arabeVersRomain.js`,
+  // Fonctions exclues (!)
   `!${paths.func}/julienVersJj.js`,
 
   // Constructeurs
@@ -61,11 +69,13 @@ const acteScripts = [
 
   // Prototypes
   `${paths.proto}/Jour.prototype.gregorien.js`,
+  `${paths.proto}/Jour.prototype.julien.js`,
+  `${paths.proto}/Jour.prototype.republicain.js`,
 ];
 
 // Template Jsdoc du module UMD
 const bannerTop = `/**
- * <%= pkg.name %> - <%= pkg.description %>
+ * <%= pkg.name %> - <%= pkg.description %>.
  * @copyright 2015-Present, <%= pkg.author %>
  * @namespace acte
  * @version `;
@@ -73,9 +83,10 @@ const bannerBottom = `
  * @see {@link <%= pkg.homepage %>|Projet sur GitHub}
  * @license <%= pkg.license %>
  */
+
 `;
 
-  // Template du module UMD
+// Template du module UMD
 const umd = `(function universalModuleDefinition(root, factory) {
   var tempRoot = root;
 
@@ -95,7 +106,6 @@ const umd = `(function universalModuleDefinition(root, factory) {
   /** @namespace */
   /* eslint-disable no-use-before-define */
   var acte = acte || {};
-
   /* eslint-enable no-use-before-define */
   /* istanbul ignore next */
 <%= contents %>
@@ -103,7 +113,6 @@ const umd = `(function universalModuleDefinition(root, factory) {
 }));
 
 `;
-
 
 // Export de la configuration
 module.exports = {

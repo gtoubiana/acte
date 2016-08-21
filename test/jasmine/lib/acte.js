@@ -1,6 +1,7 @@
 /* POLYFILL: Internet Explorer 8 => Array.prototype.reduce */
 /* istanbul ignore if  */
 if (!Array.prototype.reduce) {
+  // jscs:disable
   Array.prototype.reduce = function (callback /*, initialValue*/ ) {
     'use strict';
 
@@ -33,16 +34,18 @@ if (!Array.prototype.reduce) {
     }
     return value;
   };
+  // jscs:enable
 }
 
 /**
- * acte - Librairie Javascript pour manipuler des données généalogiques
+ * acte - Librairie Javascript pour manipuler des données généalogiques.
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
  * @version 0.0.15
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @license MIT
  */
+
 (function () {
   function universalModuleDefinition(root, factory) {
     var tempRoot = root;
@@ -68,7 +71,6 @@ if (!Array.prototype.reduce) {
     /* eslint-disable no-use-before-define */
 
     var acte = acte || {};
-
     /* eslint-enable no-use-before-define */
     /* istanbul ignore next */
     function _classCallCheck(instance, Constructor) {
@@ -78,7 +80,7 @@ if (!Array.prototype.reduce) {
     }
 
     /**
-     * Jours juliens des équinoxes de l'an 1000 à l'an 2000
+     * Jours juliens des équinoxes de l'an 1000 à l'an 2000.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -95,7 +97,7 @@ if (!Array.prototype.reduce) {
     /**
      * Nombre de jours, sur Terre, pour que le Soleil retourne à la même
      * position
-     * dans le cycle des saisons
+     * dans le cycle des saisons.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -105,7 +107,7 @@ if (!Array.prototype.reduce) {
     var anneeTropique = 365.24219878;
 
     /**
-     * Coefficient des sinus et cosinus de l'argument pour la nutation
+     * Coefficient des sinus et cosinus de l'argument pour la nutation.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -129,7 +131,7 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
-     * Termes périodiques pour la nutation en longitude et obliquité
+     * Termes périodiques pour la nutation en longitude et obliquité.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -155,34 +157,47 @@ if (!Array.prototype.reduce) {
 
     /**
      * Tableau des Delta T différence entre Temps universel et temps terrestre
-     * tous les 2 ans de 1620 à 2014
+     * en secondes, observées pour les années paires de 1620 à 2016.
      * @access private
-     * @author John Walker & Gilles Toubiana
-     * @since 0.0.1
-     * @see {@link http://fourmilab.ch/documents/calendar/|deltaTtab} |
-     * {@link http://maia.usno.navy.mil/ser7/deltat.data|Valeurs} |
-     * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions} |
-     * {@link http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html|Expressions}
+     * @author F.R. Stephenson & L.V. Morrison & IERS & Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://www.staff.science.uu.nl/~gent0113/deltat/deltat_modern.htm|Valeurs} |
+     * {@link http://maia.usno.navy.mil/ser7/deltat.data|IERS} |
+     * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions}
      * @constant {Array}
      */
-    var delta = [121, 112, 103, 95, 88, 82, 77, 72, 68, 63, 60, 56, 53, 51,
-      48, 46, 44, 42, 40, 38, 35, 33, 31, 29, 26, 24, 22, 20, 18, 16, 14,
-      12, 11, 10, 9, 8, 7, 7, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10,
-      10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13,
-      14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 16, 16, 16,
-      15, 15, 14, 13, 13.1, 12.5, 12.2, 12, 12, 12, 12, 12, 12, 11.9, 11.6,
-      11, 10.2, 9.2, 8.2, 7.1, 6.2, 5.6, 5.4, 5.3, 5.4, 5.6, 5.9, 6.2, 6.5,
-      6.8, 7.1, 7.3, 7.5, 7.6, 7.7, 7.3, 6.2, 5.2, 2.7, 1.4, -1.2, -2.8, -
-      3.8, -4.8, -5.5, -5.3, -5.6, -5.7, -5.9, -6, -6.3, -6.5, -6.2, -4.7, -
-      2.8, -0.1, 2.6, 5.3, 7.7, 10.4, 13.3, 16, 18.2, 20.2, 21.1, 22.4,
-      23.5, 23.8, 24.3, 24, 23.9, 23.9, 23.7, 24, 24.3, 25.3, 26.2, 27.3,
-      28.2, 29.1, 30, 30.7, 31.4, 32.2, 33.1, 34, 35, 36.5, 38.3, 40.2,
-      42.2, 44.9, 46.9, 49, 50.9, 52.5, 54, 55.1, 56.1, 57.2, 58.7, 60.4,
-      61.9, 63.2, 64, 64.4, 64.6, 65, 65.6, 66.2, 66.7, 67.5
+    var delta = [124, 115, 106, 98, 91, 85, 79, 74, 70, 65, 62, 58, 55, 53,
+      50, 48, 46, 44, 42, 40, 37, 35, 33, 31, 28, 26, 24, 22, 20, 18, 16,
+      14, 13, 12, 11, 10, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11,
+      11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 14,
+      14, 14, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17, 17, 17, 17, 17, 17,
+      17, 17, 16, 16, 15, 14, 13.7, 13.1, 12.7, 12.5, 12.5, 12.5, 12.5,
+      12.5, 12.5, 12.3, 12, 11.4, 10.6, 9.6, 8.6, 7.5, 6.6, 6, 5.7, 5.6,
+      5.7, 5.9, 6.2, 6.5, 6.8, 7.1, 7.3, 7.5, 7.7, 7.8, 7.88, 7.54, 6.4,
+      5.41, 2.92, 1.61, -1.02, -2.69, -3.64, -4.71, -5.4, -5.2, -5.46, -
+      5.63, -5.8, -5.87, -6.19, -6.44, -6.09, -4.66, -2.72, -0.02, 2.64,
+      5.37, 7.75, 10.46, 13.36, 16.01, 18.24, 20.25, 21.16, 22.41, 23.49,
+      23.86, 24.34, 24.02, 23.87, 23.86, 23.73, 23.96, 24.33, 25.3, 26.24,
+      27.28, 28.25, 29.15, 29.97, 30.72, 31.35, 32.18, 33.15, 34, 35.03,
+      36.54, 38.29, 40.18, 42.23, 44.94, 46.94, 49.03, 50.93, 52.53, 54.05,
+      55.08, 56.05, 57.18, 58.69, 60.35, 61.95, 63.23, 63.95, 64.39, 64.63,
+      64.97, 65.6, 66.2, 66.74, 67.45, 68.26
     ];
 
     /**
-     * Jours juliens des équinoxes avant l'an 1000
+     * Dixaines en toutes lettres.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var dixainesEnLettres = ['', 'dix', 'vingt', 'trente', 'quarante',
+      'cinquante', 'soixante', 'soixante', 'quatre-vingt', 'quatre-vingt'
+    ];
+
+    /**
+     * Jours juliens des équinoxes avant l'an 1000.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -197,7 +212,7 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
-     * Nombre de jours juliens correspondants à l'an 1 gregorien
+     * Nombre de jours juliens correspondants à l'an 1 gregorien.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -210,7 +225,7 @@ if (!Array.prototype.reduce) {
     var jjAn1Gregorien = 1721425.5;
 
     /**
-     * Nombre de jours juliens correspondants à l'an 2000 grégorien
+     * Nombre de jours juliens correspondants à l'an 2000 grégorien.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -225,7 +240,7 @@ if (!Array.prototype.reduce) {
     /**
      * Nombre de jours juliens correspondants à l'adoption du calendrier
      * républicain dans le journal officiel lors de la Commune de Paris
-     * en 1871
+     * en 1871.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -241,7 +256,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Nombre de jours juliens correspondants à l'adoption du calendrier
-     * grégorien
+     * grégorien.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -256,7 +271,7 @@ if (!Array.prototype.reduce) {
     var jjDebutGregorien = 2299160.5;
 
     /**
-     * Nombre de jours juliens correspondants à l'an 1 républicain
+     * Nombre de jours juliens correspondants à l'an 1 républicain.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -273,7 +288,7 @@ if (!Array.prototype.reduce) {
     /**
      * Nombre de jours juliens correspondants à l'abrogation du calendrier
      * républicain dans le journal officiel lors de la Commune de Paris
-     * en 1871
+     * en 1871.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -289,7 +304,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Nombre de jours juliens correspondants à l'abrogation du calendrier
-     * républicain
+     * républicain.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -304,7 +319,97 @@ if (!Array.prototype.reduce) {
     var jjFinRepublicain = 2380686.5;
 
     /**
-     * Expressions régulières pour convertir les mois gregoriens
+     * Nom des Jours Grégoriens et abbréviations courantes,
+     * sur 1, 2 et 3 caractères.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var jourGregorien = [
+      ['Dimanche', 'Dim', 'Dim', 'Di', 'D'],
+      ['Lundi', 'Lundi', 'Lun', 'Lu', 'L'],
+      ['Mardi', 'Mardi', 'Mar', 'Ma', 'M'],
+      ['Mercredi', 'Mercr', 'Mer', 'Me', 'M'],
+      ['Jeudi', 'Jeudi', 'Jeu', 'Je', 'J'],
+      ['Vendredi', 'Vendr', 'Ven', 'Ve', 'V'],
+      ['Samedi', 'Sam', 'Sam', 'Sa', 'S']
+    ];
+
+    /**
+     * Nom des Jours Republicains et abbréviations courantes,
+     * sur 1, 2 et 3 caractères.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var jourRepublicain = [
+      ['Primidi', 'Prim', 'Pri', 'Pi', 'P'],
+      ['Duodi', 'Duo', 'Duo', 'Du', 'D'],
+      ['Tridi', 'Tri', 'Tri', 'Ti', 'T'],
+      ['Quartidi', 'Quart', 'Qua', 'Qa', 'Q'],
+      ['Quintidi', 'Quint', 'Qui', 'Qi', 'Q'],
+      ['Sextidi', 'Sext', 'Sex', 'Sx', 'S'],
+      ['Septidi', 'Sept', 'Sep', 'Sp', 'S'],
+      ['Octidi', 'Oct', 'Oct', 'Oc', 'O'],
+      ['Nonidi', 'Non', 'Non', 'No', 'N'],
+      ['Décadi', 'Déc', 'Déc', 'Dé', 'D']
+    ];
+
+    /**
+     * Nom des Mois Grégoriens et abbréviations courantes,
+     * sur 1, 2 et 3 caractères.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var moisGregorien = [
+      ['Janvier', 'Janv', 'Jan', 'Jr', 'J'],
+      ['Février', 'Févr', 'Fév', 'Fr', 'F'],
+      ['Mars', 'Mars', 'Mar', 'Ms', 'M'],
+      ['Avril', 'Avr', 'Avr', 'Al', 'A'],
+      ['Mai', 'Mai', 'Mai', 'Mi', 'M'],
+      ['Juin', 'Juin', 'Jun', 'Jn', 'J'],
+      ['Juillet', 'Juill', 'Jul', 'Jt', 'J'],
+      ['Août', 'Août', 'Aoû', 'At', 'A'],
+      ['Septembre', 'Sept', 'Sep', 'Se', 'S'],
+      ['Octobre', 'Oct', 'Oct', 'Oe', 'O'],
+      ['Novembre', 'Nov', 'Nov', 'Ne', 'N'],
+      ['Décembre', 'Déc', 'Déc', 'De', 'D']
+    ];
+
+    /**
+     * Nom des Mois Republicains et abbréviations courantes,
+     * sur 1, 2 et 3 caractères.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var moisRepublicain = [
+      ['Vendémiaire', 'Vend', 'Vnd', 'Vd', 'V'],
+      ['Brumaire', 'Brum', 'Bru', 'Br', 'B'],
+      ['Frimaire', 'Frim', 'Fri', 'Fr', 'F'],
+      ['Nivôse', 'Nivô', 'Niv', 'Ni', 'N'],
+      ['Pluviôse', 'Pluv', 'Plu', 'Pl', 'P'],
+      ['Ventôse', 'Vent', 'Vnt', 'Vt', 'V'],
+      ['Germinal', 'Germ', 'Ger', 'Gr', 'G'],
+      ['Floréal', 'Flor', 'Flo', 'Fl', 'F'],
+      ['Prairial', 'Prai', 'Pra', 'Pr', 'P'],
+      ['Messidor', 'Mess', 'Mes', 'Ms', 'M'],
+      ['Thermidor', 'Ther', 'The', 'Tr', 'T'],
+      ['Fructidor', 'Fruc', 'Fru', 'Ft', 'F'],
+      ['Jour complémentaire', 'Comp', 'Cmp', 'Cp', 'C']
+    ];
+
+    /**
+     * Expressions régulières pour convertir les mois gregoriens.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -315,7 +420,13 @@ if (!Array.prototype.reduce) {
       regexp: 'jan(v)?(\\.)?(ier)?',
       replace: '/1/'
     }, {
+      regexp: 'Jer',
+      replace: '/1/'
+    }, {
       regexp: 'f(é|e)v(r)?(\\.)?(ier)?',
+      replace: '/2/'
+    }, {
+      regexp: 'Fer',
       replace: '/2/'
     }, {
       regexp: 'mar(s|\\.)?',
@@ -331,6 +442,9 @@ if (!Array.prototype.reduce) {
       replace: '/6/'
     }, {
       regexp: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
+      replace: '/7/'
+    }, {
+      regexp: 'Jet',
       replace: '/7/'
     }, {
       regexp: 'ao(u|û)(t|\\.)?',
@@ -360,12 +474,15 @@ if (!Array.prototype.reduce) {
       regexp: 'Xbre',
       replace: '/12/'
     }, {
+      regexp: '10bre',
+      replace: '/12/'
+    }, {
       regexp: '[^-()\\d/*+.]',
       replace: ''
     }];
 
     /**
-     * Expressions régulières pour convertir les mois républicains
+     * Expressions régulières pour convertir les mois républicains.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -423,7 +540,7 @@ if (!Array.prototype.reduce) {
     }];
 
     /**
-     * Nombre de jours dans un siècle julien
+     * Nombre de jours dans un siècle julien.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -433,7 +550,7 @@ if (!Array.prototype.reduce) {
     var siecleJulien = 36525.0;
 
     /**
-     * Termes périodiques pour obtenir des temps réels
+     * Termes périodiques pour obtenir des temps réels.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -452,7 +569,20 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
-     * Pour convertir des degrés en radians
+     * Unités en toutes lettres.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var unitesEnLettres = ['', 'un', 'deux', 'trois', 'quatre', 'cinq', 'six',
+      'sept', 'huit', 'neuf', 'dix', 'onze', 'douze', 'treize', 'quatorze',
+      'quinze', 'seize', 'dix-sept', 'dix-huit', 'dix-neuf'
+    ];
+
+    /**
+     * Pour convertir des degrés en radians.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -465,14 +595,16 @@ if (!Array.prototype.reduce) {
      */
     var degresVersRadians = function () {
       function degresVersRadians(d) {
-        return d * Math.PI / 180.0;
+        var result = d * Math.PI / 180.0;
+
+        return result;
       }
 
       return degresVersRadians;
     }();
 
     /**
-     * Pour normaliser un angle entre 0 et 360 degrés
+     * Pour normaliser un angle entre 0 et 360 degrés.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -485,14 +617,16 @@ if (!Array.prototype.reduce) {
      */
     var normaliserDegres = function () {
       function normaliserDegres(a) {
-        return a - 360.0 * Math.floor(a / 360.0);
+        var result = a - 360.0 * Math.floor(a / 360.0);
+
+        return result;
       }
 
       return normaliserDegres;
     }();
 
     /**
-     * Pour convertir des radians en degrés
+     * Pour convertir des radians en degrés.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -505,14 +639,16 @@ if (!Array.prototype.reduce) {
      */
     var radiansVersDegres = function () {
       function radiansVersDegres(r) {
-        return r * 180.0 / Math.PI;
+        var result = r * 180.0 / Math.PI;
+
+        return result;
       }
 
       return radiansVersDegres;
     }();
 
     /**
-     * Pour calculer les restes avec des nombres décimaux
+     * Pour calculer les restes avec des nombres décimaux.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -526,14 +662,16 @@ if (!Array.prototype.reduce) {
      */
     var reste = function () {
       function reste(a, b) {
-        return a - b * Math.floor(a / b);
+        var result = a - b * Math.floor(a / b);
+
+        return result;
       }
 
       return reste;
     }();
 
     /**
-     * Pour calculer le sinus d'un angle en degrés
+     * Pour calculer le sinus d'un angle en degrés.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -546,14 +684,16 @@ if (!Array.prototype.reduce) {
      */
     var sinus = function () {
       function sinus(d) {
-        return Math.sin(degresVersRadians(d));
+        var result = Math.sin(degresVersRadians(d));
+
+        return result;
       }
 
       return sinus;
     }();
 
     /**
-     * Pour calculer le cosinus d'un angle en degrés
+     * Pour calculer le cosinus d'un angle en degrés.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -566,14 +706,16 @@ if (!Array.prototype.reduce) {
      */
     var cosinus = function () {
       function cosinus(d) {
-        return Math.cos(degresVersRadians(d));
+        var result = Math.cos(degresVersRadians(d));
+
+        return result;
       }
 
       return cosinus;
     }();
 
     /**
-     * Pour calculer le nombre de jours juliens d'une equinoxe ou d'un solstice
+     * Pour calculer le nombre de jours juliens d'une equinoxe ou d'un solstice.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -627,31 +769,37 @@ if (!Array.prototype.reduce) {
 
     /**
      * Pour calculer la différence entre temps terrestre et temps universel,
-     * en secondes
+     * en secondes.
      * @access private
-     * @author John Walker
+     * @author John Walker & Gilles Toubiana
      * @since 0.0.1
      * @license Domaine public
-     * @see {@link http://fourmilab.ch/documents/calendar/|deltat}
+     * @see {@link http://fourmilab.ch/documents/calendar/|deltat} |
+     * {@link http://eclipse.gsfc.nasa.gov/SEcat5/deltatpoly.html|Expressions} |
+     * {@link http://www.projectpluto.com/dt.htm|Formules}
      * @param {Number} an - Année
      * @return {Number} Différence entre temps terrestre et temps universel,
      * en secondes
      * @example
-     * deltaT(2015); // 86.41924999999999
+     * deltaT(2015); // 67.855
      */
+
     var deltaT = function () {
       function deltaT(an) {
         var dt = void 0;
+        var maxindex = 1618 + delta.length * 2;
 
-        if (an >= 1620 && an <= 2012) {
-          var i = Math.floor((an - 1620) / 2);
-          var f = (an - 1620) / 2 - i;
+        if (an >= 1620 && an < maxindex) {
+          var i = (an - 1620) / 2;
 
-          dt = delta[i] + (delta[i + 1] - delta[i]) * f;
+          dt = (an - 1620) % 2 ? (delta[i - 0.5] + delta[i + 0.5]) / 2 :
+            delta[i];
         } else {
           var t = (an - 2000) / 100;
 
-          if (an < 948) {
+          if (an === maxindex) {
+            dt = delta[delta.length - 1];
+          } else if (an < 948) {
             dt = 2177 + 497 * t + 44.1 * t * t;
           } else {
             dt = 102 + 102 * t + 25.3 * t * t;
@@ -668,7 +816,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens
+     * Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -703,7 +851,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour calculer la position du soleil
+     * Pour calculer la position du soleil.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -768,7 +916,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Pour calculer la nutation en longitude (deltaPsi),
-     * et obliquité (deltaEpsilon) pour un nombre de jours juliens
+     * et obliquité (deltaEpsilon) pour un nombre de jours juliens.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -825,7 +973,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour calculer l'équation du temps pour un moment précis
+     * Pour calculer l'équation du temps pour un moment précis.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -857,7 +1005,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Pour calculer le nombre de jours juliens et la fraction de l'équinoxe
-     * de septembre au méridien de Paris pour une année grégorienne
+     * de septembre au méridien de Paris pour une année grégorienne.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -884,7 +1032,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Pour calculer le nombre de jours juliens correspondant à l'équinoxe
-     * de septembre au méridien de Paris, pour une année grégorienne
+     * de septembre au méridien de Paris, pour une année grégorienne.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -906,7 +1054,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour déterminer si une année grégorienne est bissextile
+     * Pour déterminer si une année grégorienne est bissextile.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -919,7 +1067,9 @@ if (!Array.prototype.reduce) {
      */
     var gregorienBissextile = function () {
       function gregorienBissextile(an) {
-        return an % 4 === 0 && !(an % 100 === 0 && an % 400 !== 0);
+        var result = an % 4 === 0 && !(an % 100 === 0 && an % 400 !== 0);
+
+        return result;
       }
 
       return gregorienBissextile;
@@ -927,7 +1077,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Pour calculer le nombre de jours juliens (jj) à partir d'une date
-     * grégorienne
+     * grégorienne.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -954,7 +1104,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour calculer une date grégorienne à partir du nombre de jours juliens
+     * Pour calculer une date grégorienne à partir du nombre de jours juliens.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -992,7 +1142,411 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir en nombre entier positif
+     * Pour mettre en capitale le premier caractère d'une chaîne.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {String} str - la chaîne à modifier
+     * @return {String} la chaîne avec le premier caractère en capitale
+     * @example
+     * initialeEnCapitale("vingt"); // "Vingt"
+     */
+    var initialeEnCapitale = function () {
+      function initialeEnCapitale(str) {
+        var result = str.charAt(0).toUpperCase() + str.slice(1);
+
+        return result;
+      }
+
+      return initialeEnCapitale;
+    }();
+
+    /**
+     * Pour convertir uniquement 'un' en nombre ordinal.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} saisie - le nombre en lettres
+     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
+     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
+     * @return {String} le nombre - ordinal ou non - en lettres
+     * @example
+     * premierOrdinalEnLettres("Un"); // "Premier"
+     * premierOrdinalEnLettres("Un", 1); // "Première"
+     * premierOrdinalEnLettres("Deux"); // "Deux"
+     * premierOrdinalEnLettres("Vingt-trois"); // "Vingt-trois"
+     */
+    var premierOrdinalEnLettres = function () {
+      function premierOrdinalEnLettres(saisie, genre) {
+        var str = saisie.toString();
+        var prem = genre ? 'ère' : 'er';
+        var result = str === 'Un' ? 'Premi' + prem : str;
+
+        return result;
+      }
+
+      return premierOrdinalEnLettres;
+    }();
+
+    /**
+     * Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} n - le nombre à préfixer
+     * @return {String} le nombre avec préfixe zéro
+     * @example
+     * prefixeZero(20); // 20
+     * prefixeZero(9); // "09"
+     * prefixeZero(0); // 0
+     * prefixeZero(-4); // -4
+     */
+    var prefixeZero = function () {
+      function prefixeZero(n) {
+        var result = n < 10 && n > 0 ? '0' + n : n;
+
+        return result;
+      }
+
+      return prefixeZero;
+    }();
+
+    /**
+     * Pour convertir les nombres en toutes lettres.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} n - le nombre en chiffres
+     * @param {String} [r] - par défaut, la réforme de 1990 est appliquée.
+     * Pour utiliser l'ancienne notation, il suffit d'ajouter un argument.
+     * @return {String} le nombre en toutes lettres
+     * @example
+     * nombreEnLettres(2371); // "Deux-mille-trois-cent-soixante-et-onze"
+     * nombreEnLettres(1799,1); // "Mille sept cent quatre-vingt-dix-neuf"
+     */
+    var nombreEnLettres = function () {
+      function nombreEnLettres(n, r) {
+        var mill = void 0;
+        var sepcen = void 0;
+        var centl = void 0;
+        var sepdix = void 0;
+        var dixl = void 0;
+        var sepunit = void 0;
+        var unitl = void 0;
+        var dizunit = void 0;
+        var res = void 0;
+
+        if (typeof n === 'number' && n > -10000 && n < 10000) {
+          // UnitesEnLettres
+          var u = unitesEnLettres;
+
+          // DixainesEnLettres
+          var v = dixainesEnLettres;
+
+          // Saisie en valeur absolue
+          var abs = Math.abs(n);
+          var splus = r ? ' ' : '-';
+
+          // Milliers
+          var mil = parseInt(abs / 1000, 10);
+
+          // Centaines
+          var cent = parseInt(abs % 1000 / 100, 10);
+
+          // Dixaines
+          var dix = parseInt(abs % 100 / 10, 10);
+
+          // Unités
+          var unit = parseInt(abs % 10, 10);
+
+          // Milliers
+          if (mil === 1) {
+            // Un seul millier
+            mill = 'mille';
+          } else if (mil > 1) {
+            // Plusieurs milliers
+            mill = '' + u[mil] + splus + 'mille';
+          } else {
+            // Pas de milliers
+            mill = '';
+          }
+
+          // Centaines
+          sepcen = mil > 0 ? splus : '';
+          if (cent === 1) {
+            // Une seule centaine
+            centl = sepcen + 'cent';
+          } else if (cent > 1 && dix === 0 && unit === 0) {
+            // Plusieurs centaines
+            centl = '' + sepcen + u[cent] + splus + 'cents';
+          } else if (cent > 1) {
+            // Plusieurs centaines suivies de dizaines
+            centl = '' + sepcen + u[cent] + splus + 'cent';
+          } else {
+            // Pas de centaines
+            centl = '';
+          }
+
+          // Dizaines et unités
+          sepdix = mil + cent > 0 && dix + unit > 0 ? splus : '';
+          if (dix > 0) {
+            dixl = v[dix];
+
+            // Splus
+            sepunit = '-';
+          } else {
+            dixl = '';
+            sepunit = '';
+          }
+
+          // Unités
+          unitl = abs > 0 ? sepunit + u[unit] : 'zéro';
+
+          // Multiples de 10
+          if ((dix * 10 + unit) % 10 === 0) {
+            unitl = '';
+          }
+
+          // Dix, soixante-dix, quatre-vingt-dix
+          if ((dix === 1 || dix === 7 || dix === 9) && unit === 0) {
+            dixl = dix === 1 ? 'dix' : v[dix] + '-dix';
+            unitl = dix === 1 ? '' : u[unit];
+          }
+
+          // Onze+
+          // soixante-et-onze+, quatre-vingt-onze+
+          if ((dix === 1 || dix === 7 || dix === 9) && unit >= 1) {
+            dixl = dix === 1 ? '' : v[dix];
+            if (dix === 1) {
+              sepunit = '';
+            }
+            unitl = dix === 7 && unit === 1 ? splus + 'et' + splus + u[10 +
+              unit] : sepunit + u[10 + unit];
+          }
+
+          // Vingt-et-un, trente-et-un, quarante-et-un,
+          // cinquante-et-un, soixante-et-un
+          if (dix >= 2 && dix <= 6 && unit === 1) {
+            unitl = splus + 'et' + splus + u[unit];
+          }
+
+          // Pluriel sur 80
+          if (dix === 8 && unit === 0) {
+            dixl = v[dix] + 's';
+            unitl = '';
+          }
+
+          dizunit = sepdix + dixl + unitl;
+
+          // Si nombre négatif
+          var avjc = n < 0 ? 'Moins ' : '';
+
+          res = abs > 0 ? initialeEnCapitale(avjc + mill + centl + dizunit) :
+            'Zéro';
+        } else {
+          res = '';
+        }
+        return res;
+      }
+
+      return nombreEnLettres;
+    }();
+
+    /**
+     * Pour convertir les nombres en toutes lettres en nombres ordinaux.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} saisie - le nombre en lettres
+     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
+     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
+     * @return {String} le nombre ordinal en lettres
+     * @example
+     * ordinauxEnLettres("Un"); // "Premier"
+     * ordinauxEnLettres("Un", 1); // "Première"
+     * ordinauxEnLettres("Deux"); // "Deuxième"
+     * ordinauxEnLettres("Vingt-trois"); // "Vingt-troisième"
+     */
+    var ordinauxEnLettres = function () {
+      function ordinauxEnLettres(saisie, genre) {
+        var str = saisie.toString();
+        var result = void 0;
+
+        // Dernier caractère
+        /* eslint-disable indent */
+        switch (str.slice(-1)) {
+        case 't':
+        case 'x':
+          result = str + 'ième';
+          break;
+        case 'q':
+          result = str + 'uième';
+          break;
+        case 'f':
+          result = str.slice(0, str.length - 1) + 'vième';
+          break;
+        case 'e':
+          result = str.slice(0, str.length - 1) + 'ième';
+          break;
+        case 's':
+          result = str.slice(-2) === 'ts' ? str.slice(0, str.length - 1) +
+            'ième' : str + 'ième';
+          break;
+        case 'n':
+          if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
+            result = str + 'ième';
+          } else {
+            result = premierOrdinalEnLettres(str, genre);
+          }
+          break;
+        default:
+          result = str + 'ième';
+        }
+
+        /* eslint-enable indent */
+        return result;
+      }
+
+      return ordinauxEnLettres;
+    }();
+
+    /**
+     * Pour convertir les nombres en nombres ordinaux.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} n - le nombre en chiffres
+     * @param {String} prem - le suffixe pour le chiffre 1
+     * @param {String} exp - le suffixe pour les chiffres différents de 1
+     * @return {String} le nombre ordinal
+     * @example
+     * nombreOrdinal(1,"er","e"); // "1er"
+     * nombreOrdinal(1,"re","e"); // "1re"
+     * nombreOrdinal(2,"er","e"); // "2e"
+     */
+    var nombreOrdinal = function () {
+      function nombreOrdinal(n, prem, exp) {
+        var result = n === 1 || n === '1er' || n === '1re' ? '1' + prem : n +
+          exp;
+
+        return result;
+      }
+
+      return nombreOrdinal;
+    }();
+
+    /**
+     * Pour créer un objet date grégorien valide.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.1
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} jour - le jour du mois gregorien en chiffres
+     * @param {Number} mois - le mois gregorien en chiffres
+     * @param {Number} an - l'année gregorienne en chiffres
+     * @return {Object} L'objet date valide
+     * @example
+     * dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
+     */
+    var dateValide = function () {
+      function dateValide(jour, mois, an) {
+        var resultat = new Date(an, mois - 1, jour);
+
+        resultat.setFullYear(an);
+
+        return resultat;
+      }
+
+      return dateValide;
+    }();
+
+    /**
+     * Pour calculer le nombre de jours entre deux dates.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} j1 - le jour du mois de la première date en chiffres
+     * @param {Number} m1 - le mois de la date de la première date en chiffres
+     * @param {Number} a1 - l'année de la date de la première date en chiffres
+     * @param {Number} j2 - le jour du mois de la deuxième date en chiffres
+     * @param {Number} m2 - le mois de la date de la deuxième date en chiffres
+     * @param {Number} a2 - l'année de la date de la deuxième date en chiffres
+     * @return {Number} le nombre de jours entre les deux dates
+     * @example
+     * periodeEnJours(1, 1, 2016, 15, 1, 2016]); // 15
+     * periodeEnJours(15, 1, 2016, 1, 1, 2016]); // 15
+     * periodeEnJours(1, 1, 2016, 1, 1, 2016]); // 1
+     */
+    var periodeEnJours = function () {
+      function periodeEnJours(j1, m1, a1, j2, m2, a2) {
+        var date1 = dateValide(j1, m1, a1);
+        var date2 = dateValide(j2, m2, a2);
+        var debut = date2 > date1 ? date1 : date2;
+        var fin = date2 > date1 ? date2 : date1;
+
+        return Math.ceil((fin - debut) / (1000 * 60 * 60 * 24)) + 1;
+      }
+
+      return periodeEnJours;
+    }();
+
+    /**
+     * Pour calculer le nombre de semaines depuis le début de l'année ou du mois.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} j - le jour du mois grégorien
+     * @param {Number} m - le mois grégorien
+     * @param {Number} a - l'année grégorienne
+     * @param {Number} [mois] - par défaut, le calcul correspond à l'année.
+     * Pour calculer sur le mois en cours, il suffit d'ajouter un argument.
+     * @return {Number} le nombre de semaines
+     * @example
+     * semaineComplete(14, 7, 2016); // 28
+     * semaineComplete(14, 7, 2016, 1); // 2
+     */
+    var semaineComplete = function () {
+      function semaineComplete(j, m, a, mois) {
+        // Si l'argument mois existe, calcule depuis le début du mois.
+        // sinon depuis le début de l'année
+        var x = mois ? m : 1;
+        var jourSemaine = dateValide(1, x, a).getDay();
+
+        jourSemaine = jourSemaine === 0 ? 7 : jourSemaine;
+
+        // Si le premier jour < jeudi (4), ajouter une semaine
+        var n = jourSemaine <= 4 ? 1 : 0;
+        var nombreSemaines = (periodeEnJours(1, x, a, j, m, a) - (8 -
+          jourSemaine)) / 7;
+        var semainesValides = nombreSemaines > parseInt(nombreSemaines, 10) ?
+          parseInt(nombreSemaines, 10) + n + 1 : parseInt(nombreSemaines,
+            10) + n;
+
+        return semainesValides;
+      }
+
+      return semaineComplete;
+    }();
+
+    /**
+     * Pour convertir en nombre entier positif.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -1005,7 +1559,9 @@ if (!Array.prototype.reduce) {
      */
     var absInt = function () {
       function absInt(num) {
-        return Math.abs(parseInt(num, 10));
+        var result = Math.abs(parseInt(num, 10));
+
+        return result;
       }
 
       return absInt;
@@ -1013,7 +1569,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Pour calculer l'année républicaine correspondant à un nombre de jours
-     * juliens
+     * juliens.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -1052,33 +1608,317 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour créer un objet date grégorien valide
+     * Pour convertir des chiffres arabes en chiffres romains.
      * @access private
-     * @author Gilles Toubiana
+     * @author Iván Montes
      * @since 0.0.1
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} jour - le jour du mois gregorien en chiffres
-     * @param {Number} mois - le mois gregorien en chiffres
-     * @param {Number} an - l'année gregorienne en chiffres
-     * @return {Object} L'objet date valide
+     * @license unknown
+     * @see {@link http://blog.stevenlevithan.com/?p=65#comment-16107|Blog}
+     * @param {Number} arabe - Chiffre arabe
+     * @return {String} Chiffre romain
      * @example
-     * dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
+     * arabeVersRomain(2012); // 'MMXII'
      */
-    var dateValide = function () {
-      function dateValide(jour, mois, an) {
-        var resultat = new Date(an, mois - 1, jour);
+    var arabeVersRomain = function () {
+      function arabeVersRomain(arabe) {
+        var lookup = {
+          M: 1000,
+          CM: 900,
+          D: 500,
+          CD: 400,
+          C: 100,
+          XC: 90,
+          L: 50,
+          XL: 40,
+          X: 10,
+          IX: 9,
+          V: 5,
+          IV: 4,
+          I: 1
+        };
+        var tempArabe = Math.abs(arabe);
+        var sign = arabe < 0 ? '-' : '';
+        var romain = '';
+        var i = void 0;
 
-        resultat.setFullYear(an);
+        for (i in lookup) {
+          /* istanbul ignore else  */
+          if (lookup.hasOwnProperty(i)) {
+            while (tempArabe >= lookup[i]) {
+              romain += i;
+              tempArabe -= lookup[i];
+            }
+          }
+        }
 
-        return resultat;
+        return sign + romain;
       }
 
-      return dateValide;
+      return arabeVersRomain;
     }();
 
     /**
-     * Pour calculer une date julienne à partir du nombre de jours juliens
+     * Pour appliquer les balises et filtres aux prototypes gregorien(),
+     * julien() et republicain().
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} x - Saisie
+     * @param {Object} obj - Objet content les dates
+     * @return {String} Saisie filtrée
+     * @example
+     * balisesEtFiltres(x, dobj(tvg));
+     */
+    var balisesEtFiltres = function () {
+      function balisesEtFiltres(x, obj) {
+        var arabe = void 0;
+        var ordinaux = void 0;
+        var res = x;
+        var chiffres = true;
+
+        // BALISES
+        if (x.match(/A/)) {
+          if (x.match(/AN/)) {
+            // AN = Année
+            res = obj.A;
+          } else {
+            // A = Année
+            res = obj.A;
+          }
+        }
+        if (x.match(/J/)) {
+          if (x.match(/JA/)) {
+            // JA = Jour dans l'Année
+            res = obj.JA;
+          } else {
+            // J = Jour dans le mois
+            res = obj.J;
+          }
+        }
+        if (x.match(/M/)) {
+          if (x.match(/MA/)) {
+            // MA = Mois dans l'Année
+            res = obj.M;
+          } else if (x.match(/JM/)) {
+            // JM = Jour dans le Mois
+            res = obj.J;
+          } else {
+            // M = Mois dans l'année
+            res = obj.M;
+          }
+        }
+        if (x.match(/D/)) {
+          if (x.match(/DA/)) {
+            // DA = Décade/Semaine dans l'Année
+            res = obj.S;
+          } else if (x.match(/DM/)) {
+            // DM = Décade/Semaine dans le Mois
+            res = obj.D;
+          } else if (x.match(/JD/)) {
+            // JD = Jour de la Décade/Semaine
+            res = obj.JS;
+          } else {
+            // D = Décade/Semaine dans le mois
+            res = obj.D;
+          }
+        }
+        if (x.match(/S/)) {
+          if (x.match(/SA/)) {
+            // SA = Décade/Semaine dans l'année
+            res = obj.S;
+          } else if (x.match(/SM/)) {
+            // SM = Décade/Semaine dans le mois
+            res = obj.D;
+          } else if (x.match(/JS/)) {
+            // JS = Jour de la décade/semaine
+            res = obj.JS;
+          } else {
+            // S = Décade/Semaine dans l'année
+            res = obj.S;
+          }
+        }
+
+        /* FILTRES */
+        if (x.match(/r/)) {
+          // - r = chiffres en Romains
+          arabe = res;
+          res = arabeVersRomain(res);
+        }
+        if (x.match(/z/)) {
+          // - z = Zéro devant le chiffre
+          if (!arabe) {
+            arabe = res;
+          }
+          res = prefixeZero(res);
+        }
+        if (x.match(/l|v/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MAl | Ml = Mois en Lettres
+            res = obj.Ml[0];
+            chiffres = false;
+          } else if (x.match(/(JS|JD)/)) {
+            // JSl | JDl = Jour de la Décade/Semaine en Lettres
+            res = obj.JSl[0];
+            chiffres = false;
+          } else {
+            if (x.match(/v/)) {
+              // - v = chiffres en lettres (Vieille notation)
+              res = arabe ? nombreEnLettres(arabe, 1) : nombreEnLettres(res,
+                1);
+            } else {
+              // - l = chiffres en Lettres
+              res = arabe ? nombreEnLettres(arabe) : nombreEnLettres(res);
+            }
+            ordinaux = true;
+          }
+        }
+        if (x.match(/a/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MAa | Ma = Mois en Abrégé
+            res = obj.Ml[1];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JSa | JDa = Jour de la Décade/Semaine en Abrégé
+            res = obj.JSl[1];
+          }
+        }
+        if (x.match(/3/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MA3 | M3 = Mois en Abrégé sur 3 caractères
+            res = obj.Ml[2];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JS3 | JD3 = Jour de la Décade/Semaine en Abrégé
+            // sur 3 caractères
+            res = obj.JSl[2];
+          }
+        }
+        if (x.match(/2/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MA2 | M2 = Mois en Abrégé sur 2 caractères
+            res = obj.Ml[3];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JS2 | JD2 = Jour de la Décade/Semaine en Abrégé
+            // sur 2 caractères
+            res = obj.JSl[3];
+          }
+        }
+        if (x.match(/1/)) {
+          if (x.match(/[^JDS](MA|M)/)) {
+            // MA1 | M1 = Mois en Abrégé sur 1 caractère
+            res = obj.Ml[4];
+          }
+          if (x.match(/(JS|JD)/)) {
+            // JS1 | JD1 = Jour de la Décade/Semaine en Abrégé
+            // sur 1 caractère
+            res = obj.JSl[4];
+          }
+        }
+
+        // ENCOURS bugs globaux avec chiffres et lettres
+        // cf %Jrzl
+        var lettres = res;
+
+        // - o = lettres ou chiffres en Ordinaux
+        if (x.match(/o/)) {
+          /* istanbul ignore else  */
+          if (ordinaux && x.match(/f/)) {
+            res = ordinauxEnLettres(lettres, 1);
+          } else if (ordinaux) {
+            res = ordinauxEnLettres(lettres);
+          } else if (x.match(/f/) && chiffres) {
+            res = nombreOrdinal(lettres, 're', 'e');
+          } else if (chiffres) {
+            res = nombreOrdinal(lettres, 'er', 'e');
+          }
+        }
+
+        // - p = Premier ou 1er
+        if (x.match(/p/)) {
+          if (ordinaux) {
+            res = premierOrdinalEnLettres(lettres);
+          } else {
+            res = nombreOrdinal(lettres, 'er', '');
+          }
+        }
+
+        // - f = Féminin de p (première ou 1re)
+        if (x.match(/[^o]f/)) {
+          if (ordinaux) {
+            res = premierOrdinalEnLettres(lettres, 1);
+          } else {
+            res = nombreOrdinal(lettres, 're', '');
+          }
+        }
+        if (x.match(/b/)) {
+          // - b = en Bas de casse (minuscules)
+          res = res.toString().toLowerCase();
+        }
+        if (x.match(/c|m/)) {
+          // - c | m = en Capitales (Majuscules)
+          res = res.toString().toUpperCase();
+        }
+        return res;
+      }
+
+      return balisesEtFiltres;
+    }();
+
+    /**
+     * Pour générer les prototypes de formatage de Jour.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {String} format - Un format personnalisé
+     * @param {String} erreur - Un message d'erreur personnalisé
+     * @param {Function} rappel - Une fonction de rappel
+     * @param {String} df - Le format par défaut
+     * @param {Object} dt - La référence aux variables dans Jour
+     * @param {Object} dd - La référence exlicite à une variable dans dt
+     * @param {Object} dobj - Une fonction ou un objet utilisable
+     * @param {Object} [pro] - La référence du prototype si nécessaire
+     * @return {String} La date formatée
+     * @example
+     * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
+     * 'Pas de correspondances.', this.variables.gregorien, objGregorien);
+     */
+    var formatageDeJour = function () {
+      function formatageDeJour(format, erreur, rappel, df, dt, dd, dobj,
+        pro) {
+        var frmt = format || df;
+        var err = erreur || 'Pas de correspondances.';
+        var tvg = dt;
+        var resultat = void 0;
+
+        if (tvg[dd]) {
+          resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
+
+            // jscs:disable
+            function (x) {
+              // jscs:enable
+              var res = balisesEtFiltres(x, dobj(tvg, pro));
+
+              return res;
+            });
+          if (typeof rappel === 'function') {
+            resultat = rappel(resultat, dobj(tvg, pro));
+          }
+        } else {
+          resultat = err;
+        }
+        return resultat;
+      }
+
+      return formatageDeJour;
+    }();
+
+    /**
+     * Pour calculer une date julienne à partir du nombre de jours juliens.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -1111,7 +1951,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Pour calculer la date républicaine à partir du nombre de jours juliens,
-     * les 4 ou 5 'sansculottides' sont considérés comme un 13e mois
+     * les 4 ou 5 'sansculottides' sont considérés comme un 13e mois.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -1141,7 +1981,131 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour remplacer en série avec un objet contenant des regex
+     * Pour calculer le jour de la semaine à partir du nombre de jours juliens.
+     * @access private
+     * @author John Walker
+     * @since 0.0.15
+     * @license Domaine public
+     * @see {@link http://fourmilab.ch/documents/calendar/|jwday}
+     * @param  {Number} jj - Nombre de jours juliens
+     * @return {Number} Le jour de la semaine (0-6)
+     * @example
+     * jourSemaineJulien(2378625.5); // 6
+     */
+    var jourSemaineJulien = function () {
+      function jourSemaineJulien(jj) {
+        var result = reste(Math.floor(jj + 1.5), 7);
+
+        return result;
+      }
+
+      return jourSemaineJulien;
+    }();
+
+    /**
+     * Pour retourner un objet utilisable par le prototype .gregorien().
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Object} d - un objet de Jour.variables
+     * @param {Object} [pro] - La référence du prototype si nécessaire
+     * @return {Object} result - un nouvel objet contenant toutes les valeurs
+     * @example
+     * objGregorien(tvg);
+     */
+    var objGregorien = function () {
+      function objGregorien(d, pro) {
+        var js = pro === 'julien' ? jourSemaineJulien(d.jj) : d.od.getDay();
+        var result = {
+
+          // A = Année
+          A: d.a,
+
+          // M = Mois dans l'année
+          M: d.m,
+
+          // J = Jour dans le mois
+          J: d.jm,
+
+          // D = Décade/Semaine dans le mois
+          D: semaineComplete(d.jm, d.m, d.a, 1),
+
+          // S = Décade/Semaine dans l'année
+          S: semaineComplete(d.jm, d.m, d.a, 0),
+
+          // JA = Jour dans l'Année
+          JA: periodeEnJours(1, 1, d.a, d.jm, d.m, d.a),
+
+          // JS = Jour de la décade/semaine
+          JS: js,
+
+          // Ml = Mois dans l'année en lettres
+          Ml: moisGregorien[d.m - 1],
+
+          // JSl = Jour de la décade/semaine en lettres
+          JSl: jourGregorien[js]
+        };
+
+        return result;
+      }
+
+      return objGregorien;
+    }();
+
+    /**
+     * Pour retourner un objet utilisable par le prototype .republicain().
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.15
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Object} d - un objet de Jour.variables
+     * @return {Object} result - un nouvel objet contenant toutes les valeurs
+     * @example
+     * objGregorien(tvg);
+     */
+    var objRepublicain = function () {
+      function objRepublicain(d) {
+        var result = {
+
+          // A = Année
+          A: d.a,
+
+          // M = Mois dans l'année
+          M: d.m,
+
+          // J = Jour dans le mois
+          J: d.jm,
+
+          // D = Décade/Semaine dans le mois
+          D: d.d,
+
+          // S = Décade/Semaine dans l'année
+          S: (d.m - 1) * 3 + d.d,
+
+          // JA = Jour dans l'Année
+          JA: (d.m - 1) * 30 + d.jm,
+
+          // JS = Jour de la décade/semaine
+          JS: d.jd,
+
+          // Ml = Mois dans l'année en lettres
+          Ml: moisRepublicain[d.m - 1],
+
+          // JSl = Jour de la décade/semaine en lettres
+          JSl: jourRepublicain[d.jd - 1]
+        };
+
+        return result;
+      }
+
+      return objRepublicain;
+    }();
+
+    /**
+     * Pour remplacer en série avec un objet contenant des regex.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -1157,13 +2121,17 @@ if (!Array.prototype.reduce) {
      */
     var remplacements = function () {
       function remplacements(texte, regex, options) {
-        var resultat = regex.reduce(function (data, item) {
-          var result = data.replace(new RegExp(item.regexp, options),
-            item.replace);
+        var resultat = regex.reduce(
 
-          return result;
-        }, texte);
+          // jscs:disable
+          function (data, item) {
+            var result = data.replace(new RegExp(item.regexp, options),
+              item.replace);
 
+            return result;
+          }, texte);
+
+        // jscs:enable
         return resultat;
       }
 
@@ -1171,7 +2139,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour calculer le nombre de jours juliens à partir d'une date républicaine
+     * Pour calculer le nombre de jours juliens à partir d'une date républicaine.
      * @access private
      * @author John Walker
      * @since 0.0.1
@@ -1202,7 +2170,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir le jour du mois républicain en décade
+     * Pour convertir le jour du mois républicain en décade.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -1225,7 +2193,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir le jour du mois républicain en jour de la décade
+     * Pour convertir le jour du mois républicain en jour de la décade.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -1248,7 +2216,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir des chiffres romains en chiffres arabes
+     * Pour convertir des chiffres romains en chiffres arabes.
      * @access private
      * @author Iván Montes
      * @since 0.0.1
@@ -1289,7 +2257,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour obtenir une saisie valide
+     * Pour obtenir une saisie valide.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -1336,7 +2304,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir la saisie grégorienne ou julienne en Objet Jour
+     * Pour convertir la saisie grégorienne ou julienne en Objet Jour.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -1403,7 +2371,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir la saisie républicaine en Objet Jour
+     * Pour convertir la saisie républicaine en Objet Jour.
      * @access private
      * @author Gilles Toubiana
      * @since 0.0.1
@@ -1422,11 +2390,15 @@ if (!Array.prototype.reduce) {
         // On remplace les chiffres romains en chiffres arabes
         var saisieRepublicain = saisie.replace(
           /\W?an\s-?([-MDCLXVI]+)\W?/gi,
+
+          // jscs:disable
           function (x, p1) {
             var rva = romainVersArabe(p1);
 
             return x.match(/-/) ? ' -' + rva : ' ' + rva;
           });
+
+        // jscs:enable
         var tab = [];
 
         // Uniformisation de la saisie
@@ -1434,7 +2406,7 @@ if (!Array.prototype.reduce) {
           regexpRepublicain);
 
         // Lorsque la date est valide [rjmc,rmc,rac]
-        if (saisieRepublicain[2] && saisieRepublicain[0] < 30 && absInt(
+        if (saisieRepublicain[2] && saisieRepublicain[0] < 31 && absInt(
             saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
           absInt(saisieRepublicain[1]) !== 0) {
           tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),
@@ -1471,7 +2443,7 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir une saisie en objet JavaScript
+     * Pour convertir une saisie en objet JavaScript.
      * @memberof acte
      * @class
      * @chainable
@@ -1487,6 +2459,15 @@ if (!Array.prototype.reduce) {
      * 31/12/1805 (Période républicaine) et du 18/3/1871 au 28/5/1871
      * (Commune de Paris).<br>
      * La valeur `false` permet de désactiver ces limitations.
+     * @example
+     * new acte.Jour('15/10/1582').gregorien() // 15 octobre 1582
+     * new acte.Jour('5 Xbre 1793').gregorien() // 5 décembre 1793
+     * new acte.Jour('5 Jet 1793').gregorien() // 5 juillet 1793
+     * new acte.Jour('10 nivôse an XIV').gregorien() // 31 décembre 1805
+     * new acte.Jour('8 frimaire an XVIII').gregorien() // Pas de correspondances.
+     * new acte.Jour('8 frimaire an XVIII', false).gregorien() // 29 novembre 1809
+     * new acte.Jour('14/10/1582').gregorien() // Pas de correspondances.
+     * new acte.Jour('14/10/1582', false).gregorien() // 14 octobre 1582
      * @since 0.0.1
      * @license MIT
      */
@@ -1511,24 +2492,24 @@ if (!Array.prototype.reduce) {
         // Ecriture de toutes les valeurs
         this.variables = {
           gregorien: {
-            jmc: tab[0],
-            mc: tab[1],
-            ac: tab[2],
+            jm: tab[0],
+            m: tab[1],
+            a: tab[2],
             od: tab[3]
           },
           julien: {
             jj: tab[4],
-            jmc: tab[5],
-            mc: tab[6],
-            ac: tab[7],
+            jm: tab[5],
+            m: tab[6],
+            a: tab[7],
             od: tab[8]
           },
           republicain: {
-            jdc: tab[9],
-            dc: tab[10],
-            jmc: tab[11],
-            mc: tab[12],
-            ac: tab[13]
+            jd: tab[9],
+            d: tab[10],
+            jm: tab[11],
+            m: tab[12],
+            a: tab[13]
           },
           limites: this.limites
         };
@@ -1538,27 +2519,122 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour formater une date grégorienne
+     * Pour formater une date grégorienne.
      * @memberof acte
      * @access public
-     * @since 0.0.7
+     * @since 0.0.15
      * @author Gilles Toubiana
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @license MIT
-     * @param {String} [format='%d/%m/%Y'] - Le modèle de formatage
-     * @param {String} [erreur='Pas de correspondances'] - Le message d'erreur
+     * @param {String} [format='%Jp %Mlb %A'] - Le modèle de formatage :<br><br>
+     * <strong>BALISES</strong><br>
+     * `%A` ou `%AN` - Année<br>
+     * `%D`, `%DM` ou `%SM` - Décade/Semaine dans le mois<br>
+     * `%J` ou `%JM` - Jour dans le mois<br>
+     * `%JA` - Jour dans l'année<br>
+     * `%JS` ou `%JD` - Jour de la Décade/Semaine<br>
+     * `%M` ou `%MA` - Mois dans l'année<br>
+     * `%S`, `%SA` ou `%DA` - Semaine/Décade dans l'année<br><br>
+     * <strong>FILTRES</strong><br>
+     * `1` - mois ou jour sur 1 caractère<br>
+     * `2` - mois ou jour sur 2 caractères<br>
+     * `3` - mois ou jour sur 3 caractères<br>
+     * `a` - mois ou jour en Abrégé<br>
+     * `b` - en Bas de casse (minuscules)<br>
+     * `c` ou `m` - en Capitales (Majuscules)<br>
+     * `f` - Féminin de p (première ou 1re)<br>
+     * `l` - chiffres en Lettres<br>
+     * `o` - lettres ou chiffres en Ordinaux<br>
+     * `p` - Premier ou 1er<br>
+     * `r` - chiffres en Romains<br>
+     * `v` - chiffres en lettres (Vieille notation)<br>
+     * `z` - Zéro devant le chiffre<br>
+     * @param {String} [erreur='Pas de correspondances.'] - Le message d'erreur
      * @param {Function} [rappel] - Une fonction de rappel
      * @return {String} La date grégorienne formatée
      * @example
-     * new acte.Jour('8 mai 1972').gregorien(); // "8/5/1972"
+     * new acte.Jour('1/1/1600').gregorien() // '1er janvier 1600'
+     * new acte.Jour('').gregorien(0, 'Erreur.') // 'Erreur.'
+     * new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, ((res, obj) => {
+     *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+     *   return `${res}/${an}`;
+     * }))) // '03/04/05'
      */
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
-        rappel();
-        return this.variables.gregorien.ac;
+        var resultat = formatageDeJour(format, erreur, rappel,
+          '%Jp %Mlb %A', this.variables.gregorien, 'od', objGregorien);
+
+        return resultat;
       }
 
       return gregorien;
+    }();
+
+    /**
+     * Pour formater une date julienne.
+     * @memberof acte
+     * @access public
+     * @since 0.0.15
+     * @author Gilles Toubiana
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @license MIT
+     * @param {String} [format='%Jp %Mlb %A'] - Le modèle de formatage.<br>
+     * Voir [.gregorien](#acte.Jour+gregorien) pour la syntaxe.
+     * @param {String} [erreur='Pas de correspondances.'] - Le message d'erreur
+     * @param {Function} [rappel] - Une fonction de rappel
+     * @return {String} La date julienne formatée
+     * @example
+     * new acte.Jour('1/1/1600').julien() // '22 décembre 1599'
+     * new acte.Jour('').julien(0, 'Erreur.') // 'Erreur.'
+     * new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, ((res, obj) => {
+     *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+     *   return `${res}/${an}`;
+     * }))) // '24/03/05'
+     */
+    acte.Jour.prototype.julien = function () {
+      function julien(format, erreur, rappel) {
+        var resultat = formatageDeJour(format, erreur, rappel,
+          '%Jp %Mlb %A', this.variables.julien, 'od', objGregorien,
+          'julien');
+
+        return resultat;
+      }
+
+      return julien;
+    }();
+
+    /**
+     * Pour formater une date républicaine.
+     * @memberof acte
+     * @access public
+     * @since 0.0.15
+     * @author Gilles Toubiana
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @license MIT
+     * @param {String} [format='%Jp %Mlb %A'] - Le modèle de formatage.<br>
+     * Voir [.gregorien](#acte.Jour+gregorien) pour la syntaxe.
+     * @param {String} [erreur='Pas de correspondances.'] - Le message d'erreur
+     * @param {Function} [rappel] - Une fonction de rappel
+     * @return {String} La date républicaine formatée
+     * @example
+     * new acte.Jour('1/1/1600').républicain() // '?/?/?'
+     * new acte.Jour('').républicain(0, 'Erreur.') // 'Erreur.'
+     * new acte.Jour('3 avril 1605').républicain('%Jz/%Mz', 0, ((res, obj) => {
+     *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+     *   return `${res}/${an}`;
+     * }))) // '?/?/?'
+     */
+    acte.Jour.prototype.republicain = function () {
+      function republicain(format, erreur, rappel) {
+        var resultat = formatageDeJour(format, erreur, rappel,
+          '%Jp %Mlb an %Ar', this.variables.republicain, 'a',
+          objRepublicain);
+
+        return resultat;
+      }
+
+      return republicain;
     }();
     return acte;
   }

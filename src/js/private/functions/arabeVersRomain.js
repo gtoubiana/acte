@@ -1,5 +1,5 @@
 /**
- * Pour convertir des chiffres arabes en chiffres romains
+ * Pour convertir des chiffres arabes en chiffres romains.
  * @access private
  * @author Iván Montes
  * @since 0.0.1
@@ -26,11 +26,13 @@ const arabeVersRomain = (arabe) => {
     IV: 4,
     I: 1,
   };
-  let tempArabe = arabe;
+  let tempArabe = Math.abs(arabe);
+  const sign = arabe < 0 ? '-' : '';
   let romain = '';
   let i;
 
   for (i in lookup) {
+    /* istanbul ignore else  */
     if (lookup.hasOwnProperty(i)) {
       while (tempArabe >= lookup[i]) {
         romain += i;
@@ -39,5 +41,5 @@ const arabeVersRomain = (arabe) => {
     }
   }
 
-  return romain;
+  return sign + romain;
 };

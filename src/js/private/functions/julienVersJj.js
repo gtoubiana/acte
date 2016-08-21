@@ -1,5 +1,5 @@
 /**
- * Pour calculer un nombre de jours juliens à partir d'une date julienne
+ * Pour calculer un nombre de jours juliens à partir d'une date julienne.
  * @access private
  * @author John Walker
  * @since 0.0.1

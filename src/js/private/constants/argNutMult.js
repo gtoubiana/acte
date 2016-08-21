@@ -1,5 +1,5 @@
 /**
- * Termes périodiques pour la nutation en longitude et obliquité
+ * Termes périodiques pour la nutation en longitude et obliquité.
  * @access private
  * @author John Walker
  * @since 0.0.1

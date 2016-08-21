@@ -48,6 +48,9 @@ require('karma-opera-launcher');
 require('karma-safari-launcher');
 require('karma-sauce-launcher');
 
+// Dépendances JASMINE
+require('jasmine');
+
 // Vérifier les dépendances
 gulp.task('depcheck', depcheck({
   ignoreDirs: ['docs', 'build'],

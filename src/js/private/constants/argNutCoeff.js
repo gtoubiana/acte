@@ -1,5 +1,5 @@
 /**
- * Coefficient des sinus et cosinus de l'argument pour la nutation
+ * Coefficient des sinus et cosinus de l'argument pour la nutation.
  * @access private
  * @author John Walker
  * @since 0.0.1

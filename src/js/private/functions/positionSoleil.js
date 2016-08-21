@@ -1,5 +1,5 @@
 /**
- * Pour calculer la position du soleil
+ * Pour calculer la position du soleil.
  * @access private
  * @author John Walker
  * @since 0.0.1

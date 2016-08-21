@@ -1,5 +1,5 @@
 /**
- * Expressions régulières pour convertir les mois républicains
+ * Expressions régulières pour convertir les mois républicains.
  * @access private
  * @author Gilles Toubiana
  * @since 0.0.1

@@ -1,5 +1,5 @@
 /**
- * Pour calculer le nombre de jours juliens d'une equinoxe ou d'un solstice
+ * Pour calculer le nombre de jours juliens d'une equinoxe ou d'un solstice.
  * @access private
  * @author John Walker
  * @since 0.0.1

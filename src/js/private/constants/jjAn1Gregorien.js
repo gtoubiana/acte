@@ -1,5 +1,5 @@
 /**
- * Nombre de jours juliens correspondants à l'an 1 gregorien
+ * Nombre de jours juliens correspondants à l'an 1 gregorien.
  * @access private
  * @author John Walker
  * @since 0.0.1

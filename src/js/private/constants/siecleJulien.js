@@ -1,5 +1,5 @@
 /**
- * Nombre de jours dans un siècle julien
+ * Nombre de jours dans un siècle julien.
  * @access private
  * @author John Walker
  * @since 0.0.1

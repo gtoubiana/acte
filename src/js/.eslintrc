@@ -1,5 +1,5 @@
 {
-    "extends": "../../.eslintrc",
+    "extends": "../../.eslintrc", #root /!\ version 2.10.2 pour codeclimate
 
     "rules": {
       "no-unused-vars": 0, // constants sont utilisées dans functions et classes
@@ -9,6 +9,5 @@
         "ignoreUrls": true,
         "ignoreComments": false
       }],
-      
     },
 }
