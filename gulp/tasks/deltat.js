@@ -8,7 +8,7 @@
  * npm run delta
  */
 
-/* eslint-disable no-console */
+/* eslint-disable no-console,strict */
 const csv2json = require('gulp-csv2json');
 const del = require('del');
 const fs = require('fs-extra');
@@ -91,14 +91,12 @@ gulp.task('delta.json', () => {
 
 /* TASK: générer le fichier ./src/js/private/constants/delta.js */
 gulp.task('delta.js', () => {
+  'use strict';
   const deltat = JSON.parse(fs.readFileSync('./src/data/deltat.json',
     'utf8'));
 
   const deltatAverageForOneYears = (current) => {
-    /* eslint-disable strict */
     'use strict';
-
-    /* eslint-enable strict */
     const currentYear = parseInt(current, 10);
     const test = deltat.filter((item) => {
       const result = parseInt(item.an, 10) === currentYear;
@@ -167,4 +165,4 @@ gulp.task('delta.clean', (done) => {
   return stream;
 });
 
-/* eslint-enable no-console */
+/* eslint-enable no-console,strict */
