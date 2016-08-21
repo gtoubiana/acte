@@ -1,4 +1,4 @@
-# acte v0.0.16-0
+# acte v0.0.16-1
 [![NPM version](https://img.shields.io/npm/v/acte.svg)](https://www.npmjs.com/package/acte)
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)
 [![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg)](https://david-dm.org/gtoubiana/acte#info=devDependencies)
@@ -27,7 +27,7 @@ $ npm install acte --save
 ```
 
 ### Pour le navigateur :
-Téléchargez et décompressez la dernière archive zip ([acte-0.0.16-0-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.16-0-dist.zip?raw=true)), puis appelez le script `acte.min.js` au début ou à la fin de votre page html.
+Téléchargez et décompressez la dernière archive zip ([acte-0.0.16-1-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.16-1-dist.zip?raw=true)), puis appelez le script `acte.min.js` au début ou à la fin de votre page html.
 ```html
 <script type="text/javascript" src="acte.min.js"></script>
 ```

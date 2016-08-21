@@ -41,7 +41,7 @@ if (!Array.prototype.reduce) {
  * acte - Librairie Javascript pour manipuler des données généalogiques.
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
- * @version 0.0.16-0
+ * @version 0.0.16-1
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @license MIT
  */
