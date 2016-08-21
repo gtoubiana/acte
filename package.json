@@ -1,6 +1,6 @@
 {
   "name": "acte",
-  "version": "0.0.16-4",
+  "version": "0.0.16-5",
   "description": "Librairie Javascript pour manipuler des données généalogiques",
   "main": "dist/acte.min.js",
   "directories": {
