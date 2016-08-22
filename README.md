@@ -34,7 +34,7 @@ Téléchargez et décompressez la dernière archive zip ([acte-0.0.17-dist.zip](
 <a name="documentation"></a>
 
 ## Documentation
-Consultez l'[API](https://github.com/gtoubiana/acte/blob/master/dist/README.md) et les [tests](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js). Vous pouvez essayer la librairie dans votre navigateur avec [tonidev](https://tonicdev.com/npm/acte).
+Consultez l'[API](https://github.com/gtoubiana/acte/blob/master/dist/README.md) et les [tests](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js).<br>Vous pouvez essayer la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
 
 * * *
 Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/).
