@@ -13,14 +13,6 @@
       "acte": true,
     },
 
-    "settings": {
-      "import/resolver": {
-        "node": {
-          "extensions": [".es6", ".coffee", ".js", ".jsx"],
-        }
-      }
-    },
-
     "rules": {
       "consistent-this": [1, "that"], # enforce consistent naming when capturing the current execution context
       "func-style": [1, "expression"], # enforce use of function declarations or expressions

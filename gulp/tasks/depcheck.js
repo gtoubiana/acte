@@ -1,6 +1,8 @@
 const depcheck = require('gulp-depcheck');
 const gulp = require('gulp');
 
+/* eslint-disable */
+
 // Dépendances BABEL
 require('babel-helper-transform-fixture-test-runner');
 require('babel-plugin-check-es2015-constants');
@@ -50,6 +52,8 @@ require('karma-sauce-launcher');
 
 // Dépendances JASMINE
 require('jasmine');
+
+/* eslint-enable */
 
 // Vérifier les dépendances
 gulp.task('depcheck', depcheck({
