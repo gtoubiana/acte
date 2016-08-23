@@ -2,10 +2,22 @@ module.exports = function karma(config) {
   // Check out https://saucelabs.com/platforms
   const customLaunchers = {
 
-    sl_safari_osx: {
+    sl_firefox_osx: {
       base: 'SauceLabs',
-      browserName: 'safari',
+      browserName: 'firefox',
       platform: 'OS X 10.11',
+      version: 'latest',
+    },
+    sl_firefox_win: {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+      platform: 'Windows 10',
+      version: 'latest',
+    },
+    sl_firefox_linux: {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+      platform: 'Linux',
       version: 'latest',
     },
     sl_chrome_osx: {
@@ -14,10 +26,28 @@ module.exports = function karma(config) {
       platform: 'OS X 10.11',
       version: 'latest',
     },
-    sl_firefox_osx: {
+    sl_chrome_win: {
       base: 'SauceLabs',
-      browserName: 'firefox',
+      browserName: 'chrome',
+      platform: 'Windows 10',
+      version: 'latest',
+    },
+    sl_chrome_linux: {
+      base: 'SauceLabs',
+      browserName: 'chrome',
+      platform: 'Linux',
+      version: 'latest',
+    },
+    sl_safari_osx: {
+      base: 'SauceLabs',
+      browserName: 'safari',
       platform: 'OS X 10.11',
+      version: 'latest',
+    },
+    sl_opera_linux: {
+      base: 'SauceLabs',
+      browserName: 'opera',
+      platform: 'Linux',
       version: 'latest',
     },
     sl_edge_win: {
@@ -44,49 +74,35 @@ module.exports = function karma(config) {
       version: '9',
       platform: 'Windows 7',
     },
-    sl_chrome_win: {
+    sl_ie8_win: {
       base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Windows 10',
-      version: 'latest',
+      browserName: 'internet explorer',
+      version: '8',
+      platform: 'Windows 7',
     },
-    sl_firefox_win: {
-      base: 'SauceLabs',
-      browserName: 'firefox',
-      platform: 'Windows 10',
-      version: 'latest',
-    },
-    sl_iphone_osx: {
+
+    // sl_iphone6_ios: {
+    //   base: 'SauceLabs',
+    //   browserName: 'Safari',
+    //   appiumVersion: '1.5.3',
+    //   deviceName: 'iPhone 6',
+    //   deviceOrientation: 'portrait',
+    //   platformName: 'iOS',
+    //   platformVersion: '9.3',
+    // },
+    sl_phone_ios: {
       base: 'SauceLabs',
       browserName: 'iphone',
       platform: 'OS X 10.10',
-      version: 'latest',
+      version: '9.3',
     },
-    sl_chrome_linux: {
-      base: 'SauceLabs',
-      browserName: 'chrome',
-      platform: 'Linux',
-      version: 'latest',
-    },
-    sl_firefox_linux: {
-      base: 'SauceLabs',
-      browserName: 'firefox',
-      platform: 'Linux',
-      version: 'latest',
-    },
-    sl_android_linux: {
+    sl_phone_android: {
       base: 'SauceLabs',
       browserName: 'android',
       platform: 'Linux',
       deviceName: 'Android Emulator',
       version: 'latest',
       deviceType: 'phone',
-    },
-    sl_ie8_win: {
-      base: 'SauceLabs',
-      browserName: 'internet explorer',
-      version: '8',
-      platform: 'Windows 7',
     },
   };
   let sauceLabs;

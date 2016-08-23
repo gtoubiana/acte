@@ -1,7 +1,7 @@
+/* eslint-disable */
+
 const depcheck = require('gulp-depcheck');
 const gulp = require('gulp');
-
-/* eslint-disable */
 
 // Dépendances BABEL
 require('babel-helper-transform-fixture-test-runner');
