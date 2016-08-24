@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/gtoubiana/acte/badge.svg?branch=master&bust=1)](https://coveralls.io/github/gtoubiana/acte?branch=master)
 [![airbnb-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg)](http://nerds.airbnb.com/our-javascript-style-guide/)
 [![MIT License](https://img.shields.io/npm/l/acte.svg)](https://github.com/gtoubiana/acte/blob/master/LICENSE)<br>
-<div style="width:784px;">[![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)</div>
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)
 
 
 ## Sommaire
