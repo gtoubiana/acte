@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/gtoubiana/acte/badge.svg?branch=master&bust=1)](https://coveralls.io/github/gtoubiana/acte?branch=master)
 [![airbnb-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg)](http://nerds.airbnb.com/our-javascript-style-guide/)
 [![MIT License](https://img.shields.io/npm/l/acte.svg)](https://github.com/gtoubiana/acte/blob/master/LICENSE)<br>
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)
+<div style="width:784px;">[![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)</div>
 
 
 ## Sommaire
@@ -34,7 +34,9 @@ Téléchargez et décompressez la dernière archive zip ([acte-0.0.17-dist.zip](
 <a name="documentation"></a>
 
 ## Documentation
-Consultez l'[API](https://github.com/gtoubiana/acte/blob/master/dist/README.md) et les [tests](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js).<br>Vous pouvez essayer la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
+- [API](https://github.com/gtoubiana/acte/blob/master/dist/README.md) générée par jsdoc-to-markdown.
+- [Tests](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js) rédigés pour Node et Jasmine.
+- Essayez la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
 
 * * *
 Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/).
