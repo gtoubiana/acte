@@ -7,7 +7,6 @@ const dateValide = (jour, mois, an) => {
 
 const anActuel = new Date();
 
-// http://jasmine.github.io/edge/introduction.html
 describe('new acte.Jour()', () => {
   it('new acte.Jour() = un objet', () => {
     expect(new acte.Jour('6 octobre 1793'))
@@ -46,16 +45,8 @@ describe('new acte.Jour()', () => {
         .toEqual(dateValide(1, 3, 4));
       expect(new acte.Jour('4/5/6/', false).variables.gregorien.od)
         .toEqual(dateValide(4, 5, 6));
-
-      // DEBUGGER IE 8.0.0 (Windows 7 0.0.0)
-      // Expected Date(Tue Jun 5 00:00:00 UTC 7)
-      // to equal Date(Mon May 1 00:00:00 UTC 6).
       expect(new acte.Jour('/5/6/7', false).variables.gregorien.od)
         .toEqual(dateValide(1, 5, 6));
-
-      // DEBUGGER IE 8.0.0 (Windows 7 0.0.0)
-      // Expected Date(Sun Jul 6 00:00:00 UTC 8)
-      // to equal Date(Fri Jun 1 00:00:00 UTC 7).
       expect(new acte.Jour('/6/7/8/', false).variables.gregorien.od)
         .toEqual(dateValide(1, 6, 7));
       expect(new acte.Jour('7/8/9/1', false).variables.gregorien.od)

@@ -164,6 +164,8 @@ describe('new acte.Jour().julien()', () => {
       expect(new acte.Jour('1/9/5192').julien('%JSl'))
         .toEqual('Mardi');
     });
+
+  // Erreurs
   it(
     'new acte.Jour().julien() = Pas de correspondances.',
     () => {
@@ -176,6 +178,8 @@ describe('new acte.Jour().julien()', () => {
       expect(new acte.Jour('').julien('', 'Message d\'erreur.'))
         .toEqual('Message d\'erreur.');
     });
+
+  // Callback functions
   it(
     'new acte.Jour().julien(0, 0, ((res, obj) => {})) ' +
     '= Fonction de rappel.',

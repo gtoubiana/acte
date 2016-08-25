@@ -168,6 +168,8 @@ describe('new acte.Jour().republicain()', () => {
       expect(new acte.Jour('1/9/1800').republicain('%JSl'))
         .toEqual('Quartidi');
     });
+
+  // Erreurs
   it(
     'new acte.Jour().republicain() = Pas de correspondances.',
     () => {
@@ -180,6 +182,8 @@ describe('new acte.Jour().republicain()', () => {
       expect(new acte.Jour('').republicain('', 'Message d\'erreur.'))
         .toEqual('Message d\'erreur.');
     });
+
+  // Callback functions
   it(
     'new acte.Jour().republicain(0, 0, ((res, obj) => {})) ' +
     '= Fonction de rappel.',

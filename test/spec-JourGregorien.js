@@ -315,6 +315,8 @@ describe('new acte.Jour().gregorien()', () => {
       expect(new acte.Jour('6/1/1605').gregorien('%SAlf'))
         .toEqual('Première');
     });
+
+  // Erreurs
   it(
     'new acte.Jour().gregorien() = Pas de correspondances.',
     () => {
@@ -331,6 +333,8 @@ describe('new acte.Jour().gregorien()', () => {
       expect(new acte.Jour('').gregorien(false, 'Message d\'erreur 3.'))
         .toEqual('Message d\'erreur 3.');
     });
+
+  // Callback functions
   it(
     'new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' +
     '= Fonction de rappel.',

@@ -10,7 +10,6 @@ var dateValide = function dateValide(jour, mois, an) {
 
 var anActuel = new Date();
 
-// http://jasmine.github.io/edge/introduction.html
 describe('new acte.Jour()', function () {
   it('new acte.Jour() = un objet', function () {
     expect(new acte.Jour('6 octobre 1793')).toEqual(jasmine.any(Object));
@@ -32,15 +31,7 @@ describe('new acte.Jour()', function () {
     expect(new acte.Jour('/2/3', false).variables.gregorien.od).toEqual(dateValide(1, 2, 3));
     expect(new acte.Jour('/3/4/', false).variables.gregorien.od).toEqual(dateValide(1, 3, 4));
     expect(new acte.Jour('4/5/6/', false).variables.gregorien.od).toEqual(dateValide(4, 5, 6));
-
-    // DEBUGGER IE 8.0.0 (Windows 7 0.0.0)
-    // Expected Date(Tue Jun 5 00:00:00 UTC 7)
-    // to equal Date(Mon May 1 00:00:00 UTC 6).
     expect(new acte.Jour('/5/6/7', false).variables.gregorien.od).toEqual(dateValide(1, 5, 6));
-
-    // DEBUGGER IE 8.0.0 (Windows 7 0.0.0)
-    // Expected Date(Sun Jul 6 00:00:00 UTC 8)
-    // to equal Date(Fri Jun 1 00:00:00 UTC 7).
     expect(new acte.Jour('/6/7/8/', false).variables.gregorien.od).toEqual(dateValide(1, 6, 7));
     expect(new acte.Jour('7/8/9/1', false).variables.gregorien.od).toEqual(dateValide(7, 8, 9));
 
@@ -350,6 +341,8 @@ describe('new acte.Jour().gregorien()', function () {
   it('new acte.Jour().gregorien(\'%SAlf\') = Semaine de l\'année en nombre' + ' ordinal en lettres.', function () {
     expect(new acte.Jour('6/1/1605').gregorien('%SAlf')).toEqual('Première');
   });
+
+  // Erreurs
   it('new acte.Jour().gregorien() = Pas de correspondances.', function () {
     expect(new acte.Jour('').gregorien()).toEqual('Pas de correspondances.');
   });
@@ -358,6 +351,8 @@ describe('new acte.Jour().gregorien()', function () {
     expect(new acte.Jour('').gregorien('', 'Message d\'erreur 2.')).toEqual('Message d\'erreur 2.');
     expect(new acte.Jour('').gregorien(false, 'Message d\'erreur 3.')).toEqual('Message d\'erreur 3.');
   });
+
+  // Callback functions
   it('new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('1 février 1603').gregorien(0, 0, function (res, obj) {
       var jour = obj.J < 10 ? '0' + obj.J : obj.J;
@@ -467,12 +462,16 @@ describe('new acte.Jour().julien()', function () {
   it('new acte.Jour().julien(\'%JSl\') = Jour de la semaine en lettres.', function () {
     expect(new acte.Jour('1/9/5192').julien('%JSl')).toEqual('Mardi');
   });
+
+  // Erreurs
   it('new acte.Jour().julien() = Pas de correspondances.', function () {
     expect(new acte.Jour('').julien()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().julien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').julien('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');
   });
+
+  // Callback functions
   it('new acte.Jour().julien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, function (res, obj) {
       var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
@@ -568,12 +567,16 @@ describe('new acte.Jour().republicain()', function () {
   it('new acte.Jour().republicain(\'%JSl\') = Jour de la semaine en lettres.', function () {
     expect(new acte.Jour('1/9/1800').republicain('%JSl')).toEqual('Quartidi');
   });
+
+  // Erreurs
   it('new acte.Jour().republicain() = Pas de correspondances.', function () {
     expect(new acte.Jour('').republicain()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().republicain(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').republicain('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');
   });
+
+  // Callback functions
   it('new acte.Jour().republicain(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('3 avril 1805').republicain('%Jz/%Mz', 0, function (res, obj) {
       var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
