@@ -12,6 +12,8 @@ gulp.task('default', sequence(
   'clean.dist',
   'clean.tests',
 
+  // 'clean.demo',
+
   // Vérification des dépendances
   'depcheck',
 
@@ -41,6 +43,9 @@ gulp.task('default', sequence(
 
   // Génération du zip
   'dist.zip'
+
+  // Génération de la démo
+  // 'demo.vendors'
 
   // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
   // 'tests.coverage'

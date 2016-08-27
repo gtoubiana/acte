@@ -50,7 +50,7 @@ require('karma-opera-launcher');
 require('karma-safari-launcher');
 require('karma-sauce-launcher');
 
-// Dépendances JASMINE
+// Dépendances TESTS
 require('jasmine');
 
 /* eslint-enable */

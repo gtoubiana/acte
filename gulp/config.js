@@ -12,6 +12,7 @@ const paths = {
   test: './test',
   scriptRequire: './lib/acte.js',
   dist: './dist',
+  demo: './demo',
   src: './src',
   tasks: './gulp/tasks',
   class: './src/js/public/constructors',
@@ -22,6 +23,8 @@ const paths = {
   jasmine: './test/jasmine',
   jasmineCore: './node_modules/jasmine-core/lib/jasmine-core',
   coverage: './test/coverage',
+  bootstrapCore: './node_modules/bootstrap/dist',
+  jqueryCore: './node_modules/jquery/dist',
 };
 
 // Ordre des scripts pour générer acte.js
