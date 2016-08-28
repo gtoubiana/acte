@@ -1,0 +1,31 @@
+{
+  "name": "acte",
+  "description": "Librairie Javascript pour manipuler des données généalogiques",
+  "main": "test/jasmine/lib/acte.js",
+  "authors": [
+    "Gilles Toubiana <gilles.toubiana@yahoo.fr>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "généalogie",
+    "acte",
+    "javascript",
+    "js",
+    "script"
+  ],
+  "homepage": "https://github.com/gtoubiana/acte",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": ">=3.3.7 <4",
+    "respond": "^1.4.2",
+    "html5shiv": "^3.7.3"
+  }
+}

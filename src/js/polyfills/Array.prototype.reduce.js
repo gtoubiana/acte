@@ -10,6 +10,8 @@ if (!Array.prototype.reduce) {
    * @see {@link https://github.com/es-shims/es5-shim|es5-shim}
    * @param {Function} callback - La fonction à exécuter sur chaque valeur de la liste
    * @return {Number|Array} La valeur obtenue grâce à la fonction de réduction
+   * @example
+   * [0, 1, 2, 3].reduce((a, b)=> a + b, 0); // 6
    */
   Array.prototype.reduce = function(callback/*, initialValue*/) {
     'use strict';
