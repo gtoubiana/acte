@@ -23,8 +23,10 @@ const paths = {
   jasmine: './test/jasmine',
   jasmineCore: './node_modules/jasmine-core/lib/jasmine-core',
   coverage: './test/coverage',
-  bootstrapCore: './node_modules/bootstrap/dist',
-  jqueryCore: './node_modules/jquery/dist',
+  bootstrapBower: './bower_components/bootstrap/dist',
+  jqueryBower: './bower_components/jquery/dist',
+  html5shivBower: './bower_components/html5shiv/dist',
+  respondBower: './bower_components/respond/dest',
 };
 
 // Ordre des scripts pour générer acte.js

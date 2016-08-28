@@ -46,12 +46,10 @@ gulp.task('clean.tests', (done) => {
 });
 
 // Nettoyer les fichiers issus de la tache demo
-// gulp.task('clean.demo', (done) => {
-//   const stream = del([
-//     `${config.paths.demo}/css/bootstrap*`,
-//     `${config.paths.demo}/js/{bootstrap,jquery}*`,
-//     `${config.paths.demo}/fonts/glyphicons*`,
-//   ], done);
-//
-//   return stream;
-// });
+gulp.task('clean.demo', (done) => {
+  const stream = del([
+    `${config.paths.demo}/*`,
+  ], done);
+
+  return stream;
+});
