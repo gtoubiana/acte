@@ -18,7 +18,9 @@ gulp.task('demo.vendors', () => {
     .pipe(gulp.dest(`${config.paths.demo}/js/`))
     .on('end', () => {
       const sstream = gulp.src(
-        [`${config.paths.bootstrapBower}/css/bootstrap-theme.min.css`])
+        [`${config.paths.bootstrapBower}/css/bootstrap.min.css`,
+        `${config.paths.bootstrapBower}/css/bootstrap-theme.min.css`,
+      ])
         .pipe(gulp.dest(`${config.paths.demo}/css/`))
         .on('end', () => {
           const ssstream = gulp.src(

@@ -26,32 +26,10 @@ gulp.task('delta.scrap', () => {
     },
   ],
     directory: './src/data',
-    subdirectories: [{
-      directory: 'img',
-      extensions: ['.jpg', '.png', '.svg'],
-    }, {
-      directory: 'js',
-      extensions: ['.js'],
-    }, {
-      directory: 'css',
-      extensions: ['.css'],
-    },
-  ],
-    sources: [{
-      selector: 'img',
-      attr: 'src',
-    }, {
-      selector: 'link[rel="stylesheet"]',
-      attr: 'href',
-    }, {
-      selector: 'script',
-      attr: 'src',
-    },
-  ],
     request: {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Linux; Android 4.2.1en-us;' +
-        'Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko)' +
-        'Chrome/18.0.1025.166 Mobile Safari/535.19',
+      headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; ' +
+      'Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko)' +
+      ' Chrome/52.0.2743.116 Safari/537.36',
       },
     },
   }).then((result) => {
@@ -134,7 +112,7 @@ gulp.task('delta.js', () => {
    * @access private
    * @author F.R. Stephenson & L.V. Morrison & IERS & Gilles Toubiana
    * @since 0.0.15
-   * {@link https://www.staff.science.uu.nl/~gent0113/deltat/deltat_modern.htm|Valeurs} |
+   * @see {@link https://www.staff.science.uu.nl/~gent0113/deltat/deltat_modern.htm|Valeurs} |
    * {@link http://maia.usno.navy.mil/ser7/deltat.data|IERS} |
    * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions}
    * @constant {Array}

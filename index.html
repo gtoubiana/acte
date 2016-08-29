@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Les autres metatags viennent après les 3 ci-dessus -->
+  <title>Page de démo de acte.js</title>
+
+    <!-- CSS -->
+    <link href="demo/css/bootstrap.min.css" rel="stylesheet">
+    <link href="demo/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- IE8 -->
+    <!--[if lt IE 9]>
+      <script src="demo/js/html5shiv.min.js"></script>
+      <script src="demo/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>Acte.js</h1>
+    <p>Acte.js est une librairie JavaScript utilisable dans le navigateur ou Node.js.</p>
+    <p>Elle permet de simplifier les recherches généalogiques à partir de dates.</p>
+    <form>
+      <label>Saisissez une date : <input type="text" name="jour"></label>
+      <label><input type="checkbox" id="limites" value="limites"> Ne pas limiter les résultats</label>
+    </form>
+    <h3>Calendrier grégorien</h3>
+    <p>- XXXXe Année<br>
+- Xe Mois de l'année<br>
+- Xe Semaine du mois<br>
+- Xe Jour du mois<br>
+- Xe Jour de l'année<br>
+- Xe Jour de la Semaine<br>
+- Xe Semaine de l'année
+</p>
+    <h3>Calendrier républicain</h3>
+    <p>- XXXXe Année<br>
+- Xe Mois de l'année<br>
+- Xe Décade du mois<br>
+- Xe Jour du mois<br>
+- Xe Jour de l'année<br>
+- Xe Jour de la Décade<br>
+- Xe Décade de l'année
+</p>
+    <h3>Calendrier julien</h3>
+    <p>- XXXXe Année<br>
+- Xe Mois de l'année<br>
+- Xe Semaine du mois<br>
+- Xe Jour du mois<br>
+- Xe Jour de l'année<br>
+- Xe Jour de la Semaine<br>
+- Xe Semaine de l'année
+</p>
+
+    <!-- JS -->
+    <script src="dist/acte.min.js"></script>
+    <script src="demo/js/jquery.min.js"></script>
+    <script src="demo/js/bootstrap.min.js"></script>
+  </body>
+</html>
