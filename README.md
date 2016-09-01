@@ -17,7 +17,7 @@
 <a name="description"></a>
 
 ## Description
-Librairie Javascript pour manipuler des données généalogiques.
+Une librairie JavaScript qui simplifie la recherche généalogique.
 <a name="installation"></a>
 
 ## Installation

@@ -1,0 +1,27 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+  .jumbotron {
+      padding-top: 0px;
+      padding-bottom: 0px;
+  }
+}
+
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    background-color: #eee;
+    text-align: center;
+}
+
+.jumbotron h1 {
+    font-weight: 900;
+}
+
+.panel {
+  margin-top: 20px;
+}

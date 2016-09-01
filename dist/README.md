@@ -10,7 +10,7 @@ $ npm install acte --save
 <a name="acte"></a>
 
 ## acte : <code>Objet</code>
-acte - Librairie Javascript pour manipuler des données généalogiques.
+acte - Une librairie JavaScript qui simplifie la recherche généalogique..
 
 **Type** : Espace de noms global  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  

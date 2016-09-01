@@ -1,61 +1,160 @@
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Les autres metatags viennent après les 3 ci-dessus -->
-  <title>Page de démo de acte.js</title>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Les autres metatags viennent après les 3 ci-dessus -->
+   <meta name="description" content="Acte.js">
+   <meta name="author" content="Gilles Toubiana">
+   <link rel="icon" href="demo/favicon.ico">
+   <title>Acte.js</title>
+   <!-- Bootstrap core CSS -->
+   <link href="demo/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="demo/css/demo-theme.css" rel="stylesheet">
+   <!-- IE8 -->
+   <!--[if lt IE 9]>
+   <script src="demo/js/html5shiv.min.js"></script>
+   <script src="demo/js/respond.min.js"></script>
+   <![endif]-->
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container">
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+           <span class="sr-only">Afficher le menu</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="https://github.com/gtoubiana/acte">Acte sur Github</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-right">
+             <li><a href="https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true">Téléchargement</a></li>
+             <li><a href="https://github.com/gtoubiana/acte/blob/master/dist/README.md">Documentation</a></li>
+           </ul>
+        </div>
+        <!--/.navbar-collapse -->
+     </div>
+  </nav>
+  <div class="jumbotron">
+     <div class="container">
+       <div class="row">
+         <div class="col-md-12">
+        <h1>Acte.js</h1>
+        <p>Une librairie JavaScript qui simplifie la recherche généalogique.
+        </p>
+      </div>
+     </div>
+   </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Convertir une date</h2>
+      </div>
+    </div>
+    <div class="row well well-sm">
+        <div class="col-md-8 input-lg">
+          <label class="sr-only" for="ex1">col-md-2</label>
+          <input class="form-control input-lg" id="ex1" type="text" placeholder="Entrez une date grégorienne, républicaine ou julienne !">
+        </div>
+        <div class="col-md-4 checkbox input-lg">
+          <label>
+            <input id="ex2" type="checkbox" value="" placeholder="Débrider"> Débrider la conversion&nbsp;<span style="color: red;" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </label>
+        </div>
+      </div>
+     <div class="row">
+        <div class="col-md-4">
+           <h4>Grégorien</h4>
+           <p><strong>Dimanche 17 octobre 1802 <span style="color: green;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></strong><br>
+             Xe jour de la semaine<br>
+             Xe jour du mois<br>
+             Xe jour de l'année<br>
+             Xe semaine du mois (*)<br>
+             Xe semaine de l'année (*)<br>
+             Xe mois de l'année<br>
+           </p>
+        </div>
+        <div class="col-md-4">
+           <h4>Républicain</h4>
+           <p><strong>Quintidi 25 vendémiaire an XI <span style="color: green;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></strong><br>
+             Xe jour de la décade<br>
+             Xe jour du mois<br>
+             Xe jour de l'année<br>
+             Xe décade du mois<br>
+             Xe décade de l'année<br>
+             Xe mois de l'année<br>
+           </p>
+        </div>
+        <div class="col-md-4">
+           <h4>Julien</h4>
+           <p><strong>Dimanche 5 octobre 1802 <span style="color: green;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></strong><br>
+             Xe jour de la semaine<br>
+             Xe jour du mois<br>
+             Xe jour de l'année<br>
+             Xe semaine du mois (*)<br>
+             Xe semaine de l'année (*)<br>
+             Xe mois de l'année<br>
+           </p>
+        </div>
+        <div class="col-md-12">
+          <em>(*) La première semaine est prise en compte si elle fait plus de 4 jours.
+          </em>
+        </div>
+     </div>
+     <hr>
+     <div class="row">
+       <div class="col-md-12">
+         <div id="disqus_thread"></div>
+  <script>
 
-    <!-- CSS -->
-    <link href="demo/css/bootstrap.min.css" rel="stylesheet">
-    <link href="demo/css/bootstrap-theme.min.css" rel="stylesheet">
+/**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW
+   *  TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+   *  https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+  var disqus_config = function () {
+      this.page.url = PAGE_URL;
+      this.page.identifier = PAGE_IDENTIFIER;
+  };
+  */
 
-    <!-- IE8 -->
-    <!--[if lt IE 9]>
-      <script src="demo/js/html5shiv.min.js"></script>
-      <script src="demo/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <h1>Acte.js</h1>
-    <p>Acte.js est une librairie JavaScript utilisable dans le navigateur ou Node.js.</p>
-    <p>Elle permet de simplifier les recherches généalogiques à partir de dates.</p>
-    <form>
-      <label>Saisissez une date : <input type="text" name="jour"></label>
-      <label><input type="checkbox" id="limites" value="limites"> Ne pas limiter les résultats</label>
-    </form>
-    <h3>Calendrier grégorien</h3>
-    <p>- XXXXe Année<br>
-- Xe Mois de l'année<br>
-- Xe Semaine du mois<br>
-- Xe Jour du mois<br>
-- Xe Jour de l'année<br>
-- Xe Jour de la Semaine<br>
-- Xe Semaine de l'année
-</p>
-    <h3>Calendrier républicain</h3>
-    <p>- XXXXe Année<br>
-- Xe Mois de l'année<br>
-- Xe Décade du mois<br>
-- Xe Jour du mois<br>
-- Xe Jour de l'année<br>
-- Xe Jour de la Décade<br>
-- Xe Décade de l'année
-</p>
-    <h3>Calendrier julien</h3>
-    <p>- XXXXe Année<br>
-- Xe Mois de l'année<br>
-- Xe Semaine du mois<br>
-- Xe Jour du mois<br>
-- Xe Jour de l'année<br>
-- Xe Jour de la Semaine<br>
-- Xe Semaine de l'année
-</p>
-
-    <!-- JS -->
-    <script src="dist/acte.min.js"></script>
-    <script src="demo/js/jquery.min.js"></script>
-    <script src="demo/js/bootstrap.min.js"></script>
-  </body>
+// DON'T EDIT BELOW THIS LINE
+(function () {
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//acte-1.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">
+    comments powered by Disqus.
+  </a>
+</noscript>
+     </div>
+     </div>
+     <hr>
+     <footer>
+        <p>Copyright (c) 2015-Présent Gilles Toubiana</p>
+     </footer>
+  </div>
+   <!-- /container -->
+   <!-- Bootstrap core JavaScript
+      ================================================== -->
+   <!-- Placed at the end of the document so the pages load faster -->
+   <script src="demo/js/jquery.min.js"></script>
+   <script src="demo/js/bootstrap.min.js"></script>
+   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+   <script src="demo/js/ie10-viewport-bug-workaround.js"></script>
+   <script id="dsq-count-scr" src="//acte-1.disqus.com/count.js" async></script>
+</body>
 </html>

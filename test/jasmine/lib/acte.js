@@ -49,7 +49,7 @@ if (!Array.prototype.reduce) {
 }
 
 /**
- * acte - Librairie Javascript pour manipuler des données généalogiques.
+ * acte - Une librairie JavaScript qui simplifie la recherche généalogique..
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
  * @version 0.0.17
