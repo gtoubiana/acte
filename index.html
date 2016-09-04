@@ -61,51 +61,36 @@
     </div>
     <div class="row well well-sm">
         <div class="col-md-8 input-lg">
-          <label class="sr-only" for="ex1">col-md-2</label>
-          <input class="form-control input-lg" id="ex1" type="text" placeholder="Entrez une date grégorienne, républicaine ou julienne !">
+          <label class="sr-only" for="jour">Jour</label>
+          <input class="form-control input-lg" id="jour" type="text" placeholder="Entrez une date grégorienne, républicaine ou julienne !">
         </div>
         <div class="col-md-4 checkbox input-lg">
           <label>
-            <input id="ex2" type="checkbox" value="" placeholder="Débrider"> Débrider la conversion&nbsp;<span style="color: red;" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+            <input id="debrider" type="checkbox" value="" placeholder="Débrider"> Débrider la conversion&nbsp;<span class="glyphicon glyphicon-question-sign interrogation" aria-hidden="true"></span>
           </label>
         </div>
       </div>
      <div class="row">
         <div class="col-md-4">
            <h4>Grégorien</h4>
-           <p><strong>Dimanche 17 octobre 1802 <span style="color: green;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></strong><br>
-             Xe jour de la semaine<br>
-             Xe jour du mois<br>
-             Xe jour de l'année<br>
-             Xe semaine du mois (*)<br>
-             Xe semaine de l'année (*)<br>
-             Xe mois de l'année<br>
+           <p><strong><span id="gregorien">Saisissez une date !</span> <span class="glyphicon glyphicon glyphicon-triangle-bottom fleche" aria-hidden="true"></span></strong>
+             <span id="detail-gregorien"><br></span>
            </p>
         </div>
         <div class="col-md-4">
            <h4>Républicain</h4>
-           <p><strong>Quintidi 25 vendémiaire an XI <span style="color: green;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></strong><br>
-             Xe jour de la décade<br>
-             Xe jour du mois<br>
-             Xe jour de l'année<br>
-             Xe décade du mois<br>
-             Xe décade de l'année<br>
-             Xe mois de l'année<br>
+           <p><strong><span id="republicain">Saisissez une date !</span> <span class="glyphicon glyphicon glyphicon-triangle-bottom fleche" aria-hidden="true"></span></strong>
+             <span id="detail-republicain"><br></span>
            </p>
         </div>
         <div class="col-md-4">
            <h4>Julien</h4>
-           <p><strong>Dimanche 5 octobre 1802 <span style="color: green;" class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></strong><br>
-             Xe jour de la semaine<br>
-             Xe jour du mois<br>
-             Xe jour de l'année<br>
-             Xe semaine du mois (*)<br>
-             Xe semaine de l'année (*)<br>
-             Xe mois de l'année<br>
+           <p><strong><span id="julien">Saisissez une date !</span> <span class="glyphicon glyphicon-triangle-bottom fleche" aria-hidden="true"></span></strong>
+             <span id="detail-julien"><br></span>
            </p>
         </div>
         <div class="col-md-12">
-          <em>(*) La première semaine est prise en compte si elle fait plus de 4 jours.
+          <em>(*) La première semaine est prise en compte si elle dure plus de 4 jours.
           </em>
         </div>
      </div>
@@ -150,9 +135,11 @@
    <!-- /container -->
    <!-- Bootstrap core JavaScript
       ================================================== -->
+   <script src="dist/acte.min.js"></script>
    <!-- Placed at the end of the document so the pages load faster -->
    <script src="demo/js/jquery.min.js"></script>
    <script src="demo/js/bootstrap.min.js"></script>
+   <script src="demo/js/script.js"></script>
    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
    <script src="demo/js/ie10-viewport-bug-workaround.js"></script>
    <script id="dsq-count-scr" src="//acte-1.disqus.com/count.js" async></script>

@@ -1,6 +1,6 @@
 /** TACHES PRINCIPALES DU FICHIER :
  * gulp demo
- * gulp demo.vendors
+ * gulp demo.assets
  */
 
 const config = require('../config');
@@ -8,13 +8,14 @@ const gulp = require('gulp');
 const sequence = require('gulp-sequence');
 
 // Copier les fichiers du Bootstrap
-gulp.task('demo.vendors', () => {
+gulp.task('demo.assets', () => {
   const stream1 = gulp.src(
     [`${config.paths.bootstrapBower}/js/bootstrap.min.js`,
     `${config.paths.jqueryBower}/jquery.min.js`,
     `${config.paths.html5shivBower}/html5shiv.min.js`,
     `${config.paths.respondBower}/respond.min.js`,
     `${config.paths.src}/demo/ie10-viewport-bug-workaround.js`,
+    `${config.paths.src}/demo/script.js`,
     ])
     .pipe(gulp.dest(`${config.paths.demo}/js/`))
     .on('end', () => {
@@ -33,7 +34,14 @@ gulp.task('demo.vendors', () => {
             .on('end', () => {
               const stream4 = gulp.src(
                 [`${config.paths.src}/demo/favicon.ico`])
-                .pipe(gulp.dest(`${config.paths.demo}/`));
+                .pipe(gulp.dest(`${config.paths.demo}/`))
+                .on('end', () => {
+                  const stream5 = gulp.src(
+                    [`${config.paths.src}/demo/*.jpg`])
+                    .pipe(gulp.dest(`${config.paths.demo}/img/`));
+
+                  return stream5;
+                });
 
               return stream4;
             });
@@ -52,6 +60,6 @@ gulp.task('demo.vendors', () => {
 gulp.task('demo', sequence(
 
   // Copier les fichiers Bootstrap & Jquery
-  'demo.vendors'
+  'demo.assets'
 
 ));
