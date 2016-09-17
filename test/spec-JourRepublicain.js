@@ -10,6 +10,12 @@ describe('new acte.Jour().republicain()', () => {
         .toEqual('12 nivôse an VIII');
       expect(new acte.Jour('30 fructidor an V').republicain())
         .toEqual('30 fructidor an V');
+      expect(new acte.Jour('an 9').republicain())
+        .toEqual('1er vendémiaire an IX');
+      expect(new acte.Jour('an X').republicain())
+        .toEqual('1er vendémiaire an X');
+      expect(new acte.Jour('brumaire an X', false).republicain())
+        .toEqual('1er brumaire an X');
     });
 
   // Balises

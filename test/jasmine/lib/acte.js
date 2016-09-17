@@ -1906,7 +1906,7 @@ if (!Array.prototype.reduce) {
         var tvg = dt;
         var resultat = void 0;
 
-        if (tvg[dd]) {
+        if (tvg[dd] < dateValide(1, 1, 10000)) {
           resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
             // jscs:disable
@@ -2333,8 +2333,20 @@ if (!Array.prototype.reduce) {
       function tabGregorien(saisie, limites) {
         // Uniformisation de la saisie
         var iesaisie = saisie[0] === '/' ? '1' + saisie : saisie;
-        var saisieGregorien = saisieValide(iesaisie, regexpGregorien);
+        var saisieGregorien = iesaisie.replace(
+          /\W?an\s-?([-MDCLXVI]+)\W?/gi,
+
+          // jscs:disable
+          function (x, p1) {
+            var rva = romainVersArabe(p1);
+
+            return x.match(/-/) ? ' -' + rva : ' ' + rva;
+          });
+
+        // jscs:enable
         var tab = [];
+
+        saisieGregorien = saisieValide(saisieGregorien, regexpGregorien);
 
         // Lorsque la date est valide [gjmc,gmc,gac]
         if (saisieGregorien[2] && saisieGregorien[0] < 32 && absInt(
@@ -2492,7 +2504,9 @@ if (!Array.prototype.reduce) {
         this.limites = limites !== false;
 
         // On détecte si c'est une date républicaine
-        if (saisie.match(/\W?an\s-?([-MDCLXVI]+|\d+)\W?/gi)) {
+        if (saisie.match(
+            /(i(d|r)|(ô|o)s|a(d|l)|or).*\Wan\s-?([-MDCLXVI]+|\d+)\W?/gi) ||
+          saisie.match(/^an\s-?([-MDCLXVI]+|\d+)/gmi)) {
           tab = tabRepublicain(saisie, this.limites);
 
           // Si ce n'est pas du républicain (donc grégorien ou julien)

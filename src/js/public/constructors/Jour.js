@@ -35,7 +35,9 @@ acte.Jour = class Jour {
     this.limites = limites !== false;
 
     // On détecte si c'est une date républicaine
-    if (saisie.match(/\W?an\s-?([-MDCLXVI]+|\d+)\W?/gi)) {
+    if (saisie.match(
+        /(i(d|r)|(ô|o)s|a(d|l)|or).*\Wan\s-?([-MDCLXVI]+|\d+)\W?/gi) ||
+      saisie.match(/^an\s-?([-MDCLXVI]+|\d+)/gmi)) {
       tab = tabRepublicain(saisie, this.limites);
 
       // Si ce n'est pas du républicain (donc grégorien ou julien)

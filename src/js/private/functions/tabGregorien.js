@@ -16,8 +16,19 @@
 const tabGregorien = (saisie, limites) => {
   // Uniformisation de la saisie
   const iesaisie = saisie[0] === '/' ? `1${saisie}` : saisie;
-  const saisieGregorien = saisieValide(iesaisie, regexpGregorien);
+  let saisieGregorien = iesaisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
+
+    // jscs:disable
+    (x, p1) => {
+      const rva = romainVersArabe(p1);
+
+      return x.match(/-/) ? ` -${rva}` : ` ${rva}`;
+    });
+
+  // jscs:enable
   let tab = [];
+
+  saisieGregorien = saisieValide(saisieGregorien, regexpGregorien);
 
   // Lorsque la date est valide [gjmc,gmc,gac]
   if (saisieGregorien[2] && saisieGregorien[0] < 32 &&

@@ -6,6 +6,26 @@ describe('new acte.Jour().gregorien()', () => {
     () => {
       expect(new acte.Jour('1/1/1600').gregorien())
         .toEqual('1er janvier 1600');
+      expect(new acte.Jour('2 jan 1890').gregorien())
+        .toEqual('2 janvier 1890');
+      expect(new acte.Jour('8 juin an 1890').gregorien())
+        .toEqual('8 juin 1890');
+      expect(new acte.Jour('8 brumaire an 1890', false).gregorien())
+        .toEqual('28 octobre 3681');
+      expect(new acte.Jour('9 brumaire juillet an 1890', false).gregorien())
+        .toEqual('29 octobre 3681');
+      expect(new acte.Jour('10 brum juillet an 1890', false).gregorien())
+        .toEqual('10 juillet 1890');
+      expect(new acte.Jour('11 juillet an 10', false).gregorien())
+        .toEqual('11 juillet 10');
+      expect(new acte.Jour('12 juillet an X', false).gregorien())
+        .toEqual('12 juillet 10');
+      expect(new acte.Jour('le 1er janvier de l\'an 2', false).gregorien())
+        .toEqual('1er janvier 2');
+      expect(new acte.Jour('le 4 mars de l\'an VI', false).gregorien())
+        .toEqual('4 mars 6');
+      expect(new acte.Jour('le 5 avril de l\'an -IV', false).gregorien())
+        .toEqual('5 avril -4');
     });
 
   // Balises
@@ -234,7 +254,7 @@ describe('new acte.Jour().gregorien()', () => {
       expect(new acte.Jour('1/9/-1629', false).gregorien('%Al'))
         .toEqual('Moins mille-six-cent-vingt-neuf');
       expect(new acte.Jour('1/9/16290').gregorien('%Al'))
-        .toEqual('');
+        .toEqual('Pas de correspondances.');
       expect(new acte.Jour('1/9/-16290', false).gregorien('%Al'))
         .toEqual('');
       expect(new acte.Jour('1/9/5100').gregorien('%Al'))
@@ -321,6 +341,8 @@ describe('new acte.Jour().gregorien()', () => {
     'new acte.Jour().gregorien() = Pas de correspondances.',
     () => {
       expect(new acte.Jour('').gregorien())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('1er 1890').gregorien())
         .toEqual('Pas de correspondances.');
     });
   it(

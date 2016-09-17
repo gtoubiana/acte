@@ -188,6 +188,16 @@ describe('new acte.Jour().gregorien()', function () {
   // Valeurs par défaut
   it('new acte.Jour().gregorien() = la date grégorienne ' + 'formatée par défaut.', function () {
     expect(new acte.Jour('1/1/1600').gregorien()).toEqual('1er janvier 1600');
+    expect(new acte.Jour('2 jan 1890').gregorien()).toEqual('2 janvier 1890');
+    expect(new acte.Jour('8 juin an 1890').gregorien()).toEqual('8 juin 1890');
+    expect(new acte.Jour('8 brumaire an 1890', false).gregorien()).toEqual('28 octobre 3681');
+    expect(new acte.Jour('9 brumaire juillet an 1890', false).gregorien()).toEqual('29 octobre 3681');
+    expect(new acte.Jour('10 brum juillet an 1890', false).gregorien()).toEqual('10 juillet 1890');
+    expect(new acte.Jour('11 juillet an 10', false).gregorien()).toEqual('11 juillet 10');
+    expect(new acte.Jour('12 juillet an X', false).gregorien()).toEqual('12 juillet 10');
+    expect(new acte.Jour('le 1er janvier de l\'an 2', false).gregorien()).toEqual('1er janvier 2');
+    expect(new acte.Jour('le 4 mars de l\'an VI', false).gregorien()).toEqual('4 mars 6');
+    expect(new acte.Jour('le 5 avril de l\'an -IV', false).gregorien()).toEqual('5 avril -4');
   });
 
   // Balises
@@ -301,7 +311,7 @@ describe('new acte.Jour().gregorien()', function () {
   it('new acte.Jour().gregorien(\'%Al\') = Année en lettres (réforme de 1990).', function () {
     expect(new acte.Jour('1/9/1629').gregorien('%Al')).toEqual('Mille-six-cent-vingt-neuf');
     expect(new acte.Jour('1/9/-1629', false).gregorien('%Al')).toEqual('Moins mille-six-cent-vingt-neuf');
-    expect(new acte.Jour('1/9/16290').gregorien('%Al')).toEqual('');
+    expect(new acte.Jour('1/9/16290').gregorien('%Al')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1/9/-16290', false).gregorien('%Al')).toEqual('');
     expect(new acte.Jour('1/9/5100').gregorien('%Al')).toEqual('Cinq-mille-cent');
     expect(new acte.Jour('1/9/5110').gregorien('%Al')).toEqual('Cinq-mille-cent-dix');
@@ -345,6 +355,7 @@ describe('new acte.Jour().gregorien()', function () {
   // Erreurs
   it('new acte.Jour().gregorien() = Pas de correspondances.', function () {
     expect(new acte.Jour('').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1er 1890').gregorien()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().gregorien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').gregorien(0, 'Message d\'erreur 1.')).toEqual('Message d\'erreur 1.');
@@ -487,6 +498,9 @@ describe('new acte.Jour().republicain()', function () {
     expect(new acte.Jour('1/1/1800').republicain()).toEqual('11 nivôse an VIII');
     expect(new acte.Jour('12 nivôse an VIII').republicain()).toEqual('12 nivôse an VIII');
     expect(new acte.Jour('30 fructidor an V').republicain()).toEqual('30 fructidor an V');
+    expect(new acte.Jour('an 9').republicain()).toEqual('1er vendémiaire an IX');
+    expect(new acte.Jour('an X').republicain()).toEqual('1er vendémiaire an X');
+    expect(new acte.Jour('brumaire an X', false).republicain()).toEqual('1er brumaire an X');
   });
 
   // Balises

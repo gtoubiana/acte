@@ -18,15 +18,26 @@ body {
     text-align: center;
     background-image: url("../img/background.jpg");
     background-attachment: fixed;
+    background-size:cover;
+}
+
+/*= EFFET PARALLAX CSS3 =*/
+/*@supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+  .parallax {
+    transform: translateZ(-1px) scale(1.1);
+  }
+
+  .jumbotron h1, .jumbotron p {
+      transform: scale(0.9);
+  }
+}*/
+
+.jumbotron h1, .jumbotron p {
+    color: #eee;
 }
 
 .jumbotron h1 {
     font-weight: 900;
-    color: #eee;
-}
-
-.jumbotron p {
-    color: #eee;
 }
 
 .panel {
