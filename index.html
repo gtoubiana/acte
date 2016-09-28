@@ -60,9 +60,9 @@
       </div>
     </div>
     <div class="row well well-sm">
-        <div class="col-md-8 input-lg">
+        <div id="validation_de_jour" class="col-md-8 input-lg">
           <label class="sr-only" for="jour">Jour</label>
-          <input class="form-control input-lg" id="jour" type="text" placeholder="Entrez une date grégorienne, républicaine ou julienne !">
+          <input class="form-control input-lg" id="jour" type="search" placeholder="Entrez une date grégorienne, républicaine ou julienne !">
         </div>
         <div class="col-md-4 checkbox input-lg">
           <label>
@@ -71,24 +71,12 @@
         </div>
       </div>
      <div class="row">
-        <div class="col-md-4">
-           <h4>Grégorien</h4>
-           <p><strong><span id="gregorien">Saisissez une date !</span> <span class="glyphicon glyphicon glyphicon-triangle-bottom fleche" aria-hidden="true"></span></strong>
-             <span id="detail-gregorien"><br></span>
-           </p>
+        <div class="col-md-4 gregorien">
         </div>
-        <div class="col-md-4">
-           <h4>Républicain</h4>
-           <p><strong><span id="republicain">Saisissez une date !</span> <span class="glyphicon glyphicon glyphicon-triangle-bottom fleche" aria-hidden="true"></span></strong>
-             <span id="detail-republicain"><br></span>
-           </p>
+        <div class="col-md-4 republicain">
         </div>
-        <div class="col-md-4">
-           <h4>Julien</h4>
-           <p><strong><span id="julien">Saisissez une date !</span> <span class="glyphicon glyphicon-triangle-bottom fleche" aria-hidden="true"></span></strong>
-             <span id="detail-julien"><br></span>
-           </p>
-        </div>
+        <div class="col-md-4 julien">
+          </div>
         <div class="col-md-12">
           <em>(*) La première semaine est prise en compte si elle dure plus de 4 jours.
           </em>

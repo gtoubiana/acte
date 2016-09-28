@@ -2,6 +2,12 @@ $(document).ready(() => {
   $('#jour').keyup(() => {
     const jr = new acte.Jour($('#jour').val());
 
+    if (jr.variables.gregorien.od) {
+      $('#validation_de_jour').addClass('has-success');
+    } else {
+      $('#validation_de_jour').removeClass('has-success');
+    }
+
     $('#gregorien').html(jr.gregorien('%JSl %JMp %Mlb %A',
       'Pas de correspondances'));
     $('#detail-gregorien').html(jr.gregorien(
