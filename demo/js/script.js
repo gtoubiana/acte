@@ -8,35 +8,25 @@ $(document).ready(() => {
       $('#validation_de_jour').removeClass('has-success');
     }
 
-    $('.gregorien').html(`<h4>Grégorien</h4>
-<p><strong><span id=\"gregorien\">
-${jr.gregorien('%JSl %JMp %Mlb %A', 'Pas de correspondances')}
-</span> <span class=\"glyphicon glyphicon glyphicon-triangle-bottom fleche\"
-aria-hidden=\"true\"></span></strong><span id=\"detail-gregorien\">
-${jr.gregorien(
-  '<br>%JSo jour de la semaine<br>%JMo jour du mois' +
-  '<br>%JAo jour de l\'année<br>%SMof semaine du mois (*)' +
-  '<br>%SAof semaine de l\'année (*)<br>%MAo mois de l\'année<br>',
-  '<br>')}<br></span></p>`);
-    $('.republicain').html(`<h4>Républicain</h4>
-<p><strong><span id=\"republicain\">
-${jr.republicain('%JSl %JMp %Mlb an %Ar', 'Pas de correspondances')}
-</span> <span class=\"glyphicon glyphicon glyphicon-triangle-bottom fleche\"
-aria-hidden=\"true\"></span></strong><span id=\"detail-republicain\">
-${jr.republicain(
-  '<br>%JSo jour de la décade<br>%JMo jour du mois' +
-  '<br>%JAo jour de l\'année<br>%SMof décade du mois (*)' +
-  '<br>%SAof décade de l\'année (*)<br>%MAo mois de l\'année<br>',
-  '<br>')}<br></span></p>`);
-    $('.julien').html(`<h4>Julien</h4>
-<p><strong><span id=\"julien\">
-${jr.julien('%JSl %JMp %Mlb %A', 'Pas de correspondances')}
-</span> <span class=\"glyphicon glyphicon glyphicon-triangle-bottom fleche\"
-aria-hidden=\"true\"></span></strong><span id=\"detail-julien\">
-${jr.julien(
-  '<br>%JSo jour de la semaine<br>%JMo jour du mois' +
-  '<br>%JAo jour de l\'année<br>%SMof semaine du mois (*)' +
-  '<br>%SAof semaine de l\'année (*)<br>%MAo mois de l\'année<br>',
-  '<br>')}<br></span></p>`);
+    $('#gregorien').html(jr.gregorien('%JSl %JMp %Mlb %A',
+      'Pas de correspondances'));
+    $('#detail-gregorien').html(jr.gregorien(
+      '<br>%JSo jour de la semaine<br>%JMo jour du mois' +
+      '<br>%JAo jour de l\'année<br>%SMof semaine du mois (*)' +
+      '<br>%SAof semaine de l\'année (*)<br>%MAo mois de l\'année<br>',
+      '<br>'));
+    $('#republicain').html(jr.republicain('%JSl %JMp %Mlb an %Ar',
+      'Pas de correspondances'));
+    $('#detail-republicain').html(jr.republicain(
+      '<br>%JSo jour de la décade<br>%JMo jour du mois' +
+      '<br>%JAo jour de l\'année<br>%SMof décade du mois (*)' +
+      '<br>%SAof décade de l\'année (*)<br>%MAo mois de l\'année<br>',
+      '<br>'));
+    $('#julien').html(jr.julien('%JSl %JMp %Mlb %A', 'Pas de correspondances'));
+    $('#detail-julien').html(jr.julien(
+      '<br>%JSo jour de la semaine<br>%JMo jour du mois' +
+      '<br>%JAo jour de l\'année<br>%SMof semaine du mois (*)' +
+      '<br>%SAof semaine de l\'année (*)<br>%MAo mois de l\'année<br>',
+      '<br>'));
   });
 });

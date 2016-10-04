@@ -1,0 +1,29 @@
+Installer une plateforme de développement pour acte (OSX)
+
+1. Installer atom
+
+2. Installer les plugins pour atom et le redémarrer
+   $ npm run atom.install
+
+1. Installer node, avec Homebrew de préférence
+   $ brew node
+
+3. Installer globalement npm, npm-check-updates et npm-check
+   $ npm install -g npm && npm install -g npm-check-updates && npm install -g npm-check
+
+1. Installer les dépendances npm
+   $ npm install
+
+4. Installer les dépendances de Bower
+   $ bower install
+
+6. Vous pouvez maintenant lancer un build
+   $ gulp
+
+6. Vous pouvez maintenant vérifier les mises à jour
+   $ npm run update
+
+---
+Astuces
+
+- pour désinstaller, remplacer install par uninstall
