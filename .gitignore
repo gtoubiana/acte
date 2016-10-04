@@ -26,5 +26,5 @@ build/Release
 node_modules
 bower_components
 
-# osx
+# OSX directory storage
 .DS_Store
