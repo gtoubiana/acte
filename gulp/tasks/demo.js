@@ -37,7 +37,7 @@ gulp.task('demo.assets', () => {
                 .pipe(gulp.dest(`${config.paths.demo}/`))
                 .on('end', () => {
                   const stream5 = gulp.src(
-                    [`${config.paths.src}/demo/*.jpg`])
+                    [`${config.paths.src}/demo/*.{jpg,png}`])
                     .pipe(gulp.dest(`${config.paths.demo}/img/`));
 
                   return stream5;

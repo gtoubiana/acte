@@ -1,0 +1,21 @@
+Todo Démo:
+  ☐ - bouton débrider (cf issues)
+  ☐ - triangles coulissants (cf issues)
+  ☐ ~ Réinitialiser la couleur de l'input suite à un reset
+  ☐ ~ doc du débridage sur le ?
+  ☐ ~ Migrer la note dans l'interactivité
+  ☐ ~ supprimer les 0e jours, 0e semaines...
+  ☐ ~ Ajouter un autosuggest (cf issues)
+  ☐ Créer un template handebars pour le téléchargement sur index.html
+  ☐ Ajouter un logo au readme
+  ☐ Meilleur gestion des erreurs
+  ☐ effet parallax ?
+  ☐ Présenter un exemple de saisies possibles
+  ☐ Documenter le bouton débrider (popover)
+  ☐ Traduire disqus
+  ☐ Passer en 2 colonnes
+  ☐ Supprimer les css inutiles avec gulp
+  ☐ Minifier/concaténer les css et js
+  ☐ Utiliser gulp pour renvoyer tout sur les gh-pages
+  ☐ Compatibilité ie8
+  ☐ Nettoyer le projet de ce genre de fichiers inutiles
