@@ -1,7 +1,11 @@
 Todo Démo:
-  ☐ - bouton débrider (cf issues)
-  ☐ - triangles coulissants (cf issues)
+  ✔ - bouton débrider (cf issues) @done(2016-10-19 13:27) @project(Todo Démo)
+  ☐ - triangles coulissants (cf issues) - ENCOURS
+    ☐ - Rédiger un code ES6 fonctionnel
+    ☐ - Pas de triangles coulissants quand il n'y a pas de correspondances
+    ☐ - Conserver l'état des triangles ouverts/fermés quand on change la saisie
   ☐ ~ Réinitialiser la couleur de l'input suite à un reset
+  ☐ supprimer les résultats de republicain au delà de 10000 comm epour les 2 autres.
   ☐ ~ doc du débridage sur le ?
   ☐ ~ Migrer la note dans l'interactivité
   ☐ ~ supprimer les 0e jours, 0e semaines...

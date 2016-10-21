@@ -1,6 +1,7 @@
 $(document).ready(() => {
-  $('#jour').keyup(() => {
-    const jr = new acte.Jour($('#jour').val());
+  $('#jour_debrider').bind('keyup change', () => {
+    const deb = $('#debrider').prop('checked');
+    const jr = new acte.Jour($('#jour').val(), !deb);
 
     if (jr.variables.gregorien.od) {
       $('#validation_de_jour').addClass('has-success');
