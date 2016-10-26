@@ -1,43 +1,24 @@
 $(document).ready(() => {
-  $('#jour_debrider').bind('keyup change', () => {
+  // Bootstrap init
+  $(() => {
+    $('[data-toggle="popover"]').popover();
+  });
+
+  // Acte - Convertir une date
+  $('#jour_debrider').bind('keyup change mousemove', () => {
     const deb = $('#debrider').prop('checked');
     const jr = new acte.Jour($('#jour').val(), !deb);
 
-    if (jr.variables.gregorien.od) {
-      $('#validation_de_jour').addClass('has-success');
-    } else {
-      $('#validation_de_jour').removeClass('has-success');
-    }
-
-    $('.gregorien').html(`<h4>Grégorien</h4>
-<p><strong><span id=\"gregorien\">
-${jr.gregorien('%JSl %JMp %Mlb %A', 'Pas de correspondances')}
-</span> <span class=\"glyphicon glyphicon glyphicon-triangle-bottom fleche\"
-aria-hidden=\"true\"></span></strong><span id=\"detail-gregorien\">
-${jr.gregorien(
-  '<br>%JSo jour de la semaine<br>%JMo jour du mois' +
-  '<br>%JAo jour de l\'année<br>%SMof semaine du mois (*)' +
-  '<br>%SAof semaine de l\'année (*)<br>%MAo mois de l\'année<br>',
-  '<br>')}<br></span></p>`);
-    $('.republicain').html(`<h4>Républicain</h4>
-<p><strong><span id=\"republicain\">
-${jr.republicain('%JSl %JMp %Mlb an %Ar', 'Pas de correspondances')}
-</span> <span class=\"glyphicon glyphicon glyphicon-triangle-right fleche\"
-aria-hidden=\"true\"></span></strong><span id=\"detail-republicain\">
+    $('#affichage_de_jour table tbody').html(`<tr>
+<th scope="row">Date grégorienne</th>
+${jr.gregorien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
+'<td class="active">Pas de correspondances</td>')}</tr>
+<tr><th scope="row">Date républicain</th>
 ${jr.republicain(
-  '<br>%JSo jour de la décade<br>%JMo jour du mois' +
-  '<br>%JAo jour de l\'année<br>%SMof décade du mois (*)' +
-  '<br>%SAof décade de l\'année (*)<br>%MAo mois de l\'année<br>',
-  '<br>')}<br></span></p>`);
-    $('.julien').html(`<h4>Julien</h4>
-<p><strong><span id=\"julien\">
-${jr.julien('%JSl %JMp %Mlb %A', 'Pas de correspondances')}
-</span> <span class=\"glyphicon glyphicon glyphicon-triangle-top fleche\"
-aria-hidden=\"true\"></span></strong><span id=\"detail-julien\">
-${jr.julien(
-  '<br>%JSo jour de la semaine<br>%JMo jour du mois' +
-  '<br>%JAo jour de l\'année<br>%SMof semaine du mois (*)' +
-  '<br>%SAof semaine de l\'année (*)<br>%MAo mois de l\'année<br>',
-  '<br>')}<br></span></p>`);
+'<td class="success"><strong>%JSl %JMp %Mlb an %Ar</strong></td>',
+'<td class="active">Pas de correspondances</td>')}</tr>
+<tr><th scope="row">Date julienne</th>
+${jr.julien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
+'<td class="active">Pas de correspondances</td>')}</tr>`);
   });
 });

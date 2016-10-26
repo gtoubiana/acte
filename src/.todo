@@ -1,25 +1,30 @@
 Todo Démo:
-  ✔ - bouton débrider (cf issues) @done(2016-10-19 13:27) @project(Todo Démo)
-  ☐ - triangles coulissants (cf issues) - ENCOURS
-    ☐ - Rédiger un code ES6 fonctionnel
-    ☐ - Pas de triangles coulissants quand il n'y a pas de correspondances
-    ☐ - Conserver l'état des triangles ouverts/fermés quand on change la saisie
-  ☐ ~ Réinitialiser la couleur de l'input suite à un reset
-  ☐ supprimer les résultats de republicain au delà de 10000 comm epour les 2 autres.
-  ☐ ~ doc du débridage sur le ?
-  ☐ ~ Migrer la note dans l'interactivité
-  ☐ ~ supprimer les 0e jours, 0e semaines...
-  ☐ ~ Ajouter un autosuggest (cf issues)
+  ☐ - supprimer les résultats de republicain au delà de 10000 comme pour les 2 autres.
+  ☐ Corriger les résultats gregorien/julien autour de 1582. cf issues.
+  ☐ - Ajouter un autosuggest (cf issues)
   ☐ Créer un template handebars pour le téléchargement sur index.html
   ☐ Ajouter un logo au readme
   ☐ Meilleur gestion des erreurs
-  ☐ effet parallax ?
   ☐ Présenter un exemple de saisies possibles
-  ☐ Documenter le bouton débrider (popover)
   ☐ Traduire disqus
-  ☐ Passer en 2 colonnes
   ☐ Supprimer les css inutiles avec gulp
-  ☐ Minifier/concaténer les css et js
+  ☐ Minifier/concaténer les css et js (+babel)
   ☐ Utiliser gulp pour renvoyer tout sur les gh-pages
   ☐ Compatibilité ie8
   ☐ Nettoyer le projet de ce genre de fichiers inutiles
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+  ✘ - colorisation syntaxique pour le header (code npm) @cancelled(2016-10-26 14:53) @project(Todo Démo)
+  ✔ Rédiger un code ES6 fonctionnel (babel) @done(2016-10-26 13:58) @project(Todo Démo)
+  ✔ Passer en 2 colonnes @done(2016-10-26 13:57) @project(Todo Démo)
+  ✔ Documenter le bouton débrider (popover) @done(2016-10-26 13:57) @project(Todo Démo)
+  ✔ ~ doc du débridage sur le ? @done(2016-10-26 13:57) @project(Todo Démo)
+  ✔ - bouton débrider (cf issues) @done(2016-10-19 13:27) @project(Todo Démo)
+  ✘ - triangles coulissants (cf issues) - ENCOURS @cancelled(2016-10-24 14:48) @project(Todo Démo)
+  ✘ - Pas de triangles coulissants quand il n'y a pas de correspondances @cancelled(2016-10-24 14:48) @project(Todo Démo)
+  ✘ - Conserver l'état des triangles ouverts/fermés quand on change la saisie @cancelled(2016-10-24 14:48) @project(Todo Démo)
+  ✘ ~ Réinitialiser la couleur de l'input suite à un reset @cancelled(2016-10-26 13:56) @project(Todo Démo)
+  ✘ ~ Migrer la note dans l'interactivité @cancelled(2016-10-24 15:15) @project(Todo Démo)
+  ✘ ~ supprimer les 0e jours, 0e semaines... @cancelled(2016-10-24 15:15) @project(Todo Démo)
+  ✘ effet parallax ? @cancelled(2016-10-24 15:16) @project(Todo Démo)

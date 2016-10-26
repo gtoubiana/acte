@@ -1,3 +1,5 @@
+![logo](demo/img/logo-violet.png "Logo de la librairie acte.js")
+
 # acte v0.0.17
 [![NPM version](https://img.shields.io/npm/v/acte.svg)](https://www.npmjs.com/package/acte)
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)

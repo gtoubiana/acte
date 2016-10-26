@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,14 +43,25 @@
         <!--/.navbar-collapse -->
      </div>
   </nav>
-  <div class="jumbotron parallax">
+  <div class="jumbotron">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
           <!-- <h1>Acte.js</h1>
           <p>Dynamiser sa généalogie</p> -->
-          <img src="demo/img/logo.png" class="img-responsive logo" alt="logo">
+          <img src="demo/img/logo-blanc.png" class="img-responsive logo" alt="logo">
+          <br><p>La librairie javascript Acte.js permet de saisir et manipuler des dates grégoriennes, républicaines et juliennes.</p>
         </div>
+        <div class="col-md-6" style="text-align: left;">
+        <h3>Comment utiliser la librairie JavaScript ?</h3>
+
+<h4>Avec Node.js</h4>
+
+<pre>$ npm install acte --save</pre>
+<h4>Dans une page html</h4>
+<pre class="html">&lt;script type="text/javascript" src="acte.min.js"&gt;&lt;/script&gt;</pre>
+
+</div>
       </div>
     </div>
   </div>
@@ -58,27 +69,25 @@
     <div class="row">
       <div class="col-md-12">
         <h2 class="violet">Convertir une date</h2>
+        <p class="lead">La zone de saisie accepte les abbréviations courantes (an V, Xbre, Jet, etc.).<br>
       </div>
     </div>
-    <div id="jour_debrider" class="row well well-sm">
-        <div id="validation_de_jour" class="col-md-8 input-lg">
+    <div class="row">
+    <div id="jour_debrider" class="col-md-6">
+        <div id="validation_de_jour">
           <label class="sr-only" for="jour">Jour</label>
-          <input class="form-control input-lg" id="jour" type="search" placeholder="Entrez une date grégorienne, républicaine ou julienne !">
+          <input class="form-control" id="jour" type="search" placeholder="Entrez une date !">
         </div>
-        <div class="col-md-4 checkbox input-lg">
+        <div class="checkbox">
           <label>
-            <input id="debrider" type="checkbox" value="" placeholder="Débrider"> Débrider la conversion&nbsp;<span class="glyphicon glyphicon-question-sign interrogation" aria-hidden="true"></span>
+            <input id="debrider" type="checkbox" value="" placeholder="Débrider"> Débrider la conversion&nbsp;<span data-toggle="popover" data-trigger="hover" data-html="true" title="Pourquoi débrider ?" data-content="Le calendrier grégorien est entré en vigueur après le 15/10/1582.<br>Le calendrier républicain a été utilisé à partir du 22/09/1792 jusqu'en 1805 (et pendant la Commune de Paris de mars à mai 1871).<br>Débrider permet d'obtenir des correspondances en dehors de ces bornes." class="glyphicon glyphicon-question-sign interrogation" aria-hidden="true"></span>
           </label>
         </div>
       </div>
-     <div class="row" id="affichage_de_jour">
-        <div class="col-md-4 gregorien">
-        </div>
-        <div class="col-md-4 republicain">
-        </div>
-        <div class="col-md-4 julien">
-          </div>
+     <div class="col-md-6" id="affichage_de_jour">
+        <table class="table table-bordered table-hover table-striped"><tbody></tbody></table>
      </div>
+   </div>
      <hr>
      <div class="row">
        <div class="col-md-12">
