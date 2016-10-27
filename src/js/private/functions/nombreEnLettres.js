@@ -15,125 +15,119 @@
  */
 const nombreEnLettres = (n, r) => {
   let mill;
-  let sepcen;
   let centl;
-  let sepdix;
   let dixl;
   let sepunit;
   let unitl;
-  let dizunit;
-  let res;
 
-  /* istanbul ignore else  */
-  if (typeof n === 'number' && n > -8000 && n < 8000) {
-    // UnitesEnLettres
-    const u = unitesEnLettres;
+  // UnitesEnLettres
+  const u = unitesEnLettres;
 
-    // DixainesEnLettres
-    const v = dixainesEnLettres;
+  // DixainesEnLettres
+  const v = dixainesEnLettres;
 
-    // Saisie en valeur absolue
-    const abs = Math.abs(n);
-    const splus = (r) ? ' ' : '-';
+  // Saisie en valeur absolue
+  const abs = Math.abs(n);
+  const splus = (r) ? ' ' : '-';
 
-    // Milliers
-    const mil = parseInt(abs / 1000, 10);
+  // Milliers
+  const mil = parseInt(abs / 1000, 10);
 
-    // Centaines
-    const cent = parseInt(abs % 1000 / 100, 10);
+  // Centaines
+  const cent = parseInt(abs % 1000 / 100, 10);
 
-    // Dixaines
-    const dix = parseInt(abs % 100 / 10, 10);
+  // Dixaines
+  const dix = parseInt(abs % 100 / 10, 10);
 
-    // Unités
-    const unit = parseInt(abs % 10, 10);
+  // Unités
+  const unit = parseInt(abs % 10, 10);
 
-    // Milliers
-    if (mil === 1) {
-      // Un seul millier
-      mill = 'mille';
-    } else if (mil > 1) {
-      // Plusieurs milliers
-      mill = `${u[mil]}${splus}mille`;
-    } else {
-      // Pas de milliers
-      mill = '';
-    }
+  // Milliers
+  if (mil === 1) {
+    // Un seul millier
+    mill = 'mille';
+  } else if (mil > 1) {
+    // Plusieurs milliers
+    mill = `${u[mil]}${splus}mille`;
+  } else {
+    // Pas de milliers
+    mill = '';
+  }
 
-    // Centaines
-    sepcen = (mil > 0) ? splus : '';
-    if (cent === 1) {
-      // Une seule centaine
-      centl = `${sepcen}cent`;
-    } else if (cent > 1 && dix === 0 && unit === 0) {
-      // Plusieurs centaines
-      centl = `${sepcen}${u[cent]}${splus}cents`;
-    } else if (cent > 1) {
-      // Plusieurs centaines suivies de dizaines
-      centl = `${sepcen}${u[cent]}${splus}cent`;
-    } else {
-      // Pas de centaines
-      centl = '';
-    }
+  // Centaines
+  const sepcen = (mil > 0) ? splus : '';
 
-    // Dizaines et unités
-    sepdix = (mil + cent > 0) && (dix + unit > 0) ? splus : '';
-    if (dix > 0) {
-      dixl = v[dix];
+  if (cent === 1) {
+    // Une seule centaine
+    centl = `${sepcen}cent`;
+  } else if (cent > 1 && dix === 0 && unit === 0) {
+    // Plusieurs centaines
+    centl = `${sepcen}${u[cent]}${splus}cents`;
+  } else if (cent > 1) {
+    // Plusieurs centaines suivies de dizaines
+    centl = `${sepcen}${u[cent]}${splus}cent`;
+  } else {
+    // Pas de centaines
+    centl = '';
+  }
 
-      // Splus
-      sepunit = '-';
-    } else {
-      dixl = '';
+  // Dizaines et unités
+  const sepdix = (mil + cent > 0) && (dix + unit > 0) ? splus : '';
+
+  if (dix > 0) {
+    dixl = v[dix];
+
+    // Splus
+    sepunit = '-';
+  } else {
+    dixl = '';
+    sepunit = '';
+  }
+
+  // Unités
+  unitl = (abs > 0) ? sepunit + u[unit] : 'zéro';
+
+  // Multiples de 10
+  if ((dix * 10 + unit) % 10 === 0) {
+    unitl = '';
+  }
+
+  // Dix, soixante-dix, quatre-vingt-dix
+  if ((dix === 1 || dix === 7 || dix === 9) && unit === 0) {
+    dixl = (dix === 1) ? 'dix' : `${v[dix]}-dix`;
+    unitl = (dix === 1) ? '' : u[unit];
+  }
+
+  // Onze+
+  // soixante-et-onze+, quatre-vingt-onze+
+  if ((dix === 1 || dix === 7 || dix === 9) && unit >= 1) {
+    dixl = (dix === 1) ? '' : v[dix];
+    if (dix === 1) {
       sepunit = '';
     }
-
-    // Unités
-    unitl = (abs > 0) ? sepunit + u[unit] : 'zéro';
-
-    // Multiples de 10
-    if ((dix * 10 + unit) % 10 === 0) {
-      unitl = '';
-    }
-
-    // Dix, soixante-dix, quatre-vingt-dix
-    if ((dix === 1 || dix === 7 || dix === 9) && unit === 0) {
-      dixl = (dix === 1) ? 'dix' : `${v[dix]}-dix`;
-      unitl = (dix === 1) ? '' : u[unit];
-    }
-
-    // Onze+
-    // soixante-et-onze+, quatre-vingt-onze+
-    if ((dix === 1 || dix === 7 || dix === 9) && unit >= 1) {
-      dixl = (dix === 1) ? '' : v[dix];
-      if (dix === 1) {
-        sepunit = '';
-      }
-      unitl = (dix === 7 && unit === 1) ?
-        `${splus}et${splus}${u[10 + unit]}` : sepunit + u[10 + unit];
-    }
-
-    // Vingt-et-un, trente-et-un, quarante-et-un,
-    // cinquante-et-un, soixante-et-un
-    if (dix >= 2 && dix <= 6 && unit === 1) {
-      unitl = `${splus}et${splus}${u[unit]}`;
-    }
-
-    // Pluriel sur 80
-    if (dix === 8 && unit === 0) {
-      dixl = `${v[dix]}s`;
-      unitl = '';
-    }
-
-    dizunit = sepdix + dixl + unitl;
-
-    // Si nombre négatif
-    const avjc = (n < 0) ? 'Moins ' : '';
-
-    res = (abs > 0) ? initialeEnCapitale(avjc + mill + centl + dizunit) :
-      'Zéro';
-  } else {
-    res = '';
+    unitl = (dix === 7 && unit === 1) ?
+      `${splus}et${splus}${u[10 + unit]}` : sepunit + u[10 + unit];
   }
+
+  // Vingt-et-un, trente-et-un, quarante-et-un,
+  // cinquante-et-un, soixante-et-un
+  if (dix >= 2 && dix <= 6 && unit === 1) {
+    unitl = `${splus}et${splus}${u[unit]}`;
+  }
+
+  // Pluriel sur 80
+  if (dix === 8 && unit === 0) {
+    dixl = `${v[dix]}s`;
+    unitl = '';
+  }
+
+  const dizunit = sepdix + dixl + unitl;
+
+  // Si nombre négatif
+  const avjc = (n < 0) ? 'Moins ' : '';
+
+  const res = (abs > 0) ? initialeEnCapitale(avjc + mill + centl + dizunit) :
+    'Zéro';
+
   return res;
 };
