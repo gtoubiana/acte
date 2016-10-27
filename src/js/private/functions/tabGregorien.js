@@ -33,8 +33,9 @@ const tabGregorien = (saisie, limites) => {
   // Lorsque la date est valide [gjmc,gmc,gac]
   if (saisieGregorien[2] && saisieGregorien[0] < 32 &&
     absInt(saisieGregorien[0]) !== 0 &&
-    saisieGregorien[1] < 13 && saisieGregorien[1] !== '' &&
-    absInt(saisieGregorien[1]) !== 0) {
+    saisieGregorien[1] < 13 && saisieGregorien[1] > 0 &&
+    saisieGregorien[1] !== '' && absInt(saisieGregorien[1]) !== 0 &&
+    (saisieGregorien[0] <= joursDansLeMois[saisieGregorien[1] - 1])) {
     tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
       saisieGregorien[1]), absInt(saisieGregorien[0]));
 

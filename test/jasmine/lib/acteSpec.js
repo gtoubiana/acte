@@ -26,7 +26,6 @@ describe('new acte.Jour()', function () {
 
     // false for debug
     expect(new acte.Jour('8//10.-1793', false).variables.gregorien.od).toEqual(dateValide(8, 10, -1793));
-    expect(new acte.Jour('-12/-10/-1657', false).variables.gregorien.od).toEqual(dateValide(12, 10, -1657));
     expect(new acte.Jour('/2/3', false).variables.gregorien.od).toEqual(dateValide(1, 2, 3));
     expect(new acte.Jour('/3/4/', false).variables.gregorien.od).toEqual(dateValide(1, 3, 4));
     expect(new acte.Jour('4/5/6/', false).variables.gregorien.od).toEqual(dateValide(4, 5, 6));
@@ -69,6 +68,7 @@ describe('new acte.Jour()', function () {
     expect(new acte.Jour('32/10/1793').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('0 octobre 1657').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('-00 octobre 1657').variables.gregorien.od).not.toBeDefined();
+    expect(new acte.Jour('-12/-10/-1657', false).variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('8/5').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('8/5/').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('27 frimaire').variables.gregorien.od).not.toBeDefined();
@@ -311,7 +311,8 @@ describe('new acte.Jour().gregorien()', function () {
     expect(new acte.Jour('1/9/1629').gregorien('%Al')).toEqual('Mille-six-cent-vingt-neuf');
     expect(new acte.Jour('1/9/-1629', false).gregorien('%Al')).toEqual('Moins mille-six-cent-vingt-neuf');
     expect(new acte.Jour('1/9/16290').gregorien('%Al')).toEqual('Pas de correspondances.');
-    expect(new acte.Jour('1/9/-16290', false).gregorien('%Al')).toEqual('');
+    expect(new acte.Jour('1/9/16290', false).gregorien('%Al')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/9/-16290', false).gregorien('%Al')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1/9/5100').gregorien('%Al')).toEqual('Cinq-mille-cent');
     expect(new acte.Jour('1/9/5110').gregorien('%Al')).toEqual('Cinq-mille-cent-dix');
     expect(new acte.Jour('1/9/5111').gregorien('%Al')).toEqual('Cinq-mille-cent-onze');
@@ -476,6 +477,9 @@ describe('new acte.Jour().julien()', function () {
   // Erreurs
   it('new acte.Jour().julien() = Pas de correspondances.', function () {
     expect(new acte.Jour('').julien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/1/16000').julien('%A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/1/-16000').julien('%A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/1/16000', false).julien('%A')).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().julien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').julien('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');
@@ -584,6 +588,9 @@ describe('new acte.Jour().republicain()', function () {
   // Erreurs
   it('new acte.Jour().republicain() = Pas de correspondances.', function () {
     expect(new acte.Jour('').republicain()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('brumaire an 11000').republicain()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('brumaire an 11000', false).republicain()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('brumaire an -11000', false).republicain()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().republicain(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').republicain('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');

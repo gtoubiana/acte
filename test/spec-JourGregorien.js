@@ -255,8 +255,10 @@ describe('new acte.Jour().gregorien()', () => {
         .toEqual('Moins mille-six-cent-vingt-neuf');
       expect(new acte.Jour('1/9/16290').gregorien('%Al'))
         .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('1/9/16290', false).gregorien('%Al'))
+        .toEqual('Pas de correspondances.');
       expect(new acte.Jour('1/9/-16290', false).gregorien('%Al'))
-        .toEqual('');
+        .toEqual('Pas de correspondances.');
       expect(new acte.Jour('1/9/5100').gregorien('%Al'))
         .toEqual('Cinq-mille-cent');
       expect(new acte.Jour('1/9/5110').gregorien('%Al'))

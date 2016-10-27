@@ -39,6 +39,7 @@ gulp.task('default', sequence(
   'docs.constants',
   'docs.functions',
   'docs.readme',
+  'docs.index',
 
   // Génération du zip
   'dist.zip',

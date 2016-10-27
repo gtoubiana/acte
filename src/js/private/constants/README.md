@@ -18,6 +18,7 @@
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
 * [jourGregorien](#jourGregorien) : <code>Tableau</code> ℗
 * [jourRepublicain](#jourRepublicain) : <code>Tableau</code> ℗
+* [joursDansLeMois](#joursDansLeMois) : <code>Tableau</code> ℗
 * [moisGregorien](#moisGregorien) : <code>Tableau</code> ℗
 * [moisRepublicain](#moisRepublicain) : <code>Tableau</code> ℗
 * [regexpGregorien](#regexpGregorien) : <code>Tableau</code> ℗
@@ -244,6 +245,16 @@ sur 1, 2 et 3 caractères.
 **Accès** : privé  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+<a name="joursDansLeMois"></a>
+
+## joursDansLeMois : <code>Tableau</code> ℗
+Nombre de jours en fonction des mois Grégoriens.
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
 **Auteur** : Gilles Toubiana  
 <a name="moisGregorien"></a>
 

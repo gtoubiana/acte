@@ -181,6 +181,12 @@ describe('new acte.Jour().republicain()', () => {
     () => {
       expect(new acte.Jour('').republicain())
         .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('brumaire an 11000').republicain())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('brumaire an 11000', false).republicain())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('brumaire an -11000', false).republicain())
+        .toEqual('Pas de correspondances.');
     });
   it(
     'new acte.Jour().republicain(0, \'erreur\') = Message d\'erreur.',

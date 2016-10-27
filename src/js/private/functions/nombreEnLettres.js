@@ -24,7 +24,8 @@ const nombreEnLettres = (n, r) => {
   let dizunit;
   let res;
 
-  if (typeof n === 'number' && n > -10000 && n < 10000) {
+  /* istanbul ignore else  */
+  if (typeof n === 'number' && n > -8000 && n < 8000) {
     // UnitesEnLettres
     const u = unitesEnLettres;
 

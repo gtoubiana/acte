@@ -44,7 +44,7 @@ acte.Jour.prototype.gregorien = function gregorien(format, erreur, rappel) {
   const resultat = formatageDeJour(format, erreur, rappel,
     '%Jp %Mlb %A',
     this.variables.gregorien,
-    'od',
+    'a',
     objGregorien);
 
   return resultat;

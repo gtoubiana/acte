@@ -37,8 +37,6 @@ describe('new acte.Jour()', () => {
       // false for debug
       expect(new acte.Jour('8//10.-1793', false).variables.gregorien.od)
         .toEqual(dateValide(8, 10, -1793));
-      expect(new acte.Jour('-12/-10/-1657', false).variables.gregorien
-        .od).toEqual(dateValide(12, 10, -1657));
       expect(new acte.Jour('/2/3', false).variables.gregorien.od)
         .toEqual(dateValide(1, 2, 3));
       expect(new acte.Jour('/3/4/', false).variables.gregorien.od)
@@ -110,6 +108,8 @@ describe('new acte.Jour()', () => {
       expect(new acte.Jour('0 octobre 1657').variables.gregorien.od)
         .not.toBeDefined();
       expect(new acte.Jour('-00 octobre 1657').variables.gregorien.od)
+        .not.toBeDefined();
+      expect(new acte.Jour('-12/-10/-1657', false).variables.gregorien.od)
         .not.toBeDefined();
       expect(new acte.Jour('8/5').variables.gregorien.od)
         .not.toBeDefined();

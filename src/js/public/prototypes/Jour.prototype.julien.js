@@ -23,7 +23,7 @@ acte.Jour.prototype.julien = function julien(format, erreur, rappel) {
   const resultat = formatageDeJour(format, erreur, rappel,
     '%Jp %Mlb %A',
     this.variables.julien,
-    'od',
+    'a',
     objGregorien,
     'julien');
 

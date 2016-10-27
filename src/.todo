@@ -1,20 +1,26 @@
 Todo Démo:
-  ☐ - supprimer les résultats de republicain au delà de 10000 comme pour les 2 autres.
-  ☐ Corriger les résultats gregorien/julien autour de 1582. cf issues.
-  ☐ - Ajouter un autosuggest (cf issues)
-  ☐ Créer un template handebars pour le téléchargement sur index.html
-  ☐ Ajouter un logo au readme
-  ☐ Meilleur gestion des erreurs
-  ☐ Présenter un exemple de saisies possibles
-  ☐ Traduire disqus
-  ☐ Supprimer les css inutiles avec gulp
   ☐ Minifier/concaténer les css et js (+babel)
+  ☐ linters et prettifiers pour css et html
+  ☐ Supprimer les css inutiles avec gulp
+  ☐ Le code plante avec 24 brumaire an 100000 ou an MMMMMMMMMMM
+  ☐ Corriger les résultats gregorien/julien autour de 1582. cf issues. cf tabGregorien
+  ☐ Ajouter un surligneur syntaxique pour le code dans la damo (highlight-js ?)
+  ☐ Ajouter un autosuggest (cf issues)
+  ☐ Meilleur gestion des erreurs ?
+  ☐ Traduire disqus ?
   ☐ Utiliser gulp pour renvoyer tout sur les gh-pages
-  ☐ Compatibilité ie8
-  ☐ Nettoyer le projet de ce genre de fichiers inutiles
+  ☐ Compatibilité ie8 ?
+  ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Le code permet de saisir 31 novembre 2016, 31 sept, etc... cf tabGregorien @done(2016-10-27 15:02) @project(Todo Démo)
+  ✔ Créer un template handebars pour le téléchargement sur index.html @done(2016-10-27 14:27) @project(Todo Démo)
+  ✔ Supprimer les résultats de republicain au delà de 10000 comme pour les 2 autres. (voir formatageDeJour.js) @done(2016-10-27 14:10) @project(Todo Démo)
+  ✔ Ajouter les tests pour ce nouveau code @done(2016-10-27 14:10) @project(Todo Démo)
+  ✔ Vérifier le coverage pour ce nouveau code @done(2016-10-27 14:10) @project(Todo Démo)
+  ✔ Ajouter un logo au readme @done(2016-10-26 17:05) @project(Todo Démo)
+  ✔ Présenter un exemple de saisies possibles @done(2016-10-26 17:06) @project(Todo Démo)
   ✘ - colorisation syntaxique pour le header (code npm) @cancelled(2016-10-26 14:53) @project(Todo Démo)
   ✔ Rédiger un code ES6 fonctionnel (babel) @done(2016-10-26 13:58) @project(Todo Démo)
   ✔ Passer en 2 colonnes @done(2016-10-26 13:57) @project(Todo Démo)

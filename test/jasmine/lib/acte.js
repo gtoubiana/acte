@@ -371,6 +371,16 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
+     * Nombre de jours en fonction des mois Grégoriens.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var joursDansLeMois = [31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    /**
      * Nom des Mois Grégoriens et abbréviations courantes,
      * sur 1, 2 et 3 caractères.
      * @access private
@@ -1255,7 +1265,8 @@ if (!Array.prototype.reduce) {
         var dizunit = void 0;
         var res = void 0;
 
-        if (typeof n === 'number' && n > -10000 && n < 10000) {
+        /* istanbul ignore else  */
+        if (typeof n === 'number' && n > -8000 && n < 8000) {
           // UnitesEnLettres
           var u = unitesEnLettres;
 
@@ -1906,7 +1917,7 @@ if (!Array.prototype.reduce) {
         var tvg = dt;
         var resultat = void 0;
 
-        if (tvg[dd] < dateValide(1, 1, 10000)) {
+        if (Math.abs(tvg[dd]) < 8000) {
           resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
             // jscs:disable
@@ -2351,7 +2362,9 @@ if (!Array.prototype.reduce) {
         // Lorsque la date est valide [gjmc,gmc,gac]
         if (saisieGregorien[2] && saisieGregorien[0] < 32 && absInt(
             saisieGregorien[0]) !== 0 && saisieGregorien[1] < 13 &&
-          saisieGregorien[1] !== '' && absInt(saisieGregorien[1]) !== 0) {
+          saisieGregorien[1] > 0 && saisieGregorien[1] !== '' && absInt(
+            saisieGregorien[1]) !== 0 && saisieGregorien[0] <=
+          joursDansLeMois[saisieGregorien[1] - 1]) {
           tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
             saisieGregorien[1]), absInt(saisieGregorien[0]));
 
@@ -2588,7 +2601,7 @@ if (!Array.prototype.reduce) {
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
         var resultat = formatageDeJour(format, erreur, rappel,
-          '%Jp %Mlb %A', this.variables.gregorien, 'od', objGregorien);
+          '%Jp %Mlb %A', this.variables.gregorien, 'a', objGregorien);
 
         return resultat;
       }
@@ -2620,7 +2633,7 @@ if (!Array.prototype.reduce) {
     acte.Jour.prototype.julien = function () {
       function julien(format, erreur, rappel) {
         var resultat = formatageDeJour(format, erreur, rappel,
-          '%Jp %Mlb %A', this.variables.julien, 'od', objGregorien,
+          '%Jp %Mlb %A', this.variables.julien, 'a', objGregorien,
           'julien');
 
         return resultat;

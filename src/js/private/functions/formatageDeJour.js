@@ -24,7 +24,7 @@ const formatageDeJour = (format, erreur, rappel, df, dt, dd, dobj, pro) => {
   const tvg = dt;
   let resultat;
 
-  if (tvg[dd] < dateValide(1, 1, 10000)) {
+  if (Math.abs(tvg[dd]) < 8000) {
     resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
       // jscs:disable
