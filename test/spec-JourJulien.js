@@ -177,6 +177,10 @@ describe('new acte.Jour().julien()', () => {
         .toEqual('Pas de correspondances.');
       expect(new acte.Jour('1/1/16000', false).julien('%A'))
         .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('5/10/1582').julien('%A'))
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('14/10/1582').julien('%A'))
+        .toEqual('Pas de correspondances.');
     });
   it(
     'new acte.Jour().julien(0, \'erreur\') = Message d\'erreur.',

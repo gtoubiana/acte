@@ -1911,6 +1911,7 @@ if (!Array.prototype.reduce) {
         var tvg = dt;
         var resultat = void 0;
 
+        // Correspondances uniquement entre les années -8000 et 8000
         if (Math.abs(tvg[dd]) < 8000) {
           resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
@@ -1923,6 +1924,11 @@ if (!Array.prototype.reduce) {
             });
           if (typeof rappel === 'function') {
             resultat = rappel(resultat, dobj(tvg, pro));
+          }
+
+          // Pas de correspondances juliennes du 4 au 15/10/1582
+          if (pro === 'julien' && tvg.jj > 2299149.5 && tvg.jj < 2299160.5) {
+            resultat = err;
           }
         } else {
           resultat = err;
