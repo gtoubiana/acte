@@ -1897,7 +1897,7 @@ if (!Array.prototype.reduce) {
      * @param {Object} dt - La référence aux variables dans Jour
      * @param {Object} dd - La référence exlicite à une variable dans dt
      * @param {Object} dobj - Une fonction ou un objet utilisable
-     * @param {Object} [pro] - La référence du prototype si nécessaire
+     * @param {Object} [pro] - Une référence issue du prototype si nécessaire
      * @return {String} La date formatée
      * @example
      * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
@@ -1924,11 +1924,6 @@ if (!Array.prototype.reduce) {
             });
           if (typeof rappel === 'function') {
             resultat = rappel(resultat, dobj(tvg, pro));
-          }
-
-          // Pas de correspondances juliennes du 4 au 15/10/1582
-          if (pro === 'julien' && tvg.jj > 2299149.5 && tvg.jj < 2299160.5) {
-            resultat = err;
           }
         } else {
           resultat = err;
@@ -2032,14 +2027,23 @@ if (!Array.prototype.reduce) {
      * @license MIT
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @param {Object} d - un objet de Jour.variables
-     * @param {Object} [pro] - La référence du prototype si nécessaire
+     * @param {Object} [pro] - Une référence issue du prototype si nécessaire
      * @return {Object} result - un nouvel objet contenant toutes les valeurs
      * @example
      * objGregorien(tvg);
      */
     var objGregorien = function () {
       function objGregorien(d, pro) {
-        var js = pro === 'julien' ? jourSemaineJulien(d.jj) : d.od.getDay();
+        var js = void 0;
+
+        if (pro === 'julAp1582') {
+          js = jourSemaineJulien(d.jj);
+        } else if (pro === 'julAv1582') {
+          js = jourSemaineJulien(d.jj);
+          js = js - 4 < 0 ? js + 3 : js - 4;
+        } else {
+          js = d.od.getDay();
+        }
         var result = {
 
           // A = Année
@@ -2368,12 +2372,22 @@ if (!Array.prototype.reduce) {
           tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
             saisieGregorien[1]), absInt(saisieGregorien[0]));
 
-          // Limitations gregorien/julien
+          // Si limitation et avant 15/10 gregorien
           if (limites === true && tab[4] < jjDebutGregorien) {
             tab[5] = absInt(saisieGregorien[0]);
             tab[6] = absInt(saisieGregorien[1]);
             tab[7] = parseInt(saisieGregorien[2], 10);
             tab[8] = dateValide(tab[5], tab[6], tab[7]);
+
+            // Si limitation et après 4/10 julien
+            if (tab[8] > dateValide(4, 10, 1582)) {
+              tab[0] = tab[5] + 10;
+              tab[1] = tab[6];
+              tab[2] = tab[7];
+              tab[3] = dateValide(tab[0], tab[1], tab[2]);
+            }
+
+            // Résultats gregorien/julien débridés
           } else {
             tab[0] = absInt(saisieGregorien[0]);
             tab[1] = absInt(saisieGregorien[1]);
@@ -2393,10 +2407,11 @@ if (!Array.prototype.reduce) {
             jjFinCommuneDeParis || limites === false) {
             var dateRepublicaine = jjVersRepublicain(tab[4]);
 
-            tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
-                dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
-              dateRepublicaine[1], dateRepublicaine[0]
-            ]);
+            tab[9] = dateRepublicaine[3];
+            tab[10] = dateRepublicaine[2];
+            tab[11] = (dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3];
+            tab[12] = dateRepublicaine[1];
+            tab[13] = dateRepublicaine[0];
           }
         }
 
@@ -2632,9 +2647,11 @@ if (!Array.prototype.reduce) {
      */
     acte.Jour.prototype.julien = function () {
       function julien(format, erreur, rappel) {
+        var jsjulien = this.variables.julien.jj < 2299160.5 && this.variables
+          .limites === true ? 'julAv1582' : 'julAp1582';
         var resultat = formatageDeJour(format, erreur, rappel,
           '%Jp %Mlb %A', this.variables.julien, 'a', objGregorien,
-          'julien');
+          jsjulien);
 
         return resultat;
       }

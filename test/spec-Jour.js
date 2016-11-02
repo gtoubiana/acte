@@ -69,6 +69,10 @@ describe('new acte.Jour()', () => {
       expect(new acte.Jour('15 octobre 1582').variables.gregorien.od)
         .toEqual(dateValide(15, 10, 1582));
 
+      // Fin julien
+      expect(new acte.Jour('14 octobre 1582').variables.gregorien.od)
+        .toEqual(dateValide(24, 10, 1582));
+
       // Fin julien forcé
       expect(new acte.Jour('14 octobre 1582', false).variables.gregorien
         .od).toEqual(dateValide(14, 10, 1582));
@@ -130,10 +134,6 @@ describe('new acte.Jour()', () => {
       expect(new acte.Jour('totokjhkjh').variables.gregorien.od)
         .not.toBeDefined();
       expect(new acte.Jour('').variables.gregorien.od)
-        .not.toBeDefined();
-
-      // Fin julien
-      expect(new acte.Jour('14 octobre 1582').variables.gregorien.od)
         .not.toBeDefined();
     });
   it(

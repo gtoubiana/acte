@@ -20,12 +20,14 @@
  * }))) // '24/03/05'
  */
 acte.Jour.prototype.julien = function julien(format, erreur, rappel) {
+  const jsjulien = this.variables.julien.jj < 2299160.5 &&
+    this.variables.limites === true ? 'julAv1582' : 'julAp1582';
   const resultat = formatageDeJour(format, erreur, rappel,
     '%Jp %Mlb %A',
     this.variables.julien,
     'a',
     objGregorien,
-    'julien');
+    jsjulien);
 
   return resultat;
 };

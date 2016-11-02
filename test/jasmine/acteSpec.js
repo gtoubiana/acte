@@ -45,6 +45,9 @@ describe('new acte.Jour()', function () {
     // Debut gregorien
     expect(new acte.Jour('15 octobre 1582').variables.gregorien.od).toEqual(dateValide(15, 10, 1582));
 
+    // Fin julien
+    expect(new acte.Jour('14 octobre 1582').variables.gregorien.od).toEqual(dateValide(24, 10, 1582));
+
     // Fin julien forcé
     expect(new acte.Jour('14 octobre 1582', false).variables.gregorien.od).toEqual(dateValide(14, 10, 1582));
 
@@ -80,9 +83,6 @@ describe('new acte.Jour()', function () {
     expect(new acte.Jour('67 vendémiaire an I').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('totokjhkjh').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('').variables.gregorien.od).not.toBeDefined();
-
-    // Fin julien
-    expect(new acte.Jour('14 octobre 1582').variables.gregorien.od).not.toBeDefined();
   });
   it('new acte.Jour().variables.gregorien.a = l\'année grégorienne en chiffres', function () {
     expect(new acte.Jour('1 octobre 1793').variables.gregorien.a).toEqual(1793);
@@ -198,6 +198,10 @@ describe('new acte.Jour().gregorien()', function () {
     expect(new acte.Jour('le 1er janvier de l\'an 2', false).gregorien()).toEqual('1er janvier 2');
     expect(new acte.Jour('le 4 mars de l\'an VI', false).gregorien()).toEqual('4 mars 6');
     expect(new acte.Jour('le 5 avril de l\'an -IV', false).gregorien()).toEqual('5 avril -4');
+    expect(new acte.Jour('5/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
+    expect(new acte.Jour('14/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Dimanche 24 octobre 1582');
+    expect(new acte.Jour('15/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
+    expect(new acte.Jour('15/10/1582', false).gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
   });
 
   // Balises
@@ -357,6 +361,7 @@ describe('new acte.Jour().gregorien()', function () {
   it('new acte.Jour().gregorien() = Pas de correspondances.', function () {
     expect(new acte.Jour('').gregorien()).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1er 1890').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('4/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().gregorien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').gregorien(0, 'Message d\'erreur 1.')).toEqual('Message d\'erreur 1.');
@@ -394,6 +399,12 @@ describe('new acte.Jour().julien()', function () {
   // Valeurs par défaut
   it('new acte.Jour().julien() = la date julienne ' + 'formatée par défaut.', function () {
     expect(new acte.Jour('1/1/1630').julien()).toEqual('22 décembre 1629');
+    expect(new acte.Jour('3/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Mercredi 3 octobre 1582');
+    expect(new acte.Jour('4/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Jeudi 4 octobre 1582');
+    expect(new acte.Jour('5/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Vendredi 5 octobre 1582');
+    expect(new acte.Jour('14/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Dimanche 14 octobre 1582');
+    expect(new acte.Jour('15/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Vendredi 5 octobre 1582');
+    expect(new acte.Jour('15/10/1582', false).julien('%JSl %JM %Mlb %A')).toEqual('Vendredi 5 octobre 1582');
   });
 
   // Balises
@@ -481,8 +492,6 @@ describe('new acte.Jour().julien()', function () {
     expect(new acte.Jour('1/1/16000').julien('%A')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1/1/-16000').julien('%A')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1/1/16000', false).julien('%A')).toEqual('Pas de correspondances.');
-    expect(new acte.Jour('5/10/1582').julien('%A')).toEqual('Pas de correspondances.');
-    expect(new acte.Jour('14/10/1582').julien('%A')).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().julien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').julien('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');

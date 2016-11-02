@@ -314,7 +314,7 @@ Pour générer les prototypes de formatage de Jour.
 | dt | <code>Objet</code> | La référence aux variables dans Jour |
 | dd | <code>Objet</code> | La référence exlicite à une variable dans dt |
 | dobj | <code>Objet</code> | Une fonction ou un objet utilisable |
-| [pro] | <code>Objet</code> | La référence du prototype si nécessaire |
+| [pro] | <code>Objet</code> | Une référence issue du prototype si nécessaire |
 
 **Exemple** :  
 ```js
@@ -626,7 +626,7 @@ Pour retourner un objet utilisable par le prototype .gregorien().
 | Paramètres | Type | Description |
 | --- | --- | --- |
 | d | <code>Objet</code> | un objet de Jour.variables |
-| [pro] | <code>Objet</code> | La référence du prototype si nécessaire |
+| [pro] | <code>Objet</code> | Une référence issue du prototype si nécessaire |
 
 **Exemple** :  
 ```js

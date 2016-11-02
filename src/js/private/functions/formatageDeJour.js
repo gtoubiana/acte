@@ -12,7 +12,7 @@
  * @param {Object} dt - La référence aux variables dans Jour
  * @param {Object} dd - La référence exlicite à une variable dans dt
  * @param {Object} dobj - Une fonction ou un objet utilisable
- * @param {Object} [pro] - La référence du prototype si nécessaire
+ * @param {Object} [pro] - Une référence issue du prototype si nécessaire
  * @return {String} La date formatée
  * @example
  * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
@@ -38,11 +38,6 @@ const formatageDeJour = (format, erreur, rappel, df, dt, dd, dobj, pro) => {
     );
     if (typeof rappel === 'function') {
       resultat = rappel(resultat, dobj(tvg, pro));
-    }
-
-    // Pas de correspondances juliennes du 4 au 15/10/1582
-    if (pro === 'julien' && tvg.jj > 2299149.5 && tvg.jj < 2299160.5) {
-      resultat = err;
     }
   } else {
     resultat = err;

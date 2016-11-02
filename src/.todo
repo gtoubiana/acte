@@ -1,17 +1,25 @@
 Todo Démo:
+  ☐ Corriger les résultats gregorien/julien autour de 1582. cf issues. cf tabGregorien
+    ✔ voir semaineJulien() et formatageDeJour() que j'ai déjà modifié @done(2016-11-02 17:03) @project(Todo Démo)
+    ✔ bridé = Jeudi 4 oct jul -> rien greg @done(2016-11-02 17:03) @project(Todo Démo)
+    ✔ bridé = Ven 5 oct jul -> ven 15 oct greg @done(2016-11-02 17:03) @project(Todo Démo)
+    ✔ bridé = dim 14 oct jul -> dim 24 oct greg @done(2016-11-02 17:03) @project(Todo Démo)
+    ✔ bridé = ven 15 oct greg -> ven 5 oct jul @done(2016-11-02 17:03) @project(Todo Démo)
+    ✔ débridé = ven 15 oct greg -> ven 5 oct jul ==> comportement actuel. @done(2016-11-02 17:03) @project(Todo Démo)
+    ☐ Ajouter les tests nécessaires
+  ☐ passer la valeur 8000 de formatageJour en constante (anneeMaximale.js par exemple)
   ☐ Minifier/concaténer les css et js (+babel)
   ☐ linters et prettifiers pour css et html
   ☐ Supprimer les css inutiles avec gulp
   ☐ Le code plante avec 24 brumaire an 100000 ou an MMMMMMMMMMM
-  ☐ Corriger les résultats gregorien/julien autour de 1582. cf issues. cf tabGregorien
   ☐ Ajouter un surligneur syntaxique pour le code dans la damo (highlight-js ?)
   ☐ Ajouter un autosuggest (cf issues)
+  ☐ parallax.js via bower ?
   ☐ Meilleur gestion des erreurs ?
   ☐ Traduire disqus ?
   ☐ Utiliser gulp pour renvoyer tout sur les gh-pages
   ☐ Compatibilité ie8 ?
   ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
-
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
   ✔ Le code permet de saisir 31 novembre 2016, 31 sept, etc... cf tabGregorien @done(2016-10-27 15:02) @project(Todo Démo)

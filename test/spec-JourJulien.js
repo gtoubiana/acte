@@ -6,6 +6,19 @@ describe('new acte.Jour().julien()', () => {
     () => {
       expect(new acte.Jour('1/1/1630').julien())
         .toEqual('22 décembre 1629');
+      expect(new acte.Jour('3/10/1582').julien('%JSl %JM %Mlb %A'))
+        .toEqual('Mercredi 3 octobre 1582');
+      expect(new acte.Jour('4/10/1582').julien('%JSl %JM %Mlb %A'))
+        .toEqual('Jeudi 4 octobre 1582');
+      expect(new acte.Jour('5/10/1582').julien('%JSl %JM %Mlb %A'))
+        .toEqual('Vendredi 5 octobre 1582');
+      expect(new acte.Jour('14/10/1582').julien('%JSl %JM %Mlb %A'))
+        .toEqual('Dimanche 14 octobre 1582');
+      expect(new acte.Jour('15/10/1582').julien('%JSl %JM %Mlb %A'))
+        .toEqual('Vendredi 5 octobre 1582');
+      expect(new acte.Jour('15/10/1582', false).julien(
+          '%JSl %JM %Mlb %A'))
+        .toEqual('Vendredi 5 octobre 1582');
     });
 
   // Balises
@@ -176,10 +189,6 @@ describe('new acte.Jour().julien()', () => {
       expect(new acte.Jour('1/1/-16000').julien('%A'))
         .toEqual('Pas de correspondances.');
       expect(new acte.Jour('1/1/16000', false).julien('%A'))
-        .toEqual('Pas de correspondances.');
-      expect(new acte.Jour('5/10/1582').julien('%A'))
-        .toEqual('Pas de correspondances.');
-      expect(new acte.Jour('14/10/1582').julien('%A'))
         .toEqual('Pas de correspondances.');
     });
   it(

@@ -26,7 +26,7 @@ const tabGregorien = (saisie, limites) => {
     });
 
   // jscs:enable
-  let tab = [];
+  const tab = [];
 
   saisieGregorien = saisieValide(saisieGregorien, regexpGregorien);
 
@@ -39,12 +39,22 @@ const tabGregorien = (saisie, limites) => {
     tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
       saisieGregorien[1]), absInt(saisieGregorien[0]));
 
-    // Limitations gregorien/julien
+    // Si limitation et avant 15/10 gregorien
     if ((limites === true) && (tab[4] < jjDebutGregorien)) {
       tab[5] = absInt(saisieGregorien[0]);
       tab[6] = absInt(saisieGregorien[1]);
       tab[7] = parseInt(saisieGregorien[2], 10);
       tab[8] = dateValide(tab[5], tab[6], tab[7]);
+
+      // Si limitation et après 4/10 julien
+      if (tab[8] > dateValide(4, 10, 1582)) {
+        tab[0] = tab[5] + 10;
+        tab[1] = tab[6];
+        tab[2] = tab[7];
+        tab[3] = dateValide(tab[0], tab[1], tab[2]);
+      }
+
+      // Résultats gregorien/julien débridés
     } else {
       tab[0] = absInt(saisieGregorien[0]);
       tab[1] = absInt(saisieGregorien[1]);
@@ -66,10 +76,11 @@ const tabGregorien = (saisie, limites) => {
       limites === false) {
       const dateRepublicaine = jjVersRepublicain(tab[4]);
 
-      tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
-          dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
-        dateRepublicaine[1], dateRepublicaine[0],
-      ]);
+      tab[9] = dateRepublicaine[3];
+      tab[10] = dateRepublicaine[2];
+      tab[11] = (dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3];
+      tab[12] = dateRepublicaine[1];
+      tab[13] = dateRepublicaine[0];
     }
   }
 

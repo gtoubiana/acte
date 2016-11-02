@@ -26,6 +26,15 @@ describe('new acte.Jour().gregorien()', () => {
         .toEqual('4 mars 6');
       expect(new acte.Jour('le 5 avril de l\'an -IV', false).gregorien())
         .toEqual('5 avril -4');
+      expect(new acte.Jour('5/10/1582').gregorien('%JSl %JM %Mlb %A'))
+        .toEqual('Vendredi 15 octobre 1582');
+      expect(new acte.Jour('14/10/1582').gregorien('%JSl %JM %Mlb %A'))
+        .toEqual('Dimanche 24 octobre 1582');
+      expect(new acte.Jour('15/10/1582').gregorien('%JSl %JM %Mlb %A'))
+        .toEqual('Vendredi 15 octobre 1582');
+      expect(new acte.Jour('15/10/1582', false).gregorien(
+          '%JSl %JM %Mlb %A'))
+        .toEqual('Vendredi 15 octobre 1582');
     });
 
   // Balises
@@ -345,6 +354,8 @@ describe('new acte.Jour().gregorien()', () => {
       expect(new acte.Jour('').gregorien())
         .toEqual('Pas de correspondances.');
       expect(new acte.Jour('1er 1890').gregorien())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('4/10/1582').gregorien('%JSl %JM %Mlb %A'))
         .toEqual('Pas de correspondances.');
     });
   it(
