@@ -31,7 +31,7 @@ const tabRepublicain = (saisie, limites) => {
   saisieRepublicain = saisieValide(saisieRepublicain, regexpRepublicain);
 
   // Lorsque la date est valide [rjmc,rmc,rac]
-  if (saisieRepublicain[2] && saisieRepublicain[0] < 31 &&
+  if (saisieRepublicain[2] < anneeMax && saisieRepublicain[0] < 31 &&
     absInt(saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
     absInt(saisieRepublicain[1]) !== 0) {
     tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),

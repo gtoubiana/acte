@@ -2,6 +2,7 @@
 
 ## Table des matières
 
+* [anneeMax](#anneeMax) : <code>Nombre</code> ℗
 * [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
 * [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
 * [argNutMult](#argNutMult) : <code>Tableau</code> ℗
@@ -28,6 +29,17 @@
 * [unitesEnLettres](#unitesEnLettres) : <code>Tableau</code> ℗
 
 * * *
+<a name="anneeMax"></a>
+
+## anneeMax : <code>Nombre</code> ℗
+Année maximale acceptée pour les calculs grégoriens, juliens
+ou républicains.
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
 <a name="anneeTropique"></a>
 
 ## anneeTropique : <code>Nombre</code> ℗

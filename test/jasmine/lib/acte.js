@@ -106,6 +106,17 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
+     * Année maximale acceptée pour les calculs grégoriens, juliens
+     * ou républicains.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Number}
+     */
+    var anneeMax = 8000;
+
+    /**
      * Nombre de jours, sur Terre, pour que le Soleil retourne à la même
      * position
      * dans le cycle des saisons.
@@ -1911,8 +1922,8 @@ if (!Array.prototype.reduce) {
         var tvg = dt;
         var resultat = void 0;
 
-        // Correspondances uniquement entre les années -8000 et 8000
-        if (Math.abs(tvg[dd]) < 8000) {
+        // Correspondances uniquement si inférieur à anneeMax
+        if (Math.abs(tvg[dd]) < anneeMax) {
           resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
             // jscs:disable
@@ -2457,8 +2468,8 @@ if (!Array.prototype.reduce) {
           regexpRepublicain);
 
         // Lorsque la date est valide [rjmc,rmc,rac]
-        if (saisieRepublicain[2] && saisieRepublicain[0] < 31 && absInt(
-            saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
+        if (saisieRepublicain[2] < anneeMax && saisieRepublicain[0] < 31 &&
+          absInt(saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
           absInt(saisieRepublicain[1]) !== 0) {
           tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),
             parseInt(saisieRepublicain[1], 10), rjmcVersRdc(

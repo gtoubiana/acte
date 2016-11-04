@@ -24,8 +24,8 @@ const formatageDeJour = (format, erreur, rappel, df, dt, dd, dobj, pro) => {
   const tvg = dt;
   let resultat;
 
-  // Correspondances uniquement entre les années -8000 et 8000
-  if (Math.abs(tvg[dd]) < 8000) {
+  // Correspondances uniquement si inférieur à anneeMax
+  if (Math.abs(tvg[dd]) < anneeMax) {
     resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
       // jscs:disable

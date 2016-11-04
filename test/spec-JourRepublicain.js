@@ -16,6 +16,8 @@ describe('new acte.Jour().republicain()', () => {
         .toEqual('1er vendémiaire an X');
       expect(new acte.Jour('brumaire an X', false).republicain())
         .toEqual('1er brumaire an X');
+      expect(new acte.Jour('1er brumaire an 7999', false).republicain())
+        .toEqual('1er brumaire an MMMMMMMCMXCIX');
     });
 
   // Balises
@@ -186,6 +188,8 @@ describe('new acte.Jour().republicain()', () => {
       expect(new acte.Jour('brumaire an 11000', false).republicain())
         .toEqual('Pas de correspondances.');
       expect(new acte.Jour('brumaire an -11000', false).republicain())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('1er brumaire an 8000', false).republicain())
         .toEqual('Pas de correspondances.');
     });
   it(
