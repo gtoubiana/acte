@@ -14,6 +14,7 @@ gulp.task('demo.assets', () => {
     `${config.paths.jqueryBower}/jquery.min.js`,
     `${config.paths.html5shivBower}/html5shiv.min.js`,
     `${config.paths.respondBower}/respond.min.js`,
+    `${config.paths.codePrettifyBower}/run_prettify.js`,
     `${config.paths.src}/demo/ie10-viewport-bug-workaround.js`,
     `${config.paths.src}/demo/script.js`,
     ])

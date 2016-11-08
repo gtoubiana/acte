@@ -1,18 +1,29 @@
 Todo Démo:
-  ☐ parallax.js ou autre via bower ?
-  ☐ Puis-je utiliser des constantes pour le passage du calendrier julien à gregorien ? voir tabGregorien ligne 42
-  ☐ Minifier/concaténer les css et js (+babel)
-  ☐ linters et prettifiers pour css et html
-  ☐ Supprimer les css inutiles avec gulp
-  ☐ Ajouter un surligneur syntaxique pour le code dans la demo (highlight-js ?)
-  ☐ Ajouter un autosuggest (cf issues)
-  ☐ Meilleur gestion des erreurs ?
-  ☐ Traduire disqus ?
-  ☐ Utiliser gulp pour renvoyer tout sur les gh-pages
-  ☐ Compatibilité ie8 ?
-  ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
+  ☐ Nouveaux scripts JS
+    ☐ parallax.js ou autre via bower ?
+    ☐ Ajouter une image dans le jumbotron ? cf issues
+    ☐ Ajouter un autosuggest (cf issues)
+  ☐ Programmation ACTE
+    ☐ Puis-je utiliser des constantes pour le passage du calendrier julien à gregorien ? voir tabGregorien ligne 42
+  ☐ GULP
+    ☐ Minifier/concaténer les css et js (+babel)
+    ☐ Supprimer les css inutiles avec gulp
+    ☐ linters et prettifiers pour css et html
+    ☐ Utiliser gulp pour renvoyer tout sur les gh-pages
+  ☐ gh-pages
+    ☐ Vérifier la traduction disqus
+  ☐ tests
+    ☐ Vérifier Compatibilité ie8
+    ☐ Vérifier les MAJ pour Travis
+  ☐ Nettoyage
+    ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
+    ☐ NEttoyage les issues en ligne
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Customiser la css de code-prettify (virer desert.js du gulp) voir https://jmblog.github.io/color-themes-for-google-code-prettify/ @done(2016-11-08 13:47) @project(Todo Démo)
+  ✔ Lien de téléchargement dans le jumbotron bootstrap @done(2016-11-08 14:47) @project(Todo Démo)
+  ✔ Ajouter un surligneur syntaxique pour le code dans la demo (highlight-js, prism, code-pretiffy) @done(2016-11-07 14:29) @project(Todo Démo)
+  ✘ Meilleur gestion des erreurs ? @cancelled(2016-11-07 10:22) @project(Todo Démo)
   ✔ Le code plante avec 24 brumaire an 100000 ou an MMMMMMMMMMM (même malgré la borne de 8000) @done(2016-11-04 16:43) @project(Todo Démo)
   ✔ passer la valeur 8000 de formatageJour.js en constante (anneeMax.js par exemple) @done(2016-11-03 09:46) @project(Todo Démo)
   ✔ Corriger les résultats gregorien/julien autour de 1582. cf issues. cf tabGregorien @done(2016-11-02 17:16) @project(Todo Démo)

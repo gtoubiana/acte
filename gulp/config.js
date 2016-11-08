@@ -27,6 +27,7 @@ const paths = {
   jqueryBower: './bower_components/jquery/dist',
   html5shivBower: './bower_components/html5shiv/dist',
   respondBower: './bower_components/respond/dest',
+  codePrettifyBower: './bower_components/code-prettify/loader',
 };
 
 // Ordre des scripts pour générer acte.js

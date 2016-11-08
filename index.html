@@ -32,11 +32,11 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="https://github.com/gtoubiana/acte">acte sur Github</a>
+           <a class="navbar-brand" href="https://github.com/gtoubiana/acte">acte est sur Github</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true">Téléchargement</a></li>
+             <li><a href="https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true">Télécharger</a></li>
              <li><a href="https://github.com/gtoubiana/acte/blob/master/dist/README.md">Documentation</a></li>
            </ul>
         </div>
@@ -46,22 +46,19 @@
   <div class="jumbotron">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12">
           <!-- <h1>acte.js</h1>
           <p>Une librairie JavaScript qui simplifie la recherche généalogique.</p> -->
           <img src="demo/img/logo-blanc.png" class="img-responsive logo" alt="logo">
-          <br><p>La librairie javascript acte.js permet de saisir et manipuler des dates grégoriennes, républicaines et juliennes.</p>
+          <br><p>La librairie javascript acte.js permet de <span class="hidden-xs">saisir et </span>manipuler des dates<span class="hidden-xs"> grégoriennes, républicaines et juliennes</span>.</p>
         </div>
-        <div class="col-md-6" style="text-align: left;">
-        <h3>Comment utiliser la librairie JavaScript ?</h3>
-
-<h4>Avec Node.js</h4>
-
-<pre>$ npm install acte --save</pre>
-<h4>Dans une page html</h4>
-<pre class="html">&lt;script type="text/javascript" src="acte.min.js"&gt;&lt;/script&gt;</pre>
-
-</div>
+          <div class="col-md-6 hidden-xs" style="text-align: left;">
+            <h3>Comment utiliser <a href="https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true">acte v0.0.17</a> ?</h3>
+              <h4>Avec Node.js</h4>
+                <pre class="prettyprint shell">npm install acte --save</pre>
+              <h4>Dans une page html</h4>
+                <pre class="prettyprint js">&lt;script type="text/javascript" src="acte.min.js"&gt;&lt;/script&gt;</pre>
+        </div>
       </div>
     </div>
   </div>
@@ -69,7 +66,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2 class="violet">Convertir une date</h2>
-        <p class="lead">La zone de saisie accepte les abbréviations courantes (an V, Xbre, Jet, etc.).<br>
+        <p class="lead">La zone de saisie accepte les abbréviations courantes (an V, Xbre, Jer, etc.).<br>
       </div>
     </div>
     <div class="row">
@@ -133,6 +130,7 @@
    <!-- Placed at the end of the document so the pages load faster -->
    <script src="demo/js/jquery.min.js"></script>
    <script src="demo/js/bootstrap.min.js"></script>
+   <script src="demo/js/run_prettify.js"></script>
    <script src="demo/js/script.js"></script>
    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
    <script src="demo/js/ie10-viewport-bug-workaround.js"></script>
