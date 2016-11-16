@@ -12,6 +12,7 @@ gulp.task('demo.assets', () => {
   const stream1 = gulp.src(
     [`${config.paths.bootstrapBower}/js/bootstrap.min.js`,
     `${config.paths.jqueryBower}/jquery.min.js`,
+    `${config.paths.jqueryUIBower}/jquery-ui.min.js`,
     `${config.paths.html5shivBower}/html5shiv.min.js`,
     `${config.paths.respondBower}/respond.min.js`,
     `${config.paths.codePrettifyBower}/run_prettify.js`,
@@ -23,7 +24,7 @@ gulp.task('demo.assets', () => {
       const stream2 = gulp.src(
         [`${config.paths.bootstrapBower}/css/bootstrap.min.css`,
         `${config.paths.bootstrapBower}/css/bootstrap-theme.min.css`,
-        `${config.paths.src}/demo/demo-theme.css`,
+        `${config.paths.src}/demo/*.css`,
       ])
         .pipe(gulp.dest(`${config.paths.demo}/css/`))
         .on('end', () => {

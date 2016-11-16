@@ -25,6 +25,7 @@ const paths = {
   coverage: './test/coverage',
   bootstrapBower: './bower_components/bootstrap/dist',
   jqueryBower: './bower_components/jquery/dist',
+  jqueryUIBower: './bower_components/jquery-ui',
   html5shivBower: './bower_components/html5shiv/dist',
   respondBower: './bower_components/respond/dest',
   codePrettifyBower: './bower_components/code-prettify/loader',

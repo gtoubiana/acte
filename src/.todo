@@ -1,10 +1,8 @@
 Todo Démo:
-  ☐ Nouveaux scripts JS
-    ☐ parallax.js ou autre via bower ?
-    ☐ Ajouter une image dans le jumbotron ? cf issues
-    ☐ Ajouter un autosuggest (cf issues)
   ☐ Programmation ACTE
-    ☐ Puis-je utiliser des constantes pour le passage du calendrier julien à gregorien ? voir tabGregorien ligne 42
+    ☐ Puis-je utiliser des constantes pour le passage du calendrier julien à gregorien ? voir tabGregorien ligne 42 et [,]
+    ☐ Pas de valeurs julienne après 1582
+    ☐ BUG avec mardi 15 novembre 2016
   ☐ GULP
     ☐ Minifier/concaténer les css et js (+babel)
     ☐ Supprimer les css inutiles avec gulp
@@ -20,6 +18,13 @@ Todo Démo:
     ☐ NEttoyage les issues en ligne
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Nouveaux scripts JS @done(2016-11-16 17:12) @project(Todo Démo)
+  ✔ parallax.js ou autre via bower ? @done(2016-11-14 14:33) @project(Todo Démo)
+  ✔ Ajouter une image dans le jumbotron ? cf issues @done(2016-11-14 14:33) @project(Todo Démo)
+  ✔ Ajouter un autosuggest (cf issues) https://jsfiddle.net/toubia95/1ze0sw58/ @done(2016-11-16 17:12) @project(Todo Démo)
+  ✔ css ? @done(2016-11-16 17:12) @project(Todo Démo)
+  ✔ 3 propositions, premiers caractères seulement ? @done(2016-11-15 14:21) @project(Todo Démo)
+  ✔ nettoyer le code js (airbnb ?) tout en restant fonctionnel (ES6 déconne) @done(2016-11-16 17:12) @project(Todo Démo)
   ✔ Customiser la css de code-prettify (virer desert.js du gulp) voir https://jmblog.github.io/color-themes-for-google-code-prettify/ @done(2016-11-08 13:47) @project(Todo Démo)
   ✔ Lien de téléchargement dans le jumbotron bootstrap @done(2016-11-08 14:47) @project(Todo Démo)
   ✔ Ajouter un surligneur syntaxique pour le code dans la demo (highlight-js, prism, code-pretiffy) @done(2016-11-07 14:29) @project(Todo Démo)

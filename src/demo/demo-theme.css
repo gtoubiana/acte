@@ -1,9 +1,9 @@
+/*= Bootstrap =*/
 body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
 
-/*= Bouton reset dans le champ input =*/
 input[type="search"] {
 -webkit-appearance: searchfield;
 }
@@ -67,7 +67,7 @@ input[type="search"]::-webkit-search-cancel-button {
     margin: 0 auto;
 }
 
-/*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
+/*= Google code-prettify =*/
 pre.prettyprint.shell,
 pre.prettyprint.js {
     padding: 9.5px;
@@ -82,7 +82,6 @@ pre.prettyprint.js {
   color: #333;
 }
 
-/* Specify class=linenums on a pre to get line numbering */
 ol.linenums {
   margin-top: 0;
   margin-bottom: 0;
@@ -109,4 +108,15 @@ li.L5,li.L6,li.L7,li.L8,li.L9 {
   pre.js .kwd, pre.js .tag { color: #32709d; }
   pre.js .typ, pre.js .atn, pre.js .dec, pre.js .var, pre.js .pun { color: #53a0cd; }
   pre.js .pln { color: #48484c; }
+}
+
+/*= Jquery UI autocomplete =*/
+input[type="text"], input[type="password"],
+.ui-autocomplete-input, textarea, .uneditable-input, .ui-widget  {
+    font-size: 14px;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  border: 0;
+  background: #b0d5fa;
 }
