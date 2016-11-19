@@ -19,6 +19,9 @@ const regexpGregorien = [{
   regexp: 'Fer',
   replace: '/2/',
 }, {
+  regexp: 'mardi',
+  replace: '',
+}, {
   regexp: 'mar(s|\\.)?',
   replace: '/3/',
 }, {

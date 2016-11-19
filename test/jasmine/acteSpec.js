@@ -202,6 +202,7 @@ describe('new acte.Jour().gregorien()', function () {
     expect(new acte.Jour('14/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Dimanche 24 octobre 1582');
     expect(new acte.Jour('15/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
     expect(new acte.Jour('15/10/1582', false).gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
+    expect(new acte.Jour('Mardi 8 mai 2017').gregorien('%JSl %JM %Mlb %A')).toEqual('Lundi 8 mai 2017');
   });
 
   // Balises
