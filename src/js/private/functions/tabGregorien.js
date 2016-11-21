@@ -39,33 +39,40 @@ const tabGregorien = (saisie, limites) => {
     tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
       saisieGregorien[1]), absInt(saisieGregorien[0]));
 
-    // Si limitation et avant 15/10 gregorien
-    if ((limites === true) && (tab[4] < jjDebutGregorien)) {
+    // Si limitation et avant début du calendrier grégorien
+    if ((limites === true) && (tab[4] < gregorienVersJj(
+        dateDebutGregorien[2], dateDebutGregorien[1], dateDebutGregorien[
+          0]))) {
       tab[5] = absInt(saisieGregorien[0]);
       tab[6] = absInt(saisieGregorien[1]);
       tab[7] = parseInt(saisieGregorien[2], 10);
       tab[8] = dateValide(tab[5], tab[6], tab[7]);
 
-      // Si limitation et après 4/10 julien
-      if (tab[8] > dateValide(4, 10, 1582)) {
+      // Si limitation et après la fin du calendrier julien
+      if (tab[8] > dateValide(dateFinJulien[0], dateFinJulien[1],
+          dateFinJulien[2])) {
         tab[0] = tab[5] + 10;
         tab[1] = tab[6];
         tab[2] = tab[7];
         tab[3] = dateValide(tab[0], tab[1], tab[2]);
       }
 
-      // Résultats gregorien/julien débridés
+      // Résultats gregorien/julien standards et/ou débridés
     } else {
       tab[0] = absInt(saisieGregorien[0]);
       tab[1] = absInt(saisieGregorien[1]);
       tab[2] = parseInt(saisieGregorien[2], 10);
       tab[3] = dateValide(tab[0], tab[1], tab[2]);
-      const dateJulienne = jjVersJulien(tab[4]);
 
-      tab[5] = dateJulienne[2];
-      tab[6] = dateJulienne[1];
-      tab[7] = dateJulienne[0];
-      tab[8] = dateValide(tab[5], tab[6], tab[7]);
+      // Si débridé
+      if (limites === false) {
+        const dateJulienne = jjVersJulien(tab[4]);
+
+        tab[5] = dateJulienne[2];
+        tab[6] = dateJulienne[1];
+        tab[7] = dateJulienne[0];
+        tab[8] = dateValide(tab[5], tab[6], tab[7]);
+      }
     }
 
     // Limitations republicain

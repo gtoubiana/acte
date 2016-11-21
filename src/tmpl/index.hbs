@@ -29,7 +29,7 @@
            <button type="button" class="navbar-toggle collapsed"
               data-toggle="collapse" data-target="#navbar"
               aria-expanded="false" aria-controls="navbar">
-           <span class="sr-only">Afficher le menu</span>
+           <span class="sr-only">{{ menu }}</span>
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
@@ -38,8 +38,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
            <ul class="nav navbar-nav navbar-right">
-             <li><a href="{{ homepage }}/blob/master/dist/{{ name }}-{{ version }}-dist.zip?raw=true">Télécharger</a></li>
-             <li><a href="{{ homepage }}/blob/master/dist/README.md">Documentation</a></li>
+             <li><a href="{{ homepage }}/blob/master/dist/{{ name }}-{{ version }}-dist.zip?raw=true">{{ zip }}</a></li>
+             <li><a href="{{ homepage }}/blob/master/dist/README.md">{{ doc }} </a></li>
            </ul>
         </div>
         <!--/.navbar-collapse -->
@@ -67,19 +67,19 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="violet">Convertir une date</h2>
-        <p class="lead">La zone de saisie accepte les abbréviations courantes (an V, Xbre, Jer, Oct, etc.).<br>
+        <h2 class="violet">{{ titreconv }}</h2>
+        <p class="lead">{{ detailconv }}<br>
       </div>
     </div>
     <div class="row">
     <div id="jour_debrider" class="col-md-6">
         <div id="validation_de_jour">
           <label class="sr-only" for="jour">Jour</label>
-          <input class="form-control" id="jour" type="search" placeholder="Entrez une date !">
+          <input class="form-control" id="jour" type="search" placeholder="{{ saisiedate }}">
         </div>
         <div class="checkbox">
           <label>
-            <input id="debrider" type="checkbox" value="" placeholder="Débrider"> Débrider la conversion&nbsp;<span data-toggle="popover" data-trigger="hover" data-html="true" title="Pourquoi débrider ?" data-content="Le calendrier grégorien est entré en vigueur après le 15/10/1582.<br>Le calendrier républicain a été utilisé à partir du 22/09/1792 jusqu'en 1805 (et pendant la Commune de Paris de mars à mai 1871).<br>Débrider permet d'obtenir des correspondances raisonnables en dehors de ces bornes." class="glyphicon glyphicon-question-sign interrogation" aria-hidden="true"></span>
+            <input id="debrider" type="checkbox" value="" placeholder="{{ debrider }}"> {{ debridconv }}&nbsp;<span data-toggle="popover" data-trigger="hover" data-html="true" title="{{ pourquoideb }}" data-content="{{ detailpourquoideb }}" class="glyphicon glyphicon-question-sign interrogation" aria-hidden="true"></span>
           </label>
         </div>
       </div>

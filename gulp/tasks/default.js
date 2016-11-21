@@ -39,12 +39,12 @@ gulp.task('default', sequence(
   'docs.constants',
   'docs.functions',
   'docs.readme',
-  'docs.index',
 
   // Génération du zip
   'dist.zip',
 
   // Génération de la démo
+  'demo.index',
   'demo.assets'
 
   // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]

@@ -6,6 +6,41 @@
 const config = require('../config');
 const gulp = require('gulp');
 const sequence = require('gulp-sequence');
+const fse = require('fs-extra');
+const hb = require('gulp-hb');
+const rename = require('gulp-rename');
+
+// TASK Pour générer un index.html à partir d'un template .hbs'
+gulp.task('demo.index', () => {
+  const packageInfos = JSON.parse(fse.readFileSync('./package.json',
+    'utf8'));
+  const indexInfos = JSON.parse(fse.readFileSync('./src/tmpl/index.json',
+    'utf8'));
+  const stream = gulp.src(`${config.paths.src}/tmpl/index.hbs`)
+    .pipe(rename('index.html'))
+    .pipe(hb())
+    .data({
+      name: packageInfos.name,
+      version: packageInfos.version,
+      description: packageInfos.description,
+      author: packageInfos.author,
+      license: packageInfos.license,
+      homepage: packageInfos.homepage,
+      menu: indexInfos.menu,
+      zip: indexInfos.zip,
+      doc: indexInfos.doc,
+      titreconv: indexInfos.titreconv,
+      detailconv: indexInfos.detailconv,
+      saisiedate: indexInfos.saisiedate,
+      debrider: indexInfos.debrider,
+      debridconv: indexInfos.debridconv,
+      pourquoideb: indexInfos.pourquoideb,
+      detailpourquoideb: indexInfos.detailpourquoideb,
+    })
+    .pipe(gulp.dest(config.paths.root));
+
+  return stream;
+});
 
 // Copier les fichiers du Bootstrap
 gulp.task('demo.assets', () => {
@@ -60,6 +95,9 @@ gulp.task('demo.assets', () => {
 
 // Tâche de la démo
 gulp.task('demo', sequence(
+
+  // Générer le fichier index.html
+  'demo.index',
 
   // Copier les fichiers Bootstrap & Jquery
   'demo.assets'

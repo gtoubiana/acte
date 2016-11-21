@@ -1,8 +1,8 @@
 Todo Démo:
   ☐ Programmation ACTE
-    ☐ Puis-je utiliser des constantes pour le passage du calendrier julien à gregorien ? voir tabGregorien ligne 42 et [,]
-    ☐ Pas de valeurs julienne après 1582
-    ☐ BUG avec mardi 15 novembre 2016
+    ☐ Tests modification passage grégorien https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+    ☐ Comment gérer le +10 dans tabGregorien avec des changements de mois ?
+    ☐ Documenter ces changements en JSDoc et dans index.hbs (help)
   ☐ GULP
     ☐ Minifier/concaténer les css et js (+babel)
     ☐ Supprimer les css inutiles avec gulp
@@ -13,11 +13,16 @@ Todo Démo:
   ☐ tests
     ☐ Vérifier Compatibilité ie8
     ☐ Vérifier les MAJ pour Travis
+    ☐ Travis plante pour le moment à cause de l'indentation eslint
+    ☐ Saucelabs plante pour le moment à cause de Travis
   ☐ Nettoyage
     ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
-    ☐ NEttoyage les issues en ligne
+    ☐ Nettoyage les issues en ligne
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Puis-je utiliser des constantes pour le passage du calendrier julien à gregorien ? voir tabGregorien ligne 42 et [,] @done(2016-11-21 14:17) @project(Todo Démo)
+  ✔ Pas de valeurs julienne après 1582 @done(2016-11-21 13:33) @project(Todo Démo)
+  ✔ BUG avec mardi 15 novembre 2016 @done(2016-11-21 12:29) @project(Todo Démo)
   ✔ Nouveaux scripts JS @done(2016-11-16 17:12) @project(Todo Démo)
   ✔ parallax.js ou autre via bower ? @done(2016-11-14 14:33) @project(Todo Démo)
   ✔ Ajouter une image dans le jumbotron ? cf issues @done(2016-11-14 14:33) @project(Todo Démo)

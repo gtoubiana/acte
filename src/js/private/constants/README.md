@@ -6,6 +6,8 @@
 * [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
 * [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
 * [argNutMult](#argNutMult) : <code>Tableau</code> ℗
+* [dateDebutGregorien](#dateDebutGregorien) : <code>Tableau</code> ℗
+* [dateFinJulien](#dateFinJulien) : <code>Tableau</code> ℗
 * [delta](#delta) : <code>Tableau</code> ℗
 * [dixainesEnLettres](#dixainesEnLettres) : <code>Tableau</code> ℗
 * [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
@@ -13,7 +15,6 @@
 * [jjAn1Gregorien](#jjAn1Gregorien) : <code>Nombre</code> ℗
 * [jjAn2000Gregorien](#jjAn2000Gregorien) : <code>Nombre</code> ℗
 * [jjDebutCommuneDeParis](#jjDebutCommuneDeParis) : <code>Nombre</code> ℗
-* [jjDebutGregorien](#jjDebutGregorien) : <code>Nombre</code> ℗
 * [jjDebutRepublicain](#jjDebutRepublicain) : <code>Nombre</code> ℗
 * [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
@@ -72,6 +73,43 @@ Termes périodiques pour la nutation en longitude et obliquité.
 **Voir** : [nutArgMult](http://fourmilab.ch/documents/calendar/)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker  
+<a name="dateDebutGregorien"></a>
+
+## dateDebutGregorien : <code>Tableau</code> ℗
+Date de l'adoption du calendrier grégorien.
+
+**Type** : Constante  
+**Accès** : privé  
+**See**
+
+- [Projet sur GitHub](https://github.com/gtoubiana/acte.js)
+- https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Exemple** :  
+```js
+gregorienVersJj(dateDebutGregorien[2], dateDebutGregorien[1],
+dateDebutGregorien[0]);
+```
+<a name="dateFinJulien"></a>
+
+## dateFinJulien : <code>Tableau</code> ℗
+Date de fin d'utilisation du calendrier julien.
+
+**Type** : Constante  
+**Accès** : privé  
+**See**
+
+- [Projet sur GitHub](https://github.com/gtoubiana/acte.js)
+- https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Exemple** :  
+```js
+dateValide(dateFinJulien[0], dateFinJulien[1], dateFinJulien[2]);
+```
 <a name="delta"></a>
 
 ## delta : <code>Tableau</code> ℗
@@ -163,24 +201,6 @@ jjVersGregorien(2404504.5); // [1871, 3, 18]
 jjVersGregorien(jjDebutCommuneDeParis); // [1871, 3, 18]
 jjVersRepublicain(2404504.5); // [79, 6, 3, 7]
 jjVersRepublicain(jjDebutCommuneDeParis); // [79, 6, 3, 7]
-```
-<a name="jjDebutGregorien"></a>
-
-## jjDebutGregorien : <code>Nombre</code> ℗
-Nombre de jours juliens correspondants à l'adoption du calendrier
-grégorien.
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
-**Depuis** : 0.0.1  
-**Auteur** : Gilles Toubiana  
-**Exemple** :  
-```js
-jjVersGregorien(2299160.5); // [1582, 10, 15]
-jjVersGregorien(jjDebutGregorien); // [1582, 10, 15]
-jjVersJulien(2299160.5); // [1582, 10, 5]
-jjVersJulien(jjDebutGregorien); // [1582, 10, 5]
 ```
 <a name="jjDebutRepublicain"></a>
 

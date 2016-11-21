@@ -121,23 +121,3 @@ gulp.task('docs.readme', () => {
 
   return stream;
 });
-
-// TASK Pour générer un index.html à partir d'un template .hbs'
-gulp.task('docs.index', () => {
-  const packageInfos = JSON.parse(fse.readFileSync('./package.json',
-    'utf8'));
-  const stream = gulp.src(`${config.paths.src}/tmpl/index.hbs`)
-    .pipe(rename('index.html'))
-    .pipe(hb())
-    .data({
-      name: packageInfos.name,
-      version: packageInfos.version,
-      description: packageInfos.description,
-      author: packageInfos.author,
-      license: packageInfos.license,
-      homepage: packageInfos.homepage,
-    })
-    .pipe(gulp.dest(config.paths.root));
-
-  return stream;
-});

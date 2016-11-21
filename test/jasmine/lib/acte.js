@@ -178,6 +178,33 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
+     * Date de l'adoption du calendrier grégorien.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+     * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @constant {Array}
+     * @example
+     * gregorienVersJj(dateDebutGregorien[2], dateDebutGregorien[1],
+     * dateDebutGregorien[0]);
+     */
+    var dateDebutGregorien = [15, 10, 1582];
+
+    /**
+     * Date de fin d'utilisation du calendrier julien.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+     * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @constant {Array}
+     * @example
+     * dateValide(dateFinJulien[0], dateFinJulien[1], dateFinJulien[2]);
+     */
+    var dateFinJulien = [4, 10, 1582];
+
+    /**
      * Tableau des Delta T différence entre Temps universel et temps terrestre
      * en secondes, observées pour les années paires de 1620 à 2016.
      * @access private
@@ -275,22 +302,6 @@ if (!Array.prototype.reduce) {
      * jjVersRepublicain(jjDebutCommuneDeParis); // [79, 6, 3, 7]
      */
     var jjDebutCommuneDeParis = 2404504.5;
-
-    /**
-     * Nombre de jours juliens correspondants à l'adoption du calendrier
-     * grégorien.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.1
-     * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
-     * @constant {Number}
-     * @example
-     * jjVersGregorien(2299160.5); // [1582, 10, 15]
-     * jjVersGregorien(jjDebutGregorien); // [1582, 10, 15]
-     * jjVersJulien(2299160.5); // [1582, 10, 5]
-     * jjVersJulien(jjDebutGregorien); // [1582, 10, 5]
-     */
-    var jjDebutGregorien = 2299160.5;
 
     /**
      * Nombre de jours juliens correspondants à l'an 1 républicain.
@@ -1417,30 +1428,30 @@ if (!Array.prototype.reduce) {
         switch (str.slice(-1)) {
         case 't':
         case 'x':
-          result = str + 'ième';
+          result = str + 'i\xE8me';
           break;
         case 'q':
-          result = str + 'uième';
+          result = str + 'ui\xE8me';
           break;
         case 'f':
-          result = str.slice(0, str.length - 1) + 'vième';
+          result = str.slice(0, str.length - 1) + 'vi\xE8me';
           break;
         case 'e':
-          result = str.slice(0, str.length - 1) + 'ième';
+          result = str.slice(0, str.length - 1) + 'i\xE8me';
           break;
         case 's':
           result = str.slice(-2) === 'ts' ? str.slice(0, str.length - 1) +
-            'ième' : str + 'ième';
+            'i\xE8me' : str + 'i\xE8me';
           break;
         case 'n':
           if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
-            result = str + 'ième';
+            result = str + 'i\xE8me';
           } else {
             result = premierOrdinalEnLettres(str, genre);
           }
           break;
         default:
-          result = str + 'ième';
+          result = str + 'i\xE8me';
         }
 
         /* eslint-enable indent */
@@ -2386,33 +2397,40 @@ if (!Array.prototype.reduce) {
           tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
             saisieGregorien[1]), absInt(saisieGregorien[0]));
 
-          // Si limitation et avant 15/10 gregorien
-          if (limites === true && tab[4] < jjDebutGregorien) {
+          // Si limitation et avant début du calendrier grégorien
+          if (limites === true && tab[4] < gregorienVersJj(
+              dateDebutGregorien[2], dateDebutGregorien[1],
+              dateDebutGregorien[0])) {
             tab[5] = absInt(saisieGregorien[0]);
             tab[6] = absInt(saisieGregorien[1]);
             tab[7] = parseInt(saisieGregorien[2], 10);
             tab[8] = dateValide(tab[5], tab[6], tab[7]);
 
-            // Si limitation et après 4/10 julien
-            if (tab[8] > dateValide(4, 10, 1582)) {
+            // Si limitation et après la fin du calendrier julien
+            if (tab[8] > dateValide(dateFinJulien[0], dateFinJulien[1],
+                dateFinJulien[2])) {
               tab[0] = tab[5] + 10;
               tab[1] = tab[6];
               tab[2] = tab[7];
               tab[3] = dateValide(tab[0], tab[1], tab[2]);
             }
 
-            // Résultats gregorien/julien débridés
+            // Résultats gregorien/julien standards et/ou débridés
           } else {
             tab[0] = absInt(saisieGregorien[0]);
             tab[1] = absInt(saisieGregorien[1]);
             tab[2] = parseInt(saisieGregorien[2], 10);
             tab[3] = dateValide(tab[0], tab[1], tab[2]);
-            var dateJulienne = jjVersJulien(tab[4]);
 
-            tab[5] = dateJulienne[2];
-            tab[6] = dateJulienne[1];
-            tab[7] = dateJulienne[0];
-            tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            // Si débridé
+            if (limites === false) {
+              var dateJulienne = jjVersJulien(tab[4]);
+
+              tab[5] = dateJulienne[2];
+              tab[6] = dateJulienne[1];
+              tab[7] = dateJulienne[0];
+              tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            }
           }
 
           // Limitations republicain

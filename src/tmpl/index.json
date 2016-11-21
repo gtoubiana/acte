@@ -1,0 +1,12 @@
+{
+  "menu": "Afficher le menu",
+  "zip": "Télécharger",
+  "doc": "Documentation",
+  "titreconv": "Convertir une date",
+  "detailconv": "La zone de saisie accepte les abbréviations courantes (an V, Xbre, Jer, Oct, etc.).",
+  "saisiedate": "Entrez une date !",
+  "debrider": "Débrider",
+  "debridconv": "Débrider la conversion",
+  "pourquoideb": "Pourquoi débrider ?",
+  "detailpourquoideb": "Le calendrier grégorien est entré en vigueur après le 15/10/1582.<br>Le calendrier républicain a été utilisé à partir du 22/09/1792 jusqu'en 1805 (et pendant la Commune de Paris de mars à mai 1871).<br>Débrider permet d'obtenir des correspondances raisonnables en dehors de ces bornes."
+}
