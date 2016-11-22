@@ -1,26 +1,26 @@
 Todo Démo:
-  ☐ Programmation ACTE
-    ✔ Tests modification passage grégorien https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien @done(2016-11-22 14:22) @project(Todo Démo)
-    ✔ Comment gérer le +10 dans tabGregorien avec des changements de mois ? @done(2016-11-22 14:22) @project(Todo Démo)
-    ✔ Documenter ces changements en JSDoc et dans index.hbs (help) @done(2016-11-22 14:39) @project(Todo Démo)
-    ☐ Revoir le coverage
   ☐ GULP
-    ☐ Minifier/concaténer les css et js (+babel)
+    ☐ Minifier/concaténer les css et js (+babel pour script.js)
     ☐ Supprimer les css inutiles avec gulp
     ☐ linters et prettifiers pour css et html
-    ☐ Utiliser gulp pour renvoyer tout sur les gh-pages
+    ☐ Utiliser gulp pour renvoyer tout sur les gh-pages (release process?)
   ☐ gh-pages
     ☐ Vérifier la traduction disqus
   ☐ tests
     ☐ Vérifier Compatibilité ie8
     ☐ Vérifier les MAJ pour Travis
-    ☐ Travis plante pour le moment à cause de l'indentation eslint
+    ☐ Travis plante pour le moment à cause de l'indentation eslint ???
     ☐ Saucelabs plante pour le moment à cause de Travis
   ☐ Nettoyage
     ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
     ☐ Nettoyage les issues en ligne
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Programmation ACTE @done(2016-11-22 17:11) @project(Todo Démo)
+  ✔ Tests modification passage grégorien https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien @done(2016-11-22 14:22) @project(Todo Démo)
+  ✔ Comment gérer le +10 dans tabGregorien avec des changements de mois ? @done(2016-11-22 14:22) @project(Todo Démo)
+  ✔ Documenter ces changements en JSDoc et dans index.hbs (help) @done(2016-11-22 14:39) @project(Todo Démo)
+  ✔ Revoir le coverage @done(2016-11-22 17:11) @project(Todo Démo)
   ✔ Puis-je utiliser des constantes pour le passage du calendrier julien à gregorien ? voir tabGregorien ligne 42 et [,] @done(2016-11-21 14:17) @project(Todo Démo)
   ✔ Pas de valeurs julienne après 1582 @done(2016-11-21 13:33) @project(Todo Démo)
   ✔ BUG avec mardi 15 novembre 2016 @done(2016-11-21 12:29) @project(Todo Démo)
