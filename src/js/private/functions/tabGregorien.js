@@ -51,8 +51,13 @@ const tabGregorien = (saisie, limites) => {
       // Si limitation et après la fin du calendrier julien
       if (tab[8] > dateValide(dateFinJulien[0], dateFinJulien[1],
           dateFinJulien[2])) {
-        tab[0] = tab[5] + 10;
-        tab[1] = tab[6];
+        if (tab[5] + retardJulien > joursDansLeMois[tab[6] - 1]) {
+          tab[0] = tab[5] + retardJulien - joursDansLeMois[tab[6] - 1];
+          tab[1] = tab[6] + 1;
+        } else {
+          tab[0] = tab[5] + retardJulien;
+          tab[1] = tab[6];
+        }
         tab[2] = tab[7];
         tab[3] = dateValide(tab[0], tab[1], tab[2]);
       }

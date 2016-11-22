@@ -184,10 +184,8 @@ if (!Array.prototype.reduce) {
      * @since 0.0.17
      * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
      * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @see dateFinJulien, retardJulien
      * @constant {Array}
-     * @example
-     * gregorienVersJj(dateDebutGregorien[2], dateDebutGregorien[1],
-     * dateDebutGregorien[0]);
      */
     var dateDebutGregorien = [15, 10, 1582];
 
@@ -198,9 +196,8 @@ if (!Array.prototype.reduce) {
      * @since 0.0.17
      * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
      * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @see dateDebutGregorien, retardJulien
      * @constant {Array}
-     * @example
-     * dateValide(dateFinJulien[0], dateFinJulien[1], dateFinJulien[2]);
      */
     var dateFinJulien = [4, 10, 1582];
 
@@ -584,6 +581,19 @@ if (!Array.prototype.reduce) {
       regexp: '[^-()\\d/*+.]',
       replace: ''
     }];
+
+    /**
+     * Nombre de jours de retard du calendrier Julien
+     * lors du passage au calendrier Grégorien.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @see dateDebutGregorien, dateFinJulien
+     * @constant {Number}
+     */
+    var retardJulien = 10;
 
     /**
      * Nombre de jours dans un siècle julien.
@@ -2409,8 +2419,13 @@ if (!Array.prototype.reduce) {
             // Si limitation et après la fin du calendrier julien
             if (tab[8] > dateValide(dateFinJulien[0], dateFinJulien[1],
                 dateFinJulien[2])) {
-              tab[0] = tab[5] + 10;
-              tab[1] = tab[6];
+              if (tab[5] + retardJulien > joursDansLeMois[tab[6] - 1]) {
+                tab[0] = tab[5] + retardJulien - joursDansLeMois[tab[6] - 1];
+                tab[1] = tab[6] + 1;
+              } else {
+                tab[0] = tab[5] + retardJulien;
+                tab[1] = tab[6];
+              }
               tab[2] = tab[7];
               tab[3] = dateValide(tab[0], tab[1], tab[2]);
             }

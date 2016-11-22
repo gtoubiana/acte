@@ -1,8 +1,9 @@
 Todo Démo:
   ☐ Programmation ACTE
-    ☐ Tests modification passage grégorien https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
-    ☐ Comment gérer le +10 dans tabGregorien avec des changements de mois ?
-    ☐ Documenter ces changements en JSDoc et dans index.hbs (help)
+    ✔ Tests modification passage grégorien https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien @done(2016-11-22 14:22) @project(Todo Démo)
+    ✔ Comment gérer le +10 dans tabGregorien avec des changements de mois ? @done(2016-11-22 14:22) @project(Todo Démo)
+    ✔ Documenter ces changements en JSDoc et dans index.hbs (help) @done(2016-11-22 14:39) @project(Todo Démo)
+    ☐ Revoir le coverage
   ☐ GULP
     ☐ Minifier/concaténer les css et js (+babel)
     ☐ Supprimer les css inutiles avec gulp

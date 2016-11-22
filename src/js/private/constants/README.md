@@ -25,6 +25,7 @@
 * [moisRepublicain](#moisRepublicain) : <code>Tableau</code> ℗
 * [regexpGregorien](#regexpGregorien) : <code>Tableau</code> ℗
 * [regexpRepublicain](#regexpRepublicain) : <code>Tableau</code> ℗
+* [retardJulien](#retardJulien) : <code>Nombre</code> ℗
 * [siecleJulien](#siecleJulien) : <code>Nombre</code> ℗
 * [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
 * [unitesEnLettres](#unitesEnLettres) : <code>Tableau</code> ℗
@@ -84,14 +85,10 @@ Date de l'adoption du calendrier grégorien.
 
 - [Projet sur GitHub](https://github.com/gtoubiana/acte.js)
 - https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+- dateFinJulien, retardJulien
 
 **Depuis** : 0.0.17  
 **Auteur** : Gilles Toubiana  
-**Exemple** :  
-```js
-gregorienVersJj(dateDebutGregorien[2], dateDebutGregorien[1],
-dateDebutGregorien[0]);
-```
 <a name="dateFinJulien"></a>
 
 ## dateFinJulien : <code>Tableau</code> ℗
@@ -103,13 +100,10 @@ Date de fin d'utilisation du calendrier julien.
 
 - [Projet sur GitHub](https://github.com/gtoubiana/acte.js)
 - https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+- dateDebutGregorien, retardJulien
 
 **Depuis** : 0.0.17  
 **Auteur** : Gilles Toubiana  
-**Exemple** :  
-```js
-dateValide(dateFinJulien[0], dateFinJulien[1], dateFinJulien[2]);
-```
 <a name="delta"></a>
 
 ## delta : <code>Tableau</code> ℗
@@ -329,6 +323,22 @@ Expressions régulières pour convertir les mois républicains.
 **Accès** : privé  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
+**Auteur** : Gilles Toubiana  
+<a name="retardJulien"></a>
+
+## retardJulien : <code>Nombre</code> ℗
+Nombre de jours de retard du calendrier Julien
+lors du passage au calendrier Grégorien.
+
+**Type** : Constante  
+**Accès** : privé  
+**See**
+
+- [Projet sur GitHub](https://github.com/gtoubiana/acte)
+- https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+- dateDebutGregorien, dateFinJulien
+
+**Depuis** : 0.0.17  
 **Auteur** : Gilles Toubiana  
 <a name="siecleJulien"></a>
 

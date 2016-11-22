@@ -8,5 +8,5 @@
   "debrider": "Débrider",
   "debridconv": "Débrider la conversion",
   "pourquoideb": "Pourquoi débrider ?",
-  "detailpourquoideb": "Le calendrier grégorien est entré en vigueur après le 15/10/1582.<br>Le calendrier républicain a été utilisé à partir du 22/09/1792 jusqu'en 1805 (et pendant la Commune de Paris de mars à mai 1871).<br>Débrider permet d'obtenir des correspondances raisonnables en dehors de ces bornes."
+  "detailpourquoideb": "Les calendriers grégoriens et républicains ont été introduits respectivement en 1582 et 1792.<br>Débrider pour ne pas tenir compte de ces limites."
 }
