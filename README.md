@@ -18,7 +18,7 @@
 <a name="description"></a>
 
 ## Description
-Une librairie JavaScript qui simplifie la recherche généalogique.
+Une librairie JavaScript qui simplifie la recherche généalogique
 <a name="installation"></a>
 
 ## Installation

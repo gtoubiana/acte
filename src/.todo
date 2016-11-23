@@ -1,8 +1,17 @@
 Todo Démo:
   ☐ GULP
-    ☐ Minifier/concaténer les css et js (+babel pour script.js)
+    ✔ Script Babel ES5 @done(2016-11-23 14:12) @project(Todo Démo)
+    ✔ Script Babel ES3 @done(2016-11-23 14:21) @project(Todo Démo)
+    ✔ Eslint airbnb script ES6 => provoque bug avec jquery-ui @done(2016-11-23 14:27) @project(Todo Démo)
+    ☐ 2 points dans la descr. dans le JSDOC du script
+    ☐ Dans le script minifié, on voit des regexp: et replace:. remplacer par e: r: .
+    ☐ Minifier/concaténer les js
+    ☐ Minifier/concaténer les css
     ☐ Supprimer les css inutiles avec gulp
-    ☐ linters et prettifiers pour css et html
+    ☐ linters CSS
+    ☐ linter HTML
+    ☐ Prettifier CSS
+    ☐ Prettifier HTML
     ☐ Utiliser gulp pour renvoyer tout sur les gh-pages (release process?)
   ☐ gh-pages
     ☐ Vérifier la traduction disqus
@@ -13,7 +22,8 @@ Todo Démo:
     ☐ Saucelabs plante pour le moment à cause de Travis
   ☐ Nettoyage
     ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
-    ☐ Nettoyage les issues en ligne
+    ☐ Nettoyer les issues en ligne
+  ☐ Beta-tests
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
   ✔ Programmation ACTE @done(2016-11-22 17:11) @project(Todo Démo)

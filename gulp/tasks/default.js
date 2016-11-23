@@ -45,7 +45,11 @@ gulp.task('default', sequence(
 
   // Génération de la démo
   'demo.index',
-  'demo.assets'
+  'demo.assets',
+  'demo.script.es5',
+  'demo.script.es3',
+  'demo.concat.js',
+  'demo.concat.css'
 
   // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
   // 'tests.coverage'

@@ -1,7 +1,7 @@
 {
   "name": "acte",
   "version": "0.0.17",
-  "description": "Une librairie JavaScript qui simplifie la recherche généalogique.",
+  "description": "Une librairie JavaScript qui simplifie la recherche généalogique",
   "main": "dist/acte.min.js",
   "directories": {
     "test": "/test",

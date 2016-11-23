@@ -49,7 +49,7 @@ if (!Array.prototype.reduce) {
 }
 
 /**
- * acte - Une librairie JavaScript qui simplifie la recherche généalogique..
+ * acte - Une librairie JavaScript qui simplifie la recherche généalogique.
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
  * @version 0.0.17
@@ -457,71 +457,71 @@ if (!Array.prototype.reduce) {
      * @constant {Array}
      */
     var regexpGregorien = [{
-      regexp: 'jan(v)?(\\.)?(ier)?',
-      replace: '/1/'
+      e: 'jan(v)?(\\.)?(ier)?',
+      r: '/1/'
     }, {
-      regexp: 'Jer',
-      replace: '/1/'
+      e: 'Jer',
+      r: '/1/'
     }, {
-      regexp: 'f(é|e)v(r)?(\\.)?(ier)?',
-      replace: '/2/'
+      e: 'f(é|e)v(r)?(\\.)?(ier)?',
+      r: '/2/'
     }, {
-      regexp: 'Fer',
-      replace: '/2/'
+      e: 'Fer',
+      r: '/2/'
     }, {
-      regexp: 'mardi',
-      replace: ''
+      e: 'mardi',
+      r: ''
     }, {
-      regexp: 'mar(s|\\.)?',
-      replace: '/3/'
+      e: 'mar(s|\\.)?',
+      r: '/3/'
     }, {
-      regexp: 'avr(il|\\.)?',
-      replace: '/4/'
+      e: 'avr(il|\\.)?',
+      r: '/4/'
     }, {
-      regexp: 'mai',
-      replace: '/5/'
+      e: 'mai',
+      r: '/5/'
     }, {
-      regexp: 'ju(i)?n',
-      replace: '/6/'
+      e: 'ju(i)?n',
+      r: '/6/'
     }, {
-      regexp: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
-      replace: '/7/'
+      e: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
+      r: '/7/'
     }, {
-      regexp: 'Jet',
-      replace: '/7/'
+      e: 'Jet',
+      r: '/7/'
     }, {
-      regexp: 'ao(u|û)(t|\\.)?',
-      replace: '/8/'
+      e: 'ao(u|û)(t|\\.)?',
+      r: '/8/'
     }, {
-      regexp: 'sep(t)?(\\.)?(embre)?',
-      replace: '/9/'
+      e: 'sep(t)?(\\.)?(embre)?',
+      r: '/9/'
     }, {
-      regexp: '7bre',
-      replace: '/9/'
+      e: '7bre',
+      r: '/9/'
     }, {
-      regexp: 'oct(obre|\\.)?',
-      replace: '/10/'
+      e: 'oct(obre|\\.)?',
+      r: '/10/'
     }, {
-      regexp: '8bre',
-      replace: '/10/'
+      e: '8bre',
+      r: '/10/'
     }, {
-      regexp: 'nov(embre|\\.)?',
-      replace: '/11/'
+      e: 'nov(embre|\\.)?',
+      r: '/11/'
     }, {
-      regexp: '9bre',
-      replace: '/11/'
+      e: '9bre',
+      r: '/11/'
     }, {
-      regexp: 'd(é|e)c(embre|\\.)?',
-      replace: '/12/'
+      e: 'd(é|e)c(embre|\\.)?',
+      r: '/12/'
     }, {
-      regexp: 'Xbre',
-      replace: '/12/'
+      e: 'Xbre',
+      r: '/12/'
     }, {
-      regexp: '10bre',
-      replace: '/12/'
+      e: '10bre',
+      r: '/12/'
     }, {
-      regexp: '[^-()\\d/*+.]',
-      replace: ''
+      e: '[^-()\\d/*+.]',
+      r: ''
     }];
 
     /**
@@ -533,53 +533,53 @@ if (!Array.prototype.reduce) {
      * @constant {Array}
      */
     var regexpRepublicain = [{
-      regexp: 'vend(é|e)miaire',
-      replace: '/1/'
+      e: 'vend(é|e)miaire',
+      r: '/1/'
     }, {
-      regexp: 'brumaire',
-      replace: '/2/'
+      e: 'brumaire',
+      r: '/2/'
     }, {
-      regexp: 'frimaire',
-      replace: '/3/'
+      e: 'frimaire',
+      r: '/3/'
     }, {
-      regexp: 'niv(ô|o)se',
-      replace: '/4/'
+      e: 'niv(ô|o)se',
+      r: '/4/'
     }, {
-      regexp: 'pluvi(ô|o)se',
-      replace: '/5/'
+      e: 'pluvi(ô|o)se',
+      r: '/5/'
     }, {
-      regexp: 'vent(ô|o)se',
-      replace: '/6/'
+      e: 'vent(ô|o)se',
+      r: '/6/'
     }, {
-      regexp: 'germinal',
-      replace: '/7/'
+      e: 'germinal',
+      r: '/7/'
     }, {
-      regexp: 'flor(é|e)al',
-      replace: '/8/'
+      e: 'flor(é|e)al',
+      r: '/8/'
     }, {
-      regexp: 'prairial',
-      replace: '/9/'
+      e: 'prairial',
+      r: '/9/'
     }, {
-      regexp: 'messidor',
-      replace: '/10/'
+      e: 'messidor',
+      r: '/10/'
     }, {
-      regexp: 'thermidor',
-      replace: '/11/'
+      e: 'thermidor',
+      r: '/11/'
     }, {
-      regexp: 'fructidor',
-      replace: '/12/'
+      e: 'fructidor',
+      r: '/12/'
     }, {
-      regexp: 'san(s-)?culottide(s)?',
-      replace: '/13/'
+      e: 'san(s-)?culottide(s)?',
+      r: '/13/'
     }, {
-      regexp: 'jour(s)?\\scompl(é|e)mentaire(s)?',
-      replace: '/13/'
+      e: 'jour(s)?\\scompl(é|e)mentaire(s)?',
+      r: '/13/'
     }, {
-      regexp: 'd(é|e)cade\\s(\\d){1,2}',
-      replace: ''
+      e: 'd(é|e)cade\\s(\\d){1,2}',
+      r: ''
     }, {
-      regexp: '[^-()\\d/*+.]',
-      replace: ''
+      e: '[^-()\\d/*+.]',
+      r: ''
     }];
 
     /**
@@ -2186,8 +2186,7 @@ if (!Array.prototype.reduce) {
 
           // jscs:disable
           function (data, item) {
-            var result = data.replace(new RegExp(item.regexp, options),
-              item.replace);
+            var result = data.replace(new RegExp(item.e, options), item.r);
 
             return result;
           }, texte);
