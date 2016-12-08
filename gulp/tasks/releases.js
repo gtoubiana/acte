@@ -117,11 +117,11 @@ gulp.task('releases.github.releaser', (done) => {
     commit: 'commit',
   }, {}, {}, {
     mainTemplate: fse.readFileSync(
-      `${config.paths.src}/tmpl/changelogMain.hbs`, 'utf8'),
+      `${config.paths.src}/releases/changelogMain.hbs`, 'utf8'),
     commitPartial: fse.readFileSync(
-      `${config.paths.src}/tmpl/changelogCommit.hbs`, 'utf8'),
+      `${config.paths.src}/releases/changelogCommit.hbs`, 'utf8'),
     footerPartial: fse.readFileSync(
-      `${config.paths.src}/tmpl/changelogFooter.hbs`, 'utf8'),
+      `${config.paths.src}/releases/changelogFooter.hbs`, 'utf8'),
     transform: function transform(commit) {
       /* eslint-disable no-param-reassign,strict */
       'use strict';

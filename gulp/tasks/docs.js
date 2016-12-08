@@ -60,7 +60,7 @@ gulp.task('docs.dist', () => {
     .pipe(rename('README.md'))
     .pipe(jsdoc2md({
       template: fse.readFileSync(
-        `${config.paths.src}/tmpl/docDist.hbs`, 'utf8'),
+        `${config.paths.src}/docs/docDist.hbs`, 'utf8'),
     }))
     .pipe(lazyJsdocFr())
     .pipe(gulp.dest(config.paths.dist));
@@ -76,7 +76,7 @@ gulp.task('docs.constants', () => {
       private: true,
       'sort-by': 'name',
       template: fse.readFileSync(
-        `${config.paths.src}/tmpl/docConstants.hbs`,
+        `${config.paths.src}/docs/docConstants.hbs`,
         'utf8'),
     }))
     .pipe(lazyJsdocFr())
@@ -93,7 +93,7 @@ gulp.task('docs.functions', () => {
       private: true,
       'sort-by': 'name',
       template: fse.readFileSync(
-        `${config.paths.src}/tmpl/docFunctions.hbs`,
+        `${config.paths.src}/docs/docFunctions.hbs`,
         'utf8'),
     }))
     .pipe(lazyJsdocFr())
@@ -104,19 +104,12 @@ gulp.task('docs.functions', () => {
 
 // TASK Pour générer un README.md à partir d'un template .hbs'
 gulp.task('docs.readme', () => {
-  const packageInfos = JSON.parse(fse.readFileSync('./package.json',
-    'utf8'));
-  const stream = gulp.src(`${config.paths.src}/tmpl/README.hbs`)
-    .pipe(rename('README.md'))
-    .pipe(hb())
-    .data({
-      name: packageInfos.name,
-      version: packageInfos.version,
-      description: packageInfos.description,
-      author: packageInfos.author,
-      license: packageInfos.license,
-      homepage: packageInfos.homepage,
-    })
+  const stream = gulp.src(`${config.paths.src}/docs/README.hbs`)
+    .pipe(rename({ extname: '.md' }))
+    .pipe(hb({
+      data: JSON.parse(fse.readFileSync('./package.json',
+        'utf8')),
+    }))
     .pipe(gulp.dest(config.paths.root));
 
   return stream;

@@ -1081,5 +1081,5 @@ Pour convertir la saisie républicaine en Objet Jour.
 tabRepublicain(saisie, this.limites);
 ```
 * * *
-Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>
-Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE), documentation sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).
+Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/) - 2015-Présent.<br>
+[Code](https://github.com/gtoubiana/acte) sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE), [documentation](https://github.com/gtoubiana/acte/blob/master/dist/README.md) sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).

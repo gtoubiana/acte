@@ -1,10 +1,12 @@
 Todo Démo:
+  ☐ HTML
+    ☐ Intégrer une visite guidée, voir http://introjs.com/, http://github.hubspot.com/shepherd/docs/welcome/, http://bootstraptour.com/ => sous la baseline 'Démarrer la visite !'
+    ☐ supprimer les css et js inutiles après concat dans /demo
+  ☐ DEBUG
+    ☐ 18 brumaire an-V
+    ☐ 18 brumaire anV
+    ☐ Vérifier les exemples https://github.com/gtoubiana/acte/blob/master/dist/README.md
   ☐ GULP
-    ✔ Script Babel ES5 @done(2016-11-23 14:12) @project(Todo Démo)
-    ✔ Script Babel ES3 @done(2016-11-23 14:21) @project(Todo Démo)
-    ✔ Eslint airbnb script ES6 => provoque bug avec jquery-ui @done(2016-11-23 14:27) @project(Todo Démo)
-    ☐ 2 points dans la descr. dans le JSDOC du script
-    ☐ Dans le script minifié, on voit des regexp: et replace:. remplacer par e: r: .
     ☐ Minifier/concaténer les js
     ☐ Minifier/concaténer les css
     ☐ Supprimer les css inutiles avec gulp
@@ -15,6 +17,7 @@ Todo Démo:
     ☐ Utiliser gulp pour renvoyer tout sur les gh-pages (release process?)
   ☐ gh-pages
     ☐ Vérifier la traduction disqus
+    ☐ Ajouter google analytics
   ☐ tests
     ☐ Vérifier Compatibilité ie8
     ☐ Vérifier les MAJ pour Travis
@@ -24,8 +27,42 @@ Todo Démo:
     ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
     ☐ Nettoyer les issues en ligne
   ☐ Beta-tests
+    ☐ Lucie 24/11/2016 => incompréhension du débridage
+  ☐ Application mobile avec PhoneGap (ou bureau ?)
+  ☐ Rédiger docs des install/update dans src/install.txt
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ créer la section recettes en markdown avec insertions codepen par exemple (hist ? jsfiddle ? jsbin ?) => https://jsfiddle.net/toubia95/tyovtLeL/ @done(2016-12-08 15:58) @project(Todo Démo)
+  ✔ restructurer les elements dans src/demo par dossiers @done(2016-12-08 14:40) @project(Todo Démo)
+  ✔ Convertir [Exemples] => liste de boutons avec des exemples, quand on clique sur 1 bouton = ca passe dans le champ et c'est calculé ! @done(2016-12-08 13:53) @project(Todo Démo)
+  ✔ supprimer outline et ajouter underline aux liens dans la page démo fond blanc @done(2016-12-08 13:04) @project(Todo Démo)
+  ✔ input clignote (glow) jusqu'à la première utilisation => encours @done(2016-12-08 12:54) @project(Todo Démo)
+  ✔ Revoir l'explication de grégorien, julien, républicain dans la démo (Paragraphe avant saisie plutôt que ?) sinon au survol du mot... @done(2016-12-08 12:40) @project(Todo Démo)
+  ✔ Tab pour entrer automatiquement dans le premier champ, puis débridage en 2 @done(2016-12-08 12:39) @project(Todo Démo)
+  ✔ Expliquer qu'on peut saisir n'importe quel format de date et donner des exemples. @done(2016-12-07 15:54) @project(Todo Démo)
+  ✔ Expliquer simplement le débridage @done(2016-12-07 15:54) @project(Todo Démo)
+  ✔ alert quand on clique sur "explication" @done(2016-12-07 15:54) @project(Todo Démo)
+  ✔ Quand je clique sur Expliquez-moi, un 'well' apparait, et le bouton devient 'Fermer l'explication', Ferme les exemples... https://jsfiddle.net/toubia95/kvsw6ppd/3/ @done(2016-12-07 15:54) @project(Todo Démo)
+  ✔ le redimensionnement en largeur semble lourd à charger... => à cause de la web dev toolbar @done(2016-12-07 15:54) @project(Todo Démo)
+  ✔ bug avec la flottaison du logo et du bouton (clear:both sur le logo) @done(2016-12-07 13:46) @project(Todo Démo)
+  ✔ corriger bug css fixed bg quand on commence à scroller @done(2016-11-29 11:33) @project(Todo Démo)
+  ✔ faire des partials handlebars par sections @done(2016-11-29 09:29) @project(Todo Démo)
+  ✔ Revoir l'utilisation des data dans les .hbs (recherche github) @done(2016-11-29 11:30) @project(Todo Démo)
+  ✔ Harmoniser les footer et partials entre index.html et README.md @done(2016-11-30 16:17) @project(Todo Démo)
+  ✔ Ajouter des partials et helpers (fonctions) de header, footer, etc... @done(2016-11-30 16:17) @project(Todo Démo)
+  ✔ Revoir la structure des templates et gulp-hb pour certains @done(2016-11-30 16:17) @project(Todo Démo)
+  ✔ limiter au maximum les infos dans la version mobile @done(2016-11-30 16:17) @project(Todo Démo)
+  ✔ bouton en contour pour développeur «» @done(2016-11-30 16:17) @project(Todo Démo)
+  ✔ logo en couleur ? @done(2016-11-30 16:17) @project(Todo Démo)
+  ✔ enlever le menu sup, ne garder que 'Développeurs »' @done(2016-11-29 11:57) @project(Todo Démo)
+  ✔ ne garder qu'un lien en haut à droite (espace développeur, acte sur Github ?): https://github.com/gtoubiana/acte#acte-v0017 https://github.com/gtoubiana/acte#sommaire https://github.com/gtoubiana/acte#description https://github.com/gtoubiana/acte#installation https://github.com/gtoubiana/acte#documentation https://github.com/gtoubiana/acte/blob/master/dist/README.md#documentation-de-acte @done(2016-11-28 15:16)
+  ✔ Enlever toutes les infos pour installation developpeur @done(2016-11-28 15:16)
+  ✔ lier les jsdoc constantes et private à la doc principale (gabarit) @done(2016-11-28 14:08) @project(Todo Démo)
+  ✔ Script Babel ES5 @done(2016-11-23 14:12) @project(Todo Démo)
+  ✔ Script Babel ES3 @done(2016-11-23 14:21) @project(Todo Démo)
+  ✔ Eslint airbnb script ES6 => provoque bug avec jquery-ui @done(2016-11-23 14:27) @project(Todo Démo)
+  ✔ 2 points dans la descr. dans le JSDOC du script @done(2016-11-24 09:44) @project(Todo Démo)
+  ✔ Dans le script minifié, on voit des regexp: et replace:. remplacer par e: r: . @done(2016-11-24 09:44) @project(Todo Démo)
   ✔ Programmation ACTE @done(2016-11-22 17:11) @project(Todo Démo)
   ✔ Tests modification passage grégorien https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien @done(2016-11-22 14:22) @project(Todo Démo)
   ✔ Comment gérer le +10 dans tabGregorien avec des changements de mois ? @done(2016-11-22 14:22) @project(Todo Démo)

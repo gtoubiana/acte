@@ -18,70 +18,70 @@
    <![endif]-->
 </head>
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-     <div class="container">
-        <div class="navbar-header">
-           <button type="button" class="navbar-toggle collapsed"
-              data-toggle="collapse" data-target="#navbar"
-              aria-expanded="false" aria-controls="navbar">
-           <span class="sr-only">Afficher le menu</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           </button>
-           <a class="navbar-brand" href="https://github.com/gtoubiana/acte">acte.js sur Github</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-           <ul class="nav navbar-nav navbar-right">
-             <li><a href="https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true">Télécharger</a></li>
-             <li><a href="https://github.com/gtoubiana/acte/blob/master/dist/README.md">Documentation </a></li>
-           </ul>
-        </div>
-        <!--/.navbar-collapse -->
-     </div>
-  </nav>
   <div class="jumbotron">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-xs-12">
-          <!-- <h1>acte.js</h1>
-          <p>Une librairie JavaScript qui simplifie la recherche généalogique</p> -->
+        <div class="col-md-12">
+          <a class="pull-right btn btn-outline-inverse hidden-xs" href="https://github.com/gtoubiana/acte#sommaire">Développeurs » </a>
           <img src="demo/img/logo-blanc.png" class="img-responsive logo" alt="logo">
-          <br><p>La librairie javascript acte.js permet de <span class="hidden-xs">saisir et </span>manipuler des dates<span class="hidden-xs"> grégoriennes, républicaines et juliennes</span>.</p>
-        </div>
-          <div class="col-md-6 hidden-xs" style="text-align: left;">
-            <h3>Comment utiliser <a href="https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true">acte v0.0.17</a> ?</h3>
-              <h4>Avec Node.js</h4>
-                <pre class="prettyprint shell">npm install acte --save</pre>
-              <h4>Dans une page html</h4>
-                <pre class="prettyprint js">&lt;script type="text/javascript" src="acte.min.js"&gt;&lt;/script&gt;</pre>
+          <br><p>Une librairie pour manipuler les dates<span class="hidden-xs"> grégoriennes, républicaines et juliennes</span></p>
         </div>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h2 class="violet">Convertir une date</h2>
-        <p class="lead">La zone de saisie accepte les abbréviations courantes (an V, Xbre, Jer, Oct, etc.).<br>
+      <div class="col-md-12 parent">
+        <h2 class="violet">Convertir<span class="hidden-xs"> une date</span> <small>(<a class="exemples showhide"
+            data-link-text="Exemples"
+            tabindex="3"
+            href="#">Exemples</a>)</small></h2>
+        <div class="alert alert-info btnlh description" role="alert">
+          <strong>Cliquez sur une date pour tester la conversion : </strong><br>
+          <button type="button" class="btn btn-default btn-exemple">5/12/1792</button>
+          <button type="button" class="btn btn-default btn-exemple">6 décembre 1792</button>
+          <button type="button" class="btn btn-default btn-exemple">7 Xbre 1792</button>
+          <button type="button" class="btn btn-default btn-exemple">17 frimaire an IV</button>
+          <button type="button" class="btn btn-default btn-exemple">1 Jer 1793</button>
+          <button type="button" class="btn btn-default btn-exemple">1er jan 1794</button>
+        </div>
       </div>
     </div>
     <div class="row">
-    <div id="jour_debrider" class="col-md-6">
+      <div id="jour_debrider" class="col-md-6 parent">
         <div id="validation_de_jour">
           <label class="sr-only" for="jour">Jour</label>
-          <input class="form-control" id="jour" type="search" placeholder="Entrez une date !">
+          <input class="form-control glowing"
+            tabindex="1"
+            id="jour"
+            type="search"
+            placeholder="Entrez une date ici !">
         </div>
         <div class="checkbox">
           <label>
-            <input id="debrider" type="checkbox" value="" placeholder="Débrider"> Débrider la conversion&nbsp;<span data-toggle="popover" data-trigger="hover" data-html="true" title="Pourquoi débrider ?" data-content="Les calendriers grégoriens et républicains ont été introduits respectivement en 1582 et 1792.&lt;br&gt;Débrider pour ne pas tenir compte de ces limites." class="glyphicon glyphicon-question-sign interrogation" aria-hidden="true"></span>
+            <input id="debrider"
+              tabindex="2"
+              type="checkbox"
+              value=""
+              placeholder="Débrider">
+            <span class="hidden-xs">Toujours </span>afficher les correspondances (<a class="explications showhide"
+              data-link-text="Explications"
+              tabindex="4"
+              href="#"
+              >Explications</a>)
           </label>
         </div>
+        <div class="alert alert-info description" role="alert"><strong>Cochez cette case pour ne pas limiter les conversions de calendriers.</strong><br>
+          Sinon :<br>
+           - le <a href="https://fr.wikipedia.org/wiki/Calendrier_julien">calendrier julien</a> se termine le 4 octobre 1582 ;<br>
+           - le <a href="https://fr.wikipedia.org/wiki/Calendrier_gr%C3%A9gorien">calendrier grégorien</a> débute le 15 octobre 1582 ;<br>
+           - le <a href="https://fr.wikipedia.org/wiki/Calendrier_r%C3%A9publicain">calendrier républicain</a> fonctionne du 22 septembre 1792 au 31 décembre 1805 (puis de mars à mai 1871 pendant la Commune de Paris).
+         </div>
       </div>
-     <div class="col-md-6" id="affichage_de_jour">
+      <div class="col-md-6" id="affichage_de_jour">
         <table class="table table-bordered table-hover table-striped"><tbody></tbody></table>
-     </div>
-   </div>
+      </div>
+    </div>
      <hr>
      <div class="row">
        <div class="col-md-12">
@@ -117,7 +117,9 @@
      </div>
      <hr>
      <footer>
-        <p>Copyright (c) 2015-Présent Gilles Toubiana</p>
+        <p>Créé et maintenu par <a href="https://github.com/gtoubiana/">Gilles Toubiana</a> - 2015-Présent<br>
+<a href="https://github.com/gtoubiana/acte">Code</a> sous licence <a href="https://github.com/gtoubiana/acte/blob/master/LICENSE">MIT</a>, <a href="https://github.com/gtoubiana/acte/blob/master/dist/README.md">documentation</a> sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">CC BY 4.0</a>.
+</p>
      </footer>
   </div>
    <!-- /container -->

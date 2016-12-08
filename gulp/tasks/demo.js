@@ -16,31 +16,13 @@ const size = require('gulp-size');
 
 // TASK Pour générer un index.html à partir d'un template .hbs'
 gulp.task('demo.index', () => {
-  const packageInfos = JSON.parse(fse.readFileSync('./package.json',
-    'utf8'));
-  const indexInfos = JSON.parse(fse.readFileSync('./src/tmpl/index.json',
-    'utf8'));
-  const stream = gulp.src(`${config.paths.src}/tmpl/index.hbs`)
-    .pipe(rename('index.html'))
-    .pipe(hb())
-    .data({
-      name: packageInfos.name,
-      version: packageInfos.version,
-      description: packageInfos.description,
-      author: packageInfos.author,
-      license: packageInfos.license,
-      homepage: packageInfos.homepage,
-      menu: indexInfos.menu,
-      zip: indexInfos.zip,
-      doc: indexInfos.doc,
-      titreconv: indexInfos.titreconv,
-      detailconv: indexInfos.detailconv,
-      saisiedate: indexInfos.saisiedate,
-      debrider: indexInfos.debrider,
-      debridconv: indexInfos.debridconv,
-      pourquoideb: indexInfos.pourquoideb,
-      detailpourquoideb: indexInfos.detailpourquoideb,
-    })
+  const stream = gulp.src(`${config.paths.src}/demo/index.hbs`)
+    .pipe(hb({
+      partials: 'src/demo/partials/**/*.hbs',
+      data: JSON.parse(fse.readFileSync('./package.json',
+        'utf8')),
+    }))
+    .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest(config.paths.root));
 
   return stream;
@@ -55,13 +37,13 @@ gulp.task('demo.assets', () => {
     `${config.paths.html5shivBower}/html5shiv.min.js`,
     `${config.paths.respondBower}/respond.min.js`,
     `${config.paths.codePrettifyBower}/run_prettify.js`,
-    `${config.paths.src}/demo/ie10-viewport-bug-workaround.js`,
+    `${config.paths.src}/demo/js/ie10-viewport-bug-workaround.js`,
     ])
     .pipe(gulp.dest(`${config.paths.demo}/js/`))
     .on('end', () => {
       const stream2 = gulp.src(
         [`${config.paths.bootstrapBower}/css/bootstrap.min.css`,
-        `${config.paths.src}/demo/*.css`,
+        `${config.paths.src}/demo/css/*.css`,
       ])
         .pipe(gulp.dest(`${config.paths.demo}/css/`))
         .on('end', () => {
@@ -72,11 +54,11 @@ gulp.task('demo.assets', () => {
             /* eslint-disable max-nested-callbacks */
             .on('end', () => {
               const stream4 = gulp.src(
-                [`${config.paths.src}/demo/favicon.ico`])
+                [`${config.paths.src}/demo/img/favicon.ico`])
                 .pipe(gulp.dest(`${config.paths.demo}/`))
                 .on('end', () => {
                   const stream5 = gulp.src(
-                    [`${config.paths.src}/demo/*.{jpg,png}`])
+                    [`${config.paths.src}/demo/img/*.{jpg,png}`])
                     .pipe(gulp.dest(`${config.paths.demo}/img/`));
 
                   return stream5;
@@ -97,7 +79,7 @@ gulp.task('demo.assets', () => {
 
 // TASK Pour générer le script ES5 ./demo/js/script.js
 gulp.task('demo.script.es5', () => {
-  const stream = gulp.src(`${config.paths.src}/demo/script.js`)
+  const stream = gulp.src(`${config.paths.src}/demo/js/demo-script.js`)
   .pipe(babel({
     plugins: [
 
@@ -145,7 +127,7 @@ gulp.task('demo.script.es5', () => {
 });
 
 gulp.task('demo.script.es3', () => {
-  const stream = gulp.src(`${config.paths.demo}/js/script.js`)
+  const stream = gulp.src(`${config.paths.demo}/js/demo-script.js`)
     .pipe(babel({
       plugins: [
 
@@ -174,7 +156,7 @@ gulp.task('demo.concat.js', () => {
     `${config.paths.demo}/js/jquery.min.js`,
     `${config.paths.demo}/js/jquery-ui.min.js`,
     `${config.paths.demo}/js/bootstrap.min.js`,
-    `${config.paths.demo}/js/script.js`,
+    `${config.paths.demo}/js/demo-script.js`,
     `${config.paths.demo}/js/run_prettify.js`,
     `${config.paths.demo}/js/ie10-viewport-bug-workaround.js`,
     ])

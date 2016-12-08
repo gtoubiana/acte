@@ -1,4 +1,4 @@
-Installer une plateforme de développement pour acte (OSX)
+INSTALLER (OSX)
 
 1. Installer atom
 
@@ -24,6 +24,17 @@ Installer une plateforme de développement pour acte (OSX)
    $ npm run update
 
 ---
-Astuces
+DESINSTALLER (OSX)
 
 - pour désinstaller, remplacer install par uninstall
+
+---
+MISE A JOUR PLUGINS Autocomplete
+
+---
+MISE A JOUR BOWER
+
+---
+MISE A JOUR NPM
+
+---

@@ -1,9 +1,4 @@
 $(document).ready(() => {
-  // Bootstrap init
-  $(() => {
-    $('[data-toggle="popover"]').popover();
-  });
-
   // Parallax effect
   $(window).scroll(() => {
     $('.jumbotron').css('background-position', `0px ${(0 -
@@ -12,21 +7,34 @@ $(document).ready(() => {
   });
 
   // Acte - Convertir une date
-  $('#jour_debrider').bind('keyup change mousemove', () => {
+  const convertirJour = () => {
     const deb = $('#debrider').prop('checked');
     const jr = new acte.Jour($('#jour').val(), !deb);
 
     $('#affichage_de_jour table tbody').html(`<tr>
-<th scope="row">Date grégorienne</th>
+<th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_gr%C3%A9gorien">Date grégorienne</a></th>
 ${jr.gregorien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
 '<td class="active">Pas de correspondances</td>')}</tr>
-<tr><th scope="row">Date républicain</th>
+<tr><th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_r%C3%A9publicain">Date républicain</a></th>
 ${jr.republicain(
 '<td class="success"><strong>%JSl %JMp %Mlb an %Ar</strong></td>',
 '<td class="active">Pas de correspondances</td>')}</tr>
-<tr><th scope="row">Date julienne</th>
+<tr><th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_julien">Date julienne</a></th>
 ${jr.julien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
 '<td class="active">Pas de correspondances</td>')}</tr>`);
+  };
+
+  // Arrêter les animations CSS3 sur un élément
+  const stopAnimation = (element) => {
+    $(element).css('-webkit-animation', 'none');
+    $(element).css('-moz-animation', 'none');
+    $(element).css('-o-animation', 'none');
+    $(element).css('animation', 'none');
+  };
+
+  $('#jour_debrider').bind('keyup change mousemove', () => {
+    convertirJour();
+    stopAnimation('#jour');
   });
 
   // Jquery-ui Autocomplete
@@ -103,4 +111,31 @@ ${jr.julien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
       return false;
     },
   });
+
+  /* Afficher/Masque les aides */
+  $('.description').hide();
+
+  /* eslint-disable no-invalid-this, func-names */
+  $('.exemples, .explications')
+  .on('click', function () {
+    $(this).toggleClass('fermer');
+    if ($(this).hasClass('fermer')) {
+      $(this).text(`Masquer ${$(this).attr('data-link-text')}`);
+      $(this).closest('.parent').find('.description')
+      .show();
+    } else {
+      $(this).text($(this).attr('data-link-text'));
+      $(this).closest('.parent').find('.description')
+      .hide();
+    }
+  });
+
+  $('.btn-exemple')
+  .on('click', function () {
+    $('#jour').val($(this).text());
+    convertirJour();
+    stopAnimation('#jour');
+  });
+
+  /* eslint-enable no-invalid-this, func-names */
 });
