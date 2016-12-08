@@ -1718,12 +1718,25 @@ input[type="text"], input[type="password"],
 }
 
 .glowing {
-  animation-name: glow;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
+  -webkit-animation: glow 4s infinite;
+  -moz-animation: glow 4s infinite;
+  -o-animation: glow 4s infinite;
+  animation: glow 4s infinite;
 }
 
 @-webkit-keyframes glow {
+  0%   {background-color:#ffffff;}
+  50%  {background-color:#fbf4d8;}
+  100% {background-color:#ffffff;}
+}
+
+@-moz-keyframes glow {
+  0%   {background-color:#ffffff;}
+  50%  {background-color:#fbf4d8;}
+  100% {background-color:#ffffff;}
+}
+
+@-o-keyframes glow {
   0%   {background-color:#ffffff;}
   50%  {background-color:#fbf4d8;}
   100% {background-color:#ffffff;}
@@ -1742,6 +1755,7 @@ input[type="text"], input[type="password"],
 @media screen and (min-width: 768px) and (max-width: 992px) {
 }
 
+/* liens */
 a.showhide, .description a {
   text-decoration: underline;
 }
