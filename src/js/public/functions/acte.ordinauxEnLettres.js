@@ -1,8 +1,9 @@
  /**
   * Pour convertir les nombres en toutes lettres en nombres ordinaux.
-  * @access private
+  * @memberof acte
+  * @access public
   * @author Gilles Toubiana
-  * @since 0.0.15
+  * @since 0.0.17
   * @license MIT
   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
   * @param {Number} saisie - le nombre en lettres
@@ -10,12 +11,12 @@
   * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
   * @return {String} le nombre ordinal en lettres
   * @example
-  * ordinauxEnLettres("Un"); // "Premier"
-  * ordinauxEnLettres("Un", 1); // "Première"
-  * ordinauxEnLettres("Deux"); // "Deuxième"
-  * ordinauxEnLettres("Vingt-trois"); // "Vingt-troisième"
+  * acte.ordinauxEnLettres('Un'); // 'Premier'
+  * acte.ordinauxEnLettres('Un', 1); // 'Première'
+  * acte.ordinauxEnLettres('Deux'); // 'Deuxième'
+  * acte.ordinauxEnLettres('Vingt-trois'); // 'Vingt-troisième'
   */
- const ordinauxEnLettres = (saisie, genre) => {
+ acte.ordinauxEnLettres = (saisie, genre) => {
    const str = saisie.toString();
    let result;
 
@@ -43,7 +44,7 @@
      if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
        result = `${str}ième`;
      } else {
-       result = premierOrdinalEnLettres(str, genre);
+       result = acte.premierOrdinalEnLettres(str, genre);
      }
      break;
    default:

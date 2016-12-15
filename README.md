@@ -36,10 +36,10 @@ Téléchargez et décompressez la dernière archive zip ([acte-0.0.17-dist.zip](
 <a name="documentation"></a>
 
 ## Documentation
-- [API](https://github.com/gtoubiana/acte/blob/master/dist/README.md#documentation-de-acte) générée par jsdoc-to-markdown.
-- [Tests](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js) rédigés pour Node et Jasmine.
 - Essayez la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
-- [Recettes](https://jsfiddle.net/toubia95/tyovtLeL/).
+- [API](https://github.com/gtoubiana/acte/blob/master/dist/README.md#documentation-de-acte) générée par jsdoc-to-markdown.
+- [Tests unitaires](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js) rédigés pour Node et Jasmine.
+- [Quelques Exemples et recettes](https://github.com/gtoubiana/acte/blob/master/test/spec-Recettes.js).
 
 * * *
 Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/) - 2015-Présent.<br>

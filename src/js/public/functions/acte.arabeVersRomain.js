@@ -1,16 +1,17 @@
 /**
  * Pour convertir des chiffres arabes en chiffres romains.
- * @access private
+ * @memberof acte
+ * @access public
  * @author Iván Montes
- * @since 0.0.1
+ * @since 0.0.17
  * @license unknown
  * @see {@link http://blog.stevenlevithan.com/?p=65#comment-16107|Blog}
  * @param {Number} arabe - Chiffre arabe
  * @return {String} Chiffre romain
  * @example
- * arabeVersRomain(2012); // 'MMXII'
+ * acte.arabeVersRomain(2012); // 'MMXII'
  */
-const arabeVersRomain = (arabe) => {
+acte.arabeVersRomain = (arabe) => {
   const lookup = {
     M: 1000,
     CM: 900,

@@ -13,16 +13,13 @@ $(document).ready(function () {
       var jr = new acte.Jour($('#jour').val(), !deb);
 
       $('#affichage_de_jour table tbody').html(
-        '<tr>\n<th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_gr%C3%A9gorien">Date gr\xE9gorienne</a></th>\n' +
-        jr.gregorien(
+        '<tr>\n<th scope="row">Date gr\xE9gorienne</th>\n' + jr.gregorien(
           '<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
           '<td class="active">Pas de correspondances</td>') +
-        '</tr>\n<tr><th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_r%C3%A9publicain">Date r\xE9publicain</a></th>\n' +
-        jr.republicain(
+        '</tr>\n<tr><th scope="row">Date r\xE9publicain</th>\n' + jr.republicain(
           '<td class="success"><strong>%JSl %JMp %Mlb an %Ar</strong></td>',
           '<td class="active">Pas de correspondances</td>') +
-        '</tr>\n<tr><th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_julien">Date julienne</a></th>\n' +
-        jr.julien(
+        '</tr>\n<tr><th scope="row">Date julienne</th>\n' + jr.julien(
           '<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
           '<td class="active">Pas de correspondances</td>') + '</tr>');
     }

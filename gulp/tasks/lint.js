@@ -32,7 +32,8 @@ gulp.task('lint', sequence(
   'lint.constants',
 
   // Valider les utilitaires
-  'lint.functions',
+  'lint.public.functions',
+  'lint.private.functions',
 
   // Valider les classes
   'lint.constructors',
@@ -53,9 +54,9 @@ gulp.task('lint.test', sequence(
 
 // Valider les scripts Gulp
 gulp.task('lint.gulp', () => {
-  const stream = gulp.src([`${config.paths.tasks}/*.js`])
+  const stream = gulp.src([`${config.paths.gulpTask}/*.js`])
     .pipe(lazyLint())
-    .pipe(gulp.dest(config.paths.tasks));
+    .pipe(gulp.dest(config.paths.gulpTask));
 
   return stream;
 });
@@ -71,44 +72,55 @@ gulp.task('lint.specs', () => {
 
 // Valider les scripts ./src/js/constants/
 gulp.task('lint.constants', () => {
-  const stream = gulp.src([`${config.paths.const}/*.js`])
+  const stream = gulp.src([`${config.paths.privConst}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.const));
+    .pipe(gulp.dest(config.paths.privConst));
 
   return stream;
 });
 
-// Valider les scripts ./src/js/functions/
-gulp.task('lint.functions', () => {
-  const stream = gulp.src([`${config.paths.func}/*.js`])
+// Valider les scripts ./src/js/private-functions/
+gulp.task('lint.private.functions', () => {
+  const stream = gulp.src([`${config.paths.privFunc}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.func));
+    .pipe(gulp.dest(config.paths.privFunc));
+
+  return stream;
+});
+
+// Valider les scripts ./src/js/public-functions/
+gulp.task('lint.public.functions', () => {
+  const stream = gulp.src([`${config.paths.pubFunc}/*.js`])
+    .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
+    .pipe(gulp.dest(`${config.paths.pubFunc}`));
 
   return stream;
 });
 
 // Valider les scripts ./src/js/classes/
 gulp.task('lint.constructors', () => {
-  const stream = gulp.src([`${config.paths.class}/*.js`])
+  const stream = gulp.src([`${config.paths.pubConstr}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.class));
+    .pipe(gulp.dest(config.paths.pubConstr));
 
   return stream;
 });
 
 // Valider les scripts ./src/js/prototypes/
 gulp.task('lint.prototypes', () => {
-  const stream = gulp.src([`${config.paths.proto}/*.js`])
+  const stream = gulp.src([`${config.paths.pubProto}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.proto));
+    .pipe(gulp.dest(config.paths.pubProto));
 
   return stream;
 });

@@ -1,5 +1,40 @@
 'use strict';
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+describe('Public functions', function () {
+  it('acte.arabeVersRomain()', function () {
+    expect(acte.arabeVersRomain(2012)).toEqual('MMXII');
+  });
+  it('acte.nombreEnLettres()', function () {
+    expect(acte.nombreEnLettres(2371)).toEqual('Deux-mille-trois-cent-soixante-et-onze');
+    expect(acte.nombreEnLettres(1799, 1)).toEqual('Mille sept cent quatre-vingt-dix-neuf');
+  });
+  it('acte.nombreOrdinal()', function () {
+    expect(acte.nombreOrdinal(1, 'er', 'e')).toEqual('1er');
+    expect(acte.nombreOrdinal(1, 're', 'e')).toEqual('1re');
+    expect(acte.nombreOrdinal(2, 'er', 'e')).toEqual('2e');
+  });
+  it('acte.ordinauxEnLettres()', function () {
+    expect(acte.ordinauxEnLettres('Un')).toEqual('Premier');
+    expect(acte.ordinauxEnLettres('Un', 1)).toEqual('Première');
+    expect(acte.ordinauxEnLettres('Deux')).toEqual('Deuxième');
+    expect(acte.ordinauxEnLettres('Vingt-trois')).toEqual('Vingt-troisième');
+  });
+  it('acte.prefixeZero()', function () {
+    expect(acte.prefixeZero(20)).toEqual(20);
+    expect(acte.prefixeZero(9)).toEqual('09');
+    expect(acte.prefixeZero(0)).toEqual(0);
+    expect(acte.prefixeZero(-4)).toEqual(-4);
+  });
+  it('acte.premierOrdinalEnLettres()', function () {
+    expect(acte.premierOrdinalEnLettres('Un')).toEqual('Premier');
+    expect(acte.premierOrdinalEnLettres('Un', 1)).toEqual('Première');
+    expect(acte.premierOrdinalEnLettres('Deux')).toEqual('Deux');
+    expect(acte.premierOrdinalEnLettres('Vingt-trois')).toEqual('Vingt-trois');
+  });
+});
+
 var dateValide = function dateValide(jour, mois, an) {
   var resultat = new Date(an, mois - 1, jour);
 
@@ -201,7 +236,6 @@ describe('new acte.Jour().gregorien()', function () {
     expect(new acte.Jour('14/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Dimanche 24 octobre 1582');
     expect(new acte.Jour('15/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
     expect(new acte.Jour('15/10/1582', false).gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
-    expect(new acte.Jour('Mardi 8 mai 2017').gregorien('%JSl %JM %Mlb %A')).toEqual('Lundi 8 mai 2017');
   });
 
   // Balises
@@ -617,5 +651,52 @@ describe('new acte.Jour().republicain()', function () {
 
       return res + '/' + an;
     })).toEqual('13/07/13');
+  });
+});
+
+describe('Recettes', function () {
+  it('Recette 1 : Afficher l\'année sur 2 chiffres', function () {
+    expect(new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, function (res, obj) {
+      var result = res + '/' + acte.prefixeZero(obj.A % 100);
+
+      return result;
+    })).toEqual('03/04/05');
+  });
+  it('Recette 2 : Afficher le siècle', function () {
+    expect(new acte.Jour('8 décembre 2016').gregorien('', 0, function (res, obj) {
+      var result = '' + acte.nombreOrdinal(acte.arabeVersRomain(parseInt(obj.A / 100, 10) + 1), 'er', 'e');
+
+      return result + ' si\xE8cle';
+    })).toEqual('XXIe siècle');
+  });
+  it('Recette 3 : Afficher Mil plutôt que Mille', function () {
+    expect(new acte.Jour('28/7/1910').gregorien('%Jl %Mlb de l\'an %Avb', 0, function (res, obj) {
+      var result = res.replace(/(M|m)(ille)(\s|-|$)/gm, '$1il$3');
+
+      return result;
+    })).toEqual('Vingt-huit juillet de l\'an mil neuf cent dix');
+  });
+  it('Recette 4 : Date complète hebdomadaire ISO', function () {
+    expect(new acte.Jour('1/1/2006').gregorien('', 0, function (res, obj) {
+      var jour = obj.JS === 0 ? 7 : obj.JS;
+
+      var _ref = obj.S === 0 ? [52, obj.A - 1] : [acte.prefixeZero(obj.S), obj.A];
+
+      var _ref2 = _slicedToArray(_ref, 2);
+
+      var semaine = _ref2[0];
+      var an = _ref2[1];
+
+
+      return an + '-W' + semaine + '-' + jour;
+    })).toEqual('2005-W52-7');
+  });
+  it('Recette 5 : Saints du jour', function () {
+    expect(new acte.Jour('1/9/2016').gregorien('', 0, function (res, obj) {
+      var saints = [['Sainte Marie', 'Saint Basile', 'Sainte Geneviève', 'Saint Odilon', 'Saint Edouard', 'Saint Mélaine', 'Saint Raymond', 'Saint Lucien', 'Sainte Alix', 'Saint Guillaume', 'Saint Paulin', 'Sainte Tatiana', 'Sainte Yvette', 'Sainte Nina', 'Saint Rémi', 'Saint Marcel', 'Sainte Roseline', 'Sainte Prisca', 'Saint Marius', 'Saint Sébastien', 'Sainte Agnès', 'Saint Vincent', 'Saint Barnard', 'Saint François de Sales', 'Saint Ananie', 'Sainte Paule', 'Sainte Angèle', 'Saint Thomas d\'Aquin', 'Saint Gildas', 'Sainte Martine', 'Sainte Marcelle'], ['Sainte Ella', 'Présentation', 'Saint Blaise', 'Sainte Véronique', 'Sainte Agathe', 'Saint Gaston', 'Sainte Eugènie', 'Sainte Jacqueline', 'Sainte Apolline', 'Saint Arnaud', 'Notre Dame de Lourdes', 'Saint Félix', 'Sainte Béatrice', 'Saint Valentin', 'Saint Claude', 'Sainte Julienne', 'Saint Alexis', 'Sainte Bernadette', 'Saint Gabin', 'Sainte Aimée', 'Saint Pierre-Damien', 'Sainte Isabelle', 'Saint Lazare', 'Saint Modeste', 'Saint Roméo', 'Saint Nestor', 'Sainte Honorine', 'Saint Romain', 'Saint Auguste'], ['Saint Aubin', 'Saint Charles le Bon', 'Saint Guénolé', 'Saint Casimir', 'Sainte Olive', 'Sainte Colette', 'Sainte Félicité', 'Saint Jean de Dieu', 'Sainte Françoise', 'Saint Vivien', 'Sainte Rosine', 'Sainte Justine', 'Saint Rodrigue', 'Sainte Mathilde', 'Sainte Louise', 'Sainte Bénédicte', 'Saint Patrick', 'Saint Cyrille', 'Saint Joseph', 'Saint Herbert', 'Sainte Clémence', 'Sainte Léa', 'Saint Victorien', 'Sainte Catherine de Suède', 'Annonciation', 'Sainte Larissa', 'Saint Habib', 'Saint Gontran', 'Sainte Gwladys', 'Saint Amédée', 'Saint Benjamin'], ['Saint Hugues', 'Sainte Sandrine', 'Saint Richard', 'Saint Isidore', 'Sainte Irène', 'Saint Marcellin', 'Saint Jean-Baptiste de la Salle', 'Sainte Julie', 'Saint Gautier', 'Saint Fulbert', 'Saint Stanislas', 'Saint Jules', 'Sainte Ida', 'Saint Maxime', 'Saint Paterne', 'Saint Benoît-Joseph', 'Saint Anicet', 'Saint Parfait', 'Sainte Emma', 'Sainte Odette', 'Saint Anselme', 'Saint Alexandre', 'Saint Georges', 'Saint Fidèle', 'Saint Marc', 'Sainte Alida', 'Sainte Zita', 'Sainte Valérie', 'Sainte Catherine de Sienne', 'Saint Robert'], ['Saint Jérémie', 'Saint Boris', 'Saints Philippe, Jacques', 'Saint Sylvain', 'Sainte Judith', 'Sainte Prudence', 'Sainte Gisèle', 'Saint Désiré', 'Saint Pacôme', 'Sainte Solange', 'Sainte Estelle / Saint Mamert', 'Saint Achille / Saint Pancrace', 'Sainte Rolande / Saint Servais', 'Saint Matthias', 'Sainte Denise', 'Saint Honoré', 'Saint Pascal', 'Saint Éric', 'Saint Yves', 'Saint Bernardin', 'Saint Constantin', 'Saint Émile', 'Saint Didier', 'Saint Donatien', 'Sainte Sophie', 'Saint Béranger', 'Saint Augustin', 'Saint Germain', 'Saint Aymard', 'Saint Ferdinand', 'Visitation de la Sainte Vierge'], ['Saint Justin', 'Sainte Blandine', 'Saint Kévin', 'Sainte Clotilde', 'Saint Igor', 'Saint Norbert', 'Saint Gilbert', 'Saint Médard', 'Sainte Diane', 'Saint Landry', 'Saint Barnabé', 'Saint Guy', 'Saint Antoine de Padoue', 'Saint Elisée', 'Sainte Germaine', 'Saint Jean-François Régis', 'Saint Hervé', 'Saint Léonce', 'Saint Romuald', 'Saint Silvère', 'Saint Louis de Gonzague', 'Saint Alban', 'Sainte Audrey', 'Saint Jean-Baptiste', 'Saint Prosper', 'Saint Anthelme', 'Saint Fernand', 'Sainte Irénée', 'Saints Pierre, Paul', 'Saint Martial'], ['Saint Thierry', 'Saint Martinien', 'Saint Thomas', 'Saint Florent', 'Saint Antoine', 'Sainte Mariette', 'Saint Raoul', 'Saint Thibault', 'Sainte Amandine', 'Saint Ulrich', 'Saint Benoît', 'Saint Olivier', 'Saints Henri, Joël', 'Saint Camille', 'Saint Donald', 'Notre Dame du Mont Carmel', 'Sainte Charlotte', 'Saint Frédéric', 'Saint Arsène', 'Sainte Marina', 'Saint Victor', 'Sainte Marie-Madeleine', 'Sainte Brigitte', 'Sainte Christine', 'Saint Jacques', 'Saints Anne, Joachin', 'Sainte Nathalie', 'Saint Samson', 'Sainte Marthe', 'Sainte Juliette', 'Saint Ignace de Loyola'], ['Saint Alphonse', 'Saint Julien Eymard', 'Sainte Lydie', 'Saint Jean-Marie Vianney', 'Saint Abel', 'Transfiguration', 'Saint Gaétan', 'Saint Dominique', 'Saint Amour', 'Saint Laurent', 'Sainte Claire', 'Sainte Clarisse', 'Saint Hippolyte', 'Saint Evrard', 'Assomption', 'Saint Armel', 'Saint Hyacinthe', 'Sainte Hélène', 'Saint Jean-Eudes', 'Saint Bernard', 'Saint Christophe', 'Saint Fabrice', 'Sainte Rose de Lima', 'Saint Barthélémy', 'Saint Louis', 'Sainte Natacha', 'Saint Monique', 'Saint Augustin', 'Sainte Sabine', 'Saint Fiacre', 'Saint Aristide'], ['Saint Gilles', 'Sainte Ingrid', 'Saint Grégoire', 'Sainte Rosalie', 'Sainte Raïssa', 'Saint Bertrand', 'Sainte Reine', 'Saint Nativité', 'Saint Alain', 'Sainte Inès', 'Saint Adelphe', 'Saint Apollinaire', 'Saint Aimé', 'La Sainte-Croix', 'Saint Roland', 'Sainte Edith', 'Saint Renaud', 'Sainte Nadège', 'Sainte Émilie', 'Saint Davy', 'Saint Matthieu', 'Saint Maurice', 'Saint Constant', 'Sainte Thècle', 'Saint Hermann', 'Saints Côme, Damien', 'Saint Vincent de Paul', 'Saint Venceslas', 'Saints Michel, Gabriel, Raphaël', 'Saint Jérôme'], ['Sainte Thérèse de l\'Enfant Jésus', 'Saint Léger', 'Saint Gérard', 'Saint François d\'Assise', 'Sainte Fleur', 'Saint Bruno', 'Saint Serge', 'Sainte Pélagie', 'Saint Denis', 'Saint Ghislain', 'Saint Firmin', 'Saint Wilfried', 'Saint Géraud', 'Saint Juste', 'Sainte Thérèse d\'Avila', 'Sainte Edwige', 'Saint Baudoin', 'Saint Luc', 'Saint René', 'Sainte Adeline', 'Sainte Céline', 'Sainte Élodie', 'Saint Jean de Capistran', 'Saint Florentin', 'Saint Crépin', 'Saint Dimitri', 'Sainte Émeline', 'Saints Simon, Jude', 'Saint Narcisse', 'Saint Bienvenu', 'Saint Quentin'], ['Toussaint', 'Jour des défunts', 'Saint Hubert', 'Saint Charles', 'Sainte Sylvie', 'Sainte Bertille', 'Sainte Carine', 'Saint Geoffroy', 'Saint Théodore', 'Saint Léon', 'Saint Martin', 'Saint Christian', 'Saint Brice', 'Saint Sidoine', 'Saint Albert', 'Sainte Marguerite', 'Sainte Élisabeth', 'Sainte Aude', 'Saint Tanguy', 'Saint Edmond', 'Saint Rufus', 'Sainte Cécile', 'Saint Clément', 'Sainte Flore', 'Sainte Catherine', 'Sainte Delphine', 'Saint Sévrin', 'Saint Jacques de la Marche', 'Saint Saturnin', 'Saint André'], ['Sainte Florence', 'Sainte Viviane', 'Saint François-Xavier', 'Sainte Barbara', 'Saint Gérald', 'Saint Nicolas', 'Saint Ambroise', 'Immaculée Conception', 'Saint Pierre Fourier', 'Saint Romaric', 'Saint Daniel', 'Sainte Jeanne-Françoise de Chantal', 'Sainte Lucie', 'Sainte Odile', 'Sainte Ninon', 'Sainte Alice', 'Saint Gaël', 'Saint Gatien', 'Saint Urbain', 'Saint Théophile', 'Saint Pierre', 'Sainte Françoise-Xavière', 'Saint Armand', 'Sainte Adèle', 'Nativité du Christ', 'Saint Etienne', 'Saint Jean l\'évangile', 'Saints Innocents', 'Saint David', 'Saint Roger', 'Saint Sylvestre / Sainte Famille']];
+      var resultat = saints[obj.M - 1][obj.J - 1];
+
+      return resultat;
+    })).toEqual('Saint Gilles');
   });
 });

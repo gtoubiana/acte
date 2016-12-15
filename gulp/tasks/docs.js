@@ -43,6 +43,7 @@ const lazyJsdocFr = lazypipe()
   .pipe(rep, ': global constant', ': Constante')
   .pipe(rep, ': global function', ': Fonction')
   .pipe(rep, ': static class of', ': Classe statique de')
+  .pipe(rep, ': static method of', ': Méthode statique de')
   .pipe(rep, ': instance method of', ': Méthode d\'instance de')
   .pipe(rep, ': instance property of', ': Propriété d\'instance de');
 
@@ -56,7 +57,7 @@ gulp.task('docs', sequence(
 
 // TASK Pour générer une doc .md à partir du jsdoc
 gulp.task('docs.dist', () => {
-  const stream = gulp.src(`${config.paths.jasmine}/lib/acte.js`)
+  const stream = gulp.src(`${config.paths.testJasmine}/lib/acte.js`)
     .pipe(rename('README.md'))
     .pipe(jsdoc2md({
       template: fse.readFileSync(
@@ -70,7 +71,7 @@ gulp.task('docs.dist', () => {
 
 // TASK Pour générer une doc .md à partir du jsdoc
 gulp.task('docs.constants', () => {
-  const stream = gulp.src(`${config.paths.const}/*.js`)
+  const stream = gulp.src(`${config.paths.privConst}/*.js`)
     .pipe(concat('README.md'))
     .pipe(jsdoc2md({
       private: true,
@@ -80,14 +81,14 @@ gulp.task('docs.constants', () => {
         'utf8'),
     }))
     .pipe(lazyJsdocFr())
-    .pipe(gulp.dest(config.paths.const));
+    .pipe(gulp.dest(config.paths.privConst));
 
   return stream;
 });
 
 // TASK Pour générer une doc .md à partir du jsdoc
 gulp.task('docs.functions', () => {
-  const stream = gulp.src(`${config.paths.func}/*.js`)
+  const stream = gulp.src(`${config.paths.privFunc}/*.js`)
     .pipe(concat('README.md'))
     .pipe(jsdoc2md({
       private: true,
@@ -97,7 +98,7 @@ gulp.task('docs.functions', () => {
         'utf8'),
     }))
     .pipe(lazyJsdocFr())
-    .pipe(gulp.dest(config.paths.func));
+    .pipe(gulp.dest(config.paths.privFunc));
 
   return stream;
 });

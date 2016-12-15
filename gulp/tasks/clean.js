@@ -27,8 +27,8 @@ gulp.task('clean', sequence(
 gulp.task('clean.dist', (done) => {
   const stream = del([
     `${config.paths.dist}/*.{js,map,md,zip}`,
-    `${config.paths.const}/*.md`,
-    `${config.paths.func}/*.md`,
+    `${config.paths.privConst}/*.md`,
+    `${config.paths.privFunc}/*.md`,
   ], done);
 
   return stream;
@@ -37,9 +37,9 @@ gulp.task('clean.dist', (done) => {
 // Nettoyer les fichiers issus de la tache tests
 gulp.task('clean.tests', (done) => {
   const stream = del([
-    `${config.paths.jasmine}/*.js`,
-    `${config.paths.jasmine}/lib/`,
-    `${config.paths.coverage}`,
+    `${config.paths.testJasmine}/*.js`,
+    `${config.paths.testJasmine}/lib/`,
+    `${config.paths.testCov}`,
   ], done);
 
   return stream;

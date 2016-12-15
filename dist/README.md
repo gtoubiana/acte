@@ -24,6 +24,12 @@ acte - Une librairie JavaScript qui simplifie la recherche généalogique.
         * [.gregorien](#acte.Jour+gregorien) ⇒ <code>Chaîne</code>
         * [.julien](#acte.Jour+julien) ⇒ <code>Chaîne</code>
         * [.republicain](#acte.Jour+republicain) ⇒ <code>Chaîne</code>
+    * [.arabeVersRomain(arabe)](#acte.arabeVersRomain) ⇒ <code>Chaîne</code>
+    * [.nombreEnLettres(n, [r])](#acte.nombreEnLettres) ⇒ <code>Chaîne</code>
+    * [.nombreOrdinal(n, prem, exp)](#acte.nombreOrdinal) ⇒ <code>Chaîne</code>
+    * [.ordinauxEnLettres(saisie, [genre])](#acte.ordinauxEnLettres) ⇒ <code>Chaîne</code>
+    * [.prefixeZero(n)](#acte.prefixeZero) ⇒ <code>Chaîne</code>
+    * [.premierOrdinalEnLettres(saisie, [genre])](#acte.premierOrdinalEnLettres) ⇒ <code>Chaîne</code>
 
 <a name="acte.Jour"></a>
 
@@ -147,6 +153,149 @@ new acte.Jour('3 avril 1805').republicain('%Jz/%Dz/%Mz', 0, ((r, o) => {
   const an = (o.A % 100) < 10 ? `0${o.A % 100}` : o.A % 100;
   return `${r}/${an}`;
 }))) // '13/02/07/13'
+```
+<a name="acte.arabeVersRomain"></a>
+
+### acte.arabeVersRomain(arabe) ⇒ <code>Chaîne</code>
+Pour convertir des chiffres arabes en chiffres romains.
+
+**Type** : Méthode statique de <code>[acte](#acte)</code>  
+**Résultat** : <code>Chaîne</code> - Chiffre romain  
+**Accès** : public  
+**Voir** : [Blog](http://blog.stevenlevithan.com/?p=65#comment-16107)  
+**Depuis** : 0.0.17  
+**Auteur** : Iván Montes  
+**Licence** : unknown  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| arabe | <code>Nombre</code> | Chiffre arabe |
+
+**Exemple** :  
+```js
+acte.arabeVersRomain(2012); // 'MMXII'
+```
+<a name="acte.nombreEnLettres"></a>
+
+### acte.nombreEnLettres(n, [r]) ⇒ <code>Chaîne</code>
+Pour convertir les nombres en toutes lettres.
+
+**Type** : Méthode statique de <code>[acte](#acte)</code>  
+**Résultat** : <code>Chaîne</code> - le nombre en toutes lettres  
+**Accès** : public  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| n | <code>Nombre</code> | le nombre en chiffres |
+| [r] | <code>Chaîne</code> | par défaut, la réforme de 1990 est appliquée. Pour utiliser l'ancienne notation, il suffit d'ajouter un argument. |
+
+**Exemple** :  
+```js
+acte.nombreEnLettres(2371); // 'Deux-mille-trois-cent-soixante-et-onze'
+acte.nombreEnLettres(1799,1); // 'Mille sept cent quatre-vingt-dix-neuf'
+```
+<a name="acte.nombreOrdinal"></a>
+
+### acte.nombreOrdinal(n, prem, exp) ⇒ <code>Chaîne</code>
+Pour convertir les nombres en nombres ordinaux.
+
+**Type** : Méthode statique de <code>[acte](#acte)</code>  
+**Résultat** : <code>Chaîne</code> - le nombre ordinal  
+**Accès** : public  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| n | <code>Nombre</code> | le nombre en chiffres |
+| prem | <code>Chaîne</code> | le suffixe pour le chiffre 1 |
+| exp | <code>Chaîne</code> | le suffixe pour les chiffres différents de 1 |
+
+**Exemple** :  
+```js
+acte.nombreOrdinal(1,'er','e'); // '1er'
+acte.nombreOrdinal(1,'re','e'); // '1re'
+acte.nombreOrdinal(2,'er','e'); // '2e'
+```
+<a name="acte.ordinauxEnLettres"></a>
+
+### acte.ordinauxEnLettres(saisie, [genre]) ⇒ <code>Chaîne</code>
+Pour convertir les nombres en toutes lettres en nombres ordinaux.
+
+**Type** : Méthode statique de <code>[acte](#acte)</code>  
+**Résultat** : <code>Chaîne</code> - le nombre ordinal en lettres  
+**Accès** : public  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| saisie | <code>Nombre</code> | le nombre en lettres |
+| [genre] | <code>Chaîne</code> | par défaut, le genre masculin est appliqué. Pour utiliser le genre féminin, il suffit d'ajouter un argument. |
+
+**Exemple** :  
+```js
+acte.ordinauxEnLettres('Un'); // 'Premier'
+acte.ordinauxEnLettres('Un', 1); // 'Première'
+acte.ordinauxEnLettres('Deux'); // 'Deuxième'
+acte.ordinauxEnLettres('Vingt-trois'); // 'Vingt-troisième'
+```
+<a name="acte.prefixeZero"></a>
+
+### acte.prefixeZero(n) ⇒ <code>Chaîne</code>
+Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
+
+**Type** : Méthode statique de <code>[acte](#acte)</code>  
+**Résultat** : <code>Chaîne</code> - le nombre avec préfixe zéro  
+**Accès** : public  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| n | <code>Nombre</code> | le nombre à préfixer |
+
+**Exemple** :  
+```js
+acte.prefixeZero(20); // 20
+acte.prefixeZero(9); // '09'
+acte.prefixeZero(0); // 0
+acte.prefixeZero(-4); // -4
+```
+<a name="acte.premierOrdinalEnLettres"></a>
+
+### acte.premierOrdinalEnLettres(saisie, [genre]) ⇒ <code>Chaîne</code>
+Pour convertir uniquement 'un' en nombre ordinal.
+
+**Type** : Méthode statique de <code>[acte](#acte)</code>  
+**Résultat** : <code>Chaîne</code> - le nombre - ordinal ou non - en lettres  
+**Accès** : public  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| saisie | <code>Nombre</code> | le nombre en lettres |
+| [genre] | <code>Chaîne</code> | par défaut, le genre masculin est appliqué. Pour utiliser le genre féminin, il suffit d'ajouter un argument. |
+
+**Exemple** :  
+```js
+acte.premierOrdinalEnLettres('Un'); // 'Premier'
+acte.premierOrdinalEnLettres('Un', 1); // 'Première'
+acte.premierOrdinalEnLettres('Deux'); // 'Deux'
+acte.premierOrdinalEnLettres('Vingt-trois'); // 'Vingt-trois'
 ```
 
 ## API des constantes et fonctions privées :

@@ -1,37 +1,51 @@
 Todo Démo:
-  ☐ HTML
-    ☐ Intégrer une visite guidée, voir http://introjs.com/, http://github.hubspot.com/shepherd/docs/welcome/, http://bootstraptour.com/ => sous la baseline 'Démarrer la visite !'
-    ☐ supprimer les css et js inutiles après concat dans /demo
-  ☐ DEBUG
-    ☐ 18 brumaire an-V
-    ☐ 18 brumaire anV
-    ☐ Vérifier les exemples https://github.com/gtoubiana/acte/blob/master/dist/README.md
-  ☐ GULP
-    ☐ Minifier/concaténer les js
-    ☐ Minifier/concaténer les css
-    ☐ Supprimer les css inutiles avec gulp
-    ☐ linters CSS
-    ☐ linter HTML
-    ☐ Prettifier CSS
-    ☐ Prettifier HTML
-    ☐ Utiliser gulp pour renvoyer tout sur les gh-pages (release process?)
-  ☐ gh-pages
-    ☐ Vérifier la traduction disqus
-    ☐ Ajouter google analytics
-  ☐ tests
-    ☐ Vérifier Compatibilité ie8
-    ☐ Vérifier les MAJ pour Travis
-    ☐ Travis plante pour le moment à cause de l'indentation eslint ???
-    ☐ Saucelabs plante pour le moment à cause de Travis
-  ☐ Nettoyage
-    ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
-    ☐ Nettoyer les issues en ligne
-  ☐ Beta-tests
-    ☐ Lucie 24/11/2016 => incompréhension du débridage
+  ☐ BUG le 29 février est mal géré ! => améliorer l'utilsation du tableau (30 février ???)
+    ☐ tableau 28 + modifier valeur du tableau avant vérification
+    ☐ dates greg
+    ☐ dates jul
+  ☐ BUG 18 brumaire an-V
+  ☐ BUG 18 brumaire anV
+  ☐ BUG il ne doit pas y avoir de date julienne avec 17 frimaire an IV
+  ☐ Recette jours rep
+
+
   ☐ Application mobile avec PhoneGap (ou bureau ?)
+  ☐ BUG Migrer les exemples dans les tests (lien depuis le README)
+  ☐ BUG Vérifier les exemples https://github.com/gtoubiana/acte/blob/master/dist/README.md
+  ☐ Intégrer une visite guidée, voir http://introjs.com/, http://github.hubspot.com/shepherd/docs/welcome/, http://bootstraptour.com/ => sous la baseline 'Démarrer la visite !'
+  ☐ linter HTML
+  ☐ linters CSS
+  ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
+  ☐ Nettoyer les issues en ligne
+  ☐ Prettifier CSS
+  ☐ Prettifier HTML
   ☐ Rédiger docs des install/update dans src/install.txt
+  ☐ Saucelabs plante pour le moment à cause de Travis
+  ☐ supprimer les fichiers css et js inutiles après concat dans /demo
+  ☐ Supprimer les css inutiles avec gulp
+  ☐ Travis plante pour le moment à cause de l'indentation eslint ???
+  ☐ Utiliser gulp pour renvoyer tout sur les gh-pages (release process?)
+  ☐ Vérifier Compatibilité ie8
+  ☐ Vérifier la traduction disqus
+  ☐ Vérifier les MAJ pour Travis
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Restructurer le dossier src/js et revoir les chemins dans gulp/config et les taches gulp (sinon dette technique) @done(2016-12-15 14:46) @project(Todo Démo)
+  ✔ encours (private/ public...) @done(2016-12-15 14:46) @project(Todo Démo)
+  ✔ BUG Modifier l'affichage des liens greg-rep-jul dans la démo (souligné) ou les supprimer @done(2016-12-13 14:01) @project(Todo Démo)
+  ✔ bug css après clic sur bouton developpeur @done(2016-12-13 14:01) @project(Todo Démo)
+  ✔ Lien vers les recettes en tests unitaires dans le README @done(2016-12-13 13:23) @project(Todo Démo)
+  ✔ BUG Revoir coverage ??? => à cause des fonctions publiques... @done(2016-12-13 13:13) @project(Todo Démo)
+  ✔ balisesEtFiltres (l|v) @done(2016-12-13 13:13) @project(Todo Démo)
+  ✔ tabGregorien (bug acte.arabe) @done(2016-12-13 13:13) @project(Todo Démo)
+  ✔ acte.arabeVersRomain @done(2016-12-13 13:13) @project(Todo Démo)
+  ✔ acte.nombreEnLettres @done(2016-12-13 13:13) @project(Todo Démo)
+  ✔ acte.ordinauxEnLettres @done(2016-12-13 13:13) @project(Todo Démo)
+  ✔ Minifier/concaténer les css @done(2016-12-13 12:53)
+  ✔ Minifier/concaténer les js @done(2016-12-13 12:53)
+  ✔ Lucie 24/11/2016 => incompréhension du débridage @done(2016-12-13 09:58) @project(Todo Démo)
+  ✔ Ajouter les recettes dans les tests @done(2016-12-12 14:10) @project(Todo Démo)
+  ✔ passer en public les fonctions de filtres @done(2016-12-12 13:02) @project(Todo Démo)
   ✔ créer la section recettes en markdown avec insertions codepen par exemple (hist ? jsfiddle ? jsbin ?) => https://jsfiddle.net/toubia95/tyovtLeL/ @done(2016-12-08 15:58) @project(Todo Démo)
   ✔ restructurer les elements dans src/demo par dossiers @done(2016-12-08 14:40) @project(Todo Démo)
   ✔ Convertir [Exemples] => liste de boutons avec des exemples, quand on clique sur 1 bouton = ca passe dans le champ et c'est calculé ! @done(2016-12-08 13:53) @project(Todo Démo)

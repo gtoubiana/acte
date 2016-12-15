@@ -18,7 +18,7 @@ gulp.task('watch.js', () => {
   const stream = gulp.src(config.acteScripts)
     .pipe(concat('acte.js'))
     .pipe(wrap(config.umd))
-    .pipe(gulp.dest(`${config.paths.jasmine}/lib`));
+    .pipe(gulp.dest(`${config.paths.testJasmine}/lib`));
 
   return stream;
 });

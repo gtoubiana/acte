@@ -49,13 +49,16 @@ input[type="search"]::-webkit-search-cancel-button {
     font-weight: 400;
 }
 
-.btn-outline-inverse {
+a.btn-outline-inverse:link,
+a.btn-outline-inverse:visited {
     color: #eee;
     background-color: transparent;
     border-color: #ddd;
 }
 
-a.btn-outline-inverse:hover {
+a.btn-outline-inverse:hover,
+a.btn-outline-inverse:focus,
+a.btn-outline-inverse:active {
     color: #704220;
     background-color: #efe8b0;
     border-color: #efe8b0;

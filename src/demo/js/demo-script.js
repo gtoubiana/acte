@@ -12,14 +12,14 @@ $(document).ready(() => {
     const jr = new acte.Jour($('#jour').val(), !deb);
 
     $('#affichage_de_jour table tbody').html(`<tr>
-<th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_gr%C3%A9gorien">Date grégorienne</a></th>
+<th scope="row">Date grégorienne</th>
 ${jr.gregorien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
 '<td class="active">Pas de correspondances</td>')}</tr>
-<tr><th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_r%C3%A9publicain">Date républicain</a></th>
+<tr><th scope="row">Date républicain</th>
 ${jr.republicain(
 '<td class="success"><strong>%JSl %JMp %Mlb an %Ar</strong></td>',
 '<td class="active">Pas de correspondances</td>')}</tr>
-<tr><th scope="row"><a href="https://fr.wikipedia.org/wiki/Calendrier_julien">Date julienne</a></th>
+<tr><th scope="row">Date julienne</th>
 ${jr.julien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
 '<td class="active">Pas de correspondances</td>')}</tr>`);
   };

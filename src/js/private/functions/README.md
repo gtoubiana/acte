@@ -4,7 +4,6 @@
 
 * [absInt(num)](#absInt) ⇒ <code>Nombre</code> ℗
 * [anRepublicain(jj)](#anRepublicain) ⇒ <code>Tableau</code> ℗
-* [arabeVersRomain(arabe)](#arabeVersRomain) ⇒ <code>Chaîne</code> ℗
 * [balisesEtFiltres(x, obj)](#balisesEtFiltres) ⇒ <code>Chaîne</code> ℗
 * [cosinus(d)](#cosinus) ⇒ <code>Nombre</code> ℗
 * [dateValide(jour, mois, an)](#dateValide) ⇒ <code>Objet</code> ℗
@@ -23,18 +22,13 @@
 * [jjVersRepublicain(jj)](#jjVersRepublicain) ⇒ <code>Tableau</code> ℗
 * [jourSemaineJulien(jj)](#jourSemaineJulien) ⇒ <code>Nombre</code> ℗
 * [julienVersJj(an, mois, jour)](#julienVersJj) ⇒ <code>Nombre</code> ℗
-* [nombreEnLettres(n, [r])](#nombreEnLettres) ⇒ <code>Chaîne</code> ℗
-* [nombreOrdinal(n, prem, exp)](#nombreOrdinal) ⇒ <code>Chaîne</code> ℗
 * [normaliserDegres(a)](#normaliserDegres) ⇒ <code>Nombre</code> ℗
 * [nutation(jj)](#nutation) ⇒ <code>Tableau</code> ℗
 * [objGregorien(d, [pro])](#objGregorien) ⇒ <code>Objet</code> ℗
 * [objRepublicain(d)](#objRepublicain) ⇒ <code>Objet</code> ℗
 * [obliquiteEcliptique(jj)](#obliquiteEcliptique) ⇒ <code>Nombre</code> ℗
-* [ordinauxEnLettres(saisie, [genre])](#ordinauxEnLettres) ⇒ <code>Chaîne</code> ℗
 * [periodeEnJours(j1, m1, a1, j2, m2, a2)](#periodeEnJours) ⇒ <code>Nombre</code> ℗
 * [positionSoleil(jj)](#positionSoleil) ⇒ <code>Tableau</code> ℗
-* [prefixeZero(n)](#prefixeZero) ⇒ <code>Chaîne</code> ℗
-* [premierOrdinalEnLettres(saisie, [genre])](#premierOrdinalEnLettres) ⇒ <code>Chaîne</code> ℗
 * [radiansVersDegres(r)](#radiansVersDegres) ⇒ <code>Nombre</code> ℗
 * [remplacements(texte, regex, options)](#remplacements) ⇒ <code>Chaîne</code> ℗
 * [republicainVersJj(an, mois, decade, jour)](#republicainVersJj) ⇒ <code>Nombre</code> ℗
@@ -92,27 +86,6 @@ juliens.
 **Exemple** :  
 ```js
 anRepublicain(2379902.5); // [12, 2379857.5]
-```
-<a name="arabeVersRomain"></a>
-
-## arabeVersRomain(arabe) ⇒ <code>Chaîne</code> ℗
-Pour convertir des chiffres arabes en chiffres romains.
-
-**Type** : Fonction  
-**Résultat** : <code>Chaîne</code> - Chiffre romain  
-**Accès** : privé  
-**Voir** : [Blog](http://blog.stevenlevithan.com/?p=65#comment-16107)  
-**Depuis** : 0.0.1  
-**Auteur** : Iván Montes  
-**Licence** : unknown  
-
-| Paramètres | Type | Description |
-| --- | --- | --- |
-| arabe | <code>Nombre</code> | Chiffre arabe |
-
-**Exemple** :  
-```js
-arabeVersRomain(2012); // 'MMXII'
 ```
 <a name="balisesEtFiltres"></a>
 
@@ -518,54 +491,6 @@ Pour calculer un nombre de jours juliens à partir d'une date julienne.
 ```js
 julienVersJj(2015,11,7); // 2457346.5
 ```
-<a name="nombreEnLettres"></a>
-
-## nombreEnLettres(n, [r]) ⇒ <code>Chaîne</code> ℗
-Pour convertir les nombres en toutes lettres.
-
-**Type** : Fonction  
-**Résultat** : <code>Chaîne</code> - le nombre en toutes lettres  
-**Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Depuis** : 0.0.15  
-**Auteur** : Gilles Toubiana  
-**Licence** : MIT  
-
-| Paramètres | Type | Description |
-| --- | --- | --- |
-| n | <code>Nombre</code> | le nombre en chiffres |
-| [r] | <code>Chaîne</code> | par défaut, la réforme de 1990 est appliquée. Pour utiliser l'ancienne notation, il suffit d'ajouter un argument. |
-
-**Exemple** :  
-```js
-nombreEnLettres(2371); // "Deux-mille-trois-cent-soixante-et-onze"
-nombreEnLettres(1799,1); // "Mille sept cent quatre-vingt-dix-neuf"
-```
-<a name="nombreOrdinal"></a>
-
-## nombreOrdinal(n, prem, exp) ⇒ <code>Chaîne</code> ℗
-Pour convertir les nombres en nombres ordinaux.
-
-**Type** : Fonction  
-**Résultat** : <code>Chaîne</code> - le nombre ordinal  
-**Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Depuis** : 0.0.15  
-**Auteur** : Gilles Toubiana  
-**Licence** : MIT  
-
-| Paramètres | Type | Description |
-| --- | --- | --- |
-| n | <code>Nombre</code> | le nombre en chiffres |
-| prem | <code>Chaîne</code> | le suffixe pour le chiffre 1 |
-| exp | <code>Chaîne</code> | le suffixe pour les chiffres différents de 1 |
-
-**Exemple** :  
-```js
-nombreOrdinal(1,"er","e"); // "1er"
-nombreOrdinal(1,"re","e"); // "1re"
-nombreOrdinal(2,"er","e"); // "2e"
-```
 <a name="normaliserDegres"></a>
 
 ## normaliserDegres(a) ⇒ <code>Nombre</code> ℗
@@ -674,31 +599,6 @@ Pour calculer l'obliquité de l'écliptique pour un nombre de jours juliens.
 ```js
 obliquiteEcliptique(2457333.5); // 23.437230456425635
 ```
-<a name="ordinauxEnLettres"></a>
-
-## ordinauxEnLettres(saisie, [genre]) ⇒ <code>Chaîne</code> ℗
-Pour convertir les nombres en toutes lettres en nombres ordinaux.
-
-**Type** : Fonction  
-**Résultat** : <code>Chaîne</code> - le nombre ordinal en lettres  
-**Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Depuis** : 0.0.15  
-**Auteur** : Gilles Toubiana  
-**Licence** : MIT  
-
-| Paramètres | Type | Description |
-| --- | --- | --- |
-| saisie | <code>Nombre</code> | le nombre en lettres |
-| [genre] | <code>Chaîne</code> | par défaut, le genre masculin est appliqué. Pour utiliser le genre féminin, il suffit d'ajouter un argument. |
-
-**Exemple** :  
-```js
-ordinauxEnLettres("Un"); // "Premier"
-ordinauxEnLettres("Un", 1); // "Première"
-ordinauxEnLettres("Deux"); // "Deuxième"
-ordinauxEnLettres("Vingt-trois"); // "Vingt-troisième"
-```
 <a name="periodeEnJours"></a>
 
 ## periodeEnJours(j1, m1, a1, j2, m2, a2) ⇒ <code>Nombre</code> ℗
@@ -763,55 +663,6 @@ positionSoleil(2457333.5); //[225.88621192607388, 302.6763369039327,
 // 301.0471972132634, 0.9911840619194138, 224.25125854183977,
 // 221.79690960202632, -16.115660127694625, 221.79168151491098,
 // -16.112230690435588]
-```
-<a name="prefixeZero"></a>
-
-## prefixeZero(n) ⇒ <code>Chaîne</code> ℗
-Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
-
-**Type** : Fonction  
-**Résultat** : <code>Chaîne</code> - le nombre avec préfixe zéro  
-**Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Depuis** : 0.0.15  
-**Auteur** : Gilles Toubiana  
-**Licence** : MIT  
-
-| Paramètres | Type | Description |
-| --- | --- | --- |
-| n | <code>Nombre</code> | le nombre à préfixer |
-
-**Exemple** :  
-```js
-prefixeZero(20); // 20
-prefixeZero(9); // "09"
-prefixeZero(0); // 0
-prefixeZero(-4); // -4
-```
-<a name="premierOrdinalEnLettres"></a>
-
-## premierOrdinalEnLettres(saisie, [genre]) ⇒ <code>Chaîne</code> ℗
-Pour convertir uniquement 'un' en nombre ordinal.
-
-**Type** : Fonction  
-**Résultat** : <code>Chaîne</code> - le nombre - ordinal ou non - en lettres  
-**Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Depuis** : 0.0.15  
-**Auteur** : Gilles Toubiana  
-**Licence** : MIT  
-
-| Paramètres | Type | Description |
-| --- | --- | --- |
-| saisie | <code>Nombre</code> | le nombre en lettres |
-| [genre] | <code>Chaîne</code> | par défaut, le genre masculin est appliqué. Pour utiliser le genre féminin, il suffit d'ajouter un argument. |
-
-**Exemple** :  
-```js
-premierOrdinalEnLettres("Un"); // "Premier"
-premierOrdinalEnLettres("Un", 1); // "Première"
-premierOrdinalEnLettres("Deux"); // "Deux"
-premierOrdinalEnLettres("Vingt-trois"); // "Vingt-trois"
 ```
 <a name="radiansVersDegres"></a>
 

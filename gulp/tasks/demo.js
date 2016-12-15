@@ -31,24 +31,23 @@ gulp.task('demo.index', () => {
 // Copier les fichiers du Bootstrap
 gulp.task('demo.assets', () => {
   const stream1 = gulp.src(
-    [`${config.paths.bootstrapBower}/js/bootstrap.min.js`,
-    `${config.paths.jqueryBower}/jquery.min.js`,
-    `${config.paths.jqueryUIBower}/jquery-ui.min.js`,
-    `${config.paths.html5shivBower}/html5shiv.min.js`,
-    `${config.paths.respondBower}/respond.min.js`,
-    `${config.paths.codePrettifyBower}/run_prettify.js`,
+    [`${config.paths.bowerBootstrap}/js/bootstrap.min.js`,
+    `${config.paths.bowerJquery}/jquery.min.js`,
+    `${config.paths.bowerJqueryUI}/jquery-ui.min.js`,
+    `${config.paths.bowerShiv}/html5shiv.min.js`,
+    `${config.paths.bowerRespond}/respond.min.js`,
     `${config.paths.src}/demo/js/ie10-viewport-bug-workaround.js`,
     ])
     .pipe(gulp.dest(`${config.paths.demo}/js/`))
     .on('end', () => {
       const stream2 = gulp.src(
-        [`${config.paths.bootstrapBower}/css/bootstrap.min.css`,
+        [`${config.paths.bowerBootstrap}/css/bootstrap.min.css`,
         `${config.paths.src}/demo/css/*.css`,
       ])
         .pipe(gulp.dest(`${config.paths.demo}/css/`))
         .on('end', () => {
           const stream3 = gulp.src(
-            [`${config.paths.bootstrapBower}/fonts/glyphicons*`])
+            [`${config.paths.bowerBootstrap}/fonts/glyphicons*`])
             .pipe(gulp.dest(`${config.paths.demo}/fonts/`))
 
             /* eslint-disable max-nested-callbacks */
@@ -116,7 +115,7 @@ gulp.task('demo.script.es5', () => {
     ],
   }))
     .pipe(prettify({
-      config: `${config.paths.jasmine}/.jsbeautifyrc`,
+      config: `${config.paths.testJasmine}/.jsbeautifyrc`,
     }))
     .pipe(size({
       title: 'ES5 script.js Size ->',
@@ -140,7 +139,7 @@ gulp.task('demo.script.es3', () => {
       ],
     }))
     .pipe(prettify({
-      config: `${config.paths.jasmine}/.jsbeautifyrc`,
+      config: `${config.paths.testJasmine}/.jsbeautifyrc`,
     }))
     .pipe(size({
       title: 'ES3 script.js Size ->',

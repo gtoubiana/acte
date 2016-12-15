@@ -1,8 +1,9 @@
 /**
  * Pour convertir les nombres en toutes lettres.
- * @access private
+ * @memberof acte
+ * @access public
  * @author Gilles Toubiana
- * @since 0.0.15
+ * @since 0.0.17
  * @license MIT
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @param {Number} n - le nombre en chiffres
@@ -10,10 +11,10 @@
  * Pour utiliser l'ancienne notation, il suffit d'ajouter un argument.
  * @return {String} le nombre en toutes lettres
  * @example
- * nombreEnLettres(2371); // "Deux-mille-trois-cent-soixante-et-onze"
- * nombreEnLettres(1799,1); // "Mille sept cent quatre-vingt-dix-neuf"
+ * acte.nombreEnLettres(2371); // 'Deux-mille-trois-cent-soixante-et-onze'
+ * acte.nombreEnLettres(1799,1); // 'Mille sept cent quatre-vingt-dix-neuf'
  */
-const nombreEnLettres = (n, r) => {
+acte.nombreEnLettres = (n, r) => {
   let mill;
   let centl;
   let dixl;
