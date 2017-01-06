@@ -6,4 +6,4 @@
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Array}
  */
-const joursDansLeMois = [31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const joursDansLeMois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];

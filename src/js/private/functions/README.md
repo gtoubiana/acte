@@ -21,6 +21,7 @@
 * [jjVersJulien(jj)](#jjVersJulien) ⇒ <code>Tableau</code> ℗
 * [jjVersRepublicain(jj)](#jjVersRepublicain) ⇒ <code>Tableau</code> ℗
 * [jourSemaineJulien(jj)](#jourSemaineJulien) ⇒ <code>Nombre</code> ℗
+* [julienBissextile(an)](#julienBissextile) ⇒ <code>Booléen</code> ℗
 * [julienVersJj(an, mois, jour)](#julienVersJj) ⇒ <code>Nombre</code> ℗
 * [normaliserDegres(a)](#normaliserDegres) ⇒ <code>Nombre</code> ℗
 * [nutation(jj)](#nutation) ⇒ <code>Tableau</code> ℗
@@ -467,6 +468,27 @@ Pour calculer le jour de la semaine à partir du nombre de jours juliens.
 **Exemple** :  
 ```js
 jourSemaineJulien(2378625.5); // 6
+```
+<a name="julienBissextile"></a>
+
+## julienBissextile(an) ⇒ <code>Booléen</code> ℗
+Pour déterminer si une année julienne est bissextile.
+
+**Type** : Fonction  
+**Résultat** : <code>Booléen</code> - Est-ce une année bissextile ?  
+**Accès** : privé  
+**Voir** : [leap_julian](http://fourmilab.ch/documents/calendar/)  
+**Depuis** : 0.0.17  
+**Auteur** : John Walker  
+**Licence** : Domaine public  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| an | <code>Nombre</code> | Année julienne |
+
+**Exemple** :  
+```js
+julienBissextile(2017); // true
 ```
 <a name="julienVersJj"></a>
 

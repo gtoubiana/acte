@@ -397,7 +397,7 @@ if (!Array.prototype.reduce) {
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @constant {Array}
      */
-    var joursDansLeMois = [31, 30, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var joursDansLeMois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     /**
      * Nom des Mois Grégoriens et abbréviations courantes,
@@ -1727,6 +1727,28 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
+     * Pour déterminer si une année julienne est bissextile.
+     * @access private
+     * @author John Walker
+     * @since 0.0.17
+     * @license Domaine public
+     * @see {@link http://fourmilab.ch/documents/calendar/|leap_julian}
+     * @param {Number} an - Année julienne
+     * @return {Boolean} Est-ce une année bissextile ?
+     * @example
+     * julienBissextile(2017); // true
+     */
+    var julienBissextile = function () {
+      function julienBissextile(an) {
+        var result = reste(an, 4) === (an > 0 ? 0 : 3);
+
+        return result;
+      }
+
+      return julienBissextile;
+    }();
+
+    /**
      * Pour retourner un objet utilisable par le prototype .gregorien().
      * @access private
      * @author Gilles Toubiana
@@ -2068,6 +2090,14 @@ if (!Array.prototype.reduce) {
         var tab = [];
 
         saisieGregorien = saisieValide(saisieGregorien, regexpGregorien);
+
+        if (saisieGregorien[2] <= dateDebutGregorien[2]) {
+          joursDansLeMois[1] = julienBissextile(saisieGregorien[2]) ? '29' :
+            '28';
+        } else {
+          joursDansLeMois[1] = gregorienBissextile(saisieGregorien[2]) ?
+            '29' : '28';
+        }
 
         // Lorsque la date est valide [gjmc,gmc,gac]
         if (saisieGregorien[2] && saisieGregorien[0] < 32 && absInt(

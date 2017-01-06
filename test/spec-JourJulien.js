@@ -19,6 +19,20 @@ describe('new acte.Jour().julien()', () => {
       expect(new acte.Jour('15/10/1582', false).julien(
           '%JSl %JM %Mlb %A'))
         .toEqual('Vendredi 5 octobre 1582');
+
+      // Gestion des années bissextiles
+      expect(new acte.Jour('29 février 1004').julien())
+        .toEqual('29 février 1004');
+      expect(new acte.Jour('29 février 900').julien())
+        .toEqual('29 février 900');
+      expect(new acte.Jour('29 février 1000').julien())
+        .toEqual('29 février 1000');
+      expect(new acte.Jour('29 février 1004', false).julien())
+        .toEqual('23 février 1004');
+      expect(new acte.Jour('29 février 900', false).julien())
+        .toEqual('25 février 900');
+      expect(new acte.Jour('29 février 1000', false).julien())
+        .toEqual('24 février 1000');
     });
 
   // Balises

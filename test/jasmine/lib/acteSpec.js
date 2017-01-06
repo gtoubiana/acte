@@ -236,6 +236,20 @@ describe('new acte.Jour().gregorien()', function () {
     expect(new acte.Jour('14/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Dimanche 24 octobre 1582');
     expect(new acte.Jour('15/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
     expect(new acte.Jour('15/10/1582', false).gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
+
+    // Gestion des années bissextiles
+    expect(new acte.Jour('29 février 2004').gregorien()).toEqual('29 février 2004');
+    expect(new acte.Jour('29 février 1900').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 2000').gregorien()).toEqual('29 février 2000');
+    expect(new acte.Jour('29 février 1004').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 900').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 1000').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 2004', false).gregorien()).toEqual('29 février 2004');
+    expect(new acte.Jour('29 février 1900', false).gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 2000', false).gregorien()).toEqual('29 février 2000');
+    expect(new acte.Jour('29 février 1004', false).gregorien()).toEqual('29 février 1004');
+    expect(new acte.Jour('29 février 900', false).gregorien()).toEqual('29 février 900');
+    expect(new acte.Jour('29 février 1000', false).gregorien()).toEqual('29 février 1000');
   });
 
   // Balises
@@ -439,6 +453,14 @@ describe('new acte.Jour().julien()', function () {
     expect(new acte.Jour('14/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Dimanche 14 octobre 1582');
     expect(new acte.Jour('15/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('15/10/1582', false).julien('%JSl %JM %Mlb %A')).toEqual('Vendredi 5 octobre 1582');
+
+    // Gestion des années bissextiles
+    expect(new acte.Jour('29 février 1004').julien()).toEqual('29 février 1004');
+    expect(new acte.Jour('29 février 900').julien()).toEqual('29 février 900');
+    expect(new acte.Jour('29 février 1000').julien()).toEqual('29 février 1000');
+    expect(new acte.Jour('29 février 1004', false).julien()).toEqual('23 février 1004');
+    expect(new acte.Jour('29 février 900', false).julien()).toEqual('25 février 900');
+    expect(new acte.Jour('29 février 1000', false).julien()).toEqual('24 février 1000');
   });
 
   // Balises

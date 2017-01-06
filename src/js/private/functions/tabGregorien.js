@@ -30,6 +30,13 @@ const tabGregorien = (saisie, limites) => {
 
   saisieGregorien = saisieValide(saisieGregorien, regexpGregorien);
 
+  if (saisieGregorien[2] <= dateDebutGregorien[2]) {
+    joursDansLeMois[1] = julienBissextile(saisieGregorien[2]) ? '29' : '28';
+  } else {
+    joursDansLeMois[1] = gregorienBissextile(saisieGregorien[2]) ?
+      '29' : '28';
+  }
+
   // Lorsque la date est valide [gjmc,gmc,gac]
   if (saisieGregorien[2] && saisieGregorien[0] < 32 &&
     absInt(saisieGregorien[0]) !== 0 &&
