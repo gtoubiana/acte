@@ -76,7 +76,8 @@ $(document).ready(function () {
     return stopAnimation;
   }();
 
-  $('#jour_debrider').bind('keyup change mousemove', function () {
+  // Convertir lors de la saisie
+  $('#jour_debrider').bind('keyup keypress change input search', function () {
     convertirJour();
     stopAnimation('#jour');
   });

@@ -29,7 +29,7 @@ DESINSTALLER (OSX)
 - pour désinstaller, remplacer install par uninstall
 
 ---
-MISE A JOUR PLUGINS Autocomplete
+MISE A JOUR PLUGINS
 
 ---
 MISE A JOUR BOWER

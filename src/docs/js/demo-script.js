@@ -32,7 +32,8 @@ ${jr.julien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
     $(element).css('animation', 'none');
   };
 
-  $('#jour_debrider').bind('keyup change mousemove', () => {
+  // Convertir lors de la saisie
+  $('#jour_debrider').bind('keyup keypress change input search', () => {
     convertirJour();
     stopAnimation('#jour');
   });
