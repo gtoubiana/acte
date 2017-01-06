@@ -454,6 +454,7 @@ describe('new acte.Jour().julien()', function () {
     expect(new acte.Jour('14/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Dimanche 14 octobre 1582');
     expect(new acte.Jour('15/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('15/10/1582', false).julien('%JSl %JM %Mlb %A')).toEqual('Vendredi 5 octobre 1582');
+    expect(new acte.Jour('17 frimaire an IV', false).julien()).toEqual('27 novembre 1795');
 
     // Gestion des années bissextiles
     expect(new acte.Jour('29 février 1004').julien()).toEqual('29 février 1004');
@@ -549,6 +550,7 @@ describe('new acte.Jour().julien()', function () {
     expect(new acte.Jour('1/1/16000').julien('%A')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1/1/-16000').julien('%A')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1/1/16000', false).julien('%A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('17 frimaire an IV').julien()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().julien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').julien('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');

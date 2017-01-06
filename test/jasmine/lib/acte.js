@@ -2109,9 +2109,8 @@ if (!Array.prototype.reduce) {
             saisieGregorien[1]), absInt(saisieGregorien[0]));
 
           // Si limitation et avant début du calendrier grégorien
-          if (limites === true && tab[4] < gregorienVersJj(
-              dateDebutGregorien[2], dateDebutGregorien[1],
-              dateDebutGregorien[0])) {
+          if (limites && tab[4] < gregorienVersJj(dateDebutGregorien[2],
+              dateDebutGregorien[1], dateDebutGregorien[0])) {
             tab[5] = absInt(saisieGregorien[0]);
             tab[6] = absInt(saisieGregorien[1]);
             tab[7] = parseInt(saisieGregorien[2], 10);
@@ -2140,7 +2139,7 @@ if (!Array.prototype.reduce) {
             tab[3] = dateValide(tab[0], tab[1], tab[2]);
 
             // Si débridé
-            if (limites === false) {
+            if (!limites) {
               var dateJulienne = jjVersJulien(tab[4]);
 
               tab[5] = dateJulienne[2];
@@ -2153,7 +2152,7 @@ if (!Array.prototype.reduce) {
           // Limitations republicain
           if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain ||
             tab[4] >= jjDebutCommuneDeParis && tab[4] <=
-            jjFinCommuneDeParis || limites === false) {
+            jjFinCommuneDeParis || !limites) {
             var dateRepublicaine = jjVersRepublicain(tab[4]);
 
             tab[9] = dateRepublicaine[3];
@@ -2216,7 +2215,7 @@ if (!Array.prototype.reduce) {
           // Si jj (tab[4]) est dans les limites ou en illimité
           if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain ||
             tab[4] >= jjDebutCommuneDeParis && tab[4] <=
-            jjFinCommuneDeParis || limites === false) {
+            jjFinCommuneDeParis || !limites) {
             var dateGregorienne = jjVersGregorien(tab[4]);
             var dateJulienne = jjVersJulien(tab[4]);
 
@@ -2224,10 +2223,12 @@ if (!Array.prototype.reduce) {
             tab[1] = dateGregorienne[1];
             tab[2] = dateGregorienne[0];
             tab[3] = dateValide(tab[0], tab[1], tab[2]);
-            tab[5] = dateJulienne[2];
-            tab[6] = dateJulienne[1];
-            tab[7] = dateJulienne[0];
-            tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            if (!limites) {
+              tab[5] = dateJulienne[2];
+              tab[6] = dateJulienne[1];
+              tab[7] = dateJulienne[0];
+              tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            }
             tab[9] = rjmcVersRjdc(saisieRepublicain[0]);
             tab[10] = rjmcVersRdc(saisieRepublicain[0]);
             tab[11] = absInt(saisieRepublicain[0]);

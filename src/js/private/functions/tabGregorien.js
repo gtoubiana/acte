@@ -47,7 +47,7 @@ const tabGregorien = (saisie, limites) => {
       saisieGregorien[1]), absInt(saisieGregorien[0]));
 
     // Si limitation et avant début du calendrier grégorien
-    if ((limites === true) && (tab[4] < gregorienVersJj(
+    if ((limites) && (tab[4] < gregorienVersJj(
         dateDebutGregorien[2], dateDebutGregorien[1], dateDebutGregorien[
           0]))) {
       tab[5] = absInt(saisieGregorien[0]);
@@ -78,7 +78,7 @@ const tabGregorien = (saisie, limites) => {
       tab[3] = dateValide(tab[0], tab[1], tab[2]);
 
       // Si débridé
-      if (limites === false) {
+      if (!limites) {
         const dateJulienne = jjVersJulien(tab[4]);
 
         tab[5] = dateJulienne[2];
@@ -93,7 +93,7 @@ const tabGregorien = (saisie, limites) => {
         (tab[4] <= jjFinRepublicain)) ||
       ((tab[4] >= jjDebutCommuneDeParis) &&
         (tab[4] <= jjFinCommuneDeParis)) ||
-      limites === false) {
+      !limites) {
       const dateRepublicaine = jjVersRepublicain(tab[4]);
 
       tab[9] = dateRepublicaine[3];

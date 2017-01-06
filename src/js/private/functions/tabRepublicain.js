@@ -43,7 +43,7 @@ const tabRepublicain = (saisie, limites) => {
         (tab[4] <= jjFinRepublicain)) ||
       ((tab[4] >= jjDebutCommuneDeParis) &&
         (tab[4] <= jjFinCommuneDeParis)) ||
-      limites === false) {
+      !limites) {
       const dateGregorienne = jjVersGregorien(tab[4]);
       const dateJulienne = jjVersJulien(tab[4]);
 
@@ -51,10 +51,12 @@ const tabRepublicain = (saisie, limites) => {
       tab[1] = dateGregorienne[1];
       tab[2] = dateGregorienne[0];
       tab[3] = dateValide(tab[0], tab[1], tab[2]);
-      tab[5] = dateJulienne[2];
-      tab[6] = dateJulienne[1];
-      tab[7] = dateJulienne[0];
-      tab[8] = dateValide(tab[5], tab[6], tab[7]);
+      if (!limites) {
+        tab[5] = dateJulienne[2];
+        tab[6] = dateJulienne[1];
+        tab[7] = dateJulienne[0];
+        tab[8] = dateValide(tab[5], tab[6], tab[7]);
+      }
       tab[9] = rjmcVersRjdc(saisieRepublicain[0]);
       tab[10] = rjmcVersRdc(saisieRepublicain[0]);
       tab[11] = absInt(saisieRepublicain[0]);
