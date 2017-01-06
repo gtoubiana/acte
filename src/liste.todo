@@ -3,17 +3,13 @@ Todo Démo:
     ☐ tableau 28 + modifier valeur du tableau avant vérification
     ☐ dates greg (bissextile ?)
     ☐ dates jul (bissextile ?) => récupére julienBissextile du script fourmilab
-  ☐ BUG 18 brumaire an-V @issues
-  ☐ BUG 18 brumaire anV @issues
+  ✔ BUG 18 brumaire an-V @issues @done(2017-01-06 13:41) @project(Todo Démo)
+  ✔ BUG 18 brumaire anV @issues @done(2017-01-06 13:41) @project(Todo Démo)
   ☐ BUG il ne doit pas y avoir de date julienne avec 17 frimaire an IV
   ☐ Recette jours de la semaine republicains @issues
   ☐ se débarasser du survol à la souris dans la démo @issues
 
-  ✔ Dossier docs => utiliser master/index + ./docs @done(2017-01-06 13:35)
-    ✔ migrer src/docs dans src/demo/partials, revoir les chemins et renommer src/demo en src/docs @done(2017-01-06 13:35)
-    ✔ migrer src/releases dans src/docs/partials @done(2017-01-06 13:35)
 
-  ✔ revoir la licence MIT @done(2017-01-06 13:37)
 
   ☐ releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89
 
@@ -40,6 +36,10 @@ Todo Démo:
   ☐ Mettre tous les modules à jour entre la 0.1.0 et la 0.1.1
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Dossier docs => utiliser master/index + ./docs @done(2017-01-06 13:35)
+  ✔ migrer src/docs dans src/demo/partials, revoir les chemins et renommer src/demo en src/docs @done(2017-01-06 13:35)
+  ✔ migrer src/releases dans src/docs/partials @done(2017-01-06 13:35)
+  ✔ revoir la licence MIT @done(2017-01-06 13:37)
   ✔ renommer dossier demo => docs @done(2017-01-05 14:19)
   ✔ migrer les taches gulp de demo dans docs @done(2017-01-05 14:19)
   ✔ revoir le config.paths @done(2017-01-05 14:19)

@@ -15,7 +15,7 @@
  */
 const tabRepublicain = (saisie, limites) => {
   // On remplace les chiffres romains en chiffres arabes
-  let saisieRepublicain = saisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
+  let saisieRepublicain = saisie.replace(/\W?an\s?-?([-MDCLXVI]+)\W?/gi,
 
     // jscs:disable
     (x, p1) => {
