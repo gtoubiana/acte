@@ -48,7 +48,7 @@ gulp.task('clean.tests', (done) => {
 // Nettoyer les fichiers issus de la tache demo
 gulp.task('clean.demo', (done) => {
   const stream = del([
-    `${config.paths.demo}/*`,
+    `${config.paths.docs}/*`,
   ], done);
 
   return stream;

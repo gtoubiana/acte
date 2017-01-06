@@ -26,16 +26,15 @@ gulp.task('default', sequence(
   'lint.prototypes',
   'lint.dist',
 
-  // Spécifications des tests [lint.specs]
+  // Spécifications des tests
   'tests.specs',
 
-  // Générations des fichiers [lint.src]
+  // Générations des fichiers
   'dist.acte.es5',
   'dist.acte.es3',
   'dist.min',
 
   // Générations des documentations
-  // [lint.src, dist.acte.es3]
   'docs.dist',
   'docs.constants',
   'docs.functions',
@@ -44,13 +43,13 @@ gulp.task('default', sequence(
   // Génération du zip
   'dist.zip',
 
-  // Génération de la démo
-  'demo.index',
-  'demo.assets',
-  'demo.script.es5',
-  'demo.script.es3',
-  'demo.concat.js',
-  'demo.concat.css'
+  // Génération de la démo dans /docs
+  'docs.index',
+  'docs.assets',
+  'docs.script.es5',
+  'docs.script.es3',
+  'docs.concat.js',
+  'docs.concat.css'
 
   // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
   // 'tests.coverage'
