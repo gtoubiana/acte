@@ -45,10 +45,20 @@ gulp.task('clean.tests', (done) => {
   return stream;
 });
 
-// Nettoyer les fichiers issus de la tache demo
-gulp.task('clean.demo', (done) => {
+// Nettoyer les fichiers issus de la tache docs
+gulp.task('clean.docs', (done) => {
   const stream = del([
     `${config.paths.docs}/*`,
+  ], done);
+
+  return stream;
+});
+
+// Nettoyer les fichiers issus de la tache docs/concat
+gulp.task('clean.concat', (done) => {
+  const stream = del([
+    `${config.paths.docs}/css/*.css`,
+    `!${config.paths.docs}/css/concat.css`,
   ], done);
 
   return stream;

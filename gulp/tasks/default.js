@@ -11,7 +11,7 @@ gulp.task('default', sequence(
   // Nettoyages
   'clean.dist',
   'clean.tests',
-  'clean.demo',
+  'clean.docs',
 
   // Vérification des dépendances
   'depcheck',
@@ -25,6 +25,8 @@ gulp.task('default', sequence(
   'lint.constructors',
   'lint.prototypes',
   'lint.dist',
+  'lint.docs.js',
+  'lint.docs.css',
 
   // Spécifications des tests
   'tests.specs',

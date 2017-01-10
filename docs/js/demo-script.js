@@ -1,3 +1,4 @@
+// jscs:disable jsDoc
 $(document).ready(function () {
   // Parallax effect
   $(window).scroll(function () {

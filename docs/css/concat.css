@@ -1622,66 +1622,59 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text
  * ACTE DEMO CSS *
  *****************/
 
+
 /*= Bootstrap =*/
+
 body {
   /* padding-top: 50px; */
   padding-bottom: 20px;
 }
 
+
+/* csslint ignore:start */
+
 input[type="search"] {
--webkit-appearance: searchfield;
+  -moz-appearance: searchfield;
+  -webkit-appearance: searchfield;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
--webkit-appearance: searchfield-cancel-button;
+  -webkit-appearance: searchfield-cancel-button;
 }
+
+
+/* csslint ignore:end */
 
 .jumbotron {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 0px;
-    background-color: #eee;
-    text-align: center;
-    background-image: url("../img/background.jpg");
-    background-attachment: fixed;
-    background-size:cover;
-    background-position: 0px 0px;
-}
-
-.jumbotron h1 {
-    font-weight: 900;
-}
-
-.jumbotron h1, .jumbotron h2, .jumbotron h3, .jumbotron h4, .jumbotron p {
-    color: #eee;
-}
-
-.jumbotron h3 a {
-    color: #eee;
-    text-decoration: underline;
-}
-
-.jumbotron h3 a:hover, .jumbotron h3 a:active {
-    text-decoration: none;
+  background-attachment: fixed;
+  background-color: #eee;
+  background-image: url("../img/background.jpg");
+  background-position: 0 0;
+  background-size: cover;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .jumbotron p {
-    font-weight: 400;
+  color: #eee;
+  font-weight: 400;
 }
 
 a.btn-outline-inverse:link,
 a.btn-outline-inverse:visited {
-    color: #eee;
-    background-color: transparent;
-    border-color: #ddd;
+  background-color: transparent;
+  border-color: #ddd;
+  color: #eee;
 }
 
 a.btn-outline-inverse:hover,
 a.btn-outline-inverse:focus,
 a.btn-outline-inverse:active {
-    color: #704220;
-    background-color: #efe8b0;
-    border-color: #efe8b0;
+  background-color: #efe8b0;
+  border-color: #efe8b0;
+  color: #704220;
 }
 
 .panel {
@@ -1689,84 +1682,72 @@ a.btn-outline-inverse:active {
 }
 
 .violet {
-  color:#873694; /*#631f64 #873694*/
+  color: #873694;
+  /*#631f64 #873694*/
 }
 
 .logo {
-    margin: 0 auto;
-    clear: both;
+  clear: both;
+  margin: 0 auto;
 }
+
 
 /*= Jquery UI autocomplete =*/
-input[type="text"], input[type="password"],
-.ui-autocomplete-input, textarea, .uneditable-input, .ui-widget  {
-    font-size: 14px;
+
+input[type="text"],
+input[type="password"],
+.ui-autocomplete-input,
+textarea,
+.uneditable-input,
+.ui-widget {
+  font-size: 14px;
 }
 
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  border: 0;
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
   background: #b0d5fa;
+  border: 0;
 }
 
-#jour {
+.acte-input {
+  background-color: #f9f9f9;
+  color: #873694;
   font-size: 18px;
-  padding: 20px 10px;
-  color: #873694; /*rgb(35, 68, 36);*/
-  background-color: #f9f9f9; /*rgba(87, 169, 87, 0.08);*/
   font-weight: 500;
+  padding: 20px 10px;
 }
 
 .btnlh {
   line-height: 2.7;
 }
 
-.glowing {
-  -webkit-animation: glow 4s infinite;
-  -moz-animation: glow 4s infinite;
-  -o-animation: glow 4s infinite;
-  animation: glow 4s infinite;
-}
-
-@-webkit-keyframes glow {
-  0%   {background-color:#ffffff;}
-  50%  {background-color:#fbf4d8;}
-  100% {background-color:#ffffff;}
-}
-
-@-moz-keyframes glow {
-  0%   {background-color:#ffffff;}
-  50%  {background-color:#fbf4d8;}
-  100% {background-color:#ffffff;}
-}
-
-@-o-keyframes glow {
-  0%   {background-color:#ffffff;}
-  50%  {background-color:#fbf4d8;}
-  100% {background-color:#ffffff;}
-}
-
-@keyframes glow {
-  0%   {background-color:#ffffff;}
-  50%  {background-color:#fbf4d8;}
-  100% {background-color:#ffffff;}
-}
 
 /*= media queries =*/
-@media screen and (min-width: 768px) {
-}
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
-}
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {}
+
 
 /* liens */
-a.showhide, .description a {
+
+a.showhide,
+.description a {
   text-decoration: underline;
 }
 
-a.showhide:hover, .description a:hover {
+a.showhide:hover,
+.description a:hover {
   text-decoration: none;
 }
 
+
+/* csslint ignore:start */
+
 a.showhide:focus {
-  outline:none;
+  outline: none;
 }
+
+
+/* csslint ignore:end */

@@ -3,8 +3,10 @@
  */
 const concat = require('gulp-concat');
 const config = require('../config');
+const csslint = require('gulp-csslint');
 const eslint = require('gulp-eslint');
 const gulp = require('gulp');
+const html5Lint = require('gulp-html5-lint');
 const jscs = require('gulp-jscs');
 const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
@@ -98,7 +100,7 @@ gulp.task('lint.public.functions', () => {
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(`${config.paths.pubFunc}`));
+    .pipe(gulp.dest(config.paths.pubFunc));
 
   return stream;
 });
@@ -142,6 +144,44 @@ gulp.task('lint.dist', () => {
     .pipe(eslint.failAfterError())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish());
+
+  return stream;
+});
+
+// Valider les scripts ./src/docs/js/
+gulp.task('lint.docs.js', () => {
+  const stream = gulp.src([`${config.paths.src}/docs/js/demo-script.js`])
+    .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
+    .pipe(gulp.dest(`${config.paths.src}/docs/js/`));
+
+  return stream;
+});
+
+// Valider les css ./src/docs/css/
+gulp.task('lint.docs.css', () => {
+  const stream = gulp.src([`${config.paths.src}/docs/css/demo-theme.css`])
+    .pipe(prettify({
+      config: `${config.paths.src}/.jsbeautifyrc`,
+    }))
+    .pipe(csslint())
+    .pipe(csslint([`${config.paths.src}/docs/css/.csslintrc`]))
+    .pipe(csslint.formatter())
+    .pipe(stylish())
+    .pipe(gulp.dest(`${config.paths.src}/docs/css/`));
+
+  return stream;
+});
+
+// Valider les html ./docs/*.html
+gulp.task('lint.docs.html', () => {
+  const stream = gulp.src([`${config.paths.src}/docs/index.html`])
+    .pipe(prettify({
+      config: `${config.paths.src}/.jsbeautifyrc`,
+    }))
+    .pipe(html5Lint())
+    .pipe(gulp.dest(`${config.paths.src}/docs/`));
 
   return stream;
 });
