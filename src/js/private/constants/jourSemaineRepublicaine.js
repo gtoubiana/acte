@@ -1,5 +1,5 @@
 /**
- * Nom des Jours Republicains et abbréviations courantes,
+ * Nom des Jours de la semaine Republicaine et abbréviations courantes,
  * sur 1, 2 et 3 caractères.
  * @access private
  * @author Gilles Toubiana
@@ -7,7 +7,7 @@
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @constant {Array}
  */
-const jourRepublicain = [
+const jourSemaineRepublicaine = [
   ['Primidi', 'Prim', 'Pri', 'Pi', 'P'],
   ['Duodi', 'Duo', 'Duo', 'Du', 'D'],
   ['Tridi', 'Tri', 'Tri', 'Ti', 'T'],

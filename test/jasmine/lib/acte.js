@@ -349,7 +349,7 @@ if (!Array.prototype.reduce) {
     var jjFinRepublicain = 2380686.5;
 
     /**
-     * Nom des Jours Grégoriens et abbréviations courantes,
+     * Nom des Jours de la semaine Grégorienne et abbréviations courantes,
      * sur 1, 2 et 3 caractères.
      * @access private
      * @author Gilles Toubiana
@@ -357,7 +357,7 @@ if (!Array.prototype.reduce) {
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @constant {Array}
      */
-    var jourGregorien = [
+    var jourSemaineGregorienne = [
       ['Dimanche', 'Dim', 'Dim', 'Di', 'D'],
       ['Lundi', 'Lundi', 'Lun', 'Lu', 'L'],
       ['Mardi', 'Mardi', 'Mar', 'Ma', 'M'],
@@ -368,7 +368,7 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
-     * Nom des Jours Republicains et abbréviations courantes,
+     * Nom des Jours de la semaine Republicaine et abbréviations courantes,
      * sur 1, 2 et 3 caractères.
      * @access private
      * @author Gilles Toubiana
@@ -376,7 +376,7 @@ if (!Array.prototype.reduce) {
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @constant {Array}
      */
-    var jourRepublicain = [
+    var jourSemaineRepublicaine = [
       ['Primidi', 'Prim', 'Pri', 'Pi', 'P'],
       ['Duodi', 'Duo', 'Duo', 'Du', 'D'],
       ['Tridi', 'Tri', 'Tri', 'Ti', 'T'],
@@ -1800,7 +1800,7 @@ if (!Array.prototype.reduce) {
           Ml: moisGregorien[d.m - 1],
 
           // JSl = Jour de la décade/semaine en lettres
-          JSl: jourGregorien[js]
+          JSl: jourSemaineGregorienne[js]
         };
 
         return result;
@@ -1850,7 +1850,7 @@ if (!Array.prototype.reduce) {
           Ml: moisRepublicain[d.m - 1],
 
           // JSl = Jour de la décade/semaine en lettres
-          JSl: jourRepublicain[d.jd - 1]
+          JSl: jourSemaineRepublicaine[d.jd - 1]
         };
 
         return result;

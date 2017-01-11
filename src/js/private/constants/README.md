@@ -18,8 +18,8 @@
 * [jjDebutRepublicain](#jjDebutRepublicain) : <code>Nombre</code> ℗
 * [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
-* [jourGregorien](#jourGregorien) : <code>Tableau</code> ℗
-* [jourRepublicain](#jourRepublicain) : <code>Tableau</code> ℗
+* [jourSemaineGregorienne](#jourSemaineGregorienne) : <code>Tableau</code> ℗
+* [jourSemaineRepublicaine](#jourSemaineRepublicaine) : <code>Tableau</code> ℗
 * [joursDansLeMois](#joursDansLeMois) : <code>Tableau</code> ℗
 * [moisGregorien](#moisGregorien) : <code>Tableau</code> ℗
 * [moisRepublicain](#moisRepublicain) : <code>Tableau</code> ℗
@@ -250,10 +250,10 @@ jjVersGregorien(jjFinRepublicain); // [1805, 12, 31]
 jjVersRepublicain(2380686.5); // [14, 4, 1, 10]
 jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
 ```
-<a name="jourGregorien"></a>
+<a name="jourSemaineGregorienne"></a>
 
-## jourGregorien : <code>Tableau</code> ℗
-Nom des Jours Grégoriens et abbréviations courantes,
+## jourSemaineGregorienne : <code>Tableau</code> ℗
+Nom des Jours de la semaine Grégorienne et abbréviations courantes,
 sur 1, 2 et 3 caractères.
 
 **Type** : Constante  
@@ -261,10 +261,10 @@ sur 1, 2 et 3 caractères.
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.15  
 **Auteur** : Gilles Toubiana  
-<a name="jourRepublicain"></a>
+<a name="jourSemaineRepublicaine"></a>
 
-## jourRepublicain : <code>Tableau</code> ℗
-Nom des Jours Republicains et abbréviations courantes,
+## jourSemaineRepublicaine : <code>Tableau</code> ℗
+Nom des Jours de la semaine Republicaine et abbréviations courantes,
 sur 1, 2 et 3 caractères.
 
 **Type** : Constante  

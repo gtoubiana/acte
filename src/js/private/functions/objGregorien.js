@@ -49,7 +49,7 @@
      Ml: moisGregorien[d.m - 1],
 
      // JSl = Jour de la décade/semaine en lettres
-     JSl: jourGregorien[js],
+     JSl: jourSemaineGregorienne[js],
    };
 
    return result;

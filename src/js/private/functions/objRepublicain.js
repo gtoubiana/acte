@@ -38,7 +38,7 @@
      Ml: moisRepublicain[d.m - 1],
 
      // JSl = Jour de la décade/semaine en lettres
-     JSl: jourRepublicain[d.jd - 1],
+     JSl: jourSemaineRepublicaine[d.jd - 1],
    };
 
    return result;

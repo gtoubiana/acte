@@ -3,6 +3,7 @@ Todo Démo:
   ☐ Supprimer les css inutiles avec gulp uncss
   ☐ supprimer les fichiers css et js inutiles après concat dans /demo gulp clean concat
   ☐ migrer css/concat.css => style.css et js/concat.js => script.js
+  ☐ fonctions pour joursChretiens et joursRepublicains
 
   ☐ demo : ajouter des formats : greg : default<br>saint - rep : default<br>jour - jul : default
   ☐ releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89
