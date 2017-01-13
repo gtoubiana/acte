@@ -7,6 +7,7 @@
 * [balisesEtFiltres(x, obj)](#balisesEtFiltres) ⇒ <code>Chaîne</code> ℗
 * [cosinus(d)](#cosinus) ⇒ <code>Nombre</code> ℗
 * [dateValide(jour, mois, an)](#dateValide) ⇒ <code>Objet</code> ℗
+* [dateVersJour(date)](#dateVersJour) ⇒ <code>Chaîne</code> ℗
 * [degresVersRadians(d)](#degresVersRadians) ⇒ <code>Nombre</code> ℗
 * [deltaT(an)](#deltaT) ⇒ <code>Nombre</code> ℗
 * [equationDuTemps(jj)](#equationDuTemps) ⇒ <code>Nombre</code> ℗
@@ -154,6 +155,27 @@ Pour créer un objet date grégorien valide.
 **Exemple** :  
 ```js
 dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
+```
+<a name="dateVersJour"></a>
+
+## dateVersJour(date) ⇒ <code>Chaîne</code> ℗
+Pour créer une date valide utilisable par le constructeur Jour.
+
+**Type** : Fonction  
+**Résultat** : <code>Chaîne</code> - La date utilisable  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+**Licence** : MIT  
+
+| Paramètres | Type | Description |
+| --- | --- | --- |
+| date | <code>Objet</code> &#124; <code>Chaîne</code> | une chaîne ou un objet Date |
+
+**Exemple** :  
+```js
+dateVersJour(new Date(2016, 5, 2)); // 2/6/2016
 ```
 <a name="degresVersRadians"></a>
 

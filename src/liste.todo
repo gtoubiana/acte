@@ -3,9 +3,8 @@ Todo Démo:
   ☐ Supprimer les css inutiles avec gulp uncss
   ☐ supprimer les fichiers css et js inutiles après concat dans /demo gulp clean concat
   ☐ migrer css/concat.css => style.css et js/concat.js => script.js
-  ☐ fonctions pour joursChretiens et joursRepublicains
 
-  ☐ demo : ajouter des formats : greg : default<br>saint - rep : default<br>jour - jul : default
+
   ☐ releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89
   ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
   ☐ Rédiger docs des install/update dans src/install.txt
@@ -20,6 +19,11 @@ Todo Démo:
   ☐ Diffuser en prerelease pour corrections ?
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ démo : Date républicain(e) @done(2017-01-13 11:04)
+  ✔ intégrer dateVersJour() dans Jour() et ajouter des tests @done(2017-01-13 11:03)
+  ✔ demo : ajouter des formats : greg : default<br>saint - rep : default<br>jour - jul : default @done(2017-01-12 17:11)
+  ✔ jour : saisie de date avec dateVersJour(objet-date) => [jour][mois][an] (ou l'inverse ?) @done(2017-01-12 17:10)
+  ✔ fonctions pour joursChretiens et joursRepublicains @done(2017-01-11 14:44) @project(Todo Démo)
   ✔ linters docs/CSS npm install --save-dev gulp-csslint @done(2017-01-10 15:10) @project(Todo Démo)
   ✔ linters docs/JS @done(2017-01-10 13:41) @project(Todo Démo)
   ✔ Prettifier docs/CSS @done(2017-01-10 13:41) @project(Todo Démo)

@@ -61,24 +61,30 @@ describe('Recettes', () => {
     'Recette 5 : Saints du jour',
     () => {
       expect(
-        new acte.Jour('1/9/2016')
+          new acte.Jour('1/9/2016')
 
-        // voir acte.saintChretien en fin de ce fichier
-        .gregorien('', 0, acte.saintChretien)).toEqual('Saint Gilles');
+          // voir acte.saintChretien en fin de ce fichier
+          .gregorien('{saintChretien}', 0, acte.saintChretien))
+        .toEqual('Saint Gilles');
     }
   );
   it(
     'Recette 6 : Jour républicain',
     () => {
       expect(
-        new acte.Jour('4 brumaire an V')
+          new acte.Jour('4 brumaire an V')
 
-        // voir acte.jourRepublicain en fin de ce fichier
-        .republicain('', 0, acte.jourRepublicain)).toEqual(
-        'Jour de la Betterave');
+          // voir acte.jourRepublicain en fin de ce fichier
+          .republicain('Jour {jourRepublicain}', 0, acte.jourRepublicain)
+        )
+        .toEqual('Jour de la Betterave');
     }
   );
 });
+
+/**
+ * Nouvelles fonctions
+ */
 
 acte.saintChretien = (res, obj) => {
   const saints = [
@@ -209,9 +215,8 @@ acte.saintChretien = (res, obj) => {
       'Saint Roger', 'Saint Sylvestre / Sainte Famille',
     ],
   ];
-  const resultat = saints[obj.M - 1][obj.J - 1];
 
-  return resultat;
+  return res.replace(/{saintChretien}/g, saints[obj.M - 1][obj.J - 1]);
 };
 acte.jourRepublicain = (res, obj) => {
   const jours = [
@@ -327,7 +332,6 @@ acte.jourRepublicain = (res, obj) => {
       'des Récompenses', 'de la Révolution',
     ],
   ];
-  const resultat = `Jour ${jours[obj.M - 1][obj.J - 1]}`;
 
-  return resultat;
+  return res.replace(/{jourRepublicain}/g, jours[obj.M - 1][obj.J - 1]);
 };

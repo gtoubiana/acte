@@ -10,6 +10,8 @@ describe('new acte.Jour().gregorien()', () => {
         .toEqual('2 janvier 1890');
       expect(new acte.Jour('8 juin an 1890').gregorien())
         .toEqual('8 juin 1890');
+      expect(new acte.Jour(new Date(1890, 6, 9)).gregorien())
+        .toEqual('9 juillet 1890');
       expect(new acte.Jour('8 brumaire an 1890', false).gregorien())
         .toEqual('28 octobre 3681');
       expect(new acte.Jour('9 brumaire juillet an 1890', false).gregorien())
@@ -382,6 +384,10 @@ describe('new acte.Jour().gregorien()', () => {
       expect(new acte.Jour('1er 1890').gregorien())
         .toEqual('Pas de correspondances.');
       expect(new acte.Jour('4/10/1582').gregorien('%JSl %JM %Mlb %A'))
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour(new Date('texte')).gregorien())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('texte').gregorien())
         .toEqual('Pas de correspondances.');
     });
   it(

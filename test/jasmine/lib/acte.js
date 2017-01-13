@@ -1235,7 +1235,7 @@ if (!Array.prototype.reduce) {
      */
     var dateValide = function () {
       function dateValide(jour, mois, an) {
-        var resultat = new Date(an, mois - 1, jour);
+        var resultat = new Date(an, parseInt(mois - 1, 10), jour);
 
         resultat.setFullYear(an);
 
@@ -1588,6 +1588,38 @@ if (!Array.prototype.reduce) {
       }
 
       return balisesEtFiltres;
+    }();
+
+    /**
+     * Pour créer une date valide utilisable par le constructeur Jour.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {(Object|String)} date - une chaîne ou un objet Date
+     * @return {String} La date utilisable
+     * @example
+     * dateVersJour(new Date(2016, 5, 2)); // 2/6/2016
+     */
+
+    var dateVersJour = function () {
+      function dateVersJour(date) {
+        var result = void 0;
+
+        if (date instanceof Date && Number.isInteger(date.getMonth())) {
+          var jour = date.getDate();
+          var mois = parseInt(date.getMonth() + 1, 10);
+          var an = date.getFullYear();
+
+          result = jour + '/' + mois + '/' + an;
+        } else {
+          result = String(date);
+        }
+        return result;
+      }
+
+      return dateVersJour;
     }();
 
     /**
@@ -2584,13 +2616,16 @@ if (!Array.prototype.reduce) {
      * @license MIT
      */
     acte.Jour = function () {
-      function Jour(saisie, limites) {
+      function Jour(s, limites) {
         _classCallCheck(this, Jour);
 
         var tab = [];
+        var saisie = s;
 
         this.variables = this.variables || {};
         this.limites = limites !== false;
+
+        saisie = dateVersJour(saisie);
 
         // On détecte si c'est une date républicaine
         if (saisie.match(

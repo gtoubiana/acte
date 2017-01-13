@@ -28,11 +28,14 @@
  * @license MIT
  */
 acte.Jour = class Jour {
-  constructor(saisie, limites) {
+  constructor(s, limites) {
     let tab = [];
+    let saisie = s;
 
     this.variables = this.variables || {};
     this.limites = limites !== false;
+
+    saisie = dateVersJour(saisie);
 
     // On détecte si c'est une date républicaine
     if (saisie.match(
