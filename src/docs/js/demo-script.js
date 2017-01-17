@@ -1,3 +1,11 @@
+/*!
+ * Acte.js demo JS
+ * http://gtoubiana.github.io/acte/
+ *
+ * © 2015-Present, Gilles Toubiana
+ * License MIT
+ */
+
 // jscs:disable jsDoc
 $(document).ready(() => {
   // Parallax effect
@@ -11,8 +19,8 @@ $(document).ready(() => {
 
   // Acte - Convertir une date
   const convertirJour = () => {
-    const deb = $('#debrider').prop('checked');
-    const jr = new acte.Jour($('#jour').val(), !deb);
+    const deb = $('#limiter').prop('checked');
+    const jr = new acte.Jour($('#jour').val(), deb);
 
     $('#affichage_de_jour table tbody').html(
       `<tr>
@@ -27,23 +35,16 @@ ${jr.republicain(
 '<td class="active">Pas de correspondances</td>',
 acte.jourRepublicain)}</tr>
 <tr><th scope="row">Date julienne</th>
-${jr.julien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
-'<td class="active">Pas de correspondances</td>')}</tr>`
+${jr.julien(
+'<td class="success"><strong>%JSl %JMp %Mlb %A</strong><br>{sC}</td>',
+'<td class="active">Pas de correspondances</td>',
+acte.saintChretien)}</tr>`
     );
-  };
-
-  // Arrêter les animations CSS3 sur un élément
-  const stopAnimation = (element) => {
-    $(element).css('-webkit-animation', 'none');
-    $(element).css('-moz-animation', 'none');
-    $(element).css('-o-animation', 'none');
-    $(element).css('animation', 'none');
   };
 
   // Convertir lors de la saisie
   $('#jour_debrider').bind('keyup keypress change input search', () => {
     convertirJour();
-    stopAnimation('#jour');
   });
 
   // Jquery-ui Autocomplete
@@ -145,7 +146,6 @@ ${jr.julien('<td class="success"><strong>%JSl %JMp %Mlb %A</strong></td>',
     .on('click', function () {
       $('#jour').val($(this).text());
       convertirJour();
-      stopAnimation('#jour');
     });
 
   /* eslint-enable no-invalid-this, func-names */

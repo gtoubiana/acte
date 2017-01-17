@@ -7,11 +7,13 @@
  * gulp docs.readme
  */
 const babel = require('gulp-babel');
+const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const config = require('../config');
 const fse = require('fs-extra');
 const gulp = require('gulp');
 const hb = require('gulp-hb');
+const imagemin = require('gulp-imagemin');
 const jsdoc2md = require('gulp-jsdoc-to-markdown');
 const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
@@ -19,6 +21,8 @@ const rename = require('gulp-rename');
 const rep = require('gulp-replace');
 const sequence = require('gulp-sequence');
 const size = require('gulp-size');
+const uglify = require('gulp-uglify');
+const uncss = require('gulp-uncss');
 
 // Lazypipes
 const lazyJsdocFr = lazypipe()
@@ -183,6 +187,7 @@ gulp.task('docs.assets', () => {
                 .on('end', () => {
                   const stream5 = gulp.src(
                     [`${config.paths.src}/docs/img/*.{jpg,png}`])
+                    .pipe(imagemin())
                     .pipe(gulp.dest(`${config.paths.docs}/img/`));
 
                   return stream5;
@@ -275,6 +280,9 @@ gulp.task('docs.script.es3', () => {
 });
 
 gulp.task('docs.concat.js', () => {
+  const options = {
+    preserveComments: 'license',
+  };
   const stream = gulp.src(
     [`${config.paths.dist}/acte.min.js`,
     `${config.paths.docs}/js/jquery.min.js`,
@@ -284,8 +292,9 @@ gulp.task('docs.concat.js', () => {
     `${config.paths.docs}/js/run_prettify.js`,
     `${config.paths.docs}/js/ie10-viewport-bug-workaround.js`,
     ])
-    .pipe(concat('concat.js'))
-    .pipe(gulp.dest(`${config.paths.docs}/js`));
+    .pipe(concat('script.js'))
+    .pipe(uglify(options))
+    .pipe(gulp.dest(`${config.paths.docs}/js/`));
 
   return stream;
 });
@@ -296,8 +305,18 @@ gulp.task('docs.concat.css', () => {
     `${config.paths.docs}/css/jquery-ui-bootstrap.css`,
     `${config.paths.docs}/css/demo-theme.css`,
     ])
-    .pipe(concat('concat.css'))
-    .pipe(gulp.dest(`${config.paths.docs}/css`));
+    .pipe(concat('style.css'))
+    .pipe(uncss({
+      html: [
+        `${config.paths.docs}/index.html`,
+      ],
+      ignore: [
+        /\.table/,
+        /\.ui-(menu|widget|autocomplete|front|helper-hidden)/,
+      ],
+    }))
+    .pipe(cleanCSS({ compatibility: 'ie8' }))
+    .pipe(gulp.dest(`${config.paths.docs}/css/`));
 
   return stream;
 });

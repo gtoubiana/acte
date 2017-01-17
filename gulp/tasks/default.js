@@ -51,9 +51,9 @@ gulp.task('default', sequence(
   'docs.script.es5',
   'docs.script.es3',
   'docs.concat.js',
-  'docs.concat.css'
+  'docs.concat.css',
 
-  // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
-  // 'tests.coverage'
+  // Validation du html de la demo
+  'lint.docs.html'
 
 ));

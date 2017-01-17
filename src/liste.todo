@@ -1,12 +1,6 @@
-Todo Démo:
-  ☐ linter docs/HTML npm install gulp-htmllint --save-dev (ou https://github.com/hoobdeebla/gulp-html-validator)
-  ☐ Supprimer les css inutiles avec gulp uncss
-  ☐ supprimer les fichiers css et js inutiles après concat dans /demo gulp clean concat
-  ☐ migrer css/concat.css => style.css et js/concat.js => script.js
-
-
-  ☐ releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89
-  ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo)
+Todo MAJ 0.1.1:
+  ☐ Releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89
+  ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo) ?
   ☐ Rédiger docs des install/update dans src/install.txt
   ☐ Saucelabs plante pour le moment à cause de Travis
   ☐ Travis plante pour le moment à cause de l'indentation eslint ???
@@ -17,8 +11,19 @@ Todo Démo:
   ☐ Nettoyer les issues github
   ☐ Mettre tous les modules à jour entre la 0.1.0 et la 0.1.1
   ☐ Diffuser en prerelease pour corrections ?
+
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Minifier le js @done(2017-01-17 15:32) @project(Todo Démo 0.1.0)
+  ✔ Minifier la css @done(2017-01-17 14:34) @project(Todo Démo 0.1.0)
+  ✔ Supprimer les css inutiles avec gulp uncss @done(2017-01-17 14:22) @project(Todo Démo 0.1.0)
+  ✔ Debugger uncss pour l'affichage javascript @done(2017-01-17 14:22) @project(Todo Démo 0.1.0)
+  ✔ gulp-imagemin @done(2017-01-17 13:14) @project(Todo Démo 0.1.0)
+  ✔ Limiter plutôt que Débrider (inverser la valeur) @done(2017-01-17 13:04) @project(Todo Démo 0.1.0)
+  ✔ Supprimer les fichiers css et js inutiles après concat dans /demo gulp clean concat ? => inutile @done(2017-01-17 12:46) @project(Todo Démo 0.1.0)
+  ✔ linter docs/HTML @done(2017-01-16 14:07) @project(Todo Démo 0.1.0)
+  ✔ voir github issues @done(2017-01-16 14:07) @project(Todo Démo 0.1.0)
+  ✔ migrer css/concat.css => style.css et js/concat.js => script.js @done(2017-01-16 14:22) @project(Todo Démo 0.1.0)
   ✔ démo : Date républicain(e) @done(2017-01-13 11:04)
   ✔ intégrer dateVersJour() dans Jour() et ajouter des tests @done(2017-01-13 11:03)
   ✔ demo : ajouter des formats : greg : default<br>saint - rep : default<br>jour - jul : default @done(2017-01-12 17:11)

@@ -38,3 +38,5 @@ MISE A JOUR BOWER
 MISE A JOUR NPM
 
 ---
+MISE A JOUR ANNUELLE DE src/js/constants/delta.js
+$ npm run delta

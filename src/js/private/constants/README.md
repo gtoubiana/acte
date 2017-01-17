@@ -108,7 +108,7 @@ Date de fin d'utilisation du calendrier julien.
 
 ## delta : <code>Tableau</code> ℗
 Tableau des Delta T différence entre Temps universel et temps terrestre
-en secondes, observées pour les années paires de 1620 à 2016.
+en secondes, observées pour les années paires de 1620 à 2017.
 
 **Type** : Constante  
 **Accès** : privé  

@@ -1,6 +1,10 @@
-/*****************
- * ACTE DEMO CSS *
- *****************/
+/*!
+ * Acte.js demo CSS
+ * http://gtoubiana.github.io/acte/
+ *
+ * © 2015-Present, Gilles Toubiana
+ * License MIT
+ */
 
 
 /*= Bootstrap =*/
@@ -80,7 +84,7 @@ input[type="password"],
 textarea,
 .uneditable-input,
 .ui-widget {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .ui-state-active,
@@ -100,6 +104,10 @@ textarea,
 
 .btnlh {
   line-height: 2.7;
+}
+
+.ui-widget {
+  font-size: 16px;
 }
 
 

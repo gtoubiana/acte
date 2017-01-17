@@ -48,7 +48,7 @@ if (!Array.prototype.reduce) {
   // jscs:enable
 }
 
-/**
+/*!
  * acte - Une librairie JavaScript qui simplifie la recherche généalogique.
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
@@ -203,7 +203,7 @@ if (!Array.prototype.reduce) {
 
     /**
      * Tableau des Delta T différence entre Temps universel et temps terrestre
-     * en secondes, observées pour les années paires de 1620 à 2016.
+     * en secondes, observées pour les années paires de 1620 à 2017.
      * @access private
      * @author F.R. Stephenson & L.V. Morrison & IERS & Gilles Toubiana
      * @since 0.0.15
@@ -227,7 +227,7 @@ if (!Array.prototype.reduce) {
       27.28, 28.25, 29.15, 29.97, 30.72, 31.35, 32.18, 33.15, 34, 35.03,
       36.54, 38.29, 40.18, 42.23, 44.94, 46.94, 49.03, 50.93, 52.53, 54.05,
       55.08, 56.05, 57.18, 58.69, 60.35, 61.95, 63.23, 63.95, 64.39, 64.63,
-      64.97, 65.6, 66.2, 66.74, 67.45, 68.26
+      64.97, 65.6, 66.2, 66.74, 67.45, 68.35
     ];
 
     /**

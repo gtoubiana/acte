@@ -5,8 +5,9 @@ const concat = require('gulp-concat');
 const config = require('../config');
 const csslint = require('gulp-csslint');
 const eslint = require('gulp-eslint');
+const validator = require('html-validator');
+const fse = require('fs-extra');
 const gulp = require('gulp');
-const html5Lint = require('gulp-html5-lint');
 const jscs = require('gulp-jscs');
 const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
@@ -176,12 +177,26 @@ gulp.task('lint.docs.css', () => {
 
 // Valider les html ./docs/*.html
 gulp.task('lint.docs.html', () => {
-  const stream = gulp.src([`${config.paths.src}/docs/index.html`])
-    .pipe(prettify({
-      config: `${config.paths.src}/.jsbeautifyrc`,
-    }))
-    .pipe(html5Lint())
-    .pipe(gulp.dest(`${config.paths.src}/docs/`));
+  const options = {
+    format: 'text',
+  };
 
-  return stream;
+  fse.readFile(`${config.paths.docs}/index.html`, 'utf8', (err, html) => {
+    if (err) {
+      throw err;
+    }
+
+    options.data = html;
+
+    /* eslint-disable no-console */
+    validator(options)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    /* eslint-enable no-console */
+  });
 });

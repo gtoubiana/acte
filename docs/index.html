@@ -10,11 +10,11 @@
    <link rel="shortcut icon" href="demo/favicon.ico" type="image/x-icon">
    <link rel="icon" href="favicon.ico" type="image/x-icon">
    <title>Acte.js</title>
-   <link href="css/concat.css" rel="stylesheet">
+   <link href="css/style.css" rel="stylesheet">
    <!-- IE8 -->
    <!--[if lt IE 9]>
-   <script src="demo/js/html5shiv.min.js"></script>
-   <script src="demo/js/respond.min.js"></script>
+   <script src="js/html5shiv.min.js"></script>
+   <script src="js/respond.min.js"></script>
    <![endif]-->
 </head>
 <body>
@@ -59,19 +59,18 @@
         </div>
         <div class="checkbox">
           <label>
-            <input id="debrider"
+            <input id="limiter"
               tabindex="2"
               type="checkbox"
               value="">
-            <span class="hidden-xs">Toujours </span>afficher les correspondances (<a class="explications showhide"
+            <span class="hidden-xs">Limiter </span>les correspondances (<a class="explications showhide"
               data-link-text="Explications"
               tabindex="4"
               href="#"
               >Explications</a>)
           </label>
         </div>
-        <div class="alert alert-info description" role="alert"><strong>Cochez cette case pour ne pas limiter les conversions de calendriers.</strong><br>
-          Sinon :<br>
+        <div class="alert alert-info description" role="alert"><strong>Cochez cette case pour afficher des correspondances uniquement si les calendriers sont en usage à cette date.</strong><br>
            - le <a href="https://fr.wikipedia.org/wiki/Calendrier_julien">calendrier julien</a> se termine le 4 octobre 1582 ;<br>
            - le <a href="https://fr.wikipedia.org/wiki/Calendrier_gr%C3%A9gorien">calendrier grégorien</a> débute le 15 octobre 1582 ;<br>
            - le <a href="https://fr.wikipedia.org/wiki/Calendrier_r%C3%A9publicain">calendrier républicain</a> fonctionne du 22 septembre 1792 au 31 décembre 1805 (puis de mars à mai 1871 pendant la Commune de Paris).
@@ -124,7 +123,7 @@
    <!-- /container -->
    <!-- Bootstrap core JavaScript
       ================================================== -->
-      <script src="js/concat.js"></script>
+      <script src="js/script.js"></script>
       <script id="dsq-count-scr" src="//acte-1.disqus.com/count.js" async></script>
 </body>
 </html>
