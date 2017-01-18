@@ -1,16 +1,17 @@
 Todo MAJ 0.1.1:
-  ☐ Releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89
-  ☐ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo) ?
+  ☐ Erreur Travis : Error: Cannot find module 'html-validator' dans gulp Travis https://travis-ci.org/gtoubiana/acte/jobs/193062452
   ☐ Rédiger docs des install/update dans src/install.txt
   ☐ Saucelabs plante pour le moment à cause de Travis
   ☐ Travis plante pour le moment à cause de l'indentation eslint ???
   ☐ Configurer les gh-pages dans ./docs
-  ☐ Vérifier Compatibilité ie8
+  ☐ Vérifier Compatibilité ie8 saucelabs
   ☐ Vérifier la traduction disqus
   ☐ Vérifier les MAJ pour Travis
   ☐ Nettoyer les issues github
   ☐ Mettre tous les modules à jour entre la 0.1.0 et la 0.1.1 (ou dans le Pull request)
   ☐ Diffuser en prerelease pour corrections ?
+  ☐ Nettoyer la liste des issues
+  ☐ Codeclimate => js, css, html, MAJ eslint
 
 Issues https://jsfiddle.net/toubia95/4addLzmm/ :
   ☐ #256 - Graphiques pour .chevauchements() - https://github.com/gtoubiana/acte/issues/256
@@ -133,6 +134,8 @@ Issues https://jsfiddle.net/toubia95/4addLzmm/ :
   ☐ #5 - Calcul de périodes optimales de recherche - https://github.com/gtoubiana/acte/issues/5
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✘ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo) ? @cancelled(2017-01-18 16:08) @project(Todo MAJ 0.1.1)
+  ✘ Releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89 @cancelled(2017-01-18 16:08) @project(Todo MAJ 0.1.1)
   ✔ Minifier le js @done(2017-01-17 15:32) @project(Todo Démo 0.1.0)
   ✔ Minifier la css @done(2017-01-17 14:34) @project(Todo Démo 0.1.0)
   ✔ Supprimer les css inutiles avec gulp uncss @done(2017-01-17 14:22) @project(Todo Démo 0.1.0)
