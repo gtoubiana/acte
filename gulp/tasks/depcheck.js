@@ -53,6 +53,9 @@ require('karma-sauce-launcher');
 // Dépendances TESTS
 require('jasmine');
 
+// Dépendances VALIDATORS
+require('html-validator');
+
 /* eslint-enable */
 
 // Vérifier les dépendances

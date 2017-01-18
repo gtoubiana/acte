@@ -9,9 +9,128 @@ Todo MAJ 0.1.1:
   ☐ Vérifier la traduction disqus
   ☐ Vérifier les MAJ pour Travis
   ☐ Nettoyer les issues github
-  ☐ Mettre tous les modules à jour entre la 0.1.0 et la 0.1.1
+  ☐ Mettre tous les modules à jour entre la 0.1.0 et la 0.1.1 (ou dans le Pull request)
   ☐ Diffuser en prerelease pour corrections ?
 
+Issues https://jsfiddle.net/toubia95/4addLzmm/ :
+  ☐ #256 - Graphiques pour .chevauchements() - https://github.com/gtoubiana/acte/issues/256
+  ☐ #255 - lien de téléchargement des résultats dans la démo - https://github.com/gtoubiana/acte/issues/255
+  ☐ #254 - Demo dev - https://github.com/gtoubiana/acte/issues/254
+  ☐ #253 - se passer de `new' - https://github.com/gtoubiana/acte/issues/253
+  ☐ #252 - Retirer le $ de l'install npm ? - https://github.com/gtoubiana/acte/issues/252
+  ☐ #251 - Créer un prototype .limite(), .limiter() ou équivalent - https://github.com/gtoubiana/acte/issues/251
+  ☐ #250 - Limiter plutôt que Débrider - https://github.com/gtoubiana/acte/issues/250
+  ☐ #249 - Créer un sous-dossier 'packages' - https://github.com/gtoubiana/acte/issues/249
+  ☐ #248 - affichage des calendriers bridés - https://github.com/gtoubiana/acte/issues/248
+  ☐ #247 - Améliorer dateVersJour - https://github.com/gtoubiana/acte/issues/247
+  ☐ #246 - utiliser les fonctions publiques - https://github.com/gtoubiana/acte/issues/246
+  ☐ #245 - tests pour .variable() - https://github.com/gtoubiana/acte/issues/245
+  ☐ #244 - créer un dossier packages ou plugins - https://github.com/gtoubiana/acte/issues/244
+  ☐ #243 - Exemples de code pour .variable() - https://github.com/gtoubiana/acte/issues/243
+  ☐ #242 - Revoir le jsdoc de Jour - https://github.com/gtoubiana/acte/issues/242
+  ☐ #241 - Mettre à jour les exemples tonidev - https://github.com/gtoubiana/acte/issues/241
+  ☐ #240 - Sécuriser les entrées pour les fonctions methodes statiques de acte - https://github.com/gtoubiana/acte/issues/240
+  ☐ #239 - Tester gitscout - https://github.com/gtoubiana/acte/issues/239
+  ☐ #238 - CAPORA - étapes de conception 2014 - https://github.com/gtoubiana/acte/issues/238
+  ☐ #237 - demo : linters - https://github.com/gtoubiana/acte/issues/237
+  ☐ #236 - demo : ajouter des formats - https://github.com/gtoubiana/acte/issues/236
+  ☐ #235 - Fonctionnal programming ? - https://github.com/gtoubiana/acte/issues/235
+  ☐ #234 - Permettre d'utiliser également les balises php pour les dates - https://github.com/gtoubiana/acte/issues/234
+  ☐ #233 - Github corners - https://github.com/gtoubiana/acte/issues/233
+  ☐ #232 - Utiliser code2flow pour travailler les algorithmes - https://github.com/gtoubiana/acte/issues/232
+  ☐ #231 - OCR avec tesseract - https://github.com/gtoubiana/acte/issues/231
+  ☐ #230 - Utiliser typescript et tslint ? - https://github.com/gtoubiana/acte/issues/230
+  ☐ #229 - 18 brumaire an-x ou 18 brumaire anx devraient fonctionner - https://github.com/gtoubiana/acte/issues/229
+  ☐ #228 - revoir les jquery events sur la démo - https://github.com/gtoubiana/acte/issues/228
+  ☐ #227 - Créer un package bower ? - https://github.com/gtoubiana/acte/issues/227
+  ☐ #226 - Restructurer le readme - https://github.com/gtoubiana/acte/issues/226
+  ☐ #225 - revoir le dossier demo / gh-pages - https://github.com/gtoubiana/acte/issues/225
+  ☐ #224 - Faire une page de tests jasmine qui correspond aux recettes - https://github.com/gtoubiana/acte/issues/224
+  ☐ #223 - Est-ce que le 29 février est bien géré ? - https://github.com/gtoubiana/acte/issues/223
+  ☐ #222 - Rendre des fonctions publiques - https://github.com/gtoubiana/acte/issues/222
+  ☐ #221 - tester gisto - https://github.com/gtoubiana/acte/issues/221
+  ☐ #220 - css parralax - https://github.com/gtoubiana/acte/issues/220
+  ☐ #219 - Integration tests - https://github.com/gtoubiana/acte/issues/219
+  ☐ #218 - Utiliser redux ? - https://github.com/gtoubiana/acte/issues/218
+  ☐ #217 - integrity attribute ? - https://github.com/gtoubiana/acte/issues/217
+  ☐ #216 - Modifier jsdoctomarkdown - https://github.com/gtoubiana/acte/issues/216
+  ☐ #215 - Réflexions - https://github.com/gtoubiana/acte/issues/215
+  ☐ #214 - Etendre Jour() - https://github.com/gtoubiana/acte/issues/214
+  ☐ #213 - Bug avec eslint dans travis - https://github.com/gtoubiana/acte/issues/213
+  ☐ #212 - Mardi 15 novembre 2016 ne fonctionne pas - https://github.com/gtoubiana/acte/issues/212
+  ☐ #210 - Application mobile - https://github.com/gtoubiana/acte/issues/210
+  ☐ #209 - Calendrier proleptique - https://github.com/gtoubiana/acte/issues/209
+  ☐ #208 - constantes modifiables pour le passage au calendrier gregorien - https://github.com/gtoubiana/acte/issues/208
+  ☐ #207 - En version bridée, pas de résultat julien après 1582 ? - https://github.com/gtoubiana/acte/issues/207
+  ☐ #205 - Le 4/10/1582 doit être un jeudi - https://github.com/gtoubiana/acte/issues/205
+  ☐ #203 - bug avec dates republicaines - https://github.com/gtoubiana/acte/issues/203
+  ☐ #202 - Modifier les versions de node dans travis - https://github.com/gtoubiana/acte/issues/202
+  ☐ #200 - =*=* RECAP DEMO *=*= - https://github.com/gtoubiana/acte/issues/200
+  ☐ #199 - standardiser le readme - https://github.com/gtoubiana/acte/issues/199
+  ☐ #198 - essayer yarn en remplacement de npm ? - https://github.com/gtoubiana/acte/issues/198
+  ☐ #196 - Traduire disqus en français - https://github.com/gtoubiana/acte/issues/196
+  ☐ #195 - Eslint 3 et codeclimate - https://github.com/gtoubiana/acte/issues/195
+  ☐ #194 - Rendre la démo fonctionnelle - https://github.com/gtoubiana/acte/issues/194
+  ☐ #193 - Regrouper, simplifier et minifier les fichiers css et js - https://github.com/gtoubiana/acte/issues/193
+  ☐ #190 - auto-suggest dans la démo - https://github.com/gtoubiana/acte/issues/190
+  ☐ #188 - benchmarks avec gulp - https://github.com/gtoubiana/acte/issues/188
+  ☐ #184 - Passer les fonctions de private à public ? - https://github.com/gtoubiana/acte/issues/184
+  ☐ #183 - Push master/demo to gh-pages - https://github.com/gtoubiana/acte/issues/183
+  ☐ #180 - utiliser la CLI de david - https://github.com/gtoubiana/acte/issues/180
+  ☐ #179 - eslint-3 pour codeclimate - https://github.com/gtoubiana/acte/issues/179
+  ☐ #177 - acte.Jour().periode() - https://github.com/gtoubiana/acte/issues/177
+  ☐ #176 - acte.Jour().age() - https://github.com/gtoubiana/acte/issues/176
+  ☐ #175 - utiliser un theme jekyll - https://github.com/gtoubiana/acte/issues/175
+  ☐ #170 - Mise à jour des plugins - https://github.com/gtoubiana/acte/issues/170
+  ☐ #168 - créer un plugin externe pour .hebreu() - https://github.com/gtoubiana/acte/issues/168
+  ☐ #167 - migrer les prototypes dans la classe - https://github.com/gtoubiana/acte/issues/167
+  ☐ #166 - /!\ RECETTES (ne pas fermer) - https://github.com/gtoubiana/acte/issues/166
+  ☐ #164 - vérifier l'utilisation possible de js-joda - https://github.com/gtoubiana/acte/issues/164
+  ☐ #163 - site statique pour mobiles - https://github.com/gtoubiana/acte/issues/163
+  ☐ #156 - prototype variable() - https://github.com/gtoubiana/acte/issues/156
+  ☐ #144 - Simplifier les tests avec .toDateString() - https://github.com/gtoubiana/acte/issues/144
+  ☐ #143 - Ajouter les tests de gregorien(), julien() et republicain() - https://github.com/gtoubiana/acte/issues/143
+  ☐ #136 - Ajouter l'exemple tonic à la page de démo - https://github.com/gtoubiana/acte/issues/136
+  ☐ #134 - Ajouter un CONTRIBUTING.md - https://github.com/gtoubiana/acte/issues/134
+  ☐ #128 - Remplacer GitHub-mac par gitkraken ? - https://github.com/gtoubiana/acte/issues/128
+  ☐ #127 - Créer une appli de la démo avec electron - https://github.com/gtoubiana/acte/issues/127
+  ☐ #110 - Version 2 => Abandonner ie8,  bootstrap 4+, eslint 3+ - https://github.com/gtoubiana/acte/issues/110
+  ☐ #86 - Migrer de jsbeautifier à esformatter (compatible eslint & standard) - https://github.com/gtoubiana/acte/issues/86
+  ☐ #85 - Ajouter des readmes dans /src, /test, /gulp - https://github.com/gtoubiana/acte/issues/85
+  ☐ #81 - Tester waffle.io pour manager les issues - https://github.com/gtoubiana/acte/issues/81
+  ☐ #80 - Réutiliser le script de bms.js - https://github.com/gtoubiana/acte/issues/80
+  ☐ #76 - Page de démo - https://github.com/gtoubiana/acte/issues/76
+  ☐ #73 - Google Analytics on Github - https://github.com/gtoubiana/acte/issues/73
+  ☐ #70 - Utiliser React pour la page de demo - https://github.com/gtoubiana/acte/issues/70
+  ☐ #64 - jour().evenements() - https://github.com/gtoubiana/acte/issues/64
+  ☐ #62 - Réadapter les outils de dev - https://github.com/gtoubiana/acte/issues/62
+  ☐ #61 - acte.jour('').moins(''); et acte.jour('').plus(''); - https://github.com/gtoubiana/acte/issues/61
+  ☐ #60 - Liste des dirigeants avec .roi() - https://github.com/gtoubiana/acte/issues/60
+  ☐ #59 - Vérifier les durées en jours. - https://github.com/gtoubiana/acte/issues/59
+  ☐ #58 - Références de nomenclatures - https://github.com/gtoubiana/acte/issues/58
+  ☐ #57 - Calculs sur les dates - https://github.com/gtoubiana/acte/issues/57
+  ☐ #56 - Nouvelle nomenclature - https://github.com/gtoubiana/acte/issues/56
+  ☐ #55 - Passer de bootstrap à pure pour le frontend - https://github.com/gtoubiana/acte/issues/55
+  ☐ #54 - tester hexo - https://github.com/gtoubiana/acte/issues/54
+  ☐ #53 - Simplifier les format - https://github.com/gtoubiana/acte/issues/53
+  ☐ #51 - Créer grunt Gedcom2Html - https://github.com/gtoubiana/acte/issues/51
+  ☐ #48 - chevauchement() à la place de po() - https://github.com/gtoubiana/acte/issues/48
+  ☐ #47 - Nouvelle syntaxe - https://github.com/gtoubiana/acte/issues/47
+  ☐ #46 - switcheur de calendrier en regex - https://github.com/gtoubiana/acte/issues/46
+  ☐ #44 - Utiliser un template bootstrap pour les docs - https://github.com/gtoubiana/acte/issues/44
+  ☐ #43 - utiliser les partials avec assemble - https://github.com/gtoubiana/acte/issues/43
+  ☐ #34 - Nomenlature des chainages - https://github.com/gtoubiana/acte/issues/34
+  ☐ #33 - Revoir et afficher la structure de projet - https://github.com/gtoubiana/acte/issues/33
+  ☐ #32 - etudier la structure de projets comme backbone ou underscore - https://github.com/gtoubiana/acte/issues/32
+  ☐ #29 - suivre le http://editorconfig.org/ - https://github.com/gtoubiana/acte/issues/29
+  ☐ #28 - respecter le codeguide html et css - https://github.com/gtoubiana/acte/issues/28
+  ☐ #27 - site statique avec assemble - https://github.com/gtoubiana/acte/issues/27
+  ☐ #23 - calcul de durée en jours mois années - https://github.com/gtoubiana/acte/issues/23
+  ☐ #21 - Revoir le formatage des dates - https://github.com/gtoubiana/acte/issues/21
+  ☐ #17 - Choisir de nouvelles fonctions et créer les tickets - https://github.com/gtoubiana/acte/issues/17
+  ☐ #8 - Page basique de démos avec assemble - https://github.com/gtoubiana/acte/issues/8
+  ☐ #6 - Calcul des fêtes mobiles - https://github.com/gtoubiana/acte/issues/6
+  ☐ #5 - Calcul de périodes optimales de recherche - https://github.com/gtoubiana/acte/issues/5
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
   ✔ Minifier le js @done(2017-01-17 15:32) @project(Todo Démo 0.1.0)
