@@ -53,13 +53,10 @@ require('karma-sauce-launcher');
 // Dépendances TESTS
 require('jasmine');
 
-// Dépendances VALIDATORS
-require('html-validator');
-
 /* eslint-enable */
 
 // Vérifier les dépendances
 gulp.task('depcheck', depcheck({
-  ignoreDirs: ['docs', 'build'],
+  ignoreDirs: ['docs', 'dist'],
   ignoreMatches: ['glob'],
 }));

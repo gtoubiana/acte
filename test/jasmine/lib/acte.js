@@ -2508,30 +2508,30 @@ if (!Array.prototype.reduce) {
       switch (str.slice(-1)) {
       case 't':
       case 'x':
-        result = str + 'i\xE8me';
+        result = str + 'ième';
         break;
       case 'q':
-        result = str + 'ui\xE8me';
+        result = str + 'uième';
         break;
       case 'f':
-        result = str.slice(0, str.length - 1) + 'vi\xE8me';
+        result = str.slice(0, str.length - 1) + 'vième';
         break;
       case 'e':
-        result = str.slice(0, str.length - 1) + 'i\xE8me';
+        result = str.slice(0, str.length - 1) + 'ième';
         break;
       case 's':
         result = str.slice(-2) === 'ts' ? str.slice(0, str.length - 1) +
-          'i\xE8me' : str + 'i\xE8me';
+          'ième' : str + 'ième';
         break;
       case 'n':
         if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
-          result = str + 'i\xE8me';
+          result = str + 'ième';
         } else {
           result = acte.premierOrdinalEnLettres(str, genre);
         }
         break;
       default:
-        result = str + 'i\xE8me';
+        result = str + 'ième';
       }
 
       /* eslint-enable indent */
