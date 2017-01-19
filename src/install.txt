@@ -22,11 +22,13 @@ FAIRE UN GITHUB PULL ET TELECHARGER LES NOUVELLES DEPENDANCES NPM ET BOWER
    $ npm run pull
 
 ---
-METTRE A JOUR LES DEPENDANCES NPM ET BOWER
-- EN MODE PULL REQUEST POUR VALIDER DANS TRAVIS
-- UNE A UNE, COMMENCER PAR LES MINORS POUR FINIR PAR LES MAJORS
-   $ npm run update
-
+METTRE A JOUR LES DEPENDANCES BOWER, NPM ET ATOM
+- Faire un Pull Request puis travailler dedans pour valider avec Travis
+- Mettre à jour les extensions une à une.
+Commencer par Bower, puis les npm Patch, Minor et Major.
+  $ npm run update
+- Mettre à jour les plugins atom et mémoriser la config
+  $ npm run atom.list
 ---
 DESINSTALLER (OSX)
 

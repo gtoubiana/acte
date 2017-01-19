@@ -1,4 +1,4 @@
-describe('Public functions', () => {
+describe('Functions publiques', () => {
   it('acte.arabeVersRomain()', () => {
     expect(acte.arabeVersRomain(2012))
       .toEqual('MMXII');
