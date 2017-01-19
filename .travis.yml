@@ -2,6 +2,7 @@ language: node_js
 node_js:
 - '4'
 - '5'
+- '6'
 matrix:
   include:
     - node_js: 'stable'
@@ -21,7 +22,10 @@ before_install:
  - echo "COVERALLS = "${COVERALLS}
 before_script:
   - npm install -g gulp
+  - npm install -g bower
   - npm install -g karma-cli
+  - npm install
+  - bower install
 script:
   - gulp travis
 after_script:
