@@ -1,6 +1,5 @@
 Todo MAJ 0.0.17 (PR):
   ☐ [TRAVIS]: bugs avec eslint - MAJ ? vérifier tolérance Codeclimate/Atom
-  ✔ Rédiger docs des install/update dans src/install.txt @done(2017-01-19 10:07) @project(Todo MAJ 0.0.17 (PR))
   ☐ Saucelabs plante pour le moment à cause de Travis
   ☐ Travis plante pour le moment à cause de l'indentation eslint ??? vérifier tolérance Codeclimate/Atom
   ☐ Configurer les gh-pages dans ./docs
@@ -134,6 +133,8 @@ Issues https://jsfiddle.net/toubia95/4addLzmm/ :
   ☐ #5 - Calcul de périodes optimales de recherche - https://github.com/gtoubiana/acte/issues/5
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ String|Date comme parametre dans jsdoc de Jour @done(2017-01-19 10:35) @project(Todo MAJ 0.0.17 (PR))
+  ✔ Rédiger docs des install/update dans src/install.txt @done(2017-01-19 10:07) @project(Todo MAJ 0.0.17 (PR))
   ✔ Erreur Travis : Error: Cannot find module 'html-validator' dans gulp Travis https://travis-ci.org/gtoubiana/acte/jobs/193062452 @done(2017-01-18 16:13) @project(Todo MAJ 0.1.1)
   ✘ Nettoyer le projet de ce genre de fichiers inutiles (aka ce fichier .todo) ? @cancelled(2017-01-18 16:08) @project(Todo MAJ 0.1.1)
   ✘ Releases en draft cf https://github.com/conventional-changelog/conventional-github-releaser/pull/26/commits/02d53b46ddab115a14a6e0cf8b5196b266c19f89 @cancelled(2017-01-18 16:08) @project(Todo MAJ 0.1.1)

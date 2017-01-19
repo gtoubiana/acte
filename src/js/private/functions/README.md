@@ -171,7 +171,7 @@ Pour créer une date valide utilisable par le constructeur Jour.
 
 | Paramètres | Type | Description |
 | --- | --- | --- |
-| date | <code>Objet</code> &#124; <code>Chaîne</code> | une chaîne ou un objet Date |
+| date | <code>Date</code> &#124; <code>Chaîne</code> | une chaîne ou un objet Date |
 
 **Exemple** :  
 ```js

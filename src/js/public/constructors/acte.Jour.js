@@ -6,7 +6,8 @@
  * @access public
  * @author Gilles Toubiana
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
- * @param {String} saisie - Saisie d'une date grégorienne ou républicaine.
+ * @param {String|Date} saisie - Saisie d'une date grégorienne
+ * ou républicaine.
  * @param {Boolean} [limites=true] - Par défaut, les résultats sont limités
  * aux périodes d'utilisation des calendriers :<br>
  * - une saisie de date grégorienne sera considérée comme julienne avant

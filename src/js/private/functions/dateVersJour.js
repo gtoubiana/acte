@@ -5,7 +5,7 @@
  * @since 0.0.17
  * @license MIT
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
- * @param {(Object|String)} date - une chaîne ou un objet Date
+ * @param {Date|String} date - une chaîne ou un objet Date
  * @return {String} La date utilisable
  * @example
  * dateVersJour(new Date(2016, 5, 2)); // 2/6/2016

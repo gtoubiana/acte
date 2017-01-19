@@ -1597,7 +1597,7 @@ if (!Array.prototype.reduce) {
      * @since 0.0.17
      * @license MIT
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {(Object|String)} date - une chaîne ou un objet Date
+     * @param {Date|String} date - une chaîne ou un objet Date
      * @return {String} La date utilisable
      * @example
      * dateVersJour(new Date(2016, 5, 2)); // 2/6/2016
@@ -2594,7 +2594,8 @@ if (!Array.prototype.reduce) {
      * @access public
      * @author Gilles Toubiana
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {String} saisie - Saisie d'une date grégorienne ou républicaine.
+     * @param {String|Date} saisie - Saisie d'une date grégorienne
+     * ou républicaine.
      * @param {Boolean} [limites=true] - Par défaut, les résultats sont limités
      * aux périodes d'utilisation des calendriers :<br>
      * - une saisie de date grégorienne sera considérée comme julienne avant
