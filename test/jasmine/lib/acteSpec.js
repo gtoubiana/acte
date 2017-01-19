@@ -693,7 +693,7 @@ describe('Recettes', function () {
     expect(new acte.Jour('8 décembre 2016').gregorien('', 0, function (res, obj) {
       var result = '' + acte.nombreOrdinal(acte.arabeVersRomain(parseInt(obj.A / 100, 10) + 1), 'er', 'e');
 
-      return result + ' siècle';
+      return result + ' si\xE8cle';
     })).toEqual('XXIe siècle');
   });
   it('Recette 3 : Afficher Mil plutôt que Mille', function () {

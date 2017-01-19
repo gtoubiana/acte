@@ -1,41 +1,36 @@
-INSTALLER (OSX)
+INSTALLER DE ZERO (OSX)
 
 1. Installer atom
 
 2. Installer les plugins pour atom et le redémarrer
    $ npm run atom.install
 
-1. Installer node, avec Homebrew de préférence
+3. Installer node (avec Homebrew de préférence)
    $ brew node
 
-3. Installer globalement npm, npm-check-updates et npm-check
+4. Installer manuellement les dépendances globales
    $ npm install -g npm && npm install -g npm-check-updates && npm install -g npm-check
 
-1. Installer les dépendances npm
-   $ npm install
+5. Installer les dépendances npm, bower et lancer un build
+   $ npm run build
 
-4. Installer les dépendances de Bower
-   $ bower install
+6. Mancer une série de tests en local avec Karma si nécessaire (Chrome, Firefox, Safari, Opera)
+   $ gulp tests.karma
 
-6. Vous pouvez maintenant lancer un build
-   $ gulp
+---
+FAIRE UN GITHUB PULL ET TELECHARGER LES NOUVELLES DEPENDANCES NPM ET BOWER
+   $ npm run pull
 
-6. Vous pouvez maintenant vérifier les mises à jour
+---
+METTRE A JOUR LES DEPENDANCES NPM ET BOWER
+- EN MODE PULL REQUEST POUR VALIDER DANS TRAVIS
+- UNE A UNE, COMMENCER PAR LES MINORS POUR FINIR PAR LES MAJORS
    $ npm run update
 
 ---
 DESINSTALLER (OSX)
 
 - pour désinstaller, remplacer install par uninstall
-
----
-MISE A JOUR PLUGINS
-
----
-MISE A JOUR BOWER
-
----
-MISE A JOUR NPM
 
 ---
 MISE A JOUR ANNUELLE DE src/js/constants/delta.js

@@ -8,8 +8,9 @@
     "src": "/src"
   },
   "scripts": {
-    "build": "npm install && gulp && gulp tests.coverage",
+    "build": "npm install && bower install && gulp && gulp tests.coverage",
     "update": "ncu -m bower && ncu && npm-check -u",
+    "pull": "git pull origin && npm run build",
     "test": "gulp && gulp tests.coverage && gulp tests.karma",
     "atom.list": "apm list --installed --bare > ~/Github/acte/.atom.pkg",
     "atom.install": "apm install --packages-file ~/Github/acte/.atom.pkg",
