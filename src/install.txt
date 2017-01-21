@@ -17,6 +17,9 @@ INSTALLER DE ZERO (OSX)
 6. Mancer une série de tests en local avec Karma si nécessaire (Chrome, Firefox, Safari, Opera)
    $ gulp tests.karma
 
+7. Liste des tâches Gulp disponibles
+   $ gulp tasks
+
 ---
 FAIRE UN GITHUB PULL ET TELECHARGER LES NOUVELLES DEPENDANCES NPM ET BOWER
    $ npm run pull
