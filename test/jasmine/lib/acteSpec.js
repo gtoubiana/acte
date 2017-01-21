@@ -693,7 +693,7 @@ describe('Recettes', function () {
     expect(new acte.Jour('8 décembre 2016').gregorien('', 0, function (res, obj) {
       var result = '' + acte.nombreOrdinal(acte.arabeVersRomain(parseInt(obj.A / 100, 10) + 1), 'er', 'e');
 
-      return result + ' siècle';
+      return result + ' si\xE8cle';
     })).toEqual('XXIe siècle');
   });
   it('Recette 3 : Afficher Mil plutôt que Mille', function () {
@@ -707,13 +707,10 @@ describe('Recettes', function () {
     expect(new acte.Jour('1/1/2006').gregorien('', 0, function (res, obj) {
       var jour = obj.JS === 0 ? 7 : obj.JS;
 
-      var _ref = obj.S === 0 ? [52, obj.A - 1] : [acte.prefixeZero(obj.S), obj.A];
-
-      var _ref2 = _slicedToArray(_ref, 2);
-
-      var semaine = _ref2[0];
-      var an = _ref2[1];
-
+      var _ref = obj.S === 0 ? [52, obj.A - 1] : [acte.prefixeZero(obj.S), obj.A],
+          _ref2 = _slicedToArray(_ref, 2),
+          semaine = _ref2[0],
+          an = _ref2[1];
 
       return an + '-W' + semaine + '-' + jour;
     })).toEqual('2005-W52-7');

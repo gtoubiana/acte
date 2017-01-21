@@ -66,14 +66,16 @@ gulp.task('dist.acte.es5', () => {
       'transform-es2015-parameters',
       'transform-es2015-destructuring',
       'transform-es2015-block-scoping',
-      'transform-es2015-typeof-symbol', ['transform-regenerator', {
-        async: false,
-        asyncGenerators: false,
-      },
-    ],
+      'transform-es2015-typeof-symbol', [
+        'transform-regenerator', {
+          async: false,
+          asyncGenerators: false,
+        },
+      ],
 
         // no strict
-        ['transform-es2015-modules-commonjs', {
+      [
+        'transform-es2015-modules-commonjs', {
           strict: false,
         },
       ],

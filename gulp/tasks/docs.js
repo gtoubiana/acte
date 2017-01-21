@@ -160,19 +160,21 @@ gulp.task('docs.index', () => {
 // Copier les fichiers du Bootstrap
 gulp.task('docs.assets', () => {
   const stream1 = gulp.src(
-    [`${config.paths.bowerBootstrap}/js/bootstrap.min.js`,
-    `${config.paths.bowerJquery}/jquery.min.js`,
-    `${config.paths.bowerJqueryUI}/jquery-ui.min.js`,
-    `${config.paths.bowerShiv}/html5shiv.min.js`,
-    `${config.paths.bowerRespond}/respond.min.js`,
-    `${config.paths.src}/docs/js/ie10-viewport-bug-workaround.js`,
+    [
+      `${config.paths.bowerBootstrap}/js/bootstrap.min.js`,
+      `${config.paths.bowerJquery}/jquery.min.js`,
+      `${config.paths.bowerJqueryUI}/jquery-ui.min.js`,
+      `${config.paths.bowerShiv}/html5shiv.min.js`,
+      `${config.paths.bowerRespond}/respond.min.js`,
+      `${config.paths.src}/docs/js/ie10-viewport-bug-workaround.js`,
     ])
     .pipe(gulp.dest(`${config.paths.docs}/js/`))
     .on('end', () => {
       const stream2 = gulp.src(
-        [`${config.paths.bowerBootstrap}/css/bootstrap.min.css`,
-        `${config.paths.src}/docs/css/*.css`,
-      ])
+        [
+          `${config.paths.bowerBootstrap}/css/bootstrap.min.css`,
+          `${config.paths.src}/docs/css/*.css`,
+        ])
         .pipe(gulp.dest(`${config.paths.docs}/css/`))
         .on('end', () => {
           const stream3 = gulp.src(
@@ -231,14 +233,16 @@ gulp.task('docs.script.es5', () => {
       'transform-es2015-parameters',
       'transform-es2015-destructuring',
       'transform-es2015-block-scoping',
-      'transform-es2015-typeof-symbol', ['transform-regenerator', {
-        async: false,
-        asyncGenerators: false,
-      },
-    ],
+      'transform-es2015-typeof-symbol', [
+        'transform-regenerator', {
+          async: false,
+          asyncGenerators: false,
+        },
+      ],
 
         // no strict
-        ['transform-es2015-modules-commonjs', {
+      [
+        'transform-es2015-modules-commonjs', {
           strict: false,
         },
       ],
@@ -284,13 +288,14 @@ gulp.task('docs.concat.js', () => {
     preserveComments: 'license',
   };
   const stream = gulp.src(
-    [`${config.paths.dist}/acte.min.js`,
-    `${config.paths.docs}/js/jquery.min.js`,
-    `${config.paths.docs}/js/jquery-ui.min.js`,
-    `${config.paths.docs}/js/bootstrap.min.js`,
-    `${config.paths.docs}/js/demo-script.js`,
-    `${config.paths.docs}/js/run_prettify.js`,
-    `${config.paths.docs}/js/ie10-viewport-bug-workaround.js`,
+    [
+      `${config.paths.dist}/acte.min.js`,
+      `${config.paths.docs}/js/jquery.min.js`,
+      `${config.paths.docs}/js/jquery-ui.min.js`,
+      `${config.paths.docs}/js/bootstrap.min.js`,
+      `${config.paths.docs}/js/demo-script.js`,
+      `${config.paths.docs}/js/run_prettify.js`,
+      `${config.paths.docs}/js/ie10-viewport-bug-workaround.js`,
     ])
     .pipe(concat('script.js'))
     .pipe(uglify(options))
@@ -301,9 +306,10 @@ gulp.task('docs.concat.js', () => {
 
 gulp.task('docs.concat.css', () => {
   const stream = gulp.src(
-    [`${config.paths.docs}/css/bootstrap.min.css`,
-    `${config.paths.docs}/css/jquery-ui-bootstrap.css`,
-    `${config.paths.docs}/css/demo-theme.css`,
+    [
+      `${config.paths.docs}/css/bootstrap.min.css`,
+      `${config.paths.docs}/css/jquery-ui-bootstrap.css`,
+      `${config.paths.docs}/css/demo-theme.css`,
     ])
     .pipe(concat('style.css'))
     .pipe(uncss({

@@ -67,7 +67,7 @@ gulp.task('tests.specs', () => {
           const ssstream = gulp.src(
             [`${config.paths.testJasmine}/lib/acteSpec.js`])
             .pipe(wrap(
-`var acte = require(\'${config.paths.reqActe}\');
+`var acte = require('${config.paths.reqActe}');
 <%= contents %>\n`
             ))
             .pipe(gulp.dest(config.paths.testJasmine));

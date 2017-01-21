@@ -22,10 +22,11 @@ $(document).ready(function () {
       var jr = new acte.Jour($('#jour').val(), deb);
 
       $('#affichage_de_jour table tbody').html(
-        '<tr>\n<th scope="row">Date grégorienne</th>\n' + jr.gregorien(
+        '<tr>\n<th scope="row">Date gr\xE9gorienne</th>\n' + jr.gregorien(
           '<td class="success"><strong>%JSl %JMp %Mlb %A</strong><br>{sC}</td>',
           '<td class="active">Pas de correspondances</td>', acte.saintChretien
-        ) + '</tr>\n<tr><th scope="row">Date républicaine</th>\n' + jr.republicain(
+        ) + '</tr>\n<tr><th scope="row">Date r\xE9publicaine</th>\n' +
+        jr.republicain(
           '<td class="success"><strong>%JSl %JMp %Mlb an %Ar</strong><br>Jour {jR}</td>',
           '<td class="active">Pas de correspondances</td>', acte.jourRepublicain
         ) + '</tr>\n<tr><th scope="row">Date julienne</th>\n' + jr.julien(

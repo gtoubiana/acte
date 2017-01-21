@@ -20,16 +20,18 @@ const scraper = require('website-scraper');
 /* TASK: copier les données dans ./src/data/deltat.csv */
 gulp.task('delta.scrap', () => {
   const stream = scraper.scrape({
-    urls: [{
-      url: 'http://maia.usno.navy.mil/ser7/deltat.data',
-      filename: 'deltat.csv',
-    },
-  ],
+    urls: [
+      {
+        url: 'http://maia.usno.navy.mil/ser7/deltat.data',
+        filename: 'deltat.csv',
+      },
+    ],
     directory: './src/data',
     request: {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; ' +
-      'Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko)' +
-      ' Chrome/52.0.2743.116 Safari/537.36',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; ' +
+          'Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko)' +
+          ' Chrome/52.0.2743.116 Safari/537.36',
       },
     },
   }).then((result) => {
@@ -129,7 +131,8 @@ gulp.task('delta.js', () => {
       }
 
       return console.log(
-        `Le fichier delta.js pour 1620-${an} a été généré avec succès !`);
+        `Le fichier delta.js pour 1620-${an} a été généré avec succès !`
+      );
     });
 });
 

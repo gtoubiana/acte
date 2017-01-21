@@ -32,6 +32,8 @@ Commencer par Bower, puis les npm Patch, Minor et Major.
   $ npm run update
 - Mettre à jour les plugins atom et mémoriser la config
   $ npm run atom.list
+- Vérifier Saucelabs
+  $ gulp tests.saucelabs
 ---
 DESINSTALLER (OSX)
 
