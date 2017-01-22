@@ -1607,7 +1607,7 @@ if (!Array.prototype.reduce) {
       function dateVersJour(date) {
         var result = void 0;
 
-        if (date instanceof Date && Number.isInteger(date.getMonth())) {
+        if (date instanceof Date && isFinite(date.getMonth())) {
           var jour = date.getDate();
           var mois = parseInt(date.getMonth() + 1, 10);
           var an = date.getFullYear();

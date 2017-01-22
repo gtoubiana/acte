@@ -14,7 +14,7 @@
 const dateVersJour = (date) => {
   let result;
 
-  if (date instanceof Date && Number.isInteger(date.getMonth())) {
+  if (date instanceof Date && isFinite(date.getMonth())) {
     const jour = date.getDate();
     const mois = parseInt(date.getMonth() + 1, 10);
     const an = date.getFullYear();
