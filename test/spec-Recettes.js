@@ -48,9 +48,8 @@ describe('Recettes', () => {
         new acte.Jour('1/1/2006')
         .gregorien('', 0, (res, obj) => {
           const jour = obj.JS === 0 ? 7 : obj.JS;
-          const [semaine, an] = obj.S === 0 ? [52, obj.A - 1] : [
-            acte.prefixeZero(obj.S), obj.A,
-          ];
+          const semaine = obj.S === 0 ? 52 : acte.prefixeZero(obj.S);
+          const an = obj.S === 0 ? obj.A - 1 : obj.A;
 
           return `${an}-W${semaine}-${jour}`;
         })
