@@ -1,3 +1,9 @@
+/** WATCH
+ * prewatch
+ * watch.js
+ * watch
+ */
+
 const gulp = require('gulp');
 const config = require('../config');
 const browserSync = require('browser-sync').create();

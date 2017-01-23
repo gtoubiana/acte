@@ -1,9 +1,23 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp pre
- * gulp patch
- * gulp minor
- * gulp major
+/** RELEASES
+ * releases.commit
+ * releases.github.publish
+ * releases.github.releaser
+ * releases.major
+ * releases.minor
+ * releases.patch
+ * releases.pre
+ * releases.push
+ * releases.tag
+ * releases.version.major
+ * releases.version.minor
+ * releases.version.patch
+ * releases.version.prerelease
+ * major
+ * minor
+ * patch
+ * pre
  */
+
 const bump = require('gulp-bump');
 const compareFunc = require('compare-func');
 const config = require('../config');

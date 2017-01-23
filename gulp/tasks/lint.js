@@ -1,6 +1,19 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp lint
+/** LINT
+ * lint.constants
+ * lint.constructors
+ * lint.dist
+ * lint.docs.css
+ * lint.docs.html
+ * lint.docs.js
+ * lint.gulp
+ * lint.private.functions
+ * lint.prototypes
+ * lint.public.functions
+ * lint.specs
+ * lint.src
+ * lint.test
  */
+
 const concat = require('gulp-concat');
 const config = require('../config');
 const csslint = require('gulp-csslint');
@@ -22,27 +35,6 @@ const lazyPrettyLint = lazypipe()
     config: `${config.paths.src}/.jsbeautifyrc`,
   })
   .pipe(lazyLint);
-
-gulp.task('lint', sequence(
-
-  // Valider le gulpfile et les gulptasks
-  'lint.gulp',
-
-  // Valider les specs pour les tests
-  'lint.specs',
-
-  // Valider les constantes
-  'lint.constants',
-
-  // Valider les utilitaires
-  'lint.public.functions',
-  'lint.private.functions',
-
-  // Valider les classes
-  'lint.constructors',
-  'lint.prototypes'
-
-));
 
 gulp.task('lint.src', sequence(
   'lint.constants',

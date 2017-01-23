@@ -1,3 +1,7 @@
+/** DEPCHECK (npm run update)
+ * depcheck
+ */
+
 /* eslint-disable */
 
 const depcheck = require('gulp-depcheck');

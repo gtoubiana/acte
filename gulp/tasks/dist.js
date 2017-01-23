@@ -1,6 +1,10 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp dist
+/** DIST
+ * dist.acte.es3
+ * dist.acte.es5
+ * dist.min
+ * dist.zip
  */
+
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const config = require('../config');
@@ -10,7 +14,6 @@ const header = require('gulp-header');
 const pkg = require('../../package.json');
 const prettify = require('gulp-jsbeautifier');
 const rename = require('gulp-rename');
-const sequence = require('gulp-sequence');
 const size = require('gulp-size');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
@@ -18,22 +21,6 @@ const wrap = require('gulp-wrap');
 const zip = require('gulp-zip');
 
 // var rep = require('gulp-replace');
-
-gulp.task('dist', sequence(
-
-  // Générer le script acte avec babel
-  'dist.acte.es5',
-
-  // compatibilité ie8
-  'dist.acte.es3',
-
-  // Générer le script minifié de acte
-  'dist.min',
-
-  // Générer le zip de la release
-  'dist.zip'
-
-));
 
 // TASK Pour générer le script ./dist/acte.js
 gulp.task('dist.acte.es5', () => {

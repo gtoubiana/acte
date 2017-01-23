@@ -3,9 +3,10 @@ const gulp = require('gulp');
 const requireDir = require('require-dir');
 const taskListing = require('gulp-task-listing');
 
-// Add a task to render the output
+// TASK pour lister les taches
 gulp.task('tasks', taskListing);
 
+// INCLUSION des taches
 requireDir('./gulp/tasks', {
   recurse: true,
 });

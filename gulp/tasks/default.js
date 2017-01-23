@@ -1,7 +1,7 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp
- * gulp default
+/** DEFAULT (npm run build)
+ * default
  */
+
 const gulp = require('gulp');
 const sequence = require('gulp-sequence');
 

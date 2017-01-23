@@ -1,11 +1,16 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp docs
- * gulp docs.assets
- * gulp docs.dist
- * gulp docs.constants
- * gulp docs.functions
- * gulp docs.readme
+/** DOCS
+ * docs.assets
+ * docs.concat.css
+ * docs.concat.js
+ * docs.constants
+ * docs.dist
+ * docs.functions
+ * docs.index
+ * docs.readme
+ * docs.script.es3
+ * docs.script.es5
  */
+
 const babel = require('gulp-babel');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
@@ -19,7 +24,6 @@ const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
 const rename = require('gulp-rename');
 const rep = require('gulp-replace');
-const sequence = require('gulp-sequence');
 const size = require('gulp-size');
 const uglify = require('gulp-uglify');
 const uncss = require('gulp-uncss');
@@ -57,30 +61,6 @@ const lazyJsdocFr = lazypipe()
   .pipe(rep, ': instance property of', ': Propriété d\'instance de');
 
 // .pipe(rep, ' ↩︎', '')
-
-gulp.task('docs', sequence(
-  'docs.dist',
-  'docs.constants',
-  'docs.functions',
-
-  // Générer le fichier index.html
-  'docs.index',
-
-  // Copier les fichiers Bootstrap & Jquery
-  'docs.assets',
-
-  // Copier et Babeliser le script.js en ES5
-  'docs.script.es5',
-
-  // Babeliser le script.js en ES3
-  'docs.script.es3',
-
-  // Concaténer les scripts js
-  'docs.concat.js',
-
-  // Concaténer les fichiers css
-  'docs.concat.css'
-));
 
 // TASK Pour générer une doc .md à partir du jsdoc
 gulp.task('docs.dist', () => {

@@ -1,11 +1,9 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp delta.scrap
- * gulp delta.csv
- * gulp delta.json
- * gulp delta.js
- * gulp delta.clean
- *
- * npm run delta
+/** DELTAT (npm run delta)
+ * delta.clean
+ * delta.csv
+ * delta.js
+ * delta.json
+ * delta.scrap
  */
 
 /* eslint-disable no-console,strict */

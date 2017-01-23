@@ -1,16 +1,16 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp tests
- * gulp tests.specs
- * gulp tests.jasmine
- * gulp tests.karma
- * gulp tests.saucelabs
- * gulp tests.coverage
+/** TESTS (npm run test)
+ * tests.coverage
+ * tests.coveralls
+ * tests.jasmine
+ * tests.karma
+ * tests.saucelabs
+ * tests.specs
  */
+
 const babel = require('gulp-babel');
 const config = require('../config');
 const coveralls = require('gulp-coveralls');
 const gulp = require('gulp');
-const sequence = require('gulp-sequence');
 const gutil = require('gulp-util');
 const istanbul = require('gulp-istanbul');
 const jasmineNode = require('gulp-jasmine');
@@ -141,11 +141,3 @@ gulp.task('tests.coveralls', () => {
       .red('process.env.COVERALLS is not set'));
   }
 });
-
-// Tâche des tests locaux
-gulp.task('tests', sequence(
-
-  // Couvertures des tests avec istanbul [tests.specs, dist.acte]
-  'tests.coverage'
-
-));
