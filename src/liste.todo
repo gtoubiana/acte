@@ -5,12 +5,12 @@ Todo MAJ 0.0.17 (PR):
   ☐ Passer le test saucelabs pour IE8 => https://github.com/bytbil/gulp-saucelabs
   ☐ Configurer les gh-pages dans ./docs (1 clic)
   ☐ Vérifiers la génération des docs .md et leur contenu
-  ☐ Configurer les atom.lin pour md, hbs, css, html...
+  ☐ Configurer les atom.lint pour md, hbs, css, html...
   ☐ Codeclimate => js, css, html, MAJ eslint
   ☐ Mettre à jour tous les npm
-  ☐ Mettre à jour tous les plugins atom
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Mettre à jour tous les plugins atom @done(2017-01-25 15:14) @project(Todo MAJ 0.0.17 (PR))
   ✔ Vérifier la traduction disqus @done(2017-01-23 14:35) @project(Todo MAJ 0.0.17 (PR))
   ✘ Nettoyer la liste des issues @cancelled(2017-01-23 14:15) @project(Todo MAJ 0.0.17 (PR))
   ✔ Uniformiser la liste des taches @done(2017-01-23 14:15) @project(Todo MAJ 0.0.17 (PR))
