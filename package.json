@@ -8,7 +8,7 @@
     "src": "/src"
   },
   "scripts": {
-    "fromscratch": "npm install && bower install && gulp && gulp tests.coverage",
+    "fromscratch": "npm install && bower install && npm run atom.install && gulp && gulp tests.coverage",
     "update": "ncu -m bower && ncu && npm-check -u",
     "pull": "git pull origin && npm run fromscratch",
     "test": "gulp && gulp tests.coverage && gulp tests.karma",
