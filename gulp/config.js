@@ -90,7 +90,7 @@ const acteScripts = [
 ];
 
 // Template Jsdoc du module UMD
-const bannerTop = `/*!
+const bannerTop = `/**
  * <%= pkg.name %> - <%= pkg.description %>.
  * @copyright 2015-Present, <%= pkg.author %>
  * @namespace acte

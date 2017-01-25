@@ -48,7 +48,7 @@ if (!Array.prototype.reduce) {
   // jscs:enable
 }
 
-/*!
+/**
  * acte - Une librairie JavaScript qui simplifie la recherche généalogique.
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
