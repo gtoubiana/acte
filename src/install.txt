@@ -12,7 +12,7 @@ INSTALLER DE ZERO (OSX)
    $ npm install -g npm && npm install -g npm-check-updates && npm install -g npm-check
 
 5. Installer les dépendances npm, bower et lancer un build
-   $ npm run build
+   $ npm run fromscratch
 
 6. Mancer une série de tests en local avec Karma si nécessaire (Chrome, Firefox, Safari, Opera)
    $ gulp tests.karma

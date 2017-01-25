@@ -8,9 +8,9 @@
     "src": "/src"
   },
   "scripts": {
-    "build": "npm install && bower install && gulp && gulp tests.coverage",
+    "fromscratch": "npm install && bower install && gulp && gulp tests.coverage",
     "update": "ncu -m bower && ncu && npm-check -u",
-    "pull": "git pull origin && npm run build",
+    "pull": "git pull origin && npm run fromscratch",
     "test": "gulp && gulp tests.coverage && gulp tests.karma",
     "atom.list": "apm list --installed --bare > ~/Github/acte/.atom.pkg",
     "atom.install": "apm install --packages-file ~/Github/acte/.atom.pkg",
@@ -111,7 +111,7 @@
     "gulp-sequence": "^0.4.6",
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-stats": "0.0.3",
+    "gulp-stats": "0.0.4",
     "gulp-task-listing": "^1.0.1",
     "gulp-uglify": "^2.0.0",
     "gulp-uncss": "^1.0.6",

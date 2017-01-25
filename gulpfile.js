@@ -1,3 +1,7 @@
+/** GULPFILE
+ * tasks
+ */
+
 // http://makina-corpus.com/blog/metier/2015/make-your-gulp-modular
 const gulp = require('gulp');
 const requireDir = require('require-dir');

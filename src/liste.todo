@@ -1,14 +1,14 @@
 Todo MAJ 0.0.17 (PR):
+  ☐ Nettoyer les issues github et créer des projets (tags pages 3/4 + création projets + supprimer obsolètes)
   ☐ Mise à jour eslint 2.13.1->3.14.0 en fonction de codeclimate 3.9.1 (eslint-3)
   ☐ Passer le test saucelabs pour IE8 => https://github.com/bytbil/gulp-saucelabs
-  ☐ Configurer les gh-pages dans ./docs
-  ☐ Vérifier la traduction disqus
-  ☐ Nettoyer les issues github
+  ☐ Configurer les gh-pages dans ./docs (1 clic)
   ☐ Codeclimate => js, css, html, MAJ eslint
-  ☐ Mettre à jour les npm
-  ☐ Mettre à jour les plugins atom
+  ☐ Mettre à jour tous les npm
+  ☐ Mettre à jour tous les plugins atom
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Vérifier la traduction disqus @done(2017-01-23 14:35) @project(Todo MAJ 0.0.17 (PR))
   ✘ Nettoyer la liste des issues @cancelled(2017-01-23 14:15) @project(Todo MAJ 0.0.17 (PR))
   ✔ Uniformiser la liste des taches @done(2017-01-23 14:15) @project(Todo MAJ 0.0.17 (PR))
   ✔ [TRAVIS]: bugs avec eslint - MAJ ? vérifier tolérance Codeclimate/Atom @done(2017-01-23 13:30) @project(Todo MAJ 0.0.17 (PR))

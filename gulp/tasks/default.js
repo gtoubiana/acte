@@ -1,4 +1,5 @@
-/** DEFAULT (npm run build)
+/** DEFAULT (npm run fromscratch | npm run pull)
+ ** /!\ il y a des tâches dans le gulpfile
  * default
  */
 
