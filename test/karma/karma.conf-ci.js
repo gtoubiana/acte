@@ -104,8 +104,8 @@ module.exports = function karma(config) {
       testName:
         `[Travis-${process.env.TRAVIS_BUILD_NUMBER}] Karma Tests of Acte`,
       startConnect: false,
-      recordVideo: false,
-      recordScreenshots: false,
+      recordVideo: true,
+      recordScreenshots: true,
       build: process.env.TRAVIS_BUILD_NUMBER,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
@@ -117,8 +117,8 @@ module.exports = function karma(config) {
     sauceLabs = {
       testName: '[Local] Karma Tests of Acte',
       startConnect: true,
-      recordVideo: false,
-      recordScreenshots: false,
+      recordVideo: true,
+      recordScreenshots: true,
 
       // Variables d'environnement obligatoires (#90)
       username: process.env.SAUCE_USERNAME,
