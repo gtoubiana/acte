@@ -81,14 +81,14 @@ module.exports = function karma(config) {
       browserName: 'internet explorer',
       version: '10',
       platform: 'Windows 8',
-    },
+    },*/
+
     sl_ie9_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '9',
       platform: 'Windows 7',
-    },*/
-
+    },
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
@@ -111,8 +111,8 @@ module.exports = function karma(config) {
       testName:
         `[Travis-${process.env.TRAVIS_BUILD_NUMBER}] Karma Tests of Acte`,
       startConnect: false,
-      recordVideo: true,
-      recordScreenshots: true,
+      recordVideo: false,
+      recordScreenshots: false,
       build: process.env.TRAVIS_BUILD_NUMBER,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
@@ -197,6 +197,6 @@ module.exports = function karma(config) {
     // Launcher config : https://github.com/karma-runner/karma-sauce-launcher
     sauceLabs,
     customLaunchers,
-    captureTimeout: 360000,
+    captureTimeout: 240000,
   });
 };
