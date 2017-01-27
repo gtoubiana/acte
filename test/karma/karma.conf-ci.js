@@ -2,7 +2,7 @@ module.exports = function karma(config) {
   // Check out https://saucelabs.com/platforms
   const customLaunchers = {
 
-    sl_phone_ios: {
+    /* sl_phone_ios: {
       base: 'SauceLabs',
       browserName: 'iphone',
       platform: 'OS X 10.10',
@@ -87,7 +87,8 @@ module.exports = function karma(config) {
       browserName: 'internet explorer',
       version: '9',
       platform: 'Windows 7',
-    },
+    },*/
+
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
@@ -196,6 +197,6 @@ module.exports = function karma(config) {
     // Launcher config : https://github.com/karma-runner/karma-sauce-launcher
     sauceLabs,
     customLaunchers,
-    captureTimeout: 240000,
+    captureTimeout: 360000,
   });
 };
