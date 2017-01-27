@@ -42,6 +42,6 @@ notifications:
     recipients:
     - gilles.toubiana@yahoo.fr
     on_failure: always
-cache:
-  directories:
-    - node_modules
+# cache:
+  # directories:
+    # - node_modules
