@@ -94,6 +94,12 @@ module.exports = function karma(config) {
       version: '8',
       platform: 'Windows 7',
     },
+    sl_ie8_wxp: {
+      base: 'SauceLabs',
+      browserName: 'internet explorer',
+      version: '8',
+      platform: 'Windows XP',
+    },
   };
   let sauceLabs;
   let concurrency;
@@ -104,8 +110,8 @@ module.exports = function karma(config) {
       testName:
         `[Travis-${process.env.TRAVIS_BUILD_NUMBER}] Karma Tests of Acte`,
       startConnect: false,
-      recordVideo: false,
-      recordScreenshots: false,
+      recordVideo: true,
+      recordScreenshots: true,
       build: process.env.TRAVIS_BUILD_NUMBER,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
