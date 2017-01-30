@@ -90,6 +90,7 @@ module.exports = function karma(config) {
       platform: 'Windows 7',
     },
     /*
+    // voir gulp tests.saucelabs.ie8
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',

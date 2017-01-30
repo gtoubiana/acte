@@ -52,9 +52,11 @@ gulp.task('default', sequence(
   'docs.script.es5',
   'docs.script.es3',
   'docs.concat.js',
-  'docs.concat.css',
+  'docs.concat.css'
 
   // Validation du html de la demo
-  'lint.docs.html'
+  // BUG : Error: Attribute “placeholder” is only allowed when the input
+  // type is “email”, “number”, “number”, “password”, “password” or “text”.
+  // 'lint.docs.html'
 
 ));

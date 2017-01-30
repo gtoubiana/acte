@@ -1,13 +1,14 @@
 Todo MAJ 0.0.17 (PR):
   ☐ Nettoyer les issues github et créer des projets (tags pages 3/4 + création projets + supprimer obsolètes)
+  ☐ BUG html linter BUG : Error: Attribute “placeholder” in search... (désactivé)
   ☐ Mise à jour eslint 2.13.1->3.14.0 en fonction de codeclimate 3.9.1 (eslint-3) ou supprimer codeclimate
-  ☐ Passer le test saucelabs pour IE8 => https://github.com/bytbil/gulp-saucelabs
   ☐ Configurer les gh-pages dans ./docs (1 clic)
   ☐ Configurer les atom.lint pour md, hbs, css, html...
   ☐ Codeclimate => js, css, html, MAJ eslint
   ☐ Mettre à jour tous les npm
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+  ✔ Passer le test saucelabs pour IE8 => https://github.com/bytbil/gulp-saucelabs @done(2017-01-30 15:23) @project(Todo MAJ 0.0.17 (PR))
   ✔ Vérifiers la génération des docs .md et leur contenu @done(2017-01-27 13:54) @project(Todo MAJ 0.0.17 (PR))
   ✔ BUG : avec la génération de l'API dans le readme.md de /dist @done(2017-01-27 13:54) @project(Todo MAJ 0.0.17 (PR))
   ✔ Mettre à jour tous les plugins atom @done(2017-01-25 15:14) @project(Todo MAJ 0.0.17 (PR))
