@@ -1,5 +1,6 @@
 module.exports = function karma(config) {
   // Check out https://saucelabs.com/platforms
+
   const customLaunchers = {
 
     sl_phone_ios: {
@@ -88,12 +89,14 @@ module.exports = function karma(config) {
       version: '9',
       platform: 'Windows 7',
     },
+    /*
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '8',
       platform: 'Windows 7',
     },
+    */
   };
   let sauceLabs;
   let concurrency;
@@ -139,6 +142,7 @@ module.exports = function karma(config) {
 
     // list of files / patterns to load in the browser
     files: [
+
       '../jasmine/lib/acte.js',
       '../jasmine/lib/acteSpec.js',
     ],

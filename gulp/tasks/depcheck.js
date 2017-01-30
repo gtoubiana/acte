@@ -52,6 +52,7 @@ require('karma-firefox-launcher');
 require('karma-jasmine');
 require('karma-opera-launcher');
 require('karma-safari-launcher');
+require('karma-ie-launcher');
 require('karma-sauce-launcher');
 
 // Dépendances TESTS
