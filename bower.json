@@ -27,5 +27,8 @@
     "respond": "^1.4.2",
     "html5shiv": "^3.7.3",
     "jquery-ui": "^1.12.1"
+  },
+  "devDependencies": {
+    "jasmine-jsreporter": "^0.1.2"
   }
 }

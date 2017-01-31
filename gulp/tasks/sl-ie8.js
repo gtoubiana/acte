@@ -17,7 +17,7 @@ gulp.task('sl-ie8', () => {
         version: '8',
       },
     ],
-    onTestComplete: (result, callback) => {
+    onTestSuiteComplete: (result, callback) => {
       const user = process.env.SAUCE_USERNAME;
       const pass = process.env.SAUCE_ACCESS_KEY;
 

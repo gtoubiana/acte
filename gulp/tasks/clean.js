@@ -24,6 +24,7 @@ gulp.task('clean.dist', (done) => {
 gulp.task('clean.tests', (done) => {
   const stream = del([
     `${config.paths.testJasmine}/*.js`,
+    `!${config.paths.testJasmine}/jasmine-jsreporter.js`,
     `${config.paths.testJasmine}/lib/`,
     `${config.paths.testCov}`,
   ], done);
