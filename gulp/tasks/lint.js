@@ -171,6 +171,10 @@ gulp.task('lint.docs.css', () => {
 gulp.task('lint.docs.html', () => {
   const options = {
     format: 'text',
+
+    validator: 'http://html5.validator.nu',
+
+    // validator: 'http://validator.w3.org/nu/',
   };
 
   fse.readFile(`${config.paths.docs}/index.html`, 'utf8', (err, html) => {
