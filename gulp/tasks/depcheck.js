@@ -43,7 +43,6 @@ require('eslint-plugin-jsx-a11y');
 require('eslint-plugin-react');
 
 // Dépendances GULP
-require('gulp-stats')(gulp);
 require('gulp-util');
 
 // Dépendances KARMA
