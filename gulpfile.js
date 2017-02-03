@@ -8,7 +8,7 @@ const requireDir = require('require-dir');
 const taskListing = require('gulp-task-listing');
 
 // TASK pour lister les taches
-gulp.task('tasks', taskListing);
+gulp.task('tasks', taskListing.withFilters(/\./));
 
 // INCLUSION des taches
 requireDir('./gulp/tasks', {

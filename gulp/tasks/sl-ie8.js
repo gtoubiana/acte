@@ -3,7 +3,7 @@ const saucelabs = require('gulp-saucelabs');
 const connect = require('gulp-connect');
 
 /* eslint-disable no-undef, no-unused-vars, no-negated-condition, no-console */
-gulp.task('sl-ie8', () => {
+gulp.task('ie8', () => {
   const options = {
     username: process.env.SAUCE_USERNAME,
     key: process.env.SAUCE_ACCESS_KEY,
@@ -41,7 +41,7 @@ gulp.task('sl-ie8', () => {
 });
 
 // Start local http server
-gulp.task('connect-ie8', () => {
+gulp.task('ie8.connect', () => {
   console.log('Voir https://saucelabs.com/beta/dashboard/tests (cmd + double-clic)');
   connect.server({ port: 3000, root: './' });
 });
@@ -49,9 +49,9 @@ gulp.task('connect-ie8', () => {
 /* eslint-enable no-undef, no-unused-vars, no-negated-condition, no-console */
 
 // Close down the http server
-gulp.task('disconnect-ie8', () => {
+gulp.task('ie8.disconnect', () => {
   connect.serverClose();
 });
 
 gulp.task('tests.saucelabs.ie8',
-  ['connect-ie8', 'sl-ie8'], () => gulp.start('disconnect-ie8'));
+  ['ie8.connect', 'ie8'], () => gulp.start('ie8.disconnect'));

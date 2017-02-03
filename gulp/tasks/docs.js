@@ -164,7 +164,10 @@ gulp.task('docs.assets', () => {
             /* eslint-disable max-nested-callbacks */
             .on('end', () => {
               const stream4 = gulp.src(
-                [`${config.paths.src}/docs/img/favicon.ico`])
+                [
+                  `${config.paths.src}/docs/img/favicon.ico`,
+                  `${config.paths.src}/docs/README.md`,
+                ])
                 .pipe(gulp.dest(`${config.paths.docs}/`))
                 .on('end', () => {
                   const stream5 = gulp.src(
