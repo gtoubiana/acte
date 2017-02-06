@@ -11,6 +11,7 @@
 ## Sommaire
  - [Description](#description)
  - [Installation](#installation)
+ - [Structure](#structure)
  - [Compatibilité](#compatibilite)
  - [Documentation](#documentation)
  - [Licence](#licence)
@@ -21,17 +22,23 @@
 <a name="installation"></a>
 
 ## Installation
+Plusieurs options s'offrent à vous :
+- Télécharger la dernière version ([{{ name }}-{{ version }}-dist.zip]({{ homepage }}/blob/master/dist/{{ name }}-{{ version }}-dist.zip?raw=true))
+- Installer avec [npm](https://www.npmjs.com/) : `npm install {{ name }} --save`
+<a name="structure"></a>
 
-### Pour Node.js :
+## Structure
+Au sein de votre téléchargement, vous trouverez les fichiers et dossiers suivants :
 ```
-$ npm install {{ name }} --save
+acte
+└── dist
+    ├── {{ name }}-{{ version }}-dist.zip
+    ├── {{ name }}.min.js
+    ├── {{ name }}.min.js.map
+    └── README.md
 ```
+L'archive `.zip` contient le script dans sa version minifiée, une source map pour déboguer et un fichier README écrit en markdown, contenant la documentation pour les développeurs.
 
-### Pour le navigateur :
-Téléchargez et décompressez la dernière archive zip ([{{ name }}-{{ version }}-dist.zip]({{ homepage }}/blob/master/dist/{{ name }}-{{ version }}-dist.zip?raw=true)), puis appelez le script `{{ name }}.min.js` dans votre page html.
-```html
-<script type="text/javascript" src="{{ name }}.min.js"></script>
-```
 <a name="compatibilite"></a>
 
 ## Compatibilité
@@ -40,15 +47,12 @@ Le script fonctionne également avec Internet Explorer 8 pour le moment.
 <a name="documentation"></a>
 
 ## Documentation
-- Essayez la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
 - [API]({{ homepage }}/blob/master/dist/README.md#documentation-de-acte) générée par jsdoc-to-markdown.
 - [Tests unitaires]({{ homepage }}/blob/master/test/jasmine/acteSpec.js) rédigés pour Node et Jasmine.
 - [Quelques Exemples et recettes]({{ homepage }}/blob/master/test/spec-Recettes.js).
+- Essayez la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
 <a name="licence"></a>
 
 ## Licence
- - Le code de ce script est sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE).
-
-* * *
-Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/) - 2015-Présent.<br>
+{{ name }} est créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/) - 2015-Présent.<br>
 [Code](https://github.com/gtoubiana/acte) sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE), [documentation](https://github.com/gtoubiana/acte/blob/master/dist/README.md) sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).
