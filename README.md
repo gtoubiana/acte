@@ -23,8 +23,8 @@ Une librairie JavaScript qui simplifie la recherche généalogique.
 
 ## Installation
 Plusieurs options s'offrent à vous :
-- Télécharger la dernière version ([acte-0.0.17-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true))
-- Installer avec [npm](https://www.npmjs.com/) : `npm install acte --save`
+ - Télécharger la dernière version ([acte-0.0.17-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.17-dist.zip?raw=true))
+ - Installer avec [npm](https://www.npmjs.com/) : `npm install acte --save`
 <a name="structure"></a>
 
 ## Structure
@@ -47,10 +47,10 @@ Le script fonctionne également avec Internet Explorer 8 pour le moment.
 <a name="documentation"></a>
 
 ## Documentation
-- [API](https://github.com/gtoubiana/acte/blob/master/dist/README.md#documentation-de-acte) générée par jsdoc-to-markdown.
-- [Tests unitaires](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js) rédigés pour Node et Jasmine.
-- [Quelques Exemples et recettes](https://github.com/gtoubiana/acte/blob/master/test/spec-Recettes.js).
-- Essayez la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
+ - [API](https://github.com/gtoubiana/acte/blob/master/dist/README.md#documentation-de-acte) générée par jsdoc-to-markdown.
+ - [Tests unitaires](https://github.com/gtoubiana/acte/blob/master/test/jasmine/acteSpec.js) rédigés pour Node et Jasmine.
+ - [Quelques Exemples et recettes](https://github.com/gtoubiana/acte/blob/master/test/spec-Recettes.js).
+ - Essayez la librairie dans votre navigateur avec [tonicdev](https://tonicdev.com/npm/acte).
 <a name="licence"></a>
 
 ## Licence
