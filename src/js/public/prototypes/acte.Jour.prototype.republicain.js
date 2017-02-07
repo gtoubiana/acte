@@ -14,8 +14,8 @@
  * @example
  * new acte.Jour('1/1/1800').republicain() // '11 nivôse an VIII'
  * new acte.Jour('').republicain(0, 'Erreur.') // 'Erreur.'
- * new acte.Jour('3 avril 1805').republicain('%Jz/%Dz/%Mz', 0, ((r, o) => {
- *   const an = (o.A % 100) < 10 ? `0${o.A % 100}` : o.A % 100;
+ * new acte.Jour('3 avril 1805').republicain('%Jz/%Dz/%Mz', 0, ((r, obj) => {
+ *   const an = acte.prefixeZero(obj.A % 100);
  *   return `${r}/${an}`;
  * }))) // '13/02/07/13'
  */

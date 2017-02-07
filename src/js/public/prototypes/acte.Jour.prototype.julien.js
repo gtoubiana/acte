@@ -15,7 +15,7 @@
  * new acte.Jour('1/1/1600').julien() // '22 décembre 1599'
  * new acte.Jour('').julien(0, 'Erreur.') // 'Erreur.'
  * new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, ((res, obj) => {
- *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+ *   const an = acte.prefixeZero(obj.A % 100);
  *   return `${res}/${an}`;
  * }))) // '24/03/05'
  */

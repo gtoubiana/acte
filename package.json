@@ -137,5 +137,5 @@
     "require-dir": "^0.3.0",
     "website-scraper": "^1.1.1"
   },
-  "tonicExample": "const acte = require('acte');\nconst jr = new acte.Jour('17 8bre 1802');\nconsole.log(jr.gregorien());\nconsole.log(jr.julien());\nconsole.log(jr.republicain());\nconsole.log(jr.gregorien('Le %JSlb %JMlb %Mlb est le %JAlob jour de l\\'année %Alb.'));\nconsole.log(jr.gregorien('%Jz/%Mz', 0, ((res, obj) => {\n  const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;\n  return `${res}/${an}`;\n})));"
+  "tonicExample": "const acte = require('acte');\nconst jr = new acte.Jour('17 8bre 1802');\nconsole.log(jr.gregorien());\nconsole.log(jr.julien());\nconsole.log(jr.republicain());\nconsole.log(jr.gregorien('Le %JSlb %JMlb %Mlb est le %JAlob jour de l\\'année %Alb.'));\nconsole.log(jr.gregorien('%Jz/%Mz', 0, ((res, obj) => {\n  const an = acte.prefixeZero(obj.A % 100);\n  return `${res}/${an}`;\n})));"
 }

@@ -408,10 +408,9 @@ describe('new acte.Jour().gregorien()', () => {
     () => {
       expect(new acte.Jour('1 février 1603')
           .gregorien(0, 0, ((res, obj) => {
-            const jour = obj.J < 10 ? `0${obj.J}` : obj.J;
-            const mois = obj.M < 10 ? `0${obj.M}` : obj.M;
-            const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj
-              .A % 100;
+            const jour = acte.prefixeZero(obj.J);
+            const mois = acte.prefixeZero(obj.M);
+            const an = acte.prefixeZero(obj.A % 100);
 
             return `${jour}/${mois}/${an}`;
           })))

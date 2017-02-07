@@ -36,7 +36,7 @@
  * new acte.Jour('1/1/1600').gregorien() // '1er janvier 1600'
  * new acte.Jour('').gregorien(0, 'Erreur.') // 'Erreur.'
  * new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, ((res, obj) => {
- *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+ *   const an = acte.prefixeZero(obj.A % 100);
  *   return `${res}/${an}`;
  * }))) // '03/04/05'
  */

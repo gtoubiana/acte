@@ -223,8 +223,7 @@ describe('new acte.Jour().julien()', () => {
     () => {
       expect(new acte.Jour('3 avril 605')
           .julien('%Jz/%Mz', 0, ((res, obj) => {
-            const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj
-              .A % 100;
+            const an = acte.prefixeZero(obj.A % 100);
 
             return `${res}/${an}`;
           })))
