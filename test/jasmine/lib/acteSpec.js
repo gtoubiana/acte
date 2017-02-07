@@ -421,9 +421,9 @@ describe('new acte.Jour().gregorien()', function () {
   // Callback functions
   it('new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('1 février 1603').gregorien(0, 0, function (res, obj) {
-      var jour = obj.J < 10 ? '0' + obj.J : obj.J;
-      var mois = obj.M < 10 ? '0' + obj.M : obj.M;
-      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+      var jour = acte.prefixeZero(obj.J);
+      var mois = acte.prefixeZero(obj.M);
+      var an = acte.prefixeZero(obj.A % 100);
 
       return jour + '/' + mois + '/' + an;
     })).toEqual('01/02/03');
@@ -559,7 +559,7 @@ describe('new acte.Jour().julien()', function () {
   // Callback functions
   it('new acte.Jour().julien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('3 avril 605').julien('%Jz/%Mz', 0, function (res, obj) {
-      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+      var an = acte.prefixeZero(obj.A % 100);
 
       return res + '/' + an;
     })).toEqual('03/04/05');
@@ -672,7 +672,7 @@ describe('new acte.Jour().republicain()', function () {
   // Callback functions
   it('new acte.Jour().republicain(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('3 avril 1805').republicain('%Jz/%Mz', 0, function (res, obj) {
-      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+      var an = acte.prefixeZero(obj.A % 100);
 
       return res + '/' + an;
     })).toEqual('13/07/13');

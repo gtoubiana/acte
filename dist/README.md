@@ -94,7 +94,7 @@ Pour formater une date grégorienne.
 new acte.Jour('1/1/1600').gregorien() // '1er janvier 1600'
 new acte.Jour('').gregorien(0, 'Erreur.') // 'Erreur.'
 new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, ((res, obj) => {
-  const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+  const an = acte.prefixeZero(obj.A % 100);
   return `${res}/${an}`;
 }))) // '03/04/05'
 ```
@@ -122,7 +122,7 @@ Pour formater une date julienne.
 new acte.Jour('1/1/1600').julien() // '22 décembre 1599'
 new acte.Jour('').julien(0, 'Erreur.') // 'Erreur.'
 new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, ((res, obj) => {
-  const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+  const an = acte.prefixeZero(obj.A % 100);
   return `${res}/${an}`;
 }))) // '24/03/05'
 ```
@@ -149,8 +149,8 @@ Pour formater une date républicaine.
 ```js
 new acte.Jour('1/1/1800').republicain() // '11 nivôse an VIII'
 new acte.Jour('').republicain(0, 'Erreur.') // 'Erreur.'
-new acte.Jour('3 avril 1805').republicain('%Jz/%Dz/%Mz', 0, ((r, o) => {
-  const an = (o.A % 100) < 10 ? `0${o.A % 100}` : o.A % 100;
+new acte.Jour('3 avril 1805').republicain('%Jz/%Dz/%Mz', 0, ((r, obj) => {
+  const an = acte.prefixeZero(obj.A % 100);
   return `${r}/${an}`;
 }))) // '13/02/07/13'
 ```
