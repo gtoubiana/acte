@@ -13,6 +13,7 @@ const paths = {
   bowerJquery: './bower_components/jquery/dist',
   bowerJqueryUI: './bower_components/jquery-ui',
   bowerRespond: './bower_components/respond/dest',
+  bowerShim: './bower_components/es5-shim',
   bowerShiv: './bower_components/html5shiv/dist',
   docs: './docs',
   dist: './dist',

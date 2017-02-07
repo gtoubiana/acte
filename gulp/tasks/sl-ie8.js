@@ -1,6 +1,14 @@
 const gulp = require('gulp');
 const saucelabs = require('gulp-saucelabs');
+const config = require('../config');
 const connect = require('gulp-connect');
+
+gulp.task('ie8.shim', () => {
+  const stream = gulp.src(`${config.paths.bowerShim}/*.min.js`)
+  .pipe(gulp.dest(`${config.paths.testJasmine}/lib/`));
+
+  return stream;
+});
 
 /* eslint-disable no-undef, no-unused-vars, no-negated-condition, no-console */
 gulp.task('ie8', () => {
