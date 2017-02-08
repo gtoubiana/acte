@@ -17,7 +17,7 @@ const scraper = require('website-scraper');
 
 /* TASK: copier les données dans ./src/data/deltat.csv */
 gulp.task('delta.scrap', () => {
-  const stream = scraper.scrape({
+  const stream = scraper({
     urls: [
       {
         url: 'http://maia.usno.navy.mil/ser7/deltat.data',

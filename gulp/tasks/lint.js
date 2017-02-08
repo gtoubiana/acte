@@ -16,7 +16,7 @@
 
 const concat = require('gulp-concat');
 const config = require('../config');
-const csslint = require('gulp-csslint');
+const gulpStylelint = require('gulp-stylelint');
 const eslint = require('gulp-eslint');
 const validator = require('html-validator');
 const fse = require('fs-extra');
@@ -158,9 +158,11 @@ gulp.task('lint.docs.css', () => {
     .pipe(prettify({
       config: `${config.paths.src}/.jsbeautifyrc`,
     }))
-    .pipe(csslint())
-    .pipe(csslint([`${config.paths.src}/docs/css/.csslintrc`]))
-    .pipe(csslint.formatter())
+    .pipe(gulpStylelint({
+      reporters: [
+        { formatter: 'string', console: true },
+      ],
+    }))
     .pipe(stylish())
     .pipe(gulp.dest(`${config.paths.src}/docs/css/`));
 
