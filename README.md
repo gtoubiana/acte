@@ -2,7 +2,7 @@
 # acte v0.0.17
 [![NPM version](https://img.shields.io/npm/v/acte.svg)](https://www.npmjs.com/package/acte)
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)
-[![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg)](https://david-dm.org/gtoubiana/acte?type=dev)
+[![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg?maxAge=2592000)](https://david-dm.org/gtoubiana/acte?type=dev)
 [![Code Climate](https://codeclimate.com/github/gtoubiana/acte/badges/gpa.svg)](https://codeclimate.com/github/gtoubiana/acte)
 [![Coverage Status](https://coveralls.io/repos/github/gtoubiana/acte/badge.svg?branch=master&bust=1)](https://coveralls.io/github/gtoubiana/acte?branch=master)
 [![Inline docs](http://inch-ci.org/github/gtoubiana/acte.svg?branch=master)](http://inch-ci.org/github/gtoubiana/acte)
