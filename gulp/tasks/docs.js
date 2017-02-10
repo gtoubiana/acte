@@ -96,6 +96,16 @@ gulp.task('docs.constants', () => {
 // TASK Pour générer une doc .md à partir du jsdoc
 gulp.task('docs.functions', () => {
   const stream = gulp.src(`${config.paths.privFunc}/*.js`)
+  .pipe(babel({
+    plugins: [
+
+      // es2017 preset
+      'syntax-trailing-function-commas',
+
+      // es2016 preset
+      'transform-exponentiation-operator',
+    ],
+  }))
     .pipe(concat('README.md'))
     .pipe(jsdoc2md({
       private: true,
