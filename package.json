@@ -52,6 +52,7 @@
   "devDependencies": {
     "babel-helper-transform-fixture-test-runner": "^6.22.0",
     "babel-plugin-check-es2015-constants": "^6.22.0",
+    "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.22.0",
     "babel-plugin-transform-es2015-block-scoping": "^6.22.0",
@@ -73,6 +74,7 @@
     "babel-plugin-transform-es2015-unicode-regex": "^6.22.0",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-plugin-transform-exponentiation-operator": "^6.22.0",
     "babel-plugin-transform-jscript": "^6.22.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-plugin-transform-regenerator": "^6.22.0",
@@ -134,6 +136,7 @@
     "karma-safari-launcher": "^1.0.0",
     "karma-sauce-launcher": "^1.1.0",
     "lazypipe": "^1.0.1",
+    "pump": "^1.0.2",
     "require-dir": "^0.3.0",
     "website-scraper": "^2.1.0"
   },

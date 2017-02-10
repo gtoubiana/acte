@@ -24,7 +24,7 @@ const romainVersArabe = (romain) => {
   let i = romain.length - 1;
   const tempRomain = romain.toUpperCase();
 
-  for (i; i >= 0; i--) {
+  for (i; i >= 0; i -= 1) {
     if (lookup[tempRomain[i]] < lookup[tempRomain[i + 1]]) {
       arabe -= lookup[tempRomain[i]];
     } else {

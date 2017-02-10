@@ -35,6 +35,8 @@ require('babel-plugin-transform-jscript');
 require('babel-plugin-transform-object-assign');
 require('babel-plugin-transform-regenerator');
 require('babel-plugin-transform-undefined-to-void');
+require('babel-plugin-transform-exponentiation-operator');
+require('babel-plugin-syntax-trailing-function-commas');
 
 // Dépendances ESLINT
 require('eslint-config-airbnb');

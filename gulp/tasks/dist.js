@@ -19,6 +19,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const wrap = require('gulp-wrap');
 const zip = require('gulp-zip');
+const pump = require('pump');
 
 // var rep = require('gulp-replace');
 
@@ -34,7 +35,9 @@ gulp.task('dist.acte.es5', () => {
   .pipe(babel({
     plugins: [
 
-      // es2015 preset
+      // es2017 preset
+      'syntaxTrailingFunctionCommas',
+      'transform-exponentiation-operator',
       'transform-es2015-template-literals',
       'transform-es2015-literals',
       'transform-es2015-function-name',
@@ -152,4 +155,13 @@ gulp.task('dist.zip', () => {
     .pipe(gulp.dest(config.paths.dist));
 
   return stream;
+});
+
+gulp.task('compress', (cb) => {
+  pump([
+    gulp.src(`${config.paths.testJasmine}/lib/acte.js`),
+    uglify(),
+    gulp.dest(config.paths.dist),
+  ],
+  cb);
 });

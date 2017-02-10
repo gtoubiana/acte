@@ -20,7 +20,7 @@ const obliquiteEcliptique = (jj) => {
   let i;
 
   if (Math.abs(u) < 1.0) {
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 10; i += 1) {
       eps += (oTerms[i] / 3600.0) * v;
       v *= u;
     }

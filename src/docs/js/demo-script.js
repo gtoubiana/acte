@@ -13,7 +13,7 @@ $(document).ready(() => {
     $('.jumbotron').css('background-position',
       `0px ${(0 -
       (Math.max(document.documentElement.scrollTop, document.body.scrollTop) /
-      4))}px`
+      4))}px`,
     );
   });
 
@@ -38,7 +38,7 @@ acte.jourRepublicain)}</tr>
 ${jr.julien(
 '<td class="success"><strong>%JSl %JMp %Mlb %A</strong><br>{sC}</td>',
 '<td class="active">Pas de correspondances</td>',
-acte.saintChretien)}</tr>`
+acte.saintChretien)}</tr>`,
     );
   };
 

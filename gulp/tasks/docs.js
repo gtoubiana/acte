@@ -197,7 +197,9 @@ gulp.task('docs.script.es5', () => {
   .pipe(babel({
     plugins: [
 
-      // es2015 preset
+      // es2017 preset
+      'syntaxTrailingFunctionCommas',
+      'transform-exponentiation-operator',
       'transform-es2015-template-literals',
       'transform-es2015-literals',
       'transform-es2015-function-name',
