@@ -42,7 +42,8 @@ gulp.task('default', sequence(
   // Générations des documentations
   'docs.dist',
   'docs.constants',
-  'docs.functions',
+
+  // 'docs.functions',
   'docs.readme',
 
   // Génération du zip

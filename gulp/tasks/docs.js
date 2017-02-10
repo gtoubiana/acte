@@ -198,8 +198,12 @@ gulp.task('docs.script.es5', () => {
     plugins: [
 
       // es2017 preset
-      'syntaxTrailingFunctionCommas',
+      'syntax-trailing-function-commas',
+
+      // es2016 preset
       'transform-exponentiation-operator',
+
+      // es2015 preset
       'transform-es2015-template-literals',
       'transform-es2015-literals',
       'transform-es2015-function-name',

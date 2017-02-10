@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Les autres metatags viennent après les 3 ci-dessus -->
+   <meta name="description" content="acte.js">
+   <meta name="author" content="Gilles Toubiana">
+   <link rel="shortcut icon" href="demo/favicon.ico" type="image/x-icon">
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
+   <title>Acte.js</title>
+   <link href="css/style.css" rel="stylesheet">
+   <!-- IE8 -->
+   <!--[if lt IE 9]>
+   <script src="js/html5shiv.min.js"></script>
+   <script src="js/respond.min.js"></script>
+   <![endif]-->
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <a class="pull-right btn btn-outline-inverse hidden-xs" href="https://github.com/gtoubiana/acte#sommaire">Développeurs » </a>
+          <img src="img/logo-blanc.png" class="img-responsive logo" alt="logo">
+          <br><p>Une librairie pour manipuler les dates<span class="hidden-xs"> grégoriennes, républicaines et juliennes</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 parent">
+        <h2 class="violet">Convertir<span class="hidden-xs"> une date</span> <small>(<a class="exemples showhide"
+            data-link-text="Exemples"
+            tabindex="3"
+            href="#">Exemples</a>)</small></h2>
+        <div class="alert alert-info btnlh description" role="alert">
+          <strong>Cliquez sur une date pour tester la conversion : </strong><br>
+          <button type="button" class="btn btn-default btn-exemple">5/12/1792</button>
+          <button type="button" class="btn btn-default btn-exemple">6 décembre 1792</button>
+          <button type="button" class="btn btn-default btn-exemple">7 Xbre 1792</button>
+          <button type="button" class="btn btn-default btn-exemple">17 frimaire an IV</button>
+          <button type="button" class="btn btn-default btn-exemple">1 Jer 1793</button>
+          <button type="button" class="btn btn-default btn-exemple">1er jan 1794</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="jour_debrider" class="col-md-6 parent">
+        <div id="validation_de_jour">
+          <label class="sr-only" for="jour">Jour</label>
+          <input class="form-control acte-input"
+            tabindex="1"
+            id="jour"
+            type="search"
+            placeholder="Entrez une date ici !">
+        </div>
+        <div class="checkbox">
+          <label>
+            <input id="limiter"
+              tabindex="2"
+              type="checkbox"
+              value="">
+            <span class="hidden-xs">Limiter </span>les correspondances (<a class="explications showhide"
+              data-link-text="Explications"
+              tabindex="4"
+              href="#"
+              >Explications</a>)
+          </label>
+        </div>
+        <div class="alert alert-info description" role="alert"><strong>Cochez cette case pour afficher des correspondances uniquement si les calendriers sont en usage à cette date.</strong><br>
+           - le <a href="https://fr.wikipedia.org/wiki/Calendrier_julien">calendrier julien</a> se termine le 4 octobre 1582 ;<br>
+           - le <a href="https://fr.wikipedia.org/wiki/Calendrier_gr%C3%A9gorien">calendrier grégorien</a> débute le 15 octobre 1582 ;<br>
+           - le <a href="https://fr.wikipedia.org/wiki/Calendrier_r%C3%A9publicain">calendrier républicain</a> fonctionne du 22 septembre 1792 au 31 décembre 1805 (puis de mars à mai 1871 pendant la Commune de Paris).
+         </div>
+      </div>
+      <div class="col-md-6" id="affichage_de_jour">
+        <table class="table table-bordered table-hover table-striped"><tbody></tbody></table>
+      </div>
+    </div>
+     <hr>
+     <div class="row">
+       <div class="col-md-12">
+         <div id="disqus_thread"></div>
+  <script>
+
+/**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW
+   *  TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT:
+   *  https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+  var disqus_config = function () {
+      this.page.url = PAGE_URL;
+      this.page.identifier = PAGE_IDENTIFIER;
+  };
+  */
+
+// DON'T EDIT BELOW THIS LINE
+(function () {
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//acte-1.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">
+    comments powered by Disqus.
+  </a>
+</noscript>
+     </div>
+     </div>
+     <hr>
+     <footer>
+        <p>Créé et maintenu par <a href="https://github.com/gtoubiana/">Gilles Toubiana</a> - 2015-Présent<br>
+<a href="https://github.com/gtoubiana/acte">Code</a> sous licence <a href="https://github.com/gtoubiana/acte/blob/master/LICENSE">MIT</a>, <a href="https://github.com/gtoubiana/acte/blob/master/dist/README.md">documentation</a> sous licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">CC BY 4.0</a>.
+</p>
+     </footer>
+  </div>
+   <!-- /container -->
+   <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <script src="js/script.js"></script>
+      <script id="dsq-count-scr" src="//acte-1.disqus.com/count.js" async></script>
+</body>
+</html>
