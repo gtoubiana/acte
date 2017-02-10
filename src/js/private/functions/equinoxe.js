@@ -30,14 +30,14 @@ const equinoxe = (an, item) => {
     Y = (an - 2000) / 1000;
   }
   const Jde0 = Jde0tab[item][0] + (Jde0tab[item][1] * Y) +
-    (Jde0tab[item][2] * Math.pow(Y, 2)) + (Jde0tab[item][3] *
-      Math.pow(Y, 3)) + (Jde0tab[item][4] * Math.pow(Y, 4));
+    (Jde0tab[item][2] * (Y ** 2)) + (Jde0tab[item][3] *
+      (Y ** 3)) + (Jde0tab[item][4] * (Y ** 4));
   const T = (Jde0 - 2451545.0) / 36525;
   const W = (35999.373 * T) - 2.47;
   const deltaL = 1 + (0.0334 * cosinus(W)) + (0.0007 * cosinus(2 * W));
 
   S = 0;
-  for (i = j = 0; i < 24; i++) {
+  for (i = 0, j = 0; i < 24; i += 1) {
     S += termesPerEquinoxes[j] *
       cosinus(termesPerEquinoxes[j + 1] +
         (termesPerEquinoxes[j + 2] * T));

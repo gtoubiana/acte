@@ -10,7 +10,7 @@
  * @example
  * absInt(-23.45); // 23
  */
-const absInt = num => {
+const absInt = (num) => {
   const result = Math.abs(parseInt(num, 10));
 
   return result;

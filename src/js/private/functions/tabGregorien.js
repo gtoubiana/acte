@@ -60,7 +60,7 @@ const tabGregorien = (saisie, limites) => {
           dateFinJulien[2])) {
         /* istanbul ignore if */
         if (tab[5] + retardJulien > joursDansLeMois[tab[6] - 1]) {
-          tab[0] = tab[5] + retardJulien - joursDansLeMois[tab[6] - 1];
+          tab[0] = (tab[5] + retardJulien) - joursDansLeMois[tab[6] - 1];
           tab[1] = tab[6] + 1;
         } else {
           tab[0] = tab[5] + retardJulien;
@@ -98,7 +98,7 @@ const tabGregorien = (saisie, limites) => {
 
       tab[9] = dateRepublicaine[3];
       tab[10] = dateRepublicaine[2];
-      tab[11] = (dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3];
+      tab[11] = ((dateRepublicaine[2] - 1) * 10) + dateRepublicaine[3];
       tab[12] = dateRepublicaine[1];
       tab[13] = dateRepublicaine[0];
     }

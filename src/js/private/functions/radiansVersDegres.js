@@ -10,7 +10,7 @@
  * @example
  * radiansVersDegres(1.5707963267948966); // 90
  */
-const radiansVersDegres = r => {
+const radiansVersDegres = (r) => {
   const result = (r * 180.0) / Math.PI;
 
   return result;

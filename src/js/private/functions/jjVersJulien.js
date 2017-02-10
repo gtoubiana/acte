@@ -10,7 +10,7 @@
  * @example
  * jjVersJulien(2457346.5); // [2015,11,7]
  */
-const jjVersJulien = jj => {
+const jjVersJulien = (jj) => {
   const b = Math.floor(jj + 0.5) + 1524;
   const c = Math.floor((b - 122.1) / 365.25);
   const d = Math.floor(365.25 * c);
@@ -20,7 +20,7 @@ const jjVersJulien = jj => {
   let an = Math.floor(mois > 2 ? c - 4716 : c - 4715);
 
   if (an < 1) {
-    an--;
+    an -= 1;
   }
 
   return [an, mois, jour];

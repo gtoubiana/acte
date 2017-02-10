@@ -6,6 +6,8 @@
 const gulp = require('gulp');
 const sequence = require('gulp-sequence');
 
+/* eslint-disable comma-dangle */
+
 // Tâche par défaut
 gulp.task('default', sequence(
 
@@ -55,8 +57,8 @@ gulp.task('default', sequence(
   'docs.concat.css',
 
   // Validation du html de la demo
-  // BUG : Error: Attribute “placeholder” is only allowed when the input
-  // type is “email”, “number”, “number”, “password”, “password” or “text”.
   'lint.docs.html'
 
 ));
+
+/* eslint-enable comma-dangle */

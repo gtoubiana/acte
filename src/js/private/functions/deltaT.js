@@ -15,9 +15,9 @@
  * deltaT(2015); // 67.855
  */
 
-const deltaT = an => {
+const deltaT = (an) => {
   let dt;
-  const maxindex = 1618 + delta.length * 2;
+  const maxindex = 1618 + (delta.length * 2);
 
   if ((an >= 1620) && (an < maxindex)) {
     const i = (an - 1620) / 2;

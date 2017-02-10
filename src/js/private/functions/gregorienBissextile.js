@@ -10,7 +10,7 @@
  * @example
  * gregorienBissextile(2012); // true
  */
-const gregorienBissextile = an => {
+const gregorienBissextile = (an) => {
   const result = ((an % 4) === 0) &&
     (!(((an % 100) === 0) && ((an % 400) !== 0)));
 

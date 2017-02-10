@@ -2,6 +2,13 @@
     "extends": "../.eslintrc",
 
     "rules": {
+      "comma-dangle": ["error", {
+        "arrays": "always",
+        "objects": "always",
+        "imports": "ignore",
+        "exports": "ignore",
+        "functions": "ignore",
+      }],
       "no-unused-vars": 0, // constants sont utilisées dans functions et classes
       "no-undef": 0, // classes et functions utilisent functions et constants
       "no-restricted-syntax": 0,

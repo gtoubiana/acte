@@ -30,9 +30,12 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const pkg = require('../../package.json');
 const sequence = require('gulp-sequence');
+
 const issueUrl = () => {
   /* eslint-disable strict */
+
   'use strict';
+
   const url = null;
   let gitUrl;
   let newUrl;
@@ -138,10 +141,12 @@ gulp.task('releases.github.releaser', (done) => {
       `${config.paths.partials}/changelogFooter.hbs`, 'utf8'),
     transform: function transform(commit) {
       /* eslint-disable no-param-reassign,strict */
+
       'use strict';
+
       let discard = true;
 
-      commit.notes.forEach(note => {
+      commit.notes.forEach((note) => {
         note.title = 'RÉTROCOMPATIBILITÉ';
         discard = false;
       });
@@ -222,6 +227,7 @@ gulp.task('releases.github.releaser', (done) => {
   });
 });
 
+/* eslint-disable comma-dangle */
 gulp.task('releases.github.publish', sequence(
     'releases.commit',
     'releases.push',
@@ -288,3 +294,5 @@ gulp.task('major', sequence(
     'default',
     'releases.github.publish'
 ));
+
+/* eslint-enable comma-dangle */

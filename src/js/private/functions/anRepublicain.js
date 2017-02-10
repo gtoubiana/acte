@@ -12,12 +12,12 @@
  * @example
  * anRepublicain(2379902.5); // [12, 2379857.5]
  */
-const anRepublicain = jj => {
+const anRepublicain = (jj) => {
   let guess = jjVersGregorien(jj)[0] - 2;
   let lasteq = equinoxeAParis(guess);
 
   while (lasteq > jj) {
-    guess--;
+    guess -= 1;
     lasteq = equinoxeAParis(guess);
   }
 
@@ -25,7 +25,7 @@ const anRepublicain = jj => {
 
   while (!((lasteq <= jj) && (jj < nexteq))) {
     lasteq = nexteq;
-    guess++;
+    guess += 1;
     nexteq = equinoxeAParis(guess);
   }
   const adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) + 1;

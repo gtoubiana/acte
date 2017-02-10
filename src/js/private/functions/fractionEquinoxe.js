@@ -12,7 +12,7 @@
  * @example
  * fractionEquinoxe(2015); // 2457288.855100263
  */
-const fractionEquinoxe = an => {
+const fractionEquinoxe = (an) => {
   const equJED = equinoxe(an, 2);
   const equJD = equJED - (deltaT(an) / (24 * 60 * 60));
   const equAPP = equJD + equationDuTemps(equJED);

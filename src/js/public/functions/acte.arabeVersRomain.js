@@ -34,7 +34,7 @@ acte.arabeVersRomain = (arabe) => {
 
   for (i in lookup) {
     /* istanbul ignore else  */
-    if (lookup.hasOwnProperty(i)) {
+    if (Object.prototype.hasOwnProperty.call(lookup, i)) {
       while (tempArabe >= lookup[i]) {
         romain += i;
         tempArabe -= lookup[i];

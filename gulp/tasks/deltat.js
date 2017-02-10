@@ -70,11 +70,13 @@ gulp.task('delta.json', () => {
 /* TASK: générer le fichier ./src/js/private/constants/delta.js */
 gulp.task('delta.js', () => {
   'use strict';
+
   const deltat = JSON.parse(fs.readFileSync('./src/data/deltat.json',
     'utf8'));
 
   const deltatAverageForOneYears = (current) => {
     'use strict';
+
     const currentYear = parseInt(current, 10);
     const test = deltat.filter((item) => {
       const result = parseInt(item.an, 10) === currentYear;
@@ -128,9 +130,12 @@ gulp.task('delta.js', () => {
         return console.log(err);
       }
 
+      /* eslint-disable comma-dangle */
       return console.log(
         `Le fichier delta.js pour 1620-${an} a été généré avec succès !`
       );
+
+      /* eslint-enable comma-dangle */
     });
 });
 

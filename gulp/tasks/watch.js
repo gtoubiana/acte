@@ -11,6 +11,8 @@ const concat = require('gulp-concat');
 const sequence = require('gulp-sequence');
 const wrap = require('gulp-wrap');
 
+/* eslint-disable comma-dangle */
+
 // Tâche de pré-watch
 gulp.task('prewatch', sequence(
 
@@ -18,6 +20,8 @@ gulp.task('prewatch', sequence(
   'tests.coverage'
 
 ));
+
+/* eslint-enable comma-dangle */
 
 // TASK Pour générer le script pour le watch
 gulp.task('watch.js', () => {

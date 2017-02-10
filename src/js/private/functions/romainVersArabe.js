@@ -10,7 +10,7 @@
  * @example
  * romainVersArabe('MMXII'); // 2012
  */
-const romainVersArabe = romain => {
+const romainVersArabe = (romain) => {
   const lookup = {
     I: 1,
     V: 5,

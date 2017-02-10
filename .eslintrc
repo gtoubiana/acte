@@ -21,6 +21,11 @@
         "min": 1,
         "max": 25
         }],
+      "import/no-extraneous-dependencies": ["error", {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }],
       "linebreak-style": [1, "unix"], # disallow mixed ‘LF’ and ‘CRLF’ as linebreaks
       "lines-around-comment": [1, { # enforce empty lines around comments - custom
         "beforeBlockComment": true,

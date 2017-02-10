@@ -34,7 +34,7 @@ const formatageDeJour = (format, erreur, rappel, df, dt, dd, dobj, pro) => {
         const res = balisesEtFiltres(x, dobj(tvg, pro));
 
         return res;
-      }
+      },
     );
     if (typeof rappel === 'function') {
       resultat = rappel(resultat, dobj(tvg, pro));

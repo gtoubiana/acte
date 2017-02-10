@@ -10,7 +10,7 @@
  * @example
  * julienBissextile(2017); // true
  */
-const julienBissextile = an => {
+const julienBissextile = (an) => {
   const result = reste(an, 4) === ((an > 0) ? 0 : 3);
 
   return result;

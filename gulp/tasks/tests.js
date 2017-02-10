@@ -64,6 +64,8 @@ gulp.task('tests.specs', () => {
         .pipe(gulp.dest(`${config.paths.testJasmine}/lib/`))
         .on('end', () => {
           // Générer les Specs utilisés par jasmine dans node
+
+          /* eslint-disable comma-dangle */
           const ssstream = gulp.src(
             [`${config.paths.testJasmine}/lib/acteSpec.js`])
             .pipe(wrap(
@@ -73,6 +75,8 @@ gulp.task('tests.specs', () => {
             .pipe(gulp.dest(config.paths.testJasmine));
 
           return ssstream;
+
+          /* eslint-enable comma-dangle */
         });
 
       return sstream;

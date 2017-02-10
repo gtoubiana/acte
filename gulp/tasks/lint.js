@@ -26,6 +26,7 @@ const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
 const sequence = require('gulp-sequence');
 const stylish = require('gulp-jscs-stylish');
+
 const lazyLint = lazypipe()
   .pipe(eslint)
   .pipe(eslint.format)
@@ -36,6 +37,7 @@ const lazyPrettyLint = lazypipe()
   })
   .pipe(lazyLint);
 
+/* eslint-disable comma-dangle */
 gulp.task('lint.src', sequence(
   'lint.constants',
   'lint.functions',
@@ -46,6 +48,8 @@ gulp.task('lint.src', sequence(
 gulp.task('lint.test', sequence(
   'lint.specs'
 ));
+
+/* eslint-enable comma-dangle */
 
 // Valider les scripts Gulp
 gulp.task('lint.gulp', () => {

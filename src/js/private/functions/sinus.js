@@ -10,7 +10,7 @@
  * @example
  * sinus(90); // 1
  */
-const sinus = d => {
+const sinus = (d) => {
   const result = Math.sin(degresVersRadians(d));
 
   return result;

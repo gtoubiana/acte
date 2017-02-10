@@ -35,10 +35,10 @@ acte.nombreEnLettres = (n, r) => {
   const mil = parseInt(abs / 1000, 10);
 
   // Centaines
-  const cent = parseInt(abs % 1000 / 100, 10);
+  const cent = parseInt((abs % 1000) / 100, 10);
 
   // Dixaines
-  const dix = parseInt(abs % 100 / 10, 10);
+  const dix = parseInt((abs % 100) / 10, 10);
 
   // Unités
   const unit = parseInt(abs % 10, 10);
@@ -89,7 +89,7 @@ acte.nombreEnLettres = (n, r) => {
   unitl = (abs > 0) ? sepunit + u[unit] : 'zéro';
 
   // Multiples de 10
-  if ((dix * 10 + unit) % 10 === 0) {
+  if (((dix * 10) + unit) % 10 === 0) {
     unitl = '';
   }
 
