@@ -1,5 +1,5 @@
 /** DEFAULT (npm run fromscratch | npm run pull)
- ** /!\ il y a des tâches dans le gulpfile
+ ** /!\ il y a quelques tâches dans ./gulpfile.js
  * default
  */
 
@@ -42,8 +42,7 @@ gulp.task('default', sequence(
   // Générations des documentations
   'docs.dist',
   'docs.constants',
-
-  // 'docs.functions',
+  'docs.functions',
   'docs.readme',
 
   // Génération du zip
