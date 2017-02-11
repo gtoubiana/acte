@@ -43,6 +43,6 @@ notifications:
     - gilles.toubiana@yahoo.fr
     on_failure: always
 # désactiver le cache si nécessaire
-cache:
-  directories:
-    - node_modules
+# cache:
+#   directories:
+#     - node_modules
