@@ -14,7 +14,7 @@
     "test": "gulp && gulp tests.coverage && gulp tests.karma",
     "tasks": "gulp tasks > ~/Github/acte/gulp/README.md",
     "atom.list": "apm list --installed --bare > ~/Github/acte/.atom.pkg",
-    "atom.install": "apm install --packages-file ~/Github/acte/.atom.pkg",
+    "atom.install": "rm -rf ~/.atom/packages/ && apm install --packages-file ~/Github/acte/.atom.pkg",
     "delta": "gulp delta.scrap && gulp delta.csv && gulp delta.json && gulp delta.js && gulp delta.clean"
   },
   "repository": {
