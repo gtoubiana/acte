@@ -18,8 +18,8 @@ const remplacements = (texte, regex, options) => {
 
     // jscs:disable
     (data, item) => {
-      const result = data.replace(new RegExp(item.regexp, options),
-        item.replace);
+      const result = data.replace(new RegExp(item.e, options),
+        item.r);
 
       return result;
     }, texte);

@@ -84,14 +84,14 @@ const balisesEtFiltres = (x, obj) => {
   if (x.match(/r/)) {
     // - r = chiffres en Romains
     arabe = res;
-    res = arabeVersRomain(res);
+    res = acte.arabeVersRomain(res);
   }
   if (x.match(/z/)) {
     // - z = Zéro devant le chiffre
     if (!arabe) {
       arabe = res;
     }
-    res = prefixeZero(res);
+    res = acte.prefixeZero(res);
   }
   if (x.match(/l|v/)) {
     if (x.match(/[^JDS](MA|M)/)) {
@@ -105,11 +105,12 @@ const balisesEtFiltres = (x, obj) => {
     } else {
       if (x.match(/v/)) {
         // - v = chiffres en lettres (Vieille notation)
-        res = arabe ? nombreEnLettres(arabe, 1) : nombreEnLettres(
+        res = arabe ? acte.nombreEnLettres(arabe, 1) : acte.nombreEnLettres(
           res, 1);
       } else {
         // - l = chiffres en Lettres
-        res = arabe ? nombreEnLettres(arabe) : nombreEnLettres(res);
+        res = arabe ? acte.nombreEnLettres(arabe) : acte.nombreEnLettres(
+          res);
       }
       ordinaux = true;
     }
@@ -166,31 +167,31 @@ const balisesEtFiltres = (x, obj) => {
   if (x.match(/o/)) {
     /* istanbul ignore else  */
     if (ordinaux && x.match(/f/)) {
-      res = ordinauxEnLettres(lettres, 1);
+      res = acte.ordinauxEnLettres(lettres, 1);
     } else if (ordinaux) {
-      res = ordinauxEnLettres(lettres);
+      res = acte.ordinauxEnLettres(lettres);
     } else if (x.match(/f/) && chiffres) {
-      res = nombreOrdinal(lettres, 're', 'e');
+      res = acte.nombreOrdinal(lettres, 're', 'e');
     } else if (chiffres) {
-      res = nombreOrdinal(lettres, 'er', 'e');
+      res = acte.nombreOrdinal(lettres, 'er', 'e');
     }
   }
 
   // - p = Premier ou 1er
   if (x.match(/p/)) {
     if (ordinaux) {
-      res = premierOrdinalEnLettres(lettres);
+      res = acte.premierOrdinalEnLettres(lettres);
     } else {
-      res = nombreOrdinal(lettres, 'er', '');
+      res = acte.nombreOrdinal(lettres, 'er', '');
     }
   }
 
   // - f = Féminin de p (première ou 1re)
   if (x.match(/[^o]f/)) {
     if (ordinaux) {
-      res = premierOrdinalEnLettres(lettres, 1);
+      res = acte.premierOrdinalEnLettres(lettres, 1);
     } else {
-      res = nombreOrdinal(lettres, 're', '');
+      res = acte.nombreOrdinal(lettres, 're', '');
     }
   }
   if (x.match(/b/)) {

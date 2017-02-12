@@ -19,7 +19,7 @@ const saisieValide = (saisie, regexp) => {
 
   // On remplace le texte restant par des chiffres arabes
   tempSaisie = remplacements(tempSaisie, regexp, 'gi')
-    .split(/[\/\.]+/gi);
+    .split(/[/.]+/gi);
 
   // Si il n'y a que l'année [1,1,ac]
   if (!tempSaisie[1] && !tempSaisie[2]) {

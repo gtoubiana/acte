@@ -12,7 +12,7 @@
  * @param {Object} dt - La référence aux variables dans Jour
  * @param {Object} dd - La référence exlicite à une variable dans dt
  * @param {Object} dobj - Une fonction ou un objet utilisable
- * @param {Object} [pro] - La référence du prototype si nécessaire
+ * @param {Object} [pro] - Une référence issue du prototype si nécessaire
  * @return {String} La date formatée
  * @example
  * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
@@ -24,7 +24,8 @@ const formatageDeJour = (format, erreur, rappel, df, dt, dd, dobj, pro) => {
   const tvg = dt;
   let resultat;
 
-  if (tvg[dd]) {
+  // Correspondances uniquement si inférieur à anneeMax
+  if (Math.abs(tvg[dd]) < anneeMax) {
     resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
       // jscs:disable
@@ -33,7 +34,7 @@ const formatageDeJour = (format, erreur, rappel, df, dt, dd, dobj, pro) => {
         const res = balisesEtFiltres(x, dobj(tvg, pro));
 
         return res;
-      }
+      },
     );
     if (typeof rappel === 'function') {
       resultat = rappel(resultat, dobj(tvg, pro));

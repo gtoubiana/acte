@@ -1,7 +1,8 @@
 # /node_modules and /bower_components ignored by default
 
-# Ignore minified javascript files
+# Ignore files
 **/*{.,-}min.js
+*.html
 
 # Ignore folders
 dist/

@@ -1,6 +1,39 @@
 var acte = require('./lib/acte.js');
 'use strict';
 
+describe('Functions publiques', function () {
+  it('acte.arabeVersRomain()', function () {
+    expect(acte.arabeVersRomain(2012)).toEqual('MMXII');
+  });
+  it('acte.nombreEnLettres()', function () {
+    expect(acte.nombreEnLettres(2371)).toEqual('Deux-mille-trois-cent-soixante-et-onze');
+    expect(acte.nombreEnLettres(1799, 1)).toEqual('Mille sept cent quatre-vingt-dix-neuf');
+  });
+  it('acte.nombreOrdinal()', function () {
+    expect(acte.nombreOrdinal(1, 'er', 'e')).toEqual('1er');
+    expect(acte.nombreOrdinal(1, 're', 'e')).toEqual('1re');
+    expect(acte.nombreOrdinal(2, 'er', 'e')).toEqual('2e');
+  });
+  it('acte.ordinauxEnLettres()', function () {
+    expect(acte.ordinauxEnLettres('Un')).toEqual('Premier');
+    expect(acte.ordinauxEnLettres('Un', 1)).toEqual('Première');
+    expect(acte.ordinauxEnLettres('Deux')).toEqual('Deuxième');
+    expect(acte.ordinauxEnLettres('Vingt-trois')).toEqual('Vingt-troisième');
+  });
+  it('acte.prefixeZero()', function () {
+    expect(acte.prefixeZero(20)).toEqual(20);
+    expect(acte.prefixeZero(9)).toEqual('09');
+    expect(acte.prefixeZero(0)).toEqual(0);
+    expect(acte.prefixeZero(-4)).toEqual(-4);
+  });
+  it('acte.premierOrdinalEnLettres()', function () {
+    expect(acte.premierOrdinalEnLettres('Un')).toEqual('Premier');
+    expect(acte.premierOrdinalEnLettres('Un', 1)).toEqual('Première');
+    expect(acte.premierOrdinalEnLettres('Deux')).toEqual('Deux');
+    expect(acte.premierOrdinalEnLettres('Vingt-trois')).toEqual('Vingt-trois');
+  });
+});
+
 var dateValide = function dateValide(jour, mois, an) {
   var resultat = new Date(an, mois - 1, jour);
 
@@ -27,7 +60,6 @@ describe('new acte.Jour()', function () {
 
     // false for debug
     expect(new acte.Jour('8//10.-1793', false).variables.gregorien.od).toEqual(dateValide(8, 10, -1793));
-    expect(new acte.Jour('-12/-10/-1657', false).variables.gregorien.od).toEqual(dateValide(12, 10, -1657));
     expect(new acte.Jour('/2/3', false).variables.gregorien.od).toEqual(dateValide(1, 2, 3));
     expect(new acte.Jour('/3/4/', false).variables.gregorien.od).toEqual(dateValide(1, 3, 4));
     expect(new acte.Jour('4/5/6/', false).variables.gregorien.od).toEqual(dateValide(4, 5, 6));
@@ -45,6 +77,9 @@ describe('new acte.Jour()', function () {
 
     // Debut gregorien
     expect(new acte.Jour('15 octobre 1582').variables.gregorien.od).toEqual(dateValide(15, 10, 1582));
+
+    // Fin julien
+    expect(new acte.Jour('14 octobre 1582').variables.gregorien.od).toEqual(dateValide(24, 10, 1582));
 
     // Fin julien forcé
     expect(new acte.Jour('14 octobre 1582', false).variables.gregorien.od).toEqual(dateValide(14, 10, 1582));
@@ -70,6 +105,7 @@ describe('new acte.Jour()', function () {
     expect(new acte.Jour('32/10/1793').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('0 octobre 1657').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('-00 octobre 1657').variables.gregorien.od).not.toBeDefined();
+    expect(new acte.Jour('-12/-10/-1657', false).variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('8/5').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('8/5/').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('27 frimaire').variables.gregorien.od).not.toBeDefined();
@@ -80,9 +116,6 @@ describe('new acte.Jour()', function () {
     expect(new acte.Jour('67 vendémiaire an I').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('totokjhkjh').variables.gregorien.od).not.toBeDefined();
     expect(new acte.Jour('').variables.gregorien.od).not.toBeDefined();
-
-    // Fin julien
-    expect(new acte.Jour('14 octobre 1582').variables.gregorien.od).not.toBeDefined();
   });
   it('new acte.Jour().variables.gregorien.a = l\'année grégorienne en chiffres', function () {
     expect(new acte.Jour('1 octobre 1793').variables.gregorien.a).toEqual(1793);
@@ -95,7 +128,7 @@ describe('new acte.Jour()', function () {
   });
   it('new acte.Jour().variables.julien.od = un objet Date julienne ' + '(ou Undefined)', function () {
     // Debut gregorien
-    expect(new acte.Jour('15 octobre 1582').variables.julien.od).toEqual(dateValide(5, 10, 1582));
+    expect(new acte.Jour('15 octobre 1582').variables.julien.od).not.toBeDefined();
 
     // Fin julien
     expect(new acte.Jour('14 octobre 1582').variables.julien.od).toEqual(dateValide(14, 10, 1582));
@@ -104,16 +137,16 @@ describe('new acte.Jour()', function () {
     expect(new acte.Jour('14 octobre 1582', false).variables.julien.od).toEqual(dateValide(4, 10, 1582));
   });
   it('new acte.Jour().variables.julien.a = l\'année julienne en chiffres', function () {
-    expect(new acte.Jour('4 octobre 1793').variables.julien.a).toEqual(1793);
+    expect(new acte.Jour('4 octobre 793').variables.julien.a).toEqual(793);
   });
   it('new acte.Jour().variables.julien.m = le mois julien en chiffres', function () {
-    expect(new acte.Jour('5 octobre 1793').variables.julien.m).toEqual(9);
+    expect(new acte.Jour('5 octobre 793').variables.julien.m).toEqual(10);
   });
   it('new acte.Jour().variables.julien.jm = le jour du mois julien en chiffres', function () {
-    expect(new acte.Jour('6 octobre 1793').variables.julien.jm).toEqual(25);
+    expect(new acte.Jour('6 octobre 793').variables.julien.jm).toEqual(6);
   });
   it('new acte.Jour().variables.julien.jj = le nombre de jours juliens', function () {
-    expect(new acte.Jour('6 octobre 1793').variables.julien.jj).toEqual(2376218.5);
+    expect(new acte.Jour('7 octobre 793').variables.julien.jj).toEqual(2010976.5);
   });
   it('new acte.Jour().variables.republicain.a = l\'année républicaine ' + 'en chiffres (ou Undefined)', function () {
     expect(new acte.Jour('6 octobre 1793').variables.republicain.a).toEqual(2);
@@ -188,6 +221,35 @@ describe('new acte.Jour().gregorien()', function () {
   // Valeurs par défaut
   it('new acte.Jour().gregorien() = la date grégorienne ' + 'formatée par défaut.', function () {
     expect(new acte.Jour('1/1/1600').gregorien()).toEqual('1er janvier 1600');
+    expect(new acte.Jour('2 jan 1890').gregorien()).toEqual('2 janvier 1890');
+    expect(new acte.Jour('8 juin an 1890').gregorien()).toEqual('8 juin 1890');
+    expect(new acte.Jour(new Date(1890, 6, 9)).gregorien()).toEqual('9 juillet 1890');
+    expect(new acte.Jour('8 brumaire an 1890', false).gregorien()).toEqual('28 octobre 3681');
+    expect(new acte.Jour('9 brumaire juillet an 1890', false).gregorien()).toEqual('29 octobre 3681');
+    expect(new acte.Jour('10 brum juillet an 1890', false).gregorien()).toEqual('10 juillet 1890');
+    expect(new acte.Jour('11 juillet an 10', false).gregorien()).toEqual('11 juillet 10');
+    expect(new acte.Jour('12 juillet an X', false).gregorien()).toEqual('12 juillet 10');
+    expect(new acte.Jour('le 1er janvier de l\'an 2', false).gregorien()).toEqual('1er janvier 2');
+    expect(new acte.Jour('le 4 mars de l\'an VI', false).gregorien()).toEqual('4 mars 6');
+    expect(new acte.Jour('le 5 avril de l\'an -IV', false).gregorien()).toEqual('5 avril -4');
+    expect(new acte.Jour('5/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
+    expect(new acte.Jour('14/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Dimanche 24 octobre 1582');
+    expect(new acte.Jour('15/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
+    expect(new acte.Jour('15/10/1582', false).gregorien('%JSl %JM %Mlb %A')).toEqual('Vendredi 15 octobre 1582');
+
+    // Gestion des années bissextiles
+    expect(new acte.Jour('29 février 2004').gregorien()).toEqual('29 février 2004');
+    expect(new acte.Jour('29 février 1900').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 2000').gregorien()).toEqual('29 février 2000');
+    expect(new acte.Jour('29 février 1004').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 900').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 1000').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 2004', false).gregorien()).toEqual('29 février 2004');
+    expect(new acte.Jour('29 février 1900', false).gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('29 février 2000', false).gregorien()).toEqual('29 février 2000');
+    expect(new acte.Jour('29 février 1004', false).gregorien()).toEqual('29 février 1004');
+    expect(new acte.Jour('29 février 900', false).gregorien()).toEqual('29 février 900');
+    expect(new acte.Jour('29 février 1000', false).gregorien()).toEqual('29 février 1000');
   });
 
   // Balises
@@ -301,8 +363,9 @@ describe('new acte.Jour().gregorien()', function () {
   it('new acte.Jour().gregorien(\'%Al\') = Année en lettres (réforme de 1990).', function () {
     expect(new acte.Jour('1/9/1629').gregorien('%Al')).toEqual('Mille-six-cent-vingt-neuf');
     expect(new acte.Jour('1/9/-1629', false).gregorien('%Al')).toEqual('Moins mille-six-cent-vingt-neuf');
-    expect(new acte.Jour('1/9/16290').gregorien('%Al')).toEqual('');
-    expect(new acte.Jour('1/9/-16290', false).gregorien('%Al')).toEqual('');
+    expect(new acte.Jour('1/9/16290').gregorien('%Al')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/9/16290', false).gregorien('%Al')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/9/-16290', false).gregorien('%Al')).toEqual('Pas de correspondances.');
     expect(new acte.Jour('1/9/5100').gregorien('%Al')).toEqual('Cinq-mille-cent');
     expect(new acte.Jour('1/9/5110').gregorien('%Al')).toEqual('Cinq-mille-cent-dix');
     expect(new acte.Jour('1/9/5111').gregorien('%Al')).toEqual('Cinq-mille-cent-onze');
@@ -345,6 +408,10 @@ describe('new acte.Jour().gregorien()', function () {
   // Erreurs
   it('new acte.Jour().gregorien() = Pas de correspondances.', function () {
     expect(new acte.Jour('').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1er 1890').gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('4/10/1582').gregorien('%JSl %JM %Mlb %A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour(new Date('texte')).gregorien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('texte').gregorien()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().gregorien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').gregorien(0, 'Message d\'erreur 1.')).toEqual('Message d\'erreur 1.');
@@ -355,9 +422,9 @@ describe('new acte.Jour().gregorien()', function () {
   // Callback functions
   it('new acte.Jour().gregorien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('1 février 1603').gregorien(0, 0, function (res, obj) {
-      var jour = obj.J < 10 ? '0' + obj.J : obj.J;
-      var mois = obj.M < 10 ? '0' + obj.M : obj.M;
-      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+      var jour = acte.prefixeZero(obj.J);
+      var mois = acte.prefixeZero(obj.M);
+      var an = acte.prefixeZero(obj.A % 100);
 
       return jour + '/' + mois + '/' + an;
     })).toEqual('01/02/03');
@@ -381,91 +448,110 @@ describe('new acte.Jour().gregorien()', function () {
 describe('new acte.Jour().julien()', function () {
   // Valeurs par défaut
   it('new acte.Jour().julien() = la date julienne ' + 'formatée par défaut.', function () {
-    expect(new acte.Jour('1/1/1630').julien()).toEqual('22 décembre 1629');
+    expect(new acte.Jour('1/12/630').julien()).toEqual('1er décembre 630');
+    expect(new acte.Jour('3/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Mercredi 3 octobre 1582');
+    expect(new acte.Jour('4/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Jeudi 4 octobre 1582');
+    expect(new acte.Jour('5/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Vendredi 5 octobre 1582');
+    expect(new acte.Jour('14/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Dimanche 14 octobre 1582');
+    expect(new acte.Jour('15/10/1582').julien('%JSl %JM %Mlb %A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('15/10/1582', false).julien('%JSl %JM %Mlb %A')).toEqual('Vendredi 5 octobre 1582');
+    expect(new acte.Jour('17 frimaire an IV', false).julien()).toEqual('27 novembre 1795');
+
+    // Gestion des années bissextiles
+    expect(new acte.Jour('29 février 1004').julien()).toEqual('29 février 1004');
+    expect(new acte.Jour('29 février 900').julien()).toEqual('29 février 900');
+    expect(new acte.Jour('29 février 1000').julien()).toEqual('29 février 1000');
+    expect(new acte.Jour('29 février 1004', false).julien()).toEqual('23 février 1004');
+    expect(new acte.Jour('29 février 900', false).julien()).toEqual('25 février 900');
+    expect(new acte.Jour('29 février 1000', false).julien()).toEqual('24 février 1000');
   });
 
   // Balises
   it('new acte.Jour().julien(\'%A\') = l\'Année julienne.', function () {
-    expect(new acte.Jour('1/1/1601').julien('%A')).toEqual('1600');
+    expect(new acte.Jour('1/1/601').julien('%A')).toEqual('601');
   });
   it('new acte.Jour().julien(\'%AN\') = l\'Année julienne.', function () {
-    expect(new acte.Jour('1/1/1602').julien('%AN')).toEqual('1601');
+    expect(new acte.Jour('1/1/602').julien('%AN')).toEqual('602');
   });
   it('new acte.Jour().julien(\'%D\') = la Semaine/Décade dans le mois.', function () {
-    expect(new acte.Jour('14/1/1600').julien('%D')).toEqual('1');
+    expect(new acte.Jour('14/1/600').julien('%D')).toEqual('3');
   });
   it('new acte.Jour().julien(\'%DM\') = la Semaine/Décade dans le mois.', function () {
-    expect(new acte.Jour('21/1/1600').julien('%DM')).toEqual('2');
+    expect(new acte.Jour('21/1/600').julien('%DM')).toEqual('4');
   });
   it('new acte.Jour().julien(\'%SM\') = la Semaine/Décade dans le mois.', function () {
-    expect(new acte.Jour('28/1/1600').julien('%SM')).toEqual('3');
+    expect(new acte.Jour('28/1/600').julien('%SM')).toEqual('5');
   });
   it('new acte.Jour().julien(\'%J\') = le Jour dans le mois.', function () {
-    expect(new acte.Jour('26/1/1600').julien('%J')).toEqual('16');
+    expect(new acte.Jour('26/1/600').julien('%J')).toEqual('26');
   });
   it('new acte.Jour().julien(\'%JM\') = le Jour dans le mois.', function () {
-    expect(new acte.Jour('27/1/1600').julien('%JM')).toEqual('17');
+    expect(new acte.Jour('27/1/600').julien('%JM')).toEqual('27');
   });
   it('new acte.Jour().julien(\'%JA\') = le Jour dans l\'année.', function () {
-    expect(new acte.Jour('23/8/1600').julien('%JA')).toEqual('226');
+    expect(new acte.Jour('23/8/600').julien('%JA')).toEqual('235');
   });
   it('new acte.Jour().julien(\'%JS\') = le Jour de la décade/Semaine.', function () {
-    expect(new acte.Jour('7/1/1600').julien('%JS')).toEqual('5');
+    expect(new acte.Jour('7/1/600').julien('%JS')).toEqual('5');
   });
   it('new acte.Jour().julien(\'%JD\') = le Jour de la décade/Semaine.', function () {
-    expect(new acte.Jour('8/1/1600').julien('%JD')).toEqual('6');
+    expect(new acte.Jour('8/1/600').julien('%JD')).toEqual('6');
   });
   it('new acte.Jour().julien(\'%M\') = le Mois dans l\'année.', function () {
-    expect(new acte.Jour('1/9/1600').julien('%M')).toEqual('8');
+    expect(new acte.Jour('1/9/600').julien('%M')).toEqual('9');
   });
   it('new acte.Jour().julien(\'%MA\') = le Mois dans l\'année.', function () {
-    expect(new acte.Jour('1/10/1600').julien('%MA')).toEqual('9');
+    expect(new acte.Jour('1/10/600').julien('%MA')).toEqual('10');
   });
   it('new acte.Jour().julien(\'%S\') = la Semaine/Décade dans l\'année.', function () {
-    expect(new acte.Jour('1/4/1600').julien('%S')).toEqual('12');
+    expect(new acte.Jour('1/4/600').julien('%S')).toEqual('14');
   });
   it('new acte.Jour().julien(\'%SA\') = la Semaine/Décade dans l\'année.', function () {
-    expect(new acte.Jour('1/5/1600').julien('%SA')).toEqual('16');
+    expect(new acte.Jour('1/5/600').julien('%SA')).toEqual('18');
   });
   it('new acte.Jour().julien(\'%DA\') = la Semaine/Décade dans l\'année.', function () {
-    expect(new acte.Jour('1/6/1600').julien('%DA')).toEqual('21');
+    expect(new acte.Jour('1/6/600').julien('%DA')).toEqual('22');
   });
 
   // Filtres
   it('new acte.Jour().julien(\'%M1\') = Mois en lettres sur 1 caractère.', function () {
-    expect(new acte.Jour('1/1/1600').julien('%M1')).toEqual('D');
+    expect(new acte.Jour('1/1/600').julien('%M1')).toEqual('J');
   });
   it('new acte.Jour().julien(\'%M2\') = Mois en lettres sur 2 caractère.', function () {
-    expect(new acte.Jour('1/2/1600').julien('%M2')).toEqual('Jr');
+    expect(new acte.Jour('1/2/600').julien('%M2')).toEqual('Fr');
   });
   it('new acte.Jour().julien(\'%M3\') = Mois en lettres sur 3 caractère.', function () {
-    expect(new acte.Jour('1/3/1600').julien('%M3')).toEqual('Fév');
+    expect(new acte.Jour('1/3/600').julien('%M3')).toEqual('Mar');
   });
   it('new acte.Jour().julien(\'%Ma\') = Mois en abrégé.', function () {
-    expect(new acte.Jour('1/4/1600').julien('%Ma')).toEqual('Mars');
+    expect(new acte.Jour('1/4/600').julien('%Ma')).toEqual('Avr');
   });
   it('new acte.Jour().julien(\'%Ml\') = Mois en lettres.', function () {
-    expect(new acte.Jour('1/5/1600').julien('%Ml')).toEqual('Avril');
+    expect(new acte.Jour('1/5/600').julien('%Ml')).toEqual('Mai');
   });
   it('new acte.Jour().julien(\'%JS1\') = Jour de la Semaine en lettres ' + 'sur 1 caractère.', function () {
-    expect(new acte.Jour('10/1/1600').julien('%JS1')).toEqual('L');
+    expect(new acte.Jour('10/1/600').julien('%JS1')).toEqual('L');
   });
   it('new acte.Jour().julien(\'%JS2\') = Jour de la Semaine en lettres ' + 'sur 2 caractère.', function () {
-    expect(new acte.Jour('11/1/1600').julien('%JS2')).toEqual('Ma');
+    expect(new acte.Jour('11/1/600').julien('%JS2')).toEqual('Ma');
   });
   it('new acte.Jour().julien(\'%JS3\') = Jour de la Semaine en lettres ' + 'sur 3 caractère.', function () {
-    expect(new acte.Jour('12/1/1600').julien('%JS3')).toEqual('Mer');
+    expect(new acte.Jour('12/1/600').julien('%JS3')).toEqual('Mer');
   });
   it('new acte.Jour().julien(\'%JSa\') = Jour de la Semaine en abrégé.', function () {
-    expect(new acte.Jour('13/1/1600').julien('%JSa')).toEqual('Jeudi');
+    expect(new acte.Jour('13/1/600').julien('%JSa')).toEqual('Jeudi');
   });
   it('new acte.Jour().julien(\'%JSl\') = Jour de la semaine en lettres.', function () {
-    expect(new acte.Jour('1/9/5192').julien('%JSl')).toEqual('Mardi');
+    expect(new acte.Jour('1/9/5192').julien('%JSl')).toEqual('Pas de correspondances.');
   });
 
   // Erreurs
   it('new acte.Jour().julien() = Pas de correspondances.', function () {
     expect(new acte.Jour('').julien()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/1/16000').julien('%A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/1/-16000').julien('%A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1/1/16000', false).julien('%A')).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('17 frimaire an IV').julien()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().julien(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').julien('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');
@@ -473,11 +559,11 @@ describe('new acte.Jour().julien()', function () {
 
   // Callback functions
   it('new acte.Jour().julien(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
-    expect(new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, function (res, obj) {
-      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+    expect(new acte.Jour('3 avril 605').julien('%Jz/%Mz', 0, function (res, obj) {
+      var an = acte.prefixeZero(obj.A % 100);
 
       return res + '/' + an;
-    })).toEqual('24/03/05');
+    })).toEqual('03/04/05');
   });
 });
 
@@ -487,6 +573,10 @@ describe('new acte.Jour().republicain()', function () {
     expect(new acte.Jour('1/1/1800').republicain()).toEqual('11 nivôse an VIII');
     expect(new acte.Jour('12 nivôse an VIII').republicain()).toEqual('12 nivôse an VIII');
     expect(new acte.Jour('30 fructidor an V').republicain()).toEqual('30 fructidor an V');
+    expect(new acte.Jour('an 9').republicain()).toEqual('1er vendémiaire an IX');
+    expect(new acte.Jour('an X').republicain()).toEqual('1er vendémiaire an X');
+    expect(new acte.Jour('brumaire an X', false).republicain()).toEqual('1er brumaire an X');
+    expect(new acte.Jour('1er brumaire an 7999', false).republicain()).toEqual('1er brumaire an MMMMMMMCMXCIX');
   });
 
   // Balises
@@ -571,6 +661,10 @@ describe('new acte.Jour().republicain()', function () {
   // Erreurs
   it('new acte.Jour().republicain() = Pas de correspondances.', function () {
     expect(new acte.Jour('').republicain()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('brumaire an 11000').republicain()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('brumaire an 11000', false).republicain()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('brumaire an -11000', false).republicain()).toEqual('Pas de correspondances.');
+    expect(new acte.Jour('1er brumaire an 8000', false).republicain()).toEqual('Pas de correspondances.');
   });
   it('new acte.Jour().republicain(0, \'erreur\') = Message d\'erreur.', function () {
     expect(new acte.Jour('').republicain('', 'Message d\'erreur.')).toEqual('Message d\'erreur.');
@@ -579,9 +673,70 @@ describe('new acte.Jour().republicain()', function () {
   // Callback functions
   it('new acte.Jour().republicain(0, 0, ((res, obj) => {})) ' + '= Fonction de rappel.', function () {
     expect(new acte.Jour('3 avril 1805').republicain('%Jz/%Mz', 0, function (res, obj) {
-      var an = obj.A % 100 < 10 ? '0' + obj.A % 100 : obj.A % 100;
+      var an = acte.prefixeZero(obj.A % 100);
 
       return res + '/' + an;
     })).toEqual('13/07/13');
   });
 });
+
+describe('Recettes', function () {
+  it('Recette 1 : Afficher l\'année sur 2 chiffres', function () {
+    expect(new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, function (res, obj) {
+      var result = res + '/' + acte.prefixeZero(obj.A % 100);
+
+      return result;
+    })).toEqual('03/04/05');
+  });
+  it('Recette 2 : Afficher le siècle', function () {
+    expect(new acte.Jour('8 décembre 2016').gregorien('', 0, function (res, obj) {
+      var result = '' + acte.nombreOrdinal(acte.arabeVersRomain(parseInt(obj.A / 100, 10) + 1), 'er', 'e');
+
+      return result + ' si\xE8cle';
+    })).toEqual('XXIe siècle');
+  });
+  it('Recette 3 : Afficher Mil plutôt que Mille', function () {
+    expect(new acte.Jour('28/7/1910').gregorien('%Jl %Mlb de l\'an %Avb', 0, function (res, obj) {
+      var result = res.replace(/(M|m)(ille)(\s|-|$)/gm, '$1il$3');
+
+      return result;
+    })).toEqual('Vingt-huit juillet de l\'an mil neuf cent dix');
+  });
+  it('Recette 4 : Date complète hebdomadaire ISO', function () {
+    expect(new acte.Jour('1/1/2006').gregorien('', 0, function (res, obj) {
+      var jour = obj.JS === 0 ? 7 : obj.JS;
+
+      var semaine = obj.S === 0 ? 52 : acte.prefixeZero(obj.S);
+      var an = obj.S === 0 ? obj.A - 1 : obj.A;
+
+      return an + '-W' + semaine + '-' + jour;
+    })).toEqual('2005-W52-7');
+  });
+  it('Recette 5 : Saints du jour', function () {
+    expect(new acte.Jour('1/9/2016')
+
+    // voir acte.saintChretien en fin de ce fichier
+    .gregorien('{saintChretien}', 0, acte.saintChretien)).toEqual('Saint Gilles');
+  });
+  it('Recette 6 : Jour républicain', function () {
+    expect(new acte.Jour('4 brumaire an V')
+
+    // voir acte.jourRepublicain en fin de ce fichier
+    .republicain('Jour {jourRepublicain}', 0, acte.jourRepublicain)).toEqual('Jour de la Betterave');
+  });
+});
+
+/**
+ * Nouvelles fonctions
+ */
+
+acte.saintChretien = function (res, obj) {
+  var saints = [['Sainte Marie', 'Saint Basile', 'Sainte Geneviève', 'Saint Odilon', 'Saint Edouard', 'Saint Mélaine', 'Saint Raymond', 'Saint Lucien', 'Sainte Alix', 'Saint Guillaume', 'Saint Paulin', 'Sainte Tatiana', 'Sainte Yvette', 'Sainte Nina', 'Saint Rémi', 'Saint Marcel', 'Sainte Roseline', 'Sainte Prisca', 'Saint Marius', 'Saint Sébastien', 'Sainte Agnès', 'Saint Vincent', 'Saint Barnard', 'Saint François de Sales', 'Saint Ananie', 'Sainte Paule', 'Sainte Angèle', 'Saint Thomas d\'Aquin', 'Saint Gildas', 'Sainte Martine', 'Sainte Marcelle'], ['Sainte Ella', 'Présentation', 'Saint Blaise', 'Sainte Véronique', 'Sainte Agathe', 'Saint Gaston', 'Sainte Eugènie', 'Sainte Jacqueline', 'Sainte Apolline', 'Saint Arnaud', 'Notre Dame de Lourdes', 'Saint Félix', 'Sainte Béatrice', 'Saint Valentin', 'Saint Claude', 'Sainte Julienne', 'Saint Alexis', 'Sainte Bernadette', 'Saint Gabin', 'Sainte Aimée', 'Saint Pierre-Damien', 'Sainte Isabelle', 'Saint Lazare', 'Saint Modeste', 'Saint Roméo', 'Saint Nestor', 'Sainte Honorine', 'Saint Romain', 'Saint Auguste'], ['Saint Aubin', 'Saint Charles le Bon', 'Saint Guénolé', 'Saint Casimir', 'Sainte Olive', 'Sainte Colette', 'Sainte Félicité', 'Saint Jean de Dieu', 'Sainte Françoise', 'Saint Vivien', 'Sainte Rosine', 'Sainte Justine', 'Saint Rodrigue', 'Sainte Mathilde', 'Sainte Louise', 'Sainte Bénédicte', 'Saint Patrick', 'Saint Cyrille', 'Saint Joseph', 'Saint Herbert', 'Sainte Clémence', 'Sainte Léa', 'Saint Victorien', 'Sainte Catherine de Suède', 'Annonciation', 'Sainte Larissa', 'Saint Habib', 'Saint Gontran', 'Sainte Gwladys', 'Saint Amédée', 'Saint Benjamin'], ['Saint Hugues', 'Sainte Sandrine', 'Saint Richard', 'Saint Isidore', 'Sainte Irène', 'Saint Marcellin', 'Saint Jean-Baptiste de la Salle', 'Sainte Julie', 'Saint Gautier', 'Saint Fulbert', 'Saint Stanislas', 'Saint Jules', 'Sainte Ida', 'Saint Maxime', 'Saint Paterne', 'Saint Benoît-Joseph', 'Saint Anicet', 'Saint Parfait', 'Sainte Emma', 'Sainte Odette', 'Saint Anselme', 'Saint Alexandre', 'Saint Georges', 'Saint Fidèle', 'Saint Marc', 'Sainte Alida', 'Sainte Zita', 'Sainte Valérie', 'Sainte Catherine de Sienne', 'Saint Robert'], ['Saint Jérémie', 'Saint Boris', 'Saints Philippe, Jacques', 'Saint Sylvain', 'Sainte Judith', 'Sainte Prudence', 'Sainte Gisèle', 'Saint Désiré', 'Saint Pacôme', 'Sainte Solange', 'Sainte Estelle / Saint Mamert', 'Saint Achille / Saint Pancrace', 'Sainte Rolande / Saint Servais', 'Saint Matthias', 'Sainte Denise', 'Saint Honoré', 'Saint Pascal', 'Saint Éric', 'Saint Yves', 'Saint Bernardin', 'Saint Constantin', 'Saint Émile', 'Saint Didier', 'Saint Donatien', 'Sainte Sophie', 'Saint Béranger', 'Saint Augustin', 'Saint Germain', 'Saint Aymard', 'Saint Ferdinand', 'Visitation de la Sainte Vierge'], ['Saint Justin', 'Sainte Blandine', 'Saint Kévin', 'Sainte Clotilde', 'Saint Igor', 'Saint Norbert', 'Saint Gilbert', 'Saint Médard', 'Sainte Diane', 'Saint Landry', 'Saint Barnabé', 'Saint Guy', 'Saint Antoine de Padoue', 'Saint Elisée', 'Sainte Germaine', 'Saint Jean-François Régis', 'Saint Hervé', 'Saint Léonce', 'Saint Romuald', 'Saint Silvère', 'Saint Louis de Gonzague', 'Saint Alban', 'Sainte Audrey', 'Saint Jean-Baptiste', 'Saint Prosper', 'Saint Anthelme', 'Saint Fernand', 'Sainte Irénée', 'Saints Pierre, Paul', 'Saint Martial'], ['Saint Thierry', 'Saint Martinien', 'Saint Thomas', 'Saint Florent', 'Saint Antoine', 'Sainte Mariette', 'Saint Raoul', 'Saint Thibault', 'Sainte Amandine', 'Saint Ulrich', 'Saint Benoît', 'Saint Olivier', 'Saints Henri, Joël', 'Saint Camille', 'Saint Donald', 'Notre Dame du Mont Carmel', 'Sainte Charlotte', 'Saint Frédéric', 'Saint Arsène', 'Sainte Marina', 'Saint Victor', 'Sainte Marie-Madeleine', 'Sainte Brigitte', 'Sainte Christine', 'Saint Jacques', 'Saints Anne, Joachin', 'Sainte Nathalie', 'Saint Samson', 'Sainte Marthe', 'Sainte Juliette', 'Saint Ignace de Loyola'], ['Saint Alphonse', 'Saint Julien Eymard', 'Sainte Lydie', 'Saint Jean-Marie Vianney', 'Saint Abel', 'Transfiguration', 'Saint Gaétan', 'Saint Dominique', 'Saint Amour', 'Saint Laurent', 'Sainte Claire', 'Sainte Clarisse', 'Saint Hippolyte', 'Saint Evrard', 'Assomption', 'Saint Armel', 'Saint Hyacinthe', 'Sainte Hélène', 'Saint Jean-Eudes', 'Saint Bernard', 'Saint Christophe', 'Saint Fabrice', 'Sainte Rose de Lima', 'Saint Barthélémy', 'Saint Louis', 'Sainte Natacha', 'Saint Monique', 'Saint Augustin', 'Sainte Sabine', 'Saint Fiacre', 'Saint Aristide'], ['Saint Gilles', 'Sainte Ingrid', 'Saint Grégoire', 'Sainte Rosalie', 'Sainte Raïssa', 'Saint Bertrand', 'Sainte Reine', 'Saint Nativité', 'Saint Alain', 'Sainte Inès', 'Saint Adelphe', 'Saint Apollinaire', 'Saint Aimé', 'La Sainte-Croix', 'Saint Roland', 'Sainte Edith', 'Saint Renaud', 'Sainte Nadège', 'Sainte Émilie', 'Saint Davy', 'Saint Matthieu', 'Saint Maurice', 'Saint Constant', 'Sainte Thècle', 'Saint Hermann', 'Saints Côme, Damien', 'Saint Vincent de Paul', 'Saint Venceslas', 'Saints Michel, Gabriel, Raphaël', 'Saint Jérôme'], ['Sainte Thérèse de l\'Enfant Jésus', 'Saint Léger', 'Saint Gérard', 'Saint François d\'Assise', 'Sainte Fleur', 'Saint Bruno', 'Saint Serge', 'Sainte Pélagie', 'Saint Denis', 'Saint Ghislain', 'Saint Firmin', 'Saint Wilfried', 'Saint Géraud', 'Saint Juste', 'Sainte Thérèse d\'Avila', 'Sainte Edwige', 'Saint Baudoin', 'Saint Luc', 'Saint René', 'Sainte Adeline', 'Sainte Céline', 'Sainte Élodie', 'Saint Jean de Capistran', 'Saint Florentin', 'Saint Crépin', 'Saint Dimitri', 'Sainte Émeline', 'Saints Simon, Jude', 'Saint Narcisse', 'Saint Bienvenu', 'Saint Quentin'], ['Toussaint', 'Jour des défunts', 'Saint Hubert', 'Saint Charles', 'Sainte Sylvie', 'Sainte Bertille', 'Sainte Carine', 'Saint Geoffroy', 'Saint Théodore', 'Saint Léon', 'Saint Martin', 'Saint Christian', 'Saint Brice', 'Saint Sidoine', 'Saint Albert', 'Sainte Marguerite', 'Sainte Élisabeth', 'Sainte Aude', 'Saint Tanguy', 'Saint Edmond', 'Saint Rufus', 'Sainte Cécile', 'Saint Clément', 'Sainte Flore', 'Sainte Catherine', 'Sainte Delphine', 'Saint Sévrin', 'Saint Jacques de la Marche', 'Saint Saturnin', 'Saint André'], ['Sainte Florence', 'Sainte Viviane', 'Saint François-Xavier', 'Sainte Barbara', 'Saint Gérald', 'Saint Nicolas', 'Saint Ambroise', 'Immaculée Conception', 'Saint Pierre Fourier', 'Saint Romaric', 'Saint Daniel', 'Sainte Jeanne-Françoise de Chantal', 'Sainte Lucie', 'Sainte Odile', 'Sainte Ninon', 'Sainte Alice', 'Saint Gaël', 'Saint Gatien', 'Saint Urbain', 'Saint Théophile', 'Saint Pierre', 'Sainte Françoise-Xavière', 'Saint Armand', 'Sainte Adèle', 'Nativité du Christ', 'Saint Etienne', 'Saint Jean l\'évangile', 'Saints Innocents', 'Saint David', 'Saint Roger', 'Saint Sylvestre / Sainte Famille']];
+
+  return res.replace(/{saintChretien}/g, saints[obj.M - 1][obj.J - 1]);
+};
+acte.jourRepublicain = function (res, obj) {
+  var jours = [['du Raisin', 'du Safran', 'de la Châtaigne', 'de la Colchique', 'du Cheval', 'de la Balsamine', 'de la Carotte', 'de l\'Amarante', 'du Panais', 'de la Cuve', 'de la Pomme de terre', 'de l\'Immortelle', 'du Potiron', 'du Réséda', 'de l\'Âne', 'de la Belle de nuit', 'de la Citrouille', 'du Sarrasin', 'du Tournesol', 'du Pressoir', 'du Chanvre', 'de la Pêche', 'du Navet', 'de l\'Amaryllis', 'du Bœuf', 'de l\'Aubergine', 'du Piment', 'de la Tomate', 'de l\'Orge', 'du Tonneau'], ['de la Pomme', 'du Céleri', 'de la Poire', 'de la Betterave', 'de l\'Oie', 'de l\'Héliotrope', 'de la Figue', 'de la Scorsonère', 'de l\'Alisier', 'de la Charrue', 'du Salsifis', 'de la Mâcre', 'du Topinambour', 'de l\'Endive', 'du Dindon', 'du Chervis', 'du Cresson', 'de la Dentelaire', 'de la Grenade', 'de la Herse', 'de la Bacchante', 'de l\'Azerole', 'de la Garance', 'de l\'Orange', 'du Faisan', 'de la Pistache', 'du Macjonc', 'du Coing', 'du Cormier', 'du Rouleau'], ['de la Raiponce', 'du Turneps', 'du Chicorée', 'de la Nèfle', 'du Cochon', 'de la Mâche', 'du Chou-fleur', 'du Miel', 'du Genièvre', 'de la Pioche', 'de la Cire', 'du Raifort', 'du Cèdre', 'du Sapin', 'du Chevreuil', 'de l\'Ajonc', 'du Cyprès', 'du Lierre', 'de la Sabine', 'du Hoyau', 'de l\'Érable sucré', 'de la Bruyère', 'du Roseau', 'de l\'Oseille', 'du Grillon', 'du Pignon', 'du Liège', 'de la Truffe', 'de l\'Olive', 'de la Pelle'], ['de la Tourbe', 'de la Houille', 'du Bitume', 'du Soufre', 'du Chien', 'de la Lave', 'de la Terre végétale', 'du Fumier', 'du Salpêtre', 'du Fléau', 'du Granit', 'de l\'Argile', 'de l\'Ardoise', 'du Grès', 'du Lapin', 'du Silex', 'de la Marne', 'de la Pierre à chaux', 'du Marbre', 'du Van', 'de la Pierre à plâtre', 'du Sel', 'du Fer', 'du Cuivre', 'du Chat', 'de l\'Étain', 'du Plomb', 'du Zinc', 'du Mercure', 'du Crible'], ['de la Lauréole', 'de la Mousse', 'du Fragon', 'du Perce-neige', 'du Taureau', 'du Laurier tin', 'de l\'Amadouvier', 'du Mézéréon', 'du Peuplier', 'de la Cognée', 'de l\'Ellébore', 'du Brocoli', 'du Laurier', 'de l\'Avelinier', 'de la Vache', 'du Buis', 'du Lichen', 'de l\'If', 'de la Pulmonaire', 'de la Serpette', 'du Thlaspi', 'du Thimele', 'du Chiendent', 'de la Trainasse', 'du Lièvre', 'de la Guède', 'du Noisetier', 'du Cyclamen', 'de la Chélidoine', 'du Traîneau'], ['du Tussilage', 'du Cornouiller', 'du Violier', 'du Troène', 'du Bouc', 'de l\'Asaret', 'de l\'Alaterne', 'de la Violette', 'du Marceau', 'de la Bêche', 'de la Narcisse', 'de l\'Orme', 'de la Fumeterre', 'du Vélar', 'de la Chèvre', 'de l\'Épinard', 'du Doronic', 'du Mouron', 'du Cerfeuil', 'du Cordeau', 'de la Mandragore', 'du Persil', 'de la Cochléaria', 'de la Pâquerette', 'du Thon', 'du Pissenlit', 'de la Sylvie', 'de la Capillaire', 'du Frêne', 'du Plantoir'], ['de la Primevère', 'du Platane', 'de l\'Asperge', 'de la Tulipe', 'de la Poule', 'de la Bette', 'du Bouleau', 'de la Jonquille', 'de l\'Aulne', 'du Greffoir', 'de la Pervenche', 'du Charme', 'de la Morille', 'du Hêtre', 'de l\'Abeille', 'de la Laitue', 'du Mélèze', 'de la Ciguë', 'du Radis', 'de la Ruche', 'du Gainier', 'de la Romaine', 'du Marronnier', 'de la Roquette', 'du Pigeon', 'du Lilas (commun)', 'de l\'Anémone', 'de la Pensée', 'de la Myrtille', 'du Couvoir'], ['de la Rose', 'du Chêne', 'de la Fougère', 'de l\'Aubépine', 'du Rossignol', 'de l\'Ancolie', 'du Muguet', 'du Champignon', 'de l\'Hyacinthe', 'du Râteau', 'de la Rhubarbe', 'du Sainfoin', 'du Bâton-d\'or', 'du Chamérisier', 'du Ver à soie', 'de la Consoude', 'de la Pimprenelle', 'de la Corbeille d\'or', 'de l\'Arroche', 'du Sarcloir', 'de la Statice', 'de la Fritillaire', 'de la Bourrache', 'de la Valériane', 'de la Carpe', 'du Fusain', 'de la Civette', 'de la Buglose', 'du Sénevé', 'de la Houlette'], ['de la Luzerne', 'de l\'Hémérocalle', 'du Trèfle', 'de l\'Angélique', 'du Canard', 'de la Mélisse', 'de la Fromental', 'du Lis martagon', 'du Serpolet', 'de la Faux', 'de la Fraise', 'de la Bétoine', 'du Pois', 'de l\'Acacia', 'de la Caille', 'de l\'Œillet', 'du Sureau', 'du Pavot', 'du Tilleul', 'de la Fourche', 'du Barbeau', 'de la Camomille', 'du Chèvrefeuille', 'du Caille-lait', 'de la Tanche', 'du Jasmin', 'de la Verveine', 'du Thym', 'de la Pivoine', 'du Chariot'], ['du Seigle', 'de l\'Avoine', 'de l\'Oignon', 'de la Véronique', 'du Mulet', 'du Romarin', 'du Concombre', 'de l\'Échalote', 'de l\'Absinthe', 'de la Faucille', 'de la Coriandre', 'de l\'Artichaut', 'de la Girofle', 'de la Lavande', 'du Chamois', 'du Tabac', 'de la Groseille', 'de la Gesse', 'de la Cerise', 'du Parc', 'de la Menthe', 'du Cumin', 'du Haricot', 'de l\'Orcanète', 'de la Pintade', 'de la Sauge', 'de l\'Ail', 'de la Vesce', 'du Blé', 'du Chalemie'], ['de l\'Épeautre', 'du Bouillon-blanc', 'du Melon', 'de l\'Ivraie', 'du Bélier', 'de la Prêle', 'de l\'Armoise', 'du Carthame', 'de la Mûre', 'de l\'Arrosoir', 'du Panic', 'de la Salicorne', 'de l\'Abricot', 'du Basilic', 'de la Brebis', 'de la Guimauve', 'du Lin', 'de l\'Amande', 'de la Gentiane', 'de l\'Écluse', 'de la Carline', 'du Câprier', 'de la Lentille', 'de l\'Aunée', 'de la Loutre', 'du Myrte', 'du Colza', 'du Lupin', 'du Coton', 'du Moulin'], ['de la Prune', 'du Millet', 'du Lycoperdon', 'de l\'Escourgeon', 'du Saumon', 'de la Tubéreuse', 'du Sucrion', 'de l\'Apocyn', 'de la Réglisse', 'de l\'Échelle', 'de la Pastèque', 'du Fenouil', 'de l\'Épine vinette', 'de la Noix', 'de la Truite', 'du Citron', 'de la Cardère', 'du Nerprun', 'du Tagette', 'de la Hotte', 'de l\'Églantier', 'de la Noisette', 'du Houblon', 'du Sorgho', 'de l\'Écrevisse', 'de la Bigarade', 'de la Verge d\'or', 'du Maïs', 'du Marron', 'du Panier'], ['de la Vertu', 'du Génie', 'du Travail', 'de l\'Opinion', 'des Récompenses', 'de la Révolution']];
+
+  return res.replace(/{jourRepublicain}/g, jours[obj.M - 1][obj.J - 1]);
+};

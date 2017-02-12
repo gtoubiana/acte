@@ -10,7 +10,7 @@
  * @example
  * cosinus(0); // 1
  */
-const cosinus = d => {
+const cosinus = (d) => {
   const result = Math.cos(degresVersRadians(d));
 
   return result;

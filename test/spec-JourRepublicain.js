@@ -10,6 +10,14 @@ describe('new acte.Jour().republicain()', () => {
         .toEqual('12 nivôse an VIII');
       expect(new acte.Jour('30 fructidor an V').republicain())
         .toEqual('30 fructidor an V');
+      expect(new acte.Jour('an 9').republicain())
+        .toEqual('1er vendémiaire an IX');
+      expect(new acte.Jour('an X').republicain())
+        .toEqual('1er vendémiaire an X');
+      expect(new acte.Jour('brumaire an X', false).republicain())
+        .toEqual('1er brumaire an X');
+      expect(new acte.Jour('1er brumaire an 7999', false).republicain())
+        .toEqual('1er brumaire an MMMMMMMCMXCIX');
     });
 
   // Balises
@@ -175,6 +183,14 @@ describe('new acte.Jour().republicain()', () => {
     () => {
       expect(new acte.Jour('').republicain())
         .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('brumaire an 11000').republicain())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('brumaire an 11000', false).republicain())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('brumaire an -11000', false).republicain())
+        .toEqual('Pas de correspondances.');
+      expect(new acte.Jour('1er brumaire an 8000', false).republicain())
+        .toEqual('Pas de correspondances.');
     });
   it(
     'new acte.Jour().republicain(0, \'erreur\') = Message d\'erreur.',
@@ -190,8 +206,7 @@ describe('new acte.Jour().republicain()', () => {
     () => {
       expect(new acte.Jour('3 avril 1805')
           .republicain('%Jz/%Mz', 0, ((res, obj) => {
-            const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj
-              .A % 100;
+            const an = acte.prefixeZero(obj.A % 100);
 
             return `${res}/${an}`;
           })))

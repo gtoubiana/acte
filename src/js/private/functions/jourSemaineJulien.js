@@ -10,7 +10,7 @@
  * @example
  * jourSemaineJulien(2378625.5); // 6
  */
-const jourSemaineJulien = jj => {
+const jourSemaineJulien = (jj) => {
   const result = reste(Math.floor(jj + 1.5), 7);
 
   return result;

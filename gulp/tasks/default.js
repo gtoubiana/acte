@@ -1,9 +1,12 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp
- * gulp default
+/** DEFAULT (npm run fromscratch | npm run pull)
+ ** /!\ il y a quelques tâches dans ./gulpfile.js
+ * default
  */
+
 const gulp = require('gulp');
 const sequence = require('gulp-sequence');
+
+/* eslint-disable comma-dangle */
 
 // Tâche par défaut
 gulp.task('default', sequence(
@@ -11,6 +14,7 @@ gulp.task('default', sequence(
   // Nettoyages
   'clean.dist',
   'clean.tests',
+  'clean.docs',
 
   // Vérification des dépendances
   'depcheck',
@@ -19,30 +23,42 @@ gulp.task('default', sequence(
   'lint.gulp',
   'lint.specs',
   'lint.constants',
-  'lint.functions',
+  'lint.public.functions',
+  'lint.private.functions',
   'lint.constructors',
   'lint.prototypes',
   'lint.dist',
+  'lint.docs.js',
+  'lint.docs.css',
 
-  // Spécifications des tests [lint.specs]
+  // Spécifications des tests
   'tests.specs',
 
-  // Générations des fichiers [lint.src]
+  // Générations des fichiers
   'dist.acte.es5',
   'dist.acte.es3',
   'dist.min',
 
   // Générations des documentations
-  // [lint.src, dist.acte.es3]
   'docs.dist',
   'docs.constants',
   'docs.functions',
   'docs.readme',
 
   // Génération du zip
-  'dist.zip'
+  'dist.zip',
 
-  // Couvertures des tests avec istanbul et COVERALLS [tests.specs, dist.acte]
-  // 'tests.coverage'
+  // Génération de la démo dans /docs
+  'docs.index',
+  'docs.assets',
+  'docs.script.es5',
+  'docs.script.es3',
+  'docs.concat.js',
+  'docs.concat.css',
+
+  // Validation du html de la demo
+  'lint.docs.html'
 
 ));
+
+/* eslint-enable comma-dangle */

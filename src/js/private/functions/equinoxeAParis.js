@@ -11,7 +11,7 @@
  * @example
  * equinoxeAParis(2015); // 2457288.5
  */
-const equinoxeAParis = an => {
+const equinoxeAParis = (an) => {
   const ep = fractionEquinoxe(an);
 
   return Math.floor(ep - 0.5) + 0.5;

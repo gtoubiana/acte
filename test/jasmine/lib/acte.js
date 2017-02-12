@@ -1,16 +1,27 @@
-/* POLYFILL: Internet Explorer 8 => Array.prototype.reduce */
 /* istanbul ignore if  */
 if (!Array.prototype.reduce) {
   // jscs:disable
+  /**
+   * Prothèse d'émulation (polyfill) de Array.prototype.reduce pour IE8.
+   * @access private
+   * @since 0.0.15
+   * @license Unknown
+   * @see {@link https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/reduce|Mozilla}
+   * @see {@link https://github.com/es-shims/es5-shim|es5-shim}
+   * @param {Function} callback - La fonction à exécuter sur chaque valeur de la liste
+   * @return {Number|Array} La valeur obtenue grâce à la fonction de réduction
+   * @example
+   * [0, 1, 2, 3].reduce((a, b)=> a + b, 0); // 6
+   */
   Array.prototype.reduce = function (callback /*, initialValue*/ ) {
     'use strict';
 
     if (this == null) {
       throw new TypeError(
-        'Array.prototype.reduce called on null or undefined');
+        'Array.prototype.reduce appelé sur null ou undefined');
     }
     if (typeof callback !== 'function') {
-      throw new TypeError(callback + ' is not a function');
+      throw new TypeError(callback + ' n\'est pas une fonction');
     }
     var t = Object(this),
       len = t.length >>> 0,
@@ -23,7 +34,7 @@ if (!Array.prototype.reduce) {
         k++;
       }
       if (k >= len) {
-        throw new TypeError('Reduce of empty array with no initial value');
+        throw new TypeError('Réduction de tableau vide sans valeur initiale');
       }
       value = t[k++];
     }
@@ -38,10 +49,10 @@ if (!Array.prototype.reduce) {
 }
 
 /**
- * acte - Librairie Javascript pour manipuler des données généalogiques.
+ * acte - Une librairie JavaScript qui simplifie la recherche généalogique.
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
- * @version 0.0.17
+ * @version 0.0.18-1
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @license MIT
  */
@@ -93,6 +104,17 @@ if (!Array.prototype.reduce) {
       [2451810.21715, 365242.01767, -0.11575, 0.00337, 0.00078],
       [2451900.05952, 365242.74049, -0.06223, -0.00823, 0.00032]
     ];
+
+    /**
+     * Année maximale acceptée pour les calculs grégoriens, juliens
+     * ou républicains.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Number}
+     */
+    var anneeMax = 8000;
 
     /**
      * Nombre de jours, sur Terre, pour que le Soleil retourne à la même
@@ -156,8 +178,32 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
+     * Date de l'adoption du calendrier grégorien.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+     * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @see dateFinJulien, retardJulien
+     * @constant {Array}
+     */
+    var dateDebutGregorien = [15, 10, 1582];
+
+    /**
+     * Date de fin d'utilisation du calendrier julien.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
+     * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @see dateDebutGregorien, retardJulien
+     * @constant {Array}
+     */
+    var dateFinJulien = [4, 10, 1582];
+
+    /**
      * Tableau des Delta T différence entre Temps universel et temps terrestre
-     * en secondes, observées pour les années paires de 1620 à 2016.
+     * en secondes, observées pour les années paires de 1620 à 2017.
      * @access private
      * @author F.R. Stephenson & L.V. Morrison & IERS & Gilles Toubiana
      * @since 0.0.15
@@ -166,6 +212,8 @@ if (!Array.prototype.reduce) {
      * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions}
      * @constant {Array}
      */
+
+    /* eslint-disable space-unary-ops */
     var delta = [124, 115, 106, 98, 91, 85, 79, 74, 70, 65, 62, 58, 55, 53,
       50, 48, 46, 44, 42, 40, 37, 35, 33, 31, 28, 26, 24, 22, 20, 18, 16,
       14, 13, 12, 11, 10, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11,
@@ -181,8 +229,10 @@ if (!Array.prototype.reduce) {
       27.28, 28.25, 29.15, 29.97, 30.72, 31.35, 32.18, 33.15, 34, 35.03,
       36.54, 38.29, 40.18, 42.23, 44.94, 46.94, 49.03, 50.93, 52.53, 54.05,
       55.08, 56.05, 57.18, 58.69, 60.35, 61.95, 63.23, 63.95, 64.39, 64.63,
-      64.97, 65.6, 66.2, 66.74, 67.45, 68.26
+      64.97, 65.6, 66.2, 66.74, 67.45, 68.35
     ];
+
+    /* eslint-disable space-unary-ops */
 
     /**
      * Dixaines en toutes lettres.
@@ -255,22 +305,6 @@ if (!Array.prototype.reduce) {
     var jjDebutCommuneDeParis = 2404504.5;
 
     /**
-     * Nombre de jours juliens correspondants à l'adoption du calendrier
-     * grégorien.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.1
-     * @see {@link https://github.com/gtoubiana/acte.js|Projet sur GitHub}
-     * @constant {Number}
-     * @example
-     * jjVersGregorien(2299160.5); // [1582, 10, 15]
-     * jjVersGregorien(jjDebutGregorien); // [1582, 10, 15]
-     * jjVersJulien(2299160.5); // [1582, 10, 5]
-     * jjVersJulien(jjDebutGregorien); // [1582, 10, 5]
-     */
-    var jjDebutGregorien = 2299160.5;
-
-    /**
      * Nombre de jours juliens correspondants à l'an 1 républicain.
      * @access private
      * @author John Walker
@@ -319,7 +353,7 @@ if (!Array.prototype.reduce) {
     var jjFinRepublicain = 2380686.5;
 
     /**
-     * Nom des Jours Grégoriens et abbréviations courantes,
+     * Nom des Jours de la semaine Grégorienne et abbréviations courantes,
      * sur 1, 2 et 3 caractères.
      * @access private
      * @author Gilles Toubiana
@@ -327,7 +361,7 @@ if (!Array.prototype.reduce) {
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @constant {Array}
      */
-    var jourGregorien = [
+    var jourSemaineGregorienne = [
       ['Dimanche', 'Dim', 'Dim', 'Di', 'D'],
       ['Lundi', 'Lundi', 'Lun', 'Lu', 'L'],
       ['Mardi', 'Mardi', 'Mar', 'Ma', 'M'],
@@ -338,7 +372,7 @@ if (!Array.prototype.reduce) {
     ];
 
     /**
-     * Nom des Jours Republicains et abbréviations courantes,
+     * Nom des Jours de la semaine Republicaine et abbréviations courantes,
      * sur 1, 2 et 3 caractères.
      * @access private
      * @author Gilles Toubiana
@@ -346,7 +380,7 @@ if (!Array.prototype.reduce) {
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @constant {Array}
      */
-    var jourRepublicain = [
+    var jourSemaineRepublicaine = [
       ['Primidi', 'Prim', 'Pri', 'Pi', 'P'],
       ['Duodi', 'Duo', 'Duo', 'Du', 'D'],
       ['Tridi', 'Tri', 'Tri', 'Ti', 'T'],
@@ -358,6 +392,16 @@ if (!Array.prototype.reduce) {
       ['Nonidi', 'Non', 'Non', 'No', 'N'],
       ['Décadi', 'Déc', 'Déc', 'Dé', 'D']
     ];
+
+    /**
+     * Nombre de jours en fonction des mois Grégoriens.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @constant {Array}
+     */
+    var joursDansLeMois = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     /**
      * Nom des Mois Grégoriens et abbréviations courantes,
@@ -417,68 +461,71 @@ if (!Array.prototype.reduce) {
      * @constant {Array}
      */
     var regexpGregorien = [{
-      regexp: 'jan(v)?(\\.)?(ier)?',
-      replace: '/1/'
+      e: 'jan(v)?(\\.)?(ier)?',
+      r: '/1/'
     }, {
-      regexp: 'Jer',
-      replace: '/1/'
+      e: 'Jer',
+      r: '/1/'
     }, {
-      regexp: 'f(é|e)v(r)?(\\.)?(ier)?',
-      replace: '/2/'
+      e: 'f(é|e)v(r)?(\\.)?(ier)?',
+      r: '/2/'
     }, {
-      regexp: 'Fer',
-      replace: '/2/'
+      e: 'Fer',
+      r: '/2/'
     }, {
-      regexp: 'mar(s|\\.)?',
-      replace: '/3/'
+      e: 'mardi',
+      r: ''
     }, {
-      regexp: 'avr(il|\\.)?',
-      replace: '/4/'
+      e: 'mar(s|\\.)?',
+      r: '/3/'
     }, {
-      regexp: 'mai',
-      replace: '/5/'
+      e: 'avr(il|\\.)?',
+      r: '/4/'
     }, {
-      regexp: 'ju(i)?n',
-      replace: '/6/'
+      e: 'mai',
+      r: '/5/'
     }, {
-      regexp: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
-      replace: '/7/'
+      e: 'ju(i)?n',
+      r: '/6/'
     }, {
-      regexp: 'Jet',
-      replace: '/7/'
+      e: 'ju(i)?l(\\.|l)?(\\.)?(et)?',
+      r: '/7/'
     }, {
-      regexp: 'ao(u|û)(t|\\.)?',
-      replace: '/8/'
+      e: 'Jet',
+      r: '/7/'
     }, {
-      regexp: 'sep(t)?(\\.)?(embre)?',
-      replace: '/9/'
+      e: 'ao(u|û)(t|\\.)?',
+      r: '/8/'
     }, {
-      regexp: '7bre',
-      replace: '/9/'
+      e: 'sep(t)?(\\.)?(embre)?',
+      r: '/9/'
     }, {
-      regexp: 'oct(obre|\\.)?',
-      replace: '/10/'
+      e: '7bre',
+      r: '/9/'
     }, {
-      regexp: '8bre',
-      replace: '/10/'
+      e: 'oct(obre|\\.)?',
+      r: '/10/'
     }, {
-      regexp: 'nov(embre|\\.)?',
-      replace: '/11/'
+      e: '8bre',
+      r: '/10/'
     }, {
-      regexp: '9bre',
-      replace: '/11/'
+      e: 'nov(embre|\\.)?',
+      r: '/11/'
     }, {
-      regexp: 'd(é|e)c(embre|\\.)?',
-      replace: '/12/'
+      e: '9bre',
+      r: '/11/'
     }, {
-      regexp: 'Xbre',
-      replace: '/12/'
+      e: 'd(é|e)c(embre|\\.)?',
+      r: '/12/'
     }, {
-      regexp: '10bre',
-      replace: '/12/'
+      e: 'Xbre',
+      r: '/12/'
     }, {
-      regexp: '[^-()\\d/*+.]',
-      replace: ''
+      e: '10bre',
+      r: '/12/'
+    }, {
+      e: '[^-()\\d/*+.]',
+      r: ''
     }];
 
     /**
@@ -490,54 +537,67 @@ if (!Array.prototype.reduce) {
      * @constant {Array}
      */
     var regexpRepublicain = [{
-      regexp: 'vend(é|e)miaire',
-      replace: '/1/'
+      e: 'vend(é|e)miaire',
+      r: '/1/'
     }, {
-      regexp: 'brumaire',
-      replace: '/2/'
+      e: 'brumaire',
+      r: '/2/'
     }, {
-      regexp: 'frimaire',
-      replace: '/3/'
+      e: 'frimaire',
+      r: '/3/'
     }, {
-      regexp: 'niv(ô|o)se',
-      replace: '/4/'
+      e: 'niv(ô|o)se',
+      r: '/4/'
     }, {
-      regexp: 'pluvi(ô|o)se',
-      replace: '/5/'
+      e: 'pluvi(ô|o)se',
+      r: '/5/'
     }, {
-      regexp: 'vent(ô|o)se',
-      replace: '/6/'
+      e: 'vent(ô|o)se',
+      r: '/6/'
     }, {
-      regexp: 'germinal',
-      replace: '/7/'
+      e: 'germinal',
+      r: '/7/'
     }, {
-      regexp: 'flor(é|e)al',
-      replace: '/8/'
+      e: 'flor(é|e)al',
+      r: '/8/'
     }, {
-      regexp: 'prairial',
-      replace: '/9/'
+      e: 'prairial',
+      r: '/9/'
     }, {
-      regexp: 'messidor',
-      replace: '/10/'
+      e: 'messidor',
+      r: '/10/'
     }, {
-      regexp: 'thermidor',
-      replace: '/11/'
+      e: 'thermidor',
+      r: '/11/'
     }, {
-      regexp: 'fructidor',
-      replace: '/12/'
+      e: 'fructidor',
+      r: '/12/'
     }, {
-      regexp: 'san(s-)?culottide(s)?',
-      replace: '/13/'
+      e: 'san(s-)?culottide(s)?',
+      r: '/13/'
     }, {
-      regexp: 'jour(s)?\\scompl(é|e)mentaire(s)?',
-      replace: '/13/'
+      e: 'jour(s)?\\scompl(é|e)mentaire(s)?',
+      r: '/13/'
     }, {
-      regexp: 'd(é|e)cade\\s(\\d){1,2}',
-      replace: ''
+      e: 'd(é|e)cade\\s(\\d){1,2}',
+      r: ''
     }, {
-      regexp: '[^-()\\d/*+.]',
-      replace: ''
+      e: '[^-()\\d/*+.]',
+      r: ''
     }];
+
+    /**
+     * Nombre de jours de retard du calendrier Julien
+     * lors du passage au calendrier Grégorien.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @see https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+     * @see dateDebutGregorien, dateFinJulien
+     * @constant {Number}
+     */
+    var retardJulien = 10;
 
     /**
      * Nombre de jours dans un siècle julien.
@@ -755,7 +815,7 @@ if (!Array.prototype.reduce) {
         var deltaL = 1 + 0.0334 * cosinus(W) + 0.0007 * cosinus(2 * W);
 
         S = 0;
-        for (i = j = 0; i < 24; i++) {
+        for (i = 0, j = 0; i < 24; i += 1) {
           S += termesPerEquinoxes[j] * cosinus(termesPerEquinoxes[j + 1] +
             termesPerEquinoxes[j + 2] * T);
           j += 3;
@@ -838,7 +898,7 @@ if (!Array.prototype.reduce) {
         var i = void 0;
 
         if (Math.abs(u) < 1.0) {
-          for (i = 0; i < 10; i++) {
+          for (i = 0; i < 10; i += 1) {
             eps += oTerms[i] / 3600.0 * v;
             v *= u;
           }
@@ -937,32 +997,32 @@ if (!Array.prototype.reduce) {
         var dp = 0;
         var de = 0;
 
-        ta[0] = degresVersRadians(297.850363 + 445267.11148 * t - 0.0019142 *
-          t2 + t3 / 189474.0);
-        ta[1] = degresVersRadians(357.52772 + 35999.05034 * t - 0.0001603 *
-          t2 - t3 / 300000.0);
+        ta[0] = degresVersRadians(297.850363 + (445267.11148 * t -
+          0.0019142 * t2) + t3 / 189474.0);
+        ta[1] = degresVersRadians(357.52772 + (35999.05034 * t - 0.0001603 *
+          t2 - t3 / 300000.0));
         ta[2] = degresVersRadians(134.96298 + 477198.867398 * t + 0.0086972 *
           t2 + t3 / 56250.0);
-        ta[3] = degresVersRadians(93.27191 + 483202.017538 * t - 0.0036825 *
-          t2 + t3 / 327270);
-        ta[4] = degresVersRadians(125.04452 - 1934.136261 * t + 0.0020708 *
-          t2 + t3 / 450000.0);
-        for (var i = 0; i < 5; i++) {
+        ta[3] = degresVersRadians(93.27191 + (483202.017538 * t - 0.0036825 *
+          t2) + t3 / 327270);
+        ta[4] = degresVersRadians(125.04452 - (1934.136261 * t + 0.0020708 *
+          t2 + t3 / 450000.0));
+        for (var i = 0; i < 5; i += 1) {
           ta[i] -= 2 * Math.PI * Math.floor(ta[i] / (2 * Math.PI));
         }
         var to10 = t / 10.0;
 
-        for (var _i = 0; _i < 63; _i++) {
+        for (var _i = 0; _i < 63; _i += 1) {
           var ang = 0;
 
-          for (var j = 0; j < 5; j++) {
+          for (var j = 0; j < 5; j += 1) {
             if (argNutMult[_i * 5 + j] !== 0) {
               ang += argNutMult[_i * 5 + j] * ta[j];
             }
           }
-          dp += (argNutCoeff[_i * 4 + 0] + argNutCoeff[_i * 4 + 1] * to10) *
+          dp += (argNutCoeff[_i * 4 + 0] + argNutCoeff[_i * 4 + 1]) * to10 *
             Math.sin(ang);
-          de += (argNutCoeff[_i * 4 + 2] + argNutCoeff[_i * 4 + 3] * to10) *
+          de += (argNutCoeff[_i * 4 + 2] + argNutCoeff[_i * 4 + 3]) * to10 *
             Math.cos(ang);
         }
 
@@ -1129,7 +1189,7 @@ if (!Array.prototype.reduce) {
         var an = quadricent * 400 + cent * 100 + quad * 4 + yindex;
         var anneeBissextile = gregorienBissextile(an) ? 1 : 2;
 
-        if (!(cent === 4 || yindex === 4)) an++;
+        if (!(cent === 4 || yindex === 4)) an += 1;
         var yearday = wjd - gregorienVersJj(an, 1, 1);
         var leapadj = wjd < gregorienVersJj(an, 3, 1) ? 0 : anneeBissextile;
         var mois = Math.floor(((yearday + leapadj) * 12 + 373) / 367);
@@ -1164,290 +1224,6 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
-     * Pour convertir uniquement 'un' en nombre ordinal.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} saisie - le nombre en lettres
-     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
-     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
-     * @return {String} le nombre - ordinal ou non - en lettres
-     * @example
-     * premierOrdinalEnLettres("Un"); // "Premier"
-     * premierOrdinalEnLettres("Un", 1); // "Première"
-     * premierOrdinalEnLettres("Deux"); // "Deux"
-     * premierOrdinalEnLettres("Vingt-trois"); // "Vingt-trois"
-     */
-    var premierOrdinalEnLettres = function () {
-      function premierOrdinalEnLettres(saisie, genre) {
-        var str = saisie.toString();
-        var prem = genre ? 'ère' : 'er';
-        var result = str === 'Un' ? 'Premi' + prem : str;
-
-        return result;
-      }
-
-      return premierOrdinalEnLettres;
-    }();
-
-    /**
-     * Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} n - le nombre à préfixer
-     * @return {String} le nombre avec préfixe zéro
-     * @example
-     * prefixeZero(20); // 20
-     * prefixeZero(9); // "09"
-     * prefixeZero(0); // 0
-     * prefixeZero(-4); // -4
-     */
-    var prefixeZero = function () {
-      function prefixeZero(n) {
-        var result = n < 10 && n > 0 ? '0' + n : n;
-
-        return result;
-      }
-
-      return prefixeZero;
-    }();
-
-    /**
-     * Pour convertir les nombres en toutes lettres.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} n - le nombre en chiffres
-     * @param {String} [r] - par défaut, la réforme de 1990 est appliquée.
-     * Pour utiliser l'ancienne notation, il suffit d'ajouter un argument.
-     * @return {String} le nombre en toutes lettres
-     * @example
-     * nombreEnLettres(2371); // "Deux-mille-trois-cent-soixante-et-onze"
-     * nombreEnLettres(1799,1); // "Mille sept cent quatre-vingt-dix-neuf"
-     */
-    var nombreEnLettres = function () {
-      function nombreEnLettres(n, r) {
-        var mill = void 0;
-        var sepcen = void 0;
-        var centl = void 0;
-        var sepdix = void 0;
-        var dixl = void 0;
-        var sepunit = void 0;
-        var unitl = void 0;
-        var dizunit = void 0;
-        var res = void 0;
-
-        if (typeof n === 'number' && n > -10000 && n < 10000) {
-          // UnitesEnLettres
-          var u = unitesEnLettres;
-
-          // DixainesEnLettres
-          var v = dixainesEnLettres;
-
-          // Saisie en valeur absolue
-          var abs = Math.abs(n);
-          var splus = r ? ' ' : '-';
-
-          // Milliers
-          var mil = parseInt(abs / 1000, 10);
-
-          // Centaines
-          var cent = parseInt(abs % 1000 / 100, 10);
-
-          // Dixaines
-          var dix = parseInt(abs % 100 / 10, 10);
-
-          // Unités
-          var unit = parseInt(abs % 10, 10);
-
-          // Milliers
-          if (mil === 1) {
-            // Un seul millier
-            mill = 'mille';
-          } else if (mil > 1) {
-            // Plusieurs milliers
-            mill = '' + u[mil] + splus + 'mille';
-          } else {
-            // Pas de milliers
-            mill = '';
-          }
-
-          // Centaines
-          sepcen = mil > 0 ? splus : '';
-          if (cent === 1) {
-            // Une seule centaine
-            centl = sepcen + 'cent';
-          } else if (cent > 1 && dix === 0 && unit === 0) {
-            // Plusieurs centaines
-            centl = '' + sepcen + u[cent] + splus + 'cents';
-          } else if (cent > 1) {
-            // Plusieurs centaines suivies de dizaines
-            centl = '' + sepcen + u[cent] + splus + 'cent';
-          } else {
-            // Pas de centaines
-            centl = '';
-          }
-
-          // Dizaines et unités
-          sepdix = mil + cent > 0 && dix + unit > 0 ? splus : '';
-          if (dix > 0) {
-            dixl = v[dix];
-
-            // Splus
-            sepunit = '-';
-          } else {
-            dixl = '';
-            sepunit = '';
-          }
-
-          // Unités
-          unitl = abs > 0 ? sepunit + u[unit] : 'zéro';
-
-          // Multiples de 10
-          if ((dix * 10 + unit) % 10 === 0) {
-            unitl = '';
-          }
-
-          // Dix, soixante-dix, quatre-vingt-dix
-          if ((dix === 1 || dix === 7 || dix === 9) && unit === 0) {
-            dixl = dix === 1 ? 'dix' : v[dix] + '-dix';
-            unitl = dix === 1 ? '' : u[unit];
-          }
-
-          // Onze+
-          // soixante-et-onze+, quatre-vingt-onze+
-          if ((dix === 1 || dix === 7 || dix === 9) && unit >= 1) {
-            dixl = dix === 1 ? '' : v[dix];
-            if (dix === 1) {
-              sepunit = '';
-            }
-            unitl = dix === 7 && unit === 1 ? splus + 'et' + splus + u[10 +
-              unit] : sepunit + u[10 + unit];
-          }
-
-          // Vingt-et-un, trente-et-un, quarante-et-un,
-          // cinquante-et-un, soixante-et-un
-          if (dix >= 2 && dix <= 6 && unit === 1) {
-            unitl = splus + 'et' + splus + u[unit];
-          }
-
-          // Pluriel sur 80
-          if (dix === 8 && unit === 0) {
-            dixl = v[dix] + 's';
-            unitl = '';
-          }
-
-          dizunit = sepdix + dixl + unitl;
-
-          // Si nombre négatif
-          var avjc = n < 0 ? 'Moins ' : '';
-
-          res = abs > 0 ? initialeEnCapitale(avjc + mill + centl + dizunit) :
-            'Zéro';
-        } else {
-          res = '';
-        }
-        return res;
-      }
-
-      return nombreEnLettres;
-    }();
-
-    /**
-     * Pour convertir les nombres en toutes lettres en nombres ordinaux.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} saisie - le nombre en lettres
-     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
-     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
-     * @return {String} le nombre ordinal en lettres
-     * @example
-     * ordinauxEnLettres("Un"); // "Premier"
-     * ordinauxEnLettres("Un", 1); // "Première"
-     * ordinauxEnLettres("Deux"); // "Deuxième"
-     * ordinauxEnLettres("Vingt-trois"); // "Vingt-troisième"
-     */
-    var ordinauxEnLettres = function () {
-      function ordinauxEnLettres(saisie, genre) {
-        var str = saisie.toString();
-        var result = void 0;
-
-        // Dernier caractère
-        /* eslint-disable indent */
-        switch (str.slice(-1)) {
-        case 't':
-        case 'x':
-          result = str + 'ième';
-          break;
-        case 'q':
-          result = str + 'uième';
-          break;
-        case 'f':
-          result = str.slice(0, str.length - 1) + 'vième';
-          break;
-        case 'e':
-          result = str.slice(0, str.length - 1) + 'ième';
-          break;
-        case 's':
-          result = str.slice(-2) === 'ts' ? str.slice(0, str.length - 1) +
-            'ième' : str + 'ième';
-          break;
-        case 'n':
-          if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
-            result = str + 'ième';
-          } else {
-            result = premierOrdinalEnLettres(str, genre);
-          }
-          break;
-        default:
-          result = str + 'ième';
-        }
-
-        /* eslint-enable indent */
-        return result;
-      }
-
-      return ordinauxEnLettres;
-    }();
-
-    /**
-     * Pour convertir les nombres en nombres ordinaux.
-     * @access private
-     * @author Gilles Toubiana
-     * @since 0.0.15
-     * @license MIT
-     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {Number} n - le nombre en chiffres
-     * @param {String} prem - le suffixe pour le chiffre 1
-     * @param {String} exp - le suffixe pour les chiffres différents de 1
-     * @return {String} le nombre ordinal
-     * @example
-     * nombreOrdinal(1,"er","e"); // "1er"
-     * nombreOrdinal(1,"re","e"); // "1re"
-     * nombreOrdinal(2,"er","e"); // "2e"
-     */
-    var nombreOrdinal = function () {
-      function nombreOrdinal(n, prem, exp) {
-        var result = n === 1 || n === '1er' || n === '1re' ? '1' + prem : n +
-          exp;
-
-        return result;
-      }
-
-      return nombreOrdinal;
-    }();
-
-    /**
      * Pour créer un objet date grégorien valide.
      * @access private
      * @author Gilles Toubiana
@@ -1463,7 +1239,7 @@ if (!Array.prototype.reduce) {
      */
     var dateValide = function () {
       function dateValide(jour, mois, an) {
-        var resultat = new Date(an, mois - 1, jour);
+        var resultat = new Date(an, parseInt(mois - 1, 10), jour);
 
         resultat.setFullYear(an);
 
@@ -1587,7 +1363,7 @@ if (!Array.prototype.reduce) {
         var lasteq = equinoxeAParis(guess);
 
         while (lasteq > jj) {
-          guess--;
+          guess -= 1;
           lasteq = equinoxeAParis(guess);
         }
 
@@ -1595,7 +1371,7 @@ if (!Array.prototype.reduce) {
 
         while (!(lasteq <= jj && jj < nexteq)) {
           lasteq = nexteq;
-          guess++;
+          guess += 1;
           nexteq = equinoxeAParis(guess);
         }
         var adr = Math.round((lasteq - jjDebutRepublicain) / anneeTropique) +
@@ -1605,56 +1381,6 @@ if (!Array.prototype.reduce) {
       }
 
       return anRepublicain;
-    }();
-
-    /**
-     * Pour convertir des chiffres arabes en chiffres romains.
-     * @access private
-     * @author Iván Montes
-     * @since 0.0.1
-     * @license unknown
-     * @see {@link http://blog.stevenlevithan.com/?p=65#comment-16107|Blog}
-     * @param {Number} arabe - Chiffre arabe
-     * @return {String} Chiffre romain
-     * @example
-     * arabeVersRomain(2012); // 'MMXII'
-     */
-    var arabeVersRomain = function () {
-      function arabeVersRomain(arabe) {
-        var lookup = {
-          M: 1000,
-          CM: 900,
-          D: 500,
-          CD: 400,
-          C: 100,
-          XC: 90,
-          L: 50,
-          XL: 40,
-          X: 10,
-          IX: 9,
-          V: 5,
-          IV: 4,
-          I: 1
-        };
-        var tempArabe = Math.abs(arabe);
-        var sign = arabe < 0 ? '-' : '';
-        var romain = '';
-        var i = void 0;
-
-        for (i in lookup) {
-          /* istanbul ignore else  */
-          if (lookup.hasOwnProperty(i)) {
-            while (tempArabe >= lookup[i]) {
-              romain += i;
-              tempArabe -= lookup[i];
-            }
-          }
-        }
-
-        return sign + romain;
-      }
-
-      return arabeVersRomain;
     }();
 
     /**
@@ -1744,14 +1470,14 @@ if (!Array.prototype.reduce) {
         if (x.match(/r/)) {
           // - r = chiffres en Romains
           arabe = res;
-          res = arabeVersRomain(res);
+          res = acte.arabeVersRomain(res);
         }
         if (x.match(/z/)) {
           // - z = Zéro devant le chiffre
           if (!arabe) {
             arabe = res;
           }
-          res = prefixeZero(res);
+          res = acte.prefixeZero(res);
         }
         if (x.match(/l|v/)) {
           if (x.match(/[^JDS](MA|M)/)) {
@@ -1765,11 +1491,12 @@ if (!Array.prototype.reduce) {
           } else {
             if (x.match(/v/)) {
               // - v = chiffres en lettres (Vieille notation)
-              res = arabe ? nombreEnLettres(arabe, 1) : nombreEnLettres(res,
-                1);
+              res = arabe ? acte.nombreEnLettres(arabe, 1) : acte.nombreEnLettres(
+                res, 1);
             } else {
               // - l = chiffres en Lettres
-              res = arabe ? nombreEnLettres(arabe) : nombreEnLettres(res);
+              res = arabe ? acte.nombreEnLettres(arabe) : acte.nombreEnLettres(
+                res);
             }
             ordinaux = true;
           }
@@ -1826,31 +1553,31 @@ if (!Array.prototype.reduce) {
         if (x.match(/o/)) {
           /* istanbul ignore else  */
           if (ordinaux && x.match(/f/)) {
-            res = ordinauxEnLettres(lettres, 1);
+            res = acte.ordinauxEnLettres(lettres, 1);
           } else if (ordinaux) {
-            res = ordinauxEnLettres(lettres);
+            res = acte.ordinauxEnLettres(lettres);
           } else if (x.match(/f/) && chiffres) {
-            res = nombreOrdinal(lettres, 're', 'e');
+            res = acte.nombreOrdinal(lettres, 're', 'e');
           } else if (chiffres) {
-            res = nombreOrdinal(lettres, 'er', 'e');
+            res = acte.nombreOrdinal(lettres, 'er', 'e');
           }
         }
 
         // - p = Premier ou 1er
         if (x.match(/p/)) {
           if (ordinaux) {
-            res = premierOrdinalEnLettres(lettres);
+            res = acte.premierOrdinalEnLettres(lettres);
           } else {
-            res = nombreOrdinal(lettres, 'er', '');
+            res = acte.nombreOrdinal(lettres, 'er', '');
           }
         }
 
         // - f = Féminin de p (première ou 1re)
         if (x.match(/[^o]f/)) {
           if (ordinaux) {
-            res = premierOrdinalEnLettres(lettres, 1);
+            res = acte.premierOrdinalEnLettres(lettres, 1);
           } else {
-            res = nombreOrdinal(lettres, 're', '');
+            res = acte.nombreOrdinal(lettres, 're', '');
           }
         }
         if (x.match(/b/)) {
@@ -1868,6 +1595,38 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
+     * Pour créer une date valide utilisable par le constructeur Jour.
+     * @access private
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Date|String} date - une chaîne ou un objet Date
+     * @return {String} La date utilisable
+     * @example
+     * dateVersJour(new Date(2016, 5, 2)); // 2/6/2016
+     */
+
+    var dateVersJour = function () {
+      function dateVersJour(date) {
+        var result = void 0;
+
+        if (date instanceof Date && isFinite(date.getMonth())) {
+          var jour = date.getDate();
+          var mois = parseInt(date.getMonth() + 1, 10);
+          var an = date.getFullYear();
+
+          result = jour + '/' + mois + '/' + an;
+        } else {
+          result = String(date);
+        }
+        return result;
+      }
+
+      return dateVersJour;
+    }();
+
+    /**
      * Pour générer les prototypes de formatage de Jour.
      * @access private
      * @author Gilles Toubiana
@@ -1881,7 +1640,7 @@ if (!Array.prototype.reduce) {
      * @param {Object} dt - La référence aux variables dans Jour
      * @param {Object} dd - La référence exlicite à une variable dans dt
      * @param {Object} dobj - Une fonction ou un objet utilisable
-     * @param {Object} [pro] - La référence du prototype si nécessaire
+     * @param {Object} [pro] - Une référence issue du prototype si nécessaire
      * @return {String} La date formatée
      * @example
      * formatageDeJour(format, erreur, rappel, '%Jp %Mlb %A',
@@ -1895,7 +1654,8 @@ if (!Array.prototype.reduce) {
         var tvg = dt;
         var resultat = void 0;
 
-        if (tvg[dd]) {
+        // Correspondances uniquement si inférieur à anneeMax
+        if (Math.abs(tvg[dd]) < anneeMax) {
           resultat = frmt.replace(/%[ADJMNSabcflmoprvz123]+/g,
 
             // jscs:disable
@@ -1940,7 +1700,7 @@ if (!Array.prototype.reduce) {
         var an = Math.floor(mois > 2 ? c - 4716 : c - 4715);
 
         if (an < 1) {
-          an--;
+          an -= 1;
         }
 
         return [an, mois, jour];
@@ -2003,6 +1763,28 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
+     * Pour déterminer si une année julienne est bissextile.
+     * @access private
+     * @author John Walker
+     * @since 0.0.17
+     * @license Domaine public
+     * @see {@link http://fourmilab.ch/documents/calendar/|leap_julian}
+     * @param {Number} an - Année julienne
+     * @return {Boolean} Est-ce une année bissextile ?
+     * @example
+     * julienBissextile(2017); // true
+     */
+    var julienBissextile = function () {
+      function julienBissextile(an) {
+        var result = reste(an, 4) === (an > 0 ? 0 : 3);
+
+        return result;
+      }
+
+      return julienBissextile;
+    }();
+
+    /**
      * Pour retourner un objet utilisable par le prototype .gregorien().
      * @access private
      * @author Gilles Toubiana
@@ -2010,14 +1792,23 @@ if (!Array.prototype.reduce) {
      * @license MIT
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
      * @param {Object} d - un objet de Jour.variables
-     * @param {Object} [pro] - La référence du prototype si nécessaire
+     * @param {Object} [pro] - Une référence issue du prototype si nécessaire
      * @return {Object} result - un nouvel objet contenant toutes les valeurs
      * @example
      * objGregorien(tvg);
      */
     var objGregorien = function () {
       function objGregorien(d, pro) {
-        var js = pro === 'julien' ? jourSemaineJulien(d.jj) : d.od.getDay();
+        var js = void 0;
+
+        if (pro === 'julAp1582') {
+          js = jourSemaineJulien(d.jj);
+        } else if (pro === 'julAv1582') {
+          js = jourSemaineJulien(d.jj);
+          js = js - 4 < 0 ? js + 3 : js - 4;
+        } else {
+          js = d.od.getDay();
+        }
         var result = {
 
           // A = Année
@@ -2045,7 +1836,7 @@ if (!Array.prototype.reduce) {
           Ml: moisGregorien[d.m - 1],
 
           // JSl = Jour de la décade/semaine en lettres
-          JSl: jourGregorien[js]
+          JSl: jourSemaineGregorienne[js]
         };
 
         return result;
@@ -2095,7 +1886,7 @@ if (!Array.prototype.reduce) {
           Ml: moisRepublicain[d.m - 1],
 
           // JSl = Jour de la décade/semaine en lettres
-          JSl: jourRepublicain[d.jd - 1]
+          JSl: jourSemaineRepublicaine[d.jd - 1]
         };
 
         return result;
@@ -2125,8 +1916,7 @@ if (!Array.prototype.reduce) {
 
           // jscs:disable
           function (data, item) {
-            var result = data.replace(new RegExp(item.regexp, options),
-              item.replace);
+            var result = data.replace(new RegExp(item.e, options), item.r);
 
             return result;
           }, texte);
@@ -2242,7 +2032,7 @@ if (!Array.prototype.reduce) {
         var i = romain.length - 1;
         var tempRomain = romain.toUpperCase();
 
-        for (i; i >= 0; i--) {
+        for (i; i >= 0; i -= 1) {
           if (lookup[tempRomain[i]] < lookup[tempRomain[i + 1]]) {
             arabe -= lookup[tempRomain[i]];
           } else {
@@ -2278,7 +2068,7 @@ if (!Array.prototype.reduce) {
 
         // On remplace le texte restant par des chiffres arabes
         tempSaisie = remplacements(tempSaisie, regexp, 'gi').split(
-          /[\/\.]+/gi);
+          /[/.]+/gi);
 
         // Si il n'y a que l'année [1,1,ac]
         if (!tempSaisie[1] && !tempSaisie[2]) {
@@ -2322,45 +2112,90 @@ if (!Array.prototype.reduce) {
       function tabGregorien(saisie, limites) {
         // Uniformisation de la saisie
         var iesaisie = saisie[0] === '/' ? '1' + saisie : saisie;
-        var saisieGregorien = saisieValide(iesaisie, regexpGregorien);
+        var saisieGregorien = iesaisie.replace(
+          /\W?an\s-?([-MDCLXVI]+)\W?/gi,
+
+          // jscs:disable
+          function (x, p1) {
+            var rva = romainVersArabe(p1);
+
+            return x.match(/-/) ? ' -' + rva : ' ' + rva;
+          });
+
+        // jscs:enable
         var tab = [];
+
+        saisieGregorien = saisieValide(saisieGregorien, regexpGregorien);
+
+        if (saisieGregorien[2] <= dateDebutGregorien[2]) {
+          joursDansLeMois[1] = julienBissextile(saisieGregorien[2]) ? '29' :
+            '28';
+        } else {
+          joursDansLeMois[1] = gregorienBissextile(saisieGregorien[2]) ?
+            '29' : '28';
+        }
 
         // Lorsque la date est valide [gjmc,gmc,gac]
         if (saisieGregorien[2] && saisieGregorien[0] < 32 && absInt(
             saisieGregorien[0]) !== 0 && saisieGregorien[1] < 13 &&
-          saisieGregorien[1] !== '' && absInt(saisieGregorien[1]) !== 0) {
+          saisieGregorien[1] > 0 && saisieGregorien[1] !== '' && absInt(
+            saisieGregorien[1]) !== 0 && saisieGregorien[0] <=
+          joursDansLeMois[saisieGregorien[1] - 1]) {
           tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
             saisieGregorien[1]), absInt(saisieGregorien[0]));
 
-          // Limitations gregorien/julien
-          if (limites === true && tab[4] < jjDebutGregorien) {
+          // Si limitation et avant début du calendrier grégorien
+          if (limites && tab[4] < gregorienVersJj(dateDebutGregorien[2],
+              dateDebutGregorien[1], dateDebutGregorien[0])) {
             tab[5] = absInt(saisieGregorien[0]);
             tab[6] = absInt(saisieGregorien[1]);
             tab[7] = parseInt(saisieGregorien[2], 10);
             tab[8] = dateValide(tab[5], tab[6], tab[7]);
+
+            // Si limitation et après la fin du calendrier julien
+            if (tab[8] > dateValide(dateFinJulien[0], dateFinJulien[1],
+                dateFinJulien[2])) {
+              /* istanbul ignore if */
+              if (tab[5] + retardJulien > joursDansLeMois[tab[6] - 1]) {
+                tab[0] = tab[5] + retardJulien - joursDansLeMois[tab[6] - 1];
+                tab[1] = tab[6] + 1;
+              } else {
+                tab[0] = tab[5] + retardJulien;
+                tab[1] = tab[6];
+              }
+              tab[2] = tab[7];
+              tab[3] = dateValide(tab[0], tab[1], tab[2]);
+            }
+
+            // Résultats gregorien/julien standards et/ou débridés
           } else {
             tab[0] = absInt(saisieGregorien[0]);
             tab[1] = absInt(saisieGregorien[1]);
             tab[2] = parseInt(saisieGregorien[2], 10);
             tab[3] = dateValide(tab[0], tab[1], tab[2]);
-            var dateJulienne = jjVersJulien(tab[4]);
 
-            tab[5] = dateJulienne[2];
-            tab[6] = dateJulienne[1];
-            tab[7] = dateJulienne[0];
-            tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            // Si débridé
+            if (!limites) {
+              var dateJulienne = jjVersJulien(tab[4]);
+
+              tab[5] = dateJulienne[2];
+              tab[6] = dateJulienne[1];
+              tab[7] = dateJulienne[0];
+              tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            }
           }
 
           // Limitations republicain
           if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain ||
             tab[4] >= jjDebutCommuneDeParis && tab[4] <=
-            jjFinCommuneDeParis || limites === false) {
+            jjFinCommuneDeParis || !limites) {
             var dateRepublicaine = jjVersRepublicain(tab[4]);
 
-            tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
-                dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
-              dateRepublicaine[1], dateRepublicaine[0]
-            ]);
+            tab[9] = dateRepublicaine[3];
+            tab[10] = dateRepublicaine[2];
+            tab[11] = (dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3];
+            tab[12] = dateRepublicaine[1];
+            tab[13] = dateRepublicaine[0];
           }
         }
 
@@ -2389,7 +2224,7 @@ if (!Array.prototype.reduce) {
       function tabRepublicain(saisie, limites) {
         // On remplace les chiffres romains en chiffres arabes
         var saisieRepublicain = saisie.replace(
-          /\W?an\s-?([-MDCLXVI]+)\W?/gi,
+          /\W?an\s?-?([-MDCLXVI]+)\W?/gi,
 
           // jscs:disable
           function (x, p1) {
@@ -2406,8 +2241,8 @@ if (!Array.prototype.reduce) {
           regexpRepublicain);
 
         // Lorsque la date est valide [rjmc,rmc,rac]
-        if (saisieRepublicain[2] && saisieRepublicain[0] < 31 && absInt(
-            saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
+        if (saisieRepublicain[2] < anneeMax && saisieRepublicain[0] < 31 &&
+          absInt(saisieRepublicain[0]) !== 0 && saisieRepublicain[1] < 14 &&
           absInt(saisieRepublicain[1]) !== 0) {
           tab[4] = republicainVersJj(parseInt(saisieRepublicain[2], 10),
             parseInt(saisieRepublicain[1], 10), rjmcVersRdc(
@@ -2416,7 +2251,7 @@ if (!Array.prototype.reduce) {
           // Si jj (tab[4]) est dans les limites ou en illimité
           if (tab[4] >= jjDebutRepublicain && tab[4] <= jjFinRepublicain ||
             tab[4] >= jjDebutCommuneDeParis && tab[4] <=
-            jjFinCommuneDeParis || limites === false) {
+            jjFinCommuneDeParis || !limites) {
             var dateGregorienne = jjVersGregorien(tab[4]);
             var dateJulienne = jjVersJulien(tab[4]);
 
@@ -2424,10 +2259,12 @@ if (!Array.prototype.reduce) {
             tab[1] = dateGregorienne[1];
             tab[2] = dateGregorienne[0];
             tab[3] = dateValide(tab[0], tab[1], tab[2]);
-            tab[5] = dateJulienne[2];
-            tab[6] = dateJulienne[1];
-            tab[7] = dateJulienne[0];
-            tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            if (!limites) {
+              tab[5] = dateJulienne[2];
+              tab[6] = dateJulienne[1];
+              tab[7] = dateJulienne[0];
+              tab[8] = dateValide(tab[5], tab[6], tab[7]);
+            }
             tab[9] = rjmcVersRjdc(saisieRepublicain[0]);
             tab[10] = rjmcVersRdc(saisieRepublicain[0]);
             tab[11] = absInt(saisieRepublicain[0]);
@@ -2443,6 +2280,317 @@ if (!Array.prototype.reduce) {
     }();
 
     /**
+     * Pour convertir des chiffres arabes en chiffres romains.
+     * @memberof acte
+     * @access public
+     * @author Iván Montes
+     * @since 0.0.17
+     * @license unknown
+     * @see {@link http://blog.stevenlevithan.com/?p=65#comment-16107|Blog}
+     * @param {Number} arabe - Chiffre arabe
+     * @return {String} Chiffre romain
+     * @example
+     * acte.arabeVersRomain(2012); // 'MMXII'
+     */
+    acte.arabeVersRomain = function (arabe) {
+      var lookup = {
+        M: 1000,
+        CM: 900,
+        D: 500,
+        CD: 400,
+        C: 100,
+        XC: 90,
+        L: 50,
+        XL: 40,
+        X: 10,
+        IX: 9,
+        V: 5,
+        IV: 4,
+        I: 1
+      };
+      var tempArabe = Math.abs(arabe);
+      var sign = arabe < 0 ? '-' : '';
+      var romain = '';
+      var i = void 0;
+
+      for (i in lookup) {
+        /* istanbul ignore else  */
+        if (Object.prototype.hasOwnProperty.call(lookup, i)) {
+          while (tempArabe >= lookup[i]) {
+            romain += i;
+            tempArabe -= lookup[i];
+          }
+        }
+      }
+
+      return sign + romain;
+    };
+
+    /**
+     * Pour convertir les nombres en toutes lettres.
+     * @memberof acte
+     * @access public
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} n - le nombre en chiffres
+     * @param {String} [r] - par défaut, la réforme de 1990 est appliquée.
+     * Pour utiliser l'ancienne notation, il suffit d'ajouter un argument.
+     * @return {String} le nombre en toutes lettres
+     * @example
+     * acte.nombreEnLettres(2371); // 'Deux-mille-trois-cent-soixante-et-onze'
+     * acte.nombreEnLettres(1799,1); // 'Mille sept cent quatre-vingt-dix-neuf'
+     */
+    acte.nombreEnLettres = function (n, r) {
+      var mill = void 0;
+      var centl = void 0;
+      var dixl = void 0;
+      var sepunit = void 0;
+      var unitl = void 0;
+
+      // UnitesEnLettres
+      var u = unitesEnLettres;
+
+      // DixainesEnLettres
+      var v = dixainesEnLettres;
+
+      // Saisie en valeur absolue
+      var abs = Math.abs(n);
+      var splus = r ? ' ' : '-';
+
+      // Milliers
+      var mil = parseInt(abs / 1000, 10);
+
+      // Centaines
+      var cent = parseInt(abs % 1000 / 100, 10);
+
+      // Dixaines
+      var dix = parseInt(abs % 100 / 10, 10);
+
+      // Unités
+      var unit = parseInt(abs % 10, 10);
+
+      // Milliers
+      if (mil === 1) {
+        // Un seul millier
+        mill = 'mille';
+      } else if (mil > 1) {
+        // Plusieurs milliers
+        mill = '' + u[mil] + splus + 'mille';
+      } else {
+        // Pas de milliers
+        mill = '';
+      }
+
+      // Centaines
+      var sepcen = mil > 0 ? splus : '';
+
+      if (cent === 1) {
+        // Une seule centaine
+        centl = sepcen + 'cent';
+      } else if (cent > 1 && dix === 0 && unit === 0) {
+        // Plusieurs centaines
+        centl = '' + sepcen + u[cent] + splus + 'cents';
+      } else if (cent > 1) {
+        // Plusieurs centaines suivies de dizaines
+        centl = '' + sepcen + u[cent] + splus + 'cent';
+      } else {
+        // Pas de centaines
+        centl = '';
+      }
+
+      // Dizaines et unités
+      var sepdix = mil + cent > 0 && dix + unit > 0 ? splus : '';
+
+      if (dix > 0) {
+        dixl = v[dix];
+
+        // Splus
+        sepunit = '-';
+      } else {
+        dixl = '';
+        sepunit = '';
+      }
+
+      // Unités
+      unitl = abs > 0 ? sepunit + u[unit] : 'zéro';
+
+      // Multiples de 10
+      if ((dix * 10 + unit) % 10 === 0) {
+        unitl = '';
+      }
+
+      // Dix, soixante-dix, quatre-vingt-dix
+      if ((dix === 1 || dix === 7 || dix === 9) && unit === 0) {
+        dixl = dix === 1 ? 'dix' : v[dix] + '-dix';
+        unitl = dix === 1 ? '' : u[unit];
+      }
+
+      // Onze+
+      // soixante-et-onze+, quatre-vingt-onze+
+      if ((dix === 1 || dix === 7 || dix === 9) && unit >= 1) {
+        dixl = dix === 1 ? '' : v[dix];
+        if (dix === 1) {
+          sepunit = '';
+        }
+        unitl = dix === 7 && unit === 1 ? splus + 'et' + splus + u[10 +
+          unit] : sepunit + u[10 + unit];
+      }
+
+      // Vingt-et-un, trente-et-un, quarante-et-un,
+      // cinquante-et-un, soixante-et-un
+      if (dix >= 2 && dix <= 6 && unit === 1) {
+        unitl = splus + 'et' + splus + u[unit];
+      }
+
+      // Pluriel sur 80
+      if (dix === 8 && unit === 0) {
+        dixl = v[dix] + 's';
+        unitl = '';
+      }
+
+      var dizunit = sepdix + dixl + unitl;
+
+      // Si nombre négatif
+      var avjc = n < 0 ? 'Moins ' : '';
+
+      var res = abs > 0 ? initialeEnCapitale(avjc + mill + centl + dizunit) :
+        'Zéro';
+
+      return res;
+    };
+
+    /**
+     * Pour convertir les nombres en nombres ordinaux.
+     * @memberof acte
+     * @access public
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} n - le nombre en chiffres
+     * @param {String} prem - le suffixe pour le chiffre 1
+     * @param {String} exp - le suffixe pour les chiffres différents de 1
+     * @return {String} le nombre ordinal
+     * @example
+     * acte.nombreOrdinal(1,'er','e'); // '1er'
+     * acte.nombreOrdinal(1,'re','e'); // '1re'
+     * acte.nombreOrdinal(2,'er','e'); // '2e'
+     */
+    acte.nombreOrdinal = function (n, prem, exp) {
+      var result = n === 1 || n === '1er' || n === '1re' ? '1' + prem : n +
+        exp;
+
+      return result;
+    };
+
+    /**
+     * Pour convertir les nombres en toutes lettres en nombres ordinaux.
+     * @memberof acte
+     * @access public
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} saisie - le nombre en lettres
+     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
+     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
+     * @return {String} le nombre ordinal en lettres
+     * @example
+     * acte.ordinauxEnLettres('Un'); // 'Premier'
+     * acte.ordinauxEnLettres('Un', 1); // 'Première'
+     * acte.ordinauxEnLettres('Deux'); // 'Deuxième'
+     * acte.ordinauxEnLettres('Vingt-trois'); // 'Vingt-troisième'
+     */
+    acte.ordinauxEnLettres = function (saisie, genre) {
+      var str = saisie.toString();
+      var result = void 0;
+
+      // Dernier caractère
+      /* eslint-disable indent */
+      switch (str.slice(-1)) {
+      case 't':
+      case 'x':
+        result = str + 'i\xE8me';
+        break;
+      case 'q':
+        result = str + 'ui\xE8me';
+        break;
+      case 'f':
+        result = str.slice(0, str.length - 1) + 'vi\xE8me';
+        break;
+      case 'e':
+        result = str.slice(0, str.length - 1) + 'i\xE8me';
+        break;
+      case 's':
+        result = str.slice(-2) === 'ts' ? str.slice(0, str.length - 1) +
+          'i\xE8me' : str + 'i\xE8me';
+        break;
+      case 'n':
+        if (str.slice(-5) === 'et-un' || str.slice(-5) === 'et un') {
+          result = str + 'i\xE8me';
+        } else {
+          result = acte.premierOrdinalEnLettres(str, genre);
+        }
+        break;
+      default:
+        result = str + 'i\xE8me';
+      }
+
+      /* eslint-enable indent */
+      return result;
+    };
+
+    /**
+     * Pour ajouter un préfixe de 0 à un nombre compris entre 1 et 9.
+     * @memberof acte
+     * @access public
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} n - le nombre à préfixer
+     * @return {String} le nombre avec préfixe zéro
+     * @example
+     * acte.prefixeZero(20); // 20
+     * acte.prefixeZero(9); // '09'
+     * acte.prefixeZero(0); // 0
+     * acte.prefixeZero(-4); // -4
+     */
+    acte.prefixeZero = function (n) {
+      var result = n < 10 && n > 0 ? '0' + n : n;
+
+      return result;
+    };
+
+    /**
+     * Pour convertir uniquement 'un' en nombre ordinal.
+     * @memberof acte
+     * @access public
+     * @author Gilles Toubiana
+     * @since 0.0.17
+     * @license MIT
+     * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
+     * @param {Number} saisie - le nombre en lettres
+     * @param {String} [genre] - par défaut, le genre masculin est appliqué.
+     * Pour utiliser le genre féminin, il suffit d'ajouter un argument.
+     * @return {String} le nombre - ordinal ou non - en lettres
+     * @example
+     * acte.premierOrdinalEnLettres('Un'); // 'Premier'
+     * acte.premierOrdinalEnLettres('Un', 1); // 'Première'
+     * acte.premierOrdinalEnLettres('Deux'); // 'Deux'
+     * acte.premierOrdinalEnLettres('Vingt-trois'); // 'Vingt-trois'
+     */
+    acte.premierOrdinalEnLettres = function (saisie, genre) {
+      var str = saisie.toString();
+      var prem = genre ? 'ère' : 'er';
+      var result = str === 'Un' ? 'Premi' + prem : str;
+
+      return result;
+    };
+
+    /**
      * Pour convertir une saisie en objet JavaScript.
      * @memberof acte
      * @class
@@ -2450,7 +2598,8 @@ if (!Array.prototype.reduce) {
      * @access public
      * @author Gilles Toubiana
      * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
-     * @param {String} saisie - Saisie d'une date grégorienne ou républicaine.
+     * @param {String|Date} saisie - Saisie d'une date grégorienne
+     * ou républicaine.
      * @param {Boolean} [limites=true] - Par défaut, les résultats sont limités
      * aux périodes d'utilisation des calendriers :<br>
      * - une saisie de date grégorienne sera considérée comme julienne avant
@@ -2472,16 +2621,21 @@ if (!Array.prototype.reduce) {
      * @license MIT
      */
     acte.Jour = function () {
-      function Jour(saisie, limites) {
+      function Jour(s, limites) {
         _classCallCheck(this, Jour);
 
         var tab = [];
+        var saisie = s;
 
         this.variables = this.variables || {};
         this.limites = limites !== false;
 
+        saisie = dateVersJour(saisie);
+
         // On détecte si c'est une date républicaine
-        if (saisie.match(/\W?an\s-?([-MDCLXVI]+|\d+)\W?/gi)) {
+        if (saisie.match(
+            /(i(d|r)|(ô|o)s|a(d|l)|or).*\Wan\s?-?([-MDCLXVI]+|\d+)\W?/gi) ||
+          saisie.match(/^an\s?-?([-MDCLXVI]+|\d+)/gmi)) {
           tab = tabRepublicain(saisie, this.limites);
 
           // Si ce n'est pas du républicain (donc grégorien ou julien)
@@ -2556,14 +2710,14 @@ if (!Array.prototype.reduce) {
      * new acte.Jour('1/1/1600').gregorien() // '1er janvier 1600'
      * new acte.Jour('').gregorien(0, 'Erreur.') // 'Erreur.'
      * new acte.Jour('3 avril 1605').gregorien('%Jz/%Mz', 0, ((res, obj) => {
-     *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+     *   const an = acte.prefixeZero(obj.A % 100);
      *   return `${res}/${an}`;
      * }))) // '03/04/05'
      */
     acte.Jour.prototype.gregorien = function () {
       function gregorien(format, erreur, rappel) {
         var resultat = formatageDeJour(format, erreur, rappel,
-          '%Jp %Mlb %A', this.variables.gregorien, 'od', objGregorien);
+          '%Jp %Mlb %A', this.variables.gregorien, 'a', objGregorien);
 
         return resultat;
       }
@@ -2588,15 +2742,17 @@ if (!Array.prototype.reduce) {
      * new acte.Jour('1/1/1600').julien() // '22 décembre 1599'
      * new acte.Jour('').julien(0, 'Erreur.') // 'Erreur.'
      * new acte.Jour('3 avril 1605').julien('%Jz/%Mz', 0, ((res, obj) => {
-     *   const an = (obj.A % 100) < 10 ? `0${obj.A % 100}` : obj.A % 100;
+     *   const an = acte.prefixeZero(obj.A % 100);
      *   return `${res}/${an}`;
      * }))) // '24/03/05'
      */
     acte.Jour.prototype.julien = function () {
       function julien(format, erreur, rappel) {
+        var jsjulien = this.variables.julien.jj < 2299160.5 && this.variables
+          .limites === true ? 'julAv1582' : 'julAp1582';
         var resultat = formatageDeJour(format, erreur, rappel,
-          '%Jp %Mlb %A', this.variables.julien, 'od', objGregorien,
-          'julien');
+          '%Jp %Mlb %A', this.variables.julien, 'a', objGregorien,
+          jsjulien);
 
         return resultat;
       }
@@ -2620,8 +2776,8 @@ if (!Array.prototype.reduce) {
      * @example
      * new acte.Jour('1/1/1800').republicain() // '11 nivôse an VIII'
      * new acte.Jour('').republicain(0, 'Erreur.') // 'Erreur.'
-     * new acte.Jour('3 avril 1805').republicain('%Jz/%Dz/%Mz', 0, ((r, o) => {
-     *   const an = (o.A % 100) < 10 ? `0${o.A % 100}` : o.A % 100;
+     * new acte.Jour('3 avril 1805').republicain('%Jz/%Dz/%Mz', 0, ((r, obj) => {
+     *   const an = acte.prefixeZero(obj.A % 100);
      *   return `${r}/${an}`;
      * }))) // '13/02/07/13'
      */

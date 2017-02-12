@@ -10,7 +10,7 @@
  * @example
  * obliquiteEcliptique(2457333.5); // 23.437230456425635
  */
-const obliquiteEcliptique = jj => {
+const obliquiteEcliptique = (jj) => {
   const oTerms = [-4680.93, -1.55, 1999.25, -51.38, -249.67, -39.05, 7.12,
     27.87, 5.79, 2.45,
   ];
@@ -20,7 +20,7 @@ const obliquiteEcliptique = jj => {
   let i;
 
   if (Math.abs(u) < 1.0) {
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 10; i += 1) {
       eps += (oTerms[i] / 3600.0) * v;
       v *= u;
     }

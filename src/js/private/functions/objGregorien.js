@@ -6,13 +6,22 @@
   * @license MIT
   * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
   * @param {Object} d - un objet de Jour.variables
-  * @param {Object} [pro] - La référence du prototype si nécessaire
+  * @param {Object} [pro] - Une référence issue du prototype si nécessaire
   * @return {Object} result - un nouvel objet contenant toutes les valeurs
   * @example
   * objGregorien(tvg);
   */
  const objGregorien = (d, pro) => {
-   const js = (pro === 'julien') ? jourSemaineJulien(d.jj) : d.od.getDay();
+   let js;
+
+   if (pro === 'julAp1582') {
+     js = jourSemaineJulien(d.jj);
+   } else if (pro === 'julAv1582') {
+     js = jourSemaineJulien(d.jj);
+     js = (js - 4) < 0 ? js + 3 : js - 4;
+   } else {
+     js = d.od.getDay();
+   }
    const result = {
 
      // A = Année
@@ -40,7 +49,7 @@
      Ml: moisGregorien[d.m - 1],
 
      // JSl = Jour de la décade/semaine en lettres
-     JSl: jourGregorien[js],
+     JSl: jourSemaineGregorienne[js],
    };
 
    return result;

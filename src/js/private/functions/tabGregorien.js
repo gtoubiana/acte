@@ -16,34 +16,76 @@
 const tabGregorien = (saisie, limites) => {
   // Uniformisation de la saisie
   const iesaisie = saisie[0] === '/' ? `1${saisie}` : saisie;
-  const saisieGregorien = saisieValide(iesaisie, regexpGregorien);
-  let tab = [];
+  let saisieGregorien = iesaisie.replace(/\W?an\s-?([-MDCLXVI]+)\W?/gi,
+
+    // jscs:disable
+    (x, p1) => {
+      const rva = romainVersArabe(p1);
+
+      return x.match(/-/) ? ` -${rva}` : ` ${rva}`;
+    });
+
+  // jscs:enable
+  const tab = [];
+
+  saisieGregorien = saisieValide(saisieGregorien, regexpGregorien);
+
+  if (saisieGregorien[2] <= dateDebutGregorien[2]) {
+    joursDansLeMois[1] = julienBissextile(saisieGregorien[2]) ? '29' : '28';
+  } else {
+    joursDansLeMois[1] = gregorienBissextile(saisieGregorien[2]) ?
+      '29' : '28';
+  }
 
   // Lorsque la date est valide [gjmc,gmc,gac]
   if (saisieGregorien[2] && saisieGregorien[0] < 32 &&
     absInt(saisieGregorien[0]) !== 0 &&
-    saisieGregorien[1] < 13 && saisieGregorien[1] !== '' &&
-    absInt(saisieGregorien[1]) !== 0) {
+    saisieGregorien[1] < 13 && saisieGregorien[1] > 0 &&
+    saisieGregorien[1] !== '' && absInt(saisieGregorien[1]) !== 0 &&
+    (saisieGregorien[0] <= joursDansLeMois[saisieGregorien[1] - 1])) {
     tab[4] = gregorienVersJj(parseInt(saisieGregorien[2], 10), absInt(
       saisieGregorien[1]), absInt(saisieGregorien[0]));
 
-    // Limitations gregorien/julien
-    if ((limites === true) && (tab[4] < jjDebutGregorien)) {
+    // Si limitation et avant début du calendrier grégorien
+    if ((limites) && (tab[4] < gregorienVersJj(
+        dateDebutGregorien[2], dateDebutGregorien[1], dateDebutGregorien[
+          0]))) {
       tab[5] = absInt(saisieGregorien[0]);
       tab[6] = absInt(saisieGregorien[1]);
       tab[7] = parseInt(saisieGregorien[2], 10);
       tab[8] = dateValide(tab[5], tab[6], tab[7]);
+
+      // Si limitation et après la fin du calendrier julien
+      if (tab[8] > dateValide(dateFinJulien[0], dateFinJulien[1],
+          dateFinJulien[2])) {
+        /* istanbul ignore if */
+        if (tab[5] + retardJulien > joursDansLeMois[tab[6] - 1]) {
+          tab[0] = (tab[5] + retardJulien) - joursDansLeMois[tab[6] - 1];
+          tab[1] = tab[6] + 1;
+        } else {
+          tab[0] = tab[5] + retardJulien;
+          tab[1] = tab[6];
+        }
+        tab[2] = tab[7];
+        tab[3] = dateValide(tab[0], tab[1], tab[2]);
+      }
+
+      // Résultats gregorien/julien standards et/ou débridés
     } else {
       tab[0] = absInt(saisieGregorien[0]);
       tab[1] = absInt(saisieGregorien[1]);
       tab[2] = parseInt(saisieGregorien[2], 10);
       tab[3] = dateValide(tab[0], tab[1], tab[2]);
-      const dateJulienne = jjVersJulien(tab[4]);
 
-      tab[5] = dateJulienne[2];
-      tab[6] = dateJulienne[1];
-      tab[7] = dateJulienne[0];
-      tab[8] = dateValide(tab[5], tab[6], tab[7]);
+      // Si débridé
+      if (!limites) {
+        const dateJulienne = jjVersJulien(tab[4]);
+
+        tab[5] = dateJulienne[2];
+        tab[6] = dateJulienne[1];
+        tab[7] = dateJulienne[0];
+        tab[8] = dateValide(tab[5], tab[6], tab[7]);
+      }
     }
 
     // Limitations republicain
@@ -51,13 +93,14 @@ const tabGregorien = (saisie, limites) => {
         (tab[4] <= jjFinRepublicain)) ||
       ((tab[4] >= jjDebutCommuneDeParis) &&
         (tab[4] <= jjFinCommuneDeParis)) ||
-      limites === false) {
+      !limites) {
       const dateRepublicaine = jjVersRepublicain(tab[4]);
 
-      tab = tab.concat([dateRepublicaine[3], dateRepublicaine[2], (
-          dateRepublicaine[2] - 1) * 10 + dateRepublicaine[3],
-        dateRepublicaine[1], dateRepublicaine[0],
-      ]);
+      tab[9] = dateRepublicaine[3];
+      tab[10] = dateRepublicaine[2];
+      tab[11] = ((dateRepublicaine[2] - 1) * 10) + dateRepublicaine[3];
+      tab[12] = dateRepublicaine[1];
+      tab[13] = dateRepublicaine[0];
     }
   }
 

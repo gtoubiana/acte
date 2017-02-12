@@ -1,6 +1,10 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp dist
+/** DIST
+ * dist.acte.es3
+ * dist.acte.es5
+ * dist.min
+ * dist.zip
  */
+
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const config = require('../config');
@@ -10,7 +14,6 @@ const header = require('gulp-header');
 const pkg = require('../../package.json');
 const prettify = require('gulp-jsbeautifier');
 const rename = require('gulp-rename');
-const sequence = require('gulp-sequence');
 const size = require('gulp-size');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
@@ -18,22 +21,6 @@ const wrap = require('gulp-wrap');
 const zip = require('gulp-zip');
 
 // var rep = require('gulp-replace');
-
-gulp.task('dist', sequence(
-
-  // Générer le script acte avec babel
-  'dist.acte.es5',
-
-  // compatibilité ie8
-  'dist.acte.es3',
-
-  // Générer le script minifié de acte
-  'dist.min',
-
-  // Générer le zip de la release
-  'dist.zip'
-
-));
 
 // TASK Pour générer le script ./dist/acte.js
 gulp.task('dist.acte.es5', () => {
@@ -46,6 +33,12 @@ gulp.task('dist.acte.es5', () => {
 
   .pipe(babel({
     plugins: [
+
+      // es2017 preset
+      'syntax-trailing-function-commas',
+
+      // es2016 preset
+      'transform-exponentiation-operator',
 
       // es2015 preset
       'transform-es2015-template-literals',
@@ -66,14 +59,16 @@ gulp.task('dist.acte.es5', () => {
       'transform-es2015-parameters',
       'transform-es2015-destructuring',
       'transform-es2015-block-scoping',
-      'transform-es2015-typeof-symbol', ['transform-regenerator', {
-        async: false,
-        asyncGenerators: false,
-      },
-    ],
+      'transform-es2015-typeof-symbol', [
+        'transform-regenerator', {
+          async: false,
+          asyncGenerators: false,
+        },
+      ],
 
         // no strict
-        ['transform-es2015-modules-commonjs', {
+      [
+        'transform-es2015-modules-commonjs', {
           strict: false,
         },
       ],
@@ -86,12 +81,12 @@ gulp.task('dist.acte.es5', () => {
         pkg,
       }))
     .pipe(prettify({
-      config: `${config.paths.jasmine}/.jsbeautifyrc`,
+      config: `${config.paths.testJasmine}/.jsbeautifyrc`,
     }))
     .pipe(size({
       title: 'ES5 acte.js Size ->',
     }))
-    .pipe(gulp.dest(`${config.paths.jasmine}/lib`));
+    .pipe(gulp.dest(`${config.paths.testJasmine}/lib`));
 
   return stream;
 });
@@ -100,10 +95,10 @@ gulp.task('dist.acte.es3', () => {
   const stream = gulp.src([
 
     // POLYFILLS
-    `${config.paths.poly}/Array.prototype.reduce.js`,
+    `${config.paths.privPoly}/Array.prototype.reduce.js`,
 
     // SCRIPT ES5
-    `${config.paths.jasmine}/lib/acte.js`,
+    `${config.paths.testJasmine}/lib/acte.js`,
   ])
     .pipe(concat('acte.js'))
     .pipe(babel({
@@ -123,19 +118,19 @@ gulp.task('dist.acte.es3', () => {
   //     pkg: pkg
   //   }))
     .pipe(prettify({
-      config: `${config.paths.jasmine}/.jsbeautifyrc`,
+      config: `${config.paths.testJasmine}/.jsbeautifyrc`,
     }))
     .pipe(size({
       title: 'ES3 acte.js Size ->',
     }))
-    .pipe(gulp.dest(`${config.paths.jasmine}/lib`));
+    .pipe(gulp.dest(`${config.paths.testJasmine}/lib`));
 
   return stream;
 });
 
 // TASK Pour générer le script ./dist/acte.min.js
 gulp.task('dist.min', () => {
-  const stream = gulp.src(`${config.paths.jasmine}/lib/acte.js`)
+  const stream = gulp.src(`${config.paths.testJasmine}/lib/acte.js`)
     .pipe(sourcemaps.init())
     .pipe(rename({
       suffix: '.min',

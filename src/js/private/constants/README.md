@@ -2,9 +2,12 @@
 
 ## Table des matières
 
+* [anneeMax](#anneeMax) : <code>Nombre</code> ℗
 * [anneeTropique](#anneeTropique) : <code>Nombre</code> ℗
 * [argNutCoeff](#argNutCoeff) : <code>Tableau</code> ℗
 * [argNutMult](#argNutMult) : <code>Tableau</code> ℗
+* [dateDebutGregorien](#dateDebutGregorien) : <code>Tableau</code> ℗
+* [dateFinJulien](#dateFinJulien) : <code>Tableau</code> ℗
 * [delta](#delta) : <code>Tableau</code> ℗
 * [dixainesEnLettres](#dixainesEnLettres) : <code>Tableau</code> ℗
 * [jde0Tab1000](#jde0Tab1000) : <code>Tableau</code> ℗
@@ -12,21 +15,33 @@
 * [jjAn1Gregorien](#jjAn1Gregorien) : <code>Nombre</code> ℗
 * [jjAn2000Gregorien](#jjAn2000Gregorien) : <code>Nombre</code> ℗
 * [jjDebutCommuneDeParis](#jjDebutCommuneDeParis) : <code>Nombre</code> ℗
-* [jjDebutGregorien](#jjDebutGregorien) : <code>Nombre</code> ℗
 * [jjDebutRepublicain](#jjDebutRepublicain) : <code>Nombre</code> ℗
 * [jjFinCommuneDeParis](#jjFinCommuneDeParis) : <code>Nombre</code> ℗
 * [jjFinRepublicain](#jjFinRepublicain) : <code>Nombre</code> ℗
-* [jourGregorien](#jourGregorien) : <code>Tableau</code> ℗
-* [jourRepublicain](#jourRepublicain) : <code>Tableau</code> ℗
+* [jourSemaineGregorienne](#jourSemaineGregorienne) : <code>Tableau</code> ℗
+* [jourSemaineRepublicaine](#jourSemaineRepublicaine) : <code>Tableau</code> ℗
+* [joursDansLeMois](#joursDansLeMois) : <code>Tableau</code> ℗
 * [moisGregorien](#moisGregorien) : <code>Tableau</code> ℗
 * [moisRepublicain](#moisRepublicain) : <code>Tableau</code> ℗
 * [regexpGregorien](#regexpGregorien) : <code>Tableau</code> ℗
 * [regexpRepublicain](#regexpRepublicain) : <code>Tableau</code> ℗
+* [retardJulien](#retardJulien) : <code>Nombre</code> ℗
 * [siecleJulien](#siecleJulien) : <code>Nombre</code> ℗
 * [termesPerEquinoxes](#termesPerEquinoxes) : <code>Tableau</code> ℗
 * [unitesEnLettres](#unitesEnLettres) : <code>Tableau</code> ℗
 
 * * *
+<a name="anneeMax"></a>
+
+## anneeMax : <code>Nombre</code> ℗
+Année maximale acceptée pour les calculs grégoriens, juliens
+ou républicains.
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
 <a name="anneeTropique"></a>
 
 ## anneeTropique : <code>Nombre</code> ℗
@@ -59,11 +74,41 @@ Termes périodiques pour la nutation en longitude et obliquité.
 **Voir** : [nutArgMult](http://fourmilab.ch/documents/calendar/)  
 **Depuis** : 0.0.1  
 **Auteur** : John Walker  
+<a name="dateDebutGregorien"></a>
+
+## dateDebutGregorien : <code>Tableau</code> ℗
+Date de l'adoption du calendrier grégorien.
+
+**Type** : Constante  
+**Accès** : privé  
+**See**
+
+- [Projet sur GitHub](https://github.com/gtoubiana/acte.js)
+- https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+- dateFinJulien, retardJulien
+
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
+<a name="dateFinJulien"></a>
+
+## dateFinJulien : <code>Tableau</code> ℗
+Date de fin d'utilisation du calendrier julien.
+
+**Type** : Constante  
+**Accès** : privé  
+**See**
+
+- [Projet sur GitHub](https://github.com/gtoubiana/acte.js)
+- https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+- dateDebutGregorien, retardJulien
+
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
 <a name="delta"></a>
 
 ## delta : <code>Tableau</code> ℗
 Tableau des Delta T différence entre Temps universel et temps terrestre
-en secondes, observées pour les années paires de 1620 à 2016.
+en secondes, observées pour les années paires de 1620 à 2017.
 
 **Type** : Constante  
 **Accès** : privé  
@@ -151,24 +196,6 @@ jjVersGregorien(jjDebutCommuneDeParis); // [1871, 3, 18]
 jjVersRepublicain(2404504.5); // [79, 6, 3, 7]
 jjVersRepublicain(jjDebutCommuneDeParis); // [79, 6, 3, 7]
 ```
-<a name="jjDebutGregorien"></a>
-
-## jjDebutGregorien : <code>Nombre</code> ℗
-Nombre de jours juliens correspondants à l'adoption du calendrier
-grégorien.
-
-**Type** : Constante  
-**Accès** : privé  
-**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte.js)  
-**Depuis** : 0.0.1  
-**Auteur** : Gilles Toubiana  
-**Exemple** :  
-```js
-jjVersGregorien(2299160.5); // [1582, 10, 15]
-jjVersGregorien(jjDebutGregorien); // [1582, 10, 15]
-jjVersJulien(2299160.5); // [1582, 10, 5]
-jjVersJulien(jjDebutGregorien); // [1582, 10, 5]
-```
 <a name="jjDebutRepublicain"></a>
 
 ## jjDebutRepublicain : <code>Nombre</code> ℗
@@ -223,10 +250,10 @@ jjVersGregorien(jjFinRepublicain); // [1805, 12, 31]
 jjVersRepublicain(2380686.5); // [14, 4, 1, 10]
 jjVersRepublicain(jjFinRepublicain); // [14, 4, 1, 10]
 ```
-<a name="jourGregorien"></a>
+<a name="jourSemaineGregorienne"></a>
 
-## jourGregorien : <code>Tableau</code> ℗
-Nom des Jours Grégoriens et abbréviations courantes,
+## jourSemaineGregorienne : <code>Tableau</code> ℗
+Nom des Jours de la semaine Grégorienne et abbréviations courantes,
 sur 1, 2 et 3 caractères.
 
 **Type** : Constante  
@@ -234,16 +261,26 @@ sur 1, 2 et 3 caractères.
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.15  
 **Auteur** : Gilles Toubiana  
-<a name="jourRepublicain"></a>
+<a name="jourSemaineRepublicaine"></a>
 
-## jourRepublicain : <code>Tableau</code> ℗
-Nom des Jours Republicains et abbréviations courantes,
+## jourSemaineRepublicaine : <code>Tableau</code> ℗
+Nom des Jours de la semaine Republicaine et abbréviations courantes,
 sur 1, 2 et 3 caractères.
 
 **Type** : Constante  
 **Accès** : privé  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.15  
+**Auteur** : Gilles Toubiana  
+<a name="joursDansLeMois"></a>
+
+## joursDansLeMois : <code>Tableau</code> ℗
+Nombre de jours en fonction des mois Grégoriens.
+
+**Type** : Constante  
+**Accès** : privé  
+**Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
+**Depuis** : 0.0.17  
 **Auteur** : Gilles Toubiana  
 <a name="moisGregorien"></a>
 
@@ -287,6 +324,22 @@ Expressions régulières pour convertir les mois républicains.
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
 **Depuis** : 0.0.1  
 **Auteur** : Gilles Toubiana  
+<a name="retardJulien"></a>
+
+## retardJulien : <code>Nombre</code> ℗
+Nombre de jours de retard du calendrier Julien
+lors du passage au calendrier Grégorien.
+
+**Type** : Constante  
+**Accès** : privé  
+**See**
+
+- [Projet sur GitHub](https://github.com/gtoubiana/acte)
+- https://fr.wikipedia.org/wiki/Passage_du_calendrier_julien_au_calendrier_gr%C3%A9gorien
+- dateDebutGregorien, dateFinJulien
+
+**Depuis** : 0.0.17  
+**Auteur** : Gilles Toubiana  
 <a name="siecleJulien"></a>
 
 ## siecleJulien : <code>Nombre</code> ℗
@@ -318,5 +371,5 @@ Unités en toutes lettres.
 **Depuis** : 0.0.15  
 **Auteur** : Gilles Toubiana  
 * * *
-Créé et maintenu par [@gtoubiana](https://github.com/gtoubiana/).<br>
-Code sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE), documentation sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).
+Créé et maintenu par [Gilles Toubiana](https://github.com/gtoubiana/) - 2015-Présent.<br>
+[Code](https://github.com/gtoubiana/acte) sous licence [MIT](https://github.com/gtoubiana/acte/blob/master/LICENSE), [documentation](https://github.com/gtoubiana/acte/blob/master/dist/README.md) sous licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.fr).

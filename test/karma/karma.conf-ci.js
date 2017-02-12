@@ -1,7 +1,22 @@
 module.exports = function karma(config) {
   // Check out https://saucelabs.com/platforms
+
   const customLaunchers = {
 
+    sl_phone_ios: {
+      base: 'SauceLabs',
+      browserName: 'iphone',
+      platform: 'OS X 10.10',
+      version: '9.3',
+    },
+    sl_phone_android: {
+      base: 'SauceLabs',
+      browserName: 'android',
+      platform: 'Linux',
+      deviceName: 'Android Emulator',
+      version: 'latest',
+      deviceType: 'phone',
+    },
     sl_firefox_osx: {
       base: 'SauceLabs',
       browserName: 'firefox',
@@ -74,36 +89,15 @@ module.exports = function karma(config) {
       version: '9',
       platform: 'Windows 7',
     },
+    /*
+    // voir gulp tests.saucelabs.ie8
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '8',
       platform: 'Windows 7',
     },
-
-    // sl_iphone6_ios: {
-    //   base: 'SauceLabs',
-    //   browserName: 'Safari',
-    //   appiumVersion: '1.5.3',
-    //   deviceName: 'iPhone 6',
-    //   deviceOrientation: 'portrait',
-    //   platformName: 'iOS',
-    //   platformVersion: '9.3',
-    // },
-    sl_phone_ios: {
-      base: 'SauceLabs',
-      browserName: 'iphone',
-      platform: 'OS X 10.10',
-      version: '9.3',
-    },
-    sl_phone_android: {
-      base: 'SauceLabs',
-      browserName: 'android',
-      platform: 'Linux',
-      deviceName: 'Android Emulator',
-      version: 'latest',
-      deviceType: 'phone',
-    },
+    */
   };
   let sauceLabs;
   let concurrency;
@@ -114,8 +108,8 @@ module.exports = function karma(config) {
       testName:
         `[Travis-${process.env.TRAVIS_BUILD_NUMBER}] Karma Tests of Acte`,
       startConnect: false,
-      recordVideo: false,
-      recordScreenshots: false,
+      recordVideo: true,
+      recordScreenshots: true,
       build: process.env.TRAVIS_BUILD_NUMBER,
       tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
       username: process.env.SAUCE_USERNAME,
@@ -127,8 +121,8 @@ module.exports = function karma(config) {
     sauceLabs = {
       testName: '[Local] Karma Tests of Acte',
       startConnect: true,
-      recordVideo: false,
-      recordScreenshots: false,
+      recordVideo: true,
+      recordScreenshots: true,
 
       // Variables d'environnement obligatoires (#90)
       username: process.env.SAUCE_USERNAME,
@@ -149,6 +143,7 @@ module.exports = function karma(config) {
 
     // list of files / patterns to load in the browser
     files: [
+
       '../jasmine/lib/acte.js',
       '../jasmine/lib/acteSpec.js',
     ],
@@ -177,7 +172,7 @@ module.exports = function karma(config) {
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR ||
     // config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
     // enable / disable watching file and executing tests whenever
     // any file changes

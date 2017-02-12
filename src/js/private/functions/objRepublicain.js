@@ -26,10 +26,10 @@
      D: d.d,
 
      // S = Décade/Semaine dans l'année
-     S: (d.m - 1) * 3 + d.d,
+     S: ((d.m - 1) * 3) + d.d,
 
      // JA = Jour dans l'Année
-     JA: (d.m - 1) * 30 + d.jm,
+     JA: ((d.m - 1) * 30) + d.jm,
 
      // JS = Jour de la décade/semaine
      JS: d.jd,
@@ -38,7 +38,7 @@
      Ml: moisRepublicain[d.m - 1],
 
      // JSl = Jour de la décade/semaine en lettres
-     JSl: jourRepublicain[d.jd - 1],
+     JSl: jourSemaineRepublicaine[d.jd - 1],
    };
 
    return result;

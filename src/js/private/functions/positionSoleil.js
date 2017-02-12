@@ -26,7 +26,7 @@
  * // 221.79690960202632, -16.115660127694625, 221.79168151491098,
  * // -16.112230690435588]
  */
-const positionSoleil = jj => {
+const positionSoleil = (jj) => {
   const T = (jj - jjAn2000Gregorien) / siecleJulien;
   const t2 = T * T;
   const l0 = normaliserDegres(280.46646 + (36000.76983 * T) +

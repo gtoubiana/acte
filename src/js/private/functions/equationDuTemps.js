@@ -10,12 +10,11 @@
  * @example
  * equationDuTemps(2457333.5); // 0.002839122270852552
  */
-const equationDuTemps = jj => {
+const equationDuTemps = (jj) => {
   const tau = (jj - jjAn2000Gregorien) / (siecleJulien * 10);
   const l0 = normaliserDegres(280.4664567 + (360007.6982779 * tau) +
-    (0.03032028 * Math.pow(tau, 2)) + ((Math.pow(tau, 3)) / 49931) +
-    (-((Math.pow(tau, 4)) / 15300)) + (-((Math.pow(tau, 5)) / 2000000))
-  );
+    (0.03032028 * (tau ** 2)) + ((tau ** 3) / 49931) +
+    (-((tau ** 4) / 15300)) + (-((tau ** 5) / 2000000)));
   const alpha = positionSoleil(jj)[10];
   const deltaPsi = nutation(jj)[0];
   const epsilon = obliquiteEcliptique(jj) + nutation(jj)[1];

@@ -1,15 +1,32 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp lint
+/** LINT
+ * lint.constants
+ * lint.constructors
+ * lint.dist
+ * lint.docs.css
+ * lint.docs.html
+ * lint.docs.js
+ * lint.gulp
+ * lint.private.functions
+ * lint.prototypes
+ * lint.public.functions
+ * lint.specs
+ * lint.src
+ * lint.test
  */
+
 const concat = require('gulp-concat');
 const config = require('../config');
+const gulpStylelint = require('gulp-stylelint');
 const eslint = require('gulp-eslint');
+const validator = require('html-validator');
+const fse = require('fs-extra');
 const gulp = require('gulp');
 const jscs = require('gulp-jscs');
 const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
 const sequence = require('gulp-sequence');
 const stylish = require('gulp-jscs-stylish');
+
 const lazyLint = lazypipe()
   .pipe(eslint)
   .pipe(eslint.format)
@@ -20,26 +37,7 @@ const lazyPrettyLint = lazypipe()
   })
   .pipe(lazyLint);
 
-gulp.task('lint', sequence(
-
-  // Valider le gulpfile et les gulptasks
-  'lint.gulp',
-
-  // Valider les specs pour les tests
-  'lint.specs',
-
-  // Valider les constantes
-  'lint.constants',
-
-  // Valider les utilitaires
-  'lint.functions',
-
-  // Valider les classes
-  'lint.constructors',
-  'lint.prototypes'
-
-));
-
+/* eslint-disable comma-dangle */
 gulp.task('lint.src', sequence(
   'lint.constants',
   'lint.functions',
@@ -51,11 +49,13 @@ gulp.task('lint.test', sequence(
   'lint.specs'
 ));
 
+/* eslint-enable comma-dangle */
+
 // Valider les scripts Gulp
 gulp.task('lint.gulp', () => {
-  const stream = gulp.src([`${config.paths.tasks}/*.js`])
+  const stream = gulp.src([`${config.paths.gulpTask}/*.js`])
     .pipe(lazyLint())
-    .pipe(gulp.dest(config.paths.tasks));
+    .pipe(gulp.dest(config.paths.gulpTask));
 
   return stream;
 });
@@ -71,44 +71,55 @@ gulp.task('lint.specs', () => {
 
 // Valider les scripts ./src/js/constants/
 gulp.task('lint.constants', () => {
-  const stream = gulp.src([`${config.paths.const}/*.js`])
+  const stream = gulp.src([`${config.paths.privConst}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.const));
+    .pipe(gulp.dest(config.paths.privConst));
 
   return stream;
 });
 
-// Valider les scripts ./src/js/functions/
-gulp.task('lint.functions', () => {
-  const stream = gulp.src([`${config.paths.func}/*.js`])
+// Valider les scripts ./src/js/private-functions/
+gulp.task('lint.private.functions', () => {
+  const stream = gulp.src([`${config.paths.privFunc}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.func));
+    .pipe(gulp.dest(config.paths.privFunc));
+
+  return stream;
+});
+
+// Valider les scripts ./src/js/public-functions/
+gulp.task('lint.public.functions', () => {
+  const stream = gulp.src([`${config.paths.pubFunc}/*.js`])
+    .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
+    .pipe(gulp.dest(config.paths.pubFunc));
 
   return stream;
 });
 
 // Valider les scripts ./src/js/classes/
 gulp.task('lint.constructors', () => {
-  const stream = gulp.src([`${config.paths.class}/*.js`])
+  const stream = gulp.src([`${config.paths.pubConstr}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.class));
+    .pipe(gulp.dest(config.paths.pubConstr));
 
   return stream;
 });
 
 // Valider les scripts ./src/js/prototypes/
 gulp.task('lint.prototypes', () => {
-  const stream = gulp.src([`${config.paths.proto}/*.js`])
+  const stream = gulp.src([`${config.paths.pubProto}/*.js`])
     .pipe(lazyPrettyLint())
     .pipe(jscs({ configPath: './src/js/.jscsrc' }))
     .pipe(stylish())
-    .pipe(gulp.dest(config.paths.proto));
+    .pipe(gulp.dest(config.paths.pubProto));
 
   return stream;
 });
@@ -132,4 +143,62 @@ gulp.task('lint.dist', () => {
     .pipe(stylish());
 
   return stream;
+});
+
+// Valider les scripts ./src/docs/js/
+gulp.task('lint.docs.js', () => {
+  const stream = gulp.src([`${config.paths.src}/docs/js/demo-script.js`])
+    .pipe(lazyPrettyLint())
+    .pipe(jscs({ configPath: './src/js/.jscsrc' }))
+    .pipe(stylish())
+    .pipe(gulp.dest(`${config.paths.src}/docs/js/`));
+
+  return stream;
+});
+
+// Valider les css ./src/docs/css/
+gulp.task('lint.docs.css', () => {
+  const stream = gulp.src([`${config.paths.src}/docs/css/demo-theme.css`])
+    .pipe(prettify({
+      config: `${config.paths.src}/.jsbeautifyrc`,
+    }))
+    .pipe(gulpStylelint({
+      reporters: [
+        { formatter: 'string', console: true },
+      ],
+    }))
+    .pipe(stylish())
+    .pipe(gulp.dest(`${config.paths.src}/docs/css/`));
+
+  return stream;
+});
+
+// Valider les html ./docs/*.html
+gulp.task('lint.docs.html', () => {
+  const options = {
+    format: 'text',
+
+    validator: 'http://html5.validator.nu',
+
+    // validator: 'http://validator.w3.org/nu/',
+  };
+
+  fse.readFile(`${config.paths.docs}/index.html`, 'utf8', (err, html) => {
+    if (err) {
+      throw err;
+    }
+
+    options.data = html;
+
+    /* eslint-disable no-console */
+    validator(options)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    /* eslint-enable no-console */
+  });
 });

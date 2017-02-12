@@ -1,0 +1,44 @@
+INSTALLER DE ZERO (OSX)
+
+1. Installer atom
+
+2. Installer les plugins pour atom et le redémarrer
+   $ npm run atom.install
+
+3. Installer node (avec Homebrew de préférence)
+   $ brew node
+
+4. Installer manuellement les dépendances globales
+   $ npm install -g npm && npm install -g npm-check-updates && npm install -g npm-check
+
+5. Installer les dépendances npm, bower et lancer un build
+   $ npm run fromscratch
+
+6. Mancer une série de tests en local avec Karma si nécessaire (Chrome, Firefox, Safari, Opera)
+   $ gulp tests.karma
+
+7. Liste des tâches Gulp disponibles
+   $ gulp tasks
+
+---
+FAIRE UN GITHUB PULL ET TELECHARGER LES NOUVELLES DEPENDANCES NPM ET BOWER
+   $ npm run pull
+
+---
+METTRE A JOUR LES DEPENDANCES BOWER, NPM ET ATOM
+- Faire un Pull Request puis travailler dedans pour valider avec Travis
+- Mettre à jour les extensions une à une.
+Commencer par Bower, puis les npm Patch, Minor et Major.
+  $ npm run update
+- Mettre à jour les plugins atom et mémoriser la config
+  $ npm run atom.list
+- Vérifier Saucelabs
+  $ gulp tests.saucelabs
+---
+DESINSTALLER (OSX)
+
+- pour désinstaller, remplacer install par uninstall
+
+---
+MISE A JOUR ANNUELLE DE src/js/constants/delta.js
+$ npm run delta

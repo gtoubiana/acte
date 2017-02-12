@@ -13,7 +13,7 @@
  * dateValide(10,12,34); // Sun Dec 10 34 00:00:00 GMT+0100 (CET)
  */
 const dateValide = (jour, mois, an) => {
-  const resultat = new Date(an, mois - 1, jour);
+  const resultat = new Date(an, parseInt(mois - 1, 10), jour);
 
   resultat.setFullYear(an);
 

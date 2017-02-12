@@ -1,6 +1,6 @@
 /**
  * Tableau des Delta T différence entre Temps universel et temps terrestre
- * en secondes, observées pour les années paires de 1620 à 2016.
+ * en secondes, observées pour les années paires de 1620 à 2017.
  * @access private
  * @author F.R. Stephenson & L.V. Morrison & IERS & Gilles Toubiana
  * @since 0.0.15
@@ -9,6 +9,8 @@
  * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions}
  * @constant {Array}
  */
+
+/* eslint-disable space-unary-ops */
 const delta = [124, 115, 106, 98, 91, 85, 79, 74, 70, 65, 62, 58, 55, 53, 50,
   48, 46, 44, 42, 40, 37, 35, 33, 31, 28, 26, 24, 22, 20, 18, 16, 14, 13,
   12, 11, 10, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11, 11, 11,
@@ -23,5 +25,7 @@ const delta = [124, 115, 106, 98, 91, 85, 79, 74, 70, 65, 62, 58, 55, 53, 50,
   25.3, 26.24, 27.28, 28.25, 29.15, 29.97, 30.72, 31.35, 32.18, 33.15, 34,
   35.03, 36.54, 38.29, 40.18, 42.23, 44.94, 46.94, 49.03, 50.93, 52.53,
   54.05, 55.08, 56.05, 57.18, 58.69, 60.35, 61.95, 63.23, 63.95, 64.39,
-  64.63, 64.97, 65.6, 66.2, 66.74, 67.45, 68.26,
+  64.63, 64.97, 65.6, 66.2, 66.74, 67.45, 68.35,
 ];
+
+/* eslint-disable space-unary-ops */

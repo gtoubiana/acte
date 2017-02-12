@@ -1,11 +1,9 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp delta.scrap
- * gulp delta.csv
- * gulp delta.json
- * gulp delta.js
- * gulp delta.clean
- *
- * npm run delta
+/** DELTAT (npm run delta)
+ * delta.clean
+ * delta.csv
+ * delta.js
+ * delta.json
+ * delta.scrap
  */
 
 /* eslint-disable no-console,strict */
@@ -19,39 +17,19 @@ const scraper = require('website-scraper');
 
 /* TASK: copier les données dans ./src/data/deltat.csv */
 gulp.task('delta.scrap', () => {
-  const stream = scraper.scrape({
-    urls: [{
-      url: 'http://maia.usno.navy.mil/ser7/deltat.data',
-      filename: 'deltat.csv',
-    },
-  ],
+  const stream = scraper({
+    urls: [
+      {
+        url: 'http://maia.usno.navy.mil/ser7/deltat.data',
+        filename: 'deltat.csv',
+      },
+    ],
     directory: './src/data',
-    subdirectories: [{
-      directory: 'img',
-      extensions: ['.jpg', '.png', '.svg'],
-    }, {
-      directory: 'js',
-      extensions: ['.js'],
-    }, {
-      directory: 'css',
-      extensions: ['.css'],
-    },
-  ],
-    sources: [{
-      selector: 'img',
-      attr: 'src',
-    }, {
-      selector: 'link[rel="stylesheet"]',
-      attr: 'href',
-    }, {
-      selector: 'script',
-      attr: 'src',
-    },
-  ],
     request: {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Linux; Android 4.2.1en-us;' +
-        'Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko)' +
-        'Chrome/18.0.1025.166 Mobile Safari/535.19',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; ' +
+          'Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko)' +
+          ' Chrome/52.0.2743.116 Safari/537.36',
       },
     },
   }).then((result) => {
@@ -92,11 +70,13 @@ gulp.task('delta.json', () => {
 /* TASK: générer le fichier ./src/js/private/constants/delta.js */
 gulp.task('delta.js', () => {
   'use strict';
+
   const deltat = JSON.parse(fs.readFileSync('./src/data/deltat.json',
     'utf8'));
 
   const deltatAverageForOneYears = (current) => {
     'use strict';
+
     const currentYear = parseInt(current, 10);
     const test = deltat.filter((item) => {
       const result = parseInt(item.an, 10) === currentYear;
@@ -134,7 +114,7 @@ gulp.task('delta.js', () => {
    * @access private
    * @author F.R. Stephenson & L.V. Morrison & IERS & Gilles Toubiana
    * @since 0.0.15
-   * {@link https://www.staff.science.uu.nl/~gent0113/deltat/deltat_modern.htm|Valeurs} |
+   * @see {@link https://www.staff.science.uu.nl/~gent0113/deltat/deltat_modern.htm|Valeurs} |
    * {@link http://maia.usno.navy.mil/ser7/deltat.data|IERS} |
    * {@link http://maia.usno.navy.mil/ser7/deltat.preds|Predictions}
    * @constant {Array}
@@ -150,8 +130,12 @@ gulp.task('delta.js', () => {
         return console.log(err);
       }
 
+      /* eslint-disable comma-dangle */
       return console.log(
-        `Le fichier delta.js pour 1620-${an} a été généré avec succès !`);
+        `Le fichier delta.js pour 1620-${an} a été généré avec succès !`
+      );
+
+      /* eslint-enable comma-dangle */
     });
 });
 

@@ -2,6 +2,7 @@ language: node_js
 node_js:
 - '4'
 - '5'
+- '6'
 matrix:
   include:
     - node_js: 'stable'
@@ -10,6 +11,9 @@ matrix:
         - COVERALLS='1'
       addons:
         sauce_connect: true
+branches:
+  only:
+  - master
 before_install:
  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
  - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]'; then unset SAUCELABS; fi
@@ -18,9 +22,12 @@ before_install:
  - echo "COVERALLS = "${COVERALLS}
 before_script:
   - npm install -g gulp
+  - npm install -g bower
   - npm install -g karma-cli
+  - npm install
+  - bower install
 script:
-  - gulp travis
+  - gulp default
 after_script:
   - ./node_modules/.bin/gulp tests.coverage
   - ./node_modules/.bin/gulp tests.coveralls
@@ -35,6 +42,7 @@ notifications:
     recipients:
     - gilles.toubiana@yahoo.fr
     on_failure: always
-cache:
-  directories:
-    - node_modules
+# désactiver le cache si nécessaire
+# cache:
+#   directories:
+#     - node_modules

@@ -8,69 +8,86 @@
 
 // Chemins
 const paths = {
-  root: './',
-  test: './test',
-  scriptRequire: './lib/acte.js',
+  bower: './bower_components',
+  bowerBootstrap: './bower_components/bootstrap/dist',
+  bowerJquery: './bower_components/jquery/dist',
+  bowerJqueryUI: './bower_components/jquery-ui',
+  bowerRespond: './bower_components/respond/dest',
+  bowerShim: './bower_components/es5-shim',
+  bowerShiv: './bower_components/html5shiv/dist',
+  docs: './docs',
   dist: './dist',
+  gulp: './gulp',
+  gulpTask: './gulp/tasks',
+  npm: './node_modules',
+  npmJasmine: './node_modules/jasmine-core/lib/jasmine-core',
+  partials: './src/docs/partials',
+  priv: './src/js/private',
+  privConst: './src/js/private/constants',
+  privFunc: './src/js/private/functions',
+  privPoly: './src/js/private/polyfills',
+  pub: './src/js/public',
+  pubConstr: './src/js/public/constructors',
+  pubFunc: './src/js/public/functions',
+  pubProto: './src/js/public/prototypes',
+  reqActe: './lib/acte.js',
+  root: './',
   src: './src',
-  tasks: './gulp/tasks',
-  class: './src/js/public/constructors',
-  const: './src/js/private/constants',
-  func: './src/js/private/functions',
-  proto: './src/js/public/prototypes',
-  poly: './src/js/polyfills',
-  jasmine: './test/jasmine',
-  jasmineCore: './node_modules/jasmine-core/lib/jasmine-core',
-  coverage: './test/coverage',
+  test: './test',
+  testCov: './test/coverage',
+  testJasmine: './test/jasmine',
 };
 
 // Ordre des scripts pour générer acte.js
 const acteScripts = [
 
   // Constantes
-  `${paths.const}/*.js`,
+  `${paths.privConst}/*.js`,
 
   // Fonctions pré-requises
-  `${paths.func}/degresVersRadians.js`,
-  `${paths.func}/normaliserDegres.js`,
-  `${paths.func}/radiansVersDegres.js`,
-  `${paths.func}/reste.js`,
-  `${paths.func}/sinus.js`,
-  `${paths.func}/cosinus.js`,
-  `${paths.func}/equinoxe.js`,
-  `${paths.func}/deltaT.js`,
-  `${paths.func}/obliquiteEcliptique.js`,
-  `${paths.func}/positionSoleil.js`,
-  `${paths.func}/nutation.js`,
-  `${paths.func}/equationDuTemps.js`,
-  `${paths.func}/fractionEquinoxe.js`,
-  `${paths.func}/equinoxeAParis.js`,
-  `${paths.func}/gregorienBissextile.js`,
-  `${paths.func}/gregorienVersJj.js`,
-  `${paths.func}/jjVersGregorien.js`,
-  `${paths.func}/initialeEnCapitale.js`,
-  `${paths.func}/premierOrdinalEnLettres.js`,
-  `${paths.func}/prefixeZero.js`,
-  `${paths.func}/nombreEnLettres.js`,
-  `${paths.func}/ordinauxEnLettres.js`,
-  `${paths.func}/nombreOrdinal.js`,
-  `${paths.func}/dateValide.js`,
-  `${paths.func}/periodeEnJours.js`,
-  `${paths.func}/semaineComplete.js`,
+  `${paths.privFunc}/degresVersRadians.js`,
+  `${paths.privFunc}/normaliserDegres.js`,
+  `${paths.privFunc}/radiansVersDegres.js`,
+  `${paths.privFunc}/reste.js`,
+  `${paths.privFunc}/sinus.js`,
+  `${paths.privFunc}/cosinus.js`,
+  `${paths.privFunc}/equinoxe.js`,
+  `${paths.privFunc}/deltaT.js`,
+  `${paths.privFunc}/obliquiteEcliptique.js`,
+  `${paths.privFunc}/positionSoleil.js`,
+  `${paths.privFunc}/nutation.js`,
+  `${paths.privFunc}/equationDuTemps.js`,
+  `${paths.privFunc}/fractionEquinoxe.js`,
+  `${paths.privFunc}/equinoxeAParis.js`,
+  `${paths.privFunc}/gregorienBissextile.js`,
+  `${paths.privFunc}/gregorienVersJj.js`,
+  `${paths.privFunc}/jjVersGregorien.js`,
+  `${paths.privFunc}/initialeEnCapitale.js`,
+  `${paths.privFunc}/premierOrdinalEnLettres.js`,
+  `${paths.privFunc}/prefixeZero.js`,
+  `${paths.privFunc}/nombreEnLettres.js`,
+  `${paths.privFunc}/ordinauxEnLettres.js`,
+  `${paths.privFunc}/nombreOrdinal.js`,
+  `${paths.privFunc}/dateValide.js`,
+  `${paths.privFunc}/periodeEnJours.js`,
+  `${paths.privFunc}/semaineComplete.js`,
 
   // Fonctions restantes
-  `${paths.func}/*.js`,
+  `${paths.privFunc}/*.js`,
 
   // Fonctions exclues (!)
-  `!${paths.func}/julienVersJj.js`,
+  `!${paths.privFunc}/julienVersJj.js`,
 
-  // Constructeurs
-  `${paths.class}/Jour.js`,
+  // Fonctions publiques
+  `${paths.pubFunc}/*.js`,
 
-  // Prototypes
-  `${paths.proto}/Jour.prototype.gregorien.js`,
-  `${paths.proto}/Jour.prototype.julien.js`,
-  `${paths.proto}/Jour.prototype.republicain.js`,
+  // Constructeurs publiques
+  `${paths.pubConstr}/acte.Jour.js`,
+
+  // Prototypes publiques
+  `${paths.pubProto}/acte.Jour.prototype.gregorien.js`,
+  `${paths.pubProto}/acte.Jour.prototype.julien.js`,
+  `${paths.pubProto}/acte.Jour.prototype.republicain.js`,
 ];
 
 // Template Jsdoc du module UMD

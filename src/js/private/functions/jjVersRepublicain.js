@@ -11,7 +11,7 @@
  * @example
  * jjVersRepublicain(2379902.5); // [12, 2, 2, 6]
  */
-const jjVersRepublicain = jj => {
+const jjVersRepublicain = (jj) => {
   const tempJj = Math.floor(jj) + 0.5;
   const adr = anRepublicain(tempJj);
   const an = adr[0];

@@ -17,13 +17,13 @@ const julienVersJj = (an, mois, jour) => {
   let tempMois = mois;
 
   if (an < 1) {
-    tempAn++;
+    tempAn += 1;
   }
   if (mois <= 2) {
-    tempAn--;
+    tempAn -= 1;
     tempMois += 12;
   }
 
-  return Math.floor(365.25 * (tempAn + 4716)) + Math.floor(30.6001 * (
-    tempMois + 1)) + jour - 1524.5;
+  return (Math.floor(365.25 * (tempAn + 4716)) + Math.floor(30.6001 * (
+    tempMois + 1)) + jour) - 1524.5;
 };

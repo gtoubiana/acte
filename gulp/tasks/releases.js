@@ -1,9 +1,23 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp pre
- * gulp patch
- * gulp minor
- * gulp major
+/** RELEASES
+ * releases.commit
+ * releases.github.publish
+ * releases.github.releaser
+ * releases.major
+ * releases.minor
+ * releases.patch
+ * releases.pre
+ * releases.push
+ * releases.tag
+ * releases.version.major
+ * releases.version.minor
+ * releases.version.patch
+ * releases.version.prerelease
+ * major
+ * minor
+ * patch
+ * pre
  */
+
 const bump = require('gulp-bump');
 const compareFunc = require('compare-func');
 const config = require('../config');
@@ -16,9 +30,12 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const pkg = require('../../package.json');
 const sequence = require('gulp-sequence');
+
 const issueUrl = () => {
   /* eslint-disable strict */
+
   'use strict';
+
   const url = null;
   let gitUrl;
   let newUrl;
@@ -117,17 +134,19 @@ gulp.task('releases.github.releaser', (done) => {
     commit: 'commit',
   }, {}, {}, {
     mainTemplate: fse.readFileSync(
-      `${config.paths.src}/tmpl/changelogMain.hbs`, 'utf8'),
+      `${config.paths.partials}/changelogMain.hbs`, 'utf8'),
     commitPartial: fse.readFileSync(
-      `${config.paths.src}/tmpl/changelogCommit.hbs`, 'utf8'),
+      `${config.paths.partials}/changelogCommit.hbs`, 'utf8'),
     footerPartial: fse.readFileSync(
-      `${config.paths.src}/tmpl/changelogFooter.hbs`, 'utf8'),
+      `${config.paths.partials}/changelogFooter.hbs`, 'utf8'),
     transform: function transform(commit) {
       /* eslint-disable no-param-reassign,strict */
+
       'use strict';
+
       let discard = true;
 
-      commit.notes.forEach(note => {
+      commit.notes.forEach((note) => {
         note.title = 'RÉTROCOMPATIBILITÉ';
         discard = false;
       });
@@ -199,7 +218,7 @@ gulp.task('releases.github.releaser', (done) => {
 
     github.authenticate(auth);
     github.repos.uploadAsset({
-      user: 'gtoubiana',
+      owner: 'gtoubiana',
       repo: 'acte',
       id: response[0].value.id,
       name: `acte-${version}-dist.zip`,
@@ -208,6 +227,7 @@ gulp.task('releases.github.releaser', (done) => {
   });
 });
 
+/* eslint-disable comma-dangle */
 gulp.task('releases.github.publish', sequence(
     'releases.commit',
     'releases.push',
@@ -274,3 +294,5 @@ gulp.task('major', sequence(
     'default',
     'releases.github.publish'
 ));
+
+/* eslint-enable comma-dangle */

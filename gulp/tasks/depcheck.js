@@ -1,3 +1,7 @@
+/** DEPCHECK (npm run update)
+ * depcheck
+ */
+
 /* eslint-disable */
 
 const depcheck = require('gulp-depcheck');
@@ -31,6 +35,8 @@ require('babel-plugin-transform-jscript');
 require('babel-plugin-transform-object-assign');
 require('babel-plugin-transform-regenerator');
 require('babel-plugin-transform-undefined-to-void');
+require('babel-plugin-transform-exponentiation-operator');
+require('babel-plugin-syntax-trailing-function-commas');
 
 // Dépendances ESLINT
 require('eslint-config-airbnb');
@@ -39,7 +45,6 @@ require('eslint-plugin-jsx-a11y');
 require('eslint-plugin-react');
 
 // Dépendances GULP
-require('gulp-stats')(gulp);
 require('gulp-util');
 
 // Dépendances KARMA
@@ -48,15 +53,17 @@ require('karma-firefox-launcher');
 require('karma-jasmine');
 require('karma-opera-launcher');
 require('karma-safari-launcher');
+require('karma-ie-launcher');
 require('karma-sauce-launcher');
 
-// Dépendances JASMINE
+// Dépendances TESTS
 require('jasmine');
+require('sauce-connect-tunnel');
 
 /* eslint-enable */
 
 // Vérifier les dépendances
 gulp.task('depcheck', depcheck({
-  ignoreDirs: ['docs', 'build'],
+  ignoreDirs: ['docs', 'dist'],
   ignoreMatches: ['glob'],
 }));

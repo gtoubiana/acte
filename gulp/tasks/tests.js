@@ -1,16 +1,16 @@
-/** TACHES PRINCIPALES DU FICHIER :
- * gulp tests
- * gulp tests.specs
- * gulp tests.jasmine
- * gulp tests.karma
- * gulp tests.saucelabs
- * gulp tests.coverage
+/** TESTS (npm run test)
+ * tests.coverage
+ * tests.coveralls
+ * tests.jasmine
+ * tests.karma
+ * tests.saucelabs
+ * tests.specs
  */
+
 const babel = require('gulp-babel');
 const config = require('../config');
 const coveralls = require('gulp-coveralls');
 const gulp = require('gulp');
-const sequence = require('gulp-sequence');
 const gutil = require('gulp-util');
 const istanbul = require('gulp-istanbul');
 const jasmineNode = require('gulp-jasmine');
@@ -57,22 +57,26 @@ gulp.task('tests.specs', () => {
     // .pipe(eslint())
     // .pipe(eslint.format())
     // .pipe(eslint.failAfterError())
-    .pipe(gulp.dest(`${config.paths.jasmine}/lib/`))
+    .pipe(gulp.dest(`${config.paths.testJasmine}/lib/`))
     .on('end', () => {
       // Copier les librairies jasmine dans ./dist/test/lib
-      const sstream = gulp.src(`${config.paths.jasmineCore}/*.{css,js}`)
-        .pipe(gulp.dest(`${config.paths.jasmine}/lib/`))
+      const sstream = gulp.src(`${config.paths.npmJasmine}/*.{css,js}`)
+        .pipe(gulp.dest(`${config.paths.testJasmine}/lib/`))
         .on('end', () => {
           // Générer les Specs utilisés par jasmine dans node
+
+          /* eslint-disable comma-dangle */
           const ssstream = gulp.src(
-            [`${config.paths.jasmine}/lib/acteSpec.js`])
+            [`${config.paths.testJasmine}/lib/acteSpec.js`])
             .pipe(wrap(
-`var acte = require(\'${config.paths.scriptRequire}\');
+`var acte = require('${config.paths.reqActe}');
 <%= contents %>\n`
             ))
-            .pipe(gulp.dest(config.paths.jasmine));
+            .pipe(gulp.dest(config.paths.testJasmine));
 
           return ssstream;
+
+          /* eslint-enable comma-dangle */
         });
 
       return sstream;
@@ -83,7 +87,7 @@ gulp.task('tests.specs', () => {
 
 // Effectuer les tests dans Node avec Jasmine
 gulp.task('tests.jasmine', () => {
-  const stream = gulp.src([`${config.paths.jasmine}/acteSpec.js`])
+  const stream = gulp.src([`${config.paths.testJasmine}/acteSpec.js`])
         .pipe(jasmineNode());
 
   return stream;
@@ -112,17 +116,17 @@ gulp.task('tests.saucelabs', (done) => {
 
 gulp.task('tests.coverage', () => {
   // generation de la couverture
-  const stream = gulp.src([`${config.paths.jasmine}/lib/acte.js`])
+  const stream = gulp.src([`${config.paths.testJasmine}/lib/acte.js`])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
 
     // https://nodejs.org/api/stream.html
     .on('finish', () => {
       // generation du rapport de couverture
-      gulp.src([`${config.paths.jasmine}/acteSpec.js`])
+      gulp.src([`${config.paths.testJasmine}/acteSpec.js`])
         .pipe(jasmineNode())
         .pipe(istanbul.writeReports({
-          dir: config.paths.coverage,
+          dir: config.paths.testCov,
 
           // 'reporters': ['lcov', 'json', 'text-summary', 'text'],
           reporters: ['lcov', 'json', 'text-summary'],
@@ -135,17 +139,9 @@ gulp.task('tests.coverage', () => {
 // Envoi du coverage à Coveralls
 gulp.task('tests.coveralls', () => {
   if (process.env.COVERALLS) {
-    gulp.src(`${config.paths.coverage}/lcov.info`).pipe(coveralls());
+    gulp.src(`${config.paths.testCov}/lcov.info`).pipe(coveralls());
   } else {
     gutil.log(gutil.colors
       .red('process.env.COVERALLS is not set'));
   }
 });
-
-// Tâche des tests locaux
-gulp.task('tests', sequence(
-
-  // Couvertures des tests avec istanbul [tests.specs, dist.acte]
-  'tests.coverage'
-
-));
