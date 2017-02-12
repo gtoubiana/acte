@@ -1,5 +1,5 @@
 ![logo](docs/img/logo-violet.png "Logo de la librairie acte.js")
-# acte v0.0.18-1
+# acte v0.0.18
 [![NPM version](https://img.shields.io/npm/v/acte.svg)](https://www.npmjs.com/package/acte)
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)
 [![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg?maxAge=2592000)](https://david-dm.org/gtoubiana/acte?type=dev)
@@ -23,7 +23,7 @@ Une librairie JavaScript qui simplifie la recherche généalogique.
 
 ## Installation
 Plusieurs options s'offrent à vous :
--   Télécharger la dernière version ([acte-0.0.18-1-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.18-1-dist.zip?raw=true))
+-   Télécharger la dernière version ([acte-0.0.18-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.18-dist.zip?raw=true))
 -   Installer avec [npm](https://www.npmjs.com/) : `npm install acte --save`
 <a name="structure"></a>
 
@@ -32,7 +32,7 @@ Au sein de votre téléchargement, vous trouverez les fichiers et dossiers suiva
 ```
 acte
 └── dist
-    ├── acte-0.0.18-1-dist.zip
+    ├── acte-0.0.18-dist.zip
     ├── acte.min.js
     ├── acte.min.js.map
     └── README.md

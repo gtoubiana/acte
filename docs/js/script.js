@@ -2,7 +2,7 @@
  * acte - Une librairie JavaScript qui simplifie la recherche généalogique.
  * @copyright 2015-Present, Gilles Toubiana
  * @namespace acte
- * @version 0.0.18-1
+ * @version 0.0.18
  * @see {@link https://github.com/gtoubiana/acte|Projet sur GitHub}
  * @license MIT
  */

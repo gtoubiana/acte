@@ -14,7 +14,7 @@ acte - Une librairie JavaScript qui simplifie la recherche généalogique.
 
 **Type** : Espace de noms global  
 **Voir** : [Projet sur GitHub](https://github.com/gtoubiana/acte)  
-**Version** : 0.0.18-1  
+**Version** : 0.0.18  
 **Licence** : MIT  
 **Copyright** : 2015-Present, Gilles Toubiana  
 
