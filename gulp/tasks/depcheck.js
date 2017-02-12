@@ -58,6 +58,7 @@ require('karma-sauce-launcher');
 
 // Dépendances TESTS
 require('jasmine');
+require('sauce-connect-tunnel');
 
 /* eslint-enable */
 

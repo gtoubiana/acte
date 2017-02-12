@@ -1,6 +1,6 @@
 {
   "name": "acte",
-  "version": "0.0.17",
+  "version": "0.0.18-1",
   "description": "Une librairie JavaScript qui simplifie la recherche généalogique",
   "main": "dist/acte.min.js",
   "directories": {
@@ -90,11 +90,11 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
     "fs-extra": "^2.0.0",
-    "github": "^2.5.1",
+    "github": "^8.2.1",
     "github-url-from-git": "^1.4.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-bump": "^2.4.0",
+    "gulp-bump": "^2.6.1",
     "gulp-clean-css": "^3.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
@@ -102,7 +102,7 @@
     "gulp-csv2json": "^0.2.5",
     "gulp-depcheck": "^1.1.1",
     "gulp-eslint": "^3.0.1",
-    "gulp-git": "^1.11.0",
+    "gulp-git": "^1.14.0",
     "gulp-hb": "^6.0.2",
     "gulp-header": "^1.8.8",
     "gulp-imagemin": "^3.1.1",
@@ -137,6 +137,7 @@
     "karma-sauce-launcher": "^1.1.0",
     "lazypipe": "^1.0.1",
     "require-dir": "^0.3.0",
+    "sauce-connect-tunnel": "^0.1.0",
     "website-scraper": "^2.1.0"
   },
   "tonicExample": "const acte = require('acte');\nconst jr = new acte.Jour('17 8bre 1802');\nconsole.log(jr.gregorien());\nconsole.log(jr.julien());\nconsole.log(jr.republicain());\nconsole.log(jr.gregorien('Le %JSlb %JMlb %Mlb est le %JAlob jour de l\\'année %Alb.'));\nconsole.log(jr.gregorien('%Jz/%Mz', 0, ((res, obj) => {\n  const an = acte.prefixeZero(obj.A % 100);\n  return `${res}/${an}`;\n})));"

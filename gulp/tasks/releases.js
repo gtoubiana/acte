@@ -218,7 +218,7 @@ gulp.task('releases.github.releaser', (done) => {
 
     github.authenticate(auth);
     github.repos.uploadAsset({
-      user: 'gtoubiana',
+      owner: 'gtoubiana',
       repo: 'acte',
       id: response[0].value.id,
       name: `acte-${version}-dist.zip`,

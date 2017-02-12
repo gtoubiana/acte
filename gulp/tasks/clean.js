@@ -8,6 +8,7 @@
 const config = require('../config');
 const del = require('del');
 const gulp = require('gulp');
+const sequence = require('gulp-sequence');
 
 // Nettoyer les fichiers issus de la tache dist
 gulp.task('clean.dist', (done) => {
@@ -50,3 +51,9 @@ gulp.task('clean.concat', (done) => {
 
   return stream;
 });
+
+// Nettoyages default
+gulp.task('clean', sequence(
+    'clean.dist',
+    'clean.tests',
+    'clean.docs'));
