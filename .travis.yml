@@ -14,6 +14,7 @@ matrix:
 branches:
   only:
   - master
+  - /^greenkeeper/.*$/
 before_install:
  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
  - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]'; then unset SAUCELABS; fi
