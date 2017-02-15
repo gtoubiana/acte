@@ -18,7 +18,7 @@ before_install:
  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
  - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-s\]'; then unset SAUCELABS; fi
  - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-c\]'; then unset COVERALLS; fi
- - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-[sc]{2}\]'; then unset SAUCELABS COVERALLS; fi
+ - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-sc\]'; then unset SAUCELABS COVERALLS; fi
  - echo "SAUCELABS = "${SAUCELABS}
  - echo "COVERALLS = "${COVERALLS}
 before_script:
