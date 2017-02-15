@@ -8,7 +8,7 @@ engines:
     channel: "eslint-3"
     checks:
       comma-dangle:
-        enabled: false
+        enabled: true
   csslint:
     enabled: false
   duplication:
@@ -17,13 +17,16 @@ engines:
     enabled: false
 ratings:
   paths:
-  - "gulp/**.js"
+  - "gulp/tasks/**.js"
   - "gulpfile.js"
-  - "src/js/**.js"
   - "test/**.js"
+  - "src/js/**"
+  - "src/docs/js/**.js"
 exclude_paths:
-  - "dist/**"
-  - "src/js/polyfills/**"
+  - "dist/**/*"
+  - "docs/**/*"
+  - "src/docs/js/ie10-viewport-bug-workaround.js"
+  - "src/js/private/polyfills/**"
   - "test/coverage/**"
   - "test/jasmine/**"
   - "test/karma/**"
