@@ -1,7 +1,5 @@
 ![logo](docs/img/logo-violet.png "Logo de la librairie acte.js")
 # acte v0.0.18
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/gtoubiana/acte.svg)](https://greenkeeper.io/)
 [![NPM version](https://img.shields.io/npm/v/acte.svg)](https://www.npmjs.com/package/acte)
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)
 [![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg?maxAge=2592000)](https://david-dm.org/gtoubiana/acte?type=dev)

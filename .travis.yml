@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-- '4'
 - '5'
 - '6'
 matrix:
@@ -14,12 +13,13 @@ matrix:
 branches:
   only:
   - master
-  - /^greenkeeper/.*$/
+  #- /^greenkeeper/.*$/
 before_install:
  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
- - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-saucelabs\]'; then unset SAUCELABS; fi
+ - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-s\]'; then unset SAUCELABS; fi
+ - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-c\]'; then unset COVERALLS; fi
+ - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-sc\]'; then unset SAUCELABS COVERALLS; fi
  - echo "SAUCELABS = "${SAUCELABS}
- - if echo "$TRAVIS_COMMIT_MSG" | grep '\[-coveralls\]'; then unset COVERALLS; fi
  - echo "COVERALLS = "${COVERALLS}
 before_script:
   - npm install -g gulp
