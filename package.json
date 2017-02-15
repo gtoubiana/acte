@@ -9,9 +9,9 @@
   },
   "scripts": {
     "fromscratch": "npm install && bower install && npm run atom.install && gulp && gulp tests.coverage",
-    "preupdate": "npm install -g npm && npm install -g npm-check-updates && npm install -g npm-check",
+    "update.pre": "npm install -g npm && npm install -g npm-check-updates && npm install -g npm-check",
     "update": "ncu -m bower && ncu && npm-check -u",
-    "prepull": "rm -rf ~/GitHub/acte/node_modules/ && rm -rf ~/GitHub/acte/bower_components/",
+    "pull.pre": "rm -rf ~/GitHub/acte/node_modules/ && rm -rf ~/GitHub/acte/bower_components/",
     "pull": "git pull origin && npm run fromscratch",
     "test": "gulp && gulp tests.coverage && gulp tests.karma",
     "tasks": "gulp tasks > ~/Github/acte/gulp/README.md",
@@ -142,6 +142,5 @@
     "require-dir": "^0.3.0",
     "sauce-connect-tunnel": "^0.1.0",
     "website-scraper": "^2.1.0"
-  },
-  "tonicExample": "const acte = require('acte');\nconst jr = new acte.Jour('17 8bre 1802');\nconsole.log(jr.gregorien());\nconsole.log(jr.julien());\nconsole.log(jr.republicain());\nconsole.log(jr.gregorien('Le %JSlb %JMlb %Mlb est le %JAlob jour de l\\'année %Alb.'));\nconsole.log(jr.gregorien('%Jz/%Mz', 0, ((res, obj) => {\n  const an = acte.prefixeZero(obj.A % 100);\n  return `${res}/${an}`;\n})));"
+  }
 }
