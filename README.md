@@ -6,7 +6,6 @@
 [![Code Climate](https://codeclimate.com/github/gtoubiana/acte/badges/gpa.svg)](https://codeclimate.com/github/gtoubiana/acte)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9410c94facba45d8ab9c2c2e44de68a7)](https://www.codacy.com/app/gilles-toubiana/acte?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gtoubiana/acte&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/gtoubiana/acte/badge.svg?branch=master&bust=1)](https://coveralls.io/github/gtoubiana/acte?branch=master)
-[![Inline docs](http://inch-ci.org/github/gtoubiana/acte.svg?branch=master)](http://inch-ci.org/github/gtoubiana/acte)
 [![airbnb-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg)](http://nerds.airbnb.com/our-javascript-style-guide/)
 
 ## Sommaire
