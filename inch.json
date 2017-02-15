@@ -1,7 +1,8 @@
 {
   "files": {
     "included": [
-      "test/jasmine/lib/acte.js"
+      "test/jasmine/lib/acte.js",
+      "src/js/"
     ],
   }
 }
