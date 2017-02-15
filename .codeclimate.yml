@@ -5,7 +5,7 @@ engines:
     enabled: false
   eslint:
     enabled: true
-    channel: "eslint-2"
+    channel: "eslint-3"
     checks:
       comma-dangle:
         enabled: false

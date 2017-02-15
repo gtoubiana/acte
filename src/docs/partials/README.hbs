@@ -4,6 +4,7 @@
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)
 [![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg?maxAge=2592000)](https://david-dm.org/gtoubiana/acte?type=dev)
 [![Code Climate](https://codeclimate.com/github/gtoubiana/acte/badges/gpa.svg)](https://codeclimate.com/github/gtoubiana/acte)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9410c94facba45d8ab9c2c2e44de68a7)](https://www.codacy.com/app/gilles-toubiana/acte?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gtoubiana/acte&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/gtoubiana/acte/badge.svg?branch=master&bust=1)](https://coveralls.io/github/gtoubiana/acte?branch=master)
 [![Inline docs](http://inch-ci.org/github/gtoubiana/acte.svg?branch=master)](http://inch-ci.org/github/gtoubiana/acte)
 [![airbnb-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg)](http://nerds.airbnb.com/our-javascript-style-guide/)
@@ -43,7 +44,7 @@ L'archive `.zip` contient le script dans sa version minifiée, une source map po
 
 ## Compatibilité
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)
-Le script fonctionne également avec Internet Explorer 8 pour le moment.
+Dans sa version actuelle, le script fonctionne encore sous Internet Explorer 8.
 <a name="documentation"></a>
 
 ## Documentation
