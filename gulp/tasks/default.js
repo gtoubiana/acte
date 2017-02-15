@@ -12,20 +12,24 @@ const sequence = require('gulp-sequence');
 gulp.task('default', sequence(
 
   // Nettoyages
-  ['clean.dist', 'clean.tests', 'clean.docs',
+  'clean.dist',
+  'clean.tests',
+  'clean.docs',
 
-    // Vérification des dépendances
-    'depcheck',
+  // Vérification des dépendances
+  'depcheck',
 
-    // Validations des fichiers src
-    'lint.gulp', 'lint.specs', 'lint.constants', 'lint.public.functions',
-    'lint.private.functions', 'lint.constructors', 'lint.prototypes',
-    'lint.dist', 'lint.docs.js', 'lint.docs.css',
-
-    // Génération de docs
-    'docs.constants', 'docs.functions', 'docs.readme', 'docs.index',
-    'docs.assets',
-  ],
+  // Validations des fichiers src
+  'lint.gulp',
+  'lint.specs',
+  'lint.constants',
+  'lint.public.functions',
+  'lint.private.functions',
+  'lint.constructors',
+  'lint.prototypes',
+  'lint.dist',
+  'lint.docs.js',
+  'lint.docs.css',
 
   // Spécifications des tests
   'tests.specs',
@@ -37,11 +41,16 @@ gulp.task('default', sequence(
 
   // Générations des documentations
   'docs.dist',
+  'docs.constants',
+  'docs.functions',
+  'docs.readme',
 
   // Génération du zip
   'dist.zip',
 
   // Génération de la démo dans /docs
+  'docs.index',
+  'docs.assets',
   'docs.script.es5',
   'docs.script.es3',
   'docs.concat.js',
