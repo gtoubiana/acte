@@ -1,5 +1,4 @@
-![logo](docs/img/logo-violet.png "Logo de la librairie acte.js")
-# acte v0.0.18
+![logo](docs/img/logo-violet.png "Logo de la librairie acte.js")<br>
 [![NPM version](https://img.shields.io/npm/v/acte.svg)](https://www.npmjs.com/package/acte)
 [![Build Status](https://img.shields.io/travis/gtoubiana/acte.svg)](https://travis-ci.org/gtoubiana/acte)
 [![devDependency Status](https://img.shields.io/david/dev/gtoubiana/acte.svg?maxAge=2592000)](https://david-dm.org/gtoubiana/acte?type=dev)
@@ -20,13 +19,13 @@ Une librairie JavaScript qui simplifie la recherche généalogique.
 <a name="installation"></a>
 
 ## Installation
-Plusieurs options s'offrent à vous :
--   Télécharger la dernière version ([acte-0.0.18-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.18-dist.zip?raw=true))
+Options disponibles :
+-   Télécharger la dernière archive ([acte-0.0.18-dist.zip](https://github.com/gtoubiana/acte/blob/master/dist/acte-0.0.18-dist.zip?raw=true))
 -   Installer avec [npm](https://www.npmjs.com/) : `npm install acte --save`
 <a name="structure"></a>
 
 ## Structure
-Au sein de votre téléchargement, vous trouverez les fichiers et dossiers suivants :
+L'archive `.zip` contient le script dans sa version minifiée, une source map pour déboguer et un fichier README écrit en markdown, contenant la documentation pour les développeurs.
 ```
 acte
 └── dist
@@ -35,7 +34,6 @@ acte
     ├── acte.min.js.map
     └── README.md
 ```
-L'archive `.zip` contient le script dans sa version minifiée, une source map pour déboguer et un fichier README écrit en markdown, contenant la documentation pour les développeurs.
 
 <a name="compatibilite"></a>
 
@@ -52,8 +50,8 @@ Dans sa version actuelle, le script fonctionne sous Internet Explorer 8.
 <a name="codestyle"></a>
 
 ## Code style
-Ce script respecte les recommandations [airbnb](http://nerds.airbnb.com/our-javascript-style-guide/) pour l'écriture du code JavaScript.
-Le code est évalué par [eslint](https://www.npmjs.com/package/eslint-config-airbnb) et certifié par codeclimate et codacy.<br>
+Ce script respecte les recommandations [airbnb](http://nerds.airbnb.com/our-javascript-style-guide/) pour l'écriture du code JavaScript.<br>
+Le code est évalué par [eslint](https://www.npmjs.com/package/eslint-config-airbnb) et certifié par codeclimate et codacy.
 [![Code Climate](https://codeclimate.com/github/gtoubiana/acte/badges/gpa.svg)](https://codeclimate.com/github/gtoubiana/acte)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9410c94facba45d8ab9c2c2e44de68a7)](https://www.codacy.com/app/gilles-toubiana/acte?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gtoubiana/acte&amp;utm_campaign=Badge_Grade)
 
