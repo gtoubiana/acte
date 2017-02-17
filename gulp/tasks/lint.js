@@ -26,6 +26,7 @@ const lazypipe = require('lazypipe');
 const prettify = require('gulp-jsbeautifier');
 const sequence = require('gulp-sequence');
 const stylish = require('gulp-jscs-stylish');
+const remarklint = require('gulp-remark-lint-dko');
 
 const lazyLint = lazypipe()
   .pipe(eslint)
@@ -201,4 +202,43 @@ gulp.task('lint.docs.html', () => {
 
     /* eslint-enable no-console */
   });
+});
+
+gulp.task('lint.md', () => {
+  const stream = gulp.src([
+    'docs/*.md', 'src/docs/*.md', 'src/*.md', 'test/*.md', './*.md',
+  ])
+    .pipe(remarklint({
+      rules: {
+        blockquoteIndentation: 'consistent',
+        checkboxCharacterStyle: 'consistent',
+        codeBlockStyle: 'consistent',
+        emphasisMarker: 'consistent',
+        fencedCodeMarker: 'consistent',
+        finalNewline: true,
+        hardBreakSpaces: true,
+        headingStyle: 'consistent',
+        linkTitleStyle: 'consistent',
+        listItemBulletIndent: true,
+        listItemContentIndent: true,
+        listItemIndent: 'tab-size',
+        noAutoLinkWithoutProtocol: true,
+        noBlockquoteWithoutCaret: true,
+        noDuplicateDefinitions: true,
+        noHeadingContentIndent: true,
+        noInlinePadding: true,
+        noLiteralUrls: true,
+        noShortcutReferenceImage: true,
+        noShortcutReferenceLink: true,
+        noUndefinedReferences: true,
+        noUnusedDefinitions: true,
+        orderedListMarkerStyle: '.',
+        ruleStyle: 'consistent',
+        strongMarker: 'consistent',
+        tableCellPadding: 'consistent',
+      },
+    }))
+    .pipe(remarklint.report());
+
+  return stream;
 });
