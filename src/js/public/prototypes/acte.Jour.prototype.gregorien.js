@@ -22,7 +22,7 @@
  * `a` - mois ou jour en Abrégé<br>
  * `b` - en Bas de casse (minuscules)<br>
  * `c` ou `m` - en Capitales (Majuscules)<br>
- * `f` - Féminin de p (première ou 1re)<br>
+ * `f` - version Féminine du filtre `p` (première ou 1re)<br>
  * `l` - chiffres en Lettres<br>
  * `o` - lettres ou chiffres en Ordinaux<br>
  * `p` - Premier ou 1er<br>
