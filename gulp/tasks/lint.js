@@ -236,6 +236,12 @@ gulp.task('lint.md', () => {
         ruleStyle: 'consistent',
         strongMarker: 'consistent',
         tableCellPadding: 'consistent',
+        'maximum-line-length': false,
+        'no-missing-blank-lines': false,
+        'list-item-spacing': false,
+        'no-html': false,
+        'first-heading-level': false,
+        'fenced-code-flag': false,
       },
     }))
     .pipe(remarklint.report());
