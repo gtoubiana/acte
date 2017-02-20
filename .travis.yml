@@ -5,9 +5,11 @@ node_js:
 matrix:
   include:
     - node_js: 'stable'
+      # faux positif http://lint.travis-ci.org/
       env:
         - SAUCELABS='1'
         - COVERALLS='1'
+      # faux positif http://lint.travis-ci.org/
       addons:
         sauce_connect: true
 branches:
