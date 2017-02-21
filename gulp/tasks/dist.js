@@ -151,12 +151,10 @@ gulp.task('dist.min', () => {
 
 // TASK Pour créer une archive.zip de la release
 gulp.task('dist.zip', () => {
-  // const version = JSON.parse(fse.readFileSync('./package.json',
-  //  'utf8')).version;
+  const version = JSON.parse(fse.readFileSync('./package.json',
+    'utf8')).version;
   const stream = gulp.src([`${config.paths.dist}/*.{min.js,map,md}`])
-    .pipe(zip('acte-dist.zip'))
-
-    // .pipe(zip(`acte-${version}-dist.zip`))
+    .pipe(zip(`acte-${version}-dist.zip`))
     .pipe(gulp.dest(config.paths.dist));
 
   return stream;
