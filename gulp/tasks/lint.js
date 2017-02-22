@@ -242,6 +242,7 @@ gulp.task('lint.md', () => {
         'no-html': false,
         'first-heading-level': false,
         'fenced-code-flag': false,
+        'heading-increment': false,
       },
     }))
     .pipe(remarklint.report());

@@ -7,12 +7,12 @@
 
 ## Table des matières
 -   [Installation](#installation)
-  -   [Options disponibles](#options)
-  -   [Structure des fichiers](#structure)
-  -   [Compatibilité](#compatibilite)
+    -   [Options disponibles](#options)
+    -   [Structure des fichiers](#structure)
+    -   [Compatibilité](#compatibilite)
 -   [Utilisation](#utilisation)
-  -   [Exemples](#exemples)
-  -   [Documentation](#documentation)
+    -   [Exemples](#exemples)
+    -   [Documentation](#documentation)
 -   [Participants actifs](#membres)
 -   [Contribuer](#contributing)
 -   [Licence](#licence)
@@ -57,7 +57,7 @@ Dans sa version actuelle, le script fonctionne sous Internet Explorer 8.
 
 <a name="membres"></a>
 ## Participants actifs
--   [Gilles Toubiana](https://github.com/gtoubiana/)
+-   [Gilles Toubiana](https://github.com/gtoubiana/) - <mailto:gilles.toubiana@yahoo.fr>
 
 <a name="contributing"></a>
 ## Contribuer
