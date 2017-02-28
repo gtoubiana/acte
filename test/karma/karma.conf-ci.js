@@ -89,15 +89,16 @@ module.exports = function karma(config) {
       version: '9',
       platform: 'Windows 7',
     },
-    /*
-    // voir gulp tests.saucelabs.ie8
+
+    // fonctionne avec Karma 1.3.0
+    // ne fonctionne pas avec Karma 1.4.0
     sl_ie8_win: {
       base: 'SauceLabs',
       browserName: 'internet explorer',
       version: '8',
       platform: 'Windows 7',
     },
-    */
+
   };
   let sauceLabs;
   let concurrency;
@@ -139,11 +140,12 @@ module.exports = function karma(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: [
+      'jasmine',
+    ],
 
     // list of files / patterns to load in the browser
     files: [
-
       '../jasmine/lib/acte.js',
       '../jasmine/lib/acteSpec.js',
     ],
@@ -161,7 +163,9 @@ module.exports = function karma(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'saucelabs'],
+    reporters: [
+      'progress', 'saucelabs',
+    ],
 
     // web server port
     port: 9876,

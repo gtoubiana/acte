@@ -6,7 +6,9 @@ module.exports = function karma(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: [
+      'jasmine',
+    ],
 
     // list of files / patterns to load in the browser
     files: [
@@ -27,7 +29,9 @@ module.exports = function karma(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: [
+      'progress',
+    ],
 
     // web server port
     port: 9876,
@@ -48,7 +52,9 @@ module.exports = function karma(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/
     // karma-launcher
     // browsers: ['Chrome', 'Firefox', 'Safari', 'PhantomJS', 'Opera'],
-    browsers: ['Chrome', 'Firefox', 'Safari', 'Opera'],
+    browsers: [
+      'Chrome', 'Firefox', 'Safari', 'Opera',
+    ],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

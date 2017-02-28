@@ -40,7 +40,6 @@ acte
 <a name="compatibilite"></a>
 #### Compatibilité
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/gtoubiana.svg)](https://saucelabs.com/u/gtoubiana)
-Dans sa version actuelle, le script fonctionne sous Internet Explorer 8.
 
 <a name="utilisation"></a>
 ## Utilisation

@@ -11,6 +11,7 @@ const config = require('../config');
 const fse = require('fs-extra');
 const gulp = require('gulp');
 const header = require('gulp-header');
+const lazypipe = require('lazypipe');
 const pkg = require('../../package.json');
 const prettify = require('gulp-jsbeautifier');
 const rename = require('gulp-rename');
@@ -19,6 +20,20 @@ const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const wrap = require('gulp-wrap');
 const zip = require('gulp-zip');
+
+// Lazypipes
+const babelES3 = lazypipe()
+  .pipe(babel, {
+    plugins: [
+
+      // ES3 compatibility preset
+      'transform-object-assign',
+      'transform-es3-member-expression-literals',
+      'transform-es3-property-literals',
+      'transform-undefined-to-void',
+      'transform-jscript',
+    ],
+  });
 
 // var rep = require('gulp-replace');
 
@@ -101,17 +116,19 @@ gulp.task('dist.acte.es3', () => {
     `${config.paths.testJasmine}/lib/acte.js`,
   ])
     .pipe(concat('acte.js'))
-    .pipe(babel({
-      plugins: [
+    .pipe(babelES3())
 
-        // ES3 compatibility preset
-        'transform-object-assign',
-        'transform-es3-member-expression-literals',
-        'transform-es3-property-literals',
-        'transform-jscript',
-        'transform-undefined-to-void',
-      ],
-    }))
+    // .pipe(babel({
+    //   plugins: [
+
+    //     // ES3 compatibility preset
+    //     'transform-object-assign',
+    //     'transform-es3-member-expression-literals',
+    //     'transform-es3-property-literals',
+    //     'transform-jscript',
+    //     'transform-undefined-to-void',
+    //   ],
+    // }))
 
   // .pipe(header(config.bannerTop + JSON.parse(gfs.readFileSync(
   //   './package.json', 'utf8')).version + config.bannerBottom, {
