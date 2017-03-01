@@ -325,3 +325,21 @@ gulp.task('docs.concat.css', () => {
 
   return stream;
 });
+
+gulp.task('docs.test', () => {
+  const stream1 = gulp.src(
+    [
+      `${config.paths.testJasmine}/lib/{acte,boot,jasmine}*`,
+    ])
+    .pipe(gulp.dest(`${config.paths.docs}/test/lib/`))
+    .on('end', () => {
+      const stream2 = gulp.src(
+        [`${config.paths.testJasmine}/SpecRunner.html`])
+        .pipe(rename('index.html'))
+        .pipe(gulp.dest(`${config.paths.docs}/test/`));
+
+      return stream2;
+    });
+
+  return stream1;
+});

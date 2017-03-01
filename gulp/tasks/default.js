@@ -44,6 +44,7 @@ gulp.task('default', sequence(
   'docs.constants',
   'docs.functions',
   'docs.readme',
+  'docs.test',
 
   // Génération du zip
   'dist.zip',
@@ -56,8 +57,9 @@ gulp.task('default', sequence(
   'docs.concat.js',
   'docs.concat.css',
 
-  // Validation du html de la demo
-  'lint.docs.html'
+  // Validations html et markdown
+  'lint.docs.html',
+  'lint.md'
 
 ));
 
